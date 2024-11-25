@@ -1,0 +1,68 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>System variables for synchronized actions: Type conversions</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">System variables for synchronized actions: Type conversions</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>An implicit type conversion is performed between the following data types for value assignments and parameter transfers with different data types: </p>
+      <ul>
+        <li>
+          <p>REAL</p>
+        </li>
+        <li>
+          <p>INT</p>
+        </li>
+        <li>
+          <p>BOOL</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Note</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="Blocklabel">Conversion REAL to INT</h4>
+                <p class="safety">For the conversion from REAL to INT, a decimal place value ≧ 0.5 rounded up to the next higher integer. For a decimal place value &lt; 0.5, rounding is to the next lower integer. Behavior in accordance with the <code>ROUND</code> function.</p>
+                <p class="safety">If the REAL value is outside the INT value range, an alarm is displayed and a conversion is not performed.</p>
+                <h4 class="Blocklabel">Conversion from REAL or INT to BOOL</h4>
+                <ul class="safety">
+                  <li class="safety">
+                    <p class="safety">Value &lt;> 0 → TRUE</p>
+                  </li>
+                  <li class="safety">
+                    <p class="safety">Value == 0 → FALSE</p>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Examples</h4>
+      <p>Conversion: <b>INT </b>$AC_MARKER → <b>REAL </b>$AC_PARAM</p>
+      <a id="table_0">
+      </a> <TableTitle></TableTitle><a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ERB"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th>Program code</th></tr><tr valign="top"><td>$AC_MARKER[1]=561</td></tr><tr valign="top"><td>ID=1 WHEN TRUE DO $AC_PARAM[1] = $AC_MARKER[1]</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Conversion: <b>REAL </b>$AC_PARAM → <b>INT </b>$AC_MARKER</p><a id="table_1"></a> <TableTitle></TableTitle><a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EJC"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th>Program code</th></tr><tr valign="top"><td>$AC_PARAM[1]=561.0</td></tr><tr valign="top"><td>ID=1 WHEN TRUE DO $AC_MARKER[1] = $AC_PARAM[1]</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Conversion: <b>INT </b>$AC_MARKER → <b>BOOL </b>$A_OUT</p><a id="table_2"></a> <TableTitle></TableTitle><a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EBD"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th>Program code</th></tr><tr valign="top"><td>$AC_MARKER[1]=561</td></tr><tr valign="top"><td>ID=1 WHEN $A_IN[1] == TRUE DO $A_OUT[0]=$AC_MARKER[1]</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Conversion: <b>REAL </b>$R401 → <b>BOOL </b>$A_OUT</p><a id="table_3"></a> <TableTitle></TableTitle><a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EZD"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th>Program code</th></tr><tr valign="top"><td>R401 = 100.542</td></tr><tr valign="top"><td>WHEN $A_IN[0] == TRUE DO $A_OUT[2]=$R401</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Conversion: <b>BOOL </b>$A_OUT → <b>INT </b>$AC_MARKER</p><a id="table_4"></a> <TableTitle></TableTitle><a id="table_4"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ERE"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th>Program code</th></tr><tr valign="top"><td>ID=1 WHEN $A_IN[2] == TRUE DO $AC_MARKER[4] = $A_OUT[1]</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Conversion: <b>BOOL </b>$A_OUT → <b>REAL </b>$R10</p><a id="table_5"></a> <TableTitle></TableTitle><a id="table_5"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EGF"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th>Program code</th></tr><tr valign="top"><td>WHEN $A_IN[3] == TRUE DO $R10 = $A_OUT[3]</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Creating a DSF archive on SINUMERIK ONE</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowAction">
+        <h1 class="title">Creating a DSF archive on SINUMERIK ONE</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Archives can be created as usual via the SINUMERIK ONE user interface. The data backup is made as commissioning archive in the *.dsf format. A commissioning archive can be generated, for example, after the control has been commissioned. To do this, control components can be saved individually or jointly. It is also possible to transfer the data backup to other controls so they can be updated to the same status.</p>
+      <p>The following archive types can be selected for the data backup:</p>
+      <h4 class="Blocklabel">All data of this machine (backup)</h4>
+      <ul>
+        <li>
+          <p>Complete backup for restoration</p>
+        </li>
+        <li>
+          <p>Complete backup for software upgrades</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Data for a machine series (Setup)</h4>
+      <ul>
+        <li>
+          <p>Data inventory for equipping a machine series</p>
+          <p>The archive does not contain specific machine data, such as<br />tools, part programs, address settings, compensations, PLC retentivity data, workpiece counters, etc.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Factory setting of this machine (original)</h4>
+      <ul>
+        <li>
+          <p>Data backup at a defined storage location</p>
+        </li>
+      </ul>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">We recommend that a backup archive is created regularly for specified work states of the SINUMERIK ONE environment so a required state can be reproduced when necessary.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Restriction</h4>
+            <p class="safety">An original archive is represented as backup.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Requirement</h3>
+      <ul>
+        <li>
+          <p>The "User" access level is required for creating a backup (backup of same control).</p>
+        </li>
+        <li>
+          <p>The "Manufacturer" access level is required for creating a setup or original.</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">"Create archive" view</h3>
+      <a id="table_9224bc69-f1b2-4f9e-a959-2312d28e16ca">
+      </a> <a id="table_0"></a> <a id="table_9224bc69-f1b2-4f9e-a959-2312d28e16ca"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="33.3%"><col width="66.7%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Parameter</p></th><th><p type="p_table_lb" align="left">Remark for configuration</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Header</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The header shows the selected archive type.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">NCU/PC components</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Selected components to be written to the archive:</p><ul class="table"><li><p>NCK</p></li><li><p>Drives</p></li><li><p>HMI</p></li><li><p>System settings</p></li><li><p>Security</p></li><li><p>NCextend</p></li></ul><p>A progress display appears for each selected component during the archive creation.</p><p type="p_table_l" align="left">When all components have completed their actions, the status of each component is displayed.</p><p type="p_table_l" align="left">The archive is saved when all components have stored their data correctly.</p><p type="p_table_l" align="left">If any errors occur, even only for a single individual component, the archive is not saved. The error log is displayed.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Storage path</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The archive path is preassigned, but can be changed with the "Change storage path" softkey.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Archive name</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The system suggests a generic archive name. The generic archive name is formed from:</p><ul class="table"><li><p>Archive type (e.g. Backup)</p></li><li><p>Abbreviation for selected components:</p><p>NCK: N</p><p>PLC: P</p><p>Drive: D</p><p>HMI: H</p><p>System: S</p><p>Security: S</p><p>NCextend: L</p></li><li><p>Abbreviation for customization: CUST</p></li><li><p>Date (ISO)</p></li><li><p>Possibly an extension (1, 2, 3, etc.)</p></li></ul><p></p><p><b>Example</b></p><p type="p_table_l" align="left">Backup_NH_2022-06-03</p><p type="p_table_l" align="left">Backup_NDHSL_2022-06-03_1</p><p type="p_table_l" align="left"><b>Note</b></p><p type="p_table_l" align="left">The generic archive name does not differentiate between the HMI runtime environments (NCU, PCU, ...).</p><p type="p_table_l" align="left">The "original.dsf" archive name for restoring the factory setting cannot be changed.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Created by</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Input field for the creator as well as the creation date of the archive (optional).</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Comment</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Input field for possible comments regarding the archive (optional).</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Procedure</h3><table width="100%" border="0" cellspacing="0" cellpadding="10"><tr><td><ol class="action"><li><p>Switch over to the "Setup" operating area in SINUMERIK Operate</p><p>"MENU SELECT > Commissioning > Commissioning archives".</p></li><li><p>Select one of the options for creating an archive and confirm with "OK".</p><p>The "Create archive" window opens.</p><p>This provides an overview with path details, name of the archive, etc. as well as an overview of the components to be archived.</p></li><li><p>Deactivate the checkbox to exclude a component from the creation process.</p><p>The displayed archive name is automatically changed appropriately.</p></li><li><p>If required, change the storage location with the "Change storage path" softkey.</p></li><li><p>To create the archive, confirm with "OK".</p><p>The "Create archive" window shows the creation process for each component with a progress display.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">You must enter a password if the archive contains the "Security" component.</p></td></tr></table></li></ol></td></tr></table></div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Save tool environment (TOOLENV): Additional information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Save tool environment (TOOLENV): Additional information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Further information</h3>
+      <h4 class="Blocklabel">Base dimension/adapter dimension – tool length compensation</h4>
+      <p>When the tool magazine management is active (only available with the "Tool management" option!), the value of the following machine data defines whether the adapter length or the tool base dimension (cutting edge-specific parameters $TC_DP21, $TC_DP22 and $TC_DP23) is incorporated in the calculation of the tool length:</p>
+      <p>MD18104 $MN_MM_NUM_TOOL_ADAPTER (tool adapter in TO area).</p>
+      <p>Since a change to this machine data only takes effect after the control system has powered up, it is not saved in the tool environment.</p>
+      <h4 class="Blocklabel">Resulting length of toolholders with orientation capability and transformations:</h4>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Both toolholders with orientation capability and transformations can use system variables or machine data, which act as additional tool length components, and which can be subjected partially or completely to the rotations performed. The resulting additional tool length components must also be saved when TOOLENV is called, because they represent part of the environment, in which the tool is used.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Adapter transformation</h4>
+      <p>The adapter transformation is a property of the tool adapter and thus of the complete tool. It is, therefore, not part of a tool environment, which can be applied to another tool.</p>
+      <p>By saving the complete data necessary to determine the overall tool length, it is possible to calculate the effective length of the tool at a later point in time, even if the tool is no longer active or if the conditions of the environment (e.g. G codes or setting data) have changed. Similarly, the effective length of a different tool can be calculated assuming that it would be used under the same conditions as the tool, for which the status was saved.</p>
+      <h4 class="Blocklabel">Maximum number of data sets for tool environments</h4>
+      <p>Machine data MD18116 $MN_MM_NUM_TOOL_ENV is used to define the maximum number of data sets that can be saved to describe the tool environments. The data are in the TOA area. They are kept even when the control system is switched off.</p>
+      <p>Data cannot be backed up. This means that this data cannot be transferred between the different control systems.</p>
+    </div>
+  </body>
+</html>

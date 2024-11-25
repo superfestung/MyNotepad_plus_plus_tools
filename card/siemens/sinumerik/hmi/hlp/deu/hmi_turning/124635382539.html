@@ -1,0 +1,119 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Funktion</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Funktion</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Funktion   </h3>
+      <p>Mit der Messvariante "Kinematik vermessen" (CYCLE996) ist es möglich, über ein Vermessen von Kugelpositionen im Raum die geometrischen Vektoren zur Definition der kinematischen 5-Achs-Transformation (TRAORI und TCARR) zu berechnen.</p>
+      <p>Die Vermessung erfolgt grundsätzlich so, dass mittels Werkstückmesstaster pro Rundachse drei Positionen einer Messkugel abgetastet werden. Die Kugelpositionen können nach Anwendervorgabe entsprechend den geometrischen Verhältnissen an der Maschine festgelegt werden. Die Kugelpositionen werden durch alleiniges Umpositionieren einer jeweils zu vermessenden Rundachse eingestellt.</p>
+      <p>Zum Einsatz des CYCLE996 bedarf es keiner exakten Kenntnis über die zu Grunde liegende Mechanik der Maschine. Um eine Vermessung durchführen zu können, sind keine Maßbilder und Aufbauzeichnungen der Maschine notwendig.</p>
+      <p>Sind die Vektoren der Maschine grob bekannt, sollten die Zeichnungsmaße in die Vektoren des Schwenkdatensatzes eingetragen werden und die Maschine mit aktivem orientierbaren Werkzeugträger (TCARR) oder aktiver 5-Achs-Transformation (TRAORI) vermessen werden. Siehe auch Programmierbeispiel am Ende des Kapitels.</p>
+      <p>
+        <b>Weitere Informationen:</b> Programmierhandbuch <i>NC-Programmierung</i></p>
+      <h4 class="Blocklabel">Mögliche Einsatzbereiche</h4>
+      <p>Die Messvariante "Kinematik messen" ermöglicht eine Bestimmung der transformationsrelevanten Daten für kinematische Transformationen mit enthaltenen Rundachsen (TRAORI, TCARR).</p>
+      <ul>
+        <li>
+          <p>Neubestimmung von Schwenkdatensätzen</p>
+          <ul>
+            <li>
+              <p>Inbetriebnahme der Maschine,</p>
+            </li>
+            <li>
+              <p>Einsatz von schwenkbaren Spannmitteln als TCARR</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Überprüfung von Schwenkdatensätzen</p>
+          <ul>
+            <li>
+              <p>Service nach Kollisionen,</p>
+            </li>
+            <li>
+              <p>Überprüfung der Kinematik während des Bearbeitungsprozesses</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>Es können Kinematiken mit manuellen Achsen (manuell verstellbare Rundtische, schwenkbare Spanneinrichtungen) ebenso vermessen werden wie Kinematiken mit NC-gesteuerten Rundachsen. </p>
+      <p>Bei Start des<i> CYCLE996 </i> muss ein Schwenkdatensatz mit den Grunddaten (Kinematiktyp siehe Programmierhandbuch <i>SINUMERIK 840D sl/840D/840Di sl Zyklen</i>, CYCLE800) parametriert sein. Die Vermessung selbst wird ohne aktive kinematische Transformation durchgeführt. </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Voraussetzungen</h3>
+      <p>Folgende Voraussetzungen müssen zum Einsatz des <code>CYCLE996 </code>(Kinematik vermessen) erfüllt sein:</p>
+      <ul class="comment">
+        <li class="comment">
+          <p class="comment">kalibrierter 3D Messtaster (Messtaster Typ 710)</p>
+        </li>
+        <li class="comment">
+          <p class="comment">montierte Kalibrierkugel</p>
+        </li>
+        <li class="comment">
+          <p class="comment">orientierter Werkzeugträger eingerichtet (allgemeines MD 18088: $MN_MM_NUM_TOOL_CARRIER > 0)</p>
+        </li>
+        <li class="comment">
+          <p class="comment">rechtwinklige, referenzierte Grundgeometrie der Maschine (X, Y, Z)</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Die Rechtwinkligkeit bezieht sich auf die Werkzeugspindel und ist vorzugsweise mittels Messdorn oder mit dem Messzyklus <i>CYCLE995</i>  zu kontrollieren.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">definierte Stellung der an der Transformation beteiligten Rundachsen</p>
+        </li>
+        <li class="comment">
+          <p class="comment">definierte normgerechte Verfahrrichtungen aller an der Transformation beteiligten Achsen nach ISO 841-2001 bzw. DIN 66217 (Rechte Handregel)</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Linear- und Rundachsen müssen dynamisch optimal eingestellt sein. Dies gilt insbesondere, wenn die Maschine mit aktiven TRAORI Werkzeugorientierungen in der spannenden Bearbeitung ausführen soll.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Der Messtaster muss exakt kalibriert sein. Die kalibrierte Werkzeuglänge des Messtasters geht direkt in die berechneten Vektoren der Kinematik ein.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Beim Messen sollte die Messvariante Umkreisen der Kalibrierkugel mit Nachführen der Schaltrichtung angewendet werden.</p>
+        </li>
+      </ul>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Die Vektoren der gemessenen Kinematik werden nur in den Schwenkdatensatz eingeschrieben, wenn das Herstellerkennwort aktiv ist. Eine Kinematik kann nur dann korrigiert werden, wenn keine persistente Transformation aktiv ist. </p>
+          </td>
+        </tr>
+      </table>
+      <a id="table_74773dc1-a920-4037-a4c0-304c168f22f3">
+      </a> <a id="table_0"></a> <a id="table_74773dc1-a920-4037-a4c0-304c168f22f3"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="15.6%"><col width="84.4%"></colgroup><tr valign="top"><td><a id="image_27512720779_0"></a> <img border="0" src="images/27513393163.png" width="44" height="44"/> </td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><b>Maschinenhersteller</b></p><p type="p_table_l" align="left" class="comment">Beachten Sie bitte die Hinweise des Maschinenherstellers.</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Messprinzip</h3><p>Die Messvariante "Kinematik messen" verlangt grundsätzlich nach folgender Vorgehensweise:</p><ol><li><p>Vermessung einer Rundachse</p></li><li><p>Vermessung einer zweiten Rundachse (wenn vorhanden)</p></li><li><p>Berechnung der Schwenkdatensätze (Kinematik berechnen)</p></li><li><p>Automatische oder bedienerunterstützte Aktivierung der berechneten Daten</p></li></ol><p>Die dargestellte Reihenfolge ist vom Anwender (vorzugsweise Maschinenhersteller) sicherzustellen.</p><p>Ist die Position der Kalibrierkugel innerhalb der Maschine konstruktiv reproduzierbar vorgebbar, so kann der gesamte Ablauf der kinematischen Vermessung mittels CYCLE996 vorteilhaft als Teileprogramm hinterlegt werden. Damit kann der Anwender zu beliebigen Zeitpunkten eine Vermessung seiner Kinematik unter definierten Bedingungen durchführen.</p><p>Die Vermessung der Rundachse muss im Grundsystem der Maschine ausgeführt werden. Metrische Maschine mit G710 und Positionen in mm. "INCH"-Maschine mit G700 und Positionen in INCH.</p><a id="table_d5e9c715-f2af-c9af-c1fb-76664370cd8a"></a> <a id="table_1"></a> <a id="table_d5e9c715-f2af-c9af-c1fb-76664370cd8a"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="50.0%"><col width="49.9%"></colgroup><tr valign="top"><td><a id="image_28732831883_0"></a> <img border="0" src="images/28732874507.png" width="330" height="350"/> </td><td><a id="image_28731411467_0"></a> <img border="0" src="images/28732823691.png" width="328" height="286"/> </td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Messen: Kinematik (CYCLE996), <br />1. Messung Schwenktisch</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Messen: Kinematik (CYCLE996), <br />3. Messung Schwenkkopf</p></td></tr></table></p><p></p><h4 class="Blocklabel">Vermessen der Kinematik</h4><p>Ausgehend von der Grundstellung der Kinematik werden die beteiligten Rundachsen getrennt vermessen.</p><ul><li><p>Die Reihenfolge der Vermessung Rundachse 1 oder Rundachse 2 ist beliebig. Hat die Maschinenkinematik nur eine Rundachse, wird diese als Rundachse 1 vermessen.</p></li><li><p>Basisdaten der Kinematik sind immer die Daten des orientierbaren Werkzeugträgers. Es kann die 1. dynamische 5-Achs-Transformation unterstützt werden, vorzugsweise sollte diese den Transformationstyp 72 (Vektoren aus TCARR Daten) haben.</p></li><li><p>Die Linear- und Rundachsen müssen vor dem Aufruf des Messzyklus CYCLE996<code> </code>im NC-Programm auf die Startpositionen P1 bis P3 vorpositioniert werden. Die Startposition wird automatisch im <i>CYCLE996</i> als Sollposition zum "Kugelmessen" übernommen.</p></li><li><p>Die Vermessung erfolgt in jeder der gewählten Kugel- (Rundachs-) Positionen über die Parameter und den Aufruf des<i> CYCLE996</i> .</p></li><li><p>Die Berechnung der Kinematik erfolgt über einen separaten parametrierten Aufruf des <i>CYCLE996</i>. .</p></li><li><p>Die Messergebnisse werden nach Abschluss der 3. Messung und der<i> CYCLE996</i> Einstellung "Kinematik berechnen" auf die Ergebnisparameter _OVR[ ] geschrieben. Bei Anwahl der Funktion "Vektoren eintragen" (siehe <code>S_MVAR</code>, <code>S_TC</code>) erfolgt die Ausgabe der Daten auf den eingerichteten Schwenkdatensatz (TCARR, TRAORI(1)).</p></li><li><p>Ein Protokollfile mit den Messergebnissen, in einem entsprechenden Datenformat (Maschinendaten oder Daten TCARR), kann wahlweise ausgegeben werden.</p></li></ul><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><h4 class="Blocklabel">Voraussetzungen Vermessen der Kinematik mit aktiven TRAORI oder aktiven TCARR</h4><ul class="safety"><li class="safety"><p class="safety">SD 55740: $SCS:MEA_FUNCTION_MASK, Bit8 = 1 setzen</p></li><li class="safety"><p class="safety">Datensatz (Schwenkdaten oder Maschinendaten) der Kinematik muss grob (±1 mm) eingerichtet sein.</p></li><li class="safety"><p class="safety">Auf den einzelnen Messpositionen der Rundachsen muss der Messtaster senkrecht auf der Messebene positioniert sein. Dies kann mit der Funktion Schwenken (<code>CYCLE800</code>) oder durch Positionieren der Rundachsen mit TRAORI und nachfolgenden TOROT (bei G17) erfolgen.</p></li><li class="safety"><p class="safety">Sind in den XYZ-Anteilen der Rundachsvektoren (V1, V2) sehr kleine Werte eingetragen, sollte die Vermessung der Kinematik immer mit aktiver TCARR oder aktiver TRAORI erfolgen.</p></li></ul></td></tr></table><h4 class="Blocklabel">Eingabemasken "Kinematik"</h4><p class="comment">Die komplette Messung und Berechnung der Vektoren einer Rundachse besteht aus drei Aufrufen des <code>CYCLE996</code>. Zwischen den Zyklenaufrufen muss die zu messende Rundachse vom Anwender umpositioniert werden. Die jeweils nicht zu vermessene Rundachse darf während der Messungen nicht umpositioniert werden. Die Linearachsen werden auf die Startpositionen P1, P2, P3 positioniert.</p><p class="comment">Über die jeweiligen Softkeys werden die 1. bis 3. Messung aufgerufen.</p><p class="comment">Am Ende der 3. Messung erfolgt mit dem Aufruf die Berechnung der Vektoren der gemessenen Rundachse. Voraussetzung ist, dass für die jeweilige Rundachse die 1. bis 3. Messung erfolgt ist und die entsprechenden Messergebnisse (Mittelpunkte der Kalibrierkugel) gespeichert sind. Die Vektoren der Maschinenkinematik sind dann vollständig berechnet, wenn beide Rundachsen vermessen sind. In der Ergebnisanzeige bzw. im Protokoll wird der Messzähler, Parameter _OVR[40] angezeigt.</p><p class="comment">Messung für eine Kinematik mit Schwenkkopf:</p><a id="table_e6134319-e3f0-f840-ad08-6db3d24c7f27"></a> <a id="table_2"></a> <a id="table_e6134319-e3f0-f840-ad08-6db3d24c7f27"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="33.3%"><col width="33.3%"><col width="33.3%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">1. Messung P1 (Grundstellung)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">2. Messung P2</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">3. Messung P3</p></td></tr><tr valign="top"><td><a id="image_3781584011_0"></a> <img border="0" src="images/120947972363.png" width="135" height="136"/> </td><td><a id="image_3781608843_0"></a> <img border="0" src="images/120948088843.png" width="135" height="144"/> </td><td><a id="image_3781596427_0"></a> <img border="0" src="images/120948218123.png" width="135" height="140"/> </td></tr></table></p><p class="comment">Bei der 2. und 3. Messung wird die zu vermessende Rundachse um einen beliebigen, möglichst großen Winkel verdreht. Die Position der Kalibrierkugel muss bei den Messungen ortsfest sein.</p><a name="block_4"></a><h3 class="Blocktitle">Ausgangsposition vor dem Messen</h3><p>Die Vermessung einer Rundachse erfolgt durch 3 Aufrufe des<i> CYCLE996</i> (Messung 1 bis 3).</p><p>Der Äquator der Kalibrierkugel muss mit der Messtasterkugel erreichbar sein. Die 1. Messung muss in Grundstellung der Kinematik erfolgen. Dreht bei einer Kopfkinematik (Gabelkopf) die 1. Rundachse ohne Versatz parallel zur Spindel, kann die Messung der 1. Rundachse mit angestelltem Messtaster erfolgen. Dabei steht die 2. Rundachse beim Vermessen der 1. Rundachse nicht in Grundstellung.</p><p>Die Startposition des Messtasters muss vom Anwender oder aus dem Anwenderprogramm angefahren werden. Der Messtaster muss in Richtung der Werkzeugorientierung (ORI) über dem höchsten Punkt der Kalibrierkugel vorpositioniert werden (Messtaster fluchtet mit Kugelmittelpunkt). Der Abstand (A) zur Kalibrierkugel, nach dem Anfahren der Startposition, sollte ungefaehr DFA sein.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><h4 class="Blocklabel">Variante "Positionieren auf Kreisbahn"</h4><p class="safety">Bei der Variante "Positionieren auf Kreisbahn", erfolgt das Positionieren um jeweils 90 °, immer in mathematisch positiver Richtung.</p></td></tr></table><a name="block_5"></a><h3 class="Blocktitle">Position nach Messzyklus-Ende</h3><p>Nach jeder Messung (1 bis 3) einer Rundachse steht der Messtaster über der Kalibrierkugel im Abstand von maximal dem Messweg DFA.</p></div>
+    <p>Siehe auch:<br />    <a href="124635387275.html">Vermessung einer einzelnen Rundachse</a><br />    <a href="124635389963.html">Kinematik berechnen und Aktivierung der Schwenkdatensätze</a><br />    <a href="slstepmekinematic_m.html">Messen: Kinematik (CYCLE996)</a><br />    <a href="slstepmekinematic_c.html">Messen: Kinematik (CYCLE996)</a></p>
+  </body>
+</html>

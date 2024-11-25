@@ -1,0 +1,174 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Komprimierung der Orientierung (COMPCAD, COMPSURF)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Komprimierung der Orientierung (COMPCAD, COMPSURF)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>NC-Programme, in denen eine Orientierungstransformation (TRAORI) aktiv ist und Werkzeugorientierungen (egal welcher Art) programmiert sind, können unter Einhaltung von vorgegebenen Toleranzen komprimiert werden.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Programmierung</h3>
+      <h4 class="Blocklabel">Werkzeugorientierung</h4>
+      <p>Falls eine Orientierungstransformation (TRAORI) aktiv ist, kann bei 5-Achs Maschinen die Werkzeugorientierung folgendermaßen (kinematikunabhängig) programmiert werden:</p>
+      <ul>
+        <li>
+          <p>Programmierung des Richtungs<b>vektors</b> über:</p>
+          <p>
+            <code>A3=&lt;</code>...<code>> B3=&lt;</code>...<code>> C3=&lt;</code>...<code>></code></p>
+        </li>
+        <li>
+          <p>Programmierung der Euler<b>winkel</b> bzw. RPY-<b>Winkel</b> über:</p>
+          <p>
+            <code>A2=&lt;</code>...<code>> B2=&lt;</code>...<code>> C2=&lt;</code>...<code>></code></p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Drehung des Werkzeugs</h4>
+      <p>Bei <b>6-Achs</b> Maschinen kann zusätzlich zur Werkzeugorientierung noch die Drehung des Werkzeugs programmiert werden.</p>
+      <p>Die Programmierung des Drehwinkels erfolgt mit:</p>
+      <p>
+        <code>THETA=&lt;</code>...<code>></code></p>
+      <p>Siehe " <a href="156663127691.html">Drehungen der Werkzeugorientierung (ORIROTA, ORIROTR, ORIROTT, ORIROTC, THETA)</a> ".</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">NC-Sätze, in denen zusätzlich eine Drehung programmiert ist, sind nur dann komprimierbar, falls sich der Drehwinkel <b>linear</b> ändert. D. h., für den Drehwinkel darf kein Polynom mit PO[THT] = (...) programmiert sein.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Allgemeine Form eines komprimierbaren NC-Satzes</h4>
+      <p>Die allgemeine Form eines komprimierbaren NC-Satzes kann daher wie folgt aussehen:</p>
+      <p>
+        <code>N</code>... <code>X=&lt;</code>...<code>> Y=&lt;</code>...<code>> Z=&lt;</code>...<code>> A3=&lt;</code>...<code>> B3=&lt;</code>...<code>> C3=&lt;</code>...<code>> THETA=&lt;</code>...<code>> F=&lt;</code>...<code>></code></p>
+      <p>bzw.</p>
+      <p>
+        <code>N</code>... <code>X=&lt;</code>...<code>> Y=&lt;</code>...<code>> Z=&lt;</code>...<code>> A2=&lt;</code>...<code>> B2=&lt;</code>...<code>> C2=&lt;</code>...<code>> THETA=&lt;</code>...<code>> F=&lt;</code>...<code>></code></p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Die Positionswerte können direkt (z. B. X90) oder indirekt über Parameterzuweisungen (z. B. X=R1*(R2+R3)) angegeben werden.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Programmierung der Werkzeugorientierung durch Rundachspositionen</h4>
+      <p>Die Werkzeugorientierung kann auch durch Rundachspositionen angegeben sein, z. B. in der Form:</p>
+      <p>
+        <code>N</code>... <code>X=&lt;</code>...<code>> Y=&lt;</code>...<code>> Z=&lt;</code>...<code>> A=&lt;</code>...<code>> B=&lt;</code>...<code>> C=&lt;</code>...<code>> THETA=&lt;</code>...<code>> F=&lt;</code>...<code>></code></p>
+      <p>In diesem Fall wird die Komprimierung auf zwei unterschiedliche Arten durchgeführt, abhängig davon, ob eine Großkreisinterpolation durchgeführt wird oder nicht. Wenn keine Großkreisinterpolation stattfindet, dann wird die komprimierte Orientierungsänderung durch axiale Polynome für die Rundachsen in üblicher Weise dargestellt.</p>
+      <h4 class="Blocklabel">Konturgenauigkeit</h4>
+      <p>Abhängig vom eingestellten Kompressionsmodus (MD20482 $MC_COMPRESSOR_MODE) werden für die Geometrieachsen und Orientierungsachsen bei der Komprimierung entweder die projektierten achsspezifischen Toleranzen (MD33100 $MA_COMPRESS_POS_TOL) oder die folgenden über Settingdaten einstellbaren kanalspezifischen Toleranzen wirksam:</p>
+      <p>SD42475 $SC_COMPRESS_CONTUR_TOL (Maximale Konturabweichung)   </p>
+      <p>SD42476 $SC_COMPRESS_ORI_TOL (Maximale Winkelabweichung für die Werkzeugorientierung)   </p>
+      <p>SD42477 $SC_COMPRESS_ORI_ROT_TOL (Maximale Winkelabweichung für den Drehwinkel des Werkzeugs) (nur bei 6-Achs Maschinen verfügbar)   </p>
+      <h4 class="Blocklabel">Aktivierung / Deaktivierung</h4>
+      <p>Kompressor-Funktionen werden eingeschaltet durch die modalen G-Befehle COMPCAD bzw. COMPSURF.</p>
+      <p>Beendet wird die Kompressor-Funktion mit COMPOF.</p>
+      <p>Siehe "<a href="156662881931.html">NC-Satz-Kompression ein-/ausschalten (COMPCAD, COMPSURF, COMPPATH, COMPOF)</a>".</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Die Orientierungsbewegung wird nur komprimiert bei aktiver Großkreisinterpolation (d. h., die Änderung der Werkzeugorientierung erfolgt in der Ebene, die von Start- und Endorientierung aufgespannt wird).</p>
+            <p class="safety">Eine Großkreisinterpolation wird unter den folgenden Bedingungen durchgeführt:</p>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">Variante 1</p>
+                <ul class="safety">
+                  <li class="safety">
+                    <p class="safety">MD21104 $MC_ORI_IPO_WITH_G_CODE = 0</p>
+                  </li>
+                  <li class="safety">
+                    <p class="safety">ORIWKS ist aktiv</p>
+                  </li>
+                  <li class="safety">
+                    <p class="safety">Die Orientierung ist mittels Vektoren programmiert (mit A3, B3, C3 bzw. A2, B2, C2)</p>
+                  </li>
+                </ul>
+              </li>
+              <li class="safety">
+                <p class="safety">Variante 2</p>
+                <ul class="safety">
+                  <li class="safety">
+                    <p class="safety">MD21104 $MC_ORI_IPO_WITH_G_CODE = 1</p>
+                  </li>
+                  <li class="safety">
+                    <p class="safety">ORIVECT bzw. ORIPLANE ist aktiv.</p>
+                  </li>
+                  <li class="safety">
+                    <p class="safety">Die Werkzeugorientierung kann entweder als Richtungsvektor oder mit Rundachspositionen programmiert sein.</p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p class="safety">Ist einer der G-Befehle ORICONxx oder ORICURVE aktiv oder sind Polynome für die Orientierungswinkel (PO[PHI] und PO[PSI]) programmiert, wird keine Großkreisinterpolation durchgeführt.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Beispiel</h3>
+      <p>Im nachfolgenden Programmbeispiel wird ein Kreis, der durch einen Polygonzug angenähert ist, komprimiert. Die Werkzeugorientierung bewegt sich dabei synchron dazu auf einem Kegelmantel. Obwohl die aufeinander folgenden programmierten Orientierungsänderungen unstetig verlaufen, generiert die Kompressor-Funktion einen glatten Verlauf der Orientierung.</p>
+      <a id="table_5473881e-e128-4481-adb1-8d379b67b3cc">
+      </a> <a id="table_0"></a> <a id="table_5473881e-e128-4481-adb1-8d379b67b3cc"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EGH"><colgroup><col width="46.4%"><col width="53.6%"></colgroup><tr valign="top"><th>Programmierung</th><th>Kommentar</th></tr><tr valign="top"><td>DEF INT ANZAHL=60</td><td> </td></tr><tr valign="top"><td>DEF REAL RADIUS=20</td><td> </td></tr><tr valign="top"><td>DEF INT COUNTER</td><td> </td></tr><tr valign="top"><td>DEF REAL WINKEL</td><td> </td></tr><tr valign="top"><td>N10 G1 X0 Y0 F5000 G64</td><td> </td></tr><tr valign="top"><td> </td><td> </td></tr><tr valign="top"><td>$SC_COMPRESS_CONTUR_TOL=0.05</td><td>; Maximale Abweichung der Kontur = 0.05 mm</td></tr><tr valign="top"><td>$SC_COMPRESS_ORI_TOL=5</td><td>; Maximale Abweichung der Orientierung = 5 Grad</td></tr><tr valign="top"><td> </td><td> </td></tr><tr valign="top"><td>TRAORI</td><td> </td></tr><tr valign="top"><td>COMPCURV</td><td>; Es wird ein Kreis gefahren, der aus Polygonen gebildet wird. Die Orientierung bewegt sich dabei auf einem Kegel um die Z-Achse mit einem Öffnungswinkel von 45 Grad.</td></tr><tr valign="top"><td>N100 X0 Y0 A3=0 B3=-1 C3=1</td><td> </td></tr><tr valign="top"><td>N110 FOR COUNTER=0 TO ANZAHL</td><td> </td></tr><tr valign="top"><td>N120 WINKEL=360*COUNTER/ANZAHL</td><td> </td></tr><tr valign="top"><td colspan="2">N130 X=RADIUS*cos(WINKEL) Y=RADIUS*sin(WINKEL)</td></tr><tr valign="top"><td colspan="2">A3=sin(WINKEL) B3=-cos(WINKEL) C3=1</td></tr><tr valign="top"><td colspan="2">N140 ENDFOR</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+  </body>
+</html>

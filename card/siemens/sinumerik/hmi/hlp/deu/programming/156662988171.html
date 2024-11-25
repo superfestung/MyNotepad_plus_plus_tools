@@ -1,0 +1,61 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Istwertsetzen ohne Verlust des Referenzierstatus (PRESETONS)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Istwertsetzen ohne Verlust des Referenzierstatus (PRESETONS)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Die Prozedur PRESETONS() setzt für eine oder mehrere Achsen einen neuen Istwert im Maschinenkoordinatensystem (MKS). Dies entspricht einer Nullpunktverschiebung des MKS der Achse. Die Achse wird dadurch nicht verfahren. </p>
+      <p>Durch PRESETONS wird ein Vorlaufstop mit Synchronisation ausgelöst. Die Istposition wird der Achse erst im Stillstand zugewiesen.</p>
+      <p>Ist die Achse bei PRESETONS dem Kanal nicht zugeordnet, ist das weitere Vorgehen abhängig von der achsspezifischen Projektierung des Achstauschverhaltens:</p>
+      <p>MD30552 $MA_AUTO_GET_TYPE </p>
+      <h4 class="Blocklabel">Referenzierstatus</h4>
+      <p>Durch das Setzen eines neuen Istwerts im Maschinenkoordinatensystem (MKS) mit PRESETONS wird der Referenzierstatus der Maschinenachse <b>nicht</b> verändert.</p>
+      <h4 class="Blocklabel">Voraussetzungen</h4>
+      <ul>
+        <li>
+          <p>
+            <b>Gebertyp</b>
+          </p>
+          <p>PRESETONS ist nur bei folgenden Gebertypen des aktiven Messsystems möglich:</p>
+          <ul>
+            <li>
+              <p>MD30240 $MA_ENC_TYPE[&lt;Messsystem>] = 0 (Simulierter Geber)</p>
+            </li>
+            <li>
+              <p>MD30240 $MA_ENC_TYPE[&lt;Messsystem>] = 1 (Rohsignalgeber)</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            <b>Referenzier-Mode</b>
+          </p>
+          <p>PRESETONS ist nur bei folgenden Referenzier-Modes des aktiven Messsystems möglich:</p>
+          <ul>
+            <li>
+              <p>MD34200 $MA_ENC_REFP_MODE[&lt;Messsytem>] = 0 (kein Referenzpunktfahren möglich )</p>
+            </li>
+            <li>
+              <p>MD34200 $MA_ENC_REFP_MODE[&lt;Messsytem>] = 1 (Referenzieren von inkrementellen, rotatorischen oder linearen Messsystemen: Nullimpuls auf der Geberspur)</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Programmierung</h3>
+      <h4 class="Blocklabel">Syntax</h4>PRESETONS(&lt;Achse_1>, &lt;Wert_1> [, &lt;Achse_2>, &lt;Wert_2>, ... &lt;Achse_8>, &lt;Wert_8>])<h4 class="Blocklabel">Bedeutung</h4><a id="table_b4d8d6ff-a625-4531-acba-1d8b7079f1d3"></a> <a id="table_0"></a> <a id="table_b4d8d6ff-a625-4531-acba-1d8b7079f1d3"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="19.7%"><col width="20.4%"><col width="59.9%"></colgroup><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>PRESETONS</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Istwertsetzen ohne Verlust des Referenzierstatus</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Vorlaufstopp:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">ja</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Alleine im Satz:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">ja</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Achse_x></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Maschinenachsname</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Typ:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">AXIS</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wertebereich:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">im Kanal definierte Maschinenachsnamen</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Wert_x></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Neuer aktueller Istwert der Maschinenachse im Maschinenkoordinatensystem (MKS)</p><p type="p_table_l" align="left">Die Eingabe erfolgt im aktiven Maßsystem (inch / metrisch)</p><p type="p_table_l" align="left">Eine aktive Durchmesserprogrammierung (DIAMON) wird berücksichtigt</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Typ:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr></table></p><a name="block_2"></a><h3 class="Blocktitle">Weitere Informationen</h3><h4 class="Blocklabel">PRESETONS in NC-Programmen</h4><p>Eine ausführliche Beschreibung von PRESETONS in NC-Programmen findet sich im Funktionshandbuch Basisfunktionen.</p><h4 class="Blocklabel">PRESETONS in Synchronaktionen</h4><p>Eine ausführliche Beschreibung von PRESETONS in Synchronaktionen findet sich im Funktionshandbuch Synchronaktionen.</p></div>
+    <p>Siehe auch:<br />    <a href="156662982027.html">Istwertsetzen mit Verlust des Referenzierstatus (PRESETON)</a></p>
+  </body>
+</html>

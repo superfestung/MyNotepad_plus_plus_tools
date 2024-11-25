@@ -1,0 +1,145 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Axis: User-defined strategy (108)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Axis: User-defined strategy (108)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The tuning objective can be directly entered in "Speed" or "Position". Alternatively, a predefined strategy (102, etc.) can be selected, accepted with "Adapt strategy" and then changes can be made. </p>
+      <p>By activating the checkbox, the commissioning engineer selects the individual steps for measuring and tuning. Several steps are interdependent: For instance, the speed-controlled system must always be measured before tuning the speed controller. All checkboxes which result in a measurement are marked with an arrow. Additional default settings are available for each measurement using the "Meas. parameters >" vertical softkey. </p>
+      <p>
+        <b>Perform preliminary measurement to determine the excitation:</b>
+      </p>
+      <p>The preliminary measurement to determine the excitation can always be selected or deselected. The preliminary measurement is always recommended when first commissioning the axis or for unknown mass relationships (load/motor). The measurement parameters for the following measurement are automatically determined after the preliminary measurement. User-defined measurement parameters are then overwritten. </p>
+      <p>
+        <b>Deactivate controller properties that are not supported in the NC and drive:</b>
+      </p>
+      <p>The following functions are deactivated if they are used:</p>
+      <ul>
+        <li>
+          <p>Axis:</p>
+          <p>MD32220 $MA_POSCTRL_INTEGR_ENABLE = 0</p>
+          <p>MD32610 $MA_VELO_FFW_WEIGHT = 1.0   (should always be 1)</p>
+          <p>MD32930 $MA_POSCTRL_OUT_FILTER_ENABLE = 0</p>
+        </li>
+        <li>
+          <p>Drive:</p>
+          <p>If the Advanced Position Control (APC) function module is activated: p3700.0 = 0</p>
+          <p>Velocity control configuration: p1400.5 = 0</p>
+          <p>The speed controller adaptation is deactivated.</p>
+          <p>Speed controller integrator feedback time constant: p1494 = 0.0</p>
+        </li>
+      </ul>
+      <p>
+        <b>Measure smoothed speed setpoint step to create a mechanical model:</b>
+      </p>
+      <p>At the start of the tuning, the load moment of inertia, the stiffness of the coupling and the correctness of the current controller setting are unknown. A step response can be measured to make a first estimate. As a consequence, while measuring the speed-controlled system, it is easier to automatically determine parameters. </p>
+      <p>
+        <b>Measure speed-controlled system:</b>
+      </p>
+      <p>This measurement is required to tune the speed controller.</p>
+      <p>It is initially performed with the maximum bandwidth (e.g. 4000 Hz)</p>
+      <p>
+        <b>Measure speed-controlled system with reduced bandwidth:</b>
+      </p>
+      <p>This measurement is required to tune the speed controller.</p>
+      <p>This measurement is performed with reduced bandwidth in order to improve the frequency resolution.</p>
+      <p>
+        <b>Measure speed control loop for speed controller-controlled system model: </b>
+      </p>
+      <p>This measurement is necessary if the position control loop (including feedforward control) is to be automatically tuned, but the speed controller was not tuned with automatic servo tuning.</p>
+      <p>
+        <b>Tune speed controller:</b>
+      </p>
+      <p>The parameters for the speed controller (including current setpoint filter) are calculated an the basis of the measured speed-controlled systems and the specified tuning objective. The parameters are not transferred into the drive until the axis tuning has been completed, or a measurement for checking has been performed. The "Speed" settings are applied.</p>
+      <p>
+        <b>Measure speed control loop for checking: </b>
+      </p>
+      <p>The closed speed controller is measured with the new parameters. To do this, the new parameters are written to the drive.</p>
+      <p>
+        <b>Measure mechanical system: </b>
+      </p>
+      <p>Measure the transmission link between the motor encoder and direct encoder (e.g. linear scale). This does not include any influence on the closed-loop control. Using this measurement, the position control loop can be calculated with closed-loop control on the direct encoder. </p>
+      <p>
+        <b>Tune position controller: without parameters</b>
+      </p>
+      <p>Servo gain factor and feedforward control are tuned on the basis of the prior measurements. The tuning objective is also applied. The "Position" settings are applied. If a second encoder is setup, then the position control is always calculated as if this second encoder is used for the position control.</p>
+      <p>
+        <b>Control measurement position control loop: </b>
+      </p>
+      <p>The closed position controller is measured with the new parameters. To do this, the new speed and position control parameters are written to the drive and the NC. The feedforward control must be disabled for this measurement. Depending on the option setting, this is the reason that a message is output to press the reset button on the machine control panel. After the measurement, the feedforward control is reactivated; this why another request for a reset (re) is issued after the measurement .</p>
+      <p>
+        <b>⇒ Checking the measurement data quality: without parameters</b>
+      </p>
+      <p>The software for automatic tuning checks whether the excitation and offset velocity were sufficient, and then outputs an appropriate message.</p>
+      <p>
+        <b>⇒ Measurement parameters:</b>
+      </p>
+      <p>Individual measurement parameters can be entered for each of the following measurements:</p>
+      <ul>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param1.html">Measure speed setpoint step for the mechanical model</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param2.html">Measure speed-controlled system</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param3.html">Measure speed-controlled system with reduced bandwidth</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param4.html">Measure speed control loop for speed controller-controlled system model</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param5.html">Measure speed control loop for checking</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param6.html">Measure mechanical system</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param7.html">Control measurement position control loop</a>
+          </p>
+        </li>
+      </ul>
+      <p>
+        <b>⇒ Additional actions:</b>
+      </p>
+      <ul>
+        <li>
+          <p>Press the "Adapt strategy" softkey to adapt the default values to a predefined strategy. The values of the pre-defined strategy are assigned to the user-defined strategy (108). All parameters can be set in the "User-defined strategy". The tuning objective "Moderate responsiveness" is the default setting for the "User-defined strategy".</p>
+        </li>
+        <li>
+          <p>Press the "Meas. parameters >" softkey to adapt the parameters for a measurement. This softkey can only be used when selecting the "User-defined strategy". </p>
+        </li>
+        <li>
+          <p>Press the "<a href="ast_strategy_select_cust_position_209.html">Speed</a>" and "<a href="ast_strategy_select_cust_speed_309.html">Position</a>" softkeys to toggle between speed controller and position controller when selecting a strategy.</p>
+        </li>
+        <li>
+          <p>"Cancel" and "OK" softkeys to cancel or accept the new settings.</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

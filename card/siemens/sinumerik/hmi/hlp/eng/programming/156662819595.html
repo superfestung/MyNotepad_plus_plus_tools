@@ -1,0 +1,28 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Delete file (DELETE)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Delete file (DELETE)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>All files can be deleted by means of the DELETE command, irrespective of whether these were created using the WRITE command or not. Files that were created using a higher access level can also be deleted with DELETE.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Requirements</h3>
+      <h4 class="Blocklabel">Access to EES drives</h4>
+      <p>External program memory on drives for which use with the function "Execution from External Storage (EES)" was set up during commissioning, can only be addressed by file handling commands if the license-only option to use this function is set.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>DEF INT &lt;Error>DELETE(&lt;Error>,"&lt;FileName>")<a name="block_3"></a><h3 class="Blocktitle">Meaning</h3><a id="table_8f82d302-a2fb-482c-bf3f-d8ca6da7fe29"></a> <a id="table_0"></a> <a id="table_8f82d302-a2fb-482c-bf3f-d8ca6da7fe29"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="21.9%"><col width="11.3%"><col width="9.0%"><col width="57.7%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>DELETE</code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Command for deleting the specified file.</p></td></tr><tr valign="top"><td rowspan="10"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Error></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Variable for returning the error value.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type.</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td rowspan="8"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">No error</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">1</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Path not allowed</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">2</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Path not found</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">3</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">File not found</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">4</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Incorrect file type</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">11</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The file is in use</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">12</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">No resources available</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">20</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Other error</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;FileName></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Name of the file to be deleted</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">STRING</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">The absolute path can be specified before the actual file name. If a path is not specified, the file is searched for in the current directory (= directory of selected program).</p><p type="p_table_l" align="left">Rules regarding path data, see "<a href="156662796555.html">Addressing program memory files</a>".  </p></td></tr></table></p><a name="block_4"></a><h3 class="Blocktitle">Example</h3><a id="table_6b6be1c3-49e1-4030-8532-57438747fffc"></a> <a id="table_1"></a> <a id="table_6b6be1c3-49e1-4030-8532-57438747fffc"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E1F"><colgroup><col width="59.1%"><col width="40.9%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10 DEF INT ERROR</td><td>; Definition of error variables.</td></tr><tr valign="top"><td>N15 STOPRE</td><td>; Preprocessing stop.</td></tr><tr valign="top"><td>N20 DELETE(ERROR,"/_N_SPF_DIR/_N_TEST1_SPF")</td><td>; Deletes file TEST1 in the subprogram directory.</td></tr><tr valign="top"><td>N30 IF ERROR</td><td>; Error evaluation.</td></tr><tr valign="top"><td>N40 MSG("Error for DELETE command:" &lt;&lt;ERROR)</td><td> </td></tr><tr valign="top"><td>N50 M0</td><td> </td></tr><tr valign="top"><td>N60 ENDIF</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

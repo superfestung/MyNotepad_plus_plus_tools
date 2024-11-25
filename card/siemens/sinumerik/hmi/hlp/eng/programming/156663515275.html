@@ -1,0 +1,113 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Programming contour/orientation tolerance (CTOL, OTOL, ATOL) Additional information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Programming contour/orientation tolerance (CTOL, OTOL, ATOL) Additional information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">More information</h3>
+      <h4 class="Blocklabel">System variables</h4>
+      <p>The currently effective tolerances can be read via the following system variables:</p>
+      <ul>
+        <li>
+          <p>Reading with preprocessing stop (in the part program and synchronized action) </p>
+          <ul>
+            <li>
+              <p>$AC_CTOL</p>
+              <p>Channel-specific contour tolerance effective when the actual main run block was preprocessed. </p>
+              <p>If no contour tolerance is effective, $AC_CTOL will return the root of the sum of the squares of the tolerances of the geometry axes.</p>
+            </li>
+            <li>
+              <p>$AC_OTOL</p>
+              <p>Channel-specific orientation tolerance effective when the actual main run block was preprocessed. </p>
+              <p>If no orientation tolerance is effective, $AC_OTOL will return the root of the sum of the squares of the tolerances of the orientation axes during active orientation transformation. Otherwise, it will return the value "-1."</p>
+            </li>
+            <li>
+              <p>$AA_ATOL[&lt;axis>]</p>
+              <p>Axis-specific contour tolerance effective when the actual main run block was preprocessed. </p>
+              <p>If no contour tolerance is active, $AA_ATOL[&lt;geometry axis>] returns the contour tolerance divided by the root of the number of geometry axes.</p>
+              <p>If an orientation tolerance and an orientation transformation are active $AA_ATOL[&lt;orientation axis>] will return the orientation tolerance divided by the root of the number of orientation axes.</p>
+            </li>
+          </ul>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Note</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="safety">If now tolerance values have been programmed, the $A variables are not differentiated enough to distinguish the tolerance of the individual functions.</p>
+                <p class="safety">Circumstances like this can occur if the machine data and the setting data set different tolerances for compressor functions, smoothing and orientation smoothing. The system variables then return the greatest value occurring with the functions that are currently active. For example, if a compressor function is active with an orientation tolerance of 0.1° and ORISON orientation smoothing with 1°, the $AC_OTOL variable will return the value "1." If orientation smoothing is deactivated, $AC_OTOL returns a value value "0.1."</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          <p>Reading without preprocessing stop (only in the part program)</p>
+          <ul>
+            <li>
+              <p>$P_CTOL</p>
+              <p>Currently active channel-specific contour tolerance.</p>
+            </li>
+            <li>
+              <p>$P_OTOL</p>
+              <p>Currently active channel-specific orientation tolerance. </p>
+            </li>
+            <li>
+              <p>$PA_ATOL</p>
+              <p>Currently active axis-specific contour tolerance.</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Constraints</h4>
+      <p>The tolerances programmed with CTOL, OTOL and ATOL also affect functions that indirectly depend on these tolerances:</p>
+      <ul>
+        <li>
+          <p>Limiting the chord error in the setpoint value calculation</p>
+        </li>
+        <li>
+          <p>The basic functions of the free-form surface mode</p>
+        </li>
+      </ul>
+      <p>The following smoothing functions are <b>not</b> affected by the programming of CTOL, OTOL and ATOL:</p>
+      <ul>
+        <li>
+          <p>Smoothing the orientation with OSD</p>
+          <p>OSD does not use a tolerance, it uses a distance from the block transition.</p>
+        </li>
+        <li>
+          <p>Smoothing with G644</p>
+          <p>G644 is not used for smoothing, it is used for optimizing tool changes and other motion not involving machining.</p>
+        </li>
+        <li>
+          <p>Smoothing with G645</p>
+          <p>G645 virtually always behaves like G642 and, thus, uses the programmed tolerances. The tolerance value from machine data MD33120 $MA_PATH_TRANS_POS_TOL is only used in uniformly tangential block transitions with a jump in curvature, e.g. a tangential circle/straight line transition. The rounding path at these points may also be located outside the programmed contour, where many applications are less tolerant. Furthermore, it generally takes a small, fixed tolerance to compensate for the sort of changes in curvature which need not concern the NC programmer.</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

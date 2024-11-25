@@ -1,0 +1,1299 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3529">p3529</a></b></td>
+<td colspan="4"><b>CI: Infeed current limit regenerative scaling / INF I_lim reg scal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8940</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the scaling of the current limit when generating (p3531) to limit the line active current.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3530<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The effective current limit is given by the product of p3531 * CI: p3529.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3530">p3530</a></b></td>
+<td colspan="4"><b>Infeed active current limit motoring / INF I_lim mot</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8940</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 6_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>1.00</td>
+<td  >100000.00</td>
+<td >10000.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the motoring limit for the active line current.<br />
+The currently effective current limit is displayed in r0067[0].<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0067, p3532<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">If this limit is selected lower than the maximum current permissible for the power unit (r0067), the infeed can no longer provide its full controlled power. Operating faults of the infeed can occur due to the resulting DC link undervoltage.<br />For self-commutated infeeds, the DC link voltage decreases if more power is drawn from the DC link by the connected load than can be supplied by the line because of the power unit maximum current or a limit in p3530.<br />If the DC link voltage decreases down to the rectified value, then the complete current - necessary to cover the required active power - flows, uncontrolled into the rectifier circuit via the diodes.<br />This is the reason that, for physical reasons, the value in p3530 cannot act as current limit that is always maintained.<br />The value forms a current threshold from which point onwards the DC link energy is used as buffer for brief power fluctuations.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">If Smart Mode is activated (p3400.0 = 1), the setting in this parameter is not active.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3531">p3531</a></b></td>
+<td colspan="4"><b>Infeed active current limit generating / INF I_lim gen</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8940</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 6_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-100000.00</td>
+<td  >-1.00</td>
+<td >-10000.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the limit for the active line supply current when regenerating.<br />
+The currently effective current limit is displayed in r0067[1].<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0067, p3533<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">If this limit is selected lower than the maximum current permissible for the power unit (r0067), the infeed can no longer provide its full controlled power. This can result in an overvoltage condition in the DC link.<br />For self-commutated infeeds, the DC link voltage increases if more power is input to the DC link through the connected source than can be fed to the line because of the maximum power unit current or a limit in p3531<br />If the DC link voltage exceeds the permissible threshold (r0297), defined by the hardware, then the unit is tripped due to overvoltage.<br />The value in p3531 represents a current limit that is always maintained - however, this can result in overvoltage conditions in the DC link.<br />The value in p3531 represents a current limit from which point onwards the capacitance of the DC link can be used as buffer for brief power fluctuations.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">If Smart Mode is activated (p3400.0 = 1), the setting in this parameter is not active.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3532">p3532</a></b></td>
+<td colspan="4"><b>BI: Infeed inhibit motoring / INF mot mode inhib</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8920</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for inhibiting the motor mode of the infeed.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r3405, p3530<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">If the motor mode is inhibited although power is withdrawn from the DC link, then the DC link voltage drops to the rectified value.<br />In this state, the DC link is post-charged through the diodes and motoring power is fed to the power unit in spite of the motoring inhibit.<br />The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The inhibit only becomes active after operation has been enabled and the Vdc has been ramped up (r0863.0 = 1).<br />If Smart Mode is activated (p3400.0 = 1), the setting in this parameter is not active.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3533">p3533</a></b></td>
+<td colspan="4"><b>BI: Infeed inhibit generator mode / INF gen mode inhib</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, S_INF_COMBI, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8820, 8920</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to inhibit the generator mode of the infeed.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r3405, p3531<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The DC link voltage will increase if generator mode is inhibited even though power is being regenerated into the DC link.<br />The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The inhibit only becomes active after operation has been enabled and the Vdc has been ramped up (r0863.0 = 1).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3534">r3534</a></b></td>
+<td colspan="4"><b>Infeed line filter maximum current / INF filter I_max</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Converter</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the maximum permissible current for the line filter set using p0220[0].<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0220<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The currently effective maximum current for the power unit is displayed in r0067.<br />The value in r0067 is obtained as minimum of the current limits in r0209, p3530 ... r3534.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3535">r3535[0...4]</a></b></td>
+<td colspan="4"><b>CO: Infeed current limit display / INF I_lim disp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), R_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_840 (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_828 (Dyn. grid support, Line transf, Suppl cl-loop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8945</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output for the valid current limits.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Active current motoring<br />
+[1] = Active current generating<br />
+[2] = Inductive reactive current<br />
+[3] = Capacitive reactive current<br />
+[4] = Absolute apparent current<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0067, r0209, p3524, p3525, p3526, p3527, r3536<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For index [0]:<br />The value corresponds to r0067[0] (positive value).<br />For index [1]:<br />The value corresponds to r0067[1] (negative value).<br />For index [2]:<br />The value is negative.<br />For index [3]:<br />The value is positive.<br />For index [4]:<br />The value is positive.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3536">r3536.0...4</a></b></td>
+<td colspan="4"><b>BO: Infeed current limit status display / INF I_lim statDisp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), R_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_840 (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_828 (Dyn. grid support, Line transf, Suppl cl-loop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8945</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and binector output for the status of the current limits.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Active current limit motoring reached</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>01</td><td>Active current limit generating reached</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>02</td><td>Inductive reactive current limit reached</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>03</td><td>Capacitive reactive current limit reached</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>04</td><td>Absolute apparent current limit reached</td><td>Yes</td><td>No</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0209, r3405, p3524, p3525, p3526, p3527, r3535<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A 1 signal indicates when the limit value is reached.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3554">r3554[0...1]</a></b></td>
+<td colspan="4"><b>Infeed Vdc controller output / INF Vdc_ctrl outp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8940</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 6_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the DC link voltage controller output (Vdc controller).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = I output<br />
+[1] = PI output<br />
+</td></tr></table>
+<p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3555">p3555[0...5]</a></b></td>
+<td colspan="4"><b>Infeed Vdc controller integral component fast intervention / Vdc_ctr I-compFast</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, S_INF_COMBI, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >200.00</td>
+<td >2.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the fast Vdc controller intervention for a step-like decrease of the DC link voltage due to a high motor load of the infeed.<br />
+The Vdc controller fast intervention is deactivated for p3555[5] = 0 % or p3560 &lt; 100% or p0225 &gt; 0.5 * p0223.<br />
+For a line supply and DC link identification (p3410 &gt;= 2) the level of the fast controller intervention (p3555[2]) is automatically adapted to the line supply inductance.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Recommend.:</b></td>
+<td>Precise system knowhow is required when correctly changing this parameter!<br />- generally, the fast controller intervention is used to improve the control behavior for high-speed load changes. The function can therefore always be deactivated with p3555[5] = 0 % if no peak load duty cycles are required in the application.<br />- using p3555[0], the calculation of the modulation depth is determined in the case of high system deviations also when the controller intervention is deactivated. This is the reason that p3555[0] should generally not be changed.<br /></td></tr>
+</table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Intervention threshold 1: Vdc deviation from the setpoint<br />
+[1] = Intervention threshold 2: Vdc difference to the rectified value<br />
+[2] = Fast intervention automatic scaling<br />
+[3] = Fast intervention precontrol<br />
+[4] = Fast intervention timeout<br />
+[5] = Fast intervention manual scaling<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">p3555[0]:<br />Vdc system deviation as a percentage of the setpoint of the DC link voltage (first condition to initiate fast controller intervention). The threshold is also used to internally change over the modulation depth calculation for high system deviations and should therefore generally not be changed!<br />p3555[1]:<br />Vdc threshold as a percentage of the rectified value of the actual line supply voltage (second condition to initiate the fast controller intervention). Both threshold conditions must be fulfilled to initiate the controller intervention.<br />p3555[2]:<br />Percentage overall level of the fast intervention (scaling factor). For a line supply identification with p3410 &gt;= 2, the factor is automatically adapted or, for weak line supplies with a high inductance, set to 0.<br />p3555[3]:<br />Percentage correction of the precontrol for a fast voltage dip (dead time compensation).<br />p3555[4]:<br />Percentage minimum time between two controller interventions (100% corresponds to 100 ms). If high load change frequencies occur with the application, the minimum time between two controller interventions can be reduced using p3555[4].<br />p3555[5]:<br />Percentage overall level of the fast intervention (scaling factor). With p3555[5] = 0, the fast controller intervention is inhibited. For weak line supplies with a high inductance, it makes sense to deactivate the fast intervention.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3560">p3560</a></b></td>
+<td colspan="4"><b>Infeed Vdc controller proportional gain / INF Vdc_ctrl Kp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Tech_ctrl), SERVO_AC (Tech_ctrl), SERVO_840 (Tech_ctrl), SERVO_DBSI (Tech_ctrl), A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8940</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.01</td>
+<td  >1000.00</td>
+<td >100.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the scaled proportional gain for the DC link voltage controller (Vdc controller).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A value of 100 % corresponds to the basic setting derived from loop control parameters (p3421, p3422).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3561">p3561</a></b></td>
+<td colspan="4"><b>CI: Infeed Vdc controller proportional gain scaling / INF Vdc ctr Kpscal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), R_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_840 (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_828 (Dyn. grid support, Line transf, Suppl cl-loop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8940</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for scaling the proportional gain for the DC link voltage controller (Vdc controller)..<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3560<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The total, effective gain is given by the product p3561 * p3560.<br />Internally, this product is limited to values greater than 0.01.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3562">p3562</a></b></td>
+<td colspan="4"><b>Infeed Vdc controller integral time / INF Vdc_ctrl Tn</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Tech_ctrl), SERVO_AC (Tech_ctrl), SERVO_840 (Tech_ctrl), SERVO_DBSI (Tech_ctrl), A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8940</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.10</td>
+<td  >100000.00</td>
+<td >100.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the scaled integral time for the DC link voltage controller (Vdc).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A value of 100 % corresponds to the basic setting derived from loop control parameters (p3421, p3422).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3564">p3564</a></b></td>
+<td colspan="4"><b>Infeed Vdc monitor time constant / INF Vdc mon Tc</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >100.0</td>
+<td >0.2</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the filter time constant for the DC link voltage monitor (Vdc).<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3566">p3566</a></b></td>
+<td colspan="4"><b>Infeed Vdc ramp duration / INF Vdc t_ramp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8932</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>40</td>
+<td  >1000</td>
+<td >100</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the ramp time for the DC link voltage (Vdc) when switching on and switching off.<br />
+Switching on (enable pulses, r0898.3 = 1):<br />
+During this time, the DC link voltage is increased from the rectifier value after precharging to the voltage setpoint (p3510, p3511). The voltage setpoint is increased, when necessary, so that the modulation depth reserve (p3481) is maintained. The reactive current is set to the value 0 while ramping.<br />
+Switching off (inhibit pulses, r0898.3 = 0):<br />
+During this time, the DC link voltage is reduced to the rectified value (sqrt(2) * line supply voltage). The reactive current value is set to the value 0 when the ramp starts.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3570">p3570</a></b></td>
+<td colspan="4"><b>CI: Master&#47;slave active current setpoint / I_act_set</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Master/Slave), R_INF (Master/Slave), A_INF_840 (Master/Slave), A_INF_828 (Master/Slave)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8940</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >3573[0]</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source of the active current setpoint for the closed-loop current control of the slave.<br />
+The signal value is received from the master infeed (e.g. via the mulitplexer or direct).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3513, p3571, p3572, r3573<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3571">p3571[0...3]</a></b></td>
+<td colspan="4"><b>CI: Master&#47;slave active current setpoint multiplexer input / I_act multi inp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Master/Slave), R_INF (Master/Slave), A_INF_840 (Master/Slave), A_INF_828 (Master/Slave)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8948</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal sources for the input values of the multiplexer.<br />
+The signal values are used as setpoint for the closed-loop current control of the slave infeed.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Multiplexer input value 0<br />
+[1] = Multiplexer input value 1<br />
+[2] = Multiplexer input value 2<br />
+[3] = Multiplexer input value 3<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3570, p3572, r3573<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For a master infeed and a slave infeed, the active current setpoint can be entered without using a multiplexer. If the multiplexer for the master&#47;slave is not required, then it can also be used for another function.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3572">p3572</a></b></td>
+<td colspan="4"><b>CI: Master&#47;slave active current setpoint multiplexer selection / I_act multi sel</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Master/Slave), R_INF (Master/Slave), A_INF_840 (Master/Slave), A_INF_828 (Master/Slave)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8948</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to select the required input value for the multiplexer.<br />
+CI: p3572 = 0, 1, 2, 3 --&gt; valid values<br />
+Fault F06320 is output for other values.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3570, p3571, r3573<br />Refer to: F06320</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For a master infeed and a slave infeed, the active current setpoint can be entered without using a multiplexer. If the multiplexer for the master&#47;slave is not required, then it can also be used for another function.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3573">r3573</a></b></td>
+<td colspan="4"><b>CO: Master&#47;slave active current setpoint multiplexer output / I_act multi outp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Master/Slave), R_INF (Master/Slave), A_INF_840 (Master/Slave), A_INF_828 (Master/Slave)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8948</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 6_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays (connector output) the output for the multiplexer.<br />
+The signal value is used as standard for the active current setpoint for the slave infeed.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3570, p3571, p3572<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For a master infeed and a slave infeed, the active current setpoint can be entered without using a multiplexer. If the multiplexer for the master&#47;slave is not required, then it can also be used for another function.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3574">p3574[0...3]</a></b></td>
+<td colspan="4"><b>Master&#47;slave DC link voltage monitoring / Vdc monitoring</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Master/Slave), R_INF (Master/Slave), A_INF_840 (Master/Slave), A_INF_828 (Master/Slave)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(1), T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8948</td></tr><tr><td><b>P-Group:</b> Converter</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-60</td>
+<td  >60</td>
+<td >20</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the upper and lower limit values and hysteresis values for the DC link voltage monitoring.<br />
+The values are entered as absolute values and refer to the DC link voltage setpoint (p3510).<br />
+For a slave infeed, if the limits are violated, then the closed-loop voltage control is automatically switched in.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Vdc upper limit value<br />
+[1] = Vdc lower limit value<br />
+[2] = Vdc upper hysteresis value<br />
+[3] = Vdc lower hysteresis value<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0088, p0210, p3510, r3575<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3575">r3575.0...2</a></b></td>
+<td colspan="4"><b>BO: Master&#47;slave DC link voltage monitoring status / Vdc mon status</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Master/Slave), R_INF (Master/Slave), A_INF_840 (Master/Slave), A_INF_828 (Master/Slave)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8948</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the status of the DC link voltage monitoring for the master&#47;slave.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Upper limit value reached</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>01</td><td>Lower limit value reached</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>02</td><td>Upper&#47;lower limit value reached</td><td>Yes</td><td>No</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0088, p3510, p3574<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3576">p3576[0...5]</a></b></td>
+<td colspan="4"><b>Master&#47;slave current distribution factor multiplexer input / I_dist_factor inp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Master/Slave), R_INF (Master/Slave), A_INF_840 (Master/Slave), A_INF_828 (Master/Slave)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8948</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >100.00</td>
+<td >100.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets up to 6 factors to be multiplied by the active current setpoint for the current controller.<br />
+For a master slave infeed configuration, the value reduced in this way can be distributed to the slave axes. The overall gain from the perspective of the voltage controller remains the same.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Value 0<br />
+[1] = Value 1<br />
+[2] = Value 2<br />
+[3] = Value 3<br />
+[4] = Value 4<br />
+[5] = Value 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3577, r3578, p3579<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">If the multiplexer for the master&#47;slave is not required, then it can also be used for another function.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3577">p3577</a></b></td>
+<td colspan="4"><b>CI: Master&#47;slave current distribution factor multiplexer selection / I_dist_factor sel</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Master/Slave), R_INF (Master/Slave), A_INF_840 (Master/Slave), A_INF_828 (Master/Slave)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8948</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to select the required input value for the multiplexer.<br />
+CI: p3577 = 0, 1, 2, 3, 4, 5 --&gt; valid values<br />
+Fault F06321 is output for other values.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3576, r3578, p3579<br />Refer to: F06321</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">If the multiplexer for the master&#47;slave is not required, then it can also be used for another function.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3578">r3578</a></b></td>
+<td colspan="4"><b>CO: Master&#47;slave current distribution factor multiplexer output / I_dist_factor outp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Master/Slave), R_INF (Master/Slave), A_INF_840 (Master/Slave), A_INF_828 (Master/Slave)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8948</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output for the multiplexer output value.<br />
+The signal value is used as standard for the current distribution factor for the infeed master slave operation.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3576, p3577, p3579<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">If the multiplexer for the master&#47;slave is not required, then it can also be used for another function.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3579">p3579</a></b></td>
+<td colspan="4"><b>CI: Master&#47;Slave current distribution factor / I_dist_factor</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Master/Slave), R_INF (Master/Slave), A_INF_840 (Master/Slave), A_INF_828 (Master/Slave)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8940</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >3578[0]</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the factor to be multiplied by the active current setpoint for the current controller.<br />
+For a master&#47;slave infeed configuration, the value reduced in this way can be distributed to the slave axes. The overall gain from the perspective of the voltage controller remains the same.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3576, p3577, r3578<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3602">r3602</a></b></td>
+<td colspan="4"><b>Infeed control status / INF ctrl status</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >8</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the status of the closed-loop infeed control.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Initialization running<br />1:		Pulse enable missing<br />2:		Ramp-up DC link voltage<br />3:		Ramp-up reactive current<br />4:		Shutdown running<br />5:		Reset identification<br />6:		Operation<br />7:		Identification running<br />8:		Smart Mode running<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3603">p3603</a></b></td>
+<td colspan="4"><b>Infeed current precontrol factor D component / INF I_ctrl D comp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8946</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >500.00</td>
+<td >100.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">The D component of the current precontrol is determined from the device data of the filter. p3603 can be used to weigh the precalculated D component. If no dynamic precontrol is to be used, set the factor to zero.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3604">p3604</a></b></td>
+<td colspan="4"><b>CI: Infeed current precontrol factor D component scaling / INF I_ctrl D scale</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), R_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_840 (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_828 (Dyn. grid support, Line transf, Suppl cl-loop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for scaling the current precontrol.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3603<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The total, effective gain is given by the product p3604 * p3603<br />Internally, this product is limited to values greater than 0.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3606">r3606</a></b></td>
+<td colspan="4"><b>Infeed active current controller system deviation / INF I_act ctrl dev</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8946</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 6_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the system deviation of the active current controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3608">r3608</a></b></td>
+<td colspan="4"><b>Infeed reactive current controller system deviation / INF I_reactCtrlDev</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8946</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 6_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the system deviation of the reactive current controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3610">p3610</a></b></td>
+<td colspan="4"><b>Infeed reactive current fixed setpoint / INF I_react set</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8910, 8946</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 6_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-10000.0</td>
+<td  >10000.0</td>
+<td >0.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the fixed setpoint for the reactive current.<br />
+The permissible maximum absolute value for the reactive current is the device rated current r0207.<br />
+The following applies: | p3610 | &lt;= r0207<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0029, r0075, r0076<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">If the line phases are reversed and the line voltage therefore has a negative orientation (r0066 &lt; 0), it should be noted that the sign of the reactive current is also reversed. The negated value of p3610 is effective in display parameters r0029, r0075, r0076 as appropriate.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">p3610 &lt; 0: Inductive reactive current is produced, i. e. the current follows the voltage.<br />p3610 &gt; 0: Capacitive reactive current is produced, i. e. the current leads the voltage.<br />This definition applies to 3AC voltage systems both with positive rotational orientation (r0066 &gt; 0) and for negative rotational orientation (r0066 &lt; 0).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3611">p3611</a></b></td>
+<td colspan="4"><b>CI: Infeed reactive current supplementary setpoint / INF I_react Z_set</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8946</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the supplementary setpoint of the reactive current.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3614">p3614[0...3]</a></b></td>
+<td colspan="4"><b>Infeed current actual value filter smoothing time / INF I_ActV t_smth</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8950</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >2.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the time constant for the PT1 filtering of the active current actual value and reactive current actual value.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Current actual value smoothing with dead time<br />
+[1] = Current actual value smoothing without dead time<br />
+[2] = System deviation smoothing without dead time<br />
+[3] = Automatic system deviation smoothing<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The current actual value filter is deactivated with p3614[0, 1, 2] = 0.<br />For index [0]:<br />The PT1 filter with a clock cycle dead time can be used to stabilize the closed-loop current control for extremely weak line supplies (with higher relative short-circuit voltage uk).<br />For an automatic controller setting with p3410 &gt;= 2, the current actual value filter is automatically pre-set.<br />For index [1]:<br />The PT1 filter without dead time can be used to optimize the closed-loop current control (e.g. in conjunction with frequency wobbulation).<br />For index [2]:<br />The PT1 filter without dead time for the system deviation (r3606, r3608) can be used to stabilize the closed-current control for weak line supplies (with low line fault rating).<br />For index [3]:<br />For an automatic controller setting, the PT1 filter without dead time for the system deviation (r3606, r3608) is preset with p3410 &gt;= 2.<br />The filter is only active if the following applies: p3614[2] = 0.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3615">p3615</a></b></td>
+<td colspan="4"><b>Infeed current controller P gain / INF I_ctrl Kp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8946</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >1000.00</td>
+<td >100.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the scaled P gain for closed-loop current control of the infeed.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A value of 100 % corresponds to the basic setting derived from loop control parameters (p3421, p3422).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3616">p3616</a></b></td>
+<td colspan="4"><b>CI: Infeed current controller P gain scaling / INF I_ctrl Kp scal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), R_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_840 (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_828 (Dyn. grid support, Line transf, Suppl cl-loop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for scaling the proportional gain of the current controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3615<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The total, effective gain is given by the product p3616 * p3615.<br />Internally, this product is limited to values greater than 0.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3617">p3617</a></b></td>
+<td colspan="4"><b>Infeed current controller integral time / INF I_ctrl Tn</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8946</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.10</td>
+<td  >100000.00</td>
+<td >100.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the scaled integral time for the infeed current controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A value of 100 % corresponds to the basic setting derived from loop control parameters (p3421, p3422).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3618">r3618</a></b></td>
+<td colspan="4"><b>Infeed active current controller integral component / INF I_act_ctrl Tn</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8946</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 5_1</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the integral component of the active current controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3619">r3619</a></b></td>
+<td colspan="4"><b>Infeed reactive current controller integral component / INF I_react_ctrlTn</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8946</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 5_1</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the integral action component of the reactive current controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3620">p3620</a></b></td>
+<td colspan="4"><b>Infeed current controller adaptation lower switch-in threshold / INF I_adpt thr low</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >100.00</td>
+<td >40.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the switch-in threshold for the current controller adaptation.<br />
+The value refers to the maximum power unit current (r0209).<br />
+From the starting threshold onwards, the inductance value (p3421) used for current control is reduced linearly as a function of the current value. The inductance value for the maximum power unit current is therefore p3421 * p3622.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3410, p3415, p3622<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The parameter can be set automatically using the line supply identification (p3410 = 4, 5) (also refer to p3622). Prerequisite for a reliable measurement of p3622 is that the current magnitude for run 2 (p3415[1]) is at least 10 % higher than the current magnitude for run 1 of the line supply identification. Otherwise, the measurement result is rejected.<br />In the case of a correct measurement, p3620 is set to 80% of the current magnitude for run 1 (p3415[0]).<br />For chassis power units, it is generally not necessary to adapt p3620 and p3622 to the characteristics of the line supply. However, when required, the current controller adaptation can be optimized by selecting suitable current magnitudes for p3415.<br />For booksize power units, p3620 and p3622 are automatically adapted with the then valid factory setting of the line identification p3415.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3622">p3622</a></b></td>
+<td colspan="4"><b>Infeed current controller adaptation reduction factor / INF I_adpt factor</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.01</td>
+<td  >100.00</td>
+<td >85.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the inductance of the line reactor at the maximum power unit current (r0209) as a percentage of the inductance (p3421) at the application threshold (p3620).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3410, p3415, p3620<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The parameter for a line supply identification (p3410 = 4, 5) automatically optimized, if the following applies:<br />p3415[1] - p3415[0] &gt; 10 %<br />Otherwise, the measurement result is rejected.<br />For chassis power units, it is generally not necessary to adapt p3620 and p3622 to the characteristics of the line supply. However, when required, the current controller adaptation can be optimized by selecting suitable current magnitudes for p3415.<br />For booksize power units, p3620 and p3622 are automatically adapted with the then valid factory setting of the line identification p3415.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3624">p3624[0...1]</a></b></td>
+<td colspan="4"><b>Infeed harmonics controller order / INF harm_ctr order</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>5</td>
+<td  >13</td>
+<td >5</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the Order of the line harmonics for the current harmonics controller.<br />
+p3624[0]: Order of the line harmonics for the first harmonics controller.<br />
+p3624[1]: Order of the line harmonics for the second harmonics controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3625, r3626<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Harmonics in the line supply voltage can cause harmonics in the converter current. These types of current harmonics can be reduced by activating additional controller modules.<br />Example:<br />For a 50 Hz line supply harmonics at 250 Hz in the phase currents can be reduced by activating a harmonic controller with Order 5 (p3624[0] = 5).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3625">p3625[0...1]</a></b></td>
+<td colspan="4"><b>Infeed harmonics controller scaling / INF harm_ctrl scal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >300.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the gain of the harmonics controller.<br />
+p3625[0]: Gain of the first harmonics controller<br />
+p3625[1]: Gain of the second harmonics controller<br />
+0 %: Controller is deactivated<br />
+100 %: Controller is activated with default gain setting<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3624, r3626<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The harmonics controller corrects the power unit voltages so that the line-side current harmonics are reduced.<br />The order of a current harmonic, that is to be dampened using a harmonics controller, is defined using p3624.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3626">r3626[0...1]</a></b></td>
+<td colspan="4"><b>Infeed harmonics control output / INF harm_ctrl outp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 5_1</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the output voltages of the harmonics controller.<br />
+The harmonics controller corrects the power unit voltages so that the line-side current harmonics are reduced.<br />
+For r3626[0]:<br />
+rms value of the output voltage of the 1st harmonic controller.<br />
+For r3626[1]:<br />
+Rms value of the output voltage of the 2nd harmonic controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p3624, p3625<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3632">r3632</a></b></td>
+<td colspan="4"><b>Infeed input voltage Vsd (active component) / INF U_inp Vsd</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8910, 8946, 8950</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 5_1</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the voltage Vsd (active component) at the 3-phase line supply input of the power unit.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3633">r3633</a></b></td>
+<td colspan="4"><b>Infeed input voltage Vsq (reactive component) / INF U_inp Vsq</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8910, 8946, 8950</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 5_1</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the voltage Vsq (reactive component) at the 3-phase line supply input of the power unit.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3635">r3635</a></b></td>
+<td colspan="4"><b>CO: Infeed input voltage angle / INF U_inp angle</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8950</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output for the angle of the input voltage (relative to the line supply angle).<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3637">r3637[0...3]</a></b></td>
+<td colspan="4"><b>CO: Negative phase-sequence system controller current setpoint / Neg_seq_ctrl I_set</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), R_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_840 (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_828 (Dyn. grid support, Line transf, Suppl cl-loop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7987</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> 6_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output for the current setpoints of the negative phase-sequence system controller.<br />
+The setpoint for the positive phase-sequence system current is compensated in the displayed negative-phase sequence system current.<br />
+The setpoint for the negative phase-sequence system current is compensated in the displayed positive-phase sequence system current.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Negative phase-sequence system component active current<br />
+[1] = Negative phase-sequence system component reactive current<br />
+[2] = Positive phase-sequence system component active current<br />
+[3] = Positive phase-sequence system component reactive current<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The total active current setpoint in the positive phase-sequence system coordinates is displayed in r0077.<br />The total reactive current setpoint in the positive phase-sequence system coordinates is displayed in r0075.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3638">r3638[0...3]</a></b></td>
+<td colspan="4"><b>CO: Negative phase-sequence system controller current actual value / Neg_seq ctr I_act</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), R_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_840 (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_828 (Dyn. grid support, Line transf, Suppl cl-loop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7987</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> 6_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output for the current actual values of the negative phase-sequence system controller.<br />
+The setpoint for the positive phase-sequence system current is compensated in the displayed negative-phase sequence system current.<br />
+The setpoint for the negative phase-sequence system current is compensated in the displayed positive-phase sequence system current.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Negative phase-sequence system component active current<br />
+[1] = Negative phase-sequence system component reactive current<br />
+[2] = Positive phase-sequence system component active current<br />
+[3] = Positive phase-sequence system component reactive current<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The total active current actual value in the positive phase-sequence system coordinates is displayed in r0078.<br />The total reactive current actual value in the positive phase-sequence system coordinates is displayed in r0076.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3639">p3639[0...3]</a></b></td>
+<td colspan="4"><b>Negative phase-sequence system controller scaling values / Neg_sys_ctrl scal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), R_INF (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_840 (Dyn. grid support, Line transf, Suppl cl-loop ctrl), A_INF_828 (Dyn. grid support, Line transf, Suppl cl-loop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7987</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >300.00</td>
+<td >100.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the scaling values for the negative phase-sequence system controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Integral time<br />
+[1] = Integrator feedback coupling<br />
+[2] = DC link voltage extrapolation<br />
+[3] = DC link voltage filter<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For index [0]:<br />The value 100% corresponds to the integral time, which is active for the regular positive phase-sequence system current controller (p3617).<br />With p3639[0] = 0, the integral component of the negative phase sequence system controller is deactivated.<br />For index [1]:<br />Sets an integrator feedback loop, which, for values greater than 0, results in a PT1 response. In the control, instead of an integrator, a 1st order delay element with time constant [-p0115[0] &#47; ln(1 - p3639[1])] is active. This allows the negative phase-sequence system controller stability range to be extended.<br />Internally, the setting value is limited to 10 %.<br />We only recommend that this parameter is changed if stability problems are encountered. Typical setting values are in the range of 1%.<br />For index [2]:<br />Sets the extrapolation width for the actual value of the DC link voltage to compensate for Vdc oscillation. A value of 100% corresponds to an extrapolation of one current controller sampling time (p0115[0]).<br />The extrapolated value is displayed in r3643[1].<br />For index [3]:<br />Sets the scaling factor for the Vdc actual value filter.<br />At twice the line supply frequency, this component of the Vdc oscillation can pass through the bandstop and causes the Vdc controller to respond. As a consequence, the stability of the overall closed-loop control can be improved.<br />The setting values are internally limited to 100%.<br /></td></tr>
+</table><p></p></body></html>

@@ -1,0 +1,604 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block C/SPARPF: Program pointers for block search and stop run</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block C/SPARPF: Program pointers for block search and stop run</h1>
+         </div>
+      </div>To search for a specific block within a part program, the user can enter search criteria and start a block search. These input
+      values are summarized in the block SPARPF and must be written by the HMI.<br/>
+      1 main program level and 17 subroutine levels can be processed. These levels are the line indices of the individual variables.
+      The search targets (seek pointer and search string) can only be used in a mutually exclusive manner in one level. In case
+      of collisions, a negative acknowledgement is made when the search is triggered.<br/>
+      <br/>
+      Depending on the search type, the search string is either a block label, a block number, or any string.<br/>
+      <br/>
+      If no path name is specified, then the default search strategy for subroutine calls is used. The main program entered in the
+      1 program level must be selected for the search; otherwise the search request is acknowledged negatively.<br/>
+      <br/>
+      The array indices (line indices) have the following meaning:<br/>
+      <br/>
+        1     = main program level for search run<br/>
+        2-18  = subroutine levels for search run<br/>
+      <br/>
+      101     = main program level for stop run<br/>
+      102-118 = subroutine levels for stop run<br/>
+      
+      <div><a name="5762"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>byteOffset</b></td>
+            <td colspan="3" style="border:1px solid black">Search pointer (byte-oriented)</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>14
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Programlevel<br>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Search pointer (byte-oriented)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/byteOffset[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5127"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>displayState</b></td>
+            <td colspan="3" style="border:1px solid black">Display status for block display. </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>13
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1<br>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Display state for block display.<br/>
+               (Blocks should not be displayed automatically for program levels for which DISPLAY OFF has been programmed in the <br/>
+               PROC instruction. This is valid also for the subroutine levels below).<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span> Value Meaning<br/>
+                0 =     DISPLAY OFF for the program level<br/>
+                1 =     DISPLAY ON  for the program level<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/displayState[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="150"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>forward</b></td>
+            <td colspan="3" style="border:1px solid black">Search direction</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Programlevel<br>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Search direction<br/>
+               Search direction "backwards" is only possible in the mode without calculation<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>1 = backwards (without calculation)<br/>
+               2 = forwards<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/forward[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4835"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>haltBlock</b></td>
+            <td colspan="3" style="border:1px solid black">Hold block</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>10
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1<br>Program levels (only defined for level 0)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">The following applies to the SPARPI: The interrupt pointer does not mark the block<br/>
+               where the program was cancelled but a previous block (hold block), which enables a better resumption.<br/>
+               The hold block is explicitly set with the part program commands IPTRLOCK and IPTRUNLOCK,<br/>
+               or implicitly manipulated via $MC_AUTO_IPTR_LOCK.<br/>
+               The following applies to the SPARPF: If SPARPI is copied completely,<br/>
+               the value of the hold block which was set by the NCK is retained.<br/>
+               This enables the NCK to recognize the situation, and it responds with the suppressed message alarm 16950.<br/>
+               NOTE:  For SPARPI and SPARPF this value is ONLY defined for program level 0.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span>1
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/haltBlock[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="167"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>invocCount</b></td>
+            <td colspan="3" style="border:1px solid black">Actual value of subroutine call counter.</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Programlevel<br>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Actual value of the subroutine call counter. Is always 1 for the main program.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/invocCount[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3104"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>plcStartReason</b></td>
+            <td colspan="3" style="border:1px solid black">Specification of channel for SERUPRO</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>9
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>112
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Specifies for the SERUPRO function which channel has to be started by the PLC so that the current channel starts.<br/>
+                <br/>
+                <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/plcStartReason[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="377"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>progName</b></td>
+            <td colspan="3" style="border:1px solid black">Program name</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Programlevel<br>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Progam name of the currently active program (or subroutine)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/progName[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="405"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>searchString</b></td>
+            <td colspan="3" style="border:1px solid black">Search string</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>5
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Programlevel<br>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Search string (the first 64 characters of the NC block - corresponding to search pointer). Contents of the search string depends
+               on the search type and are either:<br/>
+               block label<br/>
+               block number<br/>
+               any string<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/searchString[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="407"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>searchType</b></td>
+            <td colspan="3" style="border:1px solid black">Search type</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Programlevel<br>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Search type<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>1 = block number<br/>
+               2 = label<br/>
+               3 = string<br/>
+               4 = program level<br/>
+               5 = search pointer line-oriented (searching for line feeds)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/searchType[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="410"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>seekOffset</b></td>
+            <td colspan="3" style="border:1px solid black">Search pointer</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Programlevel<br>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Search pointer (line-oriented, searching for line feeds). If the search pointer is used, a program name (progName) must always
+               have been defined. The search pointer refers to this program.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/seekOffset[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3810"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>status</b></td>
+            <td colspan="3" style="border:1px solid black">Without function</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>11
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">This variable is without function in block SPARPF.<br/>
+               It has only been introduced to achieve the same structure of SPARPI and SPARPF.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span>0
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/status[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="488"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>workPName</b></td>
+            <td colspan="3" style="border:1px solid black">Workpiece name abbreviated</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Programlevel<br>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Workpiece name = path name in the NC file structure. If no path name is specified, the default search strategy for subroutine
+               calls is used.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/workPName[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4834"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>workPNameL</b></td>
+            <td colspan="3" style="border:1px solid black">Workpiece name </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>12
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Programlevel<br>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Workpiece name = path name in the NCK file structure. If no path name is specified, the default search strategy for subroutine
+               calls is used.<br/>
+               Note: This variable is ignored when lines are accessed!<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/workPNameL[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="1992"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>workPNameLong</b></td>
+            <td colspan="3" style="border:1px solid black">Workpiece name</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>8
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Programlevel<br>Index of program level
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>18
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Name of the active workpiece<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Search/workPNameLong[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

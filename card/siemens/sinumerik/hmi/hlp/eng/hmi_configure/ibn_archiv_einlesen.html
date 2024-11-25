@@ -1,0 +1,168 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Importing an archive into SINUMERIK ONE</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowAction">
+        <h1 class="title">Importing an archive into SINUMERIK ONE</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>A DSF archive or an ARC archive created under SINUMERIK 840D sl can be imported as usual via the user interface into the SINUMERIK ONE environment. This enables commissioning of NC, PLC, and HMI components.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Notice</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Data loss caused by archive difference when importing</h4>
+            <p class="safety">Data not contained in the archive can be lost during the import.</p>
+            <p class="safety">Always create a backup file before reading in data.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Compatibility check</h4>
+            <p class="safety">To prevent the user from damaging a running system due to incorrect archive data, SINUMERIK Operate checks the archive compatibility with the machine before reading in the data. For example:</p>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">The PLC data from an archive for an NCU 1750 are not compatible for an NCU 1760.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">PLC version 6.22 in the archive is not compatible with version 6.20 on the control system.</p>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Machine status following read-in</h3>
+      <p>After reading in, the machine has exactly the status that was previously defined with the archive type. The import differs principally with the following behavior:</p>
+      <h4 class="Blocklabel">Backup (for users)</h4>
+      <ul>
+        <li>
+          <p>The existing control data are overwritten by the data from the DSF archive and may be added to the machine status.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Setup (for manufacturers)</h4>
+      <ul>
+        <li>
+          <p>The data from the DSF archive map the exact status of the previously stored control.</p>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <p>The components selected from the DSF archive are generally reset on the control system when the data is imported.</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Requirement</h3>
+      <ul>
+        <li>
+          <p>The "Manufacturer" access level is required for importing a setup.</p>
+        </li>
+        <li>
+          <p>The "User" access level is required for importing a backup (backup of same control).</p>
+        </li>
+        <li>
+          <p>You have a commissioning archive in the format *.dsf or *.arc.</p>
+        </li>
+      </ul>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Procedure</h3>
+      <table width="100%" border="0" cellspacing="0" cellpadding="10">
+        <tr>
+          <td>
+            <ol class="action">
+              <li>
+                <p>Switch over to the "Setup" operating area in SINUMERIK Operate</p>
+                <p>"MENU SELECT > Commissioning > Commissioning archives".</p>
+              </li>
+              <li>
+                <p>Select the "Select archive" option for importing an archive and confirm with "OK".</p>
+                <p>The "Import archive: Select Archive" window opens.</p>
+                <p>- OR -</p>
+                <p>To import the existing factory setting, select the "Restore factory setting" option and confirm with "OK".</p>
+                <p>SINUMERIK Operate automatically accesses the "original.dsf" file.</p>
+              </li>
+              <li>
+                <p>Select the archive and confirm with "OK".</p>
+                <p>You obtain an overview with path details, version information, name of the archive, etc. as well as a list of the archived components.</p>
+                <p>Deactivate a checkbox to exclude a component from the import process.</p>
+                <table cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td>
+                      <font size="1px">
+                      </font>
+                    </td>
+                  </tr>
+                </table>
+                <table class="safety" border="1" bgcolor="#eeeeee">
+                  <colgroup>
+                    <col width="5%">
+                    <col width="95%">
+                  </colgroup>
+                  <tr>
+                    <td>
+                      <b>Note</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="safety">You must enter a password if the archive contains the "Security" component.</p>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <p>To import the archive, confirm with "OK".</p>
+                <p>The "Import archive" window shows the import process with a progress display.</p>
+              </li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

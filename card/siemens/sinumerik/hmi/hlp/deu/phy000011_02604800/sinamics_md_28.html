@@ -1,0 +1,1404 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2721">p2721[0...n]</a></b></td>
+<td colspan="4"><b>Lastgetriebe Absolutwertgeber rotatorisch Umdrehungen virtuell / Abs rot Umdr</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C2(1, 4)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >4194303</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Anzahl der aufl&ouml;sbaren Umdrehungen bei einem rotatorischen Absolutwertgeber mit aktivierter Lageverfolgung des Lastgetriebes.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Dieser Parameter ist nur bei einem Absolutwertgeber (p0404.1 = 1) mit aktivierter Lageverfolgung des Lastgetriebes (p2720.0 = 1) von Bedeutung.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die eingestellte Aufl&ouml;sung muss &uuml;ber r2723 darstellbar sein.<br />Bei Rundachsen&#47;Moduloachsen gilt:<br />Dieser Parameter wird mit p0421 vorbelegt und kann ver&auml;ndert werden.<br />Bei Linearachsen gilt:<br />Dieser Parameter wird mit p0421 vorbelegt, um 6 Bit f&uuml;r Multiturninformationen erweitert (maximale &Uuml;berl&auml;ufe) und kann nicht ver&auml;ndert werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2722">p2722[0...n]</a></b></td>
+<td colspan="4"><b>Lastgetriebe Lageverfolgung Toleranzfenster / Lageverf Tol</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C2(1, 4)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >4294967300.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung eines Toleranzfensters bei der Lageverfolgung.<br />
+Nach dem Einschalten wird die Differenz zwischen der gespeicherten Position und der aktuellen Position ermittelt und abh&auml;ngig davon folgendes ausgel&ouml;st:<br />
+Differenz innerhalb Toleranzfenster --&gt; Die Position wird aufgrund des aktuellen Geberistwertes reproduziert.<br />
+Differenz au&szlig;erhalb Toleranzfenster --&gt; Es wird eine entsprechende Meldung ausgegeben.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: F07449</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Wert wird in ganzen Geberstrichen eingegeben.<br />Der Wert wird bei p2720.0 = 1 automatisch auf den viertel Geberbereich vorbelegt.<br />Beispiel:<br />Viertel Geberbereich = (p0408 * p0421) &#47; 4<br />Das Toleranzfenster kann aufgrund des Datentyps (Gleitkommazahl mit 23 Bit Mantisse) eventuell nicht exakt eingestellt werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2723">r2723[0...n]</a></b></td>
+<td colspan="4"><b>CO: Lastgetriebe Absolutwert / Lastgetr Abs_wert</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 4010, 4704</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Absolutwertes nach dem Lastgetriebe.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Inkremente werden im Format wie r0483 angezeigt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2724">r2724[0...n]</a></b></td>
+<td colspan="4"><b>CO: Lastgetriebe Lagedifferenz / Lastgetr Lagedif</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> Integer32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Lagedifferenz vor dem Lastgetriebe zwischen Aus- und Einschalten.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Inkremente werden im Format wie r0483&#47;r2723 angezeigt.<br />Bei nicht aktiviertem Messgetriebe des Motorgebers ist die Lagedifferenz in Geberinkrementen zu lesen.<br />Bei aktiviertem Messgetriebe des Motorgebers ist die Lagedifferenz mit dem Messgetriebefaktor umgerechnet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2810">p2810[0...1]</a></b></td>
+<td colspan="4"><b>BI: UND-Verkn&uuml;pfung Eing&auml;nge / UND Eing&auml;nge</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2634</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquellen f&uuml;r die Eing&auml;nge der UND-Verkn&uuml;pfung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r2811<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">[0]: UND-Verkn&uuml;pfung Eingang 1 --&gt; Ergebnis wird in r2811.0 angezeigt.<br />[1]: UND-Verkn&uuml;pfung Eingang 2 --&gt; Ergebnis wird in r2811.0 angezeigt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2811">r2811.0</a></b></td>
+<td colspan="4"><b>CO&#47;BO: UND-Verkn&uuml;pfung Ergebnis / UND Ergebnis</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2634</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Ergebnisses der UND-Verkn&uuml;pfung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>UND-Verkn&uuml;pfung Ergebnis</td><td>Wahr</td><td>Falsch</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2810<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2816">p2816[0...1]</a></b></td>
+<td colspan="4"><b>BI: ODER-Verkn&uuml;pfung Eing&auml;nge / ODER Eing&auml;nge</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2634</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquellen f&uuml;r die Eing&auml;nge der ODER-Verkn&uuml;pfung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r2817<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">[0]: ODER-Verkn&uuml;pfung Eingang 1 --&gt; Ergebnis wird in r2817.0 angezeigt.<br />[1]: ODER-Verkn&uuml;pfung Eingang 2 --&gt; Ergebnis wird in r2817.0 angezeigt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2817">r2817.0</a></b></td>
+<td colspan="4"><b>CO&#47;BO: ODER-Verkn&uuml;pfung Ergebnis / ODER Ergebnis</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2634</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Ergebnisses der ODER-Verkn&uuml;pfung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>ODER-Verkn&uuml;pfung Ergebnis</td><td>Wahr</td><td>Falsch</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2816<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2900">p2900[0...n]</a></b></td>
+<td colspan="4"><b>CO: Festwert 1 [%] / Festwert 1 [%]</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 1021</td></tr><tr><td><b>P-Gruppe:</b> Freie Funktionsbausteine</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> PERCENT</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-10000.00</td>
+<td  >10000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung eines festen Prozentwertes.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2901, p2930<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Wert kann zum Verschalten einer Skalierung verwendet werden (z. B. Skalierung des Hauptsollwertes).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2901">p2901[0...n]</a></b></td>
+<td colspan="4"><b>CO: Festwert 2 [%] / Festwert 2 [%]</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 1021</td></tr><tr><td><b>P-Gruppe:</b> Freie Funktionsbausteine</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> PERCENT</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-10000.00</td>
+<td  >10000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung eines festen Prozentwertes.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2900, p2930<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Wert kann zum Verschalten einer Skalierung verwendet werden (z. B. Skalierung des Zusatzsollwertes).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2902">r2902[0...14]</a></b></td>
+<td colspan="4"><b>CO: Festwerte [%] / Festwerte [%]</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 1021</td></tr><tr><td><b>P-Gruppe:</b> Freie Funktionsbausteine</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> PERCENT</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Signalquellen f&uuml;r h&auml;ufig verwendete Prozentwerte.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Festwert +0 %<br />
+[1] = Festwert +5 %<br />
+[2] = Festwert +10 %<br />
+[3] = Festwert +20 %<br />
+[4] = Festwert +50 %<br />
+[5] = Festwert +100 %<br />
+[6] = Festwert +150 %<br />
+[7] = Festwert +200 %<br />
+[8] = Festwert -5 %<br />
+[9] = Festwert -10 %<br />
+[10] = Festwert -20 %<br />
+[11] = Festwert -50 %<br />
+[12] = Festwert -100 %<br />
+[13] = Festwert -150 %<br />
+[14] = Festwert -200 %<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2900, p2901, p2930<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Diese Signalquellen k&ouml;nnen z. B. zum Verschalten von Skalierungen verwendet werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2930">p2930[0...n]</a></b></td>
+<td colspan="4"><b>CO: Festwert M [Nm] / Festwert M [Nm]</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 1021</td></tr><tr><td><b>P-Gruppe:</b> Freie Funktionsbausteine</td><td><b>Einheitengruppe:</b> 7_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> p2003</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-100000.00</td>
+<td  >100000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung eines Festwertes f&uuml;r Drehmoment.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2900, p2901<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Wert kann z. B. zum Verschalten eines Zusatzmomentes verwendet werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2930">p2930[0...n]</a></b></td>
+<td colspan="4"><b>CO: Festwert F [N] / Festwert F [N]</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 1021</td></tr><tr><td><b>P-Gruppe:</b> Freie Funktionsbausteine</td><td><b>Einheitengruppe:</b> 8_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> p2003</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-100000.00</td>
+<td  >100000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung eines Festwertes f&uuml;r Kraft.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2900, p2901<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Wert kann z. B. zum Verschalten einer Zusatzkraft verwendet werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3016">p3016</a></b></td>
+<td colspan="4"><b>MotId Drehmomentkonstante identifiziert / kT ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 28_1</td><td><b>Einheitenwahl:</b> p0100</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >100.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Drehmomentkonstante beim Synchronmotor.<br />
+Diese Drehmomentkonstante kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0316 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0316, r0334, r1937, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3016">p3016</a></b></td>
+<td colspan="4"><b>MotId Kraftkonstante identifiziert / kT ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 29_1</td><td><b>Einheitenwahl:</b> p0100</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >1000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Kraftkonstante beim Synchron-Linearmotor.<br />
+Diese Kraftkonstante kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0316 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0316, r0334, r1937, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3017">p3017</a></b></td>
+<td colspan="4"><b>MotId Spannungskonstante identifiziert / kE ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >10000.0</td>
+<td >0.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Spannungskonstante beim Synchronmotor.<br />
+Diese Spannungskonstante kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0317 &uuml;bernommen werden.<br />
+Einheit bei rotatorischen Synchronmotoren: Veff&#47;(1000 1&#47;min), Verkettet<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0317, r1938, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3017">p3017</a></b></td>
+<td colspan="4"><b>MotId Spannungskonstante identifiziert / kE ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >1000.0</td>
+<td >0.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Spannungskonstante beim Synchron-Linearmotor.<br />
+Diese Spannungskonstante kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0317 &uuml;bernommen werden.<br />
+Einheit bei linearen Synchronmotoren: Veff s&#47;m, Strang<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0317, r1938, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3020">p3020</a></b></td>
+<td colspan="4"><b>MotId Magnetisierungsstrom identifiziert / I_mag ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >5000.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter Magnetisierungsstrom beim Asynchronmotor.<br />
+Dieser Magnetisierungsstrom kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0320 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0320, r0331, p1910, r1948, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3027">p3027</a></b></td>
+<td colspan="4"><b>MotId Lastwinkel optimal identifiziert / phi_Last opt ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >135.0</td>
+<td >0.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte optimale Lastwinkel beim Synchronmotor.<br />
+Dieser optimale Lastwinkel kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0327 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0327, r1947, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3028">p3028</a></b></td>
+<td colspan="4"><b>MotId Reluktanzmomentkonstante identifiziert / kT_Reluktanz ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-1000.00</td>
+<td  >1000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Reluktanzmomentkonstante beim Synchronmotor.<br />
+Diese Reluktanzmomentkonstante kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0328 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0328, r1939, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3028">p3028</a></b></td>
+<td colspan="4"><b>MotId Reluktanzkraftkonstante identifiziert / kT_Reluktanz ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-1000.00</td>
+<td  >1000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Reluktanzkraftkonstante beim Synchronmotor.<br />
+Diese Reluktanzkraftkonstante kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0328 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0328, r1939, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3030">p3030</a></b></td>
+<td colspan="4"><b>MotId Kommutierungswinkeloffset identifiziert / Kom_winkeloffset</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-180.00</td>
+<td  >180.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Kommutierungswinkeloffset beim Synchronmotor.<br />
+Dieser Kommutierungswinkeloffset kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0431 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0431, p1910, p1960, r1984<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3031">p3031</a></b></td>
+<td colspan="4"><b>MotId Geber Invertierung Istwert identifiziert / Geb Inv Istw ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Invertierung des Geberistwertes.<br />
+Diese Invertierung kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0410 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Drehzahlistwert invertieren</td><td>Ja</td><td>Nein</td><td>4710, 4715</td></tr><tr><td></td><td>01</td><td>Lageistwert invertieren</td><td>Ja</td><td>Nein</td><td>4704</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0410, p1910, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3031">p3031</a></b></td>
+<td colspan="4"><b>MotId Geber Invertierung Istwert identifiziert / Geb Inv Istw ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Invertierung des Geberistwertes.<br />
+Diese Invertierung kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0410 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Geschwindigkeitsistwert invertieren</td><td>Ja</td><td>Nein</td><td>4710, 4715</td></tr><tr><td></td><td>01</td><td>Lageistwert invertieren</td><td>Ja</td><td>Nein</td><td>4704</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0410, p1910, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3041">p3041</a></b></td>
+<td colspan="4"><b>MotId Tr&auml;gheitsmoment identifiziert / M_Tr&auml;gheit ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 25_1</td><td><b>Einheitenwahl:</b> p0100</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000000</td>
+<td  >100000.000000</td>
+<td >0.000000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermitteltes Motortr&auml;gheitsmoment.<br />
+Dieses Motortr&auml;gheitsmoment kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0341 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0341, p1960, r1969<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3041">p3041</a></b></td>
+<td colspan="4"><b>MotId Motor-Masse identifiziert / Mot-Masse ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 27_1</td><td><b>Einheitenwahl:</b> p0100</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000000</td>
+<td  >10000.000000</td>
+<td >0.000000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Masse des Motors.<br />
+Diese Masse kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0341 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0341, p1960, r1969<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3042">p3042</a></b></td>
+<td colspan="4"><b>MotId Last Tr&auml;gheitsmoment identifiziert / Last Tr&auml;gh ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 25_1</td><td><b>Einheitenwahl:</b> p0100</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >100000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermitteltes Lasttr&auml;gheitsmoment.<br />
+Dieses Lasttr&auml;gheitsmoment kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p1498 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0342, p1498, p1960, r1969<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei p1910&#47;p1960 = -3 wird p0342 = 1 (Verh&auml;ltnis Gesamt zu Motor) gesetzt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3042">p3042</a></b></td>
+<td colspan="4"><b>MotId Last Masse identifiziert / Last Masse ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 27_1</td><td><b>Einheitenwahl:</b> p0100</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >10000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Lastmasse.<br />
+Diese Lastmasse kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p1498 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0342, p1498, p1960, r1969<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei p1910&#47;p1960 = -3 wird p0342 = 1 (Verh&auml;ltnis Gesamt zu Motor) gesetzt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3045">p3045</a></b></td>
+<td colspan="4"><b>MotId Kraftkennlinie kT1 identifiziert / kT1 ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw M_reg, Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-340.28235E36</td>
+<td  >340.28235E36</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter Koeffizient kT1 f&uuml;r die Kraftkennlinie beim Synchron-Linearmotor.<br />
+Dieser Koeffizient kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0645 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0645, p0646, p0647, p0648, p1960, p3046, p3047, p3048<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3045">p3045</a></b></td>
+<td colspan="4"><b>MotId Drehmomentkennlinie kT1 identifiziert / kT1 ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw M_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-340.28235E36</td>
+<td  >340.28235E36</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter Koeffizient kT1 f&uuml;r die Drehmomentkennlinie beim Synchronmotor.<br />
+Dieser Koeffizient kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0645 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0645, p0646, p0647, p0648, p1960, p3046, p3047, p3048<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3046">p3046</a></b></td>
+<td colspan="4"><b>MotId Kraftkennlinie kT3 identifiziert / kT3 ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw M_reg, Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter Koeffizient kT3 f&uuml;r die Kraftkennlinie beim Synchron-Linearmotor.<br />
+Dieser Koeffizient kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0646 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0645, p0646, p0647, p0648, p1960, p3045, p3047, p3048<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3046">p3046</a></b></td>
+<td colspan="4"><b>MotId Drehmomentkennlinie kT3 identifiziert / kT3 ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw M_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter Koeffizient kT3 f&uuml;r die Drehmomentkennlinie beim Synchronmotor.<br />
+Dieser Koeffizient kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0646 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0645, p0646, p0647, p0648, p1960, p3045, p3047, p3048<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3047">p3047</a></b></td>
+<td colspan="4"><b>MotId Kraftkennlinie kT5 identifiziert / kT5 ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw M_reg, Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter Koeffizient kT5 f&uuml;r die Kraftkennlinie beim Synchron-Linearmotor.<br />
+Dieser Koeffizient kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0647 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0645, p0646, p0647, p0648, p1960, p3045, p3046, p3048<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3047">p3047</a></b></td>
+<td colspan="4"><b>MotId Drehmomentkennlinie kT5 identifiziert / kT5 ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw M_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter Koeffizient kT5 f&uuml;r die Drehmomentkennlinie beim Synchronmotor.<br />
+Dieser Koeffizient kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0647 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0645, p0646, p0647, p0648, p1960, p3045, p3046, p3048<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3048">p3048</a></b></td>
+<td colspan="4"><b>MotId Kraftkennlinie kT7 identifiziert / kT7 ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw M_reg, Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter Koeffizient kT7 f&uuml;r die Kraftkennlinie beim Synchron-Linearmotor.<br />
+Dieser Koeffizient kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0648 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0645, p0646, p0647, p0648, p1960, p3045, p3046, p3047<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3048">p3048</a></b></td>
+<td colspan="4"><b>MotId Drehmomentkennlinie kT7 identifiziert / kT7 ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw M_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter Koeffizient kT7 f&uuml;r die Drehmomentkennlinie beim Synchronmotor.<br />
+Dieser Koeffizient kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0648 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0645, p0646, p0647, p0648, p1960, p3045, p3046, p3047<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3049">p3049[0...n]</a></b></td>
+<td colspan="4"><b>MotId Einsatzdrehzahl Feldschw&auml;chung identifiziert / ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >210000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Einsatzdrehzahl Feldschw&auml;chung.<br />
+Diese Einsatzdrehzahl kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0348 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0348, p1910, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3049">p3049[0...n]</a></b></td>
+<td colspan="4"><b>MotId Einsatzgeschwindigkeit Feldschw&auml;chung identifiziert / v_Feldschw ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >1000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Einsatzgeschwindigkeit Feldschw&auml;chung.<br />
+Diese Einsatzgeschwindigkeit kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0348 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0348, p1910, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3050">p3050[0...n]</a></b></td>
+<td colspan="4"><b>MotId St&auml;nderwiderstand identifiziert / R_St&auml;nder ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 16_1</td><td><b>Einheitenwahl:</b> p0349</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >2000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter St&auml;nderwiderstand.<br />
+Dieser St&auml;nderwiderstand kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0350 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0350, p1910, r1912<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3054">p3054[0...n]</a></b></td>
+<td colspan="4"><b>MotId L&auml;uferwiderstand identifiziert / R_L&auml;ufer ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 16_1</td><td><b>Einheitenwahl:</b> p0349</td></tr><tr><td><b>Nicht bei Motortyp:</b> PEM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >300.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelter L&auml;uferwiderstand beim Asynchronmotor.<br />
+Dieser L&auml;uferwiderstand kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0354 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0354, p0625, p1910, r1927, p1960<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei Synchronmotoren (p0300 = 2xx) wird der Parameter nicht verwendet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3056">p3056[0...n]</a></b></td>
+<td colspan="4"><b>MotId St&auml;nderstreuinduktivit&auml;t identifiziert / L_St&auml;nderstreu</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 15_1</td><td><b>Einheitenwahl:</b> p0349</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >1000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte St&auml;nderstreuinduktivit&auml;t.<br />
+Dieser St&auml;nderstreuinduktivit&auml;t kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0356 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0356, p1910, r1932<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3058">p3058[0...n]</a></b></td>
+<td colspan="4"><b>MotId L&auml;uferstreuinduktivit&auml;t identifiziert / L_L&auml;uferstreu</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 15_1</td><td><b>Einheitenwahl:</b> p0349</td></tr><tr><td><b>Nicht bei Motortyp:</b> PEM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >1000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte L&auml;uferstreuinduktivit&auml;t beim Asynchronmotor.<br />
+Dieser L&auml;uferstreuinduktivit&auml;t kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0358 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0358, p1910, r1932<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3060">p3060[0...n]</a></b></td>
+<td colspan="4"><b>MotId Hauptinduktivit&auml;t identifiziert / MotId Lh ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 15_1</td><td><b>Einheitenwahl:</b> p0349</td></tr><tr><td><b>Nicht bei Motortyp:</b> PEM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >10000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Hauptinduktivit&auml;t beim Asynchronmotor.<br />
+Diese Hauptinduktivit&auml;t kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p0360 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0360, p1910, r1936, p1960<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3070">p3070</a></b></td>
+<td colspan="4"><b>MotId Spannungsabbildungsfehler Endwert identifiziert / U_fehler End ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw M_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >100.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Endwert des Spannungsabbildungsfehlers.<br />
+Diese Endwert kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p1952 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1910, p1952, p1953, p3071<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3071">p3071</a></b></td>
+<td colspan="4"><b>MotId Spannungsabbildungsfehler Stromoffset identifiziert / U_fehler I_offs</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw M_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >100.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Stromoffset des Spannungsabbildungsfehlers.<br />
+Dieser Stromoffset kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p1953 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1910, p1952, p1953, p3070<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3080">p3080</a></b></td>
+<td colspan="4"><b>MotId Flussregler P-Verst&auml;rkung identifiziert / Flussreg Kp ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> PEM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >999999.0</td>
+<td >0.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte P-Verst&auml;rkung des Flussreglers beim Asynchronmotor.<br />
+Diese P-Verst&auml;rkung kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p1590 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1590, p1910<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3081">p3081</a></b></td>
+<td colspan="4"><b>MotId Flussregler Nachstellzeit identifiziert / Flussreg Tn ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> PEM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >10000</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Nachstellzeit des Flussreglers beim Asynchronmotor.<br />
+Diese Nachstellzeit kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p1592 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1592, p1910<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3082">p3082</a></b></td>
+<td colspan="4"><b>MotId Stromregler P-Verst&auml;rkung identifiziert /  I_reg Kp ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> 18_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >100000.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte P-Verst&auml;rkung des Stromreglers.<br />
+Diese P-Verst&auml;rkung kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p1715 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1715, p1910<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3083">p3083</a></b></td>
+<td colspan="4"><b>MotId Stromregler Nachstellzeit identifiziert / I_reg Tn ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >1000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Nachstellzeit des Stromreglers.<br />
+Diese Nachstellzeit kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p1717 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1717, p1910<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3088">p3088</a></b></td>
+<td colspan="4"><b>MotId Motormodell mit Geber Umschaltdrehzahl identifiziert / MotMod n_um ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >210000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Umschaltdrehzahl f&uuml;r das Motormodell mit Geber.<br />
+Diese Umschaltdrehzahl kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p1752 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1752, p1910<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3088">p3088</a></b></td>
+<td colspan="4"><b>MotId Motormodell mit Geber Umschaltgeschwindigkeit identifizier / v_um Geber ident</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Lin)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >1000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Von der Motordatenidentifikation ermittelte Umschaltgeschwindigkeit f&uuml;r Motormodell mit Geber.<br />
+Diese Umschaltgeschwindigkeit kann nach der Identifikation ge&auml;ndert und mit p1910&#47;p1960 = -3 in p1752 &uuml;bernommen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1752, p1910<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3110">p3110</a></b></td>
+<td colspan="4"><b>Externe St&ouml;rung 3 Einschaltverz&ouml;gerung / Ext St&ouml;r 3 t_Ein</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">Alle Objekte</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2546</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1000</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Verz&ouml;gerungszeit f&uuml;r die Externe St&ouml;rung 3.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2108, p3111, p3112<br />Siehe auch: F07862</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3111">p3111[0...n]</a></b></td>
+<td colspan="4"><b>BI: Externe St&ouml;rung 3 Freigabe / Ext St&ouml;r 3 Frg</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle f&uuml;r das Freigabesignal der Externen St&ouml;rung 3.<br />
+Die Externe St&ouml;rung 3 wird durch folgende UND-Verkn&uuml;pfung ausgel&ouml;st:<br />
+- BI: p2108 negiert<br />
+- BI: p3111<br />
+- BI: p3112 negiert<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2108, p3110, p3112<br />Siehe auch: F07862</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3112">p3112[0...n]</a></b></td>
+<td colspan="4"><b>BI: Externe St&ouml;rung 3 Freigabe negiert / Ext St&ouml;r 3 Frg neg</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle f&uuml;r das negierte Freigabesignal der Externen St&ouml;rung 3.<br />
+Die Externe St&ouml;rung 3 wird durch folgende UND-Verkn&uuml;pfung ausgel&ouml;st:<br />
+- BI: p2108 negiert<br />
+- BI: p3111<br />
+- BI: p3112 negiert<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2108, p3110, p3111<br />Siehe auch: F07862</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3113">r3113.0...15</a></b></td>
+<td colspan="4"><b>CO&#47;BO: NAMUR Meldebitleiste / NAMUR Bitleiste</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">Alle Objekte</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Status der NAMUR-Meldebitleiste.<br />
+Die St&ouml;rungen oder Warnungen sind entsprechenden Meldeklassen zugeordnet und beeinflussen ein bestimmtes Meldebit.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Fehler Umrichterinformationselektronik&#47;SW-Fehler</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>01</td><td>Netzfehler</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>02</td><td>Zwischenkreis&uuml;berspannung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>03</td><td>Fehler Umrichterleistungselektronik</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>04</td><td>&Uuml;bertemperatur Stromrichter</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>05</td><td>Erdschluss</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>06</td><td>&Uuml;berlast Motor</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>07</td><td>Busfehler</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>08</td><td>Externe Sicherheitsabschaltung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>09</td><td>Fehler Motorgeber</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>10</td><td>Fehler Interne Kommunikation</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>11</td><td>Fehler Einspeisung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>15</td><td>Sonstige Fehler</td><td>Ja</td><td>Nein</td><td>-</td></tr></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="3115">r3115[0...63]</a></b></td>
+<td colspan="4"><b>St&ouml;rung Antriebsobjekt ausl&ouml;send / F DO ausl&ouml;send</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">Alle Objekte</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 1750, 8060</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Antriebsobjektnummer des ausl&ouml;senden Antriebsobjektes f&uuml;r diese St&ouml;rung als Ganzzahl.<br />
+Wert = 63:<br />
+Die St&ouml;rung wurde vom Antriebsobjekt selbst ausgel&ouml;st.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0945, r0947, r0948, r0949, r2109, r2130, r2133, r2136<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Pufferparameter werden zyklisch im Hintergrund aktualisiert (siehe Zustandssignal in r2139).<br />Der Aufbau des St&ouml;rpuffers sowie die Belegung der Indizes ist in r0945 dargestellt.<br /></td></tr>
+</table><p></p></body></html>

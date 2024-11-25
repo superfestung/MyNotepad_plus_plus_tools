@@ -1,0 +1,38 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Read/write drive parameters in the part program (DRVPRD, DRVPWR)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Read/write drive parameters in the part program (DRVPRD, DRVPWR)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The DRVPRD and DRVPWR voice commands enable the machine manufacturer to read and write drive parameters axis-specifically at the part program level. </p>
+      <p>Since DRVPRD and DRVPWR are predefined procedures that must be in an NC block alone, exactly one drive parameter per channel can be read <b>or</b> written at any given time.</p>
+      <p>DRVPRD and DRVPWR are used in a cycle created by the machine manufacturer.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Prerequisites</h3>
+      <p>The following requirements apply:</p>
+      <ul>
+        <li>
+          <p>Commissioning of the NC-controlled drive is completed.</p>
+        </li>
+        <li>
+          <p>Cycles in the CST directory (Siemens) or CMA directory (manufacturer) always have the required read and write permissions.</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>DRVPRD(&lt;Result>,&lt;Axis>,&lt;DrvParNo>,&lt;DrvParIdx>,&lt;Value>)DRVPWR(&lt;Result>,&lt;Axis>,&lt;DrvParNo>,&lt;DrvParIdx>,&lt;Value>)<a name="block_3"></a><h3 class="Blocktitle">Meaning</h3><a id="table_d78264c0-a2e1-c8c2-4d58-2415559053d8"></a> <a id="table_0"></a> <a id="table_d78264c0-a2e1-c8c2-4d58-2415559053d8"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="17.5%"><col width="12.5%"><col width="5.0%"><col width="65.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>DRVPRD()</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Predefined procedure for <b>reading</b> drive parameters</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>DRVPWR()</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Predefined procedure for <b>writing</b> drive parameters</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Result></code>:</p><p type="p_table_l" align="left"></p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Result variable: Return value for the status</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p></td><td><p type="p_table_r" style="margin-top: 4px" align="right">= 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Function executed without error</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">> 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Function terminated with error</p><p type="p_table_l" align="left">For details, see "More information" > "Diagnostics via return values".</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Axis></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Machine axis name</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">AXIS</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Value range:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Machine axis names defined in the channel</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;DrvParNo></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Number of the drive parameter</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;DrvParIdx></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Index of the drive parameter</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Value></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Value of the drive parameter</p><p type="p_table_l" align="left">DRVPRD: read value</p><p type="p_table_l" align="left">DRVPWR: value to be written</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr></table></p><a name="block_4"></a><h3 class="Blocktitle">Example</h3><p>Read parameter p1460[0] "Speed controller P gain adaptation speed" of the X axis:</p><a id="table_11cd658f-66f4-1578-5139-2c356932d994"></a> <a id="table_1"></a> <a id="table_11cd658f-66f4-1578-5139-2c356932d994"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ELH"><colgroup><col width="50.0%"><col width="50.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N100 DEF INT _Status</td><td>; Variable definition for return value of the voice command </td></tr><tr valign="top"><td>N110 DEF REAL _Result</td><td>; Variable definition for read parameter value </td></tr><tr valign="top"><td>N120 DRVPRD(_Status,AX1,1460,0,_Result)</td><td>; Read parameter p1460</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>See also:<br />    <a href="156663651339.html">Read/write drive parameters in the part program (DRVPRD, DRVPWR): More information</a></p>
+  </body>
+</html>

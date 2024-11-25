@@ -1,0 +1,80 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Funktion</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowAction">
+        <h1 class="title">Funktion</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Konturelemente erstellen</h3>
+      <p>Nachdem Sie eine neue Kontur angelegt und den Startpunkt festgelegt haben, definieren Sie die einzelnen Konturelemente, aus denen sich die Kontur zusammensetzt.</p>
+      <p>Folgende Konturelemente stehen Ihnen zur Definition einer Kontur zur Verfügung:</p>
+      <ul>
+        <li>
+          <p>Gerade vertikal</p>
+        </li>
+        <li>
+          <p>Gerade horizontal</p>
+        </li>
+        <li>
+          <p>Gerade diagonal</p>
+        </li>
+        <li>
+          <p>Kreis/Kreisbogen</p>
+        </li>
+      </ul>
+      <p>Für jedes Konturelement füllen Sie eine eigene Parametermaske aus. Bei der Eingabe der Parameter unterstützen Sie verschiedene Hilfebilder, die diese Parameter erläutern.</p>
+      <p>Geben Sie in einige Felder keine Werte ein, geht der Zyklus davon aus, dass diese Werte unbekannt sind und versucht diese aus anderen Parametern zu berechnen.</p>
+      <p>Bei Konturen, bei denen Sie mehr Parameter eingegeben haben, als unbedingt notwendig, kann es zu Widersprüchen kommen. Versuchen Sie in diesem Fall, weniger Parameter einzugeben und so viele Parameter wie möglich vom Zyklus berechnen zu lassen.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Konturübergangselemente</h3>
+      <p>Zwischen zwei Konturelementen können Sie als Übergangselement einen Radius, eine Fase oder bei geraden Konturelementen auch einen Freistich wählen. Das Übergangselement wird stets am Ende eines Konturelements angefügt. Die Anwahl eines Konturübergangselements erfolgt in der Parametermaske des jeweiligen Konturelements.</p>
+      <p>Ein Konturübergangselement können Sie immer dann verwenden, wenn es einen Schnittpunkt der beiden angrenzenden Elemente gibt und dieser aus den Eingabewerten berechnet werden kann. Andernfalls müssen Sie die Konturelemente Gerade/Kreis verwenden.</p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Zusatzbefehle</h3>
+      <p>Für jedes Konturelement können Sie Zusatzbefehle in Form von G-Code eingeben. Die Zusatzbefehle (max. 40 Zeichen) tragen Sie in der erweiterten Parametermaske ein (Softkey "Alle Parameter").</p>
+      <p>Über zusätzliche G-Code-Befehle können Sie beispielsweise Vorschübe und M-Befehle programmieren. Es ist aber darauf zu achten, dass die Zusatzbefehle nicht mit dem generierten G-Code der Kontur kollidieren. Verwenden Sie deshalb keine G-Code-Befehle der Gruppe 1 (G0, G1, G2, G3), keine Koordinaten in der Ebene und keine G-Code-Befehle, die einen eigenen Satz benötigen.</p>
+      <a name="block_4">
+      </a>
+      <h3 class="Blocktitle">Weitere Funktionen</h3>
+      <p>Bei der Programmierung einer Kontur stehen folgende weitere Funktionen zur Verfügung:</p>
+      <ul>
+        <li>
+          <p>Tangente an Vorgängerelement</p>
+          <p>Den Übergang zum Vorgängerelement können Sie als Tangente programmieren.</p>
+        </li>
+        <li>
+          <p>Dialogauswahl</p>
+          <p>Ergeben sich aus bisher eingetragenen Parametern zwei verschiedene Konturmöglichkeiten, müssen Sie eine davon auswählen.</p>
+        </li>
+        <li>
+          <p>Kontur schließen</p>
+        </li>
+      </ul>
+      <p>Von der aktuellen Position können Sie die Kontur mit einer Geraden zum Startpunkt schließen.</p>
+      <a name="block_5">
+      </a>
+      <h3 class="Blocktitle">Exakte Konturübergänge fertigen</h3>
+      <p>Es wird im Bahnsteuerbetrieb (G64) gefahren. D. h. Konturübergänge wie Ecken, Fasen oder Radien werden evtl. nicht exakt bearbeitet.</p>
+      <p>Wenn Sie dies verhindern möchten, gibt es zwei verschiedene Möglichkeiten bei der Programmierung. Nutzen Sie Zusatzbefehle oder programmieren Sie gesonderten Vorschub für das Übergangselement.</p>
+      <ul>
+        <li>
+          <p>Zusatzbefehl</p>
+        </li>
+      </ul>
+      <p>Programmieren Sie für die Kontur erst die senkrechte Gerade und geben Sie für den Parameter Zusatzbefehl "G9" (Genauhalt satzweise) ein. Programmieren Sie anschließend die waagerechte Gerade. Die Ecke wird exakt bearbeitet, da der Vorschub am Ende der senkrechten Gerade kurzzeitig Null ist.</p>
+      <a id="image_96917982859_0">
+      </a> <img border="0" src="images/129205622539.png" width="299" height="129"/><a id="table_"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_legend" border="0"><colgroup><col width="6.9%"><col width="93.1%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">①</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Bearbeitungsrichtung</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">②</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Werkstück</p></td></tr></table></p><ul><li><p>Vorschub Übergangselement</p></li></ul><p>Wenn Sie als Übergangselement eine Fase oder einen Radius gewählt haben, geben Sie im Parameter "FRC" einen verringerten Vorschub ein. Durch die langsamere Bearbeitung wird das Übergangselement genauer gefertigt.</p></div>
+  </body>
+</html>

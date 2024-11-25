@@ -1,0 +1,43 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Maximale Bahnbeschleunigung anpassen (PACCLIM)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Maximale Bahnbeschleunigung anpassen (PACCLIM)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Mit der Funktion "Maximale Bahnbeschleunigung anpassen" kann im Teileprogramm die aus den achsialen Begrenzungswerten resultierende Beschleunigung der Bahnbewegung in kritischen Programmabschnitten reduziert werden. Der Beschleunigungswert, auf den die maximale Bahnbeschleunigung reduziert werden soll, wird über die Adresse PACCLIM programmiert. Der programmierte Wert ist immer nur bis zum nächsten NC-Reset bzw. Teileprogramm-Ende wirksam.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Voraussetzungen</h3>
+      <h4 class="Blocklabel">Lizenzierung</h4>
+      <p>Die Funktion ist eine lizenzpflichtige Option ("Bahnbeschleunigungsbegrenzung"; Artikelnummer: 6FC5800-0xP26-0YB0), die über das Lizenzmanagement der Hardware zugeordnet sein muss.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Wirksamkeit</h3>
+      <p>Die Funktion wirkt:</p>
+      <ul>
+        <li>
+          <p>in den AUTOMATIK-Betriebsarten</p>
+        </li>
+        <li>
+          <p>nur auf Bahnachsen</p>
+        </li>
+      </ul>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <a id="table_650ba473-a133-b3e1-b699-037150a5392d">
+      </a> <a id="table_0"></a> <a id="table_650ba473-a133-b3e1-b699-037150a5392d"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E4C"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>PACCLIM=&lt;Value></td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>PACCLIM=-1</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_4"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_961fdfa8-2d5f-49da-8e86-049af355c165"></a> <a id="table_1"></a> <a id="table_961fdfa8-2d5f-49da-8e86-049af355c165"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="20.0%"><col width="20.0%"><col width="60.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>PACCLIM</code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Adresse zum Anpassen der maximalen Bahnbeschleunigung</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Value></code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Beschleunigungswert, auf den die maximale Bahnbeschleunigung reduziert werden soll</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wertebereich:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">1,0 * 10<sup>-6</sup> ... 1,0 * 10<sup>38</sup></p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Einheit:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left"> m/s<sup>2</sup> oder inch/s<sup>2 </sup>(abhängig vom aktiven Maßsystem)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>PACCLIM=-1</code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Hebt die Begrenzung, die durch <code>PACCLIM=&lt;Value></code> programmiert wurde, wieder auf.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">In seiner Wirkung ähnelt PACCLIM dem Settingdatum SD42500 $SC_SD_MAX_PATH_ACCEL (Maximale Bahnbeschleunigung). Im Unterschied zu SD42500 arbeitet PACCLIM jedoch satzsynchron.</p></td></tr></table><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Bei der Berechnung des Begrenzungswerts wird der Wert von SD42500 $SC_SD_MAX_PATH_ACCEL nur dann berücksichtigt, wenn SD42502 $SC_IS_SD_MAX_PATH_ACCEL auf "TRUE" gesetzt ist. </p><p class="safety">Sind sowohl PACCLIM als auch SD42500 $SC_SD_MAX_PATH_ACCEL aktiv, wird der kleinere der beiden Begrenzungswerte wirksam.</p></td></tr></table><a name="block_5"></a><h3 class="Blocktitle">Beispiel</h3><a id="table_32c643d3-755d-4c60-9681-7cd971ffc5f4"></a> <a id="table_2"></a> <a id="table_32c643d3-755d-4c60-9681-7cd971ffc5f4"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EPG"><colgroup><col width="50.0%"><col width="50.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N1000 G0 X0 Y0 F10000 G64 G710</td><td> </td></tr><tr valign="top"><td>N1100 G1 X20 RNDM=5</td><td> </td></tr><tr valign="top"><td>N1200 G1 Y20 <b>PACCLIM=0.5</b></td><td>; Der Achsschlitten in Y-Richtung wird mit max. 0.5 m/ss beschleunigt/verzögert.</td></tr><tr valign="top"><td>N1300 G1 X0 Y40</td><td>; Die Bahnbewegung der Achsschlitten in X-Richtung und Y-Richtung werden mit max. 0.5 m/ss beschleunigt/verzögert.</td></tr><tr valign="top"><td>N1400 G1 Y0</td><td> </td></tr><tr valign="top"><td>M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>Siehe auch:<br />    <a href="156663566091.html">Maximale Bahngeschwindigkeit anpassen (FLIM)</a><br />    <a href="156663557899.html">Maximale Achsgeschwindigkeit oder Spindeldrehzahl anpassen (VELOLIM)</a><br />    <a href="156663561995.html">Maximalen Achsruck anpassen (JERKLIM)</a></p>
+  </body>
+</html>

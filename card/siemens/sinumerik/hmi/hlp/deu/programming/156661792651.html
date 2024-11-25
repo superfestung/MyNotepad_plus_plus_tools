@@ -1,0 +1,68 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Toleranzen für Eilgangbewegungen anpassen (STOLF, CTOLG0, OTOLG0)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Toleranzen für Eilgangbewegungen anpassen (STOLF, CTOLG0, OTOLG0)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Die über Maschinendaten projektierten Toleranzen für Eilgangbewegungen (G0-Toleranzen) können im Teileprogramm temporär angepasst werden. Die Einstellungen in den Maschinendaten werden dabei nicht verändert. Nach Kanal- bzw. Programmende-Reset werden wieder die projektierten Toleranzen wirksam.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Voraussetzungen</h3>
+      <p>G0-Toleranzen werden nur wirksam, wenn folgende Bedingungen erfüllt sind:</p>
+      <ul>
+        <li>
+          <p>Eine der folgenden Funktionen ist aktiv:</p>
+          <ul>
+            <li>
+              <p>Kompressorfunktion COMP...</p>
+            </li>
+            <li>
+              <p>Überschleiffunktion G642 oder G645</p>
+            </li>
+            <li>
+              <p>Orientierungsüberschleifen OST</p>
+            </li>
+            <li>
+              <p>Orientierungsglättung ORISON</p>
+            </li>
+            <li>
+              <p>Glättung bei bahnrelativer Orientierung ORIPATH</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Im Teileprogramm folgen mehrere (≥ 2) G0-Sätze aufeinander.</p>
+          <p>Bei einem einzelnen G0-Satz werden G0-Toleranzen nicht wirksam, da beim Übergang von einer Nicht-G0-Bewegung zu einer G0-Bewegung (und umgekehrt) grundsätzlich die "<b>kleinere Toleranz</b>" (Werkstückbearbeitungstoleranz) wirkt!</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <h4 class="Blocklabel">Anpassung der relativen G0-Toleranz</h4>
+      <p>
+        <code>STOLF=&lt;Value></code>
+      </p>
+      <h4 class="Blocklabel">Anpassung der absoluten G0-Toleranzen</h4>
+      <p>
+        <code>CTOLG0=&lt;Value></code> </p>
+      <p>
+        <code>OTOLG0=&lt;Value></code> </p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Bedeutung</h3>
+      <a id="table_30ed10a5-29da-8827-f11f-1aee37a8c579">
+      </a> <a id="table_0"></a> <a id="table_30ed10a5-29da-8827-f11f-1aee37a8c579"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="12.5%"><col width="12.5%"><col width="10.0%"><col width="7.5%"><col width="57.5%"></colgroup><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>STOLF</code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Adresse zum Programmieren eines temporär wirksamen Toleranzfaktors für Eilgangbewegungen</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>Value</code><code>></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">G0-Toleranzfaktor</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Typ:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Wert:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">≥ 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Der G0-Toleranzfaktor kann sowohl größer als auch kleiner 1.0 sein. Ist der Faktor gleich 1.0 (Standardwert), sind für Eilgangbewegungen dieselben Toleranzen wirksam wie für Nicht-Eilgangbewegungen. Im Normalfall wird der Toleranzfaktor > 1.0 eingestellt.</p><p type="p_table_l" align="left">Der programmierte G0-Toleranzfaktor ist so lange wirksam, bis er durch eine erneute STOLF-Programmierung überschrieben bzw. durch eine CTOLG0/OTOLG0-Programmierung abgelöst oder durch Kanal- bzw. Programmende-Reset gelöscht wird.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt; 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Löschen des programmierten Toleranzfaktors</p><p type="p_table_l" align="left">⇒ Es gilt wieder der im Maschinendatum voreingestellte Toleranzfaktor.</p></td></tr><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>CTOLG0</code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Adresse zum Programmieren einer temporär wirksamen Konturtoleranz für Eilgangbewegungen</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Value></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Absolutwert für die Konturtoleranz</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Typ:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Wert:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">≥ 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Der programmierte Absolutwert für die Konturtoleranz ist so lange wirksam, bis er durch eine erneute CTOLG0-Programmierung überschrieben bzw. durch eine STOLF-Programmierung abgelöst oder durch Kanal- bzw. Programmende-Reset gelöscht wird.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt; 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Löschen des programmierten Toleranzwerts</p><p type="p_table_l" align="left">⇒ Es gilt wieder der im Maschinendatum voreingestellte Toleranzwert.</p></td></tr><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>OTOLG0</code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Adresse zum Programmieren einer temporär wirksamen Orientierungstoleranz für Eilgangbewegungen</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Value></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Absolutwert für die Orientierungstoleranz</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Typ:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Wert:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">≥ 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Der programmierte Absolutwert für die Orientierungstoleranz ist so lange wirksam, bis er durch eine erneute OTOLG0-Programmierung überschrieben bzw. durch eine STOLF-Programmierung abgelöst oder durch Kanal- bzw. Programmende-Reset gelöscht wird.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt; 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Löschen des programmierten Toleranzwerts</p><p type="p_table_l" align="left">⇒ Es gilt wieder der im Maschinendatum voreingestellte Toleranzwert.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Vorrang hat immer die zuletzt programmierte Adresse, wie die folgenden Beispiele zeigen:</p><ul class="safety"><li class="safety"><p class="safety">Bei Programmierung von CTOLG0 bei bestehendem STOLF wird für das Überschleifen der Kontur der mit CTOLG0 programmierte Toleranzwert verwendet.</p></li><li class="safety"><p class="safety">Ebenso wird bei Programmierung von OTOLG0 bei bestehendem STOLF für das Überschleifen der Orientierung der mit OTOLG0 programmierte Toleranzwert verwendet.</p></li><li class="safety"><p class="safety">Nach erneuter Programmierung von STOLF wird wieder der Toleranzfaktor für die Kontur- und Orientierungstoleranz verwendet.</p></li></ul></td></tr></table><a name="block_4"></a><h3 class="Blocktitle">Beispiele</h3><h4 class="Blocklabel">Beispiel 1: Anpassung der relativen G0-Toleranz</h4><a id="table_ca882b10-aaa0-4548-bea2-4e8aad272fa6"></a> <a id="table_1"></a> <a id="table_ca882b10-aaa0-4548-bea2-4e8aad272fa6"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EKAAC"><colgroup><col width="34.1%"><col width="65.9%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td><b>COMPCAD</b> G645 G1 F10000</td><td>; Kompressor-Funktion COMPCAD</td></tr><tr valign="top"><td>X... Y... Z...</td><td>; Hier wirken die Maschinen- und Settingdaten.</td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0  X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0  X... Y... Z...</td><td>; Hier wirkt das Maschinendatum $MC_G0_TOLERANCE_FACTOR (z.B. =3), also eine Überschleiftoleranz von:$MC_G0_TOLERANCE_FACTOR * $MA_COMPRESS_POS_TOL</td></tr><tr valign="top"><td>CTOL=0.02</td><td> </td></tr><tr valign="top"><td><b>STOLF=4</b></td><td> </td></tr><tr valign="top"><td>G1 X... Y... Z...</td><td>; Ab hier wirkt eine Konturtoleranz von 0,02 mm.</td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0 X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td>; Ab hier wirkt ein G0-Toleranzfaktor von 4, also eine Konturtoleranz von 0,08 mm.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Beispiel 2: Anpassung der absoluten G0-Toleranzen</h4><p>In den Maschinendaten sollen folgende absolute G0-Toleranzen voreingestellt sein:</p><ul><li><p>G0-Konturtoleranz: 0.1</p></li><li><p>G0-Orientierungstoleranz: 1.0</p></li></ul><p>Im Teileprogramm sollen diese Toleranzen temporär angepasst werden: </p><a id="table_2dc44b50-dc74-1ad5-909d-5c1e3e19ed33"></a> <a id="table_2"></a> <a id="table_2dc44b50-dc74-1ad5-909d-5c1e3e19ed33"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EJDAC"><colgroup><col width="34.1%"><col width="65.9%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td><b>COMPCAD</b> G645 G1 F10000</td><td>; Kompressor-Funktion COMPCAD</td></tr><tr valign="top"><td>X... Y... Z...</td><td>; Ab hier wirken die projektierten Werkstückbearbeitungstoleranzen.</td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0  X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0  X... Y... Z...</td><td>; Hier wirken die projektierten absoluten G0-Toleranzen.</td></tr><tr valign="top"><td><b>CTOLG0=0.2 OTOLG0=2.0</b></td><td>; Programmierung der absoluten G0-Toleranzen. </td></tr><tr valign="top"><td>G1 X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0 X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td>; Ab hier wirken die programmierten G0-Toleranzen.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>Siehe auch:<br />    <a href="156661796235.html">Toleranzfaktor für Eilgangbewegungen anpassen (STOLF, CTOLG0, OTOLG0): Weitere Informationen</a></p>
+  </body>
+</html>

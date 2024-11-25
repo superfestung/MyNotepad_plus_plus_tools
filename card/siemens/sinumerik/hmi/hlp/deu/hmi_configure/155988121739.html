@@ -1,0 +1,220 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>PLC Security-Passwörter</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">PLC Security-Passwörter</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Einleitung</h3>
+      <p>Im Fenster "PLC Security" können Sie die folgenden PLC Security-Passwörter hinterlegen. </p>
+      <ul>
+        <li>
+          <p>Passwort zum Schutz vertraulicher PLC-Konfigurationsdaten</p>
+        </li>
+        <li>
+          <p>Zugriffsstufenpasswort für den Schutz der PLC vor unberechtigtem Zugriff</p>
+        </li>
+      </ul>
+      <p>Diese PLC Security-Passwörter werden im TIA Portal konfiguriert. SINUMERIK Operate benutzt das PLC-Zugriffstufenpasswort, um Zugriff auf die PLC zu erlangen.</p>
+      <p>Das Passwort zum Schutz vertraulicher PLC-Konfigurationsdaten benötigt SINUMERIK Operate nicht direkt. Es wird dennoch empfohlen, es in SINUMERIK Operate zu hinterlegen, damit es im Ersatzteilfall über SINUMERIK Operate wieder hergestellt werden kann. Andernfalls wird im Ersatzteilfall ein TIA Portal benötigt.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Zugriffstufenpasswort für den Schutz der PLC vor unberechtigtem Zugriff</h3>
+      <p>Die PLCs verfügen über verschiedene Zugriffsstufen, um den Zugang zu bestimmten Funktionen wie Hardware-Konfiguration, PLC-Projekt, Safety und Zugriff durch S7-Kommunikation und Bausteine einzuschränken.</p>
+      <p>Die Zugriffsstufen einer PLC werden <b>im TIA Portal</b> in den PLC-Eigenschaften im Bereich "Schutz & Security > Zugriffsstufe" konfiguriert.</p>
+      <p>
+        <b>Weitere Informationen dazu </b>finden Sie in der TIA Portal-Hilfe unter "Zugriffsstufen parametrieren".</p>
+      <p>Für den korrekten Betrieb von SINUMERIK Operate wird die Zugriffsstufe "Vollzugriff inkl. fehlersicher (kein Schutz)" benötigt. Ab der PLC-Firmware 2.9 ist die Standardeinstellung für die Zugriffsstufe "Kein Zugriff (kompletter Schutz)". Bei Verwendung dieser Einstellung können Sie für jede Zugriffsstufe ein Passwort vergeben. Damit wird verhindert, dass jemand ohne Kenntnis der Passwörter das PLC-Projekt herunterladen oder überschreiben kann. Weiterhin wird das Passwort benötigt, um über S7-Kommunikation mit der PLC zu kommunizieren.</p>
+      <p>Wenn im TIA Portal eine niedrigere Stufe als die Zugriffsstufe "Vollzugriff inkl. fehlersicher (kein Schutz)" eingestellt wurde, muss in SINUMERIK Operate das Passwort für die Zugriffsstufe "Vollzugriff inkl. fehlersicher (kein Schutz)" bekanntgemacht werden.</p>
+      <p>Hinterlegen Sie daher das Zugriffstufenpasswort für "Vollzugriff inkl. Fehlersicher (kein Schutz)" in SINUMERIK Operate unter "Inbetriebnahme > Security > PLC Security > PLC-Zugriffstufenpasswort".</p>
+      <p>Beachten Sie, dass gemäß den Produktsicherheitsvorschriften bei gesetztem Zugriffstufenpasswort bei der Wiederherstellung eines PLC-Archivs, das Zugriffstufenpasswort trotz Speicherung manuell eingegeben werden muss. Das Passwort muss nur dann eingegeben werden, wenn sich der Safety-Anteil geändert hat und die Zugriffstufe nicht Maschinenhersteller ist.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Für die Anzeige des korrekten Status und die Verwendung des eingegebenen Passworts ist nach Änderung ein Neustart der PLC notwendig.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">
+        <b>Passwort zum Schutz vertraulicher PLC-Konfigurationsdaten</b>
+      </h3>
+      <p>Die einwandfreie Funktion der zertifikatbasierten Kommunikationsmechanismen für die sichere Kommunikation wie Secure PG/PC- und HMI-Kommunikation, Secure Open User Communication, HTTPS, Secure SMTP over TLS oder OPC UA setzt voraus, dass die von diesen Zertifikaten benutzten privaten Schlüssel bestmöglich geschützt sind. Ab CNC-SW V6.21 können Sie ein benutzerdefiniertes Passwort zum Schutz dieser Schlüssel und anderer schützenswerter Daten einrichten: Passwort zum Schutz vertraulicher Konfigurationsdaten der PLC-CPU.</p>
+      <p>Das Passwort zum Schutz vertraulicher PLC-Konfigurationsdaten wird im TIA Portal in den PLC-Eigenschaften im Bereich "Schutz & Security > Schutz der PLC-Konfigurationsdaten" konfiguriert und erlaubt eine steuerungsindividuelle Verschlüsselung der vertraulichen PLC-Konfigurationsdaten.</p>
+      <p>Wenn das Passwort im TIA Portal für die PLC gesetzt ist, muss dieses Passwort auch im Speicherbereich der internen PLC-CPU der SINUMERIK hinterlegt werden. Andernfalls lässt sich die PLC nicht in RUN setzen, sie bleibt in STOP.</p>
+      <p>Das Passwort wird damit in der Hardware gespeichert und ist nicht im Projekt (Ladespeicher) enthalten. </p>
+      <p>Für das Setzen des Passworts in der NCU haben Sie folgende Möglichkeiten:</p>
+      <ul>
+        <li>
+          <p>Passwort setzen via TIA Portal </p>
+          <p>
+            <b>Weitere Informationen</b> dazu finden Sie in der TIA Portal-Hilfe unter "Schutz vertraulicher Konfigurationsdaten".</p>
+        </li>
+        <li>
+          <p>Passwort setzen via SINUMERIK Operate</p>
+          <p>Nur über diesem Weg kann das Passwort anschließend als Security-Komponente eines SINUMERIK-Archivs gesichert und beim Einlesen dieser Komponente wiederhergestellt werden.</p>
+        </li>
+      </ul>
+      <p>
+      </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Es wird empfohlen, das Passwort via SINUMERIK Operate zu setzen:</p>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">Wenn das Passwort über SINUMERIK Operate gesetzt wird, wird es im internen Passwortmanager von SINUMERIK Operate gespeichert.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">Wenn ein Archiv erstellt wird, das die Security-Komponente enthält, ist das Passwort im Archiv enthalten.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">Falls die NCU ausgetauscht werden muss, kann das Archiv eingelesen und so das Passwort wiederhergestellt werden.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">Bei einem Urlöschen der PLC wird das Passwort zum Schutz vertraulicher PLC-Konfigurationsdaten in der NCU nicht gelöscht. Dieses kann nur über den SINUMERIK Operate oder das TIA-Portal wieder entfernt werden</p>
+              </li>
+              <li class="safety">
+                <p class="safety">Wenn im Speicherbereich der PLC-CPU ein Passwort gesetzt ist, aber das Projekt im Ladespeicher enthält keinen Schutz vertraulicher PLC-Konfigurationsdaten, dann lässt sich ebenfalls die PLC nicht in RUN setzen.</p>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <p>Sie können das Passwort im Bedienbereich "Inbetriebnahme" unter "Security > PLC Security" setzen. Hierbei wird das Passwort in der PLC hinterlegt.</p>
+      <ul>
+        <li>
+          <p>Die Schaltfläche "Eingeben" setzt das Passwort in der PLC und hinterlegt es zu Backup-Zwecken (Security Archiv) im internen Passwortmanager.</p>
+        </li>
+        <li>
+          <p>Mit der Schaltfläche "Ändern" kann das bestehende Passwort im internen Passwortmanager und in der PLC geändert werden.</p>
+        </li>
+        <li>
+          <p>Mit der Schaltfläche "Aktivieren" können Sie ein bereits hinterlegtes Passwort nochmal in der PLC aktivieren. Dies wird benötigt, wenn das bereits hinterlegte Passwort z. B. aufgrund fehlender Zugriffsrechte nicht gesetzt werden konnte oder nach dem Einlesen eines Security Archivs.</p>
+        </li>
+        <li>
+          <p>Mit der Schaltfläche "Löschen" setzen Sie das Passwort in der PLC zurück und löschen es gleichzeitig aus dem internen Passwortmanager.</p>
+        </li>
+      </ul>
+      <p>
+      </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Bedingungen zum Passwort setzen</h4>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">Für das Setzen des Passwortes zum Schutz vertraulicher PLC-Konfigurationsdaten muss die PLC im Betriebszustand STOP sein.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">Im TIA Portal ist die Zugriffsstufe "Vollzugriff inkl. fehlersicher (kein Schutz)" eingestellt.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">Um auf die die Einstellungen im Fenster "PLC Security" zugreifen zu können, müssen Sie die folgenden Zugriffsstufen/Rollen haben:</p>
+                <ul class="safety">
+                  <li class="safety">
+                    <p class="safety">Bei aktivierter Benutzerverwaltung: Rolle "Security Admin" oder die Zugriffsstufe 3 (Anwender) oder höher</p>
+                  </li>
+                  <li class="safety">
+                    <p class="safety">Bei nicht aktivierter Benutzerverwaltung: Zugriffsstufe 3 (Anwender) oder höher</p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <p>
+      </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Für die Anzeige des korrekten Status ist nach Änderung ein Neustart der PLC notwendig.</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <p>Siehe auch:<br />    <a href="PLCSecurity.html">PLC Security-Passwörter setzen</a></p>
+  </body>
+</html>

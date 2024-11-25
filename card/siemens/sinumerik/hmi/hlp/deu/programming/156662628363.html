@@ -1,0 +1,54 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Schachtelung von Unterprogrammen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Schachtelung von Unterprogrammen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Ein Hauptprogramm kann Unterprogramme aufrufen, die wiederum Unterprogramme aufrufen. Die Abläufe der Programme sind somit ineinander geschachtelt. Jedes Programm läuft dabei in einer eigenen Programmebene.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Schachtelungstiefe</h3>
+      <p>Die NC-Sprache stellt aktuell 16 Programmebenen zur Verfügung. Das Hauptprogramm läuft immer in der obersten Programmebene 0. Ein Unterprogramm läuft immer in der dem Aufruf folgenden nächstniedrigeren Programmebene. Die Programmebene 1 ist somit die erste Unterprogrammebene.</p>
+      <p>Unterteilung der Programmebenen:</p>
+      <ul>
+        <li>
+          <p>Programmebene 0: Hauptprogrammebene</p>
+        </li>
+        <li>
+          <p>Programmebene 1 - 15: Unterprogrammebene 1 - 15</p>
+          <a id="image_784254219_0">
+          </a> <img border="0" src="images/161883504523.png" width="454" height="293"/></li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Interruptroutinen (ASUP)</h3>
+      <p>Wird im Rahmen einer Interruptroutine ein Unterprogramm aufgerufen, wird dieses nicht in der aktuellen im Kanal aktiven Programmebene (n), sondern ebenfalls in der nächstniedrigeren Programmebene (n+1) abgearbeitet. Damit dies auch in der untersten Programmebene noch möglich ist, stehen im Zusammenhang mit Interruptroutinen 2 zusätzliche Programmebenen (16 und 17) zur Verfügung.</p>
+      <p>Werden mehr als 2 Programmebenen benötigt, muss dies explizit in der Strukturierung des im Kanal abgearbeiteten Teileprogramms berücksichtigt werden. D. h. es darf dann maximal nur so viele Programmebenen beanspruchen, dass noch ausreichend Programmebenen für die Interruptbearbeitung zur Verfügung stehen.</p>
+      <p>Benötigt die Interruptbearbeitung z. B. 4 Programmebenen, muss das Teileprogramm so strukturiert werden, dass es maximal Programmebene 13 belegt. Erfolgt dann ein Interrupt, stehen diesem die benötigten 4 Programmebenen (14 bis 17) zur Verfügung.</p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Siemens-Zyklen</h3>
+      <p>Siemens-Zyklen benötigen 3 Programmebenen. Der Aufruf eines Siemens-Zyklus muss daher spätestens erfolgen in:</p>
+      <ul>
+        <li>
+          <p>Teileprogrammbearbeitung: Programmebene 12</p>
+        </li>
+        <li>
+          <p>Interruptroutine: Programmebene 14</p>
+        </li>
+      </ul>
+    </div>
+    <p>Siehe auch:<br />    <a href="156662619915.html">Unterprogramm</a></p>
+  </body>
+</html>

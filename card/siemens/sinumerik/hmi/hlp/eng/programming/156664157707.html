@@ -1,0 +1,29 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Configuring drive-integrated retraction (ESRS)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Configuring drive-integrated retraction (ESRS)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>The drive parameters for "retraction" of the drive-integrated ESR function are configured using the <code>ESRR(...)</code> function.  </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>
+        <code>ESRR(&lt;axis_1>,&lt;retraction distance_1>,&lt;retraction velocity_1>[,...,&lt;axis_n>,&lt;retraction distance_n>,&lt;retraction velocity_n>])</code>
+      </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Meaning</h3>
+      <a id="table_bd45bd02-0507-441d-90ef-0f7df8ae202a">
+      </a> <a id="table_0"></a> <a id="table_bd45bd02-0507-441d-90ef-0f7df8ae202a"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="33.3%"><col width="20.4%"><col width="46.2%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>ESRR(...)</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Function to write to the drive parameters for the ESR function "retract" </p><p type="p_table_l" align="left">The function: </p><ul class="table"><li><p>Must be alone in the block.</p></li><li><p>Triggers a preprocessing stop.</p></li><li><p>Cannot be used in synchronized actions.</p></li></ul></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;axis_1>,</code><br /><code>...,</code><br /><code>&lt;axis_n></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Axis for which drive-integrated retraction should be configured</p><p type="p_table_l" align="left">For this axis, drive parameter p0888 (configuration) is written to in the drive:</p><p type="p_table_l" align="left">p0888 = 2</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">AXIS</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Channel axis identifier</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;retraction distance_1>,</code><br /><code>...,</code><br /><code>&lt;retraction distance_n></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">For the drive, the retraction distance is converted into a retraction speed. For the specified axis, the value is written to drive parameter p0893 (speed):</p><p type="p_table_l" align="left">p0893 = (&lt;retraction distance _n> converted into retraction speed)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Unit:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">mm/min, inch/min, degrees/min (depending on the unit of the axis)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">MIN - MAX</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;retraction</code><br /><code>velocity_1>,</code><br /><code>...,</code><br /><code>&lt;retraction</code><br /><code>velocity_n></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">For the drive, the retraction velocity is converted into a time. For the specified axis, the value is written to drive parameter p0892 (timer) [s]: </p><p type="p_table_l" align="left">p0892 = &lt;retraction distance_n> / &lt;retraction velocity _n></p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Unit:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">mm/min, inch/min, degrees/min (depending on the unit of the axis)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">0.00 - MAX</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">A maximum of 5 axes can be programmed in a function call; n = 5</p></td></tr></table></p></div>
+  </body>
+</html>

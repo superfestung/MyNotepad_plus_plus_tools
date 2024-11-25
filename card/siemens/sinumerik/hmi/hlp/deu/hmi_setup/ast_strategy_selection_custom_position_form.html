@@ -1,0 +1,88 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Achse: Strategie für Lageregler auswählen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Achse: Strategie für Lageregler auswählen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Die Stratege 203 (Voreinstellung) beinhaltet die Optimierung der Lagereglerverstärkung (MD32200) ohne Drehzahlsollwertfilter. Dabei wird auch die Vorsteuerung (FFW) parametriert. Strategie 203 ist die empfohlene Strategie. Sollte keine Vorsteuerung erwünscht sein (da z. B. andere Achsen nicht für Vorsteuerung eingerichtet sind) kann Strategie 207 (FFWOF) gewählt werden.</p>
+      <p>Je nach Optimierungsziel (Robuste/Normale/Schnelle Ausregelung) werden für den Verstärkungsfaktor angegeben:</p>
+      <ul>
+        <li>
+          <p>Kv-Reduzierung</p>
+        </li>
+        <li>
+          <p>Kv-Obergrenze</p>
+        </li>
+      </ul>
+      <p>
+        <b>DSC aktiv:</b>
+      </p>
+      <p>Dynamische Steifigkeitsregelung (DSC) wird von der automatischen Servo Optimierung aktiviert (Vorbelegung). Damit sind höhere Verstärkungsfaktoren möglich. </p>
+      <p>
+        <b>Kv-Reduzierung:</b>
+      </p>
+      <p>Mit diesem Faktor 0,1 ... 1,0 stellen Sie eine Gewichtung für den maximal möglichen Verstärkungsfaktor ein. Der Verstärkungsfaktor wird begrenzt durch das Amplitudenverhalten des Reglers. Der Lageregler darf nicht überschwingen. Um den Lageregler robuster gegen mechanische Änderungen zu machen, wird er je nach Optimierungsziel vorbelegt mit: 0.4/0.6/0.8</p>
+      <p>
+        <b>Kv-Obergrenze:</b>
+      </p>
+      <p>Auch wenn rein rechnerisch höhere Werte für den Kv-Faktor möglich wären, wird der Kv-Faktor über diesen absoluten Zahlenwert zusätzlich begrenzt. Hierüber wird auch Robustheit erreicht. Der Kv-Faktor muss in der Einheit m/mm/min eingegeben werden. </p>
+      <p>
+        <b>Vorsteuerungsart:</b>
+      </p>
+      <p>Neben der Abwahl der Vorsteuerung (= "keine") gibt es Drehzahlvorsteuerung und Momentenvorsteuerung zur Auswahl. Sofern das  Telegramm 136 für die Kommunikation zwischen Antrieb und NC ausgewählt ist, wird Momentenvorsteuerung eingestellt. Diese ermöglicht einen minimalen Schleppabstand und damit höchste Konturgenauigkeit. Alle auf einer Bahn interpolierenden Achsen müssen die gleiche Vorsteuerungsart haben.</p>
+      <p>Sofern einer Bahnachse nicht Telegramm 136 zugeordnet ist und somit Drehzahlvorsteuerung erzwingt, werden bei der Optimierung der Bahninterpolation alle Bahnachsen einheitlich auf Drehzahlvorsteuerung gesetzt.</p>
+      <p>
+        <b>Methode für maximalen Kv: </b>
+      </p>
+      <p>Für große Maschinen oder Achsen mit niedrigen Eigenfrequenzen wird die Lageregleroptimierung mit Drehzahlsollwertfilter empfohlen. Dies wird über das Kontrollkästchen "Methode für maximalen Kv" ausgewählt.</p>
+      <p>Falls die Lagereglerverstärkung (Kv-Faktor) durch mechanische Eigenfrequenzen begrenzt ist, gibt es folgende Möglichkeiten, die Schwingung zu dämpfen: </p>
+      <ul>
+        <li>
+          <p>Standard: Maximierung des Kv-Faktors mit aktueller Drehzahlreglereinstellung.</p>
+        </li>
+        <li>
+          <p>PT1 Drehzahlsollwertfilter 2: Verwendung des zweiten Drehzahlsollwertfilters als Tiefpass zur Glättung der mech. Schwingung. Durch Verwendung des Filters 2 werden auch die Drehzahlvorsteuer-Sollwerte geglättet. </p>
+        </li>
+        <li>
+          <p>Dämpfungsoptimierter Drehzahlregler: Der Drehzahlregler wird nachoptimiert, mit dem Ziel möglichst viel Dämpfung bei der niedrigsten mech. Eigenfrequenz zu erreichen.</p>
+        </li>
+        <li>
+          <p>PT2 Drehzahlsollwertfilter 1: Wie bei "PT2 Drehzahlsollwertfilter 1"allerdings liegt Drehzahlsollwertfilter 1 bei aktivem DSC nur im geschlossen Lageregelkreis. Es wird also nur der Lagereglerausgang geglättet.</p>
+        </li>
+      </ul>
+      <p>
+        <b>Drehzahlsollwertfilter: </b>
+      </p>
+      <p>Sollte schon vorher bekannt sein, dass Sollwertfilter zur Stabilisierung des Lageregelkreises notwendig sind, können diese hier voreingestellt und reserviert werden. Die gewünschten Filter müssen zur Aktivierung mit dem Kontrollkästchen "Res" reserviert werden. Danach können Sie die Filterparameter einstellen.</p>
+      <p>Es kann Drehzahlsollwertfilter 1 oder 2 verwendet werden. Beide werden durch die automatische Servo Optimierung jeweils als PT1-Tiefpass eingestellt. Filter 1 wirkt nur, wenn DSC aktiviert ist. Wenn Filter 1 gewählt wird, wird nur der Lagereglerausgang gefiltert. Der Drehzahlsollwertfilter wirkt nur im geschlossenen Lageregelkreis. Wenn Filter 2 gewählt wird, wird sowohl der Lagereglerausgang als auch der Drehzahlvorsteuerwert gefiltert. Dies erhöht den Schleppabstand, wenn ausschließlich Drehzahlvorsteuerung verwendet wird.</p>
+      <p>
+        <b>⇒ Weitere Aktionen:</b>
+      </p>
+      <ul>
+        <li>
+          <p>Softkey "<a href="45720875915.html">Strategie anpassen</a>", um die Einstellungen einer vordefinierten Strategie anzupassen. Dabei werden die Werte der vordefinierten Strategie in die benutzerdefinierte Strategie (209) kopiert. Dieser Softkey ist bei Anwahl der benutzerdefinierten Strategie nicht bedienbar. </p>
+        </li>
+        <li>
+          <p>Sofkey "Filter Details", um ein Filter auszuwählen oder anzupassen. Dieser Softkey ist nur bei Anwahl eines Filters in der benutzerdefinierten Strategie bedienbar.</p>
+        </li>
+        <li>
+          <p>Softkey "<a href="ast_strategy_selection_custom_axis_form.html">Achse</a>"/Softkey "<a href="ast_strategy_selection_custom_speed_form.html">Drehzahl</a>", um zur Strategieauswahl für Achse oder Drehzahlreg​ler zu wechseln.</p>
+        </li>
+        <li>
+          <p>Softkey "Abbruch" und "OK", um abzubrechen oder die neuen Einstellungen zu übernehmen.</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

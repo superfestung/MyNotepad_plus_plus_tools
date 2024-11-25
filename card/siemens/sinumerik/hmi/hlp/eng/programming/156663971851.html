@@ -1,0 +1,59 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Cancel preprocessing stop (STOPREOF)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Cancel preprocessing stop (STOPREOF)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>With the <code>STOPREOF</code> command, an existing preprocessing stop can be cancelled from a synchronized action.   </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">The <code>STOPREOF</code> command can only be programmed in non-modal synchronized actions (without specification of ID or IDS) and only in conjunction with the scanning frequency <code>WHEN</code>.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Example</h3>
+      <ul>
+        <li>
+          <p>N10: Non-modal synchronized action.<br />If the path distance-to-go $AC_DTEB is less than 5 mm, the existing preprocessing stop due to the reading of the analog input $A_INA is cancelled. </p>
+        </li>
+        <li>
+          <p>N20: Traversing block whose path distance-to-go is evaluated via $AC_DTEB.</p>
+        </li>
+        <li>
+          <p>N30: Branch that triggers the preprocessing stop due to the reading of $A_INA.</p>
+        </li>
+      </ul>
+      <p>Due to the synchronized action, input $A_INA is not evaluated at the end of the N20 block, but already 5 mm before the end of the block. If the voltage is then greater than 5 V at input $A_INA, there is a branch to "MARKE_1".</p>
+      <a id="table_5e77ee7f-a8f5-4409-8895-f4b1ef7c2e37">
+      </a> <a id="table_0"></a> <TableTitle></TableTitle><a id="table_5e77ee7f-a8f5-4409-8895-f4b1ef7c2e37"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EXB"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th>Program code</th></tr><tr valign="top"><td>N10 WHEN $AC_DTEB &lt; 5 DO STOPREOF</td></tr><tr valign="top"><td>N20 G01 X100</td></tr><tr valign="top"><td>N30 IF $A_INA[7] > 5000 GOTOF MARKE_1</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+  </body>
+</html>

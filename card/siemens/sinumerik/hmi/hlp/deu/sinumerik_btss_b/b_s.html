@@ -1,0 +1,304 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein B/S: BAG-spezifische Zustandsdaten</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein B/S: BAG-spezifische Zustandsdaten</h1>
+         </div>
+      </div>Während des Betriebes der NC-Steuerung treten unterschiedliche interne Zustände auf. Ebenso können sich systemspezifische
+      Daten  während des Betriebes ändern. Diese Daten werden im Gegensatz zu den Systemdaten als Zustandsdaten bezeichnet.<br/>
+      <br/>
+      Man unterscheidet:<br/>
+      - NCK-spezifische Zustandsdaten<br/>
+      - BAG-spezifische Zustandsdaten<br/>
+      - Kanalspezifische Zustandsdaten<br/>
+      - Antriebsspezifische Zustandsdaten (VSA)<br/>
+      - Antriebsspezifische Zustandsdaten (HSA)<br/>
+      
+      <div><a name="4745"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>autoJogState</b></td>
+            <td colspan="3" style="border:1px solid black">Status der BA Automatik+Jog</td>
+            <td width="20%" style="border:1px solid black">$AC_AUTO_JOG_STATE</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>BAG-Nummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span><a href="../sinumerik_btss_N/N_Y.html#328">numBAGs</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Status der Betriebsart Automatik+Jog<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>1:  Automatik ist angewählt, $MN_JOG_MODE_MASK ist gesetzt und die Betriebs-Arten-Gruppe (BAG)<br/>
+                   ist in "Reset".  Damit kann durch Drücken der +/- Tasten oder durch Drehen des Handrades in Automatik eine JOG-Bewegung
+               ausgelöst werden<br/>
+               2:  Diese BAG wurde wg. einer JOG-Bewegung intern nach JOG geschaltet. VDI und BTSS zeigen<br/>
+                   noch Automatik an.<br/>
+               0:  in allen anderen Fällen<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>2
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Bag/State/autoJogState[u&lt;BAG-Nummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3849"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>ncAutoCounter</b></td>
+            <td colspan="3" style="border:1px solid black">Zähler für Auto-Taste</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>5
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>BAG-Nummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span><a href="../sinumerik_btss_N/N_Y.html#328">numBAGs</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Zähler, welcher mit jeder 0-&gt;Flanke der Taste Auto<br/>
+               inkrementiert wird<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Bag/State/ncAutoCounter[u&lt;BAG-Nummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3850"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>ncJogCounter</b></td>
+            <td colspan="3" style="border:1px solid black">Zähler für Jog-Taste</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>BAG-Nummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span><a href="../sinumerik_btss_N/N_Y.html#328">numBAGs</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Zähler, welcher mit jeder 0-&gt;Flanke der Taste Jog<br/>
+               inkrementiert wird<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Bag/State/ncJogCounter[u&lt;BAG-Nummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3851"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>ncMDACounter</b></td>
+            <td colspan="3" style="border:1px solid black">Zähler für MDA-Taste</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>BAG-Nummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span><a href="../sinumerik_btss_N/N_Y.html#328">numBAGs</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Zähler, welcher mit jeder 0-&gt;Flanke der Taste MDA<br/>
+               inkrementiert wird<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Bag/State/ncMDACounter[u&lt;BAG-Nummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="360"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>opMode</b></td>
+            <td colspan="3" style="border:1px solid black">Aktive Betriebsart</td>
+            <td width="20%" style="border:1px solid black">DB11, DBXn6.0-n6.2 (n=0,2,4,6, ...)</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Aktive Betriebsart<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0 = JOG<br/>
+               1 = MDA<br/>
+               2 = AUTO<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Bag/State/opMode[u&lt;BAG-Nummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="390"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>readyActive</b></td>
+            <td colspan="3" style="border:1px solid black">BAG betriebsbereit</td>
+            <td width="20%" style="border:1px solid black">DB11, DBX6.3, DBX26.3, DBX46.3, ...</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Kennung ob BAG betriebsbereit ist.<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0 = nicht betriebsbereit<br/>
+               1 = betriebsbereit<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Bag/State/readyActive[u&lt;BAG-Nummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="395"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>resetActive</b></td>
+            <td colspan="3" style="border:1px solid black">alle Kanäle der BAG im Reset</td>
+            <td width="20%" style="border:1px solid black">DB11, DBX6.7, DBX26.7, DBX46.7, ...</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Kennung ob alle Kanäle der BAG im Reset sind.<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0 = nicht alle Kanäle im Reset<br/>
+               1 = alle Kanäle im Reset<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Bag/State/resetActive[u&lt;BAG-Nummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

@@ -1,0 +1,262 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block C/FG: Channel-specific frames for grinding applications</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block C/FG: Channel-specific frames for grinding applications</h1>
+         </div>
+      </div>These occur only if $MC_MM_NUM_G_FRAMES &gt; 0 and $MN_MM_NUM_GLOBAL_G_FRAMES = 0, otherwise all grinding frames are configured
+      globally for the NCU.<br/>
+      <br/>
+      The following frame indices are possible:<br/>
+        0: GRAME1<br/>
+        1: GRAME2<br/>
+        2: GRAME3<br/>
+        3: GRAME4<br/>
+        ...<br/>
+        n: GRAMEn<br/>
+        ...<br/>
+       99: GRAME100<br/>
+      <br/>
+      The maximum frame index is: $MC_MM_NUM_G_FRAMES - 1<br/>
+      <br/>
+      The PI service SETUFR has to be called to activate the grinding frames.<br/>
+      
+      <div><a name="5786"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>linShift</b></td>
+            <td colspan="3" style="border:1px solid black">Translation of grinding frame</td>
+            <td width="20%" style="border:1px solid black">$P_GFR[x,y,TR] x=FrameNo,y=Axis</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame<br>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + axis number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_G_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Translation of grinding frame (the physical unit is defined in basicLengthUnit in block Y in area N).<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Linear position (mm, inch or user defined)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/GrindingFrame/linShift[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5787"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>linShiftFine</b></td>
+            <td colspan="3" style="border:1px solid black">Fine offset for frames</td>
+            <td width="20%" style="border:1px solid black">$P_GFR[x,y,FI] x=FrameNo,y=Axis</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame<br>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + axis number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_G_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Fine offset with frames, expansion of basic frames and settable frames<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Linear position (mm, inch or user defined)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/GrindingFrame/linShiftFine[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5788"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mirrorImgActive</b></td>
+            <td colspan="3" style="border:1px solid black">Mirroring of grinding frame</td>
+            <td width="20%" style="border:1px solid black">$P_GFR[x,y,MI] x = FrameNo,y=Axis</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame<br>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + axis number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_G_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Mirroring<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>0 = mirroring not active<br/>
+               1 = mirroring active<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/GrindingFrame/mirrorImgActive[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5789"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>rotation</b></td>
+            <td colspan="3" style="border:1px solid black">Rotation of grinding frame</td>
+            <td width="20%" style="border:1px solid black">$P_GFR[x,y,RT] x = FrameNo,y=Axis</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame<br>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + axis number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_G_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Rotation<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Angle (degree)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/GrindingFrame/rotation[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5790"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>rotationCoordinate</b></td>
+            <td colspan="3" style="border:1px solid black">Rotation of grinding frame coordinate</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + 1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_G_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Rotation around a coordinate.<br/>
+               1: Rotation around the first non-existent geometry axis.<br/>
+               <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Angle (degree)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/GrindingFrame/rotationCoordinate[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5791"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>scaleFact</b></td>
+            <td colspan="3" style="border:1px solid black">Scaling factor of grinding frame</td>
+            <td width="20%" style="border:1px solid black">$P_GFR[x,y,SC] x = FrameNo,y=Axis</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame<br>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + axis number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_G_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Scaling factor<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/GrindingFrame/scaleFact[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

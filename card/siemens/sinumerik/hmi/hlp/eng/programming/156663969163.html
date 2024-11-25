@@ -1,0 +1,34 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Programmed read-in disable (RDISABLE)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Programmed read-in disable (RDISABLE)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Function   </h3>
+      <p>The <code>RDISABLE</code> command in the active section causes block processing to be stopped when the relevant condition is fulfilled. Processing of programmed motion-synchronous actions still continues. The read-in disable is canceled again as soon as the condition for the <code>RDISABLE</code> is no longer fulfilled.</p>
+      <p>An exact stop is initiated at the end of the block containing <code>RDISABLE</code> irrespective of whether or not the read-in disable is still active. The exact stop is also triggered if the control is in the continuous-path mode (<code>G64</code>, <code>G641</code> ... <code>G645</code>).</p>
+      <p>
+        <code>RDISABLE</code> can be programmed with reference to the block or also modal (<code>ID=</code>, <code>IDS=</code>)!</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Application</h3>
+      <p>Using <code>RDISABLE</code>, for example, the program can be started in the interpolator clock cycle as a function of external inputs.</p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Example</h3>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E2B"><colgroup><col width="33.5%"><col width="66.5%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>WHENEVER $A_INA[2]&lt;7000 
+DO RDISABLE</td><td>; Program processing is stopped if the voltage at input 2 drops to below 7 V (assuming that the value 1000 corresponds to 1 V).</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N10 G01 X10</td><td>; RDISABLE acts at the end of N10, if the condition is fulfilled during its processing.</td></tr><tr valign="top"><td>N20 Y20</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_4"></a><h3 class="Blocktitle">Supplementary conditions</h3><h4 class="Blocklabel">Read-in disable RDISABLE in conjunction with axis exchange</h4><p>Acts via the synchronized actions <code>RDISABLE</code> read-in disable and axis exchange (e.g. path axis → positioning axes) together in one block, <code>RDISABLE</code> does not act on the action block, but the re-approach block <code>REPOSA</code> implicitly generated as a result of the axis exchange:</p><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EQD"><colgroup><col width="50.4%"><col width="49.6%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N100 G0 G60 X300 Y300</td><td> </td></tr><tr valign="top"><td>N105 WHEN TRUE DO POS[X]=20 FA[X]=20000</td><td>; Synchronized action → REORG → REPOSA</td></tr><tr valign="top"><td>N110 WHENEVER $AA_IM[X]&lt;>20 DO RDISABLE</td><td>; RDISABLE acts on REPOSA</td></tr><tr valign="top"><td>N115 G0 Y20</td><td>; 1. X-axis, 2nd Y axis</td></tr><tr valign="top"><td>N120 Y-20</td><td> </td></tr><tr valign="top"><td>N125 M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p class="comment">Path axis X becomes a positioning axis as a result of the synchronized action in the block N105. <code>REORG</code> is therefore executed in the channel with <code>REPOSA</code>. Therefore, <code>RDISABLE</code> in N110 does not act on block N115 – but instead on the internal <code>REPOSA</code> block. As a consequence, to start, positioning axis X is traversed to its programmed position and then in block N115, the Y axis to its programmed position.</p><p class="comment">An explicit release of path axis X before traversing as positioning axis (synchronized action in N105) with <code>RELEASE(X)</code> avoids the <code>REORG</code> operation, and the X and Y axes traverse together in block N115.</p><a id="table_2"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ELF"><colgroup><col width="51.9%"><col width="48.1%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N100 G0 G60 X300 Y300</td><td> </td></tr><tr valign="top"><td><b>N101 RELEASE(X)</b></td><td>; Explicit release</td></tr><tr valign="top"><td>N105 WHEN TRUE DO POS[X]=20 FA[X]=20000</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Restweglöschen (DELDTG)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Restweglöschen (DELDTG)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Mit dem Befehl <code>DELDTG</code> kann in Synchronaktionen der Bahnrestweg und mit der Funktion <code>DELDTG (...)</code> axiale Restwege gelöscht werden.  </p>
+      <p>Nach dem Restweglöschen kann der Wert des gelöschten Restweges über eine Systemvariable gelesen werden:</p>
+      <ul>
+        <li>
+          <p>Bahnrestweg: $AC_DELT</p>
+        </li>
+        <li>
+          <p>Axialer Restweg: $AA_DELT</p>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>
+        <code>DELDTG</code>
+      </p>
+      <p class="comment">
+        <code>DELDTG(&lt;Achse 1>[,&lt;Achse 2>,...])</code>
+      </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Bedeutung</h3>
+      <a id="table_0">
+      </a> <TableTitle></TableTitle><a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="21.9%"><col width="78.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Parameter</p></th><th><p type="p_table_lb" align="left">Bedeutung</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>DELDTG</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Löschen des Bahnrestweges</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>DELDTG(...)</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Löschen der axialen Restwege der angegebenen Kanalachsen</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Achse n></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Kanalachse</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Randbedingungen</h3><h4 class="Blocklabel">Bahnspezifisches und axiales Restweglöschen</h4><p>Bahnspezifisches und axiales Restweglöschen darf nur in einer <b>satzweise </b>wirksamen Synchronaktion (ohne Angabe von ID oder IDS) ausgeführt werden.</p><h4 class="Blocklabel">Bahnspezifisches Restweglöschen</h4><ul><li><p>Das Löschen des Bahnrestweges darf nur in einer satzweise wirksamen Synchronaktion (ohne Angabe von ID oder IDS) ausgeführt werden.</p></li><li><p>Das Löschen des Bahnrestweges darf bei aktiver Werkzeugradiuskorrektur <b>nicht </b>verwendet werden.</p></li></ul><h4 class="Blocklabel">Axiales Restweglöschen</h4><p>Restweglöschen bei Teilungsachsen:</p><ul><li><p><b>ohne </b>Hirth-Verzahnung: Die Achse wird sofort abgebremst</p></li><li><p><b>mit </b>Hirth-Verzahnung: Die Achse fährt bis zur nächsten Teilungsposition</p></li></ul><a name="block_4"></a><h3 class="Blocktitle">Beispiele</h3><h4 class="Blocklabel">Bahnrestweg löschen</h4><p>Wird während des Verfahrsatzes N20 der Eingang $A_IN gesetzt, wird der Bahnrestweg gelöscht.</p><a id="table_1"></a> <TableTitle></TableTitle><a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E1D"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th>Programmcode</th></tr><tr valign="top"><td>N10 WHEN $A_IN[1]==1 DO DELDTG</td></tr><tr valign="top"><td>N20 G01 X100 Y100 F1000</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Axiale Restwege löschen</h4><p><b>N10</b>: Wird zu einem beliebigen Zeitpunkt innerhalb des Teileprogramms der Eingang 1 gesetzt, wird die die V-Achse als Positionierachse in positiver Verfahrrichtung gestartet.</p><p><b>N100</b>: Satzweise Synchronaktion zum Restweglöschen der V-Achse, abhängig vom digitalen Eingang 2. </p><p><b>N110</b>: Satzweise Synchronaktion zum Restweglöschen der X1-Achse, abhängig vom digitalen Eingang 3.</p><p><b>N120</b>: Die X1-Achse wird satzübergreifend positioniert. Die Y- und Z-Achse als Bahnachsen verfahren. Die satzweisen Synchronaktionen aus N100 und N110 werden zusammen mit N120 ausgeführt. Mit dem Satzende von N120 werden auch die satzweisen Synchronaktionen beendet.</p><p>Somit kann der Restweg der X1- und V-Achse nur gelöscht werden, solange N120 aktiv ist.</p><a id="table_2"></a> <TableTitle></TableTitle><a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E1E"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th>Programmcode </th></tr><tr valign="top"><td>N10 ID=1 WHEN $A_IN[1]==1 DO MOV[V]=1 FA[V]=700</td></tr><tr valign="top"><td>...</td></tr><tr valign="top"><td>N100 WHEN $A_IN[2]==1 DO DELDTG(V)</td></tr><tr valign="top"><td>N110 WHEN $A_IN[3]==1 DO DELDTG(X1)</td></tr><tr valign="top"><td>N120 POSA[X1]=100 FA[X1]=10 G1 Y100 Z100 F1000</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Vorlaufstopp aufheben (STOPREOF)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Vorlaufstopp aufheben (STOPREOF)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Mit dem Befehl <code>STOPREOF</code> kann aus Synchronaktion heraus ein bestehender Vorlaufstopp aufgehoben werden.   </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Der Befehl <code>STOPREOF</code> darf nur in satzweisen Synchronaktionen (ohne Angabe von ID oder IDS) und nur im Zusammenhang mit der Häufigkeitsangabe <code>WHEN</code> programmiert werden.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Beispiel</h3>
+      <ul>
+        <li>
+          <p>N10: Satzweise Synchronaktion<br />Wird der Bahnrestweg $AC_DTEB kleiner als 5 mm, wird der bestehende Vorlaufstopp aufgrund des Lesens des analogen Eingangs $A_INA aufgehoben. </p>
+        </li>
+        <li>
+          <p>N20: Verfahrsatz, dessen Bahnrestweg über $AC_DTEB ausgewertet wird.</p>
+        </li>
+        <li>
+          <p>N30: Verzweigung, die aufgrund des Lesens von $A_INA Vorlaufstopp auslöst.</p>
+        </li>
+      </ul>
+      <p>Aufgrund der Synchronaktion wird nicht erst ab Satzende von N20 der Eingang $A_INA ausgewertet, sondern bereits 5 mm vor dem Satzende. Wird dann am Eingang $A_INA die Spannung größer als 5 V, wird zu " MARKE_1" verzweigt.</p>
+      <a id="table_5e77ee7f-a8f5-4409-8895-f4b1ef7c2e37">
+      </a> <a id="table_0"></a> <TableTitle></TableTitle><a id="table_5e77ee7f-a8f5-4409-8895-f4b1ef7c2e37"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EXB"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th>Programmcode</th></tr><tr valign="top"><td>N10 WHEN $AC_DTEB &lt; 5 DO STOPREOF</td></tr><tr valign="top"><td>N20 G01 X100</td></tr><tr valign="top"><td>N30 IF $A_INA[7] > 5000 GOTOF MARKE_1</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+  </body>
+</html>

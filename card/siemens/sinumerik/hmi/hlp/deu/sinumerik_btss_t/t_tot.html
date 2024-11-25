@@ -1,0 +1,194 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein T/TOT: Schneidendaten: transformierte Korrekturdaten</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein T/TOT: Schneidendaten: transformierte Korrekturdaten</h1>
+         </div>
+      </div>Die Korrekturdaten der Werkzeugschneiden müssen von HMI sowohl als transformierte als auch als untransformierte Daten angezeigt
+      und geändert werden können. Die Transformation bezieht sich auf die Adapterdaten (falls vorhanden) von Magazinplätzen. HMI
+      kann "gleichzeitig" (in unterschiedlichen Applikationen oder in unterschiedlichen HMIs) transformierte und untransformierte
+      Daten (auch desselben Werkzeugs) anzeigen und Änderungen zulassen.<br/>
+      <br/>
+      Für den Zugriff auf die transformierten Daten gibt es den neuen Baustein T / TOT (Schneidendaten: transformierte Korrekturdaten),
+      der dem schon vorhandenen Baustein T / TO (Schneidendaten: Korrekturdaten) gleich ist, aber anstatt der untransformierten
+      die transformierten Daten liefert.<br/>
+      Die Infomation edgeDNo (zugeordnete D-Nummern der Schneiden) ist im Baustein T / TOT genauso wie im Baustein T / TO unter
+      dem Offset (<a href="../sinumerik_btss_N/N_Y.html#333">numCuttEdgeParams</a> * <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a>) enthalten.<br/>
+      Beide Bausteine sind 2-dimensional organisiert.<br/>
+      <br/>
+      Die T-Nummer ist Spaltenindex.<br/>
+      Die Zeilennummer wird folgendermaßen berechnet:<br/>
+      (SchneidenNr -1) * <a href="../sinumerik_btss_N/N_Y.html#333">numCuttEdgeParams</a> +Parameter-Nr.<br/>
+      <br/>
+      <a href="../sinumerik_btss_N/N_Y.html#333">numCuttEdgeParams</a> = Parameter je Schneide (derzeit 25) (aus Y im Bereich N)<br/>
+      SchneidenNr = Schneidennummer zum Werkzeug<br/>
+      <br/>
+      Beispiel: mit <a href="../sinumerik_btss_N/N_Y.html#333">numCuttEdgeParams</a> =  25 und <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a> = 9<br/>
+      <br/>
+      Spalte: T-Nummer<br/>
+      Zeilen:<br/>
+      1	Schneide 1,				Parameter 1<br/>
+      2	Schneide 1,				Parameter 2<br/>
+                                          ...<br/>
+      25	Schneide 1,				Parameter numCuttEdgeParams<br/>
+      26	Schneide 2,				Parameter 1<br/>
+      27	Schneide 2,				Parameter 2<br/>
+                                          ...<br/>
+      50	Schneide 2,				Parameter numCuttEdgeParams<br/>
+      ...<br/>
+      225	Schneide maxnumCuttEdges_Tool,	Parameter numCuttEdgeParams<br/>
+      226	Schneide 1,				zugeordnete D-No der Schneide 1<br/>
+      <br/>
+      Untransformierte Daten:	/Tool/Compensation/edgeData[uToa,cTNr,Zeile_von,Zeile_bis]<br/>
+      Transformierte Daten:	/Tool/CompTransfor/edgeData[uToa,cTNr,Zeile_von,Zeile_bis]<br/>
+      <br/>
+      Transformiert darstellbare Werte sind die 9 GeoDaten (entsprechend L1, L2, L3, Radius, und im Allgemeinen weitere 5 Werte),
+      Verschleiß und Summenkorrekturen.<br/>
+      <br/>
+      Greift man über den Baustein für transformierte Daten auf solche Werkzeuge zu, die sich nicht auf einem Magazinplatz mit Adapterdaten
+      befinden, so werden die Daten als untransformierte Daten behandelt.<br/>
+      <br/>
+      
+      <div><a name="2371"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>cuttEdgeParam</b></td>
+            <td colspan="3" style="border:1px solid black">durch <a href="../sinumerik_btss_T/T_TOT.html#2370">edgeData</a> ersetzt
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>0
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>?<br>siehe Beschreibung <a href="../sinumerik_btss_T/T_TOT.html#2370">edgeData</a></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>(<a href="../sinumerik_btss_N/N_Y.html#333">numCuttEdgeParams</a> + 1) * <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">durch <a href="../sinumerik_btss_T/T_TOT.html#2370">edgeData</a> ersetzt<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>Linearposition (mm, inch oder userdef)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0.0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Tool/CompTransfor/cuttEdgeParam[u&lt;Werkzeugber.&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2370"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>edgeData</b></td>
+            <td colspan="3" style="border:1px solid black">Transformierte Schneidenkorrekturdaten</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>Werkzeugnummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Korrekturwert<br>Siehe Beschreibung für den Baustein T / TO 
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>(<a href="../sinumerik_btss_N/N_Y.html#333">numCuttEdgeParams</a> + 1) * <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Korrekturwertparameter und Schneidenliste mit D-Nummern zu einem Werkzeug<br/>
+               1. Teil: Korrekturwertparameter für eine Werkzeugschneide:<br/>
+               Bestimmung des Zeilenindex: (SchneidenNr - 1) * <a href="../sinumerik_btss_N/N_Y.html#333">numCuttEdgeParams</a> + ParameterNr<br/>
+               Die Bedeutung der einzelnen Parameter hängt vom Typ des jeweiligen Werkzeuges ab. Zur Zeit sind 35 Parameter für jede Werkzeugschneide
+               reserviert (jedoch nur ein Teil davon ist mit Werten belegt). Welche der Parameter, die teilweise nur optional sind, gültig
+               sind, ist der BTSS-Variablen "<a href="../sinumerik_btss_N/N_Y.html#2342">extraCuttEdgeParams</a>" zu entnehmen. Die Anzahl von Schneidenparametern kann mit der Variable <a href="../sinumerik_btss_N/N_Y.html#333">numCuttEdgeParams</a> ausgelesen werden. <br/>
+               Eine detaillierte Beschreibung der Werkzeugparameter ist der Dokumentation 'Werkzeugkorrektur (W1)', Kapitel 'Werkzeugschneide'
+               zu entnehmen. Die folgende Liste ist eine Kurzübersicht der Werkzeugschneiden-Parameter:<br/>
+               Parameter 1: Werkzeugtyp ($TC_DP1)<br/>
+               Parameter 2: Schneidenlage ($TC_DP2)<br/>
+               Parameter 3: Geometrie Länge 1 ($TC_DP3)<br/>
+               Parameter 4: Geometrie Länge 2 ($TC_DP4)<br/>
+               Parameter 5: Geometrie Länge 3 ($TC_DP5)<br/>
+               Parameter 6: Geometrie Radius ($TC_DP6)<br/>
+               Parameter 7:  Geometrie - Eckenradius (WZ-Typ 700 - Nutsäge) ($TC_DP7)<br/>
+               Parameter 8: Geometrie Länge 4 (WZ-Typ 700 - Nutsäge) ($TC_DP8)<br/>
+               Parameter 9: Geometrie Länge 5 ($TC_DP9)<br/>
+               Parameter 10: Geometrie  Winkel 1 ($TC_DP10)<br/>
+               Parameter 11: Geometrie Winkel 2 (kegeliges Fräswerkzeug) ($TC_DP11)<br/>
+               Parameter 12: Verschleiß Länge 1 ($TC_DP12)<br/>
+               Parameter 13: Verschleiß Länge 2 ($TC_DP13)<br/>
+               Parameter 14: Verschleiß Länge 3 ($TC_DP14)<br/>
+               Parameter 15: Verschleiß Radius ($TC_DP15)<br/>
+               Parameter 16: Verschleiß Nutbreit b / Verrundungsradius ($TC_DP16)<br/>
+               Parameter 17: Verschleiß Überstand k ($TC_DP17)<br/>
+               Parameter 18: Verschleiß Länge 5 ($TC_DP18)<br/>
+               Parameter 19: Verschleiß Winkel 1 ($TC_DP19)<br/>
+               Parameter 20: Winkel 2 für kegelige Fräswerkzeuge ($TC_DP20)<br/>
+               Parameter 21: Adapter Länge 1 ($TC_DP21)<br/>
+               Parameter 22: Adapter Länge 2 ($TC_DP22)<br/>
+               Parameter 23: Adapter Länge 3 ($TC_DP23)<br/>
+               Parameter 24: Freischneidwinkel ($TC_DP24)<br/>
+               Parameter 25: Manual Turn: Schnittgeschwindigkeit ($TC_DP25)<br/>
+               Shopmill: Bitcodierter Wert für verschiedene Zustände von Werkzeugen des Typs 1xx und 2xx ($TC_DP25)<br/>
+               Parameter 26: H-Nummer, bei ISO-Mode<br/>
+               Parameter 27: Werkzeug-Schneidenorientierung<br/>
+               Parameter 28: L1-Komponente der Werkzeug-Schneidenorientierung<br/>
+               Parameter 29: L2-Komponente der Werkzeug-Schneidenorientierung<br/>
+               Parameter 30: L3-Komponente der Werkzeug-Schneidenorientierung<br/>
+               Parameter 31: normierte L1-Komponente der Werkzeug-Schneidenorientierung<br/>
+               Parameter 32: normierte L2-Komponente der Werkzeug-Schneidenorientierung<br/>
+               Parameter 33: normierte L3-Komponente der Werkzeug-Schneidenorientierung<br/>
+               Parameter 34: Anzahl Zähne der Schneide<br/>
+               Parameter 35: Grunddrehwinkel der Schneide<br/>
+               Parameter 36: Geometrie Radius 3<br/>
+               Parameter 37: Verschleiß Radius 3<br/>
+               Parameter 38: Geometrie Länge 6<br/>
+               Parameter 39: Verschleiß Länge 6<br/>
+               2. Teil: edgeDNo, zugeordnete beliebige D-Nummern der Schneiden:<br/>
+               Bestimmung des Zeilenindex: ((<a href="../sinumerik_btss_N/N_Y.html#333">numCuttEdgeParams</a> * <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a>) + SchneidenNr)<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>Wertebereich:<br/>
+               o =-1: Schneide nicht vorhanden<br/>
+               o = 1 .. maxDNo: Schneide vorhanden<br/>
+               o = 0: Keine D-Nummer zugeordnet/Zuordnung aufgehoben. <br/>
+               $TC_DPCE = Schneidennummer, D = Korrekturnummer D.<br/>
+               Falls die D-Nummer einer Schneide (Variable des Bausteins TO) auf ungültig gesetzt wurde, so bleibt der Wert $TC_DPCE davon
+               unberührt.<br/>
+               Die in der Beschreibung des Zeilenindexes genannte Schneidennummer stimmt mit dem Parameter $TC_DPCE überein.<br/>
+               Die im Baustein definierte Variable D-Nr. entspricht dem zweiten Index in den korrekturspezifischen Parametern der Art $TC_DPx[T,D],...
+               und weitere, mit x=1,....35.)<br/>
+               Achtung: Diese Variable wird in NonWindows-HMI und PLC "cuttEdgeParam" genannt.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>Linearposition (mm, inch oder userdef)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0.0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Tool/CompTransfor/edgeData[u&lt;Werkzeugber.&gt;, c&lt;Spaltenindex&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

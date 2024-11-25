@@ -1,0 +1,1968 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="230060">F230060 (A)</a></b></td>
+<td><b>&lt;location&gt;Precharge contactor state monitoring</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A feedback signal for the precharging contactor (ALM, SLM, BLM diode) or the line contactor (BLM thyristor) interconnected and the monitoring activated.<br />
+After switching-in&#47;switching-out the contactor, a correct feedback signal was not received within the monitoring time set in p0255[0, 2].<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0: The time set in p0255[0, 2] was exceeded when switching-in&#47;switching-out the contactor.<br />
+Bit 1: The precharging contactor was opened while precharging or in the infeed mode (BLM thyristor).<br />
+Bit 2: The precharging contactor was switched-in in the OFF state or during infeed operation.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the monitoring time setting (p0255[0, 2]).<br />
+- check the contactor wiring and activation.<br />
+- replace the contactor.<br />
+See also: p0255 (Power unit contactor monitoring time)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230061">F230061 (A)</a></b></td>
+<td><b>&lt;location&gt;Bridging contactor monitoring</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A feedback signal for the bypass contactor is interconnected and the monitoring activated.<br />
+After switching-in&#47;switching-out the contactor, a correct feedback signal was not received within the monitoring time set in p0255[1, 3].<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0: The time set in p0255[1, 3] was exceeded when switching-in&#47;switching-out the contactor.<br />
+Bit 1: The bypass contactor was opened in operation.<br />
+Bit 2: The bypass contactor was switched-in in the OFF state or during precharging.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the monitoring time setting (p0255[1, 3]).<br />
+- check the contactor wiring and activation.<br />
+- replace the contactor.<br />
+See also: p0255 (Power unit contactor monitoring time)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230066">A230066 (N)</a></b></td>
+<td><b>&lt;location&gt;Power unit: overtemperature, alarm capacitor air discharge</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The air discharged from the DC link capacitor has exceeded the alarm threshold.<br />
+- ambient temperature too high.<br />
+- insufficient cooling, fan failure.<br />
+Alarm value (r2124, interpret decimal):<br />
+Temperature when reaching the alarm threshold [0.01 &deg;C].<br />
+Note:<br />
+If operation is unchanged, then the permissible limit value can be exceeded. In this case, fault F30067 is output and the pulses inhibited.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether the fan is running.<br />
+- check the fan elements.<br />
+- check whether the ambient temperature is in the permissible range.<br />
+Note:<br />
+This alarm is only withdrawn after the alarm threshold has been fallen below - and the corresponding hysteresis.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230067">F230067</a></b></td>
+<td><b>&lt;location&gt;Power unit: overtemperature, fault capacitor air discharge</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The air discharged from the DC link capacitor has exceeded the permissible limit.<br />
+- ambient temperature too high.<br />
+- insufficient cooling, fan failure.<br />
+Fault value (r0949, interpret decimal):<br />
+Temperature when reaching the limit value [0.01 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether the fan is running.<br />
+- check the fan elements.<br />
+- check whether the ambient temperature is in the permissible range.<br />
+Note:<br />
+This fault can only be acknowledged after the limit value has been fallen below, and the corresponding hysteresis (5 K).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230068">F230068</a></b></td>
+<td><b>&lt;location&gt;Power unit: undertemperature inverter heat sink</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The actual inverter heat sink temperature is below the permissible minimum value.<br />
+Possible causes:<br />
+- the power unit is being operated at an ambient temperature that lies below the permissible range.<br />
+- the temperature sensor evaluation is defective.<br />
+Fault value (r0949, interpret decimal):<br />
+Inverter heat sink temperature [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- ensure that higher ambient temperatures prevail.<br />
+- replace the power unit.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230070">F230070</a></b></td>
+<td><b>&lt;location&gt;Cycle requested by the power unit module not supported</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A cycle is requested that is not supported by the power unit.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+0: The current control cycle is not supported.<br />
+1: The DRIVE-CLiQ cycle is not supported.<br />
+2: Internal timing problem (clearance between RX and TX instants too low).<br />
+3: Internal timing problem (TX instant too early).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The power unit only supports the following cycles:<br />
+62.5 &micro;s, 125 &micro;s, 250 &micro;s and 500 &micro;s<br />
+For fault value = 0:<br />
+Set a permitted current control cycle.<br />
+For fault value = 1:<br />
+Set a permitted DRIVE-CLiQ cycle.<br />
+For fault value = 2, 3:<br />
+Contact the manufacturer (you may have an incompatible firmware version).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230071">F230071</a></b></td>
+<td><b>&lt;location&gt;No new actual values received from the power unit</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The number of actual value telegrams from the power unit module that have failed has exceeded the permissible number.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the interface (adjustment and locking) to the power unit module.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230072">F230072</a></b></td>
+<td><b>&lt;location&gt;Setpoints can no longer be transferred to the power unit</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The following applies for CU31x and CUA31:<br />
+More than one setpoint telegram was not able to be transferred to the power unit module.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The following applies for CU31x and CUA31:<br />
+Check the interface (adjustment and locking) to the power unit module.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230073">A230073 (N)</a></b></td>
+<td><b>&lt;location&gt;Actual value&#47;setpoint preprocessing no longer synchronous</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Communication with the power unit module is no longer in synchronism with the current control cycle.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Wait until synchronization is re-established.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230074">F230074 (A)</a></b></td>
+<td><b>&lt;location&gt;Communication error between the Control Unit and Power Module</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Communications between the Control Unit (CU) and Power Module (PM) via the interface no longer possible. The CU may have been withdrawn or is incorrectly inserted.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+0 hex:<br />
+- a Control Unit with external 24 V supply was withdrawn from the Power Module during operation.<br />
+- with the Power Module switched off, the external 24 V supply for the Control Unit was interrupted for some time.<br />
+1 hex:<br />
+The Control Unit was withdrawn from the Power Module during operation, although the encoderless safe motion monitoring functions are enabled. This is not supported. After re-inserting the Control Unit in operation, communications to the Power Module no longer possible.<br />
+20A hex:<br />
+The Control Unit was inserted on a Power Module, which has another code number.<br />
+20B hex:<br />
+The Control Unit was inserted on a Power Module, which although it has the same code number, has a different serial number.<br />
+601 hex:<br />
+The Control Unit was inserted on a Power Module, whose power&#47;performance class (chassis unit) is not supported.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reinsert the Control Unit (CU) or the Control Unit Adapter (CUAxx) onto the original Power Module and continue operation. If required, carry out a POWER ON for the CU and&#47;or the CUA.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230075">F230075</a></b></td>
+<td><b>&lt;location&gt;Configuration of the power unit unsuccessful</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A communication error has occurred while configuring the power unit using the Control Unit. The cause is not clear.<br />
+Fault value (r0949, interpret decimal):<br />
+0:<br />
+The output filter initialization was unsuccessful.<br />
+1:<br />
+Activation&#47;deactivation of the regenerative feedback functionality was unsuccessful.<br />
+2:<br />
+Activation&#47;deactivation of the chopper function was unsuccessful.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- acknowledge the fault and continue operation.<br />
+- if the fault reoccurs, carry out a POWER ON (switch-off&#47;switch-on).<br />
+- if required, replace the power unit.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230076">A230076 (N)</a></b></td>
+<td><b>&lt;location&gt;Power unit: thermal overload internal braking resistor alarm</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The energy absorbed by the internal braking resistor has exceeded the alarm threshold of 80 %. If the power unit is still operated in the generator mode, then this can reach the shutdown threshold. To avoid overheating of the braking resistor, use of the braking resistor is inhibited and alarm A30077 is output.<br />
+Alarm value (r2124, interpret decimal):<br />
+Energy absorbed by the braking resistor [Ws].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reduce the power when generating.<br />
+Note:<br />
+For a DC link coupling, the generating power of all of the coupled power units must be taken into consideration.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230077">A230077 (N)</a></b></td>
+<td><b>&lt;location&gt;Power unit: thermal overload internal braking resistor</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The internal braking resistor is thermally overloaded. This is the reason that its use was inhibited.<br />
+Alarm value (r2124, interpret decimal):<br />
+Energy absorbed by the braking resistor [Ws].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reduce the power when generating.<br />
+Note:<br />
+- once the internal braking resistor has thermally recovered, it is enabled for further use.<br />
+- for a DC link coupling, the generating power of all the coupled power units must be taken into consideration.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230078">F230078</a></b></td>
+<td><b>&lt;location&gt;Power unit: defective fan or line reactor has overheated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The temperature monitoring of the internal braking resistor or the line reactor has responded. In addition to the OFF2 response, the use of the internal braking resistor was inhibited.<br />
+Note:<br />
+- an overtemperature condition of the internal braking resistor can only be initiated as a result of a defective fan.<br />
+- an overtemperature condition of the line reactor can occur when a DC link coupling is used &ndash; and if the power when motoring, which is fed into the DC link - is not evenly distributed across the rectifiers of the power units.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the converter fan and replace if necessary.<br />
+- reduce the motoring power.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230079">A230079 (N)</a></b></td>
+<td><b>&lt;location&gt;Power unit: referred to the supply voltage, the DC link voltage is too high</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The alarm is output if the following conditions are simultaneously satisfied:<br />
+1. The device supply voltage (p0210) was reduced.<br />
+2. A DC link voltage is present, which is too high when referred to the new supply voltage.<br />
+DC link precharging cannot be completed as this could place some converter components at risk.<br />
+Alarm value (r2124, interpret decimal):<br />
+Voltage value to which the DC link voltage must, in the meantime, be reduced in order to complete precharging [V].<br />
+See also: p0210 (Drive unit line supply voltage)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>As a minimum, reduce the DC link voltage to the voltage specified in the alarm value.<br />
+Note:<br />
+The alarm is automatically withdrawn if the DC link voltage drops below the voltage specified in the alarm value.<br />
+Fault F07802 is output if an attempt is made to enable the pulses even though an alarm is active.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230080">F230080</a></b></td>
+<td><b>&lt;location&gt;Power unit: Current increasing too quickly</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The power unit has detected an excessive rate of rise in the overvoltage range.<br />
+- closed-loop control is incorrectly parameterized.<br />
+- motor has a short-circuit or fault to ground (frame).<br />
+- U&#47;f operation: Up ramp set too low.<br />
+- U&#47;f operation: rated current of motor much greater than that of power unit.<br />
+- infeed: High discharge and post-charging currents for line voltage dip.<br />
+- infeed: High post-charging currents for overload when motoring and DC link voltage dip.<br />
+- infeed: Short-circuit currents at switch-on as there is no commutating reactor.<br />
+- power cables are not correctly connected.<br />
+- power cables exceed the maximum permissible length.<br />
+- power unit defective.<br />
+Additional causes for a parallel switching device (r0108.15 = 1):<br />
+- a power unit has tripped (switched off) due to a ground fault.<br />
+- the closed-loop circulating current control is either too slow or has been set too fast.<br />
+Fault value (r0949, interpret bitwise binary):<br />
+Bit 0: Phase U.<br />
+Bit 1: Phase V.<br />
+Bit 2: Phase W.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the motor data - if required, carry out commissioning.<br />
+- check the motor circuit configuration (star-delta)<br />
+- U&#47;f operation: Increase up ramp.<br />
+- U&#47;f operation: Check assignment of rated currents of motor and power unit.<br />
+- infeed: Check the line supply quality.<br />
+- infeed: Reduce the motor load.<br />
+- infeed: Correct connection of the line reactor.<br />
+- check the power cable connections.<br />
+- check the power cables for short-circuit or ground fault.<br />
+- check the length of the power cables.<br />
+- replace power unit.<br />
+For a parallel switching device (r0108.15 = 1) the following additionally applies:<br />
+- check the ground fault monitoring thresholds (p0287).<br />
+- check the setting of the closed-loop circulating current control (p7036, p7037).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230081">F230081</a></b></td>
+<td><b>&lt;location&gt;Power unit: Switching operations too frequent</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The power unit has executed too many switching operations for current limitation.<br />
+- closed-loop control is incorrectly parameterized.<br />
+- motor has a short-circuit or fault to ground (frame).<br />
+- U&#47;f operation: Up ramp set too low.<br />
+- U&#47;f operation: rated current of motor much greater than that of power unit.<br />
+- infeed: High discharge and post-charging currents for line voltage dip.<br />
+- infeed: High post-charging currents for overload when motoring and DC link voltage dip.<br />
+- infeed: Short-circuit currents at switch-on as there is no commutating reactor.<br />
+- power cables are not correctly connected.<br />
+- power cables exceed the maximum permissible length.<br />
+- power unit defective.<br />
+Additional causes for a parallel switching device (r0108.15 = 1):<br />
+- a power unit has tripped (switched off) due to a ground fault.<br />
+- the closed-loop circulating current control is either too slow or has been set too fast.<br />
+Fault value (r0949, interpret bitwise binary):<br />
+Bit 0: Phase U.<br />
+Bit 1: Phase V.<br />
+Bit 2: Phase W.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the motor data - if required, carry out commissioning.<br />
+- check the motor circuit configuration (star-delta)<br />
+- U&#47;f operation: Increase up ramp.<br />
+- U&#47;f operation: Check assignment of rated currents of motor and power unit.<br />
+- infeed: Check the line supply quality.<br />
+- infeed: Reduce the motor load.<br />
+- infeed: Correct connection of the line reactor.<br />
+- check the power cable connections.<br />
+- check the power cables for short-circuit or ground fault.<br />
+- check the length of the power cables.<br />
+- replace power unit.<br />
+For a parallel switching device (r0108.15 = 1) the following additionally applies:<br />
+- check the ground fault monitoring thresholds (p0287).<br />
+- check the setting of the closed-loop circulating current control (p7036, p7037).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230082">A230082</a></b></td>
+<td><b>&lt;location&gt;Power unit: cooling medium flow rate too low alarm threshold</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The flow rate is too low, and has fallen below the specified alarm threshold. If the flow rate is still too low after the specified time has expired, then fault F30083 is output.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the coolant flow rate.<br />
+- check the thermal conductivity of the coolant.<br />
+- check the coolant concentration.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230083">F230083</a></b></td>
+<td><b>&lt;location&gt;Power unit: cooling medium flow rate too low fault threshold</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The flow rate is too low, and has fallen below the specified fault threshold.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the coolant flow rate.<br />
+- check the thermal conductivity of the coolant.<br />
+- check the coolant concentration.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230086">A230086</a></b></td>
+<td><b>&lt;location&gt;Power unit: coolant temperature has exceeded the alarm threshold</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The coolant temperature has exceeded the specified alarm threshold.<br />
+If the coolant temperature increases up to the specified fault threshold, then fault F30087 is output.<br />
+Alarm value (r2124, interpret decimal):<br />
+Coolant temperature.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the cooling system and the ambient conditions.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230087">F230087</a></b></td>
+<td><b>&lt;location&gt;Power unit: coolant temperature has exceeded the fault threshold</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The coolant temperature has exceeded the specified fault threshold.<br />
+Fault value (r0949, interpret decimal):<br />
+Coolant temperature.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the cooling system and the ambient conditions.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230105">F230105</a></b></td>
+<td><b>&lt;location&gt;PU: Actual value sensing fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>At least one incorrect actual value channel was detected on the Power Stack Adapter (PSA).<br />
+The incorrect actual value channels are displayed in the following diagnostic parameters.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the diagnostic parameters.<br />
+If the actual value channel is incorrect, check the components and if required, replace.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230314">F230314</a></b></td>
+<td><b>&lt;location&gt;Power unit: 24 V power supply overloaded by PM</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The 24 V power supply through the Power Module (PM) is overloaded.<br />
+An external 24 V power supply via X124 on the Control Unit is not connected.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Connect an external 24 V power supply via X124 at the Control Unit.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230315">A230315 (F)</a></b></td>
+<td><b>&lt;location&gt;Power unit: 24 V power supply overloaded by PM</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The 24 V power supply through the Power Module (PM) is overloaded.<br />
+An external 24 V power supply via X124 on the Control Unit is not connected.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Connect an external 24 V power supply via X124 at the Control Unit.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230502">A230502</a></b></td>
+<td><b>&lt;location&gt;Power unit: DC link overvoltage</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The power unit has detected overvoltage in the DC link on a pulse inhibit.<br />
+- device supply voltage too high.<br />
+- line reactor incorrectly dimensioned.<br />
+Alarm value (r0949, interpret decimal):<br />
+DC link voltage [1 bit = 100 mV].<br />
+See also: r0070<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the device supply voltage (p0210).<br />
+- check the dimensioning of the line reactor.<br />
+See also: p0210 (Drive unit line supply voltage)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230600">F230600</a></b></td>
+<td><b>&lt;location&gt;SI P2: STOP A initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive-integrated &quot;Safety Integrated&quot; function in monitoring channel 2 has detected a fault and initiated a STOP A (STO via the safety switch-off signal path of monitoring channel 2).<br />
+- forced checking procedure (test stop) of the safety switch-off signal path of monitoring channel 2 unsuccessful.<br />
+- subsequent response to fault F30611 (defect in a monitoring channel).<br />
+Fault value (r0949, interpret decimal):<br />
+0: Stop request from the Control Unit.<br />
+1005:<br />
+- STO active, although STO not selected and there is no internal STOP A active.<br />
+- For a Power Module with &quot;STO via terminals at the Power Module&quot; (STO_A&#47;STO_B), these terminals are active (DIP switch to &quot;ON&quot;). However, the &quot;STO via terminals at the Power Module&quot; function has not been enabled (p9601.7 = p9801.7 = 0).<br />
+1010: STO inactive although STO is selected or an internal STOP A is present.<br />
+1011: internal error for STO deselected in monitoring channel 2.<br />
+1020: Internal software error in the &quot;Internal voltage protection&quot; function. The &quot;internal voltage protection&quot; function is withdrawn. A STOP A that cannot be acknowledged is initiated.<br />
+9999: Subsequent response to fault F30611.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- select Safe Torque Off and deselect again.<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- replace the Motor Module involved.<br />
+For fault value = 1005:<br />
+- deactivate terminals STO_A&#47;STO_B on the Power Module (set both DIP-switches to &quot;OFF&quot;) or enable the &quot;STO via terminals at the Power Module&quot; function.<br />
+For fault value = 9999:<br />
+- carry out diagnostics for fault F30611.<br />
+Note:<br />
+CU: Control Unit<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+STO: Safe Torque Off &#47; SH: Safe standstill<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230611">F230611 (A)</a></b></td>
+<td><b>&lt;location&gt;SI P2: Defect in a monitoring channel</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+ (OFF1, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive-integrated &quot;Safety Integrated&quot; function on processor 2 has detected a fault in the data cross-check between the two monitoring channels and has initiated a STOP F.<br />
+As a result of this fault, after the parameterized transition has expired (p9858), fault F30600 is output (SI MM: STOP A initiated).<br />
+Fault value (r0949, interpret decimal):<br />
+0: Stop request from another monitoring channel.<br />
+1 ... 999:<br />
+Number of the cross-compared data that resulted in this fault. This number is also displayed in r9895.<br />
+1: SI monitoring clock cycle (r9780, r9880).<br />
+2: SI enable safety functions (p9601, p9801). Crosswise data comparison is only carried out for the supported bits.<br />
+3: SI SGE changeover discrepancy time (p9650, p9850).<br />
+4: SI transition period STOP F to STOP A (p9658, p9858).<br />
+5: SI enable Safe Brake Control (p9602, p9802).<br />
+6: SI Motion enable, safety-relevant functions (p9501, internal value).<br />
+7: SI delay time of STO for Safe Stop 1 (p9652, p9852).<br />
+8: SI PROFIsafe address (p9610, p9810).<br />
+9: SI debounce time for STO&#47;SBC&#47;SS1 (p9651, p9851).<br />
+10: SI delay time for initiating STO for ESR (p9697, p9897).<br />
+11: SI Safe Brake Adapter mode, BICO interconnection (p9621, p9821).<br />
+12: SI Safe Brake Adapter relay ON time (p9622[0], p9822[0]).<br />
+13: SI Safe Brake Adapter relay OFF time (p9622[1], p9822[1]).<br />
+14: SI PROFIsafe telegram selection (p9611, p9811).<br />
+15: SI PROFIsafe bus failure response (p9612, p9812).<br />
+1000: Watchdog timer has expired.<br />
+Within the time of approx. 5 x p9650, alternatively, the following was defined:<br />
+- the signal at terminal EP of the Motor Module continually changed with time intervals less than or equal to the discrepancy time (p9650&#47;p9850).<br />
+- via PROFIsafe&#47;TM54F, STO (also as subsequent response) was continually selected and deselected with time intervals less than or equal to the discrepancy time (p9650&#47;p9850).<br />
+- safe pulse cancellation (r9723.9 - also as subsequent response) was continually selected and deselected with time intervals less than or equal to the discrepancy time (p9650&#47;p9850).<br />
+1001, 1002: Initialization error, change timer &#47; check timer.<br />
+1950: Module temperature outside the permissible temperature range.<br />
+1951: Module temperature not plausible.<br />
+1952: S120M: hardware access fault.<br />
+1953: Module temperature outside the permissible temperature range.<br />
+1954: Module temperature not plausible.<br />
+2000: Status of the STO selection for both monitoring channels different.<br />
+2001: Feedback signal of STO shutdown for both monitoring channels different. This value can also subsequently occur as a result of other faults.<br />
+2002: Status of the delay timer SS1 for both monitoring channels different (status of the timer in p9650&#47;p9850).<br />
+2003: Status of the STO terminal for both monitoring channels different.<br />
+2004: Forced checking procedure of the switch-off signal path of the second channel unsuccessful.<br />
+2005: Forced checking procedure of the switch-off signal path of the second channel unsuccessful.<br />
+6000 ... 6999:<br />
+Error in the PROFIsafe control.<br />
+For these fault values, the failsafe control signals (Failsafe Values) are transferred to the safety functions. If &quot;STOP B after failure of the PROFIsafe communication&quot; (p9812) is parameterized, the transfer of the Failsafe Values is delayed.<br />
+The significance of the individual message values is described in safety message C01611.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1 ... 5 and 7 ... 999:<br />
+- check the cross data comparison that resulted in a STOP F.<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- upgrade the Motor Module software.<br />
+- upgrade the Control Unit software.<br />
+For fault value = 6:<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- upgrade the Motor Module software.<br />
+- upgrade the Control Unit software.<br />
+For fault value = 1000:<br />
+- check the wiring of the safety-relevant inputs (SGE) on the Control Unit (contact problems).<br />
+- PROFIsafe: Remove contact problems&#47;faults at the PROFIBUS master&#47;PROFINET controller.<br />
+- check the wiring of the failsafe inputs at the TM54F (contact problems).<br />
+- check the discrepancy time, and if required, increase the value (p9650&#47;p9850).<br />
+For fault value = 1001, 1002:<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- upgrade the Motor Module software.<br />
+- upgrade the Control Unit software.<br />
+For fault value = 1950:<br />
+- operate the module in the permissible range.<br />
+- check the module fan, replace the Motor Module involved.<br />
+For fault value = 1951:<br />
+- operate the module in the permissible range.<br />
+- replace the Motor Module involved.<br />
+For fault value = 1952:<br />
+- replace the Motor Module involved.<br />
+For fault value = 2000, 2001, 2002, 2003:<br />
+- check the discrepancy time, and if required, increase the value (p9650&#47;p9850, p9652&#47;p9852).<br />
+- check the wiring of the safety-relevant inputs (SGE) (contact problems).<br />
+- check why STO was selected in r9872. When the SMM functions are active (p9501 = 1), STO can also be selected using these functions.<br />
+For fault value 2004, 2005:<br />
+- replace the Motor Module involved.<br />
+<br />
+- replace the Motor Module involved.<br />
+- diagnose the other active faults and resolve the causes.<br />
+Note:<br />
+This fault can be acknowledged after removing the cause of the error and after correct selection&#47;deselection of STO.<br />
+For fault value = 6000 ... 6999:<br />
+Refer to the description of the message values in safety message C01611.<br />
+Note:<br />
+CU: Control Unit<br />
+EP: Enable Pulses (pulse enable)<br />
+ESR: Extended Stop and Retract<br />
+MM: Motor Module<br />
+SGE: Safety-relevant input<br />
+SI: Safety Integrated<br />
+SMM: Safe Motion Monitoring<br />
+SS1: Safe Stop 1<br />
+STO: Safe Torque Off &#47; SH: Safe standstill<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230620">N230620 (F, A)</a></b></td>
+<td><b>&lt;location&gt;SI P2: Safe Torque Off active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;Safe Torque Off&quot; (STO) function of the basic functions has been selected in monitoring channel 2 using the input terminal and is active.<br />
+Note:<br />
+- this message does not result in a safety stop response.<br />
+- this message is not output when STO is selected using the Extended Functions.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+Note:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+STO: Safe Torque Off &#47; SH: Safe standstill<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230621">N230621 (F, A)</a></b></td>
+<td><b>&lt;location&gt;SI P2: Safe Stop 1 active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;Safe Stop 1&quot; function (SS1) was selected in monitoring channel 2 and is active.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+Note:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+SS1: Safe Stop 1<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230625">F230625</a></b></td>
+<td><b>&lt;location&gt;SI P2: Sign-of-life error in safety data</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive-integrated &quot;Safety Integrated&quot; function in monitoring channel 2 has detected an error in the sign-of-life of the safety data between the two monitoring channels and initiated a STOP A.<br />
+- there is either a DRIVE-CLiQ communication error or communication has failed.<br />
+- a time slice overflow of the safety software has occurred.<br />
+- the enable of the safety functions in both monitoring channels is inconsistent (p9601 = 0, p9801 &lt;&gt; 0).<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- select Safe Torque Off and deselect again.<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- check whether there is a DRIVE-CLiQ communication error between the two monitoring channels and, if required, carry out a diagnostics routine for the faults identified.<br />
+- deselect all drive functions that are not absolutely necessary.<br />
+- reduce the number of drives.<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+- check the enable of the safety functions for both of the monitoring channels and if required, correct (p9601, p9801).<br />
+Note:<br />
+P2: processor 2<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230630">F230630</a></b></td>
+<td><b>&lt;location&gt;SI P2: Brake control error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;Safety Integrated&quot; function integrated in the drive on the Motor Module (MM) has detected a brake control error and initiated a STOP A.<br />
+- motor cable is not shielded correctly.<br />
+- defect in the brake control circuit of the Motor Module.<br />
+Fault value (r0949, interpret decimal):<br />
+10:<br />
+Fault in &quot;open holding brake&quot; operation.<br />
+- parameter p1278 incorrectly set.<br />
+- no brake connected or wire breakage (check whether brake releases for p1278 = 1 and p9602&#47;p9802 = 0 (SBC deactivated)).<br />
+- ground fault in brake cable.<br />
+30:<br />
+Fault in &quot;close holding brake&quot; operation.<br />
+- no brake connected or wire breakage (check whether brake releases for p1278 = 1 and p9602&#47;p9802 = 0 (SBC deactivated)).<br />
+- short-circuit in brake winding.<br />
+40:<br />
+Fault in &quot;brake closed&quot; state.<br />
+60, 70:<br />
+Fault in the brake control circuit of the Control Unit or communication fault between the Control Unit and Motor Module (brake control).<br />
+81: Safe Brake Adapter: Fault in &quot;brake closed&quot; state.<br />
+82: Safe Brake Adapter: Fault for the operation &quot;open brake&quot;.<br />
+83: Safe Brake Adapter: Fault for the operation &quot;close brake&quot;.<br />
+84, 85:<br />
+Safe Brake Adapter:<br />
+Fault in the brake control circuit of the Control Unit or communication fault between the Control Unit and Motor Module (brake control).<br />
+90:<br />
+Brake released for service purposes (X4).<br />
+91:<br />
+Fault in &quot;open holding brake&quot; operation.<br />
+- no brake connected or wire breakage (check whether brake releases for p1278 = 1 and p9602&#47;p9802 = 0 (SBC deactivated)).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check parameter p1278 (for SBC, only p1278 = 0 is permissible).<br />
+- select Safe Torque Off and deselect again.<br />
+- check the motor holding brake connection.<br />
+- check the function of the motor holding brake.<br />
+- check whether there is a DRIVE-CLiQ communication error between the Control Unit and the Motor Module involved and, if required, carry out a diagnostics routine for the faults identified.<br />
+- check that the electrical cabinet design and cable routing are in compliance with EMC regulations (e.g. shield of the motor cable and brake conductors are connected with the shield connecting plate and the motor connectors are tightly screwed to the housing).<br />
+- replace the Motor Module involved.<br />
+Operation with Safe Brake Module or Safe Brake Adapter:<br />
+- check the Safe Brake Module or Safe Brake Adapter connection.<br />
+- Replace the Safe Brake Module or Safe Brake Adapter.<br />
+Note:<br />
+MM: Motor Module<br />
+SBC: Safe Brake Control<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230631">F230631</a></b></td>
+<td><b>&lt;location&gt;Brake control: External release active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For mounting purposes, the brake is supplied with voltage via terminal X4.1 and released.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>If required, again remove the power supply at X4.1.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230640">A230640 (F)</a></b></td>
+<td><b>&lt;location&gt;SI P2: Fault in the switch-off signal path of the second channel</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Motor Module has detected a communication error with the higher-level control or the TM54F to transfer the safety-relevant information or there is a communication error between Motor Modules connected in parallel.<br />
+Note:<br />
+This fault results in a STOP A that can be acknowledged.<br />
+Alarm value (r2124, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For the higher-level control, the following applies:<br />
+- check the PROFIsafe address in the higher-level control and Motor Modules and if required, align.<br />
+- save all parameters (p0977 = 1).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+For TM54F, carry out the following steps:<br />
+- start the copy function for the node identifier (p9700 = 1D hex).<br />
+- acknowledge hardware CRC (p9701 = EC hex).<br />
+- save all parameters (p0977 = 1).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+For a parallel connection, the following applies:<br />
+- check the PROFIsafe address in both monitoring channels and if required, align.<br />
+- save all parameters (p0977 = 1).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+The following generally applies:<br />
+- upgrade the Motor Module software.<br />
+Note:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+See also: p9810 (SI PROFIsafe address (Motor Module))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230649">F230649</a></b></td>
+<td><b>&lt;location&gt;SI P2: Internal software error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An internal error in the Safety Integrated software in monitoring channel 2 has occurred.<br />
+Note:<br />
+This fault results in a STOP A that cannot be acknowledged.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- re-commission the Safety Integrated Function and carry out a POWER ON.<br />
+- upgrade the Motor Module&#47;Hydraulic Module software.<br />
+- contact Technical Support.<br />
+- replace the Motor Module&#47;Hydraulic Module.<br />
+Note:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230650">F230650</a></b></td>
+<td><b>&lt;location&gt;SI P2: Acceptance test required</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;Safety Integrated&quot; function on monitoring channel 2 requires an acceptance test.<br />
+Note:<br />
+This fault results in a STOP A that can be acknowledged.<br />
+Fault value (r0949, interpret decimal):<br />
+130: Safety parameters for monitoring channel 2 not available.<br />
+Note:<br />
+This fault value is always output when Safety Integrated is commissioned for the first time.<br />
+1000: Reference and actual checksum in monitoring channel 2 are not identical (booting).<br />
+- as a result of the changed current controller sampling time (p0115[0]), the clock cycle time for the Safety Integrated Basic Functions (r9880) was adapted.<br />
+- safety parameters set offline and loaded into the Control Unit.<br />
+- a download was made to the SINAMICS, whose firmware versions in monitoring channel 2 did not correspond to the latest version. The request to switch off the DRIVE-CLiQ component A1007 was present after the download.<br />
+- at least one checksum-checked piece of data is defective.<br />
+2000: Reference and actual checksum in monitoring channel 2 are not identical (commissioning mode).<br />
+- reference checksum on monitoring channel 2 incorrectly entered (p9899 not equal to r9898).<br />
+2003: Acceptance test is required as a safety parameter has been changed.<br />
+2005: The safety logbook has identified that the safety checksums have changed. An acceptance test is required.<br />
+3003: Acceptance test is required as a hardware-related safety parameter has been changed.<br />
+9999: Subsequent response of another safety-related fault that occurred when booting that requires an acceptance test.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 130:<br />
+- carry out safety commissioning routine.<br />
+For fault value = 1000:<br />
+- check the Safety Integrated Basic Functions (r9880) and adapt the reference checksum (p9899).<br />
+- again carry out safety commissioning routine.<br />
+- Using STARTER, activate the safety parameters for the drive involved (change settings, copy parameters, activate settings).<br />
+- switch off and switch on the drive unit and DRIVE-CLiQ components. If A30650 is still present, repeat the download.<br />
+- replace the memory card or Control Unit.<br />
+For fault value = 2000:<br />
+- check the safety parameters on monitoring channel 2 and adapt the reference checksum (p9899).<br />
+For fault value = 2003, 2005:<br />
+- carry out an acceptance test and generate an acceptance report.<br />
+The procedure when carrying out an acceptance test as well as an example of the acceptance report are provided in the following literature:<br />
+SINAMICS S120 Function Manual Safety Integrated<br />
+For fault value = 3003:<br />
+- carry out the function checks for the modified hardware and generate an acceptance report.<br />
+The procedure when carrying out an acceptance test as well as an example of the acceptance report are provided in the following literature:<br />
+SINAMICS S120 Function Manual Safety Integrated<br />
+For fault value = 9999:<br />
+- carry out diagnostics for the other safety-related fault that is present.<br />
+Note:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+See also: p9799 (SI reference checksum SI parameters (Control Unit)), p9899 (SI reference checksum SI parameters (Motor Module))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230651">F230651</a></b></td>
+<td><b>&lt;location&gt;SI P2: Synchronization with Control Unit unsuccessful</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive-integrated &quot;Safety Integrated&quot; function requires synchronization of the safety time slices in both monitoring channels. This synchronization routine was unsuccessful.<br />
+Note:<br />
+This fault results in a STOP A that cannot be acknowledged.<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- upgrade the Motor Module&#47;Hydraulic Module software.<br />
+- upgrade the Control Unit software.<br />
+Note:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230652">F230652</a></b></td>
+<td><b>&lt;location&gt;SI P2: Illegal monitoring clock cycle</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Safety Integrated monitoring clock cycle cannot be maintained due to the communication conditions requested in the system.<br />
+Note:<br />
+This fault results in a STOP A that cannot be acknowledged.<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- if fault F01652 simultaneously occurs, apply the remedy&#47;countermeasure described there.<br />
+- upgrade the firmware of the Motor Module&#47;Hydraulic Module to a later version.<br />
+Note:<br />
+MM: Motor Module<br />
+P2: processor 2<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230655">F230655</a></b></td>
+<td><b>&lt;location&gt;SI P2: Align monitoring functions</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error has occurred when aligning the Safety Integrated monitoring functions of both monitoring channels. No common set of supported SI monitoring functions was able to be determined.<br />
+- there is either a DRIVE-CLiQ communication error or communication has failed.<br />
+- Safety Integrated software releases on the Control Unit and Motor Module&#47;Hydraulic Module are not compatible with one another.<br />
+Note:<br />
+This fault results in a STOP A that cannot be acknowledged.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- upgrade the Motor Module&#47;Hydraulic Module software.<br />
+- upgrade the Control Unit software.<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+Note:<br />
+CU: Control Unit<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230656">F230656</a></b></td>
+<td><b>&lt;location&gt;SI P2: Motor Module parameter error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When accessing the Safety Integrated parameters for monitoring channel 2 in the non-volatile memory, an error has occurred.<br />
+Note:<br />
+This fault results in a STOP A that can be acknowledged.<br />
+Fault value (r0949, interpret decimal):<br />
+129:<br />
+- safety parameters for monitoring channel 2 corrupted.<br />
+- drive with enabled safety functions was possibly copied offline using the commissioning tool and the project downloaded.<br />
+131: Internal software error on the Control Unit.<br />
+255: Internal Motor Module&#47;Hydraulic Module software error.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- re-commission the safety functions.<br />
+- upgrade the Control Unit software.<br />
+- upgrade the Motor Module&#47;Hydraulic Module software.<br />
+- replace the memory card or Control Unit.<br />
+For fault value = 129:<br />
+- activate the safety commissioning mode (p0010 = 95).<br />
+- adapt the PROFIsafe address (p9610).<br />
+- start the copy function for SI parameters (p9700 = D0 hex).<br />
+- acknowledge data change (p9701 = DC hex).<br />
+- exit the safety commissioning mode (p0010 = 0).<br />
+- save all parameters (p0977 = 1 or &quot;copy RAM to ROM&quot;).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+Note:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230657">F230657</a></b></td>
+<td><b>&lt;location&gt;SI P2: PROFIsafe telegram number invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The PROFIsafe telegram number set in p9811 is not valid.<br />
+When PROFIsafe is enabled (p9801.3 = 1), then a telegram number greater than zero must be entered in p9811.<br />
+Note:<br />
+This fault does not result in a safety stop response.<br />
+See also: p9611 (SI PROFIsafe telegram selection (Control Unit)), p60022 (PROFIsafe telegram selection)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the telegram number setting (p9811).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230659">F230659</a></b></td>
+<td><b>&lt;location&gt;SI P2: Write request for parameter rejected</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The write request for one or several Safety Integrated parameters in monitoring channel 2 was rejected.<br />
+Note:<br />
+This fault does not result in a safety stop response.<br />
+Fault value (r0949, interpret decimal):<br />
+10: An attempt was made to enable the STO function although this cannot be supported.<br />
+11: An attempt was made to enable the SBC function although this cannot be supported.<br />
+13: An attempt was made to enable the SS1 function although this cannot be supported.<br />
+14: An attempt was made to enable the safe motion monitoring function with the higher-level control, although this cannot be supported.<br />
+15: An attempt was made to enable the motion monitoring functions integrated in the drive although these cannot be supported.<br />
+16: An attempt was made to enable the PROFIsafe communication - although this cannot be supported or the version of the PROFIsafe driver used on both monitoring channels is different.<br />
+18: An attempt was made to enable the PROFIsafe function for Basic Functions although this cannot be supported.<br />
+19: For ESR, an attempt was made to enable the delay for pulse suppression, although this cannot be supported.<br />
+27: An attempt was made to activate the Basic Functions by controlling via TM54F although this is not supported.<br />
+28: An attempt was made to enable the &quot;STO via terminals at the Power Module&quot; function although this cannot be supported.<br />
+29: An attempt was made to parameterize the STOP B as stop response for PROFIsafe failure, although this cannot be supported.<br />
+See also: r9771 (SI common functions (Control Unit)), r9871 (SI common functions (Motor Module))<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 10, 11, 13, 14, 15, 16, 18, 19, 27:<br />
+- check whether there are faults in the safety function alignment between the two monitoring channels (F01655, F30655) and if required, carry out diagnostics for the faults involved.<br />
+- use a Motor Module that supports the required function.<br />
+- upgrade the Motor Module software.<br />
+- upgrade the Control Unit software.<br />
+For fault value = 28:<br />
+- use the power unit with the feature &quot;STO via terminals at the Power Module&quot;.<br />
+For fault value = 29:<br />
+- use a Motor Module that supports the required function.<br />
+- upgrade the Motor Module software.<br />
+- upgrade the Control Unit software.<br />
+- If required, parameterize the stop response for PROFIsafe failure to STOP A (p9612 = p9812 = 0).<br />
+Note:<br />
+CU: Control Unit<br />
+ESR: Extended Stop and Retract<br />
+MM: Motor Module<br />
+SBC: Safe Brake Control<br />
+SI: Safety Integrated<br />
+SS1: Safe Stop 1<br />
+STO: Safe Torque Off &#47; SH: Safe standstill<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230664">F230664</a></b></td>
+<td><b>&lt;location&gt;Error while booting</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error has occurred during booting.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- upgrade firmware to later version.<br />
+- contact Technical Support.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230665">F230665</a></b></td>
+<td><b>&lt;location&gt;SI P2: System is defective</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A system defect was detected before the last boot or in the actual one. The system might have been rebooted (reset).<br />
+Fault value (r0949, interpret hexadecimal):<br />
+2 hex:<br />
+- parameters p9500 and p9300 are not the same (if Safety message C30711 is displayed at the same time).<br />
+200000 hex, 400000 hex:<br />
+- fault in the actual booting&#47;operation.<br />
+Additional values:<br />
+- defect before the last time that the system booted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- upgrade firmware to later version.<br />
+- contact Technical Support.<br />
+For fault value = 2:<br />
+- check parameters p9500 and p9300 to see if they are the same (if Safety message C30711 is displayed at the same time).<br />
+For fault value = 400000 hex:<br />
+- ensure that the Control Unit is connected to the Power Module.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230666">A230666 (F)</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: Steady-state (static) 1 signal at the F-DI for safe acknowledgment</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A logical 1 signal is present at the F-DI configured in p10106 for more than 10 seconds.<br />
+If, at the F-DI no acknowledgment was performed for safe acknowledgment, then a steady-state logical and 0 signal must be present. This avoids unintentional safety-relevant acknowledgment (or the &quot;Internal Event Acknowledge&quot; signal) if a wire breaks or one of the two digital inputs bounces.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set the failsafe digital input (F-DI) to a logical 0 signal (p10106).<br />
+Note:<br />
+F-DI: Failsafe Digital Input<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230672">F230672</a></b></td>
+<td><b>&lt;location&gt;SI P2: Control Unit software incompatible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The existing Control Unit software does not support the safe drive-based motion monitoring function.<br />
+Note:<br />
+This fault results in a STOP A that cannot be acknowledged.<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether there are faults in the safety function alignment between the two monitoring channels (F01655, F30655) and if required, carry out diagnostics for the faults involved.<br />
+- use a Control Unit that supports the safe motion monitoring function.<br />
+- upgrade the Control Unit software.<br />
+Note:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230674">F230674</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: Safety function not supported by PROFIsafe telegram</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The monitoring function enabled in p9301 and p9801 is not supported by the currently set PROFIsafe telegram (p9811).<br />
+Note:<br />
+This fault does not result in a safety stop response.<br />
+Fault value (r0949, interpret bitwise binary):<br />
+Bit 4 = 1:<br />
+SS2ESR via PROFIsafe is not supported (p9301.4).<br />
+Bit 18 = 1:<br />
+SS2E via PROFIsafe is not supported (p9301.18).<br />
+Bit 24 = 1:<br />
+Transfer SLS limit value via PROFIsafe not supported (p9301.24).<br />
+Bit 25 = 1:<br />
+Transfer safe position (SP) via PROFIsafe is not supported (p9301.25).<br />
+Bit 26 = 1:<br />
+Gearbox stage switchover via PROFIsafe is not supported (p9301.26).<br />
+Bit 28 = 1:<br />
+SCA via PROFIsafe is not supported (p9301.28).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- deselect the monitoring function involved (p9301, p9801).<br />
+- set the matching PROFIsafe telegram (p9811).<br />
+Note:<br />
+SCA: Safe Cam<br />
+SI: Safety Integrated<br />
+SLS: Safely-Limited Speed<br />
+SP: Safe Position<br />
+SS2E: Safe Stop 2 External (Safe Stop 2 with external stop, external STOP D)<br />
+SS2ESR: Safe Stop 2 Extended Stop and Retract<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230680">F230680</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: Checksum error safety monitoring functions</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The actual checksum calculated by the Motor Module&#47;Hydraulic Module and entered in r9398 via the safety-relevant parameters does not match the reference checksum saved in p9399 at the last machine acceptance.<br />
+Safety-relevant parameters have been changed or a fault is present.<br />
+Note:<br />
+This fault results in a STOP A that can be acknowledged.<br />
+Fault value (r0949, interpret decimal):<br />
+0: Checksum error for SI parameters for motion monitoring.<br />
+1: Checksum error for SI parameters for component assignment.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the safety-relevant parameters and if required, correct.<br />
+- set the reference checksum to the actual checksum.<br />
+- execute the function &quot;Copy RAM to ROM&quot;.<br />
+- perform a POWER ON if safety parameters requiring a POWER ON have been modified.<br />
+- carry out an acceptance test.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230681">F230681</a></b></td>
+<td><b>&lt;location&gt;SI Motion P1: Incorrect parameter value</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The parameter cannot be parameterized with this value.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+Fault value (r0949, interpret decimal):<br />
+yyyyxxxx dec: yyyy = supplementary information, xxxx = parameter<br />
+yyyy = 0:<br />
+No additional information available.<br />
+xxxx = 9301:<br />
+It is not permissible to enable the function &quot;n &lt; nx hysteresis and filtering&quot; (p9301.16) in conjunction with the function &quot;Extended functions without selection&quot; (p9801.5).<br />
+xxxx = 9301 and yyyy = 8:<br />
+Referencing via SCC (p9301.27 = 1) is enabled without enabling absolute motion monitoring functions (p9301.1 or p9301.2).<br />
+xxxx = 9301 and yyyy = 14:<br />
+&quot;Synchronous safe position via PROFIsafe&quot; is enabled (p9301.29 = 1), without enabling &quot;Safe position via PROFIsafe&quot; (p9301.25).<br />
+xxxx = 9301 and yyyy = 17:<br />
+&quot;Synchronous safe position via PROFIsafe&quot; is enabled (p9301.29 = 1) and &quot;Safety without encoder&quot; is enabled (p9306).<br />
+xxxx = 9301 and yyyy = 19:<br />
+SLA (p9301.20 = 1) is enabled with encoderless actual value sensing (p9306 equal to 1 or 3).<br />
+xxxx = 9301 and yyyy = 20:<br />
+SLA (p9301.20 = 1) is enabled with a 2-encoder system (p9326 not equal to 1).<br />
+xxxx = 9334 or 9335:<br />
+The limit values of SLP have been set too high (absolute values).<br />
+xxxx = 9347:<br />
+The hysteresis tolerance is not permissible.<br />
+xxxx = 9378:<br />
+SLA is enabled (p9301.20 = 1). Acceleration limit is too low (p9378). The acceleration resolution is no longer sufficient (r9790). The minimum limit is 3x the acceleration resolution r9790[0] in v5.1 &#47; 10x the acceleration resolution r9790[1] from v5.2 and higher.<br />
+xxxx = 9385:<br />
+For Safety without encoder and synchronous motor, p9385 must be set to 4.<br />
+xxxx = 9801 and yyyy = 1:<br />
+If motion monitoring functions integrated in the drive (p9801.2 = 1) and extended functions without selection (p9801.5 = 1) are activated, then PROFIsafe (p9801.3 = 1) is not possible.<br />
+xxxx = 9801 and yyyy = 2:<br />
+Extended functions without selection (p9801.5 =1) are enabled without enabling motion monitoring functions integrated in the drive (p9801.2).<br />
+xxxx = 9801 and yyyy = 3:<br />
+Onboard F-DI are enabled without enabling motion monitoring functions integrated in the drive (p9801.2).<br />
+xxxx = 9801 and yyyy = 5:<br />
+Transfer of the SLS limit value via PROFIsafe (p9301.24) has been enabled, without enabling PROFIsafe.<br />
+xxxx = 9801 and yyyy = 6:<br />
+Transfer of the safe position via PROFIsafe (p9301.25) has been enabled without enabling PROFIsafe.<br />
+xxxx = 9801 and yyyy = 7:<br />
+Safe switchover of the gearbox stages (p9301.26 = 1) has been enabled without enabling PROFIsafe.<br />
+xxxx = 9801 and yyyy = 11:<br />
+SS2E (p9301.18 = 1) is enabled without enabling PROFIsafe.<br />
+xxxx = 9801 and yyyy = 12:<br />
+SCA (p9301.28 = 1) is enabled without enabling PROFIsafe.<br />
+xxxx = 9801 and yyyy = 18:<br />
+SLA (p9301.20 = 1) is enabled without enabling PROFIsafe.<br />
+xxxx = 9801 and yyyy = 21:<br />
+SS2ESR (p9301.4 = 1) is enabled without enabling PROFIsafe.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct parameter (if required, also on another monitoring channel, p9601).<br />
+Note:<br />
+For different values in the two monitoring channels, start the copy function for SI parameters on the drive (p9700 = 57 hex).<br />
+For xxxx = 9301:<br />
+Correct parameters p9501.16 and p9301.16 or deselect the extended functions without selection (p9801.5).<br />
+For xxxx = 9301 and yyyy = 14:<br />
+Inhibit &quot;Synchronous safe position via PROFIsafe&quot; function (p9301.29 = 0), or enable &quot;Safe position via PROFIsafe&quot; (p9301.25).<br />
+For xxxx = 9301 and yyyy = 17:<br />
+Inhibit &quot;Synchronous safe position via PROFIsafe&quot; function (p9301.29 = 0), or set &quot;Safety with encoder&quot; (p9306).<br />
+For xxxx = 9301 and yyyy = 19:<br />
+Inhibit SLA (p9301.20) or activate actual value sensing with encoder (p9306 equal to 0 or 2).<br />
+For xxxx = 9301 and yyyy = 20:<br />
+Inhibit SLA (p9301.20) or activate a single-encoder system (p9326 equal to 5).<br />
+If xxxx = 9501 and yyyy = 8:<br />
+Inhibit referencing via SCC (p9501.27 = 1) or enable an absolute motion monitoring function (p9501.1 or p9501.2).<br />
+For xxxx = 9317:<br />
+Further, p9316.0 should be checked.<br />
+If xxxx = 9334 or 9335:<br />
+Reduce the limit values (absolute values) of SLP.<br />
+For xxxx = 9347:<br />
+With hysteresis&#47;filtering enabled (p9301.16 = 1), the following applies:<br />
+- set parameters p9346 and p9347 according to the following rule: p9347 &lt;= 0.75 x p9346;<br />
+- the following rule must also be adhered to when actual value synchronization (p9301.3 = 1) is enabled: p9347 &gt;= p9349;<br />
+For xxxx = 9378:<br />
+- observe the information in r9790.<br />
+For xxxx = 9801:<br />
+yyyy = 1:<br />
+Only enable motion monitoring functions integrated in the drive (p9801.2 = 1) and extended functions without selection (p9801.5 = 1) &ndash; or only PROFIsafe (p9801.3 = 1).<br />
+yyyy = 2, 3:<br />
+Enable motion monitoring functions integrated in the drive (p9801.2 = 1).<br />
+yyyy = 5:<br />
+To transfer the SLS limit values via PROFIsafe (p9301.24 = 1), also enable PROFIsafe (p9801.3 =1) and motion monitoring functions integrated in the drive (p9801.2 = 1).<br />
+yyyy = 6:<br />
+For the safe position via PROFIsafe (p9301.25 = 1), also enable PROFIsafe (p9801.3 =1) and motion monitoring functions integrated in the drive (p9801.2 = 1).<br />
+yyyy = 7:<br />
+For safe switchover of gearbox stages (p9301.26 = 1) also enable PROFIsafe (p9801.3 =1) and motion monitoring functions integrated in the drive (p9801.2 = 1).<br />
+yyyy = 18:<br />
+For Safely-Limited Acceleration monitoring (p9301.20 = 1), also enable PROFIsafe (p9801.3 = 1) and the motion monitoring functions integrated in the drive (p9801.2 = 1).<br />
+yyyy = 21:<br />
+For Safe Stop 2 Extended Stop and Retract (p9301.4), also enable PROFIsafe (p9801.3 = 1) and motion monitoring functions integrated in the drive (p9801.2 = 1).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230682">F230682</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: Monitoring function not supported</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The monitoring function enabled in p9301, p9501, p9601, p9801, p9306, p9506, p9307 or p9507 is not supported in this firmware version.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+Fault value (r0949, interpret decimal):<br />
+1: Monitoring function SLP not supported (p9301.1).<br />
+2: Monitoring function SCA not supported (p9301.7 and p9301.8 ... 15).<br />
+3: Monitoring function SLS override not supported (p9301.5).<br />
+4: Monitoring function external ESR activation not supported (p9301.4).<br />
+5: Monitoring function F-DI in PROFIsafe not supported (p9301.30).<br />
+6: Enable actual value synchronization not supported (p9301.3).<br />
+9: Monitoring function not supported by the firmware or enable bit not used.<br />
+12: This Control Unit does not support operation of safety functions with a higher-level control (e.g. SINUMERIK).<br />
+14: Monitoring function SLA and ncSI not supported.<br />
+24: Monitoring function SDI not supported.<br />
+26: Hysteresis and filtering for SSM monitoring function without an encoder not supported (p9301.16).<br />
+27: This hardware does not support onboard F-DI and F-DO.<br />
+30: The firmware version of the Motor Module is older than the version of the Control Unit.<br />
+33: Safety functions without selection not supported (p9601.5, p9801.5).<br />
+34: This module does not support safe position via PROFIsafe.<br />
+36: Function &quot;SS1E&quot; not supported.<br />
+39: This module or software version of the CU&#47;MM does not support safe gearbox stage switchover (p9501.26).<br />
+44: this module&#47;this software version does not support referencing via the Safety Control Channel (p9501.27).<br />
+45: Deactivating SOS&#47;SLS during an external STOP A is not supported (p9301.23).<br />
+50: Shortening the switchover times for SOS (p9569&#47;p9369, p9567&#47;p9367) is not supported.<br />
+52: &quot;SBR with encoder&quot; function is not supported (p9306 = 2).<br />
+53: function SS2E not supported (p9301.18).<br />
+54: SCA function not supported (p9301.28).<br />
+57: &quot;Synchronous transfer safe position via PROFIsafe&quot; function not supported (p9301.29).<br />
+58: &quot;SLA&quot; function not supported (p9301.20).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- deselect monitoring function involved (p9301, p9501, p9601, p9801, p9307, p9507, p9506, p9306).<br />
+- Upgrade the Motor Module firmware.<br />
+Note:<br />
+ESR: Extended Stop and Retract<br />
+F-DI: Failsafe Digital Input<br />
+SBR: Safe Brake Ramp (safe brake ramp monitoring)<br />
+SCA: Safe Cam &#47; SN: Safe software cam<br />
+SDI: Safe Direction (safe motion direction)<br />
+SI: Safety Integrated<br />
+SLP: Safely-Limited Position &#47; SE: Safe software limit switches<br />
+SLS: Safely-Limited Speed &#47; SG: Safely reduced speed<br />
+SP: Safe Position<br />
+SS1E: Safe Stop 1 External (Safe Stop 1 with external stop)<br />
+SS2E: Safe Stop 2 External (Safe Stop 2 with external stop, external STOP D)<br />
+See also: p9301, p9501, p9503, p9601, p9801, r9871<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230683">F230683</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: SOS&#47;SLS enable missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The safety-relevant basic function &quot;SOS&#47;SLS&quot; is not enabled in p9301 although other safety-relevant monitoring functions are enabled.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Enable the function &quot;SOS&#47;SLS&quot; (p9301.0) and carry out a POWER ON.<br />
+Note:<br />
+SI: Safety Integrated<br />
+SLS: Safely-Limited Speed &#47; SG: Safely reduced speed<br />
+SOS: Safe Operating Stop &#47; SBH: Safe operating stop<br />
+See also: p9301 (SI Motion enable safety functions (Motor Module))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230684">F230684</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: Safely-Limited Position limit values interchanged</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the function &quot;Safely-Limited Position&quot; (SLP), a lower value is in p9334 than in p9335.<br />
+Note:<br />
+This fault does not result in a safety stop response.<br />
+Fault value (r0949, interpret decimal):<br />
+1: Limit values SLP1 interchanged.<br />
+2: Limit values SLP2 interchanged.<br />
+See also: p9334, p9335<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the lower and upper limit values (p9335, p9334).<br />
+- carry out a POWER ON (switch-off&#47;switch-on).<br />
+Note:<br />
+SI: Safety Integrated<br />
+SLP: Safely-Limited Position &#47; SE: Safe software limit switches<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230685">F230685</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: Safely-Limited Speed limit value too high</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The limit value for the function &quot;Safely-Limited Speed&quot; (SLS) is greater than the speed that corresponds to an encoder limit frequency of 500 kHz.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+Fault value (r0949, interpret decimal):<br />
+Maximum permissible speed.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the limit values for SLS and carry out a POWER ON.<br />
+Note:<br />
+SI: Safety Integrated<br />
+SLS: Safely-Limited Speed &#47; SG: Safely reduced speed<br />
+See also: p9331 (SI Motion SLS limit values (Motor Module))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230686">F230686</a></b></td>
+<td><b>&lt;location&gt;SI Motion: Illegal parameterization cam position</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>At least one enabled &quot;Safety Cam&quot; (SCA) is parameterized in p9336 or p9337 too close to the tolerance range around the modulo position.<br />
+- the minus position value of a cam must be greater than the lower modulo limit + cam tolerance (p9340) + position tolerance (p9342).<br />
+- the plus position value of a cam must be less than the upper modulo limit - cam tolerance (p9340) - position tolerance (p9342).<br />
+- when the modulo position is parameterized (p9305 &gt; 0), the lower modulo limit = 0, the upper modulo limit = p9305.<br />
+- the cam length of cam x = p9336[x] - p9337[x] is less than the cam tolerance + position tolerance (= p9340 + p9342).<br />
+This also means that cams of the minus position value must be less than the plus position value.<br />
+Note:<br />
+This fault does not result in a safety stop response.<br />
+Fault value (r0949, interpret decimal):<br />
+Number of the &quot;Safe Cam&quot; with an illegal position.<br />
+See also: p9501 (SI Motion enable safety functions (Control Unit))<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the cam position and carry out a POWER ON.<br />
+Note:<br />
+SCA: Safe Cam<br />
+SI: Safety Integrated<br />
+See also: p9536, p9537<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230688">F230688</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: Actual value synchronization not permissible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- it is not permissible to enable actual value synchronization for a 1-encoder system.<br />
+- it is not permissible to simultaneously enable actual value synchronization and a monitoring function with absolute reference (SCA&#47;SLP).<br />
+- it is not permissible to simultaneously enable actual value synchronization and safe position via PROFIsafe.<br />
+Note:<br />
+This fault results in a STOP A that cannot be acknowledged.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- either deselect the &quot;actual value synchronization&quot; function or parameterize a 2-encoder system.<br />
+- either deselect the function &quot;actual value synchronization&quot; or the monitoring functions with absolute reference (SCA&#47;SLP) and carry out a POWER ON.<br />
+- either deselect the &quot;actual value synchronization&quot; function or do not enable &quot;Safe position via PROFIsafe&quot;.<br />
+Note:<br />
+SCA: Safe Cam &#47; SN: Safe software cam<br />
+SI: Safety Integrated<br />
+SLP: Safely-Limited Position &#47; SE: Safe software limit switches<br />
+SP: Safe Position<br />
+See also: p9501, p9526<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230692">F230692</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: Parameter value not permitted for encoderless</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The parameter cannot be parameterized with this value if encoderless motion monitoring functions have been parameterized in p9306.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter number with the incorrect value.<br />
+See also: p9301 (SI Motion enable safety functions (Motor Module))<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the parameter specified in the fault value.<br />
+- if necessary, deselect encoderless motion monitoring functions (p9306).<br />
+See also: p9301, p9501<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230693">A230693 (F)</a></b></td>
+<td><b>&lt;location&gt;SI P2: Safety parameter settings changed, warm restart&#47;POWER ON required</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Safety parameters have been changed; these will only take effect following a warm restart or POWER ON.<br />
+Notice:<br />
+All changed parameters of the safety motion monitoring functions will only take effect following a warm restart or POWER ON.<br />
+Alarm value (r2124, interpret decimal):<br />
+Parameter number of the safety parameter which has changed, necessitating a warm restart or POWER ON.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a warm restart (p0009 = 30, p0976 = 2, 3).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+Note:<br />
+Before performing an acceptance test, a POWER ON must be carried out for all components.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230700">C230700</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: STOP A initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive is stopped via a STOP A (STO via the safety switch-off signal path of the Control Unit).<br />
+Possible causes:<br />
+- stop request from the Control Unit.<br />
+- STO not active after parameterized time (p9357) after test stop selection.<br />
+- subsequent response to the message C30706 &quot;SI Motion MM: SAM&#47;SBR limit exceeded&quot;.<br />
+- subsequent response to the message C30714 &quot;SI Motion MM: Safely-Limited Speed exceeded&quot;.<br />
+- subsequent response to the message C30701 &quot;SI Motion MM: STOP B initiated&quot;.<br />
+- subsequent response to the message C01715 &quot;SI Motion CU: Safely-Limited Position exceeded&quot;.<br />
+- subsequent response to the message C30716 &quot;SI Motion MM: tolerance for safe motion direction exceeded&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- remove the cause to the fault on the Control Unit.<br />
+- check the value in p9357, if required, increase the value.<br />
+- check the switch-off signal path of the Control Unit (check DRIVE-CLiQ communication).<br />
+- carry out a diagnostics routine for message C30706.<br />
+- carry out a diagnostics routine for message C30714.<br />
+- carry out a diagnostics routine for message C30701.<br />
+- carry out a diagnostics routine for message C30715.<br />
+- carry out a diagnostics routine for message C30716.<br />
+- replace the Motor Module, Power Module or Hydraulic Module.<br />
+- replace Control Unit.<br />
+This message can be acknowledged without a POWER ON as follows (safe acknowledgment):<br />
+- Terminal Module 54F (TM54F).<br />
+- onboard F-DI (only CU310-2).<br />
+- PROFIsafe.<br />
+- machine control panel.<br />
+Note:<br />
+SAM: Safe Acceleration Monitor (safe acceleration monitoring)<br />
+SBR: Safe Brake Ramp (safe brake ramp monitoring)<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230701">C230701</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: STOP B initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+ (OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive is stopped via a STOP B (braking along the OFF3 ramp).<br />
+As a result of this fault, after the time parameterized in p9356 has expired or after the speed threshold parameterized in p9360 has been fallen below, message C30700 &quot;SI Motion MM: STOP A initiated&quot; is output.<br />
+Possible causes:<br />
+- stop request from the Control Unit.<br />
+- subsequent response to the message C30714 &quot;SI Motion MM: Safely-Limited Speed exceeded&quot;.<br />
+- subsequent response to the message C30711 &quot;SI Motion MM: Defect in a monitoring channel&quot;.<br />
+- subsequent response to the message C30707 &quot;SI Motion MM: tolerance for safe operating stop exceeded&quot;.<br />
+- subsequent response to the message C01715 &quot;SI Motion CU: Safely-Limited Position exceeded&quot;.<br />
+- subsequent response to the message C30716 &quot;SI Motion MM: tolerance for safe motion direction exceeded&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- remove the cause to the fault on the Control Unit.<br />
+- carry out a diagnostics routine for message C30714.<br />
+- carry out a diagnostics routine for message C30711.<br />
+- carry out a diagnostics routine for message C30707.<br />
+- carry out a diagnostics routine for message C30715.<br />
+- carry out a diagnostics routine for message C30716.<br />
+This message can be acknowledged without a POWER ON as follows (safe acknowledgment):<br />
+- Terminal Module 54F (TM54F).<br />
+- onboard F-DI (only CU310-2).<br />
+- PROFIsafe.<br />
+- machine control panel.<br />
+Note:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230706">C230706</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: SAM&#47;SBR limit exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Motion monitoring functions with encoder (p9306 = 0) or encoderless with set acceleration monitoring (SAM, p9306 = 3):<br />
+- after initiating STOP B (SS1) or STOP C (SS2), the speed has exceeded the selected tolerance.<br />
+Motion monitoring functions encoderless with set brake ramp monitoring (SBR p9306 = 1):<br />
+- after initiating STOP B (SS1) or SLS changeover to the lower speed level, the speed has exceeded the selected tolerance.<br />
+The drive is shut down by the message C30700 &quot;SI Motion MM: STOP A initiated&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the braking behavior and, if necessary, adapt the parameterization of the parameter settings of the &quot;SAM&quot; or the &quot;SBR&quot; function.<br />
+This message can be acknowledged without a POWER ON as follows (safe acknowledgment):<br />
+- Terminal Module 54F (TM54F).<br />
+- onboard F-DI (only CU310-2).<br />
+- PROFIsafe.<br />
+- machine control panel.<br />
+Note:<br />
+SAM: Safe Acceleration Monitor (safe acceleration monitoring)<br />
+SBR: Safe Brake Ramp (safe ramp monitoring)<br />
+SI: Safety Integrated<br />
+See also: p9348, p9381, p9382, p9383, p9548<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230707">C230707</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: Tolerance for safe operating stop exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The actual position has distanced itself further from the target position than the standstill tolerance.<br />
+The drive is shut down by the message C30701 &quot;SI Motion MM: STOP B initiated&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether safety faults are present and if required carry out the appropriate diagnostic routines for the particular faults.<br />
+- check whether the standstill tolerance matches the accuracy and control dynamic performance of the axis.<br />
+This message can be acknowledged without a POWER ON as follows (safe acknowledgment):<br />
+- Terminal Module 54F (TM54F).<br />
+- onboard F-DI (only CU310-2).<br />
+- PROFIsafe.<br />
+- machine control panel.<br />
+Note:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop &#47; SBH: Safe operating stop<br />
+See also: p9530<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230708">C230708</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: STOP C initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>STOP2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive is stopped via a STOP C (braking along the OFF3 ramp).<br />
+&quot;Safe Operating Stop&quot; (SOS) is activated after the parameterized time has expired.<br />
+Possible causes:<br />
+- stop request from the higher-level control.<br />
+- subsequent response to the message C30714 &quot;SI Motion MM: Safely-Limited Speed exceeded&quot;.<br />
+- subsequent response to the message C01715 &quot;SI Motion CU: Safely-Limited Position exceeded&quot;.<br />
+- subsequent response to the message C30716 &quot;SI Motion MM: tolerance for safe motion direction exceeded&quot;.<br />
+See also: p9552 (SI Motion transition time STOP C to SOS (SBH) (Control Unit))<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- remove the cause of the fault at the control.<br />
+- carry out a diagnostics routine for messages C30714, C30715, C30716.<br />
+This message can be acknowledged without a POWER ON as follows (safe acknowledgment):<br />
+- Terminal Module 54F (TM54F).<br />
+- onboard F-DI (only CU310-2).<br />
+- PROFIsafe.<br />
+- machine control panel.<br />
+Note:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop &#47; SBH: Safe operating stop<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230709">C230709</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: STOP D initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive is stopped via a STOP D (braking along the path).<br />
+&quot;Safe Operating Stop&quot; (SOS) is activated after the parameterized time has expired.<br />
+Possible causes:<br />
+- stop request from the Control Unit.<br />
+- subsequent response to the message C30714 &quot;SI Motion MM: Safely-Limited Speed exceeded&quot;.<br />
+- subsequent response to the message C01715 &quot;SI Motion CU: Safely-Limited Position exceeded&quot;.<br />
+- subsequent response to the message C30716 &quot;SI Motion MM: tolerance for safe motion direction exceeded&quot;.<br />
+See also: p9353 (SI Motion transition time STOP D to SOS (Motor Module)), p9553 (SI Motion transition time STOP D to SOS (SBH) (Control Unit))<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- remove the cause of the fault at the control.<br />
+- carry out a diagnostics routine for messages C30714, C30715, C30716.<br />
+This message can be acknowledged without a POWER ON as follows (safe acknowledgment):<br />
+- Terminal Module 54F (TM54F).<br />
+- onboard F-DI (only CU310-2).<br />
+- PROFIsafe.<br />
+- machine control panel.<br />
+Note:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop &#47; SBH: Safe operating stop<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230710">C230710</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: STOP E initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive is stopped via a STOP E (retraction motion).<br />
+&quot;Safe Operating Stop&quot; (SOS) is activated after the parameterized time has expired.<br />
+Possible causes:<br />
+- stop request from the higher-level control.<br />
+- subsequent response to the message C30714 &quot;SI Motion MM: Safely-Limited Speed exceeded&quot;.<br />
+- subsequent response to the message C01715 &quot;SI Motion CU: Safely-Limited Position exceeded&quot;.<br />
+- subsequent response to the message C30716 &quot;SI Motion MM: tolerance for safe motion direction exceeded&quot;.<br />
+See also: p9354 (SI Motion transition time STOP E to SOS (Motor Module)), p9554 (SI Motion transition time STOP E to SOS (SBH) (Control Unit))<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- remove the cause of the fault at the control.<br />
+- carry out a diagnostics routine for messages C30714, C30715, C30716.<br />
+This message can be acknowledged without a POWER ON as follows (safe acknowledgment):<br />
+- Terminal Module 54F (TM54F).<br />
+- onboard F-DI (only CU310-2).<br />
+- PROFIsafe.<br />
+- machine control panel.<br />
+Note:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop &#47; SBH: Safe operating stop<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230711">C230711</a></b></td>
+<td><b>&lt;location&gt;SI Motion P2: Defect in a monitoring channel</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When cross-comparing the two monitoring channels, the drive detected a difference between the input data or results of the monitoring functions and initiated a STOP F. One of the monitoring functions no longer reliably functions - i.e. safe operation is no longer possible.<br />
+If at least one monitoring function is active, then after the parameterized timer has expired, the message C30701 &quot;SI Motion: STOP B initiated&quot; is output. The message is output with message value 1031 when the Sensor Module hardware is replaced.<br />
+The following message values may also occur in the following cases if the cause that is explicitly mentioned does not apply:<br />
+- differently parameterized cycle times (p9500&#47;p9300, p9511&#47;p9311).<br />
+- differently parameterized axis types (p9502&#47;p9302).<br />
+- excessively fast cycle times (p9500&#47;p9300, p9511&#47;p9311).<br />
+- incorrect synchronization.<br />
+Message value (r9749, interpret decimal):<br />
+0 ... 999:<br />
+Number of the cross-compared data that resulted in this message.<br />
+The significance of the individual message values is described in safety message C01711 of the Control Unit.<br />
+1000: Watchdog timer has expired. Too many signal changes have occurred at safety-relevant inputs.<br />
+1001: Initialization error of watchdog timer.<br />
+1002:<br />
+User agreement after the timer has expired different.<br />
+The user agreement is not consistent. After a time of 4 s has expired, the status of the user agreement is different in both monitoring channels.<br />
+1003: Reference tolerance exceeded. When the user agreement is set, the difference between the new reference point that has been determined after power up (absolute encoder) or reference point approach (distance-coded or incremental measuring system) and the safe actual position (saved value + traversing distance) is greater than the reference tolerance (p9344). In this case, the user agreement is withdrawn.<br />
+1004:<br />
+Plausibility error for user agreement.<br />
+1. If the user agreement has already been set, then the setting is initiated again. In this case, the user agreement is withdrawn.<br />
+2. The user agreement was set, although the axis has still not been referenced.<br />
+1005:<br />
+- for safe motion monitoring functions without encoder: pulses already suppressed for test stop selection.<br />
+- for safe motion monitoring functions with encoder: STO already active for test stop selection.<br />
+1011: Acceptance test status between the monitoring channels differ.<br />
+1012: Plausibility violation of the encoder actual value.<br />
+1014: fault when synchronizing the SGA for the &quot;Safe cam&quot; function<br />
+1015: Gearbox switchover (bit 27 in PROFIsafe telegram) takes longer than 2 min.<br />
+1020: Cyc. communication failure between the monit. channels.<br />
+1021: Cyc. communication failure between the monit. channel and Sensor Module.<br />
+1023: Error in the effectiveness test in the DRIVE-CLiQ encoder.<br />
+1024: Sign-of-life error for HTL&#47;TTL encoders.<br />
+1030: Encoder fault detected from another monitoring channel.<br />
+1031:<br />
+- data transfer error between the monitoring channel and the Sensor Module (p9526&#47;p9326).<br />
+- the Sensor Module for the second channel was replaced.<br />
+- the encoder for the second channel has been incorrectly parameterized.<br />
+1040: Pulses suppressed with active encoderless monitoring functions.<br />
+1041: Current absolute value too low (encoderless)<br />
+1042: Current&#47;voltage plausibility error<br />
+1043: Too many acceleration phases<br />
+1044: Current actual values plausibility error.<br />
+1045: CRC of the standstill position incorrect.<br />
+5000 ... 5140:<br />
+PROFIsafe message values.<br />
+For these message values, the failsafe control signals (Failsafe Values) are transferred to the safety functions.<br />
+The significance of the individual message values is described in safety message C01711 of the Control Unit.<br />
+6000 ... 6166:<br />
+PROFIsafe message values (PROFIsafe driver for PROFIBUS DP V1&#47;V2 and PROFINET).<br />
+For these message values, the failsafe control signals (Failsafe Values) are transferred to the safety functions. If &quot;STOP B after failure of the PROFIsafe communication&quot; (p9812) is parameterized, the transfer of the Failsafe Values is delayed.<br />
+The significance of the individual message values is described in safety fault F01611 of the Control Unit.<br />
+7000: Difference of the safe position is greater than the parameterized tolerance (p9542&#47;p9342).<br />
+7001: Scaling value for the safe position in the 16 bit notation, too low (p9574&#47;p9374).<br />
+7002: Cycle counter for transferring the safe position is different in both monitoring channels.<br />
+See also: p9555 (SI Motion transition time STOP F to STOP B (Control Unit)), r9725 (SI Motion diagnostics STOP F)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For message value = 1002:<br />
+- perform safe acknowledgment, set the user agreement in both monitoring channels simultaneously (within 4 s).<br />
+For message value = 1003:<br />
+- check the mechanical system of the axis. It is possible that the axis was shifted when switched-off, and the last saved actual position no longer corresponds with the new actual position after the system has been powered up again.<br />
+- increase the tolerance for the actual value comparison when referencing (p9344).<br />
+Then check the actual values, perform a POWER ON and set the user agreement again.<br />
+For message value = 1004:<br />
+For 1., the following applies: Perform safe acknowledgment. Set the user agreement again.<br />
+For 2., the following applies: Perform safe acknowledgment. Only set the user agreement again if the axis has been referenced.<br />
+For message value = 1005:<br />
+- for safe motion monitoring functions without encoder: check the conditions for pulse enable.<br />
+- for safe motion monitoring functions with encoder: check the conditions for STO deselection.<br />
+Note:<br />
+For a Power Module, the test stop should always be performed when the pulses are enabled (independent of whether with encoder or without encoder).<br />
+For message value = 1012:<br />
+- upgrade the Sensor Module firmware to a more recent version.<br />
+- for 1-encoder systems, the following applies: check the encoder parameters for equality (p9515&#47;p9315, p9519&#47;p9319, p9523&#47;p9323, p9524&#47;p9324, p9525&#47;p9325, p9529&#47;p9329).<br />
+- for a 1-encoder system and 2-encoder system the following applies: in order to correctly copy the encoder parameters from p04xx, p9700 must be set to 46 and p9701 must be set to 172.<br />
+- for DQI encoders the following applies: If required, upgrade the firmware version of the Control Unit to a more recent version, which is released for DQI encoders.<br />
+- the parameterized encoder does not correspond to the connected encoder - replace the encoder.<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components or a warm restart (p0009 = 30, p0976 = 2, 3).<br />
+- replace the hardware.<br />
+For message value = 1014:<br />
+- check the encoder actual values. If required, increase the position tolerance (p9342) and&#47;or the cam tolerance (p9340).<br />
+For message value = 1024:<br />
+- check the communication link.<br />
+- if required, increase the monitoring cycle clock settings (p9500, p9511).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- replace the hardware.<br />
+For message value = 1030:<br />
+- check the encoder connection.<br />
+- if required, replace the encoder.<br />
+For message value = 1031:<br />
+When replacing a Sensor Module, carry out the following steps:<br />
+- start the copy function for the node identifier on the drive (p9700 = 1D hex).<br />
+- acknowledge the hardware CRC on the drive (p9701 = EC hex).<br />
+- save all parameters (p0977 = 1).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+Adapt the encoder parameterization for the second channel as follows:<br />
+- set the encoder type (p0400).<br />
+- activate the safety commissioning mode (p0010 = 95).<br />
+- start the copy function for encoder parameters (p9700 = 46).<br />
+- exit the safety commissioning mode (p0010 = 0).<br />
+- save the parameters in a non-volatile fashion (copy RAM to ROM).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+The following always applies:<br />
+- check the encoder connection.<br />
+- if required, replace the encoder.<br />
+For message value = 1040:<br />
+- deselect encoderless monitoring functions, select and deselect STO.<br />
+- if monitoring function &quot;SLS&quot; is active, issue a pulse enable within 5 s of deselecting STO.<br />
+For message value = 6000 ... 6999:<br />
+- the significance of the individual message values is described in safety fault F01611 of the Control Unit.<br />
+For other message values:<br />
+- the significance of the individual message values is described in safety message C01711.<br />
+This message can be acknowledged without a POWER ON as follows (safe acknowledgment):<br />
+- Terminal Module 54F (TM54F).<br />
+- onboard F-DI (only CU310-2).<br />
+- PROFIsafe.<br />
+- machine control panel.<br />
+See also: p9300 (SI Motion monitoring clock cycle (Motor Module)), p9500 (SI Motion monitoring clock cycle (Control Unit))<br />
+</td></tr>
+</table><p></p></body></html>

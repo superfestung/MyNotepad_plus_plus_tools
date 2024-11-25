@@ -1,0 +1,104 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Activating/deactivating rotary interpolation transformation TRAINT</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Activating/deactivating rotary interpolation transformation TRAINT</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Rotary interpolation transformation TRAINT is activated in the NC program using instruction TRAFOON and deactivated using instruction TRAFOOF.</p>
+      <p>Certain conditions must be fulfilled for activation; otherwise, this is rejected and an alarm is output.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Conditions for activation</h3>
+      <ul>
+        <li>
+          <p>The center of rotation must be defined as zero point of the current frame (WCS zero point).</p>
+        </li>
+        <li>
+          <p>The direction of the axis of rotation corresponds to the Z axis in the WCS.</p>
+        </li>
+        <li>
+          <p>To activate rotary interpolation transformation TRAINT, it is not permissible that the machine moves, i.e. the axes do not traverse and the spindle does not rotate.</p>
+        </li>
+        <li>
+          <p>The direction of the tool spindle is antiparallel to the z direction of the WCS.</p>
+        </li>
+        <li>
+          <p>The axes are positioned so that after TRAFOON (and after taking into account the tool length), the y value in the WCS is equal to 0.</p>
+        </li>
+        <li>
+          <p>The spindle is turned so that the desired position of the tool cutting edge to the workpiece is achieved.</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Note</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="safety">As the spindle points anti-parallel to the Z axis, the negative angle must be approached.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          <p>Angle γ is used to compensate cutting edge parameters using function CUTMODK. The actual angle of the tool cutting edge must be realized by appropriately positioning the spindle.</p>
+        </li>
+        <li>
+          <p>Angle γ must be 0° or 180°.</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Activating a transformation</h3>
+      <p>Once all conditions have been satisfied, rotary interpolation transformation TRAINT can be activated using instruction TRAFOON:</p>
+      <p>
+        <code>TRAFOON(&lt;transformation name>,&lt;γ>)</code>
+      </p>
+      <p>The following rules apply:</p>
+      <ul>
+        <li>
+          <p>The transformation name must be defined using system variable $NT_NAME[&lt;n>].</p>
+        </li>
+        <li>
+          <p>The transformation type must be specified as follows using system variable $NT_TRAFO_TYPE[&lt;n>]:</p>
+          <p>
+            <code>$NT_TRAFO_TYPE[&lt;n>]="TRAINT"</code>
+          </p>
+        </li>
+        <li>
+          <p>Angle γ is used for the relative alignment of the tool cutting edge to the tangent of the circle:</p>
+          <a id="table_14e0f79f-abb7-ae80-52ee-672f804e87aa">
+          </a> <a id="table_0"></a> <a id="table_14e0f79f-abb7-ae80-52ee-672f804e87aa"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default_list" border="1"><colgroup><col width="15.0%"><col width="85.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">γ = 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The cutting edge is perpendicular to the tangent of the circle and is outside the circle (→ outside machining). </p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">γ = 180°</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The cutting edge is also perpendicular to the tangent of the circle and is inside the circle (→ inside machining).</p></td></tr></table></p></li>
+      </ul>
+      <p>Both system variables are part of the transformation based on the kinematic chain.</p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Deactivating a transformation</h3>
+      <p>It is only possible to deactivate the transformation with the spindle at standstill and is carried out using the TRAFOOF instruction.</p>
+    </div>
+    <p>See also:<br />    <a href="156737593739.html">Activating/deactivating rotary interpolation transformation TRAINT: More information</a><br />    <a href="156737595915.html">Calculate angle for aligning the tool for TRAINT (CALCTRAVAR)</a></p>
+  </body>
+</html>

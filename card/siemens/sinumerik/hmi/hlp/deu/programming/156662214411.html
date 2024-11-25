@@ -1,0 +1,46 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Verweilzeit (G4)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Verweilzeit (G4)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Mit dem Befehl <code>G4</code> wird in einem Satz eine Zeit (Verweilzeit) programmiert, die abläuft, sobald der Satz im Hauptlauf in Bearbeitung ist. Der Satzwechsel in den nachfolgenden Satz erfolgt, sobald die Zeit vollständig abgelaufen ist. </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">
+              <code>G4</code> unterbricht den Bahnsteuerbetrieb.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>G4 F&lt;Time> G4 S&lt;NumSpi>G4 S&lt;n> = &lt;NumSpi><a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_203c8b5e-45d3-468b-9488-ad76922ead8c"></a> <a id="table_0"></a> <a id="table_203c8b5e-45d3-468b-9488-ad76922ead8c"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="19.3%"><col width="18.0%"><col width="62.7%"></colgroup><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>G4</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Verweilzeit aktivieren</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">alleine im Satz:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">ja</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>F&lt;Time></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Unter der Adresse <code>F</code> wird die Verweilzeit <code>&lt;Time></code> in Sekunden angegeben.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>S&lt;NumSpi></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Unter der Adresse S wird die Verweilzeit in Spindelumdrehungen <code>&lt;NumSpi></code> gezogen auf die aktuelle Hauptspindel angegeben.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>S&lt;n>=NumSpi></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Unter der Adresse S wird die Verweilzeit in Spindelumdrehungen <code>&lt;NumSpi></code> bezogen auf die mit der Adresserweiterung <code>&lt;n></code> adressierte Spindel angegeben.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Die im Verweilzeitsatz <code>G4</code> für die Zeitangabe verwendeten Adressen <code>F</code> und <code>S</code> beeinflussen die Vorschübe  <code>F...</code> und die Spindeldrehzahlen <code>S...</code> des Programms nicht.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Randbedingungen</h3><h4 class="Blocklabel">Synchronaktionen</h4><p>In einem Programm sind zwei Synchronaktionen so programmiert, dass der nachfolgende Satz mit Verweilzeit zum Aktionssatz wird, in dem die Synchronaktionen ausgeführt werden. Die eine Synchronaktion ist eine modale Synchronaktion. Die andere Synchronaktion ist eine satzweise Synchronaktion. Soll die satzweise Synchronaktion die modale Synchronaktion beeinflussen z.B. durch UNLOCK zur Bearbeitung freigeben, müssen als wirksame Verweilzeit <b>mindestens zwei Interpolatortakte</b> z.B. <code>G4 F&lt;Interpolatortakt * 2></code> zur Verfügung stehen.</p><p class="comment">Die wirksame Verweilzeit ist abhängig von der Einstellung im Maschinendatum MD10280 $MN_PROG_FUNCTION_MASK, Bit 4 = &lt;Wert></p><a id="table_6fb2be96-39ea-9474-1e66-467001308176"></a> <a id="table_1"></a> <a id="table_6fb2be96-39ea-9474-1e66-467001308176"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="10.1%"><col width="89.9%"></colgroup><tr valign="top"><th><p type="p_table_cb" align="center" class="comment">Wert</p></th><th><p type="p_table_lb" align="left" class="comment">Bedeutung</p></th></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">Die wirksame Verweilzeit ist gleich der programmierten Verweilzeit</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">Die wirksame Verweilzeit ist gleich der programmierten Verweilzeit gerundet auf das nächstgrößere Vielfache des Interpolatortaktes (MD10071 $MN_IPO_CYCLE_TIME)</p></td></tr></table></p><p class="comment">Programmbeispiel:</p><ul class="comment"><li class="comment"><p class="comment">MD10071 $MN_IPO_CYCLE_TIME == 8 ms</p></li><li class="comment"><p class="comment">MD10280 $MN_PROG_FUNCTION_MASK, Bit 4 = 1</p></li></ul><a id="table_80cb5da1-d081-194d-dd1a-71ac9ebc2894"></a> <a id="table_2"></a> <a id="table_80cb5da1-d081-194d-dd1a-71ac9ebc2894"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ENF"><colgroup><col width="50.0%"><col width="50.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 WHEN TRUE DO LOCK(1)</td><td>; Satzweise SynAct: LOCK der ; modalen SynAct. ID=1</td></tr><tr valign="top"><td>N20 G4 F2</td><td>; Aktionssatz für SynAct aus N10</td></tr><tr valign="top"><td>N30 WHEN TRUE DO UNLOCK(1)</td><td>; Satzweise SynAct: UNLOCK ; der modalen SynAct. ID=1</td></tr><tr valign="top"><td>N40 ID=1 WHENEVER TRUE DO $R0=1 RDISABLE</td><td>; Modale SynAct ID=1; R-Parameter R0=1; Setzen der Einlesesperre</td></tr><tr valign="top"><td>N50 G4 F0.012</td><td>; Aktionssatz für SynAct aus N40 und N50; siehe unten Absatz "Beschreibung"</td></tr><tr valign="top"><td>N60 G4 F10</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p class="comment">Beschreibung</p><p class="comment">Das gewünschte Verhalten ist, dass die satzweise Synchronaktion aus N30 die aktive Sperre (LOCK) der modalen Synchronaktion mit ID=1 aus N40 aufhebt und dadurch in N50 der R-Parameter geschrieben und die Einlesesperre wirksam wird. Dieses Verhalten wird aber nur erreicht, wenn die wirksame Verweilzeit mindestens zwei Interpolatortakte lang ist.</p><p class="comment">Die wirksame Verweilzeit ergibt sich aus der programmierten Verweilzeit, dem Interpolatortakt und der Einstellung in MD10280 $MN_PROG_FUNCTION_MASK, Bit 4. Damit die wirksame Verweilzeit mindestens zwei Interpolatortakt lang ist, muss folgende Verweilzeit programmiert werden:</p><ul class="comment"><li class="comment"><p class="comment">Bit 4 == 0: Programmierte Verweilzeit ≥ 2 * Interpolatortakt</p></li><li class="comment"><p class="comment">Bit 4 == 1: Programmierte Verweilzeit ≥ 1,5 * Interpolatortakt</p></li></ul><p class="comment">Ist die wirksame Verweilzeit kleiner als zwei Interpolatortakte, wird das Schreiben des R-Parameters und die Einlesesperre erst im Satz N60 ausgeführt.</p><a name="block_4"></a><h3 class="Blocktitle">Beispiel</h3><a id="table_1cbc0544-9469-47a6-b442-25dc56286ec3"></a> <a id="table_3"></a> <a id="table_1cbc0544-9469-47a6-b442-25dc56286ec3"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EJH"><colgroup><col width="36.4%"><col width="63.6%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 G1 F200 Z-5 S300 M3</td><td>; Vorschub F, Spindeldrehzahl S</td></tr><tr valign="top"><td>N20 G4 F3</td><td>; Verweilzeit: 3s</td></tr><tr valign="top"><td>N30 X40 Y10</td><td> </td></tr><tr valign="top"><td>N40 G4 S30</td><td>; 30 Umdrehungen der Spindel verweilen (entspricht bei S = 300 U/min und 100% Drehzahloverride: t = 0,1 min).</td></tr><tr valign="top"><td>N50 X...</td><td>; In N10 programmierter Vorschub und Spindeldrehzahl wirken weiterhin.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

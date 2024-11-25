@@ -1,0 +1,26 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Indirect call of a program programmed in ISO language (ISOCALL)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Indirect call of a program programmed in ISO language (ISOCALL)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>A program programmed in an ISO language can be called using the indirect program call ISOCALL. The ISO mode set in the machine data is then activated. The original execution mode becomes effective again at the end of the program. If no ISO mode is set in the machine data, the subprogram is called in Siemens mode. </p>
+      <p>
+        <b>Additional information</b> about the ISO mode: Function Manual ISO Dialects</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>ISOCALL &lt;program_name><a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_a7392c89-91d7-413c-9c67-2481b073c2f2"></a> <a id="table_0"></a> <a id="table_a7392c89-91d7-413c-9c67-2481b073c2f2"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="28.5%"><col width="71.4%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>ISOCALL</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Keyword for an indirect subprogram call with which the ISO mode set in the machine data is activated.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;program name></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Name of the program programmed in an ISO language (variable or constant, type STRING)</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Example: Calling a contour with cycle programming from ISO mode</h3><a id="table_f3a5d9f0-c28b-4644-b5b1-d0a2820f5ea6"></a> <a id="table_1"></a> <a id="table_f3a5d9f0-c28b-4644-b5b1-d0a2820f5ea6"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EQC"><colgroup><col width="52.0%"><col width="48.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>0122_SPF</td><td>; Contour description in ISO mode</td></tr><tr valign="top"><td>N1010 G1 X10 Z20</td><td> </td></tr><tr valign="top"><td>N1020 X30 R5</td><td> </td></tr><tr valign="top"><td>N1030 Z50 C10</td><td> </td></tr><tr valign="top"><td>N1040 X50</td><td> </td></tr><tr valign="top"><td>N1050 M99</td><td> </td></tr><tr valign="top"><td>N0010 DEF STRING[5] PROGNAME = “0122“</td><td>; Siemens part program (cycle)</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N2000 R11 = $AA_IW[X]</td><td> </td></tr><tr valign="top"><td>N2010 ISOCALL PROGNAME</td><td> </td></tr><tr valign="top"><td>N2020 R10 = R10+1</td><td>; Execute program 0122.spf in ISO mode</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N2400 M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+    <p>See also:<br />    <a href="156662709003.html">Indirect subprogram call (CALL)</a></p>
+  </body>
+</html>

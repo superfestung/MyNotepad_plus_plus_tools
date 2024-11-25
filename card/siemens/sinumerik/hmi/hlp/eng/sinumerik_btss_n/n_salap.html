@@ -1,0 +1,370 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block N/SALAP: Alarms: List organized according to priority</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block N/SALAP: Alarms: List organized according to priority</h1>
+         </div>
+      </div>The alarms of the NCK are arranged in a list in the order of their priorities. The highest-priority alarm is set to position
+      1. The alarm list is sorted according to the following criteria:<br/>
+      <br/>
+      1. Sorting criterion: deletion criterion (highest priority at 1st position)<br/>
+                - NC power OFF/ON<br/>
+                - Press reset key<br/>
+                - Press "Delete alarm"<br/>
+                - Press "NC start"<br/>
+                - Press "Recall" key<br/>
+      2. Sorting criterion: alarm occurrence time<br/>
+      <br/>
+      The alarm parameters are transferred as ASCII strings, the first character contains the type information for the parameter.
+      The following types are used: <br/>
+      S: General string, e.g. part program name<br/>
+      A: Axis name / spindle name<br/>
+      K: Channel name<br/>
+      N: Block name<br/>
+      Y: System error<br/>
+      D: Drive number<br/>
+      <br/>
+      If a parameter is not assigned, an "S" is transferred.<br/>
+      <br/>
+      All variables in this module are privileged variables! This means that cyclic acknowledgments are sent for these variables
+      even if the cyclic services are no longer serviced by the NCK because of block cycle problems. <br/>
+      Notice: Privileged variables lose this characteristic if they are combined with non-privileged variables in a request. -&gt;
+      Do not combine alarm variables with other variables in a cluster!<br/>
+      <br/>
+      In addition it is presumed that the cyclic services are set "on change" for the alarm variables and are not combined with
+      other variables (not even with privileged variables) in the same request.<br/>
+      <br/>
+      The module SALAP only contains the alarms that are generated in the NCK. It contains neither PLC nor HMI alarms. In order
+      to read all alarms, the OEM-HMI user should use the alarm server functions and not read the SALAP module directly.<br/>
+      
+      <div><a name="36"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>alarmNo</b></td>
+            <td colspan="3" style="border:1px solid black">Ordinal number of an alarm</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Ordinal number of an alarm (how many alarms since control ON)<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>0 = unknown alarm<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Alarm list index<br/>
+               The maximum alarm list index can be read via variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> in module S.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Nck/TopPrioAlarm/alarmNo[&lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="58"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>clearInfo</b></td>
+            <td colspan="3" style="border:1px solid black">Acknowledgment criterion for an alarm</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Acknowledgment criterion for an alarm<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>1 = Power On<br/>
+               2 = Reset<br/>
+               3 = Cancel<br/>
+               4 = Alarm is cancelled by NCK-software<br/>
+               5 = Alarm is cancelled by starting a program<br/>
+               6 = Alarm is cancelled by RESET in all channels of the bags (from SW 4.1)<br/>
+               7 = Alarm is cancelled by RESET in all channels of the NC (from SW 4.1)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Nck/TopPrioAlarm/clearInfo
+            </td>
+         </tr>
+      </table>
+      <div><a name="135"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>fillText1</b></td>
+            <td colspan="3" style="border:1px solid black">Parameter 1 of the alarm</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>5
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Parameter 1 of the alarm<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Alarm list index<br/>
+               The maximum alarm list index can be read via variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> in module S.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Nck/TopPrioAlarm/fillText1[&lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="138"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>fillText2</b></td>
+            <td colspan="3" style="border:1px solid black">Parameter 2 of the alarm</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Parameter 2 of the alarm<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Alarm list index<br/>
+               The maximum alarm list index can be read via variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> in module S.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Nck/TopPrioAlarm/fillText2[&lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="141"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>fillText3</b></td>
+            <td colspan="3" style="border:1px solid black">Parameter 3 of the alarm</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Parameter 3 of the alarm<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Alarm list index<br/>
+               The maximum alarm list index can be read via variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> in module S.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Nck/TopPrioAlarm/fillText3[&lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="144"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>fillText4</b></td>
+            <td colspan="3" style="border:1px solid black">Parameter 4 of the alarm</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>8
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Parameter 4 of the alarm<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Alarm list index<br/>
+               The maximum alarm list index can be read via variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> in module S.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Nck/TopPrioAlarm/fillText4[&lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="437"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>textIndex</b></td>
+            <td colspan="3" style="border:1px solid black">Alarm number</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Alarm list index<br>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Alarm number of the actual alarm<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Alarm list index<br/>
+               The maximum alarm list index can be read via variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> in module S.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Nck/TopPrioAlarm/textIndex[&lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="440"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>timeBCD</b></td>
+            <td colspan="3" style="border:1px solid black">Time stamp of the alarm</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Alarm list index<br>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">The time at which the alarm occurred is given a time stamp. The time stamp is specified in the corresponding PLC format.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Alarm list index<br/>
+               The maximum alarm list index can be read via variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a>.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DATETIME
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Nck/TopPrioAlarm/timeBCD[&lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

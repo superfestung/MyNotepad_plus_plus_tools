@@ -1,0 +1,62 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Influence of acceleration on following axes (VELOLIMA, ACCLIMA, JERKLIMA)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Influence of acceleration on following axes (VELOLIMA, ACCLIMA, JERKLIMA)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>For <a href="156663654539.html">axis couplings</a> (tangential correction, coupled motion, master value coupling, electronic gear), the following axes/spindles are traversed depending on one or several master axes/spindles.</p>
+      <p>The dynamics limits of the following axes/spindles can be manipulated using the VELOLIMA, ACCLIMA, and JERKLIMA functions from the part program or from synchronized actions, even if the axis coupling is already active.  </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">The JERKLIMA function is not available for all types of coupling.</p>
+          </td>
+        </tr>
+      </table>
+      <ul>
+        <li>
+          <p>ACCLIMA and VELOLIMA act on the total motion of the spindle during spindle operation, i.e. also in the uncoupled case. In the variables $AC_SMAXACC_INFO or $AC_SMAXVELO_INFO, a limitation is indicated by the identifier 22.</p>
+        </li>
+        <li>
+          <p>In spindle operation, VELOLIMA is limited to 100 percent.</p>
+        </li>
+        <li>
+          <p>The following applies for spindle couplings regarding the permissible speed:</p>
+          <p>If the coupling motion already uses up the maximum speed and therefore the programmed basic motion stops, alarm 22015 "Following spindle has no dynamics for additional motion" is displayed.</p>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>VELOLIMA(&lt;axis>)=&lt;value>ACCLIMA(&lt;axis>)=&lt;value>JERKLIMA(&lt;axis>)=&lt;value><a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_e7382b21-1032-4a3d-b5b6-c7f5371a53d0"></a> <a id="table_0"></a> <a id="table_e7382b21-1032-4a3d-b5b6-c7f5371a53d0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="20.2%"><col width="79.7%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>VELOLIMA</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Command to correct the parameterized maximum <b>velocity</b></p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>ACCLIMA</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Command to correct the parameterized maximum <b>acceleration</b></p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>JERKLIMA</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Command to correct the parameterized maximum <b>jerk</b></p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;axis></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Following axis whose dynamics limits need to be corrected</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Value></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Percentage correction value</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Examples</h3><h4 class="Blocklabel">Example 1: Correction of the dynamics limits for a following axis (AX4)</h4><a id="table_5597a85f-c3fa-4997-8274-cc6fe2763841"></a> <a id="table_1"></a> <a id="table_5597a85f-c3fa-4997-8274-cc6fe2763841"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ECF"><colgroup><col width="30.1%"><col width="69.9%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>VELOLIMA[AX4]=75</td><td>; Limit correction to 75% of the maximum axial velocity stored in the machine data</td></tr><tr valign="top"><td>ACCLIMA[AX4]=50</td><td>; Limit correction to 50% of the maximum axial acceleration stored in the machine data</td></tr><tr valign="top"><td>JERKLIMA[AX4]=50</td><td>; Limit correction to 50% of the maximum axial jerk stored in the machine data</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 2: Electronic gear</h4><p>Axis 4 is coupled to axis X via an "electronic gear" coupling. The acceleration capacity of the following axis is limited to 70% of the maximum acceleration. The maximum permissible velocity is limited to 50% of the maximum velocity. Once the coupling has been activated successfully, the maximum permissible velocity is restored to 100%.</p><a id="table_1a98794a-859e-442b-b97b-eb5bc521938e"></a> <a id="table_2"></a> <a id="table_1a98794a-859e-442b-b97b-eb5bc521938e"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ELG"><colgroup><col width="45.6%"><col width="54.4%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N120 ACCLIMA[AX4]=70</td><td>; Reduced maximum acceleration.</td></tr><tr valign="top"><td>N130 VELOLIMA[AX4]=50</td><td>; Reduced maximum velocity.</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N150 EGON(AX4,"FINE",X,1,2)</td><td>; Activation of the EG coupling.</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N200 VELOLIMA[AX4]=100</td><td>; Full maximum velocity.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 3: Influencing master value coupling by static synchronized action</h4><p>Axis 4 is coupled to X by master value coupling. The acceleration response is limited to position 80% by static synchronized action 2 from position 100.</p><a id="table_dcbe0303-5ad8-4178-97bb-673359b021ea"></a> <a id="table_3"></a> <a id="table_dcbe0303-5ad8-4178-97bb-673359b021ea"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EEAAC"><colgroup><col width="60.0%"><col width="40.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N120 IDS=2 WHENEVER $AA_IM[AX4] > 
+100 DO ACCLIMA[AX4]=80</td><td>; Synchronized action</td></tr><tr valign="top"><td>N130 LEADON(AX4, X, 2)</td><td>; Master value coupling on</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>See also:<br />    <a href="156663492491.html">Acceleration mode (BRISK, BRISKA, SOFT, SOFTA, DRIVE, DRIVEA)</a><br />    <a href="156663505163.html">Activation of technology-specific dynamic values (DYNNORM, DYNPOS, DYNROUGH, DYNSEMIFIN, DYNFINISH, DYNPREC)</a></p>
+  </body>
+</html>

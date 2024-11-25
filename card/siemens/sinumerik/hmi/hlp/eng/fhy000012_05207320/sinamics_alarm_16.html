@@ -1,0 +1,1892 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="234850">F234850</a></b></td>
+<td><b>&lt;location&gt;VSM: Internal software error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (NONE, OFF2)Vector: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An internal software error in the Voltage Sensing Module (VSM) has occurred.<br />
+Fault value (r0949, interpret decimal):<br />
+1: Background time slice is blocked.<br />
+2: Checksum over the code memory is not OK.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- replace the Voltage Sensing Module (VSM).<br />
+- if required, upgrade the firmware in the Voltage Sensing Module.<br />
+- contact Technical Support.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234851">F234851</a></b></td>
+<td><b>&lt;location&gt;VSM DRIVE-CLiQ (CU): Sign-of-life missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: NONE<br />
+ (OFF1, OFF2)Vector: NONE<br />
+ (OFF1, OFF2)Hla: NONE<br />
+ (OFF1, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the Voltage Sensing Module involved (VSM) to the Control Unit.<br />
+The DRIVE-CLiQ component did not set the sign-of-life to the Control Unit.<br />
+Fault cause:<br />
+10 (= 0A hex):<br />
+The sign-of-life bit in the receive telegram is not set.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Upgrade the firmware of the component involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234860">F234860</a></b></td>
+<td><b>&lt;location&gt;VSM DRIVE-CLiQ (CU): Telegram error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: NONE<br />
+ (OFF1, OFF2)Vector: NONE<br />
+ (OFF1, OFF2)Hla: NONE<br />
+ (OFF1, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the Voltage Sensing Module involved (VSM) to the Control Unit.<br />
+Fault cause:<br />
+1 (= 01 hex):<br />
+Checksum error (CRC error).<br />
+2 (= 02 hex):<br />
+Telegram is shorter than specified in the length byte or in the receive list.<br />
+3 (= 03 hex):<br />
+Telegram is longer than specified in the length byte or in the receive list.<br />
+4 (= 04 hex):<br />
+The length of the receive telegram does not match the receive list.<br />
+5 (= 05 hex):<br />
+The type of the receive telegram does not match the receive list.<br />
+6 (= 06 hex):<br />
+The address of the power unit in the telegram and in the receive list do not match.<br />
+9 (= 09 hex):<br />
+The DRIVE-CLiQ communication from the DRIVE-CLiQ component involved to the Control Unit signals that the supply voltage has failed.<br />
+16 (= 10 hex):<br />
+The receive telegram is too early.<br />
+17 (= 11 hex):<br />
+CRC error and the receive telegram is too early.<br />
+18 (= 12 hex):<br />
+The telegram is shorter than that specified in the length byte or in the receive list and the receive telegram is too early.<br />
+19 (= 13 hex):<br />
+The telegram is longer than that specified in the length byte or in the receive list and the receive telegram is too early.<br />
+20 (= 14 hex):<br />
+The length of the receive telegram does not match the receive list and the receive telegram is too early.<br />
+21 (= 15 hex):<br />
+The type of the receive telegram does not match the receive list and the receive telegram is too early.<br />
+22 (= 16 hex):<br />
+The address of the power unit in the telegram and in the receive list does not match and the receive telegram is too early.<br />
+25 (= 19 hex):<br />
+The error bit in the receive telegram is set and the receive telegram is too early.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+- check the DRIVE-CLiQ wiring (interrupted cable, contacts, ...).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234875">F234875</a></b></td>
+<td><b>&lt;location&gt;VSM: power supply voltage failed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The DRIVE-CLiQ communication from the DRIVE-CLiQ component involved to the Control Unit signals that the supply voltage has failed.<br />
+Fault cause:<br />
+9 (= 09 hex):<br />
+The power supply voltage for the components has failed.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- check the power supply voltage wiring for the DRIVE-CLiQ component (interrupted cable, contacts, ...).<br />
+- check the dimensioning of the power supply for the DRIVE-CLiQ component.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234885">F234885</a></b></td>
+<td><b>&lt;location&gt;VSM DRIVE-CLiQ (CU): Cyclic data transfer error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: NONE<br />
+ (OFF1, OFF2)Vector: NONE<br />
+ (OFF1, OFF2)Hla: NONE<br />
+ (OFF1, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the Voltage Sensing Module involved (VSM) to the Control Unit.<br />
+The nodes do not send and receive in synchronism.<br />
+Fault cause:<br />
+26 (= 1A hex):<br />
+Sign-of-life bit in the receive telegram not set and the receive telegram is too early.<br />
+33 (= 21 hex):<br />
+The cyclic telegram has not been received.<br />
+34 (= 22 hex):<br />
+Timeout in the telegram receive list.<br />
+64 (= 40 hex):<br />
+Timeout in the telegram send list.<br />
+98 (= 62 hex):<br />
+Error at the transition to cyclic operation.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the power supply voltage of the component involved.<br />
+- carry out a POWER ON.<br />
+- replace the component involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234886">F234886</a></b></td>
+<td><b>&lt;location&gt;VSM DRIVE-CLiQ (CU): Error when sending DRIVE-CLiQ data</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: NONE<br />
+ (OFF1, OFF2)Vector: NONE<br />
+ (OFF1, OFF2)Hla: NONE<br />
+ (OFF1, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the Voltage Sensing Module involved (VSM) to the Control Unit.<br />
+Data were not able to be sent.<br />
+Fault cause:<br />
+65 (= 41 hex):<br />
+Telegram type does not match send list.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out a POWER ON.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234887">F234887</a></b></td>
+<td><b>&lt;location&gt;VSM DRIVE-CLiQ (CU): Component fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: NONE<br />
+ (OFF1, OFF2)Vector: NONE<br />
+ (OFF1, OFF2)Hla: NONE<br />
+ (OFF1, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Fault detected on the DRIVE-CLiQ component (Voltage Sensing Module) involved. Faulty hardware cannot be excluded.<br />
+Fault cause:<br />
+32 (= 20 hex):<br />
+Error in the telegram header.<br />
+35 (= 23 hex):<br />
+Receive error: The telegram buffer memory contains an error.<br />
+66 (= 42 hex):<br />
+Send error: The telegram buffer memory contains an error.<br />
+67 (= 43 hex):<br />
+Send error: The telegram buffer memory contains an error.<br />
+96 (= 60 hex):<br />
+Response received too late during runtime measurement.<br />
+97 (= 61 hex):<br />
+Time taken to exchange characteristic data too long.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the DRIVE-CLiQ wiring (interrupted cable, contacts, ...).<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+- if required, use another DRIVE-CLiQ socket (p9904).<br />
+- replace the component involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234895">F234895</a></b></td>
+<td><b>&lt;location&gt;VSM DRIVE-CLiQ (CU): Alternating cyclic data transfer error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: NONE<br />
+ (OFF1, OFF2)Vector: NONE<br />
+ (OFF1, OFF2)Hla: NONE<br />
+ (OFF1, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the Voltage Sensing Module involved (VSM) to the Control Unit.<br />
+Fault cause:<br />
+11 (= 0B hex):<br />
+Synchronization error during alternating cyclic data transfer.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out a POWER ON.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234896">F234896</a></b></td>
+<td><b>&lt;location&gt;VSM DRIVE-CLiQ (CU): Inconsistent component properties</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The properties of the DRIVE-CLiQ component (Voltage Sensing Module), specified by the fault value, have changed in an incompatible fashion with respect to the properties when booted. One cause can be, e.g. that a DRIVE-CLiQ cable or DRIVE-CLiQ component has been replaced.<br />
+Fault value (r0949, interpret decimal):<br />
+Component number.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON.<br />
+- when a component is replaced, the same component type and if possible the same firmware version should be used.<br />
+- when a cable is replaced, only cables whose length is the same as or as close as possible to the length of the original cables should be used (ensure compliance with the maximum cable length).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234899">F234899 (N, A)</a></b></td>
+<td><b>&lt;location&gt;VSM: Unknown fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: NONE<br />
+ (OFF1, OFF2)Vector: NONE<br />
+ (OFF1, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault occurred on the Voltage Sensing Module that cannot be interpreted by the Control Unit firmware.<br />
+This can occur if the firmware on this component is more recent than the firmware on the Control Unit.<br />
+Fault value (r0949, interpret decimal):<br />
+Fault number.<br />
+Note:<br />
+If required, the significance of this new fault can be read about in a more recent description of the Control Unit.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- replace the firmware on the Voltage Sensing Module by an older firmware version (r0158).<br />
+- upgrade the firmware on the Control Unit (r0018).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234903">A234903 (F, N)</a></b></td>
+<td><b>&lt;location&gt;VSM: I2C bus error occurred</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error has occurred when accessing the module-internal I2C bus.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Replace the Terminal Module.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234904">A234904 (F, N)</a></b></td>
+<td><b>&lt;location&gt;VSM: EEPROM</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error has occurred accessing the non-volatile memory on the Terminal Module.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Replace the Voltage Sensing Module (VSM).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234905">A234905 (F, N)</a></b></td>
+<td><b>&lt;location&gt;VSM: Parameter access</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Control Unit attempted to write an illegal parameter value to the Voltage Sensing Module (VSM).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether the firmware version of the VSM (r0158) matches the firmware version of Control Unit (r0018).<br />
+- if required, replace the Voltage Sensing Module.<br />
+Note:<br />
+The firmware versions that match each other are in the readme.txt file on the memory card.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234920">F234920 (N, A)</a></b></td>
+<td><b>&lt;location&gt;VSM: overtemperature or temperature sensor fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When evaluating the temperature sensor, a resistance value outside the permissible range was detected.<br />
+Fault value (r0949, interpret decimal):<br />
+1: overtemperature, wire breakage or sensor not connected.<br />
+KTY: R &gt; 1630 Ohm, PT1000: R &gt; 1720 Ohm<br />
+2: Measured resistance too low.<br />
+PTC: R &lt; 20 Ohm, KTY: R &lt; 50 Ohm, PT1000: R &lt; 723 Ohm<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- make sure that the sensor is connected correctly.<br />
+- replace the sensor.<br />
+- allow to cool down and then check the ambient conditions, load cycle and cooling (fan fuse).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234950">F234950</a></b></td>
+<td><b>&lt;location&gt;VSM: Internal software error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An internal software error in the Voltage Sensing Module (VSM) has occurred.<br />
+Fault value (r0949, interpret decimal):<br />
+Information about the fault source.<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- if necessary, upgrade the firmware in the Voltage Sensing Module to a later version.<br />
+- contact Technical Support.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="234999">A234999 (F, N)</a></b></td>
+<td><b>&lt;location&gt;VSM: Unknown alarm</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault occurred on the Voltage Sensing Module (VSM) an alarm has occurred that cannot be interpreted by the Control Unit firmware.<br />
+This can occur if the firmware on this component is more recent than the firmware on the Control Unit.<br />
+Alarm value (r2124, interpret decimal):<br />
+Alarm number.<br />
+Note:<br />
+If required, the significance of this new alarm can be read about in a more recent description of the Control Unit.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- replace the firmware on the Voltage Sensing Module by an older firmware version (r0148).<br />
+- upgrade the firmware on the Control Unit (r0018).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235000">F235000</a></b></td>
+<td><b>&lt;location&gt;TM54F: Sampling time invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The set sampling time is invalid.<br />
+- not a multiple integer of the DP clock cycle.<br />
+Fault value (r0949, floating point):<br />
+Recommended valid sampling time.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapt the sampling time (e.g. set the recommended valid sampling time).<br />
+See also: p10000 (SI TM54F communication clock cycle)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235001">F235001</a></b></td>
+<td><b>&lt;location&gt;TM54F: Parameter value invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The functionality of Safety Basic Functions via TM54F is used.<br />
+TM54F has been incorrectly parameterized (incorrect parameter assignment).<br />
+Only the following signals may be parameterized:<br />
+- STO active<br />
+- SS1 active<br />
+- internal event<br />
+- safe state<br />
+Possible causes:<br />
+- p10024 ... p10038 not set to 0 or 255.<br />
+- p10039, p10042 ... p10045 use signals from Safety Extended Functions.<br />
+Fault value (r0949, interpret binary):<br />
+Bits 0 ... 3 specifies for which drive group an illegal F-DI was parameterized:<br />
+Bit 0 = 1: drive group 1 error<br />
+Bit 1 = 1: drive group 2 error<br />
+Bit 2 = 1: drive group 3 error<br />
+Bit 3 = 1: drive group 4 error<br />
+Bits 4 ... 7 specifies for which F-DOs incorrect links were specified:<br />
+Bit 4 = 1: F-DO 0 error (p10042)<br />
+Bit 5 = 1: F-DO 1 error (p10043)<br />
+Bit 6 = 1: F-DO 2 error (p10044)<br />
+Bit 7 = 1: F-DO 3 error (p10045)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the setting of the failsafe digital inputs (F-DI) for the Safety Extended Functions - and set to a value of 0 or 255 (p10024 ... p10039).<br />
+- check the setting of the signal sources for the failsafe digital outputs (F-DO) and if necessary, correct (p10042 ... p10045).<br />
+Note:<br />
+F-DI: Failsafe Digital Input<br />
+F-DO: Failsafe Digital Output<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235002">F235002</a></b></td>
+<td><b>&lt;location&gt;TM54F: Commissioning not possible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The commissioning mode activation was rejected because at least one drive belonging to the TM54F is enabled for operation.<br />
+Fault value (r0949, interpret decimal):<br />
+Drive object number of the first drive found without pulse suppression&#47;power inhibit.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Withdraw the operating enable for the drive specified in the fault value.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235003">F235003</a></b></td>
+<td><b>&lt;location&gt;TM54F: Acknowledgment on the Control Unit is required</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault on the Terminal Module 54F (TM54) was acknowledged using the safe acknowledgment (p10006).<br />
+An additional acknowledgment is also required at the Control Unit.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- acknowledge all faults on the Control Unit (BI: p2102).<br />
+or<br />
+- acknowledge all faults on the drive object TM54F (BI: p2103, p2104 or p2105).<br />
+Note:<br />
+A fault acknowledgment is triggered with a 0&#47;1 signal.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235004">F235004</a></b></td>
+<td><b>&lt;location&gt;TM54F: communication cycle invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- the communication cycle specified in p10000[x] does not correspond with the monitoring cycle of the drive object, which was specified in p10010[x].<br />
+As long as this fault is present, Failsafe Values are activated in TM54F. All the drives are not enabled.<br />
+Fault value (r0949, interpret binary):<br />
+If a bit is set in the range bit 0 ... 5, then the following applies:<br />
+The communication cycle specified in p10000[x] does not correspond with the monitoring cycle of the drive object which was specified in p10010[x]. (if only p10000[0] used, then this value must be identical with all monitoring cycles of the drive objects used in p10010[0...5].)<br />
+Bit 0 = 1: p10000[0] does not correspond with the monitoring cycle of p10010[0]<br />
+Bit 1 = 1: p10000[1] does not correspond with the monitoring cycle of p10010[1]<br />
+..<br />
+Bit 5 = 1: p10000[5] does not correspond with the monitoring cycle of p10010[5]<br />
+If a bit is set in the range bit 16 ... 21, then the following applies:<br />
+Bit 16 = 1: p10000[0] has been selected too low.<br />
+Bit 17 = 1: p10000[1] has been selected too low.<br />
+..<br />
+Bit 21 = 1: p10000[5] has been selected too low.<br />
+When using an axis with Basic Safety Functions with TM54F, then the monitoring cycle should be greater than 500us + 8 * current controller clock cycles of the drive.<br />
+Note:<br />
+This error is also signaled if a drive controlled with TM54F is parameterized so that the basic functions are controlled via TM54F - and simultaneously the extended safety functions or ncSI have been parameterized.<br />
+The following applies for fault value = 0:<br />
+- since the firmware update of the TM54F it has not been switched off.<br />
+- the firmware of the connected TM54F is too old.<br />
+See also: p10010 (SI TM54F drive object assignment)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For a fault value in the range from bit 0 ... 5:<br />
+- first check that all drives, which are entered in p10010, have either Extended Safety Functions or Basic Functions via TM54F.<br />
+- Execute the copy function for TM54F(p9700 = 87).<br />
+- adapt the checksums for TM54F(p9701 = 172).<br />
+- copy RAM to ROM.<br />
+- carry out a POWER ON.<br />
+For a fault value in the range from bit 16 ... 21:<br />
+Increase the current controller sampling time of the corresponding drive, in order to avoid faults in operation.<br />
+- Execute the copy function for TM54F(p9700 = 87).<br />
+- adapt the checksums for TM54F(p9701 = 172).<br />
+- copy RAM to ROM.<br />
+- carry out a POWER ON.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235005">F235005</a></b></td>
+<td><b>&lt;location&gt;TM54F:parallel connection not supported</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The TM54F function with Basic Safety Functions is used. This function is not supported when power units are connected in parallel.<br />
+All drives of the TM54F assume Failsafe Values, and are not enabled.<br />
+See also: p10010 (SI TM54F drive object assignment)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- deactivate parallel connection or TM54F with Basic Safety Functions.<br />
+- copy RAM to ROM.<br />
+- carry out a POWER ON (switch-off&#47;switch-on).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235006">F235006</a></b></td>
+<td><b>&lt;location&gt;TM54F: drive groups invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The functionality of the basic functions via TM54F is used.<br />
+Drive groups have been incorrectly parameterized (incorrect parameter assignment).<br />
+Fault value (r0949, interpret binary):<br />
+The value specifies in which drive group Basic Safety drives are mixed with Extended Safety drives.<br />
+Bit 0 = 1: drive group 1 error<br />
+Bit 1 = 1: drive group 2 error<br />
+Bit 2 = 1: drive group 3 error<br />
+Bit 3 = 1: drive group 4 error<br />
+As long as this fault is present, Failsafe Values are activated in TM54F. All the drives are not enabled.<br />
+Note:<br />
+-this error is also signaled if a drive controlled with TM54F is parameterized so that the basic functions are controlled via TM54F and simultaneously extended safety functions or ncSI have been parameterized.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Corresponding to the fault value, p10011 should be checked to ensure that no Basic Safety drives are mixed with Extended Safety drives in a drive group.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235009">F235009</a></b></td>
+<td><b>&lt;location&gt;TM54F: Safety commissioning drive incomplete</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For Terminal Module 54F (TM54F), a drive object was assigned (p10010), for which no safety functions or faulty safety functions are parameterized (p9501, p9601).<br />
+Fault value (r0949, interpret bitwise binary):<br />
+Bit 0 = 1: drive 1 error<br />
+Bit 1 = 1: drive 2 error<br />
+Bit 2 = 1: drive 3 error<br />
+Bit 3 = 1: drive 4 error<br />
+Bit 4 = 1: drive 5 error<br />
+Bit 5 = 1: drive 6 error<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out the safety commissioning of the drive involved and enable the safety functions for TM54F.<br />
+- commission the TM54F &ndash; and just set p9700 = 87d and p9701 = 172d.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235011">F235011</a></b></td>
+<td><b>&lt;location&gt;TM54F: Drive object number assignment illegal</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A drive object number was assigned twice. Each drive object number can be assigned only once.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the assignment of the drive object numbers.<br />
+See also: p10010 (SI TM54F drive object assignment)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235012">A235012</a></b></td>
+<td><b>&lt;location&gt;TM54F: Test stop for failsafe digital inputs&#47;outputs</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The forced checking procedure (test stop) for the failsafe digital inputs&#47;outputs (F-DI&#47;F-DO) is currently in progress.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The alarm is automatically withdraw after successfully ending or canceling (when a fault condition occurs) the test stop.<br />
+Note:<br />
+F-DI: Failsafe Digital Input<br />
+F-DO: Failsafe Digital Output<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235013">F235013</a></b></td>
+<td><b>&lt;location&gt;TM54F: Test stop error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault has been detected during the forced checking procedure (test stop) of the failsafe digital inputs&#47;outputs on the TM54F. Failsafe control signals (Failsafe Values) are transferred to the safety functions.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+aaaabbcc hex:<br />
+aaaa: DO or F-DI (dependent on test step cc), where the expected state was not assumed (bit 0 = F-DI 0 or F-DO 0, bit 1 = F-DI 1 or F-DO 1, etc.).<br />
+bb: Fault cause<br />
+bb = 01 hex: Internal fault.<br />
+bb = 02 hex: Fault when comparing the switching signals of the two channels (F-DI or DI).<br />
+bb = 03 hex: Internal fault.<br />
+bb = 04 hex: Fault when comparing the switching signals of the two channels (Diag-DO).<br />
+cc: State of the test stop in which the fault has occurred.<br />
+The display format is as follows:<br />
+Slave fault state: (test actions)(test actions) | corresponding step for the master: (test actions)(test actions) | Description<br />
+00 hex: (L1+OFF)(L2+ON) | 0A hex: ( )( ) | Synchronization &#47; switching step<br />
+0A hex: (L1+OFF)(L2+ON) | 15 hex: ( )( ) | Wait step<br />
+15 hex: (L1+OFF)(L2+OFF) | 20 hex:( )( ) | 1.) F-DI 0 ... 4 check for 0 V 2.) Switch step to new level<br />
+20 hex: (L1+OFF)(L2+OFF) | 2B hex: ( )( ) | Wait step<br />
+2B hex: (L1+ON)(L2+ON) | 36 hex: ( )( ) | 1.) F-DI 5 ... 9 check for 0 V 2.) Switch step to new level<br />
+36 hex: (DO OFF)( ) | 41 hex: (DO OFF)( ) | Wait step &#47; switching step<br />
+41 hex: (DO OFF)( ) | 4C hex: (DO OFF)( ) | Wait step<br />
+4C hex: (DO ON)( ) | 57 hex: (DO ON)( ) | 1.) Check diag-DO or diag-DI 2.) Switch step to new level<br />
+57 hex: (DO ON)( ) | 62 hex: (DO ON)( ) | Wait step<br />
+62 hex: (DO OFF)( ) | 6D hex: (DO ON)( ) | 1.) Check diag-DO or diag-DI 2.) Switch step<br />
+6D hex: (DO OFF)( ) | 78 hex: (DO ON)( ) | Wait step<br />
+78 hex: (DO ON)( ) | 83 hex: (DO OFF)( ) | 1.) Check diag-DO or diag-DI 2.) Switch step<br />
+83 hex: (DO ON)( ) | 8E hex: (DO OFF)( ) | Wait step<br />
+8E hex: (DO OFF)( ) | 99 hex: (DO OFF)( ) | 1.) Check diag-DO or diag-DI 2.) Switch step<br />
+99 hex: (DO OFF)( ) | A4 hex: (DO OFF)( ) | Wait step<br />
+A4 hex: (DO OFF)( ) | AF hex: (DO OFF)( ) | Check Diag-DO or Diag-DI<br />
+AF hex: (DO original state)() | C5 hex: (DO original state)() | Switching step<br />
+C5 hex: End of test<br />
+The expected states to be checked depend on the parameterized test mode (p10047).<br />
+The following expected states are tested in the test steps when testing the F-DOs:<br />
+The display format is as follows:<br />
+Test step (SL MA): Expected Diag-DO mode 1 | Expected DI 20 ... 23 mode 2 | Expected DI 20 ... 23 mode 3<br />
+(4C hex 57 hex): Diag-DO = 0 V | DI = 24 V | DI = 24 V<br />
+(62 hex 6D hex): Diag-DO = 0 V | DI = 0 V | DI = 0 V<br />
+(78 hex 83 hex): Diag-DO = 0 V | DI = 0 V | DI = 24 V<br />
+(8E hex 99 hex): Diag-DO = 24 V | DI = 0 V | DI = 24 V<br />
+(A4 hex AF hex): Diag-DO = 0 V | DI = 24 V | DI = 24 V<br />
+Example:<br />
+If an error with fault causes bb = 02 hex or 04 hex occurs in a test stop step, the test action for the fault took place in the previous test stop step. The expected states are tested in the next step.<br />
+Master signals fault value 0001_04AF and slave signals fault value 0001_04A4.<br />
+aaaa = 1 --&gt; F-DO 0 is involved.<br />
+bb = 04 hex --&gt; the test of the Diag-DO was unsuccessful.<br />
+cc = The expected states were tested in test stop step AF on the master and A4 on the slave.<br />
+The expected state Diag-DO = 0 V was checked in the table, i.e. Diag-DO was at 0 V instead of the expected 24 V. The associated test action took place in the previous step (99 hex DO OFF, A4 hex DO OFF). Both DOs were switched to OFF.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the wiring of the F-DIs and F-DOs and restart the test stop.<br />
+Note:<br />
+The fault is withdrawn if the test stop is successfully completed.<br />
+For fault value = CCCCCCCC hex, DDDDDDDD hex, EEEEEEEE hex the following applies:<br />
+These fault values occur together with fault F35152.<br />
+Possible countermeasure:<br />
+- check all parameters for the test stop.<br />
+- you should also check whether the firmware version of the TM54F matches that of the Control Unit.<br />
+- check p10001, p10017, p10046 and p10047.<br />
+A POWER ON must be carried out after correcting the parameters.<br />
+F-DI: Failsafe Digital Input<br />
+F-DO: Failsafe Digital Output<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235014">A235014</a></b></td>
+<td><b>&lt;location&gt;TM54F: Test stop for failsafe digital inputs&#47;outputs</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The time set in p10003 for the forced checking procedure (test stop) for the digital inputs&#47;outputs has been exceeded. A new forced checking procedure is required.<br />
+After the next time the forced checking procedure is selected, the message is withdrawn and the monitoring time is reset.<br />
+Note:<br />
+- this message does not result in a safety stop response.<br />
+- the test must be performed within a defined, maximum time interval (p10003, maximum of 8760 hours) in order to comply with the requirements as laid down in the standards for timely fault detection and the conditions to calculate the failure rates of safety functions (PFH value). Operation beyond this maximum time period is permissible if it can be ensured that the forced checking procedure is performed before persons enter the hazardous area and who are depending on the safety functions correctly functioning.<br />
+See also: p10003<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out the forced checking procedure for the digital inputs&#47;outputs.<br />
+The signal source to select the forced checking procedure is set via binector input p10007.<br />
+See also: p10007<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235015">A235015</a></b></td>
+<td><b>&lt;location&gt;TM54F: Motor&#47;Hydraulic Module replaced or configuration inconsistent</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Cyclic communication of at least one drive with the Terminal Module 54F (TM54F) is not active.<br />
+Possible causes:<br />
+- at least one Motor Module&#47;Hydraulic Module was replaced (e.g. hardware was replaced).<br />
+- the parameterization of theTM54F (p10010) is inconsistent with the number of drives, which have drive-based motion monitoring functions activated with TM54F.<br />
+- for the signaled drive, it is not permissible that the &quot;Safe motion monitoring without selection&quot; (p9601.5 = 1) is parameterized.<br />
+- And activated drive has no communication via DRIVE-CLiQ.<br />
+- p10010 of the TM54F master module is not the same as p10010 of the TM54F slave module (in this case, F35051 is also output).<br />
+- in p10010 of the TM54F master or slave module, the number of a drive object was entered several times.<br />
+- the control of the Basis Functions via TM54F was parameterized, and simultaneously the Extended Safety Functions or ncSI were parameterized.<br />
+Alarm value (r2124, interpret binary):<br />
+yyyy yyyy xxxx xxxx bin<br />
+xxxx xxxx bin: inconsistent configuration<br />
+Bit 0 = 1: No communication with drive 1.<br />
+...<br />
+Bit 5 = 1: No communication with drive 6.<br />
+yyyy yyyy bin: Motor Module&#47;Hydraulic Module replaced or a DRIVE-CLiQ cable of a Motor&#47;Hydraulic Module not inserted.<br />
+Bit 8 = 1: Motor Module&#47;Hydraulic Module from drive 1 was replaced or does not communicate.<br />
+...<br />
+Bit 13 = 1: Motor Module&#47;Hydraulic Module from drive 6 was replaced or does not communicate.<br />
+Note:<br />
+When this alarm is active, none of the drives listed in the alarm value, which have drive-based motion monitoring functions operating with TM54F, are enabled.<br />
+For alarm value = 0:<br />
+The number of drive objects specified in p10010 is not equal to the number of drives that have drive-based motion monitoring functions that have been enabled.<br />
+See also: p10010 (SI TM54F drive object assignment)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For all drive objects specified in p10010, check whether the drive-based motion monitoring functions with TM54F are enabled (p9601).<br />
+Check as to whether F35051 is also output and remove the cause.<br />
+Check whether each drive object number is listed only once in the indices of p10010.<br />
+Note:<br />
+If a drive was deactivated and activated without first having established the DRIVE-CLiQ connection, then this alarm is also output.<br />
+When replacing a Motor Module&#47;Hydraulic Module, carry out the following steps:<br />
+- start the copy function for the node identifier on the TM54F (p9700 = 1D hex).<br />
+- acknowledge the hardware CRC on the TM54F (p9701 = EC hex).<br />
+- save all parameters (p0977 = 1).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+For SINUMERIK, the following applies:<br />
+HMI supports the replacement of components with Safety functions (operating area &quot;Diagnostics&quot; --&gt; Softkey &quot;Alarm list&quot; --&gt; Softkey &quot;Confirm SI HW&quot; etc.).<br />
+The precise procedure is given in the following document:<br />
+SINUMERIK Function Manual Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235016">A235016</a></b></td>
+<td><b>&lt;location&gt;TM54F: Net data communication with drive not established</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The cyclic net data communication within the Terminal Module 54F (TM54F) is still not active for at least one drive.<br />
+Note:<br />
+This message is output after the TM54F master and TM54F slave have booted and is automatically withdrawn as soon as communications have been established.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>When replacing a Motor Module&#47;Hydraulic Module, carry out the following steps:<br />
+- start the copy function for the node identifier on the TM54F (p9700 = 1D hex).<br />
+- acknowledge the hardware CRC on the TM54F (p9701 = EC hex).<br />
+- save all parameters (p0977 = 1).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+The following always applies:<br />
+- for all drive objects specified in p10010, check whether the drive-based motion monitoring functions with TM54F are enabled (p9601).<br />
+- check whether fault F35150 is present and if required, remove the cause of this fault.<br />
+Note:<br />
+The communication status of the individual drives is indicated in r10055. The corresponding drive objects can be identified together with p10010.<br />
+See also: r10055 (SI TM54F communication status drive-specific)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235040">F235040</a></b></td>
+<td><b>&lt;location&gt;TM54F: 24 V undervoltage</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the 24 V power supply for the Terminal Module 54F (TM54F) an undervoltage condition was detected.<br />
+As fault response failsafe input terminal signals are transferred to the motion monitoring functions.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0 = 1: Power supply undervoltage at connection X524.<br />
+Bit 1 = 1: Power supply undervoltage at connection X514.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the 24 V DC power supply for the TM54F.<br />
+- carry out safe acknowledgment (p10006).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235043">F235043</a></b></td>
+<td><b>&lt;location&gt;TM54F: 24 V overvoltage</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the 24 V power supply for the Terminal Module 54F (TM54F) an overvoltage condition was detected.<br />
+As fault response failsafe input terminal signals are transferred to the motion monitoring functions.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the 24 V DC power supply for the TM54F.<br />
+- carry out safe acknowledgment (p10006).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235051">F235051</a></b></td>
+<td><b>&lt;location&gt;TM54F: Defect in a monitoring channel</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Terminal Module 54F (TM54F) has identified an error in the data cross check between the two control channels.<br />
+This can be the result of incorrect parameterization. However, a fault may have occurred, which was identified by the Safety Integrated software (e.g. defective hardware).<br />
+Perform the steps listed under &quot;Remedy&quot; in order to rule out any defective hardware.<br />
+As fault response failsafe input terminal signals are transferred to the motion monitoring functions.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+aaaabbcc hex<br />
+aaaa: A value greater than zero indicates an internal software error.<br />
+bb: Data to be cross-compared that resulted in the error.<br />
+If specified, check the specified parameters to ensure that they are the same for both the TM54F master and TM54F slave.<br />
+bb = 00 hex: p10000[0]<br />
+bb = 01 hex: p10001<br />
+bb = 02 hex: p10002<br />
+bb = 03 hex: p10006<br />
+bb = 04 hex: p10008<br />
+bb = 05 hex: p10010<br />
+bb = 06 hex: p10011<br />
+bb = 07 hex: p10020<br />
+bb = 08 hex: p10021<br />
+bb = 09 hex: p10022<br />
+bb = 0A hex: p10023<br />
+bb = 0B hex: p10024<br />
+bb = 0C hex: p10025<br />
+bb = 0D hex: p10026<br />
+bb = 0E hex: p10027<br />
+bb = 0F hex: p10028<br />
+bb = 10 hex: p10036<br />
+bb = 11 hex: p10037<br />
+bb = 12 hex: p10038<br />
+bb = 13 hex: p10039<br />
+bb = 14 hex: p10040<br />
+bb = 15 hex: p10041<br />
+bb = 16 hex: p10042<br />
+bb = 17 hex: p10043<br />
+bb = 18 hex: p10044<br />
+bb = 19 hex: p10045<br />
+bb = 1A hex: p10046<br />
+bb = 1B hex: p10041<br />
+bb = 1C hex: p10046<br />
+bb = 1D ... 1F hex: p10017, p10002, p10000<br />
+bb = 20 ... 2A hex: p10040, p10046, p10047<br />
+bb = 2B hex: error in the data for test stop initialization<br />
+bb = 2C hex: error in the data for initializing the input&#47;output calculation<br />
+bb = 2D ... 45 hex: error in the data for the output calculation p10042 ... p10045<br />
+bb = 46 ... 63 hex: error in the data for the calculation of drive group 1<br />
+bb = 64 ... 81 hex: error in the data for the calculation of drive group 2<br />
+bb = 82 ... 9F hex: error in the data for the calculation of drive group 3<br />
+bb = A0 ... BD hex: error in the data for the calculation of the drive group 4<br />
+bb = BE hex: debounce time of the failsafe inputs (F-DI) p10017<br />
+bb = BF hex: debounce time of the single-channel inputs (DI) p10017<br />
+bb = C0 hex: debounce time of the Diag inputs p10017<br />
+bb = C1 hex: error in the internal data for p10030 SDI positive<br />
+bb = C2 hex: error in the internal data for p10031 SDI negative<br />
+bb = C3 ... CA hex: error in the data to calculate the drive groups p10030 ... p10031<br />
+bb = CB hex: p10032<br />
+bb = CC hex: p10033<br />
+bb = CD hex: p10009<br />
+bb = CE ... CF error in the data for drive group 1 SLP parameter p10032 ... p10033<br />
+bb = D0 ... D1 error in the data for drive group 2 SLP parameter p10032 ... p10033<br />
+bb = D2 ... D3 error in the data for drive group 3 SLP parameter p10032 ... p10033<br />
+bb = D4 ... D5 error in the data for drive group 4 SLP parameter p10032 ... p10033<br />
+bb = D6 error in the data for initializing the retract function<br />
+bb = D7 error in the data for the retract function SLP<br />
+bb = D8 error in parameter p10000[1...5]<br />
+bb = D9 ... E3 error in the internal data of the axis communication<br />
+bb = E4 ... F2 error in the internal data of the discrepancy check<br />
+cc: indicates the index of the data to be cross-compared that resulted in the error.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out the following steps on the TM54F:<br />
+- check the specified parameters for incorrect parameterization.<br />
+- activate the safety commissioning mode (p0010 = 95).<br />
+- start the copy function for SI parameters (p9700 = 57 hex).<br />
+- acknowledge complete data change (p9701 = AC hex).<br />
+- exit the safety commissioning mode (p0010 = 0).<br />
+- save all parameters (p0977 = 1).<br />
+- carry out safe acknowledgment (p10006).<br />
+For an internal software error (aaaa &gt; 0):<br />
+- For TM54F, upgrade the firmware to a later version.<br />
+- contact Technical Support.<br />
+- replace the TM54F.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235052">F235052 (A)</a></b></td>
+<td><b>&lt;location&gt;TM54F: Internal hardware error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An internal software&#47;hardware error has been detected on the Terminal Module 54F (TM54F).<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the electrical cabinet design and cable routing for EMC compliance<br />
+- upgrade TM54F firmware to more recent version.<br />
+- contact Technical Support.<br />
+- replace the TM54F.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235053">F235053</a></b></td>
+<td><b>&lt;location&gt;TM54F: Temperature fault threshold exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The temperature measured using the temperature sensing on the TM54F has exceeded the threshold value to initiate this fault.<br />
+As fault response failsafe input terminal signals are transferred to the motion monitoring functions.<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the TM54F to cool down.<br />
+- carry out safe acknowledgment (p10006).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235054">A235054</a></b></td>
+<td><b>&lt;location&gt;TM54F: Temperature alarm threshold exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The temperature measured using the temperature sensing on the TM54F has exceeded the threshold value to initiate this alarm.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the TM54F to cool down.<br />
+- carry out safe acknowledgment (p10006).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235075">A235075 (F)</a></b></td>
+<td><b>&lt;location&gt;TM54F: Error during internal communication</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An internal communications error has occurred in the Terminal Module 54F (TM54F).<br />
+This message is also output in the following cases:<br />
+- parameter p10000 (TM54F master) is not set the same as p10000 (TM54F slave).<br />
+- parameter p10010 (TM54F master) is not set the same as p10010 (TM54F slave).<br />
+Alarm value (r2124, interpret decimal):<br />
+Only for internal Siemens diagnostics.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For p10010&#47;p10000 from the TM54F master not equal to the TM54F slave:<br />
+- start the copy function for the node identifier on the TM54F (p9700 = 1D hex).<br />
+- acknowledge the hardware CRC on the TM54F (p9701 = EC hex).<br />
+- save all parameters (p0977 = 1).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+For internal communication errors:<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+- upgrade the software on the TM54F.<br />
+- contact Technical Support.<br />
+- replace the TM54F.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235080">A235080 (F)</a></b></td>
+<td><b>&lt;location&gt;TM54F: Checksum error safety parameters</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The calculated checksum entered in r10004 over the safety-relevant parameters does not match the reference checksum saved in p10005 at the last machine acceptance.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0 = 1: Checksum error for functional SI parameters.<br />
+Bit 1 = 1: Checksum error for SI parameters for component assignment.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the safety-relevant parameters and if required, correct.<br />
+- set the reference checksum to the actual checksum.<br />
+- acknowledge the hardware replacement.<br />
+- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- carry out an acceptance test.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235081">A235081 (F)</a></b></td>
+<td><b>&lt;location&gt;TM54F: Static (steady state) 1 signal at the F-DI for safe acknowledgment</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A logical 1 signal is present at the F-DI configured in p10006 for more than 10 seconds.<br />
+If, at the F-DI no acknowledgment was performed for safe acknowledgment, then a steady-state logical and 0 signal must be present. This avoids unintentional safety-relevant acknowledgment (or the &quot;Internal Event Acknowledge&quot; signal) if a wire breaks or one of the two digital inputs bounces.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set the failsafe digital input (F-DI) to a logical 0 signal (p10006).<br />
+Note:<br />
+F-DI: Failsafe Digital Input<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235150">F235150</a></b></td>
+<td><b>&lt;location&gt;TM54F: Communication error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A communication error between the TM54F master and Control Unit or between the TM54F slave and the Motor Module&#47;Hydraulic Module was detected.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>When replacing a Motor Module&#47;Hydraulic Module, carry out the following steps:<br />
+- start the copy function for the node identifier on the TM54F (p9700 = 1D hex).<br />
+- acknowledge the hardware CRC on the TM54F (p9701 = EC hex).<br />
+- save all parameters (p0977 = 1).<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+The following always applies:<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+- upgrade the software on the TM54F.<br />
+- contact Technical Support.<br />
+- replace the TM54F.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235151">F235151</a></b></td>
+<td><b>&lt;location&gt;TM54F: Discrepancy error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The safe input terminals or output terminals have a different state for longer than the time parameterized in p10002 - or too many switching operations were carried out within a monitoring cycle p10002.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyyyxxxx hex<br />
+xxxx: The safety-relevant input terminals F-DI indicate a discrepancy.<br />
+Bit 0: Discrepancy for F-DI 0<br />
+...<br />
+Bit 9: Discrepancy for F-DI 9<br />
+yyyy: The safety-relevant output terminals F-DO indicate a discrepancy.<br />
+Bit 0: Discrepancy for F-DO 0<br />
+...<br />
+Bit 3: Discrepancy for F-DO 3<br />
+Note:<br />
+If several discrepancy errors occur consecutively, then this fault is only signaled for the first error that occurs.<br />
+The following options are available to analyze all of the discrepancy errors:<br />
+- using the commissioning tool, evaluate the input states and output states of the TM54F. All discrepancy errors are displayed here.<br />
+- compare parameters p10051 and p10052 from the TM54F master and TM54F slave for discrepancy.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the wiring of the corresponding F-DI (contact problems).<br />
+If the wiring is correct, and for example there is no wire breakage, then a check must be made as to whether the switching frequency at F-DI is too high and must therefore be reduced (switching pulses must have a longer time between them).<br />
+The time interval between each signal edge at an F-DI must be at least equal to the discrepancy time before the input is switched again.<br />
+Discrepancy errors in the failsafe digital inputs (F-DI) can only be completely acknowledged if, after the cause of the error was resolved, safe acknowledgment was carried out (see p10006). As long as safety acknowledgment was not carried out, the corresponding F-DI stays in the safe state internally.<br />
+Sets the discrepancy time for fast switching operations at the F-DIs:<br />
+For fast switching operations at the failsafe digital inputs (F-DI), it may be necessary to adapt the discrepancy time to the switching frequency:<br />
+- the period of a cyclic switching pulse must be less than half of the discrepancy time (if necessary, round down).<br />
+- the time between two switching pulses should be longer than the discrepancy time (if necessary, round up).<br />
+- the discrepancy time must be at least r10003 (it must always be rounded-down or rounded-up to an integer multiple of the SI sampling time r10003). If a debounce time has been parameterized (p10017 &gt; 0), then the shortest possible discrepancy time is directly specified using the debounce time.<br />
+- the period of a cyclic switching pulse must be less than half of the discrepancy time p10017 (if necessary, round down).<br />
+- the time between two fast switching pulses should be longer than the discrepancy time+p10017 (if necessary, round up).<br />
+- the discrepancy time must be at least r10003.<br />
+The debounce time must always be set less than the discrepancy time.<br />
+Example:<br />
+If the SI sampling cycle is 12 ms and the switching frequency is 110 ms (p10017 = 0), the maximum discrepancy time which can be set is as follows:<br />
+p10002 &lt;= 110&#47;2 ms - 12 ms = 43 ms --&gt; rounded-off, the following is obtained p10002 &lt;= 36 ms<br />
+Since the discrepancy time can only be accepted as a whole SI sampling time, the value will need to be rounded up or down to a whole SI sampling time value if it is not an exact integer multiple of an SI sampling time.<br />
+Basic secondary condition to set the discrepancy time:<br />
+The discrepancy time of the F-DIs must always be longer than the longest SI sampling time of all drives that use Safety Integrated with TM54F (p9780&#47;p9500).<br />
+F-DI: Failsafe Digital Input<br />
+F-DO: Failsafe Digital Output<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235152">F235152</a></b></td>
+<td><b>&lt;location&gt;TM54F: Internal software error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An internal software error has occurred in the Terminal Module 54F (TM54F).<br />
+The failsafe digital inputs and digital outputs (F-DI, F-DO) on the TM54F have been set to the safe state.<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+Note:<br />
+F-DI: Failsafe Digital Input<br />
+F-DO: Failsafe Digital Output<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check that the firmware version of the TM54F matches the Control Unit's firmware version.<br />
+The automatic firmware update must be activated in the project.<br />
+Note:<br />
+This signal will also appear, for example, in conjunction with fault F35013. In this case, check all the parameters for the test stop on the TM54F (p10001, p10003, p10007, p10041, p10046, p10047). In this case, a POWER ON is required after the parameters have been corrected.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235200">A235200 (F, N)</a></b></td>
+<td><b>&lt;location&gt;TM: Calibration data</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error was detected in the calibration data of the Terminal Module.<br />
+Alarm value (r2124, interpret decimal):<br />
+ddcbaa dec: dd = component number, c = AI&#47;AO, b = fault type, aa = number<br />
+c = 0: analog input (AI)<br />
+c = 1: analog output (AO)<br />
+b = 0: No calibration data available.<br />
+b = 1: Offset too high (&gt; 100 mV).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- replace the component if necessary.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235207">F235207 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature fault&#47;alarm threshold channel 0 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (NONE, OFF1, OFF3)Vector: OFF2<br />
+ (NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the temperature evaluation via the Terminal Module (TM), at least one of the following conditions to initiate this fault is fulfilled:<br />
+- alarm threshold has been exceeded longer than that set in the timer (p4102[0], p4103[0]).<br />
+or<br />
+- fault threshold exceeded (p4102[1]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[0] = 1, 4), the following applies:<br />
+- if r4101[0] &gt; 1650 ohms, the temperature r4105[0] = 250 &deg;C<br />
+- if r4101[0] &lt;= 1650 ohms, the temperature r4105[0] = -50 &deg;C<br />
+The temperature actual value is displayed via connector output r4105[0] and can be interconnected.<br />
+Notice:<br />
+This fault only causes the drive to shut down if there is at least one BICO interconnection between the drive and the Terminal Module.<br />
+Fault value (r0949, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the temperature sensor to cool down to below p4102[1] - hysteresis (5 K, for TM150, can be set using p4118[0]).<br />
+- if required, set the fault response to NONE (p2100, p2101).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235208">F235208 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature fault&#47;alarm threshold channel 1 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (NONE, OFF1, OFF3)Vector: OFF2<br />
+ (NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the temperature evaluation via the Terminal Module (TM), at least one of the following conditions to initiate this fault is fulfilled:<br />
+- alarm threshold has been exceeded longer than that set in the timer (p4102[2], p4103[1]).<br />
+or<br />
+- fault threshold exceeded (p4102[3]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[1] = 1, 4), the following applies:<br />
+- if r4101[1] &gt; 1650 ohms, the temperature r4105[1] = 250 &deg;C<br />
+- if r4101[1] &lt;= 1650 ohms, the temperature r4105[1] = -50 &deg;C<br />
+The temperature actual value is displayed via connector output r4105[1] and can be interconnected.<br />
+Notice:<br />
+This fault only causes the drive to shut down if there is at least one BICO interconnection between the drive and the Terminal Module.<br />
+Fault value (r0949, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the temperature sensor to cool down to below p4102[3] - hysteresis (5 K, for TM150, can be set using p4118[1]).<br />
+- if required, set the fault response to NONE (p2100, p2101).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235209">F235209 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature fault&#47;alarm threshold channel 2 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (NONE, OFF1, OFF3)Vector: OFF2<br />
+ (NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the temperature evaluation via the Terminal Module (TM), at least one of the following conditions to initiate this fault is fulfilled:<br />
+- alarm threshold has been exceeded longer than that set in the timer (p4102[4], p4103[2]).<br />
+or<br />
+- fault threshold exceeded (p4102[5]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[2] = 1, 4), the following applies:<br />
+- if r4101[2] &gt; 1650 ohms, the temperature r4105[2] = 250 &deg;C<br />
+- if r4101[2] &lt;= 1650 ohms, the temperature r4105[2] = -50 &deg;C<br />
+The temperature actual value is displayed via connector output r4105[2] and can be interconnected.<br />
+Notice:<br />
+This fault only causes the drive to shut down if there is at least one BICO interconnection between the drive and the Terminal Module.<br />
+Fault value (r0949, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the temperature sensor to cool down to below p4102[5] - hysteresis (5 K, for TM150, can be set using p4118[2]).<br />
+- if required, set the fault response to NONE (p2100, p2101).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235210">F235210 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature fault&#47;alarm threshold channel 3 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (NONE, OFF1, OFF3)Vector: OFF2<br />
+ (NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the temperature evaluation via the Terminal Module (TM), at least one of the following conditions to initiate this fault is fulfilled:<br />
+- alarm threshold has been exceeded longer than that set in the timer (p4102[6], p4103[3]).<br />
+or<br />
+- fault threshold exceeded (p4102[7]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[3] = 1, 4), the following applies:<br />
+- if r4101[3] &gt; 1650 ohms, the temperature r4105[3] = 250 &deg;C<br />
+- if r4101[3] &lt;= 1650 ohms, the temperature r4105[3] = -50 &deg;C<br />
+The temperature actual value is displayed via connector output r4105[3] and can be interconnected.<br />
+Notice:<br />
+This fault only causes the drive to shut down if there is at least one BICO interconnection between the drive and the Terminal Module.<br />
+Fault value (r0949, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the temperature sensor to cool down to below p4102[7] - hysteresis (5 K, for TM150, can be set using p4118[3]).<br />
+- if required, set the fault response to NONE (p2100, p2101).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235211">A235211 (F, N)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature alarm threshold channel 0 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The temperature measured using the temperature sensing of the Terminal Module (TM) (r4105[0]) has exceeded the threshold value to initiate this alarm (p4102[0]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[0] = 1, 4), the following applies:<br />
+- if r4101[0] &gt; 1650 ohms, the temperature r4105[0] = 250 &deg;C<br />
+- if r4101[0] &lt;= 1650 ohms, the temperature r4105[0] = -50 &deg;C<br />
+Alarm value (r2124, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Allow the temperature sensor to cool down to below p4102[0] - hysteresis (5 K, for TM150, can be set using p4118[0]).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235212">A235212 (F, N)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature alarm threshold channel 1 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The temperature measured using the temperature sensing of the Terminal Module (TM) (r4105[1]) has exceeded the threshold value to initiate this alarm (p4102[2]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[1] = 1, 4), the following applies:<br />
+- if r4101[1] &gt; 1650 ohms, the temperature r4105[1] = 250 &deg;C<br />
+- if r4101[1] &lt;= 1650 ohms, the temperature r4105[1] = -50 &deg;C<br />
+Alarm value (r2124, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Allow the temperature sensor to cool down to below p4102[4] - hysteresis (5 K, for TM150, can be set using p4118[1]).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235213">A235213 (F, N)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature alarm threshold channel 2 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The temperature measured using the temperature sensing of the Terminal Module (TM) (r4105[2]) has exceeded the threshold value to initiate this alarm (p4102[4]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[2] = 1, 4), the following applies:<br />
+- if r4101[2] &gt; 1650 ohms, the temperature r4105[2] = 250 &deg;C<br />
+- if r4101[2] &lt;= 1650 ohms, the temperature r4105[2] = -50 &deg;C<br />
+Alarm value (r2124, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Allow the temperature sensor to cool down to below p4102[4] - hysteresis (5 K, for TM150, can be set using p4118[2]).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235214">A235214 (F, N)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature alarm threshold channel 3 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The temperature measured using the temperature sensing of the Terminal Module (TM) (r4105[3]) has exceeded the threshold value to initiate this alarm (p4102[6]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[3] = 1, 4), the following applies:<br />
+- if r4101[3] &gt; 1650 ohms, the temperature r4105[3] = 250 &deg;C<br />
+- if r4101[3] &lt;= 1650 ohms, the temperature r4105[3] = -50 &deg;C<br />
+Alarm value (r2124, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Allow the temperature sensor to cool down to below p4102[6] - hysteresis (5 K, for TM150, can be set using p4118[3]).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235220">F235220 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Frequency limit reached for signal output</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (NONE, OFF2)Servo: OFF1<br />
+ (NONE, OFF2, OFF3)Vector: OFF1<br />
+ (NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The signals output from the Terminal Module 41 (TM41) for tracks A&#47;B have reached the limit frequency. The output signals are no longer in synchronism with the specified setpoint.<br />
+SIMOTION (p4400 = 0) operating mode:<br />
+- if the TM41 has been configured as the technology project, this fault is also output in response to short-circuited A&#47;B signals in X520.<br />
+SINAMICS (p4400 = 1) operating mode:<br />
+- the fine resolution of TM41 in p0418 does not match that of the connector input that was interconnected at p4420<br />
+- the encoder position actual value r0479 interconnected at connector input p4420 has an excessively high actual speed<br />
+- the output signals correspond to a speed, which is greater than the maximum speed (r1082 of TM41).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>SIMOTION (p4400 = 0) operating mode:<br />
+- enter a lower speed setpoint (p1155).<br />
+- reduce the encoder pulse number (p0408).<br />
+- check track A&#47;B for short-circuits.<br />
+SINAMICS (p4400 = 1) operating mode:<br />
+- enter a lower speed setpoint (p1155).<br />
+- reduce the encoder pulse number (p0408).<br />
+Notice:<br />
+The output signal is no longer monitored after changing the message type to &quot;Alarm&quot; (A).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235221">F235221 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Setpoint - actual value deviation outside the tolerance range</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (NONE, OFF2)Servo: OFF1<br />
+ (NONE, OFF2, OFF3)Vector: OFF1<br />
+ (NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The deviation between the setpoint and the output signals (track A&#47;B) exceeds the tolerance of +&#47;-3 %. The deviation between the internal and external measured value is too high (&gt; 1000 pulses).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the basic clock cycle (p0110, p0111).<br />
+- if required, replace the component (e.g. internal short-circuit).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235222">A235222 (F, N)</a></b></td>
+<td><b>&lt;location&gt;TM: Encoder pulse number not permissible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The encoder pulse number entered does not match the permissible pulse number from a hardware perspective.<br />
+Alarm value (r2124, interpret decimal):<br />
+1: Encoder pulse number is too high.<br />
+2: Encoder pulse number is too low.<br />
+4: Encoder pulse number is less than the zero mark offset (p4426).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- enter the encoder pulse number in the permissible range (p0408).<br />
+- if necessary, replace TM41 SAC with TM41 DAC.<br />
+Note:<br />
+TM41 SAC: Article No. = 6SL3055-0AA00-3PA0<br />
+TM41 DAC: Article No. = 6SL3055-0AA00-3PA1<br />
+The following applies for TM41 SAC:<br />
+- minimum&#47;maximum value for p0408: 1000&#47;8192<br />
+The following applies for TM41 DAC:<br />
+- minimum&#47;maximum value for p0408: 1000&#47;16384<br />
+See also: p0408<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235223">A235223 (F, N)</a></b></td>
+<td><b>&lt;location&gt;TM: Zero mark offset not permissible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The entered zero mark offset is not permissible.<br />
+Alarm value (r2124, interpret decimal):<br />
+1: Zero mark offset is too high.<br />
+See also: p4426 (TM41 encoder emulation pulses for zero mark)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Enter the zero mark offset in the permissible range (p4426).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235224">A235224 (N)</a></b></td>
+<td><b>&lt;location&gt;TM: Zero mark synchronization interrupted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The zero mark synchronization with the encoder to be emulated was interrupted.<br />
+Alarm value (r2124, interpret decimal):<br />
+0: The encoder is not in the ready state (e.g. encoder parked)<br />
+1: An absolute encoder was connected.<br />
+2: The encoder r0479[0...2] interconnected via connector input: p4420 is already communicating with another TM41 (precisely one TM41 can be interconnected with a specific r0479[0...2]).<br />
+3: The BICO interconnection to Terminal Module 41 (TM41) was removed (CI: p4420 = 0 signal).<br />
+4: The encoder interconnected via connector input: p4420 has carried out an EDS changeover or has been re-parameterized (this operation is not supported, set p4420 to 0 and interconnect again).<br />
+5: The maximum number of revolutions of the encoder was exceeded.<br />
+6: Encoder in an invalid state.<br />
+7: Encoder in an invalid state.<br />
+8: Encoder in an invalid state (the encoder is not parameterized or the interconnected signal source is not in the cyclic state).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+- if the encoder changes into the ready state, then a synchronization operation that was previously interrupted is carried out again.<br />
+- if the synchronization was interrupted due to the maximum permissible synchronization duration, then a new synchronization is not carried out.<br />
+- the alarm is only output, if, for an absolute encoder, the zero mark synchronization is set to the zero position (p4401.0 = 1 and p4401.1=0).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235225">A235225</a></b></td>
+<td><b>&lt;location&gt;TM: Zero mark synchronization held - encoder not in the ready state</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The zero mark synchronization with the encoder to be emulated was held.<br />
+The encoder is not in the &quot;ready&quot; state.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Bring the encoder into the &quot;ready&quot; state.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235226">A235226</a></b></td>
+<td><b>&lt;location&gt;TM: Tracks A&#47;B are deactivated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>There is no frequency setpoint for the Terminal Module 41 (TM41). The output of tracks A&#47;B has been held (frozen).<br />
+Possible causes:<br />
+- connector input p4420 is not interconnected.<br />
+- the leading encoder is not in the &quot;ready&quot; state (parking encoder or encoder data set not parameterized).<br />
+- TM41 has a fault.<br />
+- the TM41 is in the commissioning mode (p0010 &gt; 0).<br />
+- the TM41 component is not connected to DRIVE-CLiQ.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- appropriately interconnect connector input p4420.<br />
+- bring the leading encoder into the &quot;ready&quot; state.<br />
+- remove any TM41 faults.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235227">A235227</a></b></td>
+<td><b>&lt;location&gt;EDS changeover&#47;encoder data set change not supported</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Terminal Module 41 (TM41) does not support the following application cases:<br />
+- the encoder interconnected via connector input p4420 has carried out an EDS changeover.<br />
+- the encoder interconnected with the TM41 was re-parameterized so that the position actual value of the encoder must be newly interpreted.<br />
+For example, this is the case when changing the direction of rotation of the motor (p0410, p1821) or when changing the fine resolution (p0418). This may result in a sudden change in the position actual value of the encoder (position setpoint of the TM41), which must not be output at the TM41.<br />
+See also: p4420 (TM41 encoder emulation position setpoint)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set connector input p4420 = 0 and re-wire.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235228">A235228 (F, N)</a></b></td>
+<td><b>&lt;location&gt;TM: Sampling time p4099[3] invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The sampling time set in p4099[3] for incremental encoder emulation in Terminal Module 41 (TM41) does not correspond to the valid value. To resolve the problem, correct the setting of p4099[3]. The system automatically performs a warm restart&#47;sub-boot.<br />
+Alarm value (r2124, interpret decimal):<br />
+1:<br />
+A sampling time p4099[3] &lt; 125 &micro;s was set.<br />
+2:<br />
+An integer multiple of the DRIVE-CLiQ clock cycle was not entered in p4099[3].<br />
+3:<br />
+- in the SINAMICS mode (p4400 = 1), the sampling time in p4099[3] is not an integer multiple of the current controller sampling time (p0115[0]) of the drive object, which supplies the position setpoint (CI: p4420) for the incremental encoder simulation.<br />
+- the encoder interconnected via connector input p4420 (e.g. an SSI encoder) is sampled in a slower clock cycle.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- if necessary, cancel the BICO interconnection via connector input p4420.<br />
+- check the rules specified under cause for setting the sampling time in p4099[3].<br />
+- if necessary, set the BICO interconnection via connector input p4420 again.<br />
+Note:<br />
+Every time the BICO interconnection is reset via connector input p4420, the sampling time is checked in p4099[3] and, where necessary, this message is output.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235229">F235229</a></b></td>
+<td><b>&lt;location&gt;TM: Time slice deactivated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (NONE, OFF2)Servo: NONE<br />
+Vector: NONE<br />
+Hla: NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The required value of a cycle time in p4099[0...2] is invalid.<br />
+The corresponding time slice was not activated.<br />
+Alarm value (r2124, interpret decimal):<br />
+0: Digital input&#47;outputs (p4099[0])<br />
+1: Analog inputs (p4099[1])<br />
+3: Encoder emulation (p4099[3]).<br />
+4: Encoder emulation speed setpoint (p4099[3]).<br />
+5: Encoder emulation speed setpoint (p4099[3]).<br />
+6: Internal sequence control of the TM41 (internal error)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Change the sampling time according to the alarm value.<br />
+Note:<br />
+The sampling time p4099[0] may not be zero.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235230">F235230</a></b></td>
+<td><b>&lt;location&gt;TM: Hardware fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (NONE, OFF2)Servo: NONE<br />
+Vector: NONE<br />
+Hla: NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Terminal Module (TM) used has signaled internal errors.<br />
+Signals from this module may not be evaluated because they are very likely to be incorrect.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>If required, replace the Terminal Module.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235231">A235231</a></b></td>
+<td><b>&lt;location&gt;TM: Master control by PLC missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;master control by PLC&quot; signal was missing in operation.<br />
+- interconnection of the binector input for &quot;master control by PLC&quot; is incorrect (p0854).<br />
+- the higher-level control has withdrawn the &quot;master control by PLC&quot; signal.<br />
+- data transfer via the fieldbus (master&#47;drive) was interrupted.<br />
+Note:<br />
+This alarm is only decisive in the &quot;SIMOTION&quot; operating mode (p4400 = 0).<br />
+In the &quot;SINAMICS&quot; operating mode (p4400 = 1), the setpoints at p4420 are evaluated independent of binector input p0854.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the interconnection of the binector input for &quot;master control by PLC&quot; (p0854).<br />
+- check the &quot;master control by PLC&quot; signal and, if required, switch in.<br />
+- check the data transfer via the fieldbus (master&#47;drive).<br />
+- check the setting of parameter p2037.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235232">A235232</a></b></td>
+<td><b>&lt;location&gt;TM41: Zero mark no longer synchronous POWER ON required</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>SINAMICS (p4400 = 1) operating mode:<br />
+When parameterizing a Terminal Module 41 (TM41) or when operating a TM41 Module, an operating state was reached which required a POWER ON.<br />
+These include:<br />
+- changing the encoder pulse number (p0408).<br />
+- changing the fine resolution (p0418).<br />
+- withdrawing the DRIVE-CLiQ cable without first deactivating TM41 via p0105.<br />
+If this alarm was output, then the zero mark of the TM41 can no longer be output in synchronism to that of the encoder interconnected at p4420.<br />
+SIMOTION (p4400 = 0) operating mode:<br />
+A previously set zero mark position (p4426) no longer matches encoder position (r0479) due to the change in the pulse number (p0408).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The incremental position at output X520 of TM41 can still be evaluated independent of the zero mark.<br />
+A POWER ON must be carried out if the TM41 zero mark is evaluated.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235233">F235233</a></b></td>
+<td><b>&lt;location&gt;DRIVE-CLiQ component function not supported</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A function requested by the Control Unit is not supported by a DRIVE-CLiQ component.<br />
+Fault value (r0949, interpret decimal):<br />
+1: Terminal Module 31 does not support the function &quot;Timer for temperature evaluation&quot; (X522.7&#47;8, p4103 &gt; 0.000).<br />
+4: The improved actual value resolution is not supported (p4401.4).<br />
+5: The improved setpoint resolution is not supported (p4401.5).<br />
+6: The residual value handling in the setpoint channel cannot be deactivated (p4401.6).<br />
+7: Output frequencies greater than 750 kHz cannot be activated (p4401.7).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1:<br />
+- Deactivate timer for temperature evaluation (X522.7&#47;8) (p4103 = 0.000).<br />
+- use Terminal Module 31 and the relevant firmware version to enable the &quot;Timer for temperature evaluation&quot; function (Article No. 6SL3055-0AA00-3AA1, firmware version 2.6 and higher).<br />
+See also: p4103, p4401 (TM41 encoder emulation mode)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235400">F235400 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature fault&#47;alarm threshold channel 4 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (NONE, OFF1, OFF3)Vector: OFF2<br />
+ (NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the temperature evaluation via the Terminal Module 150 (TM150), at least one of the following conditions to initiate this fault is fulfilled:<br />
+- alarm threshold has been exceeded longer than that set in the timer (p4102[8], p4103[4]).<br />
+or<br />
+- fault threshold exceeded (p4102[9]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[4] = 1, 4), the following applies:<br />
+- if r4101[4] &gt; 1650 ohms, the temperature r4105[4] = 250 &deg;C<br />
+- if r4101[4] &lt;= 1650 ohms, the temperature r4105[4] = -50 &deg;C<br />
+The temperature actual value is displayed via connector output r4105[4] and can be interconnected.<br />
+Notice:<br />
+This fault only causes the drive to shut down if there is at least one BICO interconnection between the drive and the Terminal Module.<br />
+Fault value (r0949, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the temperature sensor to cool down to below p4102[9] - hysteresis (p4118[4]).<br />
+- if required, set the fault response to NONE (p2100, p2101).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235401">F235401 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature fault&#47;alarm threshold channel 5 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (NONE, OFF1, OFF3)Vector: OFF2<br />
+ (NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the temperature evaluation via the Terminal Module 150 (TM150), at least one of the following conditions to initiate this fault is fulfilled:<br />
+- alarm threshold has been exceeded longer than that set in the timer (p4102[10], p4103[5]).<br />
+or<br />
+- fault threshold exceeded (p4102[11]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[5] = 1, 4), the following applies:<br />
+- if r4101[5] &gt; 1650 ohms, the temperature r4105[5] = 250 &deg;C<br />
+- if r4101[5] &lt;= 1650 ohms, the temperature r4105[5] = -50 &deg;C<br />
+The temperature actual value is displayed via connector output r4105[5] and can be interconnected.<br />
+Notice:<br />
+This fault only causes the drive to shut down if there is at least one BICO interconnection between the drive and the Terminal Module.<br />
+Fault value (r0949, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the temperature sensor to cool down to below p4102[11] - hysteresis (p4118[5]).<br />
+- if required, set the fault response to NONE (p2100, p2101).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235402">F235402 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature fault&#47;alarm threshold channel 6 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (NONE, OFF1, OFF3)Vector: OFF2<br />
+ (NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the temperature evaluation via the Terminal Module 150 (TM150), at least one of the following conditions to initiate this fault is fulfilled:<br />
+- alarm threshold has been exceeded longer than that set in the timer (p4102[12], p4103[6]).<br />
+or<br />
+- fault threshold exceeded (p4102[13]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[6] = 1, 4), the following applies:<br />
+- if r4101[6] &gt; 1650 ohms, the temperature r4105[6] = 250 &deg;C<br />
+- if r4101[6] &lt;= 1650 ohms, the temperature r4105[6] = -50 &deg;C<br />
+The temperature actual value is displayed via connector output r4105[6] and can be interconnected.<br />
+Notice:<br />
+This fault only causes the drive to shut down if there is at least one BICO interconnection between the drive and the Terminal Module.<br />
+Fault value (r0949, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the temperature sensor to cool down to below p4102[13] - hysteresis (p4118[6]).<br />
+- if required, set the fault response to NONE (p2100, p2101).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235403">F235403 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature fault&#47;alarm threshold channel 7 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (NONE, OFF1, OFF3)Vector: OFF2<br />
+ (NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the temperature evaluation via the Terminal Module 150 (TM150), at least one of the following conditions to initiate this fault is fulfilled:<br />
+- alarm threshold has been exceeded longer than that set in the timer (p4102[14], p4103[7]).<br />
+or<br />
+- fault threshold exceeded (p4102[15]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[7] = 1, 4), the following applies:<br />
+- if r4101[7] &gt; 1650 ohms, the temperature r4105[7] = 250 &deg;C<br />
+- if r4101[7] &lt;= 1650 ohms, the temperature r4105[7] = -50 &deg;C<br />
+The temperature actual value is displayed via connector output r4105[7] and can be interconnected.<br />
+Notice:<br />
+This fault only causes the drive to shut down if there is at least one BICO interconnection between the drive and the Terminal Module.<br />
+Fault value (r0949, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the temperature sensor to cool down to below p4102[15] - hysteresis (p4118[7]).<br />
+- if required, set the fault response to NONE (p2100, p2101).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235404">F235404 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Temperature fault&#47;alarm threshold channel 8 exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (NONE, OFF1, OFF3)Vector: OFF2<br />
+ (NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the temperature evaluation via the Terminal Module 150 (TM150), at least one of the following conditions to initiate this fault is fulfilled:<br />
+- alarm threshold has been exceeded longer than that set in the timer (p4102[16], p4103[8]).<br />
+or<br />
+- fault threshold exceeded (p4102[17]).<br />
+Note:<br />
+For sensor type &quot;PTC thermistor&quot; and &quot;Bimetallic NC contact&quot; (p4100[8] = 1, 4), the following applies:<br />
+- if r4101[8] &gt; 1650 ohms, the temperature r4105[8] = 250 &deg;C<br />
+- if r4101[8] &lt;= 1650 ohms, the temperature r4105[8] = -50 &deg;C<br />
+The temperature actual value is displayed via connector output r4105[8] and can be interconnected.<br />
+Notice:<br />
+This fault only causes the drive to shut down if there is at least one BICO interconnection between the drive and the Terminal Module.<br />
+Fault value (r0949, interpret decimal):<br />
+Temperature actual value at the time of initiation [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- allow the temperature sensor to cool down to below p4102[17] - hysteresis (p4118[8]).<br />
+- if required, set the fault response to NONE (p2100, p2101).<br />
+See also: p4102<br />
+</td></tr>
+</table><p></p></body></html>

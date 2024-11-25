@@ -1,0 +1,54 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Traversing direction for fast retraction from the contour </title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Traversing direction for fast retraction from the contour </h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Retraction movement</h3>
+      <p>The following G commands define the retraction movement plane:</p>
+      <ul>
+        <li>
+          <p>
+            <code>LFTXT</code>
+          </p>
+          <p>The retraction movement plane is defined by the path tangent and the tool direction (default setting).</p>
+        </li>
+        <li>
+          <p>
+            <code>LFWP</code>
+          </p>
+          <p>The plane of the retraction movement is the active working plane selected with G commands <code>G17</code>, <code>G18</code> or <code>G19</code>. The direction of the retraction movement is not dependent on the path tangent. This allows a fast retraction to be programmed parallel to the axis.</p>
+        </li>
+        <li>
+          <p>
+            <code>LFPOS</code>
+          </p>
+          <p>Retraction of the axis declared using <code>POLFMASK</code>/<code>POLFMLIN</code> to the absolute axis position programmed with <code>POLF</code>.</p>
+          <p>
+            <code>ALF</code> has no influence on the retraction direction for several axes and for several axes in a linear system.</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Programmable traversing direction (ALF=…)</h3>
+      <p>The direction is programmed in discrete steps of 45 degrees with <code>ALF</code> in the plane of the retraction movement.</p>
+      <p class="comment">The possible traversing directions are stored in special code numbers on the control and can be called up using these numbers.</p>
+      <p class="comment">Example:</p>
+      <a id="table_ac3e5259-4dea-47da-be68-b8e5f2a85f36">
+      </a> <a id="table_0"></a> <a id="table_ac3e5259-4dea-47da-be68-b8e5f2a85f36"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ESE"><colgroup><col width="95.4%"><col width="4.6%"></colgroup><tr valign="top"><th>Program code</th><th> </th></tr><tr valign="top"><td>N10 SETINT(2) PRIO=1 ABHEB_Z LIFTFAST</td><td> </td></tr><tr valign="top"><td>ALF=7</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p class="comment">With <code>G41</code> activated (machining direction to the left of the contour) the tool vertically moves away from the contour.</p><a id="image_791499147_0"></a> <img border="0" src="images/167473005451.png" width="340" height="302"/><h4 class="Blocklabel"><b>Reference plane for defining the traversing direction for LFTXT</b></h4><p class="comment">At the point of application of the tool to the programmed contour, the tool is clamped at a plane which is used as a reference for specifying the retraction movement with the corresponding code number.</p><p class="comment">The reference plane is derived from the longitudinal tool axis (infeed direction) and a vector positioned perpendicular to this axis and perpendicular to the tangent at the point of application of the tool.</p><a id="image_791511051_0"></a> <img border="0" src="images/167475488523.png" width="340" height="302"/><h4 class="Blocklabel"><b>Code numbers with traversing direction for LFTXT</b></h4><p class="comment">Starting from the reference plane, you will find the code numbers with traversing directions in the following diagram.</p><a id="image_791541387_0"></a> <img border="0" src="images/167475959435.png" width="347" height="283"/><p class="comment">The retraction in the tool direction is defined for <code>ALF=1</code>.</p><p class="comment">The "fast retraction" function is deactivated with <code>ALF=0</code>.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td align="center" rowspan="2"><img src="images/danger.png"/></td><td><b>Caution</b></td></tr><tr><td><h4 class="Blocklabel">Risk of collision</h4><p class="safety">When the tool radius compensation is activated, then:</p><ul class="safety"><li class="safety"><p class="safety">For <code>G41</code> codes 2, 3, 4</p></li><li class="safety"><p class="safety">For <code>G42</code> codes 6, 7, 8</p></li></ul><p class="safety"><b>should not</b> be used, as in these cases, the tool would move to the contour and would collide with the workpiece.</p></td></tr></table><h4 class="Blocklabel"><b>Code numbers with traversing directions for LFWP</b></h4><p class="comment">For <code>LFWP</code>, the direction in the machining plane is derived from following assignment:</p><ul class="comment"><li class="comment"><p class="comment"><code>G17</code>: X/Y plane</p><p class="comment"><code>ALF=1</code>: Retraction in the X direction</p><p class="comment"><code>ALF=3</code>: Retraction in the Y direction</p></li><li class="comment"><p class="comment"><code>G18</code>: Z/X plane</p><p class="comment"><code>ALF=1</code>: Retraction in the Z direction</p><p class="comment"><code>ALF=3</code>: Retraction in the X direction</p></li><li class="comment"><p class="comment"><code>G19</code>: Y/Z plane</p><p class="comment"><code>ALF=1</code>: Retraction in the Y direction</p><p class="comment"><code>ALF=3</code>: Retraction in the Z direction</p></li></ul></div>
+    <p>See also:<br />    <a href="156662766347.html">Fast retraction from the contour (SETINT LIFTFAST, ALF)</a><br />    <a href="156662744331.html">Function of an interrupt routine</a><br />    <a href="156661902603.html">Fast retraction during thread cutting (LFON, LFOF, DILF, ALF, LFTXT, LFWP, LFPOS, POLF, POLFMASK, POLFMLIN)</a></p>
+  </body>
+</html>

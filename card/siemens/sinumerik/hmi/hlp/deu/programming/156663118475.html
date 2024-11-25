@@ -1,0 +1,73 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Orientierungsvorgabe zweier Kontaktpunke (ORICURVE, ORICURINV, PO[XH]=, PO[YH]=, PO[ZH]=)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Orientierungsvorgabe zweier Kontaktpunke (ORICURVE, ORICURINV, PO[XH]=, PO[YH]=, PO[ZH]=)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Programmierung der Orientierungsänderung durch eine zweite Raumkurve</h3>
+      <p>Eine weitere Möglichkeit der Programmierung der Werkzeugorientierung besteht darin, außer der Werkzeugspitze entlang einer Raumkurve auch die Bewegung eines zweiten Kontaktpunkts des Werkzeugs mit ORICURVE bzw. ORICURINV zu programmieren. Damit können Änderungen der Werkzeugorientierung, wie bei der Programmierung des Werkzeugvektors selber, eindeutig festgelegt werden.  </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Maschinenhersteller</h4>
+            <p class="safety">Es sind die Hinweise des Maschinenherstellers zu den über Maschinendatum einstellbaren Achsbezeichnern für die Programmierung der 2. Orientierungsbahn des Werkzeugs zu beachten.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">ORICURVE</h3>
+      <p>Bei der Interpolation der Werkzeugorientierung durch ORICURVE wird die Werkzeugorientierung durch 2 Raumkurven definiert. Die Programmierung des TCP (Tool Center Point) erfolgt in üblicherweise mit den Geometrie Achsen X, Y, Z. Die 2. Raumkurve beschreibt die Bewegung eines Punktes auf dem Werkzeug im Raum und wird mit den Bezeichner XH, YH, ZH programmiert. Die Werkzeugorientierung ist dann durch folgenden Vektor Ω definiert:</p>
+      <p>Ω = (X, Y, Z) - (XH, YH, ZH) definiert. </p>
+      <p>Für die Koordinaten (XH, YH, ZH) können sowohl Polynome als auch B-Ssplines programmiert werden. </p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">ORICURINV</h3>
+      <p>Bei der Interpolation der Werkzeugorientierung bei ORICURINV wird die Werkzeugorientierung wie bei ORICURVE ebenfalls durch 2 Raumkurven definiert. Die Programmierung des TCP erfolgt dabei ebenfalls mit den Geometrie Achsen X, Y, Z. Die 2. Raumkurve beschreibt die Bewegung eines Punktes auf dem Werkzeug im Raum und wird ebenfalls mit den Bezeichner XH, YH, ZH programmiert. Die Werkzeugorientierung ist dann durch folgenden Vektor Σ definiert:</p>
+      <p>Σ = (XH, YH, ZH) - (X, Y, Z)</p>
+      <p>Dadurch hat der Vektor Σ die umgekehrte Orientierung wie der Vektor Ω.</p>
+      <p>Für die Koordinaten (XH, YH, ZH) können ebenfalls sowohl Polynome als auch B-Ssplines programmiert werden. </p>
+      <a name="block_4">
+      </a>
+      <h3 class="Blocktitle">Programmierung</h3>
+      <p>Bei dieser Interpolationsart können für die beiden Raumkurven Punkte mit G1 bzw. Polynome mit POLY programmiert werden. Kreise und Evolventen sind nicht zulässig. Zusätzlich kann eine Spline-Interpolation mit BSPLINE und die Funktion "Zusammenfassung kurzer Spline-Sätze" aktiviert werden.</p>
+      <p>Die anderen Splinearten ASPLINE und CSPLINE sowie die Aktivierung eines Kompressors mit COMP... sind nicht zulässig.</p>
+      <p>Die Bewegung der zwei Kontaktpunkte des Werkzeugs kann bei der Programmierung der Orientierungspolynome für Koordinaten bis maximal 5. Grades vorgegeben werden.</p>
+      <h4 class="Blocklabel">Literatur</h4>
+      <p>Weitere Informationen zur Funktion "Zusammenfassung kurzer Spline-Sätze" finden sich in:</p>
+      <p>Funktionshandbuch Basisfunktionen. </p>
+      <a name="block_5">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <a id="table_c0601e29-a2e5-4053-b6cf-23ab58a02dc5">
+      </a> <a id="table_0"></a> <a id="table_c0601e29-a2e5-4053-b6cf-23ab58a02dc5"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="42.4%"><col width="57.6%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... ORICURVE</code></p></td><td> </td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... ORICURINV</code></p></td><td> </td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... PO[XH]=(xe, x2, x3, x4, x5)</code></p></td><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>; Angabe der Bewegung des zweiten</code></p><p type="p_table_l" align="left"><code>; Kontaktpunkts des Werkzeugs und </code></p><p type="p_table_l" align="left"><code>; zusätzliche Polynome der jeweiligen</code></p><p type="p_table_l" align="left"><code>; Koordinaten</code></p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... PO[YH]=(ye, y2, y3, y4, y5)</code></p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... PO[ZH]=(ze, z2, z3, z4, z5)</code></p></td></tr></table></p><a name="block_6"></a><h3 class="Blocktitle">Parameter</h3><a id="table_53aadda6-c9df-4b82-8640-eb8e36897e25"></a> <a id="table_1"></a> <a id="table_53aadda6-c9df-4b82-8640-eb8e36897e25"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="45.0%"><col width="55.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>ORICURVE</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Interpolation der Werkzeugorientierung mit Vorgabe der Bewegung zweier Kontaktpunkte des Werkzeuges.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>ORICURINV</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Interpolation der Werkzeugorientierung wie bei <code>ORICURVE</code>, aber mit umgekehrter Orientieung.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>XH YH ZH</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Bezeichner der Koordinaten des zweiten Kontaktpunktes des Werkzeugs der zusätzlichen Kontur als Raumkurve</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>PO[XH]=(xe, x2, x3, x4, x5)</code> </p><p type="p_table_l" align="left"><code>PO[YH]=(ye, y2, y3, y4, y5)</code> </p><p type="p_table_l" align="left"><code>PO[ZH]=(ze, z2, z3, z4, z5)</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Außer den jeweiligen Endpunkten sind die Raumkurven zusätzlich mit Polynomen programmierbar.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>xe, ye, ze</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Endpunkte der Raumkurve</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>xi, yi, zi</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Koeffizienten der Polynome maximal 5. Grades</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><h4 class="Blocklabel">Bezeichner XH YH ZH für die Programmierung einer 2. Orientierungsbahn</h4><p class="safety">Die Bezeichner müssen so gewählt werden, dass kein Konflikt mit den Bezeichnern der Linearachsen X Y Z, Rundachsen oder anderen Interpolationsparametern entsteht.</p><h4 class="Blocklabel">Beispiel Rundachsen</h4><ul class="safety"><li class="safety"><p class="safety">A2 B2 C2 Eulerwinkel bzw. RPY-Winkel</p></li><li class="safety"><p class="safety">A3 B3 C3 Richtungsvektoren</p></li><li class="safety"><p class="safety">A4 B4 C4 bzw. A5 B5 C5 Flächennormalenvektoren</p></li><li class="safety"><p class="safety">A6 B6 C6 Drehvektoren</p></li><li class="safety"><p class="safety">A7 B7 C7 Zwischenpunktkoordinaten</p></li></ul></td></tr></table></div>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Synchronspindelkopplung (COUPDEF, COUPDEL, COUPON, COUPONC, COUPOF, COUPOFS, COUPRES, WAITC): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Synchronspindelkopplung (COUPDEF, COUPDEL, COUPON, COUPONC, COUPOF, COUPOFS, COUPRES, WAITC): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Projektierte Kopplung </h4>
+      <p>Bei der projektierten Kopplung werden LS und FS über Maschinendaten festgelegt. Die projektierten Spindeln können im Teileprogramm nicht verändert werden. Die Parametrierung der Kopplung kann mit COUPDEF im Teileprogramm erfolgen (Voraussetzung: kein Schreibschutz festgelegt).</p>
+      <h4 class="Blocklabel">Anwenderdefinierte Kopplung</h4>
+      <p>Mit COUPDEF kann eine Kopplung im Teileprogramm neu definiert oder verändert werden. Ist bereits eine Kopplung aktiv, muss diese vor der Definition einer neuen Kopplung zuerst mit COUPDEL gelöscht werden.</p>
+      <h4 class="Blocklabel">Folgespindel (FS) und Leitspindel (LS)</h4>
+      <p>Mit den Bezeichnern für die FS und LS wird die Kopplung eindeutig bestimmt. Die Bezeichner müssen mit jeder Anweisung COUPDEF programmiert werden. Die anderen Kopplungsparameter sind modal wirksam und müssen nur programmiert werden, wenn sie geändert werden.</p>
+      <h4 class="Blocklabel">Positionieren der Folgespindel</h4>
+      <p>Auch bei eingeschalteter Synchronspindelkopplung lassen sich FS unabhängig von der LS im Bereich ±180° positionieren.</p>
+      <ul>
+        <li>
+          <p>Spindelpositionierung der FS mit SPOS</p>
+          <p>Beispiel: <code>SPOS[2]=IC(-90)</code></p>
+          <p>
+            <b>Weitere Informationen</b> zu SPOS siehe Kapitel "<a href="156661598731.html">Spindeln positionieren (SPOS, SPOSA, M19, M70, WAITS)</a>".</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Differenzdrehzahl</h4>
+      <p>Eine Differenzdrehzahl entsteht im Drehzahlsteuerbetrieb und aktiver Synchronspindelkopplung durch vorzeichenbehaftete Überlagerung einer FS-Drehzahl aufgrund LS-Bewegung und einer FS-Drehzahl aufgrund Spindelprogrammierung: </p>
+      <ul>
+        <li>
+          <p>Synchronspindelkopplung mit COUPONC</p>
+        </li>
+        <li>
+          <p>
+            <code>S&lt;FS>=&lt;Drehzahl></code> [ <code>M&lt;FS>=&lt;Drehrichtung>]</code></p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Hinweis</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="safety">Folgende Bedingungen sind zu beachten:</p>
+                <ul class="safety">
+                  <li class="safety">
+                    <p class="safety">Mit der Drehrichtung M3/M4 muss auch die Drehzahl S... neu programmiert werden.</p>
+                  </li>
+                  <li class="safety">
+                    <p class="safety">Die Überlagerung einer Spindeldrehzahl ( M&lt;Drehrichtung> S&lt;FS>) durch die LS-Bewegung bei Synchronspindelkopplung COUPONC wird nur wirksam, wenn die Überlagerung freigegeben ist.</p>
+                  </li>
+                  <li class="safety">
+                    <p class="safety">Die Dynamik der Leitspindel muss so weit eingeschränkt werden, dass bei einer Überlagerung der Folgespindel deren Dynamikgrenzwerte nicht überschritten werden.</p>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Geschwindigkeit, Beschleunigung: FA, ACC, OVRA, VELOLIMA</h4>
+      <p>Axiale Geschwindigkeit und Beschleunigung einer Folgespindeln sind programmierbar mit:</p>
+      <ul>
+        <li>
+          <p>
+            <code>FA[SPI(S&lt;n>)]</code> bzw. <code>FA[S&lt;n>]</code> (axiale Geschwindigkeit)</p>
+        </li>
+        <li>
+          <p>
+            <code>ACC[SPI(S&lt;n>)]</code> bzw. <code>ACC[S&lt;n>]</code> (axiale Beschleunigung)</p>
+        </li>
+        <li>
+          <p>
+            <code>OVRA[SPI(S&lt;n>)]</code> bzw. <code>OVRA[S&lt;n>]</code> (axialer Override)</p>
+        </li>
+        <li>
+          <p>
+            <code>VELOLIMA[SPI(S&lt;n>)]</code> bzw. <code>VELOLIMA[S&lt;n>]</code> (axiale Geschwindigkeitsüberhöhung bzw. -reduktion)</p>
+        </li>
+      </ul>
+      <p>Mit &lt;n> = 1, 2, 3, ... (Spindelnummer der Folgespindeln)</p>
+      <p>
+        <b>Weitere Informationen: </b>Kapitel "<a href="156661577483.html">Vorschubregelung</a>"</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Eine Reduktion oder Überhöhung des maximalen axialen Rucks ist bei Spindeln nicht wirksam.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Programmierbares Satzwechselverhalten WAITC</h4>
+      <p>Mit WAITC kann das Satzwechselverhalten, z. B. nach Änderung von Kopplungsparametern oder Positioniervorgängen, mit unterschiedlichen Synchronlaufbedingungen (grob, fein, IPOSTOP) vorgegeben werden. Sind keine Synchronlaufbedingungen angegeben, gilt das bei der Definition COUPDEF angegebene Satzwechselverhalten. </p>
+      <p>Beispiele:</p>
+      <ul>
+        <li>
+          <p>Warten auf das Erreichen der Synchronlaufbedingung FINE bei Folgespindel S2 und COARSE bei Folgespindel S4:</p>
+          <p>
+            <code>WAITC(S2,"FINE",S4,"COARSE")</code>
+          </p>
+        </li>
+        <li>
+          <p>Warten auf das Erreichen der Synchronlaufbedingung entsprechend COUPDEF: <code>WAITC( )</code></p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Systemvariablen</h4>
+      <ul>
+        <li>
+          <p>Aktueller Kopplungszustand der Folgespindel</p>
+          <p>Der aktuelle Kopplungszustand einer Folgespindel kann bitcodiert gelesen werden über: </p>
+          <p>
+            <code>&lt;Wert> = $AA_COUP_ACT[&lt;FS>] </code>
+          </p>
+          <a id="table_f40b7241-e6b6-4511-991b-6a0d64ad5350">
+          </a> <a id="table_0"></a> <a id="table_f40b7241-e6b6-4511-991b-6a0d64ad5350"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default_list" border="1"><colgroup><col width="8.3%"><col width="11.3%"><col width="80.4%"></colgroup><tr valign="top"><th><p type="p_table_cb" align="center">Bit</p></th><th><p type="p_table_cb" align="center">&lt;Wert></p></th><th><p type="p_table_lb" align="left">Bedeutung</p></th></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">-</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center">0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">keine Kopplung aktiv</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">2</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center">4</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Synchronspindelkopplung aktiv</p></td></tr></table></p><p>Alle andere Werte beziehen sich auf Achsbetrieb.</p><p>Ist die Spindel eine Folgespindel von mehreren Kopplungen, wird als Wert der Kopplungszustand aller Kopplungen als Summenzustand zurückgegeben.</p></li>
+      </ul>
+      <ul>
+        <li>
+          <p>Aktueller Winkelversatz</p>
+          <p>Der aktuelle Winkelversatz der Folgespindel zur Leitspindel kann gelesen werden über:</p>
+          <ul>
+            <li>
+              <p>$AA_COUP_OFFS[&lt;FS>] (Sollwertseitiger Winkelversatz)</p>
+            </li>
+            <li>
+              <p>$VA_COUP_OFFS[&lt;FS>] (Istwertseitiger Winkelversatz)</p>
+            </li>
+          </ul>
+          <p>Anwendungsbeispiel:</p>
+          <p>Korrektur der Winkelversatzdifferenz im NC-Programm nach Aufheben des Nachführbetriebs:</p>
+          <p>Winkelversatzdifferenz = Programmierter Winkelversatz - Systemvariable</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

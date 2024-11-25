@@ -1,0 +1,88 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>HLA-Antriebe: Konfiguration - Regelungsart/Sollwerte</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">HLA-Antriebe: Konfiguration - Regelungsart/Sollwerte</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>In diesem Dialog stellen Sie die Regelungsart und den PROFIBUS-Telegrammtyp sowie die Anzahl der Antriebsdatensätze (DDS) ein. Die Regelungsart, das PROFIBUS PZD-Telegramm und die Anzahl der DDS sind in der Regel korrekt vorbelegt.</p>
+      <p>
+        <b>Regelungsart:</b>
+      </p>
+      <p>Falls eine Druckerfassung der Drücke von A und B vorhanden und angeschlossen ist, kann die Kraftbegrenzung und/oder die Haftreibungsaufschaltung in p1400 eingeschaltet werden. Bevor die Kraftbegrenzung oder die Haftreibungsaufschaltung eingeschaltet wird, sollten die zugehörigen Maschinendaten für die Kraftbegrenzung (p1520, p1521, p1532) oder für die Reibkraft (p1554, p1555) eingestellt werden. Diese Daten enthalten ggf. die Gewichtskraft und können durch die Standardwerte u. U. nicht richtig vorbelegt werden. Ändert sich die Beladung des Zylinders und muss die Gewichtskraft vom Zylinder gehalten werden, so kann die Haftreibungsaufschaltung nicht genutzt werden, da sich die Werte in p1554 und p1555 beladungsabhängig ändern. </p>
+      <ul>
+        <li>
+          <p>
+            <b>Haftreibungskompensation mit Kraftregler (p1400.2 = 1)</b>
+          </p>
+          <p>Falls eine Erfassung der Drücke von A und B vorhanden ist, kann Haftreibungskompensation mit Kraftregler aktiviert werden. Die Haftreibungskompensation mit Kraftregler sollte nicht aktiviert werden, falls der Zylinder eine sich ändernde Gewichtskraft halten muss. Außerdem sollte der Offset der Ventil-Stellspannung vorher abgeglichen sein und der Kolbenlageabgleich muss erfolgt sein. Der Abgleich der Parameter p1552 bis p1556 kann mittels Kreisformtest erfolgen.</p>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <p>
+            <b>Kraftbegrenzung Mode 1 (p1400.0 = 1)</b> </p>
+          <p>Die Kraftbegrenzung Mode 1 wirkt immer, auch ohne die Funktion "Fahren auf Festanschlag". Die Kraftgrenze wird über p1520, p1521 vorgegeben. Ist die Funktion "Fahren auf Festanschlag" aktiv, wird die jeweils niedrigste Kraftbegrenzung wirksam (p1520/p1521 bzw. Wert von FXST[x]). Den Bezugswert (100 %-Wert) der Kraftgrenze für die NC legen Sie mithilfe der Parameter p1522 und p1523 fest. Bei Unterschreitung der aktuellen Kraftgrenze wird wieder der Geschwindigkeitsregler aktiv, auch bei "Fahren auf Festanschlag". Dies kann sich bei "Fahren auf Festanschlag" störend auswirken. Außerdem kann es bei größeren Geschwindigkeiten zu einem ständigen Wechsel zwischen Kraft- und Geschwindigkeitsregler kommen. Deshalb ist dieser Modus nur für kleine Geschwindigkeiten (&lt;10 % der Maximalgeschwindigkeit) geeignet. </p>
+        </li>
+        <li>
+          <p>
+            <b>Kraftbegrenzung Mode 2 (p1400.1 = 1) </b>
+          </p>
+          <p>Die Kraftbegrenzung Mode 2 wird aktiv, wenn der Grenzwert überschritten wurde und die Funktion "Fahren auf Festanschlag" aktiv ist. Es wird die jeweils niedrigste Kraftbegrenzung wirksam: p1520/p1521 oder MD37010 $MA_FIXED_STOP_TORQUE_DEF oder der Wert von FXST[x]. Den Bezugswert (100 %-Wert) der Kraftgrenze für die NC legen Sie mit Hilfe der Parameter p1522 und p1523 fest. Die Kraftbegrenzung bleibt aktiv, bis die Funktion "Fahren auf Festanschlag" abgeschaltet wird, auch wenn die aktuelle Kraftgrenze schon vorher unterschritten wurde. </p>
+        </li>
+      </ul>
+      <p>
+        <b>Literatur: </b>SINAMICS S120 Systemhandbuch: Hydraulic Drive, Kapitel "Antriebsfunktionen"</p>
+      <p>
+        <b>PROFIBUS PZD-Telegramm:</b>
+      </p>
+      <p>Bei der ersten Inbetriebnahme (nicht Änderungsdurchlauf) wird das Telegramm eingestellt, das aus der STEP 7 HW-Konfiguration ermittelt wurde. Wenn das Telegramm nicht eindeutig ermittelt werden kann, wird die Voreinstellung "SIEMENS Telegramm 166 PZD-15/19" verwendet. Im Änderungsdurchlauf wird das im Antrieb eingestellte Telegramm angezeigt.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Telegramm 166 verpflichtend</h4>
+            <p class="safety">Für den Betrieb von HLA-Antrieben ist es zwingend notwendig, das Telegramm 166 einzustellen.</p>
+          </td>
+        </tr>
+      </table>
+      <p>
+        <b>Anzahl DDS für diesen MDS:</b>
+      </p>
+      <p>Die Anzahl der DDS ist auf 1 voreingestellt. Wenn eine Antriebsdatensatzumschaltung erforderlich ist, können bei Bedarf mehrere DDS angelegt werden. Beachten Sie: Viele DDS verlangsamen den SINAMICS-Systemhochlauf. Nachträglich können Sie im Datensatz-Assistenten weitere DDS anlegen.</p>
+      <p>
+        <b>Siehe auch:</b>
+      </p>
+      <p>
+        <a href="hla_step_encoder.html">&lt; Vorheriger Schritt</a> </p>
+      <p>
+        <a href="hla_step_bico.html">Nächster Schritt ></a> </p>
+    </div>
+  </body>
+</html>

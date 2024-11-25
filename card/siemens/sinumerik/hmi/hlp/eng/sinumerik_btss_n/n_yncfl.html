@@ -1,0 +1,101 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block N/YNCFL: NCK instruction groups</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block N/YNCFL: NCK instruction groups</h1>
+         </div>
+      </div>All G functions currently configured for the channels are made available for reading by the NCK. They are configured via machine
+      data. Since the G functions are organized in groups, only one of which can be active at a time, this module is organized as
+      a table.<br/>
+      There are two columns for each G group. The 1st column lists the number of G functions in a group (<a href="../sinumerik_btss_N/N_YNCFL.html#608">/N/YNCFL/Gruppe_NUM</a>), this corresponds to the number of rows in each subsequent column. This second column contains all the G functions belonging
+      to a group (<a href="../sinumerik_btss_N/N_YNCFL.html#609">/N/YNCFL/Gruppe</a>).<br/>
+      As a result, the data for a certain G group are calculated via a column offset.<br/>
+      The column offset of each variable is:<br/>
+      2 * (G group number - 1)<br/>
+      <br/>
+      The number of G groups is given in the variable "<a href="../sinumerik_btss_N/N_Y.html#339">numGCodeGroups</a>" in area N / module Y. The resultant the maximum column offset of the variables is thus   2 * <a href="../sinumerik_btss_N/N_Y.html#339">numGCodeGroups</a>.<br/>
+      <br/>
+      The G functions currently active are listed in area C / module SNCF.<br/>
+      
+      <div><a name="609"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>Gruppe</b></td>
+            <td colspan="3" style="border:1px solid black">Instruction group (Function)</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Alias:<br></span><b>function</b></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>G group number * 2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Serial number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_N/N_YNCFL.html#608">/N/YNCFL/Gruppe_NUM</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Instruction group<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Nck/FunctionGrouping/Gruppe[c&lt;Column Index&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="608"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>Gruppe_NUM</b></td>
+            <td colspan="3" style="border:1px solid black">Number of G functions (GroupID)</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Alias:<br></span><b>groupId</b></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>(2 * G group number) - 1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of G functions in the relevant group<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Nck/FunctionGrouping/Gruppe_NUM[&lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

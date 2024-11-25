@@ -1,0 +1,57 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Path segmentation for path axes</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Path segmentation for path axes</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Length of SPP path segment</h3>
+      <p>
+        <code> SPP </code>is used to specify the maximum distance between strokes and thus the maximum length of the path segments in which the total traversing distance is to be divided. The command is deactivated with <code>SPOF</code> or <code>SPP=0</code>.</p>
+      <p>Example:</p>
+      <p>
+        <code>N10 SON X0 Y0</code> </p>
+      <p>
+        <code>N20 </code>
+        <b>SPP=2</b>
+        <code> X10</code>
+      </p>
+      <p>The total traversing distance of 10 mm will be divided into five path sections each of 2 mm (<code>SPP=2</code>).</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">The path segments effected by <code>SPP</code> are always equidistant, i.e. all segments are equal in length. In other words, the programmed path segment size (<code>SPP</code> setting) is valid only if the quotient of the total traversing distance and the SPP value is an integer. If this is not the case, the size of the path segment is reduced internally such as to produce an integer quotient.</p>
+          </td>
+        </tr>
+      </table>
+      <a id="image_795408651_0">
+      </a> <img border="0" src="images/167570776843.png" width="340" height="283"/><p>Example:</p><p><code>N10 G1 G91 SON X10 Y10</code></p><p><code>N20 SPP=3.5 X15 Y15</code></p><p>When the total traversing distance is 15 mm and the path segment length 3.5 mm, the quotient is not an integer value (4.28). In this case, the SPP value is reduced down to the next possible integer quotient. The result in this example would be a path segment length of 3 mm.</p><a name="block_2"></a><h3 class="Blocktitle">Number of SPN path segments</h3><p><code>SPN</code> defines the number of path segments to be generated from the total traversing distance. The length of the segments is calculated automatically. Since <code>SPN</code> is non-modal, punching or nibbling must be activated beforehand with <code>PON</code> or <code>SON</code> respectively.   </p></div>
+  </body>
+</html>

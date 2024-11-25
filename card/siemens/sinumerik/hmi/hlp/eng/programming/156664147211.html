@@ -1,0 +1,141 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>NC-controlled retraction (POLF, POLFA, POLFMASK, POLFMLIN) Further information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">NC-controlled retraction (POLF, POLFA, POLFMASK, POLFMLIN) Further information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Further information</h3>
+      <h4 class="Blocklabel">Requirements for NC-controlled retraction</h4>
+      <ul>
+        <li>
+          <p>A retraction axis is configured for the NC-controlled retraction in the channel:</p>
+          <p>MD37500 $MA_ESR_REACTION = 21</p>
+        </li>
+        <li>
+          <p>ESR must be must be enabled for this axis:</p>
+          <p>$AA_ESR_ENABLE = 1</p>
+        </li>
+        <li>
+          <p>Delay times are defined:</p>
+          <p>MD21380 $MC_ESR_DELAY_TIME1</p>
+          <p>MD21381 $MC_ESR_DELAY_TIME2</p>
+        </li>
+        <li>
+          <p>The axis-specific retraction positions have been configured with <code>POLF</code> in the part program.</p>
+        </li>
+        <li>
+          <p>The axes are selected with <code>POLFMASK</code>/<code>POLFMLIN</code> for the NC-controlled retraction.</p>
+        </li>
+        <li>
+          <p>The activate signals must be set for the retraction movement and remain set.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Enable and start NC-controlled reactions</h4>
+      <p>If system variable $AC_ESR_TRIGGER = 1 is set and if a retraction axis is configured in this channel (i.e. MD37500 $MA_ESR_REACTION = 21) and $AA_ESR_ENABLE = 1 is set for this axis, then rapid lift (LIFTFAST) is activated in this channel.</p>
+      <p>The lift movement configured with <code>POLF</code> (or <code> POLF</code>) for the axes selected with <code>POLFMASK </code> or <code>POLFMLIN </code> replaces the path motion defined for these axes in the part program.</p>
+      <p>The sum of the MD21380 $MC_ESR_DELAY_TIME1 and MD21381 $MC_ESR_DELAY_TIME2 times is the maximum available for the retraction. When this time has expired, rapid deceleration with follow-up is also initiated for the retraction axis.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">The extended retraction (i.e. LIFTFAST/LFPOS triggered by<code> </code>$AC_ESR_TRIGGER) <b>cannot be interrupted</b> and can only be terminated prematurely via an emergency stop.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Retraction initiated via $AC_ESR_TRIGGER is locked, in order to prevent multiple retractions.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Single axis retraction</h4>
+      <p>With single axis retraction, the retraction position of the single axis must have been programmed with <code>POLFA</code> and the following conditions must be satisfied:</p>
+      <ul>
+        <li>
+          <p>$AA_ESR_ENABLE = 1</p>
+        </li>
+        <li>
+          <p>&lt;Axis> must be a single axis at the time of triggering ($A<b>A</b>AA_ESR_TRIGGER = 1).</p>
+        </li>
+        <li>
+          <p>&lt;Type> must be either 1 or 2.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Retraction direction during rapid lift</h4>
+      <p>The frame valid at the time when the lift fast is activated is taken into consideration.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Frames with rotation also affect the direction of lift via <code>POLF</code>.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Axis replacement</h4>
+      <p>Retraction axes must always be assigned to exactly one NC channel and may not be switched among the channels. When an attempt is made to exchange a retraction axis in another channel, an alarm is output. Only once this axis has been deactivated again using $AA_ESR_ENABLE[AX] = 0 can it be exchanged in a new channel. Once the axis has been exchanged, axes can be acted upon again with $AA_ESR_ENABLE[AX] = 1.</p>
+      <h4 class="Blocklabel">Neutral axes</h4>
+      <p>Neutral axes cannot undertake NC-controlled ESR.</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Orientierbare Werkzeugträger nach Maschinenvermessung modifizieren (CORRTC): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Orientierbare Werkzeugträger nach Maschinenvermessung modifizieren (CORRTC): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen zu CORRTC</h3>
+      <p>Die kinematische Struktur eines Toolcarriers wird durch eine (Typ T und Typ P) oder zwei (Typ M) kinematische Ketten (Teilketten) beschrieben, die vom dazugehörigen Bezugspunkt Maschinenbezugspunkt oder Werkzeugträgerbezugspunkt) ausgehen. Eine der beiden Ketten, die Werkzeug-Kette, endet am Bezugspunkt des Werkzeugs, die andere, die Werkstück-Kette im Nullpunkt des Basiskoordinatensystems.</p>
+      <p>Die Funktion CORRTC schreibt Achsrichtungen bei Maschinen mit ToolCarriern in spezielle Korrekturelemente. Eine kinematische Kette wird unter anderem mit Elementen vom Typ OFFSET beschrieben, die über $NK_TYPE definiert werden. </p>
+      <h4 class="Blocklabel">CORRTC arbeitet mit Abschnitten</h4>
+      <p>Die beiden Teilketten können sich jeweils in maximal vier Abschnitte aufteilen:</p>
+      <ul>
+        <li>
+          <p>Abschnitt 1 beginnt am Startpunkt der Kette und endet an der ersten Rundsachse. </p>
+        </li>
+        <li>
+          <p>Abschnitt 2 ist der Abschnitt zwischen Rundachse 1 und Rundachse 2.</p>
+        </li>
+        <li>
+          <p>Abschnitt 3 ist der Abschnitt zwischen Rundachse 2 und dem Ende der Kette.</p>
+        </li>
+      </ul>
+      <p>Die folgende Grafik zeigt einen orientierbaren Werkzeugträger mit 2 Rundachsen.</p>
+      <a id="image_106251032587_0">
+      </a> <img border="0" src="images/171253517707.png" width="483" height="425" alt="CORRTC Beispiel"/><p class="imgtitle">CORRTC Beispiel</p><p>Die Abschnitte sind eindeutig definiert: Durchläuft man die kinematische Teil-Kette von ihrem Startpunkt bis zum Endpunkt, so hat der erste Abschnitt den Index 1, der nächste den Index 2 usw.</p><h4 class="Blocklabel">Korrekturelemente</h4><p>Auf jeweils ein konstantes kinematisches Kettenelement (Kettenelement des Typs $NK_TYPE[&lt;n>] = "OFFSET") in jedem dieser Abschnitte kann mit der Systemvariablen $TC_CARR_CORR_ELEM [, 0 ... 3] verwiesen werden. In diese so bezeichneten Elemente werden mithilfe der Funktion CORRTC die Korrekturwerte geschrieben, die bei der Maschinenvermessung ermittelt wurden.</p><p>Die Reihenfolge der Verweise in $TC_CARR_CORR_ELEM[m, 0..3] muss mit den oben beschriebenen Abschnitten korrespondieren, d.h. in $TC_CARR_CORR_ELEM[m, 0] kann nur ein Kettenelement stehen, das zu dem Offsetvektor <b>l</b>1 gehört, usw..</p><p>Der Bezugswert ist dabei immer der entsprechende Wert, der in dem beim Aufruf von CORRTC aktiven Toolcarrier wirksam ist. Nach der Anwahl des Toolcarriers veränderte Inhalte der Kinematikdaten in der Datenhaltung haben keinen Einfluss auf die Wirkungsweise der Funktion CORRTC.</p><p></p></div>
+  </body>
+</html>

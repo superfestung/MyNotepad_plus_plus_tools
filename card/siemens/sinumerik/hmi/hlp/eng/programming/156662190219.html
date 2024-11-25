@@ -1,0 +1,29 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Reference point approach (G74)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Reference point approach (G74)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>When the machine has been powered up (where incremental position measuring systems are used), all of the axis slides must approach their reference mark. Only then can traversing movements be programmed. </p>
+      <p>The reference point can be approached in the NC program with <code>G74</code>.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>
+        <code>G74 X1=0 Y1=0 Z1=0 A1=0 …</code> ; Programmed in a separate NC block</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Meaning</h3>
+      <a id="table_5c5a6074-1645-4e35-8005-5ac0b2b86209">
+      </a> <a id="table_0"></a> <a id="table_5c5a6074-1645-4e35-8005-5ac0b2b86209"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="28.8%"><col width="71.1%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G74</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">G command call reference point approach</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>X1=0 Y1=0 Z1=0 …</code> :</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The specified machine axis address  <code>X1</code>, <code>Y1</code>, <code>Z1</code> … for <b>linear axes</b> is approached as the reference point.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>A1=0 B1=0 C1=0 …</code> :</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The specified machine axis address  <code>A1</code>, <code>B1</code>, <code>C1</code> … for <b>rotary axes</b> is approached as the reference point.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">A transformation must not be programmed for an axis which is to approach the reference point with <code>G74</code>.</p><p class="safety">The transformation is deactivated with command <code>TRAFOOF</code>.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Example</h3><p>When the measuring system is changed, the reference point is approached and the workpiece zero point is set up.</p><a id="table_0e6d4308-38a5-4781-8689-dafc26863ef3"></a> <a id="table_1"></a> <a id="table_0e6d4308-38a5-4781-8689-dafc26863ef3"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ELD"><colgroup><col width="45.6%"><col width="54.4%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10 SPOS=0</td><td>;Spindle in position control</td></tr><tr valign="top"><td>N20 G74 X1=0 Y1=0 Z1=0 C1=0</td><td>;Reference point approach for linear axes and rotary axes</td></tr><tr valign="top"><td>N30 G54</td><td>; Zero offset</td></tr><tr valign="top"><td>N40 L47</td><td>;Cutting program</td></tr><tr valign="top"><td>N50 M30</td><td>; End of program</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

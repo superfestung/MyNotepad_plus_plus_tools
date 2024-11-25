@@ -1,0 +1,31 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Fahren auf Festanschlag (FXS, FXST, FXSW): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Fahren auf Festanschlag (FXS, FXST, FXSW): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Anstiegsrampe</h4>
+      <p>Über Maschinendatum kann eine Anstiegsrampe für die neue Momentgrenze definiert werden, um ein sprunghaftes Einstellen der Momentgrenze zu vermeiden (z. B. beim Eindrücken einer Pinole).</p>
+      <h4 class="Blocklabel">Alarmunterdrückung</h4>
+      <p>Bei Anwendungen kann der Anschlagsalarm vom Teileprogramm her unterdrückt werden, indem in einem Maschinendatum der Alarm maskiert und die neue MD-Einstellung mit NEW_CONF wirksam gesetzt wird.</p>
+      <h4 class="Blocklabel">Aktivierung</h4>
+      <p>Die Befehle zum Fahren auf Festanschlag können aus Synchronaktionen / Technologiezyklen heraus aufgerufen werden. Die Aktivierung kann auch ohne Bewegung erfolgen, das Moment wird sofort begrenzt. Sobald die Achse sollwertseitig bewegt wird, wird auf Anschlag überwacht.</p>
+      <h4 class="Blocklabel">Aktivieren aus Synchronaktionen</h4>
+      <p>Beispiel:</p>
+      <p>Wenn das erwartete Ereignis ($R1) eintrifft und Fahren auf Festanschlag nicht schon läuft, soll <code>FXS</code> für Achse Y aktiviert werden. Das Moment soll 10 % des Nennmomentes betragen. Für die Breite des Überwachungsfensters gilt der Vorbesetzungswert.</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ECB"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><th>Programmcode</th><th> </th></tr><tr valign="top"><td>N10 IDS=1 WHENEVER (($R1=1) AND ($AA_FXS[Y]==0)) DO $R1=0 FXS[Y]=1 FXST[Y]=10</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Das normale Teileprogramm muss dafür sorgen, dass $R1 zum gewünschten Zeitpunkt gesetzt wird.</p><h4 class="Blocklabel">Deaktivieren aus Synchronaktionen</h4><p>Beispiel:</p><p>Wenn ein erwartetes Ereignis vorliegt ($R3) und der Zustand "Anschlag angefahren" (Systemvariable $AA_FXS) besteht, soll FXS abgewählt werden.</p><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EXB"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><th>Programmcode</th><th> </th></tr><tr valign="top"><td>IDS=4 WHENEVER (($R3==1) AND ($AA_FXS[Y]==1)) DO FXS[Y]=0 FA[Y]=1000 POS[Y]=0</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Festanschlag wurde erreicht</h4><p>Nachdem der Festanschlag erreicht ist:</p><ul><li><p>Wird der Restweg gelöscht und der Lagesollwert nachgeführt.</p></li><li><p>Steigt das Antriebsmoment bis zum programmierten Grenzwert <code>FXSW</code> an und bleibt dann konstant.</p></li><li><p>Wird die Überwachung des Festanschlags innerhalb der gegebenen Fensterbreite aktiv.</p></li></ul><h4 class="Blocklabel">Randbedingungen</h4><ul><li><p>Messen mit Restweglöschen</p><p>"Messen mit Restweglöschen" (Befehl <code>MEAS</code>) und "Fahren auf Festanschlag" können nicht gleichzeitig in einem Satz programmiert werden.</p><p><b>Ausnahme</b>: Eine Funktion wirkt auf eine Bahnachse und die andere auf eine Positionierachse, oder beide wirken auf Positionierachsen.</p></li><li><p>Konturüberwachung</p><p>Während "Fahren auf Festanschlag" aktiv ist, erfolgt keine Konturüberwachung.</p></li><li><p>Positionierachsen</p><p>Bei "Fahren auf Festanschlag" mit Positionierachsen wird der Satzwechsel unabhängig von der Festanschlagsbewegung durchgeführt.</p></li><li><p>Fahren auf Festanschlag ist <b>nicht</b> möglich:</p><ul><li><p>Bei Gantry-Achsen</p></li><li><p>Für konkurrierende Positionierachsen, die ausschließlich von der PLC gesteuert werden (die Anwahl von <code>FXS</code> muss aus dem NC-Programm erfolgen).</p></li></ul></li><li><p>Wird die Momentengrenze zu weit abgesenkt, kann die Achse der Sollwertvorgabe nicht mehr folgen, der Lageregler geht in die Begrenzung und die Konturabweichung steigt an. In diesem Betriebszustand kann es bei einer Erhöhung der Momentengrenze zu ruckartigen Bewegungen kommen. Um sicherzustellen, dass die Achse noch folgen kann, ist zu kontrollieren, dass die Konturabweichung nicht größer ist als bei unbegrenztem Moment.</p></li></ul></div>
+  </body>
+</html>

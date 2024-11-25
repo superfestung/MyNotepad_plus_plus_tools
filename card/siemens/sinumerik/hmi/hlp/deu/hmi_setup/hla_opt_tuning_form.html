@@ -1,0 +1,152 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>HLA-Kennlinie: Ventilkennlinie - numerisch</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">HLA-Kennlinie: Ventilkennlinie - numerisch</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Im Antrieb wird nicht die gemessene Ventilkennlinie, sondern eine vereinfachte, abschnittsweise definierte Kennlinie hinterlegt. Die Abschnitte der Kennlinie werden durch 16 Parameter definiert.</p>
+      <p>Nach jeder Kennlinienmessung wird beim ersten Öffnen des Dialogs "Optimierung" automatisch die Funktion "Ventilkennlinie optimieren" aufgerufen. Dabei wird die vereinfachte Ventilkennlinie erzeugt. Diese vereinfachte Ventilkennlinie können Sie in diesem Dialog möglichst genau der gemessenen Kennlinie anpassen. Die Anpassung können Sie ausführen durch:</p>
+      <ul>
+        <li>
+          <p>Eingabe der Parameter</p>
+        </li>
+        <li>
+          <p>Bearbeitung mit dem Cursor</p>
+        </li>
+      </ul>
+      <p>Zwischen den Anpassungsarten schalten Sie mit Softkeys um.</p>
+      <p>In diesem Dialog optimieren Sie die Ventilkennlinie durch die Eingabe von Parametern. </p>
+      <p>
+        <b>Automatische Optimierung</b>
+      </p>
+      <p>Die automatische Optimierung führen Sie mit dem Softkey "Ventilkennlinie optimieren" durch. Die automatische Optimierung versucht durch eine begrenzte Anzahl von Iterationsschritten die Lage der Knickpunkte und die Steigung der Geraden so zu bestimmen, dass die Summe der Abweichungen zwischen den einzelnen Punkten der optimierten Kennlinie im Vergleich zur gemessenen Kennlinie am geringsten ist. <br />Um Information zur eingestellten Kennlinie zu erhalten, klicken Sie auf den Softkey "Info Kennlinie". </p>
+      <p>Bei der automatischen Optimierung werden auch die positive und negative Geschwindigkeitsgrenze berechnet. Diese werden im Dialog nur angezeigt und können nicht geändert werden.</p>
+      <p>Das Ergebnis der automatischen Optimierung hängt von der im Antrieb eingestellten Kennlinie ab. Wenn Sie die Kurvenpunkte manuell verändert und anschließend den Softkey "Ventilkennlinie optimieren" betätigt, führt die automatische Optimierung zu einem anderen Optimierungsergebnis.</p>
+      <p>Bei einer unvollständigen Messung werden die Streckenverstärkung und die Flächenanpassung durch Extrapolation der Messwerte ermittelt. Die Extrapolation einer unvollständigen Messkennlinie ist erforderlich, wenn beim Betrieb des hydraulischen Antriebs der komplette Geschwindigkeitsbereich genutzt werden soll, obwohl dieser bei der Messung der Ventilkennlinie nicht durchfahren werden konnte.<br />Die Streckenverstärkung ist der Umrechnungsfaktor zwischen Stellspannung und Kolbengeschwindigkeit Q<sub>max</sub> bei U = 100 %. Die Flächenanpassung dient dem Ausgleich der unterschiedlichen Kolbenflächen eines asymmetrischen Differenzialzylinders. Diese führen bei gleichem Volumenstrom (Ventilstellspannung) zu unterschiedlicher Kolbengeschwindigkeit in positiver und negativer Richtung.</p>
+      <p>
+        <b>Manuelle Optimierung durchführen</b>
+      </p>
+      <p>Die Optimierung der Ventilkennlinie führen Sie folgendermaßen durch:</p>
+      <ul>
+        <li>
+          <p>Mit den Cursortasten wählen Sie den Parameter aus, den Sie ändern wollen. Der gewählte Parameter wird im Wertefeld orange hinterlegt.</p>
+        </li>
+        <li>
+          <p>Mit dem Nummernblock geben Sie den Wert ein.</p>
+        </li>
+        <li>
+          <p>Um die grafische Darstellung der Kennlinie zu aktualisieren, betätigen Sie die Eingabetaste.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Übernehmen" schließen Sie die Optimierung der Kennlinie ab. Die Messwerte sowie die Mess- und Ventilkennlinienparameter werden in einer XML-Datei gespeichert. </p>
+        </li>
+      </ul>
+      <p>
+        <b>Bedeutung der Parameter</b>
+      </p>
+      <p>Um Information zum Kennliniendiagramm zu erhalten, betätigen Sie den Softkey "Info Kennlinie". </p>
+      <ul>
+        <li>
+          <p>Nullbereich</p>
+          <p>Geben Sie die Koordinaten des Knickpunkts der Ventilkennlinie im Nullbereich ein.</p>
+          <p>Maschinendaten: +Q = p1833 / +U = p1834, -Q = p1836 / -U = p1837, +rnd =  p1835 / -rnd = p1838</p>
+        </li>
+        <li>
+          <p>Feinsteuerbereich</p>
+          <p>Geben Sie die Koordinaten des Knickpunkts der Ventilkennlinie im Feinsteuerbereich ein.</p>
+          <p>Maschinendaten: +Q = p1839 / +U = p1840, -Q = p1842 / -U = p1843, +rnd =  p1841 / -rnd = p1844</p>
+        </li>
+        <li>
+          <p>Sättigungsbereich</p>
+          <p>Geben Sie die Koordinaten des Beginns des parabelförmig verrundeten Sättigungsbereichs der Ventilkennlinie ein.</p>
+          <p>Maschinendaten: +Q = p1845 / +U = p1846, -Q = p1847 / -U = p1848</p>
+        </li>
+        <li>
+          <p>Streckenverstärkung</p>
+          <p>Geben Sie hier die Streckenverstärkung des Geschwindigkeitsreglers ein. Die Streckenverstärkung gibt die Geschwindigkeit des Antriebs (nach der Knickkompensation) bei 1 V an.</p>
+          <p>Maschinendatum: p1475</p>
+        </li>
+        <li>
+          <p>Flächenanpassung</p>
+          <p>Geben Sie hier die Unterschiede der Maximalgeschwindigkeiten (abhängig von der Richtung der Geschwindigkeit) ein.</p>
+          <p>Maschinendaten: p1830 / p1831</p>
+        </li>
+        <li>
+          <p>Geschwindigkeitsgrenze</p>
+          <p>Die maximale Geschwindigkeit in positiver und negativer Richtung wird angezeigt. Diese Werte können Sie nicht ändern.</p>
+        </li>
+      </ul>
+      <p>
+        <b>Weitere Aktionen:</b>
+      </p>
+      <p>Der Dialog "Grafische Optimierung" hat im numerischen Eingabemodus mehrere Softkeyleisten. Zwischen den Softkeyleisten schalten Sie mit den Softkeys ">>" und "&lt;&lt;" um.</p>
+      <p>Softkeyleisten "Grafische Optimierung"</p>
+      <ul>
+        <li>
+          <p>Mit dem Softkey "Ventilkennlinie optimieren" starten Sie die automatische Kennlinienoptimierung. Nach der Optimierung wird die Kennlinie neu gezeichnet. </p>
+        </li>
+        <li>
+          <p>Mit dem Softkey ">>" wechseln Sie zur nächsten Softkeyleiste.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Mit Cursor optimieren >" wechseln Sie zum Grafikcursormodus. Der Grafikcursor wird eingeschaltet. Die Softkeyleiste zur Optimierung der Ventilkennlinie mit dem Grafikcursor wird eingeblendet.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Zoom >" wechseln Sie zur Softkeyleiste "Zoom".</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Parameter" blenden Sie das Grid mit den Zahlenwerten auf der rechten Seite des Dialogs ein/aus. Das Diagramm wird dabei in seiner Größe der Dialogbreite angepasst.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Info Kennlinie" blenden Sie ein ganzseitiges statisches Bild mit der Darstellung der einzelnen Bereiche der Kennlinie ein. Das Bild dient der Erklärung der Kennlinie.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Abbruch" kehren Sie zum Dialog "<a href="hla_opt_start_form.html">Ventilkennlinie messen</a>" zurück. Die Änderungen an der eingestellten Kennlinie und deren Parametern werden verworfen.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Übernehmen" wird die angepasste Kennlinie in den Antrieb geschrieben und gespeichert. Der Dialog "<a href="hla_opt_start_form.html">Ventilkennlinie messen</a>" wird angezeigt.</p>
+          <p>Wenn sich der Antrieb im Zustand "Impulsfreigabe" befindet, wird eine Warnung ausgegeben.</p>
+          <p>Die Messwerte sowie die Mess- und Ventilkennlinienparameter werden in einer XML-Datei gespeichert. In der Statuszeile werden Sie über den Speichervorgang und den generierten Dateinamen informiert.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Neu messen" wechseln Sie in den Dialog "<a href="hla_opt_progress_form.html">Messen</a>".</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "&lt;&lt;" wechseln Sie zur vorherigen Softkeyleiste.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "In Datei speichern" öffnen Sie einen Dateiauswahldialog zum Speichern der Parameter beider Kennlinien.</p>
+        </li>
+      </ul>
+      <p>Softkeyleiste "Zoom"</p>
+      <ul>
+        <li>
+          <p>Mit dem Softkey "X-Achse" wählen Sie die X-Achse an.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Y-Achse" wählen Sie die Y-Achse an.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Quadrant wechseln" wechseln Sie die Koordinatenvorzeichen des dargestellten Zoombereichs.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkeys "Bereiche anzeigen" ändern Sie die Anzeige auf der rechten Seite des Diagramms. Statt der Kennlinienparameter werden die Start- und Endwerte der beiden Achsen dargestellt. Bei einer Änderung der Werte wird das Diagramm aktualisiert.</p>
+        </li>
+        <li>
+          <p>Mit dem Softkey "Zoom+/-" vergrößern/verkleinern Sie den Maßstab der angewählten Achsen im Diagramm.</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

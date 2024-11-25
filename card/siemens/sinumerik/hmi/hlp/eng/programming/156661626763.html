@@ -1,0 +1,59 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Velocity specification with handwheel override / path specification with handwheel (FD, FDA)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Velocity specification with handwheel override / path specification with handwheel (FD, FDA)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Via the address FD, a feedrate can be specified for the programmed traverse motions of the path axes. This feedrate is only effective in the current block and can be overridden by the handwheel. The handwheel of the first geometry axis of the channel is evaluated. Depending on the direction of rotation, the feedrate specified via FD is increased or decreased.</p>
+      <p>The FDA address can be used to activate the path specification by the handwheel for positioning axes or to specify a velocity for the axis that is effective in the current block and can be overridden by the handwheel. The handwheel assigned to the axis is evaluated.</p>
+      <p>The block change is performed as soon as the programmed target position is reached. This automatically deactivates the "Velocity specification with handwheel override" or "Path specification with handwheel" and further handwheel pulses have no effect.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Important information on programming FD and FDA:</p>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">A <b>target position</b> must be programmed in the same NC block.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">Additional axes can be traversed simultaneously or using interpolation in the same NC block.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">F and FD or FA and FDA must not be programmed in the same NC block.</p>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Path axes</h4>X... Y... FD=&lt;Velocity><h4 class="Blocklabel">Positioning axes</h4>POS[Axis]=.../POSA[Axis]=... FDA[&lt;Axis>]=&lt;Velocity><a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="40.0%"><col width="17.5%"><col width="15.0%"><col width="27.5%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>X... Y...</code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Target position of the path axis</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>FD=&lt;Velocity></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Specification of a feedrate with handwheel override</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Velocity></code>  </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Value = 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Not possible!</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Value ≠ 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Feedrate</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">FD is only permitted if the following conditions are met:</p><ul class="table"><li><p>G1, G2, G3 or CIP active</p></li><li><p>Exact stop G60 active</p></li><li><p>Linear feedrate G94 active</p></li></ul></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>POS[Axis]=...</code> </p><p type="p_table_l" align="left"><code>POSA[Axis]=...</code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Target position of the positioning axis</p><p type="p_table_l" align="left">Target position of the positioning axis beyond block limit</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>FDA[&lt;Axis>]=&lt;Velocity></code>  </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">"Velocity specification with handwheel override" or "Path specification with handwheel" for positioning axis</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Axis></code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Axis identifier of positioning axis</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Velocity></code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Value = 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Path specification with handwheel</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Value ≠ 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Axis velocity</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">FD and FDA are <b>non-modal</b>.</p><p class="safety"><b>Exception:</b></p><p class="safety">For <b>FDA</b> in connection with <b>POSA</b>, the handwheel override can also act modally because this positioning axis does not affect the block transition.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Examples</h3><h4 class="Blocklabel">Example 1: Traversing path axes with velocity override</h4><a id="table_101a9049-6622-ceb1-2c6f-4648cbf7d7d6"></a> <a id="table_1"></a> <a id="table_101a9049-6622-ceb1-2c6f-4648cbf7d7d6"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E5F"><colgroup><col width="40.0%"><col width="60.0%"></colgroup><tr valign="top"><th>Program code </th><th>Description</th></tr><tr valign="top"><td>N10 X… Y… F500</td><td>; Feedrate = 500 mm/min</td></tr><tr valign="top"><td>N20 X… Y… FD=700</td><td>; Feedrate = 700 mm/min and velocity override using handwheel.; Acceleration from 500 to 700 mm/min in N20.; Using the handwheel, it is possible to vary the path velocity between 0 and the maximum value (machine data) depending on the direction of rotation.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 2: Traversing positioning axes with path specification</h4><a id="table_d1218fb1-1318-4693-842a-aa4d7421c860"></a> <a id="table_2"></a> <a id="table_d1218fb1-1318-4693-842a-aa4d7421c860"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EZG"><colgroup><col width="40.0%"><col width="60.0%"></colgroup><tr valign="top"><th>Program code </th><th>Description</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N20 POS[V]=90 FDA[V]=0</td><td>; Target position = 90 mm, feedrate of the axis = 0 mm/min and path override by handwheel.; Velocity of axis V at start of block = 0 mm/min.; Path and speed defaults are set using handwheel pulses.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>In the NC block with programmed FDA[&lt;Axis>]=0, the feedrate is set to zero so that the program cannot generate any traversing movement. The programmed traversing movement to the target position is now controlled exclusively by the operator rotating the handwheel.</p><p>Direction of motion, traversing velocity:</p><p>The axes follow the path set by the handwheel in the direction of the sign. Forward and backward traversing is possible dependent on the direction of rotation. The faster the handwheel rotates, the higher the traversing velocity.</p><p>Traversing range: <br />The traversing range is limited by the starting position and the programmed end point.</p><h4 class="Blocklabel">Example 3: Traversing positioning axes with velocity override </h4><a id="table_4ddc4565-0f5a-1ec4-3c27-c3392471f1c3"></a> <a id="table_3"></a> <a id="table_4ddc4565-0f5a-1ec4-3c27-c3392471f1c3"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E2H"><colgroup><col width="40.0%"><col width="60.0%"></colgroup><tr valign="top"><th>Program code </th><th>Description</th></tr><tr valign="top"><td>N10 POS[V]=… FA[V]=100</td><td>; Feedrate of the axis = 100 mm/min</td></tr><tr valign="top"><td>N20 POS[V]=100 FAD[V]=200</td><td>; Target position of the axis = 100, feedrate of the axis = 200 mm/min and velocity override with handwheel.; Acceleration from 100 to 200 mm/min in N20.; Using the handwheel, it is possible to vary the velocity between 0 and the maximum value (machine data) depending on the direction of rotation.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>In NC blocks with programmed FDA[…]=…, the feedrate from the last programmed FA value is accelerated or decelerated to the value programmed under FDA. Starting from the current feedrate FDA, the handwheel can be turned to accelerate the programmed movement to the target position or to decelerate it to zero. The values set as parameters in the machine data serve as the maximum velocity.</p><p>Traversing range: The traversing range is limited by the starting position and the programmed end point.</p></div>
+  </body>
+</html>

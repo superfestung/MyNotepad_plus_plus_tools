@@ -1,0 +1,28 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Check for presence of file (ISFILE)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Check for presence of file (ISFILE)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The ISFILE command checks whether a file exists in the program memory.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Requirements</h3>
+      <h4 class="Blocklabel">Access to EES drives</h4>
+      <p>External program memory on drives for which use with the function "Execution from External Storage (EES)" was set up during commissioning, can only be addressed by file handling commands if the license-only option to use this function is set.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>&lt;Result>=ISFILE("&lt;FileName>")<a name="block_3"></a><h3 class="Blocktitle">Meaning</h3><a id="table_354d71d6-7da1-4201-bc05-cde6b6e16d29"></a> <a id="table_0"></a> <a id="table_354d71d6-7da1-4201-bc05-cde6b6e16d29"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="21.9%"><col width="11.4%"><col width="13.6%"><col width="53.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>ISFILE</code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Command to check the availability of a file</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;FileName></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Name of the file whose availability is to be checked.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">STRING</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">The absolute path can be specified before the actual file name. If a path is not specified, the file is searched for in the current directory (= directory of selected program).</p><p type="p_table_l" align="left">Rules regarding path data, see "<a href="156662796555.html">Addressing program memory files</a>".</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Result></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Result variable to which the result of the check is assigned.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type.</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">BOOL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">TRUE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">File exists</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">FALSE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">File does not exist</p></td></tr></table></p><a name="block_4"></a><h3 class="Blocktitle">Examples</h3><h4 class="Blocklabel">Example 1</h4><a id="table_d7a3650f-8db0-49f1-acc3-cfa7d6d26133"></a> <a id="table_1"></a> <a id="table_d7a3650f-8db0-49f1-acc3-cfa7d6d26133"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EQE"><colgroup><col width="46.8%"><col width="53.2%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10 DEF BOOL RESULT</td><td>; Definition of result variables.</td></tr><tr valign="top"><td>N20 RESULT=ISFILE("TESTFILE")</td><td> </td></tr><tr valign="top"><td>N30 IF(RESULT==FALSE)</td><td> </td></tr><tr valign="top"><td>N40    MSG("FILE DOES NOT EXIST")</td><td> </td></tr><tr valign="top"><td>N50    M0</td><td> </td></tr><tr valign="top"><td>N60 ENDIF</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 2</h4><a id="table_032eb637-d201-4371-9359-0f2e56490080"></a> <a id="table_2"></a> <a id="table_032eb637-d201-4371-9359-0f2e56490080"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ECG"><colgroup><col width="46.6%"><col width="53.4%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10 DEF BOOL RESULT</td><td>; Definition of result variables.</td></tr><tr valign="top"><td>N20 RESULT=ISFILE("TESTFILE")</td><td> </td></tr><tr valign="top"><td>N30 IF(NOT ISFILE("TESTFILE"))</td><td> </td></tr><tr valign="top"><td>N40    MSG("FILE DOES NOT EXIST")</td><td> </td></tr><tr valign="top"><td>N50    M0</td><td> </td></tr><tr valign="top"><td>N60 ENDIF</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

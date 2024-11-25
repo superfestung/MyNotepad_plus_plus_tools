@@ -1,0 +1,1086 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1208">p1208[0...1]</a></b></td>
+<td colspan="4"><b>BI: AR modification infeed / AR modification</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to modify the automatic restart (AR).<br />
+Interconnections between the automatic restart and infeed:<br />
+With the following interconnection in the mode p1210 = 6, the automatic restart can respond to infeed faults:<br />
+BI: p1208[0] = r2139.3<br />
+With the following interconnection, in the mode p1210 = 4, the automatic restart can respond to line supply failure of the infeed:<br />
+BI: p1208[1] = r0863.2<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Infeed fault<br />
+[1] = Infeed line supply failure<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0863, r2139<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1210">p1210</a></b></td>
+<td colspan="4"><b>Automatic restart, mode / AR mode</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >16</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the automatic restart mode (AR).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Inhibit automatic restart<br />1:		Acknowledge all faults without restarting<br />4:		Restart after line supply failure w&#47;o additional start attempts<br />6:		Restart after fault with additional start attempts<br />14:		Restart after line supply failure following man. acknowledgment<br />16:		Restart after fault following manual acknowledgment<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">The automatic restart requires an active ON command (e.g., via a digital input). If, for p1210 &gt; 1, there is no active ON command, then the automatic restart is interrupted.<br />When using an Operator Panel in the LOCAL mode, then there is no automatic start.<br />For p1210 = 14, 16, a manual acknowledgement is required for an automatic restart.<br />Refer to: p0840, p0857<br />Refer to: F30003</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Re p1210 = 1:<br />Faults that are present are automatically acknowledged. If new faults occur after a successful fault acknowledgment, then these are also automatically acknowledged again. p1211 has no influence on the number of acknowledgment attempts.<br />Re p1210 = 4:<br />An automatic restart is only carried out if fault F30003 occurred at the Motor Module or a 1 signal is present at binector input p1208[1]. If additional faults are present, then these faults are also acknowledged and when successful, starting continues. If the 24 V Control Unit power supply fails, then this is interpreted as a line supply failure.<br />Re p1210 = 6:<br />An automatic restart is carried out if any fault has occurred or there is a 1 signal at binector input p1208[0].<br />Re p1210 = 14:<br />As for p1210 = 4. However, faults that are present must be manually acknowledged.<br />Re p1210 = 16:<br />As for p1210 = 6. However, faults that are present must be manually acknowledged.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1211">p1211</a></b></td>
+<td colspan="4"><b>Automatic restart, start attempts / AR start attempts</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >10</td>
+<td >3</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the start attempts of the automatic restart function for p1210 = 4, 6.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1210, r1214<br />Refer to: F07320</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A start attempt starts immediately when a fault occurs. The start attempt is considered to been completed if the motor was magnetized (r0056.4 = 1) and an additional delay time of 1 s has expired.<br />As long as a fault is present, an acknowledge command is generated in the time intervals of p1212 &#47; 2. When successfully acknowledged, the start counter is decremented. If, after this, a fault re-occurs before a restart has been completed, then acknowledgement starts again from the beginning.<br />Fault F07320 is output if, after several faults occur, the number of parameterized start attempts has been reached. After a successful start attempt, i.e. a fault&#47;error has no longer occurred up to the end of the magnetizing phase, the start counter is again reset to the parameter value after 1 s. If a fault re-occurs - the parameterized number of start attempts is again available.<br />At least one start attempt is always carried out.<br />After a line supply failure, acknowledgement is immediate and when the line supply returns, the system is powered up. If, between successfully acknowledging the line fault and the line supply returning, another fault occurs, then its acknowledgement also causes the start counter to be decremented.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1212">p1212</a></b></td>
+<td colspan="4"><b>Automatic restart, delay time start attempts / AR t_wait start</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.1</td>
+<td  >1000.0</td>
+<td >1.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the delay time up to restart.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">This parameter setting is active for p1210 = 4, 6.<br />For p1210 = 1, the following applies: Faults are only automatically acknowledged in half of the delay time, no restart.<br />Refer to: p1210, r1214<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The faults are automatically acknowledged after half of the delay time has expired and the full delay time.<br />If the cause of a fault is not removed in the first half of the delay time, then it is no longer possible to acknowledge in the delay time.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1213">p1213[0...1]</a></b></td>
+<td colspan="4"><b>Automatic restart, monitoring time / AR t_monitoring</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >10000.0</td>
+<td >0.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the monitoring time of the automatic restart (AR).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = For restart<br />
+[1] = To reset the start counter<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1210, r1214<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Index 0:<br />The monitoring time starts when the faults are detected. If the automatic acknowledgements are not successful, the monitoring time runs again. If, after the monitoring time has expired, the drive has still not successfully started again (flying restart and magnetizing of the motor must have been completed: r0056.4 = 1), then fault F07320 is output.<br />The monitoring is de-activated with p1213 = 0. If p1213 is set lower than the sum of p1212, the magnetizing time p0346 and the additional delay time due to the flying restart, then fault F07320 is generated at each restart. If, for p1210 = 1, the time in p1213 is set lower than in p1212, then fault F07320 is also generated at each restart.<br />The monitoring time must be extended if the faults that occur cannot be immediately and successfully acknowledged (e.g. for faults that are permanently present).<br />In the case of p1210 = 14, 16, the faults which are present must be acknowledged manually within the time in p1213 index 0. Otherwise, fault F07320 is generated after the set time.<br />Index 1:<br />The start counter (refer to r1214) is only set back to the starting value p1211 if, after successful restart, the time in p1213 index 1 has expired. The delay time is not effective for fault acknowledgement without automatic restart (p1210 = 1). After a power failure (blackout) the delay time only starts after the line supply returns and the Control Unit boots. The start counter is set to p1211, if F07320 occurred, the power-on command is withdrawn and the fault is acknowledged.<br />The start counter is immediately updated if the starting value p1211 or the mode p1210 is changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1214">r1214.0...15</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Automatic restart, status / AR status</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the status of the automatic restart (AR).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Initialization</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>01</td><td>Wait for alarm</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>02</td><td>Auto restart act</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>03</td><td>Setting the acknowledgement command</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>04</td><td>Acknowledge alarms</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>05</td><td>Restart</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>06</td><td>Delay time running after automatic power-up</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>07</td><td>Fault</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>10</td><td>Effective fault</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>12</td><td>Start count. bit 0</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>13</td><td>Start count. bit 1</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>14</td><td>Start count. bit 2</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>15</td><td>Start count. bit 3</td><td>ON</td><td>OFF</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Re bit 00:<br />State to display the single initialization after POWER ON.<br />Re bit 01:<br />State in which the automatic restart function waits for faults (initial state).<br />Re bit 02:<br />General display that a fault has been identified and that the restart or acknowledgement has been initiated.<br />Re bit 03:<br />Displays the acknowledge command within the &quot;acknowledge alarms&quot; state (bit 4 = 1). For bit 5 = 1 or bit 6 = 1, the acknowledge command is continually displayed.<br />Re bit 04:<br />State in which the faults that are present are acknowledged. The state is exited again after successful acknowledgement. A change is only made into the next state if it is signaled that a fault is no longer present after an acknowledgement command (bit 3 = 1).<br />Re bit 05:<br />State in which the drive is automatically powered up (only for p1210 = 4, 6).<br />Re bit 06:<br />State in which the system waits after having been powered up, to the end of the start attempt (to the end of the magnetizing process).<br />For p1210 = 1, this signal is directly set after the faults have been successfully acknowledged.<br />Re bit 07:<br />State which is assumed after a fault occurs within the automatic restart function. This is only reset after acknowledging the fault and withdrawing the power-on command.<br />Re bit 10:<br />When the automatic restart function is active, r1214 bit 7 is displayed, otherwise the effective fault r2139 bit 3.<br />Re bits 12 ... 15:<br />Actual state of the start counter (binary coded).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1215">p1215</a></b></td>
+<td colspan="4"><b>Motor holding brake configuration / Brake config</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2701, 2707, 2711</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >3</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the holding brake configuration.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		No motor holding brake being used<br />1:		Motor holding brake acc. to sequence control<br />2:		Motor holding brake always open<br />3:		Motor holding brake like sequence control, connection via BICO<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1216, p1217, p1226, p1227, p1228, p1278<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">If the configuration is set to &quot;no holding brake present&quot; when booting, then the motor holding brake will be automatically identified. If a motor holding brake is detected, the configuration is set to &quot;motor holding brake as for sequence control&quot;.<br />If a holding brake integrated in the motor is used, then it is not permissible that p1215 is set to 3.<br />if an external motor holding brake is being used, then p1215 should be set to 3 and r0899.12 should be interconnected as control signal.<br />When the function module &quot;extended brake control&quot; is activated (r0108.14 = 1), r1229.1 should be interconnected as control signal.<br />The parameter can only be set to zero when the pulses are inhibited.<br />The parameterization &quot;no motor holding brake available&quot; and &quot;Safe Brake Control&quot; enabled (p1215 = 0, p9602 = 1, p9802 = 1) is not practical if there is no motor holding brake.<br />The parameterization &quot;motor holding brake the same as sequence control, connection via BICO&quot; and &quot;Safe Brake Control&quot; enabled (p1215 = 3, p9602 = 1, p9802 = 1) is not practical.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1216">p1216</a></b></td>
+<td colspan="4"><b>Motor holding brake, opening time / Brake t_open</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2701, 2711</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >10000</td>
+<td >100</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the time to open the motor holding brake.<br />
+After controlling the holding brake (opens), the speed&#47;velocity setpoint remains at zero for this time. After this, the speed&#47;velocity setpoint is enabled.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Recommend.:</b></td>
+<td>This time should be set longer than the actual opening time of the brake. This ensures that the drive cannot accelerate when the brake is applied.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1215, p1217<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1217">p1217</a></b></td>
+<td colspan="4"><b>Motor holding brake closing time / Brake t_close</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2701, 2711</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >10000</td>
+<td >100</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the time to apply the motor holding brake.<br />
+After OFF1 or OFF3 and the holding brake is controlled (the brake closes), then the drive remains closed-loop controlled for this time stationary with a speed setpoint&#47;velocity setpoint of zero. The pulses are suppressed when the time expires.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Recommend.:</b></td>
+<td>This time should be set longer than the actual closing time of the brake. This ensures that the pulses are only suppressed after the brake has closed.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1215, p1216<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">If the selected closing time is too short with respect to the actual closing time of the brake, then the load can sag.<br />If the closing time is selected to be too long with respect to the actual closing time of the brake, the control works against the brake and therefore reduces its lifetime.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1218">p1218[0...1]</a></b></td>
+<td colspan="4"><b>BI: Open motor holding brake / Open brake</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2707</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for a conditional opening of the motor holding brake.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1215<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">[0]: Signal, open brake, AND logic operation, input 1<br />[1]: Signal, open brake, AND logic operation, input 2<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1219">p1219[0...3]</a></b></td>
+<td colspan="4"><b>BI: Immediately close motor holding brake / Close brake</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2707</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for an unconditional (immediate) closing of the motor holding brake.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1215, p1275<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">[0]: Signal, immediately close brake, inversion via p1275.0<br />[1]: Signal, immediately close brake, inversion via p1275.1<br />[2]: Signal, immediately close brake<br />[3]: Signal, immediately close brake - refer to the factory setting<br />These four signals form an OR logic operation.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1220">p1220</a></b></td>
+<td colspan="4"><b>CI: Open motor holding brake, signal source, threshold / Open brake thresh</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2707</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the command &quot;open brake&quot;.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1215, p1221, r1229, p1277<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1221">p1221</a></b></td>
+<td colspan="4"><b>Open motor holding brake, threshold / Open brake thresh</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2707</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >200.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the threshold value for the command &quot;open brake&quot;.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1220, r1229, p1277<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1222">p1222</a></b></td>
+<td colspan="4"><b>BI: Motor holding brake feedback signal brake closed / Brake feedb closed</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2711</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the feedback signal &quot;brake closed&quot;.<br />
+For motor holding brakes with feedback signal, the signal &quot;brake closed&quot; can be activated using p1275.5 = 1.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1223, p1275<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">1 signal: Brake closed.<br />When braking with 1 feedback signal, the inverted feedback signal is connected to the BICO input for the second feedback signal (p1223).<br />For r1229.5 = 1, OFF1&#47;OFF3 are suppressed to prevent the drive accelerating by a load that drives the motor - whereby OFF2 remains effective.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1223">p1223</a></b></td>
+<td colspan="4"><b>BI: Motor holding brake feedback signal brake open / Brake feedb open</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2711</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the feedback signal &quot;brake open&quot;.<br />
+For motor holding brakes with feedback signal, the signal &quot;brake open&quot; can be activated using p1275.5 = 1.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1222, p1275<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">1 signal: Brake open.<br />When braking with 1 feedback signal, the inverted feedback signal is connected to the BICO input for the second feedback signal (p1222).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1224">p1224[0...3]</a></b></td>
+<td colspan="4"><b>BI: Close motor holding brake at standstill / Brk close standst</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2704</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for close brake at standstill.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1275<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">[0]: Signal, close brake at standstill, inversion via p1275.2<br />[1]: Signal, close brake at standstill, inversion via p1275.3<br />[2]: Signal, close brake at standstill<br />[3]: Signal, close brake at standstill<br />These four signals form an OR logic operation.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1225">p1225</a></b></td>
+<td colspan="4"><b>CI: Standstill detection, threshold value / Standstill thresh</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2704</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2000</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >63[0]</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source &quot;threshold value&quot; for the standstill identification.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1226, p1228, r1229<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1226">p1226[0...n]</a></b></td>
+<td colspan="4"><b>Threshold for zero speed detection / n_standst n_thresh</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> DDS, p0180</td><td><b>Func. diagram:</b> 2701, 2704</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> 3_1</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >210000.00</td>
+<td >20.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the speed threshold for the standstill identification.<br />
+Acts on the actual value and setpoint monitoring.<br />
+When braking with OFF1 or OFF3, when the threshold is undershot, standstill is identified.<br />
+The following applies when the brake control is activated:<br />
+When the threshold is undershot, the brake control is started and the system waits for the brake closing time in p1217. The pulses are then suppressed.<br />
+if the brake control is not activated, the following applies:<br />
+When the threshold is undershot, the pulses are suppressed and the drive coasts down.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1215, p1216, p1217, p1227<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Standstill is identified in the following cases:<br />- the speed actual value falls below the speed threshold in p1226 and the time started after this in p1228 has expired.<br />- the speed setpoint falls below the speed threshold in p1226 and the time started after this in p1227 has expired.<br />The actual value sensing is subject to measuring noise. For this reason, standstill cannot be detected if the speed threshold is too low.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1227">p1227</a></b></td>
+<td colspan="4"><b>Zero speed detection monitoring time / n_standst t_monit</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2701, 2704</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >300.000</td>
+<td >4.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the monitoring time for the standstill identification.<br />
+When braking with OFF1 or OFF3, standstill is identified after this time has expired, after the setpoint speed has fallen below p1226 (also refer to p1145).<br />
+After this, the brake control is started, the system waits for the closing time in p1217 and then the pulses are suppressed.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1215, p1216, p1217, p1226<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Standstill is identified in the following cases:<br />- the speed actual value falls below the speed threshold in p1226 and the time started after this in p1228 has expired.<br />- the speed setpoint falls below the speed threshold in p1226 and the time started after this in p1227 has expired.<br />For p1227 = 300.000 s, the following applies:<br />Monitoring is de-activated.<br />For p1227 = 0.000 s, the following applies:<br />With OFF1 or OFF3 and a ramp-down time = 0, the pulses are immediately suppressed and the motor &quot;coasts&quot; down.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1228">p1228</a></b></td>
+<td colspan="4"><b>Pulse suppression delay time / Pulse suppr t_del</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2701, 2704</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >299.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the delay time for pulse suppression.<br />
+After OFF1 or OFF3 and zero speed detection, the system waits for this time to expire and the pulses are then suppressed.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1226, p1227<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Standstill is identified in the following cases:<br />- the speed actual value falls below the speed threshold in p1226 and the time started after this in p1228 has expired.<br />- the speed setpoint falls below the speed threshold in p1226 and the time started after this in p1227 has expired.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1229">r1229.1...11</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Motor holding brake status word / Brake ZSW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the status word for the motor holding brake.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>01</td><td>Command open brake (continuous signal)</td><td>Yes</td><td>No</td><td>2711</td></tr><tr><td></td><td>03</td><td>Pulse enable, extended brake control</td><td>Yes</td><td>No</td><td>2711</td></tr><tr><td></td><td>04</td><td>Brake does not open</td><td>Yes</td><td>No</td><td>2711</td></tr><tr><td></td><td>05</td><td>Brake does not close</td><td>Yes</td><td>No</td><td>2711</td></tr><tr><td></td><td>06</td><td>Brake threshold exceeded</td><td>Yes</td><td>No</td><td>2707</td></tr><tr><td></td><td>07</td><td>Brake threshold undershot</td><td>Yes</td><td>No</td><td>2704</td></tr><tr><td></td><td>08</td><td>Brake monitoring time expired</td><td>Yes</td><td>No</td><td>2704</td></tr><tr><td></td><td>09</td><td>Pulse enable request missing&#47;n_ctrl inhibited</td><td>Yes</td><td>No</td><td>2707</td></tr><tr><td></td><td>10</td><td>Brake OR logic operation result</td><td>Yes</td><td>No</td><td>2707</td></tr><tr><td></td><td>11</td><td>Brake AND logic operation result</td><td>Yes</td><td>No</td><td>2707</td></tr></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1230">p1230[0...n]</a></b></td>
+<td colspan="4"><b>BI: Armature short-circuit &#47; DC braking activation / ASC&#47;DCBRK act</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 7014, 7016, 7017</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to activate the armature short-circuit or DC braking.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1231, p1232, p1233, p1234, p1235, p1236, p1237, r1238, r1239, p1345, p1346<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">1 signal: Armature short-circuit&#47;DC braking activated.<br />0 signal: Armature short-circuit&#47;DC braking de-activated.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1231">p1231[0...n]</a></b></td>
+<td colspan="4"><b>Armature short-circuit &#47; DC braking configuration / ASC&#47;DCBRK config</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> 7014, 7016, 7017</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >14</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Setting to activate the various types for armature short-circuit &#47; DC braking.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		No function<br />1:		External armature short-circuit with contactor feedback signal<br />2:		Ext. armature short circuit without contactor feedback signal<br />4:		DC braking<br />5:		DC braking for OFF1&#47;OFF3<br />14:		DC braking below starting speed<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0300, p1230, p1232, p1233, p1234, p1235, p1236, p1237, r1238, r1239, p1345, p1346<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Re p1231 = 1, 2:<br />The external armature short circuit can only be selected for synchronous motors (p0300). In this case, control bit BO: r1239.0 must be interconnected (e.g. to a digital input) to control the external contactor.<br />The external armature short circuit cannot be set as a fault response. It can be triggered via binector input p1230. It is also always activated in the case of pulse suppression.<br />Re p1231 = 4:<br />The function is activated as soon as the activation criterion is fulfilled.<br />- the function can be initiated by OFF2<br />a) This function is not supported for synchronous motors (p0300 = 2xx, 4xx).<br />b) For induction motors (p0300 = 1xx), the DC braking is initiated.<br />Activation criterion (one of the following criteria is fulfilled):<br />- binector input p1230 = 1 signal (DC braking activation).<br />- the drive is not in the state &quot;S4: Operation&quot; or in S5x (refer to function diagram 2610).<br />- the internal pulse enable is missing (r0046.19 = 0).<br />Re p1231 = 5:<br />DC braking can only be set for induction motors.<br />DC braking is activated if the OFF1 or OFF3 command is present. Binector input p1230 is ineffective. If the drive speed still lies above the speed threshold p1234, then initially, the drive is ramped-down to this threshold, demagnetized (see p0347) and is then switched into DC braking for the time set in p1233. After this, the drive is switched-off. If, at OFF1&#47;OFF3, the drive speed is below p1234, then it is immediately demagnetized and switched into DC braking. A change is made into normal operation if the OFF1 command is withdrawn prematurely.<br />DC braking by means of fault response continues to be possible.<br />Re p1231 = 14:<br />DC braking can only be set for induction motors.<br />DC braking is initiated if binector input p1230 = 1 during operation and the actual speed is below the starting speed p1234 (before this, the drive must have operated above p1234 plus the hysteresis). Then, following upstream de-magnetization (see p0347), the braking current p1232 is injected for the time set in p1233. The drive then changes into normal operation. During braking the command for DC braking can be withdrawn. If the time p1233 is exceeded, then DC braking is inhibited and the drive changes into normal operation.<br />For OFF1 and OFF3, DC braking is only executed, if binector input p1230 = 1 signal.<br />DC braking by means of fault response continues to be possible.<br />Re p1231 = 4, 5, 14:<br />The value can only be changed to values not equal to 4 or 14 if p0491 is not equal to 4 and p2101 is not equal to 6 (armature short circuit&#47;DC braking not set).<br />Note:<br />ASC: Armature Short Circuit<br />DCBRK: DC Braking<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1232">p1232[0...n]</a></b></td>
+<td colspan="4"><b>DC braking, braking current / DCBRK I_brake</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> 7017</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> PEM, REL, FEM</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >10000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the braking current for DC braking.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1230, p1231, p1233, p1234, r1239, p1345, p1346<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A change to the braking current becomes effective the next time that DC braking is switched-on.<br />The value for p1232 is specified as an rms value in the 3-phase system. The magnitude of the braking current is the same as that of an identical output current at frequency zero (see r0067, r0068, p0640). The braking current is internally limited to r0067.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1233">p1233[0...n]</a></b></td>
+<td colspan="4"><b>DC braking time / DCBRK time</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> 7017</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> PEM, REL, FEM</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >3600.0</td>
+<td >1.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the DC braking time (as fault response).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1230, p1231, p1232, p1234, r1239<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The time set is also effective when parameterizing DC braking as fault response.<br />If a speed encoder is being used, DC braking is ended as soon as the drive falls below the standstill threshold (p1226).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1234">p1234[0...n]</a></b></td>
+<td colspan="4"><b>Speed at the start of DC braking / DCBRK n_start</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> 7017</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> PEM, REL, FEM</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >210000.00</td>
+<td >210000.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the starting speed for DC braking.<br />
+If the actual speed falls below this threshold, then DC braking is activated.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1230, p1231, p1232, p1233, r1239<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Caution:</b></td>
+<td width="85%">If an encoder fault occurs during closed-loop operation with an encoder, controlled deceleration of the drive down to the start speed p1234 can no longer take place. In this case, DC braking is activated immediately and injects the braking current p1232 for the braking time p1233 after de-magnetizing. The braking current and braking duration must, therefore, be dimensioned accordingly for this situation so that the drive can be decelerated to standstill.<br />In the case of operation with an encoder, this speed may not be set too low so as ensure that the oscillation movement induced by the residual flux&#47;remanence of the motor does not cause DC braking to be de-activated again.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1235">p1235[0...n]</a></b></td>
+<td colspan="4"><b>BI: External armature short-circuit, contactor feedback signal / ASC ext feedback</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the contactor feedback signal for external armature short-circuit.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1230, p1231, p1236, p1237, r1239<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">1 signal: The contactor is closed.<br />0 signal: The contactor is open.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1236">p1236[0...n]</a></b></td>
+<td colspan="4"><b>Ext. armature short-cct., contactor feedback signal monit. time / ASC ext t_monit</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1000</td>
+<td >200</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the monitoring time of the contactor feedback signal for the external armature short-circuit configuration.<br />
+If the contactor feedback signal (p1235) is parameterized, then the appropriate feedback signal (r1239.1) is expected within this monitoring time after either opening or closing the contactor.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1230, p1231, p1235, p1237, r1239<br />Refer to: A07904, F07905</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1237">p1237[0...n]</a></b></td>
+<td colspan="4"><b>External armature short-circuit, delay time when opening / ASC ext t_wait</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1000</td>
+<td >200</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the delay time when opening the contactor of the external armature short-circuit.<br />
+If no contactor feedback signal has been selected (p1235), then the system waits for this time before the pulses are switched in.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1230, p1231, p1235, p1236, r1239<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">This delay time must be at least long enough so that the contactor contacts reliably open before the pulses are switched in. The delay time must be greater than the contactor response time. The Motor Module can be damaged if the delay time is too short.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1238">r1238</a></b></td>
+<td colspan="4"><b>CO: Armature short-circuit, external state / EASC state</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2610</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> ASM</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >6</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the state for the external armature short-circuit.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Switched off<br />1:		Ready<br />2:		Active<br />3:		Active - feedback signal &quot;Closed&quot; OK<br />4:		Active - feedback signal &quot;Closed&quot; missing<br />5:		Prompt to remove the armature short-circuit<br />6:		Active - feedback signal &quot;Open&quot; missing<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1230, p1231, p1235, p1236, p1237, r1239<br />Refer to: A07904, F07905</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Activation criterion (one of the following criteria is fulfilled):<br />- the signal at BI: p1230 (armature short-circuit activation) is 0.<br />- the drive is not in the state &quot;S4: Operation&quot; or in S5x (refer to function diagram 2610).<br />- the internal pulse enable is missing (r0046.19 = 0).<br />Re state &quot;switched out&quot; (r1238 = 0):<br />- the external armature short-circuit can be selected with p1231 = 1.<br />Re state &quot;ready&quot; (r1238 = 1):<br />- as soon as the activation criterion is fulfilled, then a transition is made into the state &quot;active&quot; (r1238 = 2).<br />Regarding the state &quot;active&quot; (r1238 = 2), &quot;active - feedback signal &quot;Closed&quot; OK&quot; (r1238 = 3)&quot;, &quot;active - feedback signal &quot;Closed&quot; missing&quot; (r1238 = 4)&quot;:<br />- the control signal to close contactor r1239.0 is set to &quot;1&quot; (closed) and the pulses are suppressed.<br />- if a contactor feedback signal is not connected (BI: p1235 = 0 signal), then a transition is immediately made into state 3.<br />- if a contactor feedback signal is connected, then a transition is made into state 3 if the feedback signal at BI: p1235 goes to &quot;1&quot; (closed) within the monitoring time (p1236).<br />- otherwise, a transition is made into state 4.<br />Re state &quot;prompt to remove the armature short-circuit&quot; (r1238 = 5):<br />- the activation criterion is no longer fulfilled. An attempt is made to again remove the armature short circuit.<br />- the control signal to close the contactor r1239.0 is set to &quot;0&quot; (open) and the pulses remain suppressed.<br />- if a contactor feedback signal is not connected (BI: p1235 = 0 signal), the system waits for the delay time (p1237) to expire until a transition is made into state 1.<br />- if a contactor feedback signal is connected, the system waits until the feedback signal at BI:p1235 goes to &quot;0&quot; (open) until a transition is made into state 1. If this does not occur within the monitoring time (p1236), then a transition is made into state 6.<br />Re state &quot;active - feedback signal &quot;Open&quot; missing&quot; (r1238 = 6):<br />- this error state can be exited by de-selecting the external armature short-circuit (p1231 = 0).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1239">r1239.0...13</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Armature short-circuit &#47; DC braking status word / ASC&#47;DCBRK ZSW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the status word for armature short-circuit.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>External armature short-circuit</td><td>Active</td><td>Inactive</td><td>-</td></tr><tr><td></td><td>01</td><td>External armature short-circuit, contactor feedback signal</td><td>Closed</td><td>Open</td><td>-</td></tr><tr><td></td><td>02</td><td>External armature short-circuit ready</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>03</td><td>External armature short-circuit with contactor feedback signal</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>04</td><td>Internal armature short-circuit</td><td>Active</td><td>Inactive</td><td>-</td></tr><tr><td></td><td>05</td><td>Internal armature short circuit, feedback signal from power unit</td><td>Active</td><td>Inactive</td><td>-</td></tr><tr><td></td><td>06</td><td>Internal armature short-circuit ready</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>08</td><td>DC braking active</td><td>Yes</td><td>No</td><td>7017</td></tr><tr><td></td><td>10</td><td>DC braking ready</td><td>Yes</td><td>No</td><td>7017</td></tr><tr><td></td><td>11</td><td>Armature short circuit&#47;DC braking selected</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>12</td><td>DC braking selection internally inhibited</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>13</td><td>DC braking for OFF1&#47;OFF3</td><td>Yes</td><td>No</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1230, p1231, p1232, p1233, p1234, p1235, p1236, p1237<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">External armature short-circuit (bits 0 ... 3):<br />Re bit 00:<br />Using this signal, the motor is short-circuited through an external contactor circuit. This means that this BO: p1239.0 must be interconnected e.g. to a digital output.<br />Re bit 01:<br />This signal indicates the state of the contactor to establish the armature short-circuit. To do this, BI: p1235 must be interconnected to a digital input.<br />Re bit 02:<br />The external armature short-circuit configuration is ready and is activated as soon as the activation criterion is fulfilled.<br />Re bit 03:<br />1: A feedback signal from an external contactor was parameterized in BI: p1235.<br />Internal voltage protection &#47; internal armature short-circuit (bits 4 ... 6):<br />Re bit 04:<br />a) Internal voltage protection (p1231 = 3) was selected and the Motor Module does not support the autonomous internal voltage protection (r0192.10 = 0).<br />The Control Unit issues the command to the Motor Module to short-circuit the motor through the power semiconductors.<br />a) Internal voltage protection (p1231 = 3) was selected and the Motor Module supports the autonomous internal voltage protection (r0192.10 = 1).<br />The Motor Module decides autonomously whether the armature short-circuit is activated. In this case, the following applies: r1239.4 = r1239.5.<br />c) Internal armature short-circuit (p1231 = 4) was selected.<br />The Control Unit issues the command to the Motor Module to short-circuit the motor through the power semiconductors.<br />Re bit 05:<br />The Motor Module signals that the motor is short-circuited in the Motor Module through the power semiconductors.<br />Re bit 06:<br />a) Internal voltage protection (p1231 = 3) was selected and the Motor Module does not support the autonomous internal voltage protection (r0192.10 = 0).<br />The internal voltage protection is ready and is activated as soon as the activation criterion is fulfilled.<br />a) Internal voltage protection (p1231 = 3) was selected and the Motor Module supports the autonomous internal voltage protection (r0192.10 = 1).<br />The internal voltage protection is ready and the Motor Module decides autonomously - using the DC link voltage - whether the short-circuit is activated. In this case, protection is also provided even if the DRIVE-CLiQ connection between the Control Unit and Motor Module was interrupted. The short-circuit is activated if the DC link voltage exceeds 800 V. If the DC link voltage falls below 450 V, then the short-circuit is withdrawn.<br />c) Internal armature short-circuit (p1231 = 4) was selected.<br />The internal armature short-circuit is ready and is activated as soon as the activation criterion is fulfilled.<br />Activation criterion (one of the following criteria is fulfilled):<br />- the signal at BI: p1230 (armature short-circuit activation) is 1.<br />- the drive is not in the state &quot;S4: Operation&quot; or in S5x (refer to function diagram 2610).<br />- the internal pulse enable is missing (r0046.19 = 0).<br />Re bit 12, 13:<br />Only effective for p1231 = 14.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1240">p1240[0...n]</a></b></td>
+<td colspan="4"><b>Vdc controller or Vdc monitoring configuration / Vdc_ctrl config</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> DDS, p0180</td><td><b>Func. diagram:</b> 3082, 5650</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> REL</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >9</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the configuration of the controller or monitoring for the DC link voltage (Vdc).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Inhib Vdc ctrl<br />1:		Vdc_max controller enable<br />2:		Vdc_min controller (kinetic buffering) enable<br />3:		Vdc_min controller and Vdc_max controller enable<br />4:		Activates Vdc_max monitoring<br />5:		Activates Vdc_min monitoring<br />6:		Activates Vdc_min monitoring and Vdc_max monitoring<br />7:		Vdc_max controller without accelerating enable<br />8:		Vdc_min controller without braking enable<br />9:		Vdc_min and Vdc_max controller w&#47;o braking&#47;accelerating enable<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1244, p1248, p1250, p1532<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">p1240 = 1, 3:<br />When the upper DC link voltage threshold is reached (p1244), then the following applies:<br />- the Vdc_max controller limits the regenerative energy in order that the DC link voltage is kept below the maximum DC link voltage when braking.<br />- when other drives regenerate into the DC link, then the Vdc_max controller causes the motor to accelerate.<br />p1240 = 2, 3:<br />When the lower DC link voltage threshold is reached (p1248), the following applies:<br />- the Vdc_min controller limits the energy taken from the DC link in order to keep the DC link voltage above the minimum DC link voltage when accelerating.<br />- the motor is braked in order to use its kinetic energy to buffer the DC link.<br />p1240 = 4, 5, 6:<br />When the threshold in p1244 or p1248 is reached, the DC link voltage monitoring initiates a fault with a response and therefore reduces additional negative effects on the DC link voltage.<br />p1240 = 7, 9:<br />As for p1240 = 1, 3. However, the motor is prevented from accelerating due to the fact that other drives are regenerating. The effective lower torque limit cannot exceed the offset of the torque limit (p1532).<br />p1240 = 8, 9:<br />As for p1240 = 2, 3. However, the motor is prevented from braking due to the fact that the DC link voltage has been lowered. The effective upper torque limit cannot be less than the offset of the torque limit (p1532).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1244">p1244[0...n]</a></b></td>
+<td colspan="4"><b>DC link voltage threshold upper / Vdc upper thresh</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> DDS, p0180</td><td><b>Func. diagram:</b> 5650</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> REL</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>165</td>
+<td  >1200</td>
+<td >750</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the upper threshold for the DC link voltage.<br />
+For p1240 = 1, 3, 7, 9, this threshold is used as limit setpoint for the Vdc_max controller.<br />
+For p1240 = 4, 6, for DC link voltages above this threshold, an appropriate fault is output.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1240, p1248, p1250<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For p1244 &lt; 1.07 * &quot;parameterized DC link voltage&quot; input of values is rejected.<br />For p0204.0 = 1, the following applies:<br />&quot;Parameterized DC link voltage&quot; = p0210<br />For p0204.0 = 0, the following applies:<br />&quot;Parameterized DC link voltage&quot; = p0210 * 1.4142<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1248">p1248[0...n]</a></b></td>
+<td colspan="4"><b>DC link voltage threshold lower / Vdc lower thresh</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> DDS, p0180</td><td><b>Func. diagram:</b> 5650</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> REL</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>100</td>
+<td  >1000</td>
+<td >450</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the lower threshold for the DC link voltage.<br />
+For p1240 = 2, 3, 8, 9, this threshold is used as limit setpoint for the Vdc_min controller.<br />
+For p1240 = 5, 6, for DC link voltages below this threshold, an appropriate fault is output.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1240, p1244, p1250<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For p1248 &gt; 0.93 * &quot;parameterized DC link voltage&quot; input of values is rejected.<br />For p0204.0 = 1, the following applies:<br />&quot;Parameterized DC link voltage&quot; = p0210<br />For p0204.0 = 0, the following applies:<br />&quot;Parameterized DC link voltage&quot; = p0210 * 1.4142<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1250">p1250[0...n]</a></b></td>
+<td colspan="4"><b>Vdc controller proportional gain / Vdc_ctrl Kp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> DDS, p0180</td><td><b>Func. diagram:</b> 5650</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> 19_1</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> REL</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >10.00</td>
+<td >1.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the proportional gain for the DC-link voltage controller (Vdc_min controller, Vdc_max controller).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1240, p1244, p1248<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1275">p1275</a></b></td>
+<td colspan="4"><b>Motor holding brake control word / Brake STW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the control word for the motor holding brake.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Inverting BI: 1219[0]</td><td>Yes</td><td>No</td><td>2707</td></tr><tr><td></td><td>01</td><td>Inverting BI: 1219[1]</td><td>Yes</td><td>No</td><td>2707</td></tr><tr><td></td><td>02</td><td>Inverting BI: 1224[0]</td><td>Yes</td><td>No</td><td>2704</td></tr><tr><td></td><td>03</td><td>Inverting BI: 1224[1]</td><td>Yes</td><td>No</td><td>2704</td></tr><tr><td></td><td>05</td><td>Brake with feedback</td><td>Yes</td><td>No</td><td>2711</td></tr></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1276">p1276</a></b></td>
+<td colspan="4"><b>Motor holding brake, standstill detection, bypass / Brk standst bypass</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2704</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >300.000</td>
+<td >300.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the delay time for closing the brake at standstill.<br />
+After this time has expired, if the &quot;close brake at standstill&quot; or OFF1&#47;OFF3 is present, the brake is closed and the pulses are suppressed.<br />
+For p1276 = 300.000 s, the timer is de-activated - this means that the timer output is always zero.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1277">p1277</a></b></td>
+<td colspan="4"><b>Motor holding brake, braking threshold delay exceeded / Del thresh exceed.</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2707</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >300.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the delay time for the signal &quot;braking threshold exceeded&quot; (BO: r1229.6).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1220, p1221, r1229<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1278">p1278</a></b></td>
+<td colspan="4"><b>Brake control, diagnostics evaluation / Brake diagnostics</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the brake control type (with or without diagnostics evaluation).<br />
+Example for brake control with diagnostics evaluation.<br />
+- brake control in the Motor Modules in booksize format<br />
+- Safe Brake Relay for AC Drive<br />
+Example for brake control without diagnostics evaluation.<br />
+- Brake Relay for AC Drive<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Brake control with diagnostics evaluation<br />1:		Brake control without diagnostics evaluation<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">If the configuration of the motor holding brake (p1215) is set to &quot;no holding brake present&quot; when booting, then an automatic identification of the motor holding brake will be carried out. If a brake control is detected without diagnostics evaluation (e.g. Brake Relay for AC Drive), then the parameter is set to &quot;brake control without diagnostics evaluation&quot;.<br />It is not permissible to parameterize &quot;brake control without diagnostics evaluation&quot; and also enable &quot;safe brake control&quot; (p1278 = 1, p9602 = 1, p9802 = 1).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1279">p1279[0...3]</a></b></td>
+<td colspan="4"><b>BI: Motor holding brake, OR&#47;AND logic operation / Brake OR AND</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN (Extended brk), SERVO_S110-DP (Extended brk), SERVO_S110-PN (Extended brk)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2707</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the OR&#47;AND logic operation.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r1229<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">[0]: OR logic operation, input 1 --&gt; the result is displayed in r1229.10.<br />[1]: OR logic operation, input 2 --&gt; the result is displayed in r1229.10.<br />[2]: AND logic operation, input 1 --&gt; the result is displayed in r1229.11.<br />[3]: AND logic operation, input 2 --&gt; the result is displayed in r1229.11.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1300">p1300[0...n]</a></b></td>
+<td colspan="4"><b>Open-loop&#47;closed-loop control operating mode / Op&#47;cl-lp ctrl_mode</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO_S110-CAN, SERVO_S110-DP, SERVO_S110-PN</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(1), T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> DDS, p0180</td><td><b>Func. diagram:</b> 1590, 1690, 5060, 6300</td></tr><tr><td><b>P-Group:</b> U/f open-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>20</td>
+<td  >23</td>
+<td >21</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the open and closed-loop control mode of a drive.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">20:		Speed control (encoderless)<br />21:		Speed control (with encoder)<br />23:		Torque control (with encoder)<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Closed-loop speed or torque control (with encoder) cannot be selected if the encoder type is not entered (p0400).<br />Refer to: p0108, r0108, p0300, p0311, p0400, p1501<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The closed-loop torque control can only be changed over in operation (p1300 = 20, 21) by selecting the closed-loop speed control (p1501). At the changeover, the setting of p1300 does not change. In this case, the actual state is displayed in r1407, bit 2 and bit 3.<br />For encoderless operation (p1404 = 0 or p1300 = 20), the following applies:<br />- The following condition must be fulfilled: p1800 &gt;= n &#47; (2 * p0115[0]), n = 1, 2, ...<br />- For motors with a small power rating (&lt; 300 W) we recommend to set n &gt;= 2.<br /></td></tr>
+</table><p></p></body></html>

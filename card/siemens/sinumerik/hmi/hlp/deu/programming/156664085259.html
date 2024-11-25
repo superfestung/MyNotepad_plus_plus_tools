@@ -1,0 +1,40 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Kontext-Variable ($P_TECCYCLE)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Kontext-Variable ($P_TECCYCLE)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Funktion   </h3>
+      <p>Wird ein NC-Programm sowohl als Teileprogramm als auch als Technologiezyklus verwendet, können über die Systemvariable $P_TECCYCLE kontext-spezifische Programmabschnitte definiert werden:</p>
+      <ul>
+        <li>
+          <p>$P_TECCYCLE == TRUE ⇒ Das NC-Programm wird aktuell als Technologiezyklus abgearbeitet</p>
+        </li>
+        <li>
+          <p>$P_TECCYCLE == FALSE ⇒ Das NC-Programm wird aktuell als Teileprogramm abgearbeitet </p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Anwendung</h3>
+      <p>In Technologiezyklen haben Variablen- (<code>DEF</code>) und Makrodefinitionen (<code>DEFINE</code>) keine Auswirkung. Wird ein NC-Programm als Technologiezyklus abgearbeitet, das entsprechende Definitionen enthält, ist im Programmcode eine kontext-spezifische Fallunterscheidung notwendig, da die Variablen und Makros dann nicht zur Verfügung stehen.</p>
+      <h4 class="Blocklabel">Beispiel</h4>
+      <p class="comment">Verfahrparameter über Anwendervariablen im Teileprogramm und R-Parameter im Technologiezyklus</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EIC"><colgroup><col width="56.4%"><col width="43.6%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar: Verwendung im</th></tr><tr valign="top"><td>PROC UP_1</td><td> </td></tr><tr valign="top"><td>  DEF REAL POS_X=100.0</td><td>Teileprogramm</td></tr><tr valign="top"><td>  DEF REAL F_X=250.0</td><td>Teileprogramm</td></tr><tr valign="top"><td>  IF $P_TECCYCLE==TRUE</td><td> </td></tr><tr valign="top"><td>    $R1=100.0</td><td>Technologiezyklus</td></tr><tr valign="top"><td>    $R2=250.0</td><td>Technologiezyklus</td></tr><tr valign="top"><td>  ENDIF</td><td> </td></tr><tr valign="top"><td>  IF $P_TECCYCLE==TRUE</td><td> </td></tr><tr valign="top"><td>    N100 POS[X]=$R1 FA[X]=$R2</td><td>Technologiezyklus</td></tr><tr valign="top"><td>  ELSE</td><td> </td></tr><tr valign="top"><td>    N200 POS[X]=POS_X FA[X]=F_X</td><td>Teileprogramm</td></tr><tr valign="top"><td>  ENDIF</td><td> </td></tr><tr valign="top"><td>RET</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>Siehe auch:<br />    <a href="156664077579.html">Definitionen (DEF, DEFINE)</a><br />    <a href="156664065547.html">Technologiezyklen: Allgemeine Informationen</a></p>
+  </body>
+</html>

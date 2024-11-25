@@ -1,0 +1,1863 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="235081">A235081 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM54F: Statisches 1-Signal am F-DI f&uuml;r sichere Quittierung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es steht an dem in p10006 parametrierten F-DI l&auml;nger als 10 Sekunden ein logisches 1-Signal an.<br />
+Wenn am F-DI f&uuml;r sichere Quittierung keine Quittierung durchgef&uuml;hrt wird, muss statisch ein logisches 0-Signal anliegen. Hierdurch wird eine unbeabsichtigte sichere Quittierung (bzw. das Signal &quot;Internal Event Acknowledge&quot;) vermieden, wenn ein Drahtbruch auftritt oder einer der beiden Digitaleing&auml;nge prellt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Den fehlersicheren Digitaleingang (F-DI) auf logisches 0-Signal setzen (p10006).<br />
+Hinweis:<br />
+F-DI: Failsafe Digital Input (Fehlersicherer Digitaleingang)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235150">F235150</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM54F: Kommunikationsfehler</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde ein Fehler in der Kommunikation zwischen TM54F Master und Control Unit oder zwischen TM54F Slave und Motor Module&#47;Hydraulic Module erkannt.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Bei Tausch eines Motor Module&#47;Hydraulic Modules folgende Schritte durchf&uuml;hren:<br />
+- Kopierfunktion f&uuml;r Node-Identifier auf dem TM54F starten (p9700 = 1D hex).<br />
+- Hardware-CRC auf dem TM54F best&auml;tigen (p9701 = EC hex).<br />
+- Alle Parameter speichern (p0977 = 1).<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+Grunds&auml;tzlich gilt:<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+- Software auf TM54F hochr&uuml;sten.<br />
+- Technical Support kontaktieren.<br />
+- TM54F austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235151">F235151</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM54F: Diskrepanzfehler</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die sicheren Eingangsklemmen oder Ausgangsklemmen weisen l&auml;nger als in p10002 parametriert einen unterschiedlichen Zustand auf oder es wurden zu viele Schaltvorg&auml;nge innerhalb eines &Uuml;berwachungszyklus p10002 durchgef&uuml;hrt.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyyyxxxx hex<br />
+xxxx: Die sicheren Eingangsklemmen F-DI weisen eine Diskrepanz auf.<br />
+Bit 0: Diskrepanz bei F-DI 0<br />
+...<br />
+Bit 9: Diskrepanz bei F-DI 9<br />
+yyyy: Die sicheren Ausgangsklemmen F-DO weisen eine Diskrepanz auf.<br />
+Bit 0: Diskrepanz bei F-DO 0<br />
+...<br />
+Bit 3: Diskrepanz bei F-DO 3<br />
+Hinweis:<br />
+Treten mehrere Diskrepanzfehler aufeinanderfolgend auf, so wird diese St&ouml;rung nur f&uuml;r den zuerst aufgetretenen Fehler gemeldet.<br />
+Zum Analysieren aller Diskrepanzfehler gibt es folgende M&ouml;glichkeiten:<br />
+- Mit dem Inbetriebnahme-Tool die Eingangszust&auml;nde und Ausgangszust&auml;nde vom TM54F auswerten. Hier werden alle Diskrepanzfehler angezeigt.<br />
+- Parameter p10051 und p10052 vom TM54F-Master und TM54F-Slave auf Diskrepanzen vergleichen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Verdrahtung des entsprechenden F-DI &uuml;berpr&uuml;fen (Kontaktprobleme).<br />
+Ist die Verdrahtung korrekt und es liegt beispielsweise kein Drahtbruch vor, so muss &uuml;berpr&uuml;ft werden, ob die Schaltfrequenz am F-DI nicht zu hoch ist und diese gegebenenfalls verkleinert werden (Schaltimpulse m&uuml;ssen gr&ouml;&szlig;eren Abstand voneinander haben).<br />
+Nach jeder Flanke an einem F-DI sollte bis zur n&auml;chsten Flanke mindestens die Diskrepanzzeit verstreichen, bis erneut geschaltet wird.<br />
+Diskrepanzfehler der fehlersicheren Digitaleing&auml;nge (F-DI) k&ouml;nnen nur vollst&auml;ndig quittiert werden, wenn nach dem Beseitigen der Fehlerursache eine sichere Quittierung durchgef&uuml;hrt wurde (siehe p10006). Solange die sichere Quittierung nicht durchgef&uuml;hrt wurde, verharrt der entsprechende F-DI intern im sicheren Zustand.<br />
+Einstellen der Diskrepanzzeit bei schnellen Schaltvorg&auml;ngen an F-DIs:<br />
+Bei schnellen Schaltvorg&auml;ngen an fehlersicheren Digitaleing&auml;ngen (F-DI) muss die Diskrepanzzeit eventuell an die Schaltfrequenz angepasst werden:<br />
+- Die Periodendauer eines zyklischen Schaltimpulses muss kleiner als die H&auml;lfte der Diskrepanzzeit sein (gegebenenfalls abrunden).<br />
+- Der Abstand zweier Schaltimpulse sollte gr&ouml;&szlig;er als die Diskrepanzzeit sein (gegebenenfalls aufrunden).<br />
+- Die Diskrepanzzeit muss mindestens r10003 betragen (es muss dabei immer auf ganze Vielfache der SI-Abastzeit r10003 auf- bzw. abgerundet werden). Ist eine Entprellzeit parametriert (p10017 &gt; 0), so wird die kleinstm&ouml;gliche Diskrepanzzeit direkt durch die Entprellzeit vorgegeben.<br />
+- Die Periodendauer eines zyklischen Schaltimpulses muss kleiner als die H&auml;lfte der Diskrepanzzeit-p10017 sein (gegebenenfalls abrunden).<br />
+- Der Abstand zweier schneller Schaltimpulse sollte gr&ouml;&szlig;er als die Diskrepanzzeit+p10017 sein (gegebenenfalls aufrunden).<br />
+- Die Diskrepanzzeit muss mindestens r10003 betragen.<br />
+Die Entprellzeit muss immer kleiner als die Diskrepanzzeit eingestellt sein.<br />
+Beispiel:<br />
+Bei einer SI-Abtastzeit von 12 ms und einer Schaltfrequenz von 110 ms (p10017 = 0) darf die Diskrepanzzeit maximal folgenderma&szlig;en eingestellt werden:<br />
+p10002 &lt;= 110&#47;2 ms - 12 ms = 43 ms --&gt; Es ergibt sich gerundet p10002 &lt;= 36 ms<br />
+Da die Diskrepanzzeit auf ganze SI-Abtastzeiten gerundet &uuml;bernommen wird, muss auf eine ganze SI-Abtastzeit abgerundet werden, falls das Ergebnis kein Vielfaches der SI-Abtastzeit ist.<br />
+Grundlegende Randbedingung zur Einstellung der Diskrepanzzeit:<br />
+Die Diskrepanzzeit der F-DIs muss immer gr&ouml;&szlig;er sein, als die gr&ouml;&szlig;te SI-Abtastzeit aller Antriebe, die Safety mit TM54F nutzen (p9780&#47;p9500).<br />
+F-DI: Failsafe Digital Input (Fehlersicherer Digitaleingang)<br />
+F-DO: Failsafe Digital Output (Fehlersicherer Digitalausgang)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235152">F235152</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM54F: Softwarefehler intern</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist ein interner Softwarefehler im Terminal Module 54F (TM54F) aufgetreten.<br />
+Die fehlersicheren Digitaleing&auml;nge und Digitalausg&auml;nge (F-DI, F-DO) des TM54F wurden in den sicheren Zustand geschaltet.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+Hinweis:<br />
+F-DI: Failsafe Digital Input (Fehlersicherer Digitaleingang)<br />
+F-DO: Failsafe Digital Output (Fehlersicherer Digitalausgang)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Stellen Sie sicher, dass die Firmware-Version des TM54F der Firmware-Version der Control Unit entspricht.<br />
+Im Projekt muss der automatische Firmware-Update aktiviert sein.<br />
+Hinweis:<br />
+Diese Meldung tritt beispielsweise auch zusammen mit der St&ouml;rung F35013 auf. In diesem Fall pr&uuml;fen Sie alle Parameter f&uuml;r den Teststopp des TM54F (p10001, p10003, p10007, p10041, p10046, p10047). Nach der Korrektur von Parametern ist in diesem Fall ein POWER ON erforderlich.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235200">A235200 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Kalibrierdaten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In den Kalibrierdaten des Terminal Modules wurde ein Fehler erkannt.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+ddcbaa dez: dd = Komponentennummer, c = AI&#47;AO, b = Fehlertyp, aa = Nummer<br />
+c = 0: Analogeingang (AI, Analog Input)<br />
+c = 1: Analogausgang (AO, Analog Output)<br />
+b = 0: Keine Kalibrierdaten vorhanden.<br />
+b = 1: Offset zu gro&szlig; (&gt; 100 mV).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Gegebenenfalls die Komponente tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235207">F235207 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 0 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module (TM) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[0], p4103[0]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[1]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[0] = 1, 4) gilt:<br />
+- Wenn r4101[0] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[0] = 250 &deg;C.<br />
+- Wenn r4101[0] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[0] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[0] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[1] - Hysterese (5 K, bei TM150 einstellbar &uuml;ber p4118[0]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235208">F235208 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 1 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module (TM) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[2], p4103[1]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[3]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[1] = 1, 4) gilt:<br />
+- Wenn r4101[1] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[1] = 250 &deg;C.<br />
+- Wenn r4101[1] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[1] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[1] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[3] - Hysterese (5 K, bei TM150 einstellbar &uuml;ber p4118[1]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235209">F235209 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 2 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module (TM) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[4], p4103[2]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[5]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[2] = 1, 4) gilt:<br />
+- Wenn r4101[2] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[2] = 250 &deg;C.<br />
+- Wenn r4101[2] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[2] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[2] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[5] - Hysterese (5 K, bei TM150 einstellbar &uuml;ber p4118[2]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235210">F235210 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 3 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module (TM) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[6], p4103[3]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[7]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[3] = 1, 4) gilt:<br />
+- Wenn r4101[3] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[3] = 250 &deg;C.<br />
+- Wenn r4101[3] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[3] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[3] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[7] - Hysterese (5 K, bei TM150 einstellbar &uuml;ber p4118[3]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235211">A235211 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 0 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules (TM) gemessene Temperatur (r4105[0]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[0]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[0] = 1, 4) gilt:<br />
+- Wenn r4101[0] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[0] = 250 &deg;C.<br />
+- Wenn r4101[0] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[0] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[0] - Hysterese (5 K, bei TM150 einstellbar &uuml;ber p4118[0]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235212">A235212 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 1 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules (TM) gemessene Temperatur (r4105[1]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[2]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[1] = 1, 4) gilt:<br />
+- Wenn r4101[1] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[1] = 250 &deg;C.<br />
+- Wenn r4101[1] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[1] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[4] - Hysterese (5 K, bei TM150 einstellbar &uuml;ber p4118[1]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235213">A235213 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 2 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules (TM) gemessene Temperatur (r4105[2]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[4]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[2] = 1, 4) gilt:<br />
+- Wenn r4101[2] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[2] = 250 &deg;C.<br />
+- Wenn r4101[2] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[2] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[4] - Hysterese (5 K, bei TM150 einstellbar &uuml;ber p4118[2]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235214">A235214 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 3 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules (TM) gemessene Temperatur (r4105[3]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[6]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[3] = 1, 4) gilt:<br />
+- Wenn r4101[3] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[3] = 250 &deg;C.<br />
+- Wenn r4101[3] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[3] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[6] - Hysterese (5 K, bei TM150 einstellbar &uuml;ber p4118[3]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235220">F235220 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Grenzfrequenz f&uuml;r Signalausgabe erreicht</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS1<br />
+ (AUS2, KEINE)Servo: AUS1<br />
+ (AUS2, AUS3, KEINE)Vector: AUS1<br />
+ (AUS2, AUS3, KEINE)Hla: AUS1<br />
+ (AUS2, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die vom Terminal Module 41 (TM41) ausgegebenen Signale f&uuml;r die Spuren A&#47;B haben die Grenzfrequenz erreicht. Die ausgegebenen Signale sind zum vorgegebenen Sollwert nicht mehr synchron.<br />
+Betriebsmodus SIMOTION (p4400 = 0):<br />
+- Wenn das TM41 als Technologieobjekt projektiert ist, so wird diese St&ouml;rung auch bei kurzgeschlossenen A&#47;B-Signalen in X520 ausgegeben.<br />
+Betriebsmodus SINAMICS (p4400 = 1):<br />
+- Die Feinaufl&ouml;sung des TM41 in p0418 stimmt nicht mit der des Gebers &uuml;berein, der an Konnektoreingang p4420 verschaltet wurde.<br />
+- Der am Konnektoreingang p4420 verschaltete Geberlageistwert r0479 hat eine zu gro&szlig;e Istdrehzahl.<br />
+- Die ausgegebenen Signale entsprechen einer Drehzahl, die gr&ouml;&szlig;er als die Maximaldrehzahl ist (r1082 von TM41).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Betriebsmodus SIMOTION (p4400 = 0):<br />
+- Kleineren Drehzahlsollwert vorgeben (p1155).<br />
+- Geberstrichzahl verkleinern (p0408).<br />
+- Spur A&#47;B auf Kurzschluss &uuml;berpr&uuml;fen.<br />
+Betriebsmodus SINAMICS (p4400 = 1):<br />
+- Kleineren Drehzahlsollwert vorgeben (p1155).<br />
+- Geberstrichzahl verkleinern (p0408).<br />
+Achtung:<br />
+Nach &Auml;nderung des Meldungstyps auf &quot;Warnung&quot; (A) wird das Ausgangssignal nicht weiter &uuml;berwacht.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235221">F235221 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Soll-Ist-Abweichung au&szlig;erhalb Toleranz</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS1<br />
+ (AUS2, KEINE)Servo: AUS1<br />
+ (AUS2, AUS3, KEINE)Vector: AUS1<br />
+ (AUS2, AUS3, KEINE)Hla: AUS1<br />
+ (AUS2, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Abweichung zwischen dem Sollwert und den ausgegebenen Signalen (Spur A&#47;B) &uuml;bersteigt die Toleranz von +&#47;-3 %. Die Abweichung zwischen internem und externem Messwert ist zu gro&szlig; (&gt; 1000 Striche).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Den Basistakt verkleinern (p0110, p0111).<br />
+- Gegebenenfalls Komponente austauschen (z. B. Kurzschluss intern).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235222">A235222 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Geberstrichzahl unzul&auml;ssig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die eingegebene Geberstrichzahl ist zur hardwarem&auml;&szlig;ig zul&auml;ssigen Strichzahl nicht passend.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1: Geberstrichzahl ist zu hoch.<br />
+2: Geberstrichzahl ist zu niedrig.<br />
+4: Geberstrichzahl kleiner als Nullmarkenoffset (p4426).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Geberstrichzahl im zul&auml;ssigen Bereich eingeben (p0408).<br />
+- TM41 SAC gegebenenfalls durch TM41 DAC tauschen.<br />
+Hinweis:<br />
+TM41 SAC: Artikelnummer = 6SL3055-0AA00-3PA0<br />
+TM41 DAC: Artikelnummer = 6SL3055-0AA00-3PA1<br />
+Bei TM41 SAC gilt:<br />
+- Minimalwert&#47;Maximalwert bei p0408: 1000&#47;8192<br />
+Bei TM41 DAC gilt:<br />
+- Minimalwert&#47;Maximalwert bei p0408: 1000&#47;16384<br />
+Siehe auch: p0408<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235223">A235223 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Nullmarkenoffset unzul&auml;ssig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der eingegebene Nullmarkenoffset ist nicht zul&auml;ssig.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1: Nullmarkenoffset ist zu hoch.<br />
+Siehe auch: p4426 (TM41 Gebernachbildung Striche für Nullmarke)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Nullmarkenoffset im zul&auml;ssigen Bereich eingeben (p4426).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235224">A235224 (N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Nullmarkensynchronisation abgebrochen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Nullmarkensynchronisation mit dem nachzubildenden Geber wurde abgebrochen.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+0: Der Geber ist nicht im Zustand bereit (z. B. Geber parkt).<br />
+1: Es wurde ein Absolutwertgeber verschaltet.<br />
+2: Der &uuml;ber Konnektoreingang p4420 verschaltete Geber r0479[0...2] kommuniziert bereits mit einem anderen TM41 (genau ein TM41 kann mit einem konkreten r0479[0...2] verschaltet werden).<br />
+3: Die BICO-Verschaltung zum Terminal Module 41 (TM41) wurde aufgehoben (CI: p4420 = 0-Signal).<br />
+4: Der &uuml;ber Konnektoreingang p4420 verschaltete Geber hat eine EDS-Umschaltung durchgef&uuml;hrt oder wurde umparametriert (dieser Vorgang wird nicht unterst&uuml;tzt, p4420 = 0 setzen und erneut verschalten).<br />
+5: Die maximale Umdrehungszahl des Gebers wurde &uuml;berschritten.<br />
+6: Geber in ung&uuml;ltigem Zustand.<br />
+7: Geber in ung&uuml;ltigem Zustand.<br />
+8: Geber in ung&uuml;ltigem Zustand (der Geber ist nicht parametriert bzw. die verschaltete Signalquelle ist nicht im zyklischen Zustand).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Keine notwendig.<br />
+- Wechselt der Geber in den Zustand bereit, so wird eine zuvor abgebrochene Synchronisation erneut durchgef&uuml;hrt.<br />
+- Wurde die Synchronisation wegen der maximal zul&auml;ssigen Synchronisationsdauer abgebrochen, erfolgt keine neue Synchronisation.<br />
+- Die Warnung wird nur ausgegeben, wenn bei einem Absolutwertgeber Nullmarkensynchronisation auf Nulllage (p4401.0 = 1 und p4401.1=0) eingestellt ist.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235225">A235225</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Nullmarkensynchronisation angehalten - Geber nicht im Zustand bereit</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Nullmarkensynchronisation mit dem nachzubildenden Geber wurde angehalten.<br />
+Der Geber ist nicht im Zustand &quot;Bereit&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Den Geber in den Zustand &quot;Bereit&quot; bringen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235226">A235226</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Spuren A&#47;B sind deaktiviert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es steht kein Frequenzsollwert f&uuml;r das Terminal Module 41 (TM41) zur Verf&uuml;gung. Die Ausgabe der Spuren A&#47;B wurde eingefroren.<br />
+M&ouml;gliche Ursachen:<br />
+- Der Konnektoreingang p4420 ist nicht verschaltet.<br />
+- Der f&uuml;hrende Geber ist nicht im Zustand &quot;Bereit&quot; (parkender Geber bzw. Geberdatensatz nicht parametriert).<br />
+- Beim TM41 steht eine St&ouml;rung an.<br />
+- Das TM41 befindet sich im Inbetriebnahmemodus (p0010 &gt; 0).<br />
+- Die Komponente TM41 ist nicht am DRIVE-CLiQ angeschlossen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Konnektoreingang p4420 entsprechend verschalten.<br />
+- Den f&uuml;hrenden Geber in den Zustand &quot;Bereit&quot; bringen.<br />
+- Anstehende St&ouml;rungen beim TM41 beseitigen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235227">A235227</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EDS-Umschaltung&#47;Geberdatensatz-&Auml;nderung nicht unterst&uuml;tzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die folgenden Anwendungsf&auml;lle werden vom Terminal Module 41 (TM41) nicht unterst&uuml;tzt:<br />
+- Der &uuml;ber Konnektoreingang p4420 verschaltete Geber hat eine EDS-Umschaltung durchgef&uuml;hrt.<br />
+- Der mit dem TM41 verschaltete Geber wurde so umparametriert, dass der Lageistwert des Gebers neu interpretiert werden muss.<br />
+Dies ist beispielsweise bei &Auml;nderung der Richtung des Motors (p0410, p1821) oder bei &Auml;nderung der Feinaufl&ouml;sung (p0418) der Fall. Hierbei kann es zur sprunghaften &Auml;nderung des Lageistwertes des Gebers (Lagesollwertes des TM41) kommen, die nicht am TM41 ausgegeben werden darf.<br />
+Siehe auch: p4420 (TM41 Gebernachbildung Lagesollwert)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Konnektoreingang p4420 = 0 setzen und erneut verschalten.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235228">A235228 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Abtastzeit p4099[3] ung&uuml;ltig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die in p4099[3] eingestellte Abtastzeit f&uuml;r die Inkrementalgebernachbildung beim Terminal Module 41 (TM41) entspricht keinem g&uuml;ltigem Wert. Zur Behebung des Problems die Einstellung von p4099[3] korrigieren. Das System f&uuml;hrt automatisch einen Warmstart&#47;Teilhochlauf aus.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1:<br />
+Es wurde eine Abtastzeit p4099[3] &lt; 125 &micro;s eingestellt.<br />
+2:<br />
+In p4099[3] ist kein ganzzahliges Vielfaches des DRIVE-CLiQ-Taktes eingetragen.<br />
+3:<br />
+- Im SINAMICS-Mode (p4400 = 1) ist die Abtastzeit in p4099[3] kein ganzzahliges Vielfaches der Stromreglerabtastzeit (p0115[0]) des Antriebsobjekts, das den Lagesollwert (CI: p4420) f&uuml;r die Inkrementalgebernachbildung liefert.<br />
+- Der &uuml;ber Konnektoreingang p4420 verschaltete Geber (z. B. ein SSI-Geber) wird in einem langsameren Takt abgetastet.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Gegebenenfalls die BICO-Verschaltung &uuml;ber Konnektoreingang p4420 aufheben.<br />
+- Die unter Ursache angegebenen Regeln zur Einstellung der Abtastzeit in p4099[3] &uuml;berpr&uuml;fen.<br />
+- Gegebenenfalls die BICO-Verschaltung &uuml;ber Konnektoreingang p4420 wieder einstellen.<br />
+Hinweis:<br />
+Bei jedem erneuten Einstellen der BICO-Verschaltung &uuml;ber Konnektoreingang p4420 wird die Abtastzeit in p4099[3] gepr&uuml;ft und gegebenenfalls diese Meldung ausgegeben.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235229">F235229</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Zeitscheibe deaktiviert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS1<br />
+ (AUS2, KEINE)Servo: KEINE<br />
+Vector: KEINE<br />
+Hla: KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der gew&uuml;nschte Wert einer Zykluszeit in p4099[0...2] ist ung&uuml;ltig.<br />
+Die entsprechende Zeitscheibe wurde nicht aktiviert.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+0: Digitaleing&auml;nge&#47;-ausg&auml;nge (p4099[0]).<br />
+1: Analogeing&auml;nge (p4099[1]).<br />
+3: Gebernachbildung (p4099[3]).<br />
+4: Gebernachbildung Drehzahlsollwert (p4099[3]).<br />
+5: Gebernachbildung Drehzahlsollwert (p4099[3]).<br />
+6: Interne Ablaufsteuerung des TM41 (interner Fehler).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Abtastzeit dem Warnwert entsprechend &auml;ndern.<br />
+Hinweis:<br />
+Die Abtastzeit in p4099[0] darf nicht Null sein.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235230">F235230</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Hardware fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS1<br />
+ (AUS2, KEINE)Servo: KEINE<br />
+Vector: KEINE<br />
+Hla: KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das verwendete Terminal Module (TM) hat interne Fehler gemeldet.<br />
+Signale dieser Baugruppe d&uuml;rfen nicht ausgewertet werden, da sie sehr wahrscheinlich fehlerhaft sind.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Gegebenenfalls das Terminal Module tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235231">A235231</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: F&uuml;hrung durch PLC fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Signal &quot;F&uuml;hrung durch PLC&quot; fehlt w&auml;hrend des Betriebs.<br />
+- Verschaltung des Binektoreingangs f&uuml;r &quot;F&uuml;hrung durch PLC&quot; falsch (p0854).<br />
+- Die &uuml;berlagerte Steuerung hat das Signal &quot;F&uuml;hrung durch PLC&quot; weggenommen.<br />
+- Die Daten&uuml;bertragung &uuml;ber den Feldbus (Master&#47;Antrieb) wurde unterbrochen.<br />
+Hinweis:<br />
+Diese Warnung ist nur im Betriebsmodus &quot;SIMOTION&quot; (p4400 = 0) ma&szlig;geblich.<br />
+Im Betriebsmodus &quot;SINAMICS&quot; (p4400 = 1) werden die Sollwerte an p4420 unabh&auml;ngig von Binektoreingang p0854 ausgewertet.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verschaltung des Binektoreingangs f&uuml;r &quot;F&uuml;hrung durch PLC&quot; &uuml;berpr&uuml;fen (p0854).<br />
+- Das Signal &quot;F&uuml;hrung durch PLC&quot; &uuml;berpr&uuml;fen und eventuell einschalten.<br />
+- Die Daten&uuml;bertragung &uuml;ber den Feldbus (Master&#47;Antrieb) &uuml;berpr&uuml;fen.<br />
+- Die Einstellung von Parameter p2037 &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235232">A235232</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM41: Nullmarke nicht mehr synchron POWER ON erforderlich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Betriebsmodus SINAMICS (p4400 = 1):<br />
+Bei der Parametrierung eines Terminal Modules 41 (TM41) bzw. w&auml;hrend des Betriebs eines TM41 wurde ein Betriebszustand erreicht, der einen POWER ON erforderlich macht.<br />
+Hierzu geh&ouml;ren:<br />
+- &Auml;nderung der Geberstrichzahl (p0408).<br />
+- &Auml;nderung der Feinaufl&ouml;sung (p0418).<br />
+- Abziehen der DRIVE-CLiQ-Leitung ohne vorheriges Deaktivieren des TM41 &uuml;ber p0105.<br />
+Wurde diese Warnung gemeldet, so kann die Nullmarke des TM41 nicht mehr synchron zu der des an p4420 verschalteten Gebers ausgegeben werden.<br />
+Betriebsmodus SIMOTION (p4400 = 0):<br />
+Eine bereits zuvor eingestellte Nullmarkenposition (p4426) stimmt durch die &Auml;nderung der Strichzahl (p0408) nicht mehr mit der Geberlage (r0479) &uuml;berein.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die inkrementelle Lage am Ausgang X520 des TM41 kann unabh&auml;ngig von der Nullmarke weiterhin ausgewertet werden.<br />
+Wird die Nullmarke des TM41 ausgewertet, so muss ein POWER ON durchgef&uuml;hrt werden.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235233">F235233</a></b></td>
+<td><b>&lt;Ortsangabe&gt;DRIVE-CLiQ-Komponente Funktion nicht unterst&uuml;tzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Eine von der Control Unit angeforderte Funktion wird von einer DRIVE-CLiQ-Komponente nicht unterst&uuml;tzt.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+1: Das Terminal Module 31 unterst&uuml;tzt nicht die Funktion &quot;Zeitstufe f&uuml;r Temperaturauswertung&quot; (X522.7&#47;8, p4103 &gt; 0.000).<br />
+4: Die Verbesserte Istwertaufl&ouml;sung wird nicht unterst&uuml;tzt (p4401.4).<br />
+5: Die Verbesserte Sollwertaufl&ouml;sung wird nicht unterst&uuml;tzt (p4401.5).<br />
+6: Die Restwertbehandlung im Sollwertkanal kann nicht deaktiviert werden (p4401.6).<br />
+7: Die Ausgangsfrequenzen gr&ouml;&szlig;er 750 kHz k&ouml;nnen nicht aktiviert werden (p4401.7).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 1:<br />
+- Zeitstufe f&uuml;r Temperaturauswertung (X522.7&#47;8) deaktivieren (p4103 = 0.000).<br />
+- Terminal Module 31 und Firmware-Version verwenden, um die Funktion &quot;Zeitstufe f&uuml;r Temperaturauswertung&quot; zu unterst&uuml;tzen (Artikelnummer 6SL3055-0AA00-3AA1, Firmware-Version 2.6 und h&ouml;her).<br />
+Siehe auch: p4103, p4401 (TM41 Gebernachbildung Modus)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235400">F235400 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 4 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module 150 (TM150) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[8], p4103[4]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[9]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[4] = 1, 4) gilt:<br />
+- Wenn r4101[4] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[4] = 250 &deg;C.<br />
+- Wenn r4101[4] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[4] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[4] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[9] - Hysterese (p4118[4]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235401">F235401 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 5 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module 150 (TM150) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[10], p4103[5]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[11]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[5] = 1, 4) gilt:<br />
+- Wenn r4101[5] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[5] = 250 &deg;C.<br />
+- Wenn r4101[5] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[5] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[5] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[11] - Hysterese (p4118[5]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235402">F235402 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 6 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module 150 (TM150) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[12], p4103[6]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[13]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[6] = 1, 4) gilt:<br />
+- Wenn r4101[6] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[6] = 250 &deg;C.<br />
+- Wenn r4101[6] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[6] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[6] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[13] - Hysterese (p4118[6]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235403">F235403 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 7 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module 150 (TM150) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[14], p4103[7]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[15]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[7] = 1, 4) gilt:<br />
+- Wenn r4101[7] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[7] = 250 &deg;C.<br />
+- Wenn r4101[7] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[7] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[7] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[15] - Hysterese (p4118[7]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235404">F235404 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 8 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module 150 (TM150) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[16], p4103[8]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[17]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[8] = 1, 4) gilt:<br />
+- Wenn r4101[8] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[8] = 250 &deg;C.<br />
+- Wenn r4101[8] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[8] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[8] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[17] - Hysterese (p4118[8]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235405">F235405 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 9 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module 150 (TM150) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[18], p4103[9]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[19]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[9] = 1, 4) gilt:<br />
+- Wenn r4101[9] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[9] = 250 &deg;C.<br />
+- Wenn r4101[9] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[9] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[9] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[19] - Hysterese (p4118[9]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235406">F235406 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 10 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module 150 (TM150) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[20], p4103[10]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[21]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[10] = 1, 4) gilt:<br />
+- Wenn r4101[10] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[10] = 250 &deg;C.<br />
+- Wenn r4101[10] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[10] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[10] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[21] - Hysterese (p4118[10]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235407">F235407 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur St&ouml;r-&#47;Warnschwelle Kanal 11 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Temperaturauswertung &uuml;ber das Terminal Module 150 (TM150) ist mindestens eine der folgenden Bedingungen zum Ausl&ouml;sen dieser St&ouml;rung erf&uuml;llt:<br />
+- Warnschwelle l&auml;nger als im Zeitglied eingestellt &uuml;berschritten (p4102[22], p4103[11]).<br />
+oder<br />
+- St&ouml;rschwelle &uuml;berschritten (p4102[23]).<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[11] = 1, 4) gilt:<br />
+- Wenn r4101[11] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[11] = 250 &deg;C.<br />
+- Wenn r4101[11] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[11] = -50 &deg;C.<br />
+Der Temperaturistwert wird &uuml;ber Konnektorausgang r4105[11] angezeigt und kann weiter verschaltet werden.<br />
+Achtung:<br />
+Diese St&ouml;rung f&uuml;hrt nur dann zur Abschaltung des Antriebs, wenn wenigstens eine BICO-Verschaltung zwischen Antrieb und Terminal Module besteht.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Temperatursensor unter p4102[23] - Hysterese (p4118[11]) abk&uuml;hlen.<br />
+- Gegebenenfalls die St&ouml;rreaktion auf KEINE einstellen (p2100, p2101).<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235410">A235410 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 4 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules 150 (TM150) gemessene Temperatur (r4105[4]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[8]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[4] = 1, 4) gilt:<br />
+- Wenn r4101[4] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[4] = 250 &deg;C.<br />
+- Wenn r4101[4] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[4] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[8] - Hysterese (p4118[4]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235411">A235411 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 5 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules 150 (TM150) gemessene Temperatur (r4105[5]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[10]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[5] = 1, 4) gilt:<br />
+- Wenn r4101[5] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[5] = 250 &deg;C.<br />
+- Wenn r4101[5] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[5] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[10] - Hysterese (p4118[5]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235412">A235412 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 6 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules 150 (TM150) gemessene Temperatur (r4105[6]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[12]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[6] = 1, 4) gilt:<br />
+- Wenn r4101[6] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[6] = 250 &deg;C.<br />
+- Wenn r4101[6] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[6] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[12] - Hysterese (p4118[6]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235413">A235413 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 7 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules 150 (TM150) gemessene Temperatur (r4105[7]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[14]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[7] = 1, 4) gilt:<br />
+- Wenn r4101[7] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[7] = 250 &deg;C.<br />
+- Wenn r4101[7] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[7] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[14] - Hysterese (p4118[7]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235414">A235414 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 8 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules 150 (TM150) gemessene Temperatur (r4105[8]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[16]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[8] = 1, 4) gilt:<br />
+- Wenn r4101[8] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[8] = 250 &deg;C.<br />
+- Wenn r4101[8] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[8] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[16] - Hysterese (p4118[8]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235415">A235415 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 9 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules 150 (TM150) gemessene Temperatur (r4105[9]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[18]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[9] = 1, 4) gilt:<br />
+- Wenn r4101[9] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[9] = 250 &deg;C.<br />
+- Wenn r4101[9] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[9] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[18] - Hysterese (p4118[9]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235416">A235416 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 10 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules 150 (TM150) gemessene Temperatur (r4105[10]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[20]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[10] = 1, 4) gilt:<br />
+- Wenn r4101[10] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[10] = 250 &deg;C.<br />
+- Wenn r4101[10] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[10] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[20] - Hysterese (p4118[10]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235417">A235417 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Temperatur Warnschwelle Kanal 11 &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die mit der Temperaturerfassung des Terminal Modules 150 (TM150) gemessene Temperatur (r4105[11]) hat den Schwellwert f&uuml;r das Ausl&ouml;sen dieser Warnung (p4102[22]) &uuml;berschritten.<br />
+Hinweis:<br />
+Beim Sensortyp &quot;PTC Thermistor&quot; und &quot;Bimetall-&Ouml;ffner&quot; (p4100[11] = 1, 4) gilt:<br />
+- Wenn r4101[11] &gt; 1650 Ohm, dann betr&auml;gt die Temperatur r4105[11] = 250 &deg;C.<br />
+- Wenn r4101[11] &lt;= 1650 Ohm, dann betr&auml;gt die Temperatur r4105[11] = -50 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Temperaturistwert zum Zeitpunkt der Ausl&ouml;sung [0.1 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Temperatursensor unter p4102[22] - Hysterese (p4118[11]) abk&uuml;hlen.<br />
+Siehe auch: p4102<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235800">N235800 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Sammelmeldung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Terminal Module hat mindestens einen Fehler erkannt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Auswertung der weiteren aktuellen Meldungen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235801">F235801 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ: Lebenszeichen fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der Control Unit zu dem betroffenen Terminal Module ist fehlerhaft.<br />
+Fehlerursache:<br />
+10 (= 0A hex):<br />
+Das Lebenszeichenbit im empfangenen Telegramm ist nicht gesetzt.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- DRIVE-CLiQ-Verbindung &uuml;berpr&uuml;fen.<br />
+- Betroffene Komponente tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235802">A235802 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Zeitscheiben&uuml;berlauf</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist ein Zeitscheiben&uuml;berlauf auf dem Terminal Module aufgetreten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Terminal Module tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235803">A235803 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Speichertest</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Speichertest auf dem Terminal Module ist ein Fehler aufgetreten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- &Uuml;berpr&uuml;fen, ob die zul&auml;ssige Umgebungstemperatur f&uuml;r das Terminal Module eingehalten wird.<br />
+- Terminal Module tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235804">F235804 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: CRC</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Auslesen des Programmspeichers auf dem Terminal Module ist ein Checksummenfehler aufgetreten.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+Differenz zwischen der Pr&uuml;fsumme bei POWER ON und der aktuellen Pr&uuml;fsumme.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- &Uuml;berpr&uuml;fen, ob die zul&auml;ssige Umgebungstemperatur f&uuml;r die Komponente eingehalten wird.<br />
+- Terminal Module tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235805">F235805 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Pr&uuml;fsumme EEPROM nicht korrekt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Interne Parameterdaten sind besch&auml;digt.<br />
+Warnwert (r2124, hexadezimal interpretieren):<br />
+01: EEPROM-Zugriff fehlerhaft.<br />
+02: Anzahl der Bl&ouml;cke im EEPROM zu gro&szlig;.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- &Uuml;berpr&uuml;fen, ob die zul&auml;ssige Umgebungstemperatur f&uuml;r die Komponente eingehalten wird.<br />
+- Terminal Module 31 (TM31) tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235807">A235807 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Ablaufsteuerung Zeit&uuml;berwachung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Fehler Zeit&uuml;berlauf Ablaufsteuerung auf dem Terminal Module.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Terminal Module tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235820">F235820</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ: Telegramm fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der Control Unit zum betroffenen Terminal Module ist fehlerhaft.<br />
+Fehlerursache:<br />
+1 (= 01 hex):<br />
+Checksummenfehler (CRC-Fehler).<br />
+2 (= 02 hex):<br />
+Telegramm ist k&uuml;rzer als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben.<br />
+3 (= 03 hex):<br />
+Telegramm ist l&auml;nger als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben.<br />
+4 (= 04 hex):<br />
+Die L&auml;nge des empfangenen Telegramms passt nicht zur Empfangsliste.<br />
+5 (= 05 hex):<br />
+Der Typ des empfangenen Telegramms passt nicht zur Empfangsliste.<br />
+6 (= 06 hex):<br />
+Die Adresse der Komponente im Telegramm und in der Empfangsliste stimmt nicht &uuml;berein.<br />
+7 (= 07 hex):<br />
+Es wird ein SYNC-Telegramm erwartet, aber das empfangene Telegramm ist keines.<br />
+8 (= 08 hex):<br />
+Es wird kein SYNC-Telegramm erwartet, aber das empfangene Telegramm ist eines.<br />
+9 (= 09 hex):<br />
+Fehlerbit im empfangenen Telegramm ist gesetzt.<br />
+16 (= 10 hex):<br />
+Das empfangene Telegramm ist zu fr&uuml;h.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+- DRIVE-CLiQ-Verdrahtung &uuml;berpr&uuml;fen (Leitungsbruch, Kontakte, ...).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235835">F235835</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ: Zyklische Daten&uuml;bertragung gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der Control Unit zum betroffenen Terminal Module ist fehlerhaft. Die Teilnehmer senden und empfangen nicht synchron.<br />
+Fehlerursache:<br />
+33 (= 21 hex):<br />
+Das zyklische Telegramm ist noch nicht eingetroffen.<br />
+34 (= 22 hex):<br />
+Zeitfehler in der Empfangsliste des Telegramms.<br />
+64 (= 40 hex):<br />
+Zeitfehler in der Sendeliste des Telegramms.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON durchf&uuml;hren.<br />
+- Betroffene Komponente austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235836">F235836</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ: Sendefehler bei DRIVE-CLiQ-Daten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der Control Unit zu dem betroffenen Terminal Module ist fehlerhaft. Die Daten konnten nicht gesendet werden.<br />
+Fehlerursache:<br />
+65 (= 41 hex):<br />
+Der Telegrammtyp stimmt nicht mit der Sendeliste &uuml;berein.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>POWER ON durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235837">F235837</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ: Komponente gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Auf der betroffenen DRIVE-CLiQ-Komponente wurde ein Fehler erkannt. Eine fehlerhafte Hardware kann nicht ausgeschlossen werden.<br />
+Fehlerursache:<br />
+32 (= 20 hex):<br />
+Fehler im Header des Telegramms.<br />
+35 (= 23 hex):<br />
+Empfangsfehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+66 (= 42 hex):<br />
+Sendefehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+67 (= 43 hex):<br />
+Sendefehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- DRIVE-CLiQ-Verdrahtung &uuml;berpr&uuml;fen (Leitungsbruch, Kontakte, ...).<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+- Eventuell andere DRIVE-CLiQ-Buchse verwenden (p9904).<br />
+- Betroffene Komponente austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235845">F235845</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ: Zyklische Daten&uuml;bertragung gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der Control Unit zu dem betroffenen Terminal Module (TM) ist fehlerhaft.<br />
+Fehlerursache:<br />
+11 (= 0B hex):<br />
+Synchronisationsfehler bei der alternierend zyklischen Daten&uuml;bertragung.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>POWER ON durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235850">F235850</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Softwarefehler intern</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS1<br />
+ (AUS2, KEINE)Servo: AUS1<br />
+ (AUS2, AUS3, KEINE)Vector: AUS1<br />
+ (AUS2, AUS3, KEINE)Hla: AUS1<br />
+ (AUS2, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist ein interner Softwarefehler im Terminal Module (TM) aufgetreten.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+1: Hintergrund-Zeitscheibe ist blockiert.<br />
+2: Checksumme &uuml;ber den Code-Speicher stimmt nicht.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Terminal Module (TM) tauschen.<br />
+- Gegebenenfalls Firmware im Terminal Module hochr&uuml;sten.<br />
+- Technical Support kontaktieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235851">F235851</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ (CU): Lebenszeichen fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von dem betroffenen Terminal Module (TM) zur Control Unit ist fehlerhaft.<br />
+Von der DRIVE-CLiQ-Komponente wurde das Lebenszeichen zur Control Unit nicht gesetzt.<br />
+Fehlerursache:<br />
+10 (= 0A hex):<br />
+Das Lebenszeichenbit im empfangenen Telegramm ist nicht gesetzt.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Firmware der betroffenen Komponente hochr&uuml;sten.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235860">F235860</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ (CU): Telegramm fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von dem betroffenen Terminal Module (TM) zur Control Unit ist fehlerhaft.<br />
+Fehlerursache:<br />
+1 (= 01 hex):<br />
+Checksummenfehler (CRC-Fehler).<br />
+2 (= 02 hex):<br />
+Telegramm ist k&uuml;rzer als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben.<br />
+3 (= 03 hex):<br />
+Telegramm ist l&auml;nger als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben.<br />
+4 (= 04 hex):<br />
+Die L&auml;nge des empfangenen Telegramms passt nicht zur Empfangsliste.<br />
+5 (= 05 hex):<br />
+Der Typ des empfangenen Telegramms passt nicht zur Empfangsliste.<br />
+6 (= 06 hex):<br />
+Die Adresse des Leistungsteils im Telegramm und in der Empfangsliste stimmt nicht &uuml;berein.<br />
+9 (= 09 hex):<br />
+Die DRIVE-CLiQ-Kommunikation von der betroffenen DRIVE-CLiQ-Komponente zur Control Unit meldet einen Ausfall der Versorgungsspannung.<br />
+16 (= 10 hex):<br />
+Das empfangene Telegramm ist zu fr&uuml;h.<br />
+17 (= 11 hex):<br />
+CRC-Fehler und das empfangene Telegramm ist zu fr&uuml;h.<br />
+18 (= 12 hex):<br />
+Telegramm ist k&uuml;rzer als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben und das empfangene Telegramm ist zu fr&uuml;h.<br />
+19 (= 13 hex):<br />
+Telegramm ist l&auml;nger als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben und das empfangene Telegramm ist zu fr&uuml;h.<br />
+20 (= 14 hex):<br />
+Die L&auml;nge des empfangenen Telegramms passt nicht zur Empfangsliste und das empfangene Telegramm ist zu fr&uuml;h.<br />
+21 (= 15 hex):<br />
+Der Typ des empfangenen Telegramms passt nicht zur Empfangsliste und das empfangene Telegramm ist zu fr&uuml;h.<br />
+22 (= 16 hex):<br />
+Die Adresse des Leistungsteils im Telegramm und in der Empfangsliste stimmt nicht &uuml;berein und das empfangene Telegramm ist zu fr&uuml;h.<br />
+25 (= 19 hex):<br />
+Fehlerbit im empfangenen Telegramm ist gesetzt und das empfangene Telegramm ist zu fr&uuml;h.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+- DRIVE-CLiQ-Verdrahtung &uuml;berpr&uuml;fen (Leitungsbruch, Kontakte, ...).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235875">F235875</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Versorgungsspannung ausgefallen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der betroffenen DRIVE-CLiQ-Komponente zur Control Unit meldet einen Ausfall der Versorgungsspannung.<br />
+Fehlerursache:<br />
+9 (= 09 hex):<br />
+Die Versorgungsspannung der Komponente ist ausgefallen.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Verdrahtung der Versorgungsspannung f&uuml;r die DRIVE-CLiQ-Komponente &uuml;berpr&uuml;fen (Leitungsbruch, Kontakte, ...).<br />
+- Dimensionierung der Versorgung f&uuml;r die DRIVE-CLiQ-Komponente &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235885">F235885</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ (CU): Zyklische Daten&uuml;bertragung gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation vom betroffenen Terminal Module (TM) zur Control Unit ist fehlerhaft.<br />
+Die Teilnehmer senden und empfangen nicht synchron.<br />
+Fehlerursache:<br />
+26 (= 1A hex):<br />
+Das Lebenszeichenbit im empfangenen Telegramm ist nicht gesetzt und das empfangene Telegramm ist zu fr&uuml;h.<br />
+33 (= 21 hex):<br />
+Das zyklische Telegramm ist noch nicht eingetroffen.<br />
+34 (= 22 hex):<br />
+Zeitfehler in der Empfangsliste des Telegramms.<br />
+64 (= 40 hex):<br />
+Zeitfehler in der Sendeliste des Telegramms.<br />
+98 (= 62 hex):<br />
+Fehler beim &Uuml;bergang in den zyklischen Betrieb.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Versorgungsspannung der betroffenen Komponente &uuml;berpr&uuml;fen.<br />
+- POWER ON durchf&uuml;hren.<br />
+- Betroffene Komponente austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235886">F235886</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ (CU): Fehler beim Senden von DRIVE-CLiQ-Daten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von dem betroffenen Terminal Module (TM) zur Control Unit ist fehlerhaft.<br />
+Die Daten konnten nicht gesendet werden.<br />
+Fehlerursache:<br />
+65 (= 41 hex):<br />
+Der Telegrammtyp stimmt nicht mit der Sendeliste &uuml;berein.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>POWER ON durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235887">F235887</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ (CU): Komponente gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Auf der betroffenen DRIVE-CLiQ-Komponente (Terminal Module) wurde ein Fehler erkannt. Eine fehlerhafte Hardware kann nicht ausgeschlossen werden.<br />
+Fehlerursache:<br />
+32 (= 20 hex):<br />
+Fehler im Header des Telegramms.<br />
+35 (= 23 hex):<br />
+Empfangsfehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+66 (= 42 hex):<br />
+Sendefehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+67 (= 43 hex):<br />
+Sendefehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+96 (= 60 hex):<br />
+Bei der Laufzeitmessung ist die Antwort zu sp&auml;t eingetroffen.<br />
+97 (= 61 hex):<br />
+Der Austausch der Kenndaten dauert zu lange.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- DRIVE-CLiQ-Verdrahtung &uuml;berpr&uuml;fen (Leitungsbruch, Kontakte, ...).<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+- Eventuell andere DRIVE-CLiQ-Buchse verwenden (p9904).<br />
+- Betroffene Komponente austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235895">F235895</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ (CU): Alternierend zyklische Daten&uuml;bertragung gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von dem betroffenen Terminal Module (TM) zur Control Unit ist fehlerhaft.<br />
+Fehlerursache:<br />
+11 (= 0B hex):<br />
+Synchronisationsfehler bei der alternierend zyklischen Daten&uuml;bertragung.<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+0000yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>POWER ON durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235896">F235896</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM DRIVE-CLiQ (CU): Komponenteneigenschaften inkonsistent</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Eigenschaften der durch den St&ouml;rwert angegebenen DRIVE-CLiQ-Komponente (Terminal Module) haben sich gegen&uuml;ber dem Hochlauf in inkompatibler Weise ge&auml;ndert. Eine Ursache kann z. B. das Tauschen einer DRIVE-CLiQ-Leitung oder DRIVE-CLiQ-Komponente sein.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Komponentennummer.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON durchf&uuml;hren.<br />
+- Bei einem Komponententausch gleichen Komponententyp und wenn m&ouml;glich gleiche Firmware-Version verwenden.<br />
+- Bei einem Leitungstausch nur Leitungen mit m&ouml;glichst gleicher L&auml;nge verwenden (maximale Leitungsl&auml;nge beachten).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235899">F235899 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Unbekannte St&ouml;rung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+ (AUS1, AUS2)Servo: KEINE<br />
+ (AUS1, AUS2, AUS3, IASC/DCBRK, STOP2)Vector: KEINE<br />
+ (AUS1, AUS2, AUS3, IASC/DCBRK, STOP2)Hla: KEINE<br />
+ (AUS1, AUS2, AUS3, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Auf dem Terminal Module ist eine St&ouml;rung aufgetreten, welche von der Firmware der Control Unit nicht interpretiert werden kann.<br />
+Dies kann auftreten, wenn die Firmware auf dieser Komponente neuer ist als die Firmware auf der Control Unit.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nummer der St&ouml;rung.<br />
+Hinweis:<br />
+In einer neueren Beschreibung zur Control Unit kann gegebenenfalls die Bedeutung dieser neuen St&ouml;rung nachgelesen werden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Firmware auf dem Terminal Module gegen eine &auml;ltere Firmware tauschen (r0158).<br />
+- Firmware auf der Control Unit hochr&uuml;sten (r0018).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235903">A235903 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: I2C-Bus Fehler aufgetreten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist ein Fehler beim Zugriff &uuml;ber den internen I2C-Bus des Terminal Modules aufgetreten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Terminal Module tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235904">A235904 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: EEPROM</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist ein Fehler beim Zugriff auf den nichtfl&uuml;chtigen Speicher des Terminal Modules aufgetreten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Terminal Module tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235905">A235905 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Parameterzugriff</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Control Unit versuchte auf dem Terminal Module einen nicht zul&auml;ssigen Parameterwert zu schreiben.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Pr&uuml;fen, ob die Firmware-Version des Terminal Modules (r0158) zur Firmware-Version der Control Unit (r0018) passt.<br />
+- Gegebenenfalls das Terminal Module tauschen.<br />
+Hinweis:<br />
+In der Datei readme.txt auf der Speicherkarte stehen die zueinander passenden Firmware-Versionen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235906">A235906 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Spannungsversorgung 24 V fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die 24-V-Spannungsversorgung f&uuml;r die Digitalausg&auml;nge fehlt.<br />
+Warnwert (r2124, hexadezimal interpretieren):<br />
+01: TM17 24-V-Versorgung f&uuml;r DI&#47;DO 0 ... 7 fehlt.<br />
+02: TM17 24-V-Versorgung f&uuml;r DI&#47;DO 8 ... 15 fehlt.<br />
+04: TM15 24-V-Versorgung f&uuml;r DI&#47;DO 0 ... 7 (X520) fehlt.<br />
+08: TM15 24-V-Versorgung f&uuml;r DI&#47;DO 8 ... 15 (X521) fehlt.<br />
+10: TM15 24-V-Versorgung f&uuml;r DI&#47;DO 16 ... 23 (X522) fehlt.<br />
+20: TM41 24-V-Versorgung f&uuml;r DI&#47;DO 0 ... 3 fehlt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>&Uuml;berpr&uuml;fen der Klemmen f&uuml;r die Spannungsversorgung (L1+, L2+, L3+, M oder +24 V_1 bei TM41).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235907">A235907 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Initialisierung Hardware fehlgeschlagen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Initialisierung des Terminal Modules ist fehlgeschlagen.<br />
+Warnwert (r2124, hexadezimal interpretieren):<br />
+01: TM17 bzw. TM41 Fehlerhafte Konfigurationsanforderung.<br />
+02: TM17 bzw. TM41 Programmierung fehlgeschlagen.<br />
+04: TM17 bzw. TM41 Ung&uuml;ltiger Zeitstempel.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>POWER ON durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235910">A235910 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: &Uuml;bertemperatur im Modul</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Temperatur im Modul hat die zul&auml;ssige H&ouml;chstgrenze &uuml;berschritten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Umgebungstemperatur reduzieren.<br />
+- Terminal Module austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235911">A235911 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Taktsynchroner Betrieb Lebenszeichenausfall</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die maximal zul&auml;ssige Anzahl von Lebenszeichenfehlern des Masters (taktsynchroner Betrieb) wurde im zyklischen Betrieb &uuml;berschritten.<br />
+Mit dem Ausl&ouml;sen der Warnung werden die Ausg&auml;nge des Moduls bis zur n&auml;chsten Aufsynchronisierung zur&uuml;ckgesetzt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Pr&uuml;fen der Busphysik (Abschlusswiderstand, Schirmung, usw.).<br />
+- Die Verschaltung des Master-Lebenszeichens richtigstellen (r4201 &uuml;ber p0915).<br />
+- Pr&uuml;fen, ob das Lebenszeichen vom Master richtig gesendet wird (z. B. Trace erstellen mit r4201.12 ... r4201.15 und Triggersignal r4301.9).<br />
+- Bus bzw. Master auf Auslastung pr&uuml;fen (z. B. Buszykluszeit Tdp zu kurz eingestellt).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235920">A235920 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Fehler Temperatursensor Kanal 0</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Auswertung des Temperatursensors ist ein Fehler aufgetreten.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1: Drahtbruch oder Sensor nicht angeschlossen.<br />
+KTY84: R &gt; 1630 Ohm (TM150: R &gt; 2170 Ohm), PT100: R &gt; 194 Ohm, PT1000: R &gt; 1720 Ohm (TM150: R &gt; 1944 Ohm)<br />
+2: Gemessener Widerstand zu klein.<br />
+PTC Thermistor: R &lt; 20 Ohm, KTY84: R &lt; 50 Ohm (TM150: R &lt; 180 Ohm), PT100: R &lt; 60 Ohm, PT1000: R &lt; 603 Ohm<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Sensor auf korrekten Anschluss &uuml;berpr&uuml;fen.<br />
+- Sensor austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235921">A235921 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Fehler Temperatursensor Kanal 1</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Auswertung des Temperatursensors ist ein Fehler aufgetreten.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1: Drahtbruch oder Sensor nicht angeschlossen.<br />
+KTY84: R &gt; 1630 Ohm (TM150: R &gt; 2170 Ohm), PT100: R &gt; 194 Ohm, PT1000: R &gt; 1720 Ohm (TM150: R &gt; 1944 Ohm)<br />
+2: Gemessener Widerstand zu klein.<br />
+PTC Thermistor: R &lt; 20 Ohm, KTY84: R &lt; 50 Ohm (TM150: R &lt; 180 Ohm), PT100: R &lt; 60 Ohm, PT1000: R &lt; 603 Ohm<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Sensor auf korrekten Anschluss &uuml;berpr&uuml;fen.<br />
+- Sensor austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235922">A235922 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Fehler Temperatursensor Kanal 2</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Auswertung des Temperatursensors ist ein Fehler aufgetreten.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1: Drahtbruch oder Sensor nicht angeschlossen.<br />
+KTY84: R &gt; 1630 Ohm (TM150: R &gt; 2170 Ohm), PT100: R &gt; 194 Ohm, PT1000: R &gt; 1720 Ohm (TM150: R &gt; 1944 Ohm)<br />
+2: Gemessener Widerstand zu klein.<br />
+PTC Thermistor: R &lt; 20 Ohm, KTY84: R &lt; 50 Ohm (TM150: R &lt; 180 Ohm), PT100: R &lt; 60 Ohm, PT1000: R &lt; 603 Ohm<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Sensor auf korrekten Anschluss &uuml;berpr&uuml;fen.<br />
+- Sensor austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="235923">A235923 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;TM: Fehler Temperatursensor Kanal 3</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Auswertung des Temperatursensors ist ein Fehler aufgetreten.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1: Drahtbruch oder Sensor nicht angeschlossen.<br />
+KTY84: R &gt; 1630 Ohm (TM150: R &gt; 2170 Ohm), PT100: R &gt; 194 Ohm, PT1000: R &gt; 1720 Ohm (TM150: R &gt; 1944 Ohm)<br />
+2: Gemessener Widerstand zu klein.<br />
+PTC Thermistor: R &lt; 20 Ohm, KTY84: R &lt; 50 Ohm (TM150: R &lt; 180 Ohm), PT100: R &lt; 60 Ohm, PT1000: R &lt; 603 Ohm<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Sensor auf korrekten Anschluss &uuml;berpr&uuml;fen.<br />
+- Sensor austauschen.<br />
+</td></tr>
+</table><p></p></body></html>

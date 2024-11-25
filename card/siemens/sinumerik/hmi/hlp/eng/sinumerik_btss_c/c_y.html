@@ -1,0 +1,1272 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block C/Y: Channel-specific system data</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block C/Y: Channel-specific system data</h1>
+         </div>
+      </div>The machine tool builder or user configures the control with the help of the machine data. Configuration can only be performed
+      with certain access rights. The configuration of the NC can be read in the system data regardless of current access rights.<br/>
+      
+      <div><a name="53"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>channelName</b></td>
+            <td colspan="3" style="border:1px solid black">Channel name</td>
+            <td width="20%" style="border:1px solid black">MD 20000: CHAN_NAME</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>9
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Channel name<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/channelName[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2397"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>maskToolManagement</b></td>
+            <td colspan="3" style="border:1px solid black">Channel-specific setting for tool management</td>
+            <td width="20%" style="border:1px solid black">$MC_TOOL_MANAGEMENT_MASK</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>19
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>?<br>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Channel-specific settings for NCK tool management function<br/>
+               Activation of TM memory by "0" means: The set tool management data do not use any memory space.<br/>
+               Value=0: 	TM deactivated<br/>
+               Bit 0=1: 	TM active: The tool management functions are enabled for the current channel. <br/>
+               Bit 1=1: 	TM monitoring function active: Functions required to monitor tools (tool life and number of workpieces) are enabled.<br/>
+               Bit 2=1: 	OEM functions active: The memory for user data can be utilized. <br/>
+               Bit 3=1: 	Consideration of adjacent location active <br/>
+               Bits 0 to 3 must be set identically to machine data MM_TOOL_MANAGEMENT_MASK (18080).<br/>
+               Bit 4=1: 	The PLC has the possibility of issuing another request for tool change preparation with modified parameters.<br/>
+               Part program is halted in response to T selection or M06 until it has been acknowledged by the PLC program.<br/>
+               Bit 5=1: 	The main run/PLC synchronization in response to a tool change for the main spindle is executed simultaneously with
+               the transport acknowledgment.<br/>
+               Bit 6=1:	The main run/PLC synchronization in response to a tool change for the auxiliary spindle is executed simultaneously
+               with the transport acknowledgment.<br/>
+               Bit 7=1: 	The main run/PLC synchronization in response to a tool change for the main spindle is not executed until the PLC
+               acknowledgment confirms that the tool change is complete.<br/>
+               Bit 8=1: 	The main run/PLC synchronization in response to a tool change for the auxiliary spindle is not executed until the
+               PLC acknowledgment confirms that the tool change is complete..<br/>
+               Bit 9: 	Reserved<br/>
+               Bit 10=1:	M06 is delayed until the preparation acknowledgment has been output by the PLC. The change signal (e.g. M06 ) is
+               not output until the tool selection ( DBX [ n+0 ].2 ) has been acknowledged. The part program is halted in response to M06
+               until the T selection has been acknowledged.<br/>
+               Bit 11=1:	The preparation command is output even if a preparation command has already been output for the same tool. This
+               setting is useful, for example, if the chain is to be positioned when "Tx" is first called and if the second call is to initiate
+               a check as to whether the tool is in the correct location for a tool change (e.g. in front of tool-change station).<br/>
+               Bit 12=1:	The preparation command is executed even if the tool is already loaded in the spindle, i.e. the T selection signal
+               (DB72.DBXn.2) is set even if it has already been set for the same tool. (Tx...Tx)<br/>
+               Bit 13=1:	Only on systems with sufficient memory space (NCU572, NCU573): Recording of tool sequences in a diagnostics buffer.
+               The commands are fetched from the diagnostics buffer in response to Reset and stored in a file in the passive file system,
+               NCATR xx.MPF under part program. The trace file is useful for the Hotline in the event of errors and is not described in detail
+               here. <br/>
+               Bit 14=1:	Automatic tool change in response to Reset and Start according to machine data MD20120 $MC_TOOL_RESET_NAME MD20110
+               $MC_RESET_MODE_MASK MD20124 $MC_TOOL_MANAGEMENT_TOOLHOLDER. If machine data RESET_MODE_MASK is in use, then this bit must
+               be set as well. If RESET_MODE_MASK is set such that the tool stored in TOOL_RESET_NAME must be loaded in response to RESET,
+               then the select and change command is output to the user interface (DB 72) in response to RESET or Start. If machine data
+               RESET_MODE_MASK is set such that the active tool must remain active after M30 or RESET and if the active tool is disabled
+               in the spindle (by user), then a change command for a replacement tool is output to the user interface in response to RESET.
+               If no replacement tool is available, then an error message is output.<br/>
+               Bit 15=1:	No return transport of tool when several preparation commands are output. (Tx-&gt;Tx) <br/>
+               Bit 16=1:	T location number is active<br/>
+               Bit 17=1:	Tool life decrementation can be started/stopped via the PLC.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/maskToolManagement[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="310"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mmcCmd</b></td>
+            <td colspan="3" style="border:1px solid black">Command from NCK to HMI</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>10
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Command from NCK to HMI<br/>
+               The string is made up of the following characters:<br/>
+               1st character acknowledgment mode: <br/>
+                   "N" no acknowledgment<br/>
+                   "S" synchronous acknowledgment<br/>
+                   "A" asynchronous acknowledgment<br/>
+               2. - 6th character: five-digit sequence number in ASCII that is generated by the NCK<br/>
+               7. - 207th  character: Command string which ends with  "\0"<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/mmcCmd[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="746"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mmcCmdPrep</b></td>
+            <td colspan="3" style="border:1px solid black">Command from NCK-preparation to the HMI</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>15
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>?<br>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Command from the NCK-preparation task to the HMI (e.g. for calling external subprograms)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/mmcCmdPrep[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="311"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mmcCmdQuit</b></td>
+            <td colspan="3" style="border:1px solid black">Acknowl. from HMI for command from NCK to HMI</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>11
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">acknowledgment from HMI for command from NCK to HMI<br/>
+               The string is made up of the following characters:<br/>
+               1st character acknowledgment code: <br/>
+                   "P" programmed<br/>
+                   "B" busy<br/>
+                   "F" failed<br/>
+                   "E" executed<br/>
+               2. - 6th character: five-digit sequence number in ASCII for acknowledgment code "B", "F" or "E", generated by NCK<br/>
+               7. - 201th character: additional communication-specific information for acknowledgment code "B", "F" or "E", ends with "\0"<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/mmcCmdQuit[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="747"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mmcCmdQuitPrep</b></td>
+            <td colspan="3" style="border:1px solid black">Ackn. by HMI for NCK-preparation command</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>16
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>?<br>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Acknowledgemnt by HMI for an NCK-preparation command to the HMI (e.g. for calling external subprograms)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/mmcCmdQuitPrep[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2418"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numActAxes</b></td>
+            <td colspan="3" style="border:1px solid black">Number of axes in channel.</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>20
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of active tools in channel.<br/>
+               Channel axis gaps are not included in count which means that value might be lower than numMachAxes.<br/>
+               The following applies:<br/>
+               <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a> &gt;= <a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a><br/>
+               <a href="../sinumerik_btss_C/C_Y.html#2418">numActAxes</a>  = <a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a><br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span><a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numActAxes[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="327"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numAuxAxes</b></td>
+            <td colspan="3" style="border:1px solid black">Number of auxiliary axes</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of auxiliary axes<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numAuxAxes[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2314"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numBasisFrames</b></td>
+            <td colspan="3" style="border:1px solid black">Number of basic frames in channel</td>
+            <td width="20%" style="border:1px solid black">$MC_MM_NUM_BASE_FRAMES</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>18
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>?<br>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of basic frames in channel<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numBasisFrames[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="331"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numContourInProtArea</b></td>
+            <td colspan="3" style="border:1px solid black">Number of polygon elements / protection zone</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>13
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Maximum number of polygon elements per protection zone<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numContourInProtArea[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="340"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numGeoAxes</b></td>
+            <td colspan="3" style="border:1px solid black">Number of geometry axes</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of geometry axes and orientation axes<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numGeoAxes[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5783"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numGFrames</b></td>
+            <td colspan="3" style="border:1px solid black">Number of G frames</td>
+            <td width="20%" style="border:1px solid black">MD 28079: MM_NUM_G_FRAMES</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>83
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of G frames in this channel<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numGFrames[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="343"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numMachAxes</b></td>
+            <td colspan="3" style="border:1px solid black">Number of highest channel axis.</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">No. of highest channel axis.<br/>
+               This also corresponds to the number of axes in the <br/>
+               channel provided there are no gaps in the axis sequence.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>1
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numMachAxes[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2713"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numOriAxes</b></td>
+            <td colspan="3" style="border:1px solid black">Number of orientation axes in channel</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>21
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of orientation axes in channel<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numOriAxes[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="350"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numProtArea</b></td>
+            <td colspan="3" style="border:1px solid black">Maximum number of protection zones</td>
+            <td width="20%" style="border:1px solid black">MD 28200: MM_NUM_PROTECT_AREA_CHAN</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>12
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Maximum number of protection zones<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numProtArea[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="351"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numRParams</b></td>
+            <td colspan="3" style="border:1px solid black">Number of channel-specific R variables</td>
+            <td width="20%" style="border:1px solid black">MD 28050: MM_NUM_R_PARAM</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of channel-specific R variables<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numRParams[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="352"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numSpindles</b></td>
+            <td colspan="3" style="border:1px solid black">Number of spindles</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of spindles<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numSpindles[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2209"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numSpindlesLog</b></td>
+            <td colspan="3" style="border:1px solid black">Number of log. spindles</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>17
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of logical spindles. <br/>
+               Specifies the number of lines in module SSP2.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numSpindlesLog[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="356"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numToolEdges</b></td>
+            <td colspan="3" style="border:1px solid black">Number of cutting edges</td>
+            <td width="20%" style="border:1px solid black">MD 18100: MM_NUM_CUTTING_EDGES_IN_TOA</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of tool edges in this channel<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numToolEdges[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="358"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numUserFrames</b></td>
+            <td colspan="3" style="border:1px solid black">Number of user frames</td>
+            <td width="20%" style="border:1px solid black">MD 28080: MM_NUM_USER_FRAMES</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>8
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of user frames in this channel<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/numUserFrames[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2949"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>oemProtText</b></td>
+            <td colspan="3" style="border:1px solid black">OEM text for logging buffer</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>24
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">OEM text to be entered next in the logging buffer.<br/>
+                <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/oemProtText[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2469"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>progProtText</b></td>
+            <td colspan="3" style="border:1px solid black">Text for logging buffer</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>22
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Programmable text to be entered next in the logging buffer<br/>
+                <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/progProtText[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="384"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>punchNibActivation</b></td>
+            <td colspan="3" style="border:1px solid black">Activation of punching and nibbling functions</td>
+            <td width="20%" style="border:1px solid black">MD 26012: PUNCHNIB_ACTIVATION</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>14
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Activation of punching and nibbling functions<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>0 = option not available<br/>
+               1 = option available<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/punchNibActivation[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4844"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>stringIsFileId</b></td>
+            <td colspan="3" style="border:1px solid black">Numerical file ID for the string</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>27
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">As soon as PI _N_STRGIS is executed, the result from interpretation of the transferred string<br/>
+               is stored as file ID in this variable. moduleId may be used instead of fileId.<br/>
+               Also refer to NC command STRINGIS.<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>   Meaning       Name of                       OPI area      OPI modules  <br/>
+                                definition file in NCK                       (domain name)<br/>
+                                (explanation)                                              <br/>
+                0               String is unknown<br/>
+                1 GCODE         (G code - Siemens and/or ISO )<br/>
+                2 NCADDRES      (NCK NC address character)<br/>
+                3 NCADDRES_CHAN (channel NC address character) <br/>
+                4 NCNAM         (named NCK NC address)<br/>
+                5 NCNAM_CHAN    (named channel NC address)<br/>
+                6 FRAME         (frame variable)<br/>
+                7 TOOLCORR      (tool parameter)            TO   (=4)<br/>
+                8 MACHDAT_NCK   (machine data)                NCK  (=0)       M   (= 0x1A)<br/>
+                9 MACHDAT_CHAN  (machine data)                CHAN (=2)       M   (=-0x1A)<br/>
+               10 MACHDAT_AXIS  (machine data)                AXIS (=3)       M   (=-0x1A)<br/>
+               11 R_PARAM       (R variable)                   CHAN (=2)       RP  (= 0x15)<br/>
+               12 AC_MARKER     (synchronized action marker)<br/>
+               13 AC_PARAM      (synchronized action parameter)<br/>
+               14 PRED_FUNC     (NC language function)<br/>
+               15 SYSDAT_NCK    (status variable)<br/>
+               16 SYSDAT_CHAN   (status variable)<br/>
+               17 SYSDAT_AXIS   (status variable)<br/>
+               18 USER_NCK      _N_SGUD_DEF                     NCK  (=0)        GD1 (= 0x36)<br/>
+               19 USER_CHAN     _N_SGUD_DEF                     CHAN (=2)        GD1 (= 0x36)<br/>
+               20 USER_AXIS     _N_SGUD_DEF                     AXIS (=3)        GD1 (= 0x36)<br/>
+               21 USERMACRO     _N_SMAC_DEF<br/>
+                                _N_MMAC_DEF<br/>
+                                _N_UMAC_DEF<br/>
+               22 EEC           (leadscrew parameter)<br/>
+               23 QEC           (quadrant error parameter)<br/>
+               24 CEC           (cross error compensation parameter)<br/>
+               25 TOOLMAGAZINE  (magazine parameter)             TO   (=4)<br/>
+               26 PROTAREA      (protection area parameter)<br/>
+               27 PROTAREA_CHAN (protection area parameter)<br/>
+               28 USER_NCK2     _N_MGUD_DEF                     NCK  (=0)        GD2 (= 0x2D)<br/>
+               29 USER_NCK3     _N_UGUD_DEF                     NCK  (=0)        GD3 (= 0x2E)<br/>
+               30 USER_NCK4     _N_GUD4_DEF                     NCK  (=0)        GD4 (= 0x2F)<br/>
+               31 USER_NCK5     _N_GUD5_DEF                     NCK  (=0)        GD5 (= 0x30)<br/>
+               32 USER_NCK5     _N_GUD6_DEF                     NCK  (=0)        GD6 (= 0x31)<br/>
+               33 USER_NCK5     _N_GUD7_DEF                     NCK  (=0)        GD7 (= 0x32)<br/>
+               34 USER_NCK5     _N_GUD8_DEF                     NCK  (=0)        GD8 (= 0x33)<br/>
+               35 USER_NCK5     _N_GUD9_DEF                     NCK  (=0)        GD9 (= 0x34)<br/>
+               36 USER_CHAN2    _N_MGUD_DEF                     CHAN (=2)        GD2 (= 0x2D)<br/>
+               37 USER_CHAN3    _N_UGUD_DEF                     CHAN (=2)        GD3 (= 0x2E)<br/>
+               38 USER_CHAN4    _N_GUD4_DEF                     CHAN (=2)        GD4 (= 0x2F)<br/>
+               39 USER_CHAN5    _N_GUD5_DEF                     CHAN (=2)        GD5 (= 0x30)<br/>
+               40 USER_CHAN6    _N_GUD6_DEF                     CHAN (=2)        GD6 (= 0x31)<br/>
+               41 USER_CHAN7    _N_GUD7_DEF                     CHAN (=2)        GD7 (= 0x32)<br/>
+               42 USER_CHAN8    _N_GUD8_DEF                     CHAN (=2)        GD8 (= 0x33)<br/>
+               43 USER_CHAN9    _N_GUD9_DEF                     CHAN (=2)        GD9 (= 0x34)<br/>
+               44 reserved<br/>
+               45 reserved<br/>
+               46 reserved<br/>
+               47 reserved<br/>
+               48 reserved<br/>
+               49 reserved<br/>
+               50 reserved<br/>
+               51 reserved<br/>
+               52 TOOLCARRIER   (orientable tool carrier parameter)    TO   (=4)<br/>
+               53 GCODESEXT     (G code)                        NCK  (=0)        (G codes FANUC)<br/>
+               54 FRAME_NCK     (frame)                         NCK  (=0)<br/>
+               55 CYC_PARAM_CHAN (global  cycle transfer parameter)r<br/>
+               56 TOOLENVMOD    (tool environment parameter)<br/>
+               57 SYNAGUD_CHAN  (synchronized action capable GUD   CHAN (=2)        GD1 (= 0x36)<br/>
+               58 SYNAGUD_CHAN2 (synchronized action capable GUD   CHAN (=2)        GD2 (= 0x2D)<br/>
+               59 SYNAGUD_CHAN3 (synchronized action capable GUD   CHAN (=2)        GD3 (= 0x2E)<br/>
+               60 SYNAGUD_CHAN4 (synchronized action capable GUD   CHAN (=2)        GD4 (= 0x2F)<br/>
+               61 SYNAGUD_CHAN5 (synchronized action capable GUD   CHAN (=2)        GD5 (= 0x30)<br/>
+               62 SYNAGUD_CHAN6 (synchronized action capable GUD   CHAN (=2)        GD6 (= 0x31)<br/>
+               63 SYNAGUD_CHAN7 (synchronized action capable GUD   CHAN (=2)        GD7 (= 0x32)<br/>
+               64 SYNAGUD_CHAN8 (synchronized action capable GUD   CHAN (=2)        GD8 (= 0x33)<br/>
+               65 SYNAGUD_CHAN9 (synchronized action capable GUD   CHAN (=2)        GD9 (= 0x34)<br/>
+               66 NKIN          (kinematic chain parameter)<br/>
+               67 NPA           (3D protection area parameter)<br/>
+               68 WAL_CS        (work area in specific coordinate system)<br/>
+               69 TOOLISO22CORR (tool correction parameter with ISO2.2)<br/>
+               70 TOOLISO32CORR (tool correction parameter with ISO3.2)<br/>
+               71 EPS_PARAM     (ePS services parameters (reserved for ePS use only !!)<br/>
+               &gt;= 200 LUD       (LUD / PUD - program local variable)<br/>
+               Note: via OPI normally only a subset of the NCK data blocks is made known.<br/>
+               Note: missing column entries means that no definition file has been defined for this line,<br/>
+               or that in OPI no domain name has been defined. Various NCK data may be accessed through <br/>
+               OPI variable blocks instead of through domain names. Example: tool data, frame data, etc.<br/>
+               It is possible that several OPI variable blocks exist for a value of stringIsFileId.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/stringIsFileId[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4843"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>stringIsMeaning</b></td>
+            <td colspan="3" style="border:1px solid black">Meaning of the string</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>26
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">As soon as PI _N_STRGIS is executed, the result from interpretation of the transferred string<br/>
+               is stored as a code in this variable. For example, the code for $P_TOOL is value 207.<br/>
+               Also refer to NC command STRINGIS.<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>000 = itemName string is unknown in the NCK<br/>
+               100 = itemName string is a language construct, but is not programmable (option/function is not active)<br/>
+               2xx =  itemName string is a permissible language construct (option/function is active)<br/>
+               2xx =  is defined by:<br/>
+               200 = no interpretation possible<br/>
+               201 = DIN address / NC address (e.g. MEAS)<br/>
+               202 = G code (e.g. G04, INVCW)<br/>
+               203 = NC language function (= command with return value, parameter Passing) (e.g. GETMDACT)<br/>
+               204 = NC language procedure (= command without return value, with parameter Passing) (e.g. SBLOF)<br/>
+               205 = NC key word (e.g. DEFINE)<br/>
+               206 = machine/setting/option data (= parameter starting with $M / $S / $O)<br/>
+               207 = NC system parameter (= parameter starting with R and $)<br/>
+               208 = cycle name (name created by cycle)<br/>
+               209 = GUD variable (name created by GUD definitions<br/>
+               210 = macro name (name created by macro definition file)<br/>
+               211 = LUD variable (name created by active program)<br/>
+               212 = no Siemens G code, but an ISO G code<br/>
+               400 = NC address, which is not xx=01 or xx=10, and which is also not: G or R (e.g. T, D, F, H, L, M)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span>4000
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/stringIsMeaning[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4845"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>stringIsSymbolId</b></td>
+            <td colspan="3" style="border:1px solid black">Numerical symbol ID</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>28
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">As soon as PI _N_STRGIS is executed, the result from interpretation of the transferred string<br/>
+               is stored as symbol ID in this variable. The symbol ID is found in the NCK module, which is<br/>
+               specified in variable <a href="../sinumerik_btss_C/C_Y.html#4844">stringIsFileId</a>.<br/>
+               This value can be found also in the corresponding ACC and ACX file.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/stringIsSymbolId[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2798"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>systemFrameMask</b></td>
+            <td colspan="3" style="border:1px solid black">Screenform for system frames</td>
+            <td width="20%" style="border:1px solid black">$MC_MM_SYSTEM_FRAME_MASK</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>23
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Configuring screenform for channel-specific system frames<br/>
+               Indicates in bit-coded form which system frames are available<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/systemFrameMask[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="443"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>toNo</b></td>
+            <td colspan="3" style="border:1px solid black">Number of T area</td>
+            <td width="20%" style="border:1px solid black">MD 28085: MM_LINK_TOA_UNIT</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>5
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Number of T area that is assigned to the channel<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/toNo[u&lt;Channel numb&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4020"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>toolDataChangeBufferSize</b></td>
+            <td colspan="3" style="border:1px solid black">Size of the tool data modification memory</td>
+            <td width="20%" style="border:1px solid black">$MC_MM_TOOL_DATA_CHG_BUFF_SIZE</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>25
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Size of the effective ring buffer for the tool data modifications in the OPI block TDC (0x56).<br/>
+               This value is the maximum column number in the OPI block TDC.<br/>
+               If a number of channels works with a TO unit, the setting with the lowest channel number applies.<br/>
+               The value = 0 is returned if the the ring buffer is not active ($MN_TOOL_DATA_CHANGE_COUNTER, Bit2=0 and Bit3=0).<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/Configuration/toolDataChangeBufferSize[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

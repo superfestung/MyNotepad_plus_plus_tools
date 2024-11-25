@@ -1,0 +1,1000 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein C/ETP: Eventtypen</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein C/ETP: Eventtypen</h1>
+         </div>
+      </div>Beschreibung der Event-Typen der Protokollierung.<br/>
+      Für diesen Baustein wird der Zugriff über mehrere Zeilen und Spalten zugelassen.<br/>
+      <br/>
+      Der Zeilenindex identifiziert ein bestimmtes Event.<br/>
+      	Standard-Events:	Zeilenindex &lt;	10000:<br/>
+      	OEM-Events:		Zeilenindex &gt;	10000:<br/>
+      	User-Index:		Wird durch die 1000er-Stelle des Zeilenindexes bestimmt<br/>
+      	Event-Typ:		Wird durch die letzten drei Stellen des Zeilenindexes bestimmt<br/>
+      <br/>
+      Beispiele für den Zeilenindex:<br/>
+      	00001:	Standard-Event	des Users 0 mit der Nummer 1 (IPO)<br/>
+      	00006:	Standard-Event	des Users 0 mit der Nummer 6 (NC-Start)<br/>
+      	03006:	Standard-Event	des Users 3 mit der Nummer 6 (NC-Start)<br/>
+      	06006:	Standard-Event	des Users 6 mit der Nummer 6 (NC-Start)<br/>
+      	10001:	OEM-Event 	des Users 0 mit der Nummer 1<br/>
+      	13002:	OEM-Event 	des Users 3 mit der Nummer 2<br/>
+      <br/>
+      Standard-Event-Typen:<br/>
+      <br/>
+      	Zyklische Events:<br/>
+      		1 =	IPO und 		IPO-Takt<br/>
+      		15 =	IPO2<br/>
+      		47 =	IPO3<br/>
+      		48 =	IPO4<br/>
+      <br/>
+      	Azyklische Events, bezogen auf Achsbewegungen:<br/>
+      		 2 =	GEO_AXIS_START und	Geo-Achse startet oder ändert die Richtung<br/>
+      		18 =	GEO_AXIS_STARTa		siehe VDI-Nahtstelle NCK-&gt;PLC kanalspezifisch<br/>
+      						DBB40 Bit6 und Bit7 (Bit6 = Fahrbefehl+, Bit7 = Fahrbefehl-)<br/>
+      						Ereignis tritt ein, wenn ein Bit neu gesetzt wird.<br/>
+      		 3 =	GEO_AXIS_STOP und 	Geo-Achse stoppt<br/>
+      		19 =	GEO_AXIS_STOPa,		siehe VDI-Nahtstelle NCK-&gt;PLC kanalspezifisch<br/>
+      						DBB40 Bit6 und Bit7 (Bit6 = Fahrbefehl-, Bit7 = Fahrbefehl+)<br/>
+      						Ereignis tritt ein, wenn beide Bits auf 0 gesetzt werden und eines davon zuvor aktiv war.<br/>
+      		 4 =	MA_AXIS_START,		Eine Maschinenachse des Kanals startet oder ändert die Richtung<br/>
+      						siehe VDI-Nahtstelle NCK-&gt;PLC achsspezifisch<br/>
+      						DBB64 Bit6 und Bit7 (Bit6 = Fahrbefehl-, Bit7 = Fahrbefehl+)<br/>
+      						Ereignis tritt ein, wenn ein Bit neu gesetzt wird.<br/>
+      		 5 =	MA_AXIS_STOP,		Eine Maschinenachse stoppt<br/>
+      						siehe VDI-Nahtstelle NCK-&gt;PLC achsspezifisch<br/>
+      						DBB64 Bit6 und Bit7 (Bit6 = Fahrbefehl-, Bit7 = Fahrbefehl+)<br/>
+      						Ereignis tritt ein, wenn beide Bits auf 0 gesetzt werden und eines davon zuvor aktiv war.<br/>
+      <br/>
+      	Azyklische Events, bezogen auf Kanal-Beeinflussung:<br/>
+      		 6 =	NC_START 		NC-Start (wenn in NC erkannt)<br/>
+      		 7 =	NC_STOP			NC-Stop (wenn in NC erkannt, Achsen verfahren ggf. noch)<br/>
+      		60 =	CHAN_STATE		Der Kanal-Zustand ändert sich (ab SW $[[SW991806]])<br/>
+      		61 =	PROG_STATE		Der Programm-Zustand ändert sich (ab SW $[[SW991806]])<br/>
+      <br/>
+      	Azyklische Events, bezogen auf Teileprogrammbearbeitung:<br/>
+      		 8 =	BLOCK_BEG_1 u.		Satzanfang (erster IPO-Takt eines Satzes) ohne Zwischensätze, alle Programmebenen<br/>
+      		52 =	BLOCK_BEG_1a		<br/>
+      <br/>
+      		 9 =	BLOCK_BEG_2 u.		Satzanfang (erster IPO-Takt eines Satzes) mit Zwischensätzen, alle Programmebenen<br/>
+      		20 =	BLOCK_BEG_2a		<br/>
+      		56 =	BLOCK_BEG_2b		<br/>
+      		57 =	BLOCK_BEG_2c		<br/>
+      		10 =	BLOCK_BEG_3		Satzanfang (erster IPO-Takt eines Satzes) ohne Zwischensätze, nur Hauptprogrammebene und MDA-Ebene<br/>
+      <br/>
+      		16 =	BLOCK_BEG_S1 u.		Satzanfang (Suchlauf mit Berechnung) mit Zwischensätze, alle Programmebenen<br/>
+      		22 =	BLOCK_BEG_S1a		<br/>
+      		11 =	BLOCK_END_1		Satzende (erster IPO-Takt eines Satzes) ohne Zwischensätze, alle Programmebenen<br/>
+      <br/>
+      		12 =	BLOCK_END_2 u.		Satzende (erster IPO-Takt eines Satzes) mit Zwischensätze, alle Programmebenen<br/>
+      		21 =	BLOCK_END_2a		<br/>
+      		13 =	BLOCK_END_3		Satzende (erster IPO-Takt eines Satzes) ohne Zwischensätze, nur Hauptprogrammebene und MDA-Ebene<br/>
+      <br/>
+      		17 =	BLOCK_END_S1		Satzende (Suchlauf mit Berechnung) mit Zwischensätze, alle Programmebenen<br/>
+      <br/>
+      		31 =	BLOCK_END_P1		Satzende (Vorlauf)<br/>
+      		32 =	BLOCK_END_P1a		Satzende (Vorlauf)<br/>
+      <br/>
+      		44 =	BLOCK_END_I1		Satzende (Interpreter)<br/>
+      <br/>
+      		43 =	NC_LEVEL_CHG		Ebenenwechsel bei der Teileprogrammbearbeitung<br/>
+      <br/>
+      	Azyklische Events, ausgelöst durch Teileprogrammbefehl WRTPR<br/>
+      		23 =	PROT_TXT_REQ		Protokollierung eines WRTPR-Textes<br/>
+      		24 =	PROT_TXT_REQ_S1		Protokollierung eines WRTPR-Textes (Suchlauf mit Berechnung)<br/>
+      		33 =	PROT_TXT_REQ_P1		Protokollierung eines WRTPR-Textes (Vorlauf)<br/>
+      <br/>
+      	Azyklische Events, ausgelöst durch Teileprogrammbefehl MSG<br/>
+      		67 =	PROG_MSG 		MSG im Teileprogramm<br/>
+      <br/>
+      	Azyklische Events, ausgelöst durch den Protokolliervorgang selbst<br/>
+      		14 =	PROT_FILE_BEG		Start der Protokollierung bezogen auf einen Protokollfile.<br/>
+      		29 =	PROT_START_TRIG		Start-Trigger hat ausgelöst<br/>
+      		30 =	PROT_STOP_TRIG		Stop-Trigger  hat ausgelöst<br/>
+      		46 =	PROT_START		Start der Protokollierung<br/>
+      		45 =	PROT_STOP 		Stop  der Protokollierung<br/>
+      <br/>
+      	Azyklische Events, ausgelöst durch Tasten<br/>
+      		42 =	CANCEL_BUTTON		Die Cancel-Taste wurde gedrückt<br/>
+      <br/>
+      	Azyklische Events, ausgelöst durch Alarme<br/>
+      		41 =	ALARM_REPORTED		Ein Alarm ist aufgetreten <br/>
+      <br/>
+      	Azyklische Events, ausgelöst durch Synchronaktion<br/>
+      		36 =	SYNC_ACT_ACTIV		Synchronaktion Aktivierung<br/>
+      		37 =	SYNC_ACT_DEACT		Synchronaktion Deaktivierung<br/>
+      		38 =	SYNC_ACT_FIRE		Synchronaktion löst aus<br/>
+      <br/>
+      	Azyklische Events, ausgelöst durch Werkzeug<br/>
+      		25 =	TOOL_CHANGE		Werkzeug-Wechsel<br/>
+      		27 =	TOOL_CHANGE_S1		Werkzeug-Wechsel  (Suchlauf mit Berechnung)<br/>
+      		34 =	TOOL_CHANGE_P1		Werkzeug-Wechsel  (Vorlauf)<br/>
+      		26 =	CUTTEDGE_CHANGE		Schneiden-Wechsel<br/>
+      		28 =	CUTTEDGE_CHANGE_S1 	Schneiden-Wechsel (Suchlauf mit Berechnung)<br/>
+      		35 =	CUTTEDGE_CHANGE_P1 	Schneiden-Wechsel (Vorlauf)<br/>
+      <br/>
+      	Azyklische Events, ausgelöst durch PLC<br/>
+      		39 =	PLC_OB_1 		PLC OB1  gestartet<br/>
+      		40 =	PLC_OB40 		PLC OB40 gestartet<br/>
+      
+      <div><a name="2422"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>asciiMode</b></td>
+            <td colspan="3" style="border:1px solid black">Datenformat der Protokollierung</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Datenformat, in dem protokolliert werden soll<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0: Aufzeichnung der Daten binär mit festem Alignment der Daten auf 8 Bytes<br/>
+               1: Aufzeichnung der Daten in ASCII<br/>
+               2: Aufzeichnung der Daten binär mit variablem Alignment der Daten<br/>
+               3: Aufzeichnung der Daten binär mit variablem Alignment der Daten, wobei zwei zeitlich folgende Datensätze des gleichen Events
+               optimiert werden. In diesem Fall wird nur der Header protokolliert, nicht aber die eigentlichen Daten<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>3
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/asciiMode[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2956"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>countActivated</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl (16Bit) des Auftretens des Events</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>13
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl (16 Bit), wie oft das Event aufgetreten ist.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/countActivated[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4028"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>countActivatedL</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl (32 Bit) wie oft das Event aufgetreten ist.</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>20
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl (32) wie oft das Event aufgetreten ist.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/countActivatedL[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="616"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>dataListIndex</b></td>
+            <td colspan="3" style="border:1px solid black">Index der Datenliste</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Index der zu verwendenden Datenliste.<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>alle gültigen Spalten im Baustein ETPD - 1<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/dataListIndex[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2958"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>dataProtok</b></td>
+            <td colspan="3" style="border:1px solid black">Geschriebene Bytes im Fifo-File</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>15
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl von Bytes, die in den Fifo-File eingetragen wurden.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/dataProtok[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2957"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>dataUploaded</b></td>
+            <td colspan="3" style="border:1px solid black">Gelesene Bytes im Fifo-File</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>14
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl von Bytes, die bereits aus dem Fifo-File hochgeladen wurden.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/dataUploaded[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="611"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>eventActive</b></td>
+            <td colspan="3" style="border:1px solid black">Zustand des Events</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Zustand des Events<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0: nicht aktiv<br/>
+               1: aktiv<br/>
+               2: deaktivieren und Datensatz freigeben<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>2
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/eventActive[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="622"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>eventActiveStatus</b></td>
+            <td colspan="3" style="border:1px solid black">Zustand</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>12
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">zur Diagnose: Zustand des Events<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0: aktiviert<br/>
+               1: nicht aktiviert<br/>
+               2: nicht aktivierbar, weil Summe der Variablenlängen zu groß ist<br/>
+               3: nicht aktivierbar, weil die Ressourcen zu knapp ausgelegt sind<br/>
+               4: nicht aktivierbar, weil der Protokollfile nicht angelegt werden kann<br/>
+               100-...: nicht aktivierbar, weil die Variablenspezifikation mit dem Index (value-100) falsch ist<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/eventActiveStatus[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4029"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>headerType</b></td>
+            <td colspan="3" style="border:1px solid black">Art des Headers im Datensatz</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>21
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Art des Headers im Datensatz<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0: kein Header<br/>
+               1: kurzer Header mit folgendem Aufbau:<br/>
+                  UDword dataStamp;                       // Kennzeichnung des Datensatzes durch eine fortlaufende Nr<br/>
+                  UWord  event;                           // Typ des aufgetretenen Events eintragen<br/>
+                  UWord  protCount;                       // das wievielte mal das Event protokolliert wird<br/>
+               2: langer Header mit folgendem Aufbau: <br/>
+                  UDword dataStamp;                       // Kennzeichnung des Datensatzes durch eine fortlaufende Nr<br/>
+                  UWord  event;                           // Typ des aufgetretenen Events eintragen<br/>
+                  UByte  chan;                            // Kanal in dem das Event aufgetreten ist<br/>
+                  UByte  dummy1;                          // noch frei<br/>
+                  UDword protCount;                       // das wievielte mal das Event protokolliert wird<br/>
+                  UDword dummy2;                          // noch frei<br/>
+               3: mittellanger Header, nicht-alligned mit folgendem Aufbau: <br/>
+                  UDword dataStamp;                       // Kennzeichnung des Datensatzes durch eine fortlaufende Nr<br/>
+                  UWord  event;                           // Typ des aufgetretenen Events eintragen<br/>
+                  UByte  chan;                            // Kanal in dem das Event aufgetreten ist<br/>
+                  UByte  dummy1;                          // noch frei<br/>
+                  UDword protCount;                       // das wievielte mal das Event protokolliert wird<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>1
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>3
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/headerType[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="620"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>maxElementsFastFifoUsed</b></td>
+            <td colspan="3" style="border:1px solid black">max. erreichter Füllstand Fifo-Puffer</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>10
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">zur Diagnose: maximal erreichte Anzahl von Einträgen des Fifo-Puffers<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/maxElementsFastFifoUsed[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="615"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>maxFileLength</b></td>
+            <td colspan="3" style="border:1px solid black">max. Länge Protokollfile</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>5
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Maximale Länge des Protokollfiles.<br/>
+               Werte kleiner 1024 werden als KB interpretiert, größere als Bytes. Die minimal zulässige Länge beträgt 3000.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/maxFileLength[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="618"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>maxGrossFileLengthUsed</b></td>
+            <td colspan="3" style="border:1px solid black">max. erreichte Protokollfilelänge</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>8
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">zur Diagnose: maximale Bruttogröße, die der Protokollfile angenommen hat<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/maxGrossFileLengthUsed[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="619"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>maxNetFileLengthTooSmall</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl Bytes Protokollfile zu klein</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>9
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">zur Diagnose: Anzahl von (Netto-)Bytes, um die der Protokollfile zu klein ist<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/maxNetFileLengthTooSmall[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="621"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numElementsFastFifoTooSmall</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl Einträge Fifo-Puffer zu klein</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>11
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">zur Diagnose: Anzahl der Einträge, um die der Fifo-Puffer zu klein ist<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/numElementsFastFifoTooSmall[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="614"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>protocolFilename</b></td>
+            <td colspan="3" style="border:1px solid black">Protokoll-Filename</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Protokoll-Filename inklusive Pfad<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/protocolFilename[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3722"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>resultPar1</b></td>
+            <td colspan="3" style="border:1px solid black">Allgemeiner Ergebniswert</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>18
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Allgemeiner Ergebniswert, die Bedeutung ist Event-abhängig.<br/>
+               SYNC_ACT_ACTIVATE, SYNC_ACT_DEACTIVATE, und SYNC_ACT_FIRE: ID der Synchron-Aktion.<br/>
+               Alle nicht genannten Events versorgen nicht diesen Ergebniswert.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/resultPar1[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="613"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>skip</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl Events zu überspringen</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl von Events, die übersprungen werden sollen<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/skip[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3143"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>startTriggerLock</b></td>
+            <td colspan="3" style="border:1px solid black">Bearbeitungssperre für den Start-Trigger</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>16
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Einstellung, ob bei diesem Ereignis der Start-Trigger nicht bearbeitet werden soll<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0: Trigger wird bearbeitet<br/>
+               1: Trigger wird nicht bearbeitet<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>1
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/startTriggerLock[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3144"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>stopTriggerLock</b></td>
+            <td colspan="3" style="border:1px solid black">Bearbeitungssperre für den Stop-Trigger</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>17
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Einstellung, ob bei diesem Ereignis der Stop-Trigger nicht bearbeitet werden soll<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0: Trigger wird bearbeitet<br/>
+               1: Trigger wird nicht bearbeitet<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>1
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/stopTriggerLock[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3775"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>suppressProtLock</b></td>
+            <td colspan="3" style="border:1px solid black"><a href="../sinumerik_btss_N/N_S.html#3170">traceProtocolLock</a> wirkt nicht
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>19
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Hebt die Wirkung von <a href="../sinumerik_btss_N/N_S.html#3170">traceProtocolLock</a> auf<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0: Die Sperre wirkt<br/>
+               1: Die Sperre ist für dieses Event aufgehoben<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>1
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/suppressProtLock[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="612"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>timePeriod</b></td>
+            <td colspan="3" style="border:1px solid black">Zeitbasis</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Event (siehe Bausteinkopf)
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>siehe Bausteinkopf
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Zeitbasis bei zyklischen Events<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>Zeit (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ProtocolEvent/timePeriod[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

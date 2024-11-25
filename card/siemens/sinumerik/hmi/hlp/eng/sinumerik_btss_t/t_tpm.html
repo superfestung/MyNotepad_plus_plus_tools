@@ -1,0 +1,76 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block T/TPM: Magazine data: Multiple assignment of location data</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block T/TPM: Magazine data: Multiple assignment of location data</h1>
+         </div>
+      </div>The data module TPM is organized as a 2-dimensional variable array.<br/>
+      ParameterNo = 1: Specifies the magazine number with which a relationship exists.<br/>
+      ParameterNo = 2: Distance (in locations) between the internal location and the magazine change position (cf. magazine number
+      for 1st parameter) with which a relationship will be established.<br/>
+      It contains information about possible multiple assignments. The column index is the magazine number. <br/>
+       <br/>
+      For location P with location number p in magazine MP (= column index) <a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> times the multiple assignments to other magazines which are possible are stored with the associated distances to the change
+      positions in each of the magazines. The offset for row index zi for a location number p is calculated according to the following
+      rule: zi = (p-1) * <a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> * <a href="../sinumerik_btss_N/N_Y.html#349">numPlaceMultiParams</a> + ParameterNo.<br/>
+      <br/>
+      Determining the distance between the load position and the change position:<br/>
+      <br/>
+      The value 9999 (magazine no. load position) must be specified for the variable <a href="../sinumerik_btss_T/T_TPM.html#606">multiPlace</a> in the column. The LocationNo (p) for the line is the number of the load position. The line for the first assignment is calculated
+      with ParameterNo = 1. When reading the variable, the system can thus read the magazine number linked to the intended change
+      position. If this magazine number is correct, it is possible to read the number of locations between the load position and
+      the change position with the variable <a href="../sinumerik_btss_T/T_TPM.html#606">multiPlace</a> with the next higher line number. If the magazine number read was incorrect, the following magazine assignment must be read
+      with the line number increased by <a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a>.<br/>
+      This procedure has to be repeated a max. of <a href="../sinumerik_btss_N/N_Y.html#349">numPlaceMultiParams</a> times until the desired relationship has been found.<br/>
+      
+      <div><a name="606"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>multiPlace</b></td>
+            <td colspan="3" style="border:1px solid black">Distance to change position</td>
+            <td width="20%" style="border:1px solid black">diverse, siehe Variablenbeschreibung</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>Number int. magazine
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Calculate value<br>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> * <a href="../sinumerik_btss_N/N_Y.html#349">numPlaceMultiParams</a> * <a href="../sinumerik_btss_T/T_TM.html#199">magNrPlaces</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">The current magazine position is required for tool change, loading and unloading.<br/>
+               This position relates to the magazine zero point specified by the machine manufacturer.<br/>
+               As a rule it is at the change position.<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>o ParameterNo = 1: Distance to the change position of magazine "n" to location "m" of the first internal magazine (9999).<br/>
+               o ParameterNo = 2: Distance of the change position of magazine "n" to the location "m" of the second internal magazine (loading
+               magazine,9998)<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>(LocationNo - 1) * <a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> * <a href="../sinumerik_btss_N/N_Y.html#349">numPlaceMultiParams</a> + (AssignmentNo -1) * <a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> + ParameterNo<br/>
+               In this case, numPlaceMulti and numPlaceMultiParams are other OPI variables from module Y.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/Magazine/multiPlace[u&lt;Tool Area&gt;, c&lt;Column Index&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

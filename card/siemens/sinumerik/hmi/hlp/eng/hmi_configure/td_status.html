@@ -1,0 +1,185 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Overview and status</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Overview and status</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Introduction</h3>
+      <p>Pairing is required to establish a trustworthy connection between an IPC and an NCU or several NCUs. This is necessary to use security functions in a distributed system because it enables protection of confidentiality and integrity in communication between the IPC and NCU. This makes misuse of data of the NCU simply by replacing the IPC impossible.</p>
+      <ul>
+        <li>
+          <p>Only one IPC can enter into a trust relationship with one <b>(1:1)</b> or more NCU(s)<b> (1:N)</b>. </p>
+        </li>
+      </ul>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Pairing for IPC systems only</h4>
+            <p class="safety">Pairing only has to be performed if an IPC is installed in your SINUMERIK system.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Notice</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Functional restrictions without pairing</h4>
+            <p class="safety">If you do <b>not</b> establish a relationship of trust between the two components in a distributed system comprising an IPC and NCU in advance, you must expect the following functional restrictions:</p>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">The SINUMERIK user management cannot be used to good effect: Since the IPC defines the roles and rights of the users for the NCU, a trusted connection between the two components is important to establish a secure system.</p>
+              </li>
+            </ul>
+            <p class="safety">For this reason, always previously pair the IPC with the trusted NCU to be able to use these SINUMERIK security functions.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Only one instance of SINUMERIK Operate</h4>
+            <p class="safety">In a distributed system with IPC and NCU, only one instance of SINUMERIK Operate is permitted. </p>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">Deactivate all running instances of SINUMERIK Operate on the NCU before pairing the NCU.</p>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Requirement</h3>
+      <ul>
+        <li>
+          <p>With active user management: You have the role "Security Admin" or access level 2 (service).<br />OR</p>
+        </li>
+        <li>
+          <p>Without active user management: You have at least access level 3 (user).</p>
+        </li>
+        <li>
+          <p>SINUMERIK Operate on the IPC must already have a connection to the NCU or NCUs to be paired. </p>
+        </li>
+      </ul>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Configuring NCU(s)</h3>
+      <h4 class="Blocklabel">Configuring an NCU via SINUMERIK Operate</h4>
+      <p>If you want to pair an NCU with the IPC, you can configure the NCU via SINUMERIK Operate:</p>
+      <ol>
+        <li>
+          <p>In the "Setup" operating area, select the softkeys "HMI > vertical progress bar > NCU link" and enter the IP address or the DNS name of the NCU.</p>
+        </li>
+        <li>
+          <p>Then start the pairing overview page via the softkeys "Security > Trusted devices".</p>
+        </li>
+      </ol>
+      <h4 class="Blocklabel">Configuring multiple NCUs via mmc.ini</h4>
+      <p>If you want to pair several NCUs with the IPC, you can configure the NCUs via the "mmc.ini" file:</p>
+      <p>You will find the file "mmc.ini" at the following path:</p>
+      <p>
+        <code>C:\Program Files (x86)\Siemens\MotionControl\user\sinumerik\hmi\cfg\mmc.ini</code>
+      </p>
+      <p class="comment">or</p>
+      <p class="comment">
+        <code>C:\Program Files (x86)\Siemens\MotionControl\oem\sinumerik\hmi\cfg\mmc.ini</code>
+      </p>
+      <p class="comment">The following is an example configuration of multiple NCUs in the "mmc.ini".</p>
+      <ol>
+        <li class="comment">
+          <p class="comment">Enter the required data for the NCUs in the "mmc.ini" file, as shown in the example.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Then start the pairing overview page via the softkeys "Security > Trusted devices".</p>
+        </li>
+      </ol>
+      <a id="table_24521ecd-8548-0a52-8c9d-ee6527f54f56">
+      </a> <a id="table_0"></a> <a id="table_24521ecd-8548-0a52-8c9d-ee6527f54f56"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_sourcecode" border="1" id="ENE"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left" class="comment">Example configuration of 3 NCUs via the "mmc.ini" file</p></th></tr><tr valign="top"><td>[Global]
+NcddeMachineNames=NCU1,NCU2,NCU3
+NcddeDefaultMachineName=NCU1
+
+[NCU1]
+ADDRESS0=192.168.214.1,LINE=14,NAME=/NC,SAP=040d,PROFILE=CLT1__CP_L4_INT
+ADDRESS1=192.168.214.1,Line=20,NAME=/PLC,MAX_BUB_CYCLICS=1000 
+ADDRESS2=192.168.214.1,LINE=14,NAME=/CP,SAP=0502,PROFILE=CLT1__CP_L4_INT
+ADDRESS10=192.168.214.1,LINE=14,NAME=/DRIVE_00_000,SAP=0201,SUBNET=0000-00000000:000,PROFILE=CLT1__CP_L4_INT
+ADDRESS11=192.168.214.1,LINE=14,NAME=/DRIVE_03_003,SAP=0900,PROFILE=CLT1__CP_L4_INT
+
+[NCU2]
+ADDRESS0=192.168.214.2,LINE=14,NAME=/NC,SAP=040d,PROFILE=CLT1__CP_L4_INT
+ADDRESS1=192.168.214.2,Line=20,NAME=/PLC,MAX_BUB_CYCLICS=1000 
+ADDRESS2=192.168.214.2,LINE=14,NAME=/CP,SAP=0502,PROFILE=CLT1__CP_L4_INT
+ADDRESS10=192.168.214.2,LINE=14,NAME=/DRIVE_00_000,SAP=0201,SUBNET=0000-00000000:000,PROFILE=CLT1__CP_L4_INT
+ADDRESS11=192.168.214.2,LINE=14,NAME=/DRIVE_03_003,SAP=0900,PROFILE=CLT1__CP_L4_INT
+
+[NCU3]
+ADDRESS0=192.168.214.3,LINE=14,NAME=/NC,SAP=040d,PROFILE=CLT1__CP_L4_INT
+ADDRESS1=192.168.214.3,Line=20,NAME=/PLC,MAX_BUB_CYCLICS=1000 
+ADDRESS2=192.168.214.3,LINE=14,NAME=/CP,SAP=0502,PROFILE=CLT1__CP_L4_INT
+ADDRESS10=192.168.214.3,LINE=14,NAME=/DRIVE_00_000,SAP=0201,SUBNET=0000-00000000:000,PROFILE=CLT1__CP_L4_INT
+ADDRESS11=192.168.214.3,LINE=14,NAME=/DRIVE_03_003,SAP=0900,PROFILE=CLT1__CP_L4_INT</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_4"></a><h3 class="Blocktitle">Communication and status display</h3><p>In the upper part of the overview page, you can see the name and IP address of the IPC. The lower part shows the configured NCUs and their online/offline status, the encryption status of the SD card and the pairing status of the NCU.</p><a id="image_174101889035_0"></a> <img border="0" src="images/174102111243.png" width="500" height="348" alt="Pairing communication and status display"/><p class="imgtitle">Pairing communication and status display</p><p>The following status displays of the pairing status are possible:</p><a id="table_7b8fed73-813b-5fb7-14a0-4cda61350fda"></a> <a id="table_1"></a> <a id="table_7b8fed73-813b-5fb7-14a0-4cda61350fda"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="27.9%"><col width="72.1%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Pairing status</p></th><th><p type="p_table_lb" align="left">Description</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Pairing possible</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Pairing with this NCU is possible. The "Pair NCU" softkey is active.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Not in pairing mode</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Pairing with this NCU is not possible. The "Pair NCU" softkey is not active.</p><p type="p_table_l" align="left">This status is displayed when the installed software version of the NCU is too old so that pairing cannot be performed as a function or if the NCU is offline.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Paired</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The IPC is already paired with this NCU. The "Unpair NCU" softkey is active.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Paired to different IPC</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">This NCU has already been paired with another IPC. You must first unpair the <a href="td_unpair.html">NCU from another IPC</a> before you can pair the NCU with the present IPC again. </p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Paired but replaced</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">This NCU was originally correctly configured and paired. However, in the meantime the paired NCU was replaced. The NCU is offline. You have the option of deleting the NCU, which in the meantime has been replaced, from the overview using the "Delete entry" button.</p></td></tr></table></p><p></p></div>
+  </body>
+</html>

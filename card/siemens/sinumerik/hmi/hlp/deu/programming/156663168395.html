@@ -1,0 +1,69 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Zylindermanteltransformation einschalten (TRACYL): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Zylindermanteltransformation einschalten (TRACYL): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Programmstruktur</h4>
+      <p>Ein Teileprogramm zum Fräsen einer Nut mit TRACYL-Transformation 513 (TRACYL mit Nutwandkorrektur) besteht in der Regel aus folgenden Schritten:</p>
+      <ol>
+        <li>
+          <p>Werkzeug anwählen.</p>
+        </li>
+        <li>
+          <p>TRACYL anwählen.</p>
+        </li>
+        <li>
+          <p>Passende Koordinatenverschiebung (FRAME) anwählen.</p>
+        </li>
+        <li>
+          <p>Positionieren.</p>
+        </li>
+        <li>
+          <p>OFFN programmieren.</p>
+        </li>
+        <li>
+          <p>WRK anwählen.</p>
+        </li>
+        <li>
+          <p>Anfahrsatz (Einfahren der WRK und Anfahren der Nutwand).</p>
+        </li>
+        <li>
+          <p>Kontur der Nutmittenlinie.</p>
+        </li>
+        <li>
+          <p>WRK abwählen.</p>
+        </li>
+        <li>
+          <p>Abfahrsatz (Ausfahren der WRK und Wegfahren von der Nutwand).</p>
+        </li>
+        <li>
+          <p>Positionieren.</p>
+        </li>
+        <li>
+          <p>TRAFOOF.</p>
+        </li>
+        <li>
+          <p>Ursprüngliche Koordinatenverschiebung (FRAME) wieder anwählen.</p>
+        </li>
+      </ol>
+      <h4 class="Blocklabel">Kontur-Offset (OFFN)</h4>
+      <p>Um mit der TRACYL-Transformation 513 Nuten zu fräsen, wird im Teileprogramm die Mittenlinie der Nut und über die Adresse OFFN<b> die halbe Nutbreite</b> programmiert.</p>
+      <p>Um eine Beschädigung der Nutwand zu vermeiden, wird OFFN erst mit angewählter Werkzeugradiuskorrektur wirksam.</p>
+      <p>Eine Änderung von OFFN innerhalb des Teileprogramms ist möglich. Damit kann die Nutmittenlinie aus der Mitte verschoben werden:<b> </b></p>
+      <a id="image_793561099_0">
+      </a> <img border="0" src="images/165812018571.png" width="246" height="204"/><a id="table_"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_legend" border="0"><colgroup><col width="6.9%"><col width="93.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">①</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">OFFN</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">②</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Programmierte Bahn</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">OFFN sollte mindestens so groß wie der Werkzeugradius sein, um eine Beschädigung der gegenüberliegenden Nutwand auszuschließen.</p></td></tr></table><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">OFFN mit TRACYL wirkt sich anders aus als ohne TRACYL. Da OFFN auch ohne TRACYL bei aktiver WRK eingerechnet wird, sollte OFFN nach TRAFOOF wieder zu Null gesetzt werden.</p></td></tr></table><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Achtung</b></td></tr><tr><td><h4 class="Blocklabel">Wirkung von OFFN ist vom Transformationstyp abhängig</h4><p class="safety">Bei der TRACYL-Transformation 513 (TRACYL mit Nutwandkorrektur) wird für OFFN die halbe Nutbreite programmiert.</p><p class="safety">Bei der TRACYL-Transformation 512 (TRACYL ohne Nutwandkorrektur) wirkt der Wert von OFFN dagegen als Aufmass zur WRK.</p></td></tr></table><h4 class="Blocklabel">Werkzeugradiuskorrektur (WRK)</h4><p>Bei der TRACYL-Transformation 513 wird die WRK nicht relativ zur Nutwand, sondern zur programmierten Mitte der Nut eingerechnet. Damit das Werkzeug links von der Nutwand fährt, ist statt G41 die Anweisung G42 zu programmieren oder der Wert von OFFN mit negativem Vorzeichen anzugeben.</p><h4 class="Blocklabel">Werkzeugdurchmesser</h4><p>Mit TRACYL und einem Werkzeug, dessen Durchmesser kleiner als die Nutbreite ist, wird nicht dieselbe Nutwandgeometrie erzeugt, wie mit einem Werkzeug, dessen Durchmesser gleich der Nutbreite ist. Zur Verbesserung der Genauigkeit wird empfohlen, den Werkzeugdurchmesser nur wenig kleiner als die Nutbreite zu wählen.</p><h4 class="Blocklabel">Achsnutzung</h4><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Folgende Achsen können nicht als Positionierachse bzw. Pendelachse verwendet werden:</p><ul class="safety"><li class="safety"><p class="safety">die Geometrieachse in Umfangsrichtung der Zylindermantelfläche (Y-Achse)</p></li><li class="safety"><p class="safety">die zusätzliche Linearachse bei Nutwandkorrektur (Z-Achse)</p></li></ul></td></tr></table></div>
+  </body>
+</html>

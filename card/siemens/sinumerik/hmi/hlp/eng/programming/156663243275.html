@@ -1,0 +1,46 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Activating transformation (TRAFOON)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Activating transformation (TRAFOON)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>A transformation defined with kinematic chains is activated with the predefined TRAFOON procedure. The call must be alone in a block.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Alternatively, a transformation defined with kinematic chains can also be activated via conventional NC commands, such as TRAORI or TRANSMIT. For this purpose, an appropriate value, not equal to zero, must be entered in the $NT_TRAFO_INDEX system variable.</p>
+            <p class="safety">For more information on $NT_TRAFO_INDEX see "System Variables Parameter Manual".</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>TRAFOON(&lt;Trafoname>)TRAFOON(&lt;Trafoname>,&lt;Diameter>,&lt;k>)TRAFOON(&lt;Trafoname>,&lt;γ>)<a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_c377441f-3a81-405b-b709-21228bfdf632"></a> <a id="table_0"></a> <a id="table_c377441f-3a81-405b-b709-21228bfdf632"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="20.0%"><col width="17.5%"><col width="10.0%"><col width="52.5%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>TRAFOON</code>  </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Procedure for activating a transformation defined with kinematic chains </p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>Trafoname</code><code>></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Name of the transformation data set</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">STRING</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Value range:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">All names of transformation data sets defined via $NK_NAME </p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><b>Note:</b><br />The name of the transformation data set must be unique. It must only occur once in $NT_NAME.</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>Diameter</code><code>></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Reference or working diameter (TRACYL cylinder surface transformation only)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">The value must be > 1.</p></td></tr><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>k</code><code>></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Defines the use of the slot side offset (TRACYL cylinder surface transformation only).</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">BOOL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p><p type="p_table_l" align="left"></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">FALSE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Without groove side offset</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">TRUE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">With groove side offset</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Corresponds to the TRACYL transformation type 514 (groove side offset can be programmed). If &lt;k> is not specified, the parameterized setting of bit 10 in $NT_CNTRL[&lt;n>] applies. </p></td></tr><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;γ></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Alignment of the tool cutting edge to the circular tangent (TRAINT rotary interpolation transformation only)</p><p type="p_table_l" align="left">Angle γ is used to compensate cutting edge parameters using function CUTMODK. The actual angle of the tool cutting edge must be realized by appropriately positioning the spindle.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Value range:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">0, 180</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p><p type="p_table_l" align="left"></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The cutting edge is perpendicular to the tangent of the circle and is outside the circle (→ outside machining).</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">180</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The cutting edge is also perpendicular to the tangent of the circle and is inside the circle (→ inside machining).</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Example</h3><a id="table_8d54b2ec-435e-41b5-1403-3f8a70278da0"></a> <a id="table_1"></a> <a id="table_8d54b2ec-435e-41b5-1403-3f8a70278da0"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EPH"><colgroup><col width="25.5%"><col width="74.5%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>TRAFOON["Trans_1"]</td><td>Activates the transformation with the name Trans_1.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

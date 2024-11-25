@@ -1,0 +1,58 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Modifikation der Korrekturdaten bei drehbaren Werkzeugen aktivieren (CUTMOD, CUTMODK)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Modifikation der Korrekturdaten bei drehbaren Werkzeugen aktivieren (CUTMOD, CUTMODK)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Die Modifikation der Korrekturdaten bei drehbaren Werkzeugen wird im NC-Programm über den Sprachbefehl CUTMOD (in Verbindung mit orientierbaren Werkzeugträgern) bzw. CUTMODK (für Orientierungstransformationen, die mittels kinematischer Ketten definiert wurden) aktiviert.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Da orientierbare Werkzugträger und Orientierungstransformationen, die mittels kinematischer Ketten definiert wurden, nicht gleichzeitig aktiv sein können, kommt es nicht zu Konflikten zwischen beiden Varianten.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>
+        <code>CUTMOD = &lt;Value></code> </p>
+      <p>bzw.</p>
+      <p>
+        <code>CUTMODK = &lt;Command></code> </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Bedeutung</h3>
+      <a id="table_b8813285-ed4e-4b47-962f-5e785413d3e5">
+      </a> <a id="table_0"></a> <a id="table_b8813285-ed4e-4b47-962f-5e785413d3e5"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="15.0%"><col width="12.5%"><col width="7.5%"><col width="5.5%"><col width="59.5%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>CUTMOD</code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Funktionsaufruf in Verbindung mit orientierbaren Werkzeugträgern</p></td></tr><tr valign="top"><td rowspan="8"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Value></code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Zugewiesener Wert</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td rowspan="6"><p type="p_table_l" style="margin-top: 4px" align="left">Wert:</p></td><td><p type="p_table_r" style="margin-top: 4px" align="right">0</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Die Funktion ist deaktiviert.</p><p type="p_table_l" align="left">Die von den Systemvariablen $P_AD... gelieferten Werte sind gleich den korrespondierenden Werkzeugparametern.</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">> 0</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Die Funktion wird aktiviert, falls ein orientierbarer Werkzeugträger mit der angegebenen Nummer aktiv ist, d. h., die Aktivierung ist an einen bestimmten orientierbaren Werkzeugträger gebunden.</p><p type="p_table_l" align="left">Die von den Systemvariablen $P_AD... gelieferten Werte sind gegenüber den korrespondierenden Werkzeugparametern abhängig von der aktiven Drehung gegebenenfalls modifiziert.</p><p type="p_table_l" align="left">Die Deaktivierung des bezeichneten orientierbaren Werkzeugträgers deaktiviert die Funktion temporär, die Aktivierung eines anderen orientierbaren Werkzeugträgers deaktiviert sie permanent. Im ersten Fall wird die Funktion deshalb bei erneuter Anwahl des gleichen orientierbaren Werkzeugträgers wieder aktiviert, im zweiten Fall ist eine erneute Anwahl notwendig, auch dann, wenn zu einem späteren Zeitpunkt der orientierbare Werkzeugträger mit der angegebenen Nummer erneut aktiviert wird.</p><p type="p_table_l" align="left">Die Funktion wird durch Reset nicht beeinflusst.</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">-1</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Die Funktion wird immer aktiviert, falls ein orientierbarer Werkzeugträger aktiv ist.</p><p type="p_table_l" align="left">Beim Wechsel des Werkzeugträgers oder bei dessen Abwahl und einer späteren erneuten Anwahl muss CUTMOD nicht erneut gesetzt werden.</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">-2</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Die Funktion wird immer aktiviert, falls ein orientierbarer Werkzeugträger aktiv ist, dessen Nummer gleich der des aktuell aktiven orientierbaren Werkzeugträgers ist.</p><p type="p_table_l" align="left">Ist kein orientierbarer Werkzeugträger aktiv, ist das gleichbedeutend mit <code>CUTMOD=0</code>.</p><p type="p_table_l" align="left">Ist ein orientierbarer Werkzeugträger aktiv, ist das gleichbedeutend mit der unmittelbaren Angabe der aktuellen Werkzeugträgernummer.</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">-3</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Die Funktion wird nur aktiviert, wenn kein orientierbarer Werkzeugträger aktiv ist.</p><p type="p_table_l" align="left">Die von den Systemvariablen $P_ADT... gelieferten Werte sind gegenüber den korrespondierenden Werkzeugparametern abhängig von der aktiven Drehung gegebenenfalls modifiziert.</p><p type="p_table_l" align="left">Die Aktivierung eines bezeichneten orientierbaren Werkzeugträgers deaktiviert die Funktion.</p><p type="p_table_l" align="left">Die Funktion wird durch Reset nicht beeinflusst.</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">&lt; -3</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Werte kleiner 3 werden ignoriert. D. h., dieser Fall wird so behandelt, als wäre CUTMOD nicht programmiert.</p><p type="p_table_l" align="left"><b>Hinweis:</b><br />Dieser Wertebereich sollte nicht verwendet werden, weil er für eventuelle spätere Erweiterungen reserviert ist.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>CUTMODK</code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Funktionsaufruf in Verbindung mit Orientierungstransformationen, die mittels kinematischer Ketten definiert wurden</p></td></tr><tr valign="top"><td rowspan="6"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Command></code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Zugewiesenes Kommando</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">STRING</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Wert:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>"NEW"</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Es werden die für die "Modifikation der Korrekturdaten" relevanten Zustände einer aktiven mit kinematischen Ketten definierten Transformation, der Name der Transformation und der aktuelle Konturframe abgespeichert.</p><p type="p_table_l" align="left"><b>Hinweis:</b><br />Dieses Kommando ist nur zulässig, wenn eine geeignete Transformation (TRAORI_DYN, TRAORI_STAT oder TRAANG_K) aktiv ist.</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>"OFF"</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Schaltet die aktive "Modifikation der Korrekturdaten" aus. Die zuvor mit "NEW“ abgelegten Daten bleiben erhalten.</p><p type="p_table_l" align="left"><b>Hinweis:</b><br />Dieses Kommando ist auch zulässig, wenn CUTMODK nicht aktiv ist. Es bleibt dann ohne Auswirkung. Ein eventuell vorhandener Datensatz zur "Modifikation der Korrekturdaten" bleibt erhalten.</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>"ON"</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Mit diesem Kommando wird die "Modifikation der Korrekturdaten" mit einem zuvor mit dem Kommando "NEW" gespeicherten Datensatz erneut aktiviert.</p><p type="p_table_l" align="left">Ist bei Ausführung dieses Kommandos eine Transformation mit dem Namen des gespeicherten Datensatzes aktiv, wird die "Modifikation der Korrekturdaten" sofort wirksam. Andernfalls wird die Aktivierung verzögert, bis eine aktive Transformation aktiviert wird.</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>"CLEAR"</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Schaltet wie das Kommando "OFF" die "Modifikation der Korrekturdaten" aus und löscht zusätzlich den abgespeicherten Datensatz.</p><p type="p_table_l" align="left"><b>Hinweis:</b><br />Dieses Kommando ist auch zulässig, wenn CUTMODK nicht aktiv ist.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><h4 class="Blocklabel">SD42984 $SC_CUTDIRMOD </h4><p class="safety">Die über den Befehl CUTMOD bzw. CUTMODK aktivierbare Funktion ersetzt die über das Settingdatum SD42984 $SC_CUTDIRMOD aktivierbare Funktion. Diese Funktion steht jedoch weiterhin unverändert zur Verfügung. Da es aber nicht sinnvoll ist, beide Funktionen parallel zu nutzen, kann sie nur aktiviert werden, wenn CUTMOD gleich Null und CUTMODK gleich dem Nullstring ist.</p></td></tr></table></div>
+    <p>Siehe auch:<br />    <a href="156663418891.html">Modifikation der Korrekturdaten bei drehbaren Werkzeugen aktivieren (CUTMOD, CUTMODK): Weitere Informationen</a><br />    <a href="156663427723.html">Modifikation der Korrekturdaten bei drehbaren Werkzeugen aktivieren (CUTMOD): Beispiel</a><br />    <a href="156663408907.html">Orientierungen berechnen (ORISOLH)</a></p>
+  </body>
+</html>

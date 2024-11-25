@@ -1,0 +1,35 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Orientierungsarten relativ zur Bahn</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Orientierungsarten relativ zur Bahn</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Mit dieser erweiterten Funktion wird die relative Orientierung nicht nur am Satzende, sondern über den gesamten Bahnverlauf erreicht. Es wird die im Vorgängersatz erreichte Orientierung mittels Großkreisinterpolation in die programmierte Endorientierung überführt. Grundsätzlich gibt es zwei Möglichkeiten die gewünschte Orientierung relativ zur Bahn zu programmieren: </p>
+      <ol>
+        <li>
+          <p>Die Werkzeugorientierung als auch die Drehung des Werkzeugs wird mit ORIPATH, ORPATHTS relativ zur Bahn interpoliert.</p>
+        </li>
+        <li>
+          <p>Der Orientierungsvektor wird wie bisher üblich programmiert und interpoliert. Mit ORIROTC wird die Drehung des Orientierungsvektors relativ zur Bahntangente angestellt.</p>
+        </li>
+      </ol>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>Die Interpolationsart der Orientierung und der Drehung des Werkzeugs wird programmiert mit:</p>
+      <a id="table_6bf0f04d-6514-4900-a901-9bc5f149e164">
+      </a> <a id="table_0"></a> <a id="table_6bf0f04d-6514-4900-a901-9bc5f149e164"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="34.0%"><col width="66.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... ORIPATH</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Bahnrelative Orientierung</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... ORIPATHS</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Bahnrelative Orientierung mit Glättung des Orientierungsverlaufs</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... ORIROTC</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Bahnrelative Interpolation des Drehvektors</p></td></tr></table></p><p></p><p>Ein durch eine Ecke im Bahnverlauf hervorgerufener Knick der Orientierung kann mit ORIPATHS geglättet werden. Die Richtung und Weglänge der Abhebebewegung wird durch den Vektor mit den Komponenten A8 = X, B8 = Y und C8 = Z programmiert.</p><p>Mit ORIPATH/ORIPATHS können verschiedene Bezüge zur Bahntangente über die drei Winkel</p><ul><li><p>LEAD = Angabe Vorwärtswinkel bezogen auf die Bahn und Oberfläche</p></li><li><p>TILT = Angabe von Seitwärtswinkel bezogen auf die Bahn und Oberfläche</p></li><li><p>THETA = Drehwinkel</p></li></ul><p>für den gesamten Bahnverlauf programmiert werden. Zum Drehwinkel THETA können mit PO[THT] = (...) zusätzlich Polynome maximal 5. Grades programmiert werden.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><h4 class="Blocklabel">Maschinenhersteller</h4><p class="safety">Bitte beachten Sie die Angaben des Maschinenherstellers. Über projektierbare Maschinen- und Settingdaten können zur Bahnrelativen Orientierungsart weitere Einstellungen vorgenommen werden.</p><p class="safety"><b>Weitere Informationen: </b>Funktionshandbuch Transformationen</p></td></tr></table><a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><p>Die Interpolation der Winkel LEAD und TILT ist über Maschinedatum unterschiedlich einstellbar:</p><ul><li><p>Der mit LEAD und TILT programmierte Bezug der Werkzeugorientierung wird über den ganzen Satz hinweg eingehalten.</p></li><li><p>Vorwärtswinkel LEAD: Drehung um die Richtung senkrecht zur Tangente und Normalenvektor TILT: Drehung der Orientierung um den Normalenvektor.</p></li><li><p>Vorwärtswinkel LEAD: Drehung um die Richtung senkrecht zur Tangente und Normalenvektor Seitwärtswinkel TILT: Drehung der Orientierung um die Richtung der Bahntangente.</p></li><li><p>Drehwinkel THETA: Drehung des Werkzeugs um sich selbst mit einer zusätzlichen dritten Rundachse als Orientierungsachse bei Sechs-Achs-Transformation.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><h4 class="Blocklabel">Bahnrelative Orientierung zusammen mit OSC, OSS, OSSE, OSD, OST unzulässig</h4><p class="safety">Die bahnrelative Orientierungsinterpolation ORIPATH bzw. ORIPATHS und ORIOTC kann nicht zusammen mit der Glättung des Orientierungsverlaufs mit einem der G-Befehle aus der Gruppe 34 programmiert werden. Hierfür muss OSOF aktiv sein.</p></td></tr></table></li></ul></div>
+    <p>Siehe auch:<br />    <a href="156663138059.html">Bahnrelative Drehung der Werkzeugorientierung (ORIPATH, ORIPATHS, Drehwinkel)</a><br />    <a href="156663141387.html">Bahnrelative Interpolation der Werkzeugdrehung (ORIROTC, THETA)</a><br />    <a href="156663144459.html">Glättung des Orientierungsverlaufs (ORIPATHS A8=, B8=, C8=)</a></p>
+  </body>
+</html>

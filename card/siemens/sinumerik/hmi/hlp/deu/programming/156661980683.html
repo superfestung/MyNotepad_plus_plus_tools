@@ -1,0 +1,59 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Verhalten beim Umfahren von Außenecken festlegen (G450, G451, DISC)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Verhalten beim Umfahren von Außenecken festlegen (G450, G451, DISC)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Mit den Befehlen der G-Gruppe 18 (G450/G451) kann bei eingeschalteter Werkzeugradiuskorrektur (G41/G42) der Verlauf der korrigierten Werkzeugbahn beim Umfahren von Werkstück-Außenecken festgelegt werden. </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Mit G450/G451 wird auch der Anfahrweg bei aktivem KONT und Anfahrpunkt hinter der Kontur festgelegt (siehe "").</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>
+        <code>G450 [DISC=&lt;Wert>]</code>
+      </p>
+      <p>
+        <code>G451</code>
+      </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Bedeutung</h3>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="12.9%"><col width="13.6%"><col width="9.0%"><col width="11.3%"><col width="11.3%"><col width="41.7%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G450</code> </p></td><td colspan="5"><p type="p_table_l" style="margin-top: 4px" align="left">Umfahren mit Übergangskreis einschalten</p><p type="p_table_l" align="left">Mit G450 umfährt der Werkzeugmittelpunkt die Werkstück-Außenecke auf einem Kreisbogen mit Werkzeugradius.</p></td></tr><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>DISC</code> </p></td><td colspan="5"><p type="p_table_l" style="margin-top: 4px" align="left">Flexible Programmierung der Kreisbahn bei G450 (optional)</p><p type="p_table_l" align="left">Mit G450 können keine scharfen Außenkonturecken entstehen, weil durch den Übergangskreis die Werkzeugmittelpunktsbahn so geführt wird, dass die Werkzeugschneide auf der Außenecke (programmierte Position) stillsteht. Sollen mit G450 trotzdem scharfe Außenecken bearbeitet werden, kann mit der Adresse DISC eine Überhöhung programmiert werden. Dadurch wird aus dem Übergangskreis ein Kegelschnitt und die Werkzeugschneide hebt von der Außenecke ab.</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Wert></code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Typ:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Wertebereich:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">0, 1, 2, ... 100</p></td></tr><tr valign="top"><td colspan="2" rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Bedeutung:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Übergangskreis</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">100</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Schnittpunkt der Äquidistanten (theoretischer Wert)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G451</code> </p></td><td colspan="5"><p type="p_table_l" style="margin-top: 4px" align="left">Umfahren mit Schnittpunkt der Äquidistanten einschalten</p><p type="p_table_l" align="left">Mit G451 fährt der Werkzeugmittelpunkt den Schnittpunkt der beiden Äquidistanten an, die im Abstand Werkzeugradius zur programmierten Kontur liegen. Das Werkzeug schneidet in der Werkstückecke frei.</p><p type="p_table_l" align="left">G451 gilt nur für Geraden und Kreise.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">DISC wirkt nur mit Aufruf von G450, kann allerdings in einem vorherigen Satz ohne G450 programmiert werden. Beide Befehle sind modal wirksam.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Beispiel</h3><p>Im folgenden Beispiel wird bei allen Außenecken ein Übergangsradius eingefügt (entsprechend der Programmierung des Eckenverhaltens in Satz N30). Hierdurch vermeidet man, dass das Werkzeug zum Richtungswechsel stehen bleiben muss und freischneidet.</p><a id="image_782745995_0"></a> <img border="0" src="images/167291065227.png" width="340" height="227"/><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EBG"><colgroup><col width="43.4%"><col width="56.6%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 G17 T1 G0 X35 Y0 Z0 F500</td><td>; Startbedingungen</td></tr><tr valign="top"><td>N20 G1 Z-5</td><td>; Werkzeug zustellen.</td></tr><tr valign="top"><td>N30 G41 KONT <b>G450</b> X10 Y10</td><td>; WRK mit An-/Abfahrmodus KONT und <b>Eckenverhalten G450</b> <b>einschalten</b>.</td></tr><tr valign="top"><td>N40 Y60</td><td>; Fräsen der Kontur.</td></tr><tr valign="top"><td>N50 X50 Y30</td><td> </td></tr><tr valign="top"><td>N60 X10 Y10</td><td> </td></tr><tr valign="top"><td>N80 G40 X-20 Y50</td><td>; Korrekturbetrieb ausschalten, Wegfahren auf Übergangskreis.</td></tr><tr valign="top"><td>N90 G0 Y100</td><td> </td></tr><tr valign="top"><td>N100 X200 M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+    <p>Siehe auch:<br />    <a href="156661985035.html">Verhalten beim Umfahren von Außenecken festlegen (G450, G451, DISC): Weitere Informationen</a><br />    <a href="156661962891.html">Werkzeugradiuskorrektur ein-/ausschalten (G40, G41, G42, OFFN)</a></p>
+  </body>
+</html>

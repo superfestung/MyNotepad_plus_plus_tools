@@ -1,0 +1,56 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Prevent program position for SERUPRO (IPTRLOCK, IPTRUNLOCK): Further Information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Prevent program position for SERUPRO (IPTRLOCK, IPTRUNLOCK): Further Information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Further information</h3>
+      <h4 class="Blocklabel">Acquiring and finding untraceable sections</h4>
+      <p>Untraceable program sections are identified with language commands "IPTRLOCK" and "IPTRUNLOCK". </p>
+      <p>Command "IPTRLOCK" freezes the interruption pointer at a single block executable in the main run (SB1). This block will be referred to as the hold block below. If the program is aborted after "IPTRLOCK", this hold block can be searched for from the HMI user interface. </p>
+      <h4 class="Blocklabel">Continuing from the current block</h4>
+      <p>The interruption pointer is placed on the current block with "IPTRUNLOCK" as the interruption point for the following program section.</p>
+      <p>Once the search target is found a new search target can be repeated with the hold block.</p>
+      <p>An interrupt pointer edited by the user must be removed again via the HMI.</p>
+      <h4 class="Blocklabel">Rules for nesting</h4>
+      <p>The following points govern the interaction between language commands "IPTRLOCK" and "IPTRUNLOCK" with nesting and the subprogram end:</p>
+      <ol>
+        <li>
+          <p>"IPTRLOCK" is activated implicitly at the end of the subprogram in which "IPTRUNLOCK" is called.</p>
+        </li>
+        <li>
+          <p>"IPTRLOCK" in an untraceable section has no effect.</p>
+        </li>
+        <li>
+          <p>If subprogram 1 calls subprogram 2 in an untraceable section, the whole of subprogram 2 remains untraceable. "IPTRUNLOCK" in particular has no effect in subprogram 2.</p>
+        </li>
+      </ol>
+      <p>
+        <b>Further information:</b> Function Manual Basic Functions</p>
+      <h4 class="Blocklabel">System variable</h4>
+      <p>An untraceable section can be detected in the part program with "$P_IPTRLOCK".</p>
+      <h4 class="Blocklabel">Automatic interrupt pointer</h4>
+      <p>The automatic interrupt pointer automatically defines a previously defined coupling type as untraceable. Using machine data, for the</p>
+      <ul>
+        <li>
+          <p>Electronic gear for "EGON"</p>
+        </li>
+        <li>
+          <p>Axial master value coupling for "LEADON"</p>
+        </li>
+      </ul>
+      <p>the automatic interrupt pointer is activated. If the programmed interrupt pointer and the automatic interrupt pointer that can be activated via machine data overlap, then the largest possible untraceable section will be generated.</p>
+    </div>
+  </body>
+</html>

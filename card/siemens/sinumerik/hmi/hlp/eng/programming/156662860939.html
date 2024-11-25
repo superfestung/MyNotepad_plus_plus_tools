@@ -1,0 +1,85 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Checking for protection zone violation, working area limitation and software limit switches (CALCPOSI) Additional information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Checking for protection zone violation, working area limitation and software limit switches (CALCPOSI) Additional information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">More information</h3>
+      <h4 class="Blocklabel">"Referenced" axis status</h4>
+      <p>All machine axes considered by <code>CALCPOSI()</code> must be homed.</p>
+      <h4 class="Blocklabel">Circle-related distance specifications</h4>
+      <p>All circle-related distance specifications are <b>always </b>interpreted as radius specifications. This must be taken into account particularly for transverse axes with activated diameter programming (<code>DIAMON</code>/<code>DIAM90</code>).</p>
+      <h4 class="Blocklabel">Traversing distance reduction</h4>
+      <p>If the specified traversing distance of an axis is limited, the traversing distance of the other axes is also reduced proportionally in the <code>&lt;MaxDist></code> return value. The resulting end point is therefore still on the specified path.</p>
+      <h4 class="Blocklabel">Rotary axes</h4>
+      <p>Rotary axes are only monitored when they are not modulo rotary axes.</p>
+      <p>It is permissible that no software limit switches, working area limitations or protection areas are defined for one or more of the relevant axes. </p>
+      <h4 class="Blocklabel">Software limit switch and working area limitation status</h4>
+      <p>Software limit switches and working area limitations are only taken into account if they are active during the execution of <code>CALCPOSI()</code>. The status can be influenced, for example, via:</p>
+      <ul>
+        <li>
+          <p>Machine data: MD21020 $MC_WORKAREA_WITH_TOOL_RADIUS</p>
+        </li>
+        <li>
+          <p>Setting data: $AC_WORKAREA_CS_...</p>
+        </li>
+        <li>
+          <p>NC/PLC interface signals:<code> &lt;Axis>.basic.out.swLimitSwitch2Minus</code> / <code>...Plus</code></p>
+        </li>
+        <li>
+          <p>Commands: <code>WALIMON</code> / <code>WALIMOF</code></p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Software limit switches and transformations</h4>
+      <p>With <code>CALCPOSI()</code>, the positions of the machine axes (MCS) cannot always be uniquely determined from the positions of the geometry axes (WCS) during various kinematic transformations (e.g. <code>TRANSMIT</code>) because of ambiguities at certain positions of the traversing distance. In normal traversing operation, the uniqueness generally results from the history and the condition that a continuous motion in the WCS must correspond to a continuous motion in the MCS. Therefore, when monitoring the software limit switches, the machine position at the time when <code>CALCPOSI()</code> is executed is used to resolve the ambiguity in such cases. </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Preprocessing stop</h4>
+            <p class="safety">When using <code>CALCPOSI()</code> in conjunction with transformations, it is the sole responsibility of the user to program a preprocessing stop (<code>STOPRE</code>) with the preprocessing before <code>CALCPOSI()</code> for the synchronization of the machine axis positions.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Protection area clearance and conventional protection areas</h4>
+      <p>With conventional protection areas, there is <b>no</b> guarantee that the safety clearance set in parameter <code>&lt;Limit>[3]</code> is maintained for all protection zones during a traversing movement on the specified path. It is only guaranteed that no protection area will be violated when the end point returned in <code>&lt;Dist></code> is extended by the safety clearance in the traversing direction. However, the straight line can pass very close to a protection area.</p>
+      <h4 class="Blocklabel">Protection zone clearance and collision avoidance protection areas</h4>
+      <p>With collision avoidance protection areas, there is a guarantee that the safety clearance set in parameter <code>&lt;Limit>[3]</code> is maintained for all protection zones during a traversing movement on the specified traversing path. </p>
+      <p>The safety clearance specified in parameter <code>&lt;Limit>[3]</code> only takes effect when the following applies:</p>
+      <p>
+        <code>&lt;Limit>[3]</code> > (MD10619 $MN_COLLISION_TOLERANCE)</p>
+      <p>If bit 4 is set in parameter <code>&lt;TestLim></code> (calculation of the ongoing traversing direction), then the direction vector received in <code>&lt;DIST></code> is only valid when the hundred thousands digit is set in the function return value (<code>&lt;status></code>). If a direction such as this cannot be determined, either because protection areas were violated, or because a transformation is active, then the input value in <code>&lt;DIST></code> remains unchanged. An additional error message is not output.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">PLC signals</h3>
+      <a id="table_e849b817-f8dd-d3c2-26d6-a2643b47f3c7">
+      </a> <a id="table_0"></a> <a id="table_e849b817-f8dd-d3c2-26d6-a2643b47f3c7"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="45.0%"><col width="35.0%"><col width="20.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Basic Program Plus</p></th><th colspan="2"><p type="p_table_lb" align="left">Basic Program</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Axis>.basic.out.swLimitSwitch2Minus</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left"> LBP_Axis*.A_SWLimit2Minus</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB31, ... .DBX12.2</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Axis>.basic.out.swLimitSwitch2Plus</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LBP_Axis*. A_SWLimit2Plus</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB31, ... .DBX12.3</p></td></tr></table></p></div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Spezielle Funktionen für den OEM-Anwender (OMA1 ... OMA5, OEMIPO1, OEMIPO2, G810 ... G829)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Spezielle Funktionen für den OEM-Anwender (OMA1 ... OMA5, OEMIPO1, OEMIPO2, G810 ... G829)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">OEM-Adressen       </h3>
+      <p>Die Bedeutung der OEM-Adressen bestimmt der OEM-Anwender. Die Funktionalität wird über Compile-Zyklen eingebracht. 5 OEM-Adressen sind reserviert (<code>OMA1</code> ... <code>OMA5</code>). Die Adressbezeichner sind einstellbar. OEM-Adressen sind in jedem Satz zulässig.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Reservierte G-Befehlsaufrufe   </h3>
+      <p>Für den OEM-Anwender sind folgende G-Befehlsaufrufe reserviert:</p>
+      <ul>
+        <li>
+          <p>
+            <code>OEMIPO1</code>, <code>OEMIPO2</code> (aus G-Gruppe 1)</p>
+        </li>
+        <li>
+          <p>
+            <code>G810</code> ... <code>G819</code> (G-Gruppe 31)  </p>
+        </li>
+        <li>
+          <p>
+            <code>G820</code> ... <code>G829</code> (G-Gruppe 32)  </p>
+        </li>
+      </ul>
+      <p class="comment">Die Funktionalität wird über Compile-Zyklen eingebracht.</p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Funktionen und Unterprogramme</h3>
+      <p>Zusätzlich können OEM-Anwender auch vordefinierte Funktionen und Unterprogramme mit Parameterübergabe anlegen.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Werkstücksimulation </h4>
+            <p class="safety">Bis SW 4.4 werden keine, ab SW 4.4 nur ausgesuchte Compile-Zyklen (CC) bei der Werkstücksimulation unterstützt.</p>
+            <p class="safety">Sprachbefehle im Teileprogramm von nicht unterstützten Compile-Zyklen (<code>OMA1</code> ... <code>OMA5</code>, <code>OEMIPO1/2</code>, <code>G810</code> ... <code>G829</code>, eigene Prozeduren und Funktionen) führen daher ohne individuelle Behandlung zur Alarmmeldung und zum Abbruch der Simulation.</p>
+            <p class="safety">
+              <b>Lösung: </b>Die fehlenden CC-spezifischen Sprachelemente im Teileprogramm individuell behandeln ($P_SIM-Abfrage). <br />Beispiel:   </p>
+            <p class="safety">
+              <code>N1 G01 X200 F500</code>
+            </p>
+            <p class="safety">
+              <code>IF (1==$P_SIM)</code>
+            </p>
+            <p class="safety">
+              <code>N5 X300 ;bei Simulation CC nicht aktiv</code>
+            </p>
+            <p class="safety">
+              <code>ELSE</code>
+            </p>
+            <p class="safety">
+              <code>N5 X300 OMA1=10</code>
+            </p>
+            <p class="safety">
+              <code>ENDIF</code>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Attribut: Initialisierungswert</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Attribut: Initialisierungswert</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Definition von Anwendervariablen (DEF)</h3>
+      <p>Bei der Definition kann für folgende Anwendervariablen ein Initialisierungswert vorgegeben werden:</p>
+      <ul>
+        <li>
+          <p>globale Anwendervariablen (GUD)</p>
+        </li>
+        <li>
+          <p>programmglobale Anwendervariablen (PUD)</p>
+        </li>
+        <li>
+          <p>lokale Anwendervariablen (LUD)</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Redefinition von System- und Anwendervariablen (REDEF)</h3>
+      <p>Bei der Redefinition kann für folgende Variablen ein Initialisierungswert vorgegeben werden:</p>
+      <ul>
+        <li>
+          <p>Systemdaten</p>
+          <ul>
+            <li>
+              <p>Settingdaten</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Anwenderdaten</p>
+          <ul>
+            <li>
+              <p>R-Parameter</p>
+            </li>
+            <li>
+              <p>Synchronaktionsvariable ($AC_MARKER, $AC_PARAM, $AC_TIMER)</p>
+            </li>
+            <li>
+              <p>Synchronaktions-GUD (SYG_xy[ ], mit x=R, I, B, A, C, S und y=S, M, U, 4, ..., 9)</p>
+            </li>
+            <li>
+              <p>EPS–Parameter</p>
+            </li>
+            <li>
+              <p>Werkzeugdaten-OEM</p>
+            </li>
+            <li>
+              <p>Magazindaten-OEM</p>
+            </li>
+            <li>
+              <p>globale Anwendervariablen (GUD)</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Reinitialisierungszeitpunkt</h4>
+      <p>Bei der Redefinition kann der Zeitpunkt angegeben werden, zu dem die Variable reinitialisiert, d. h., wieder auf den Initialisierungswert gesetzt werden soll:</p>
+      <ul>
+        <li>
+          <p>
+            <code>INIPO</code> (Power On)</p>
+          <p>Die Variable wird bei Power On reinitialisiert.</p>
+        </li>
+        <li>
+          <p>
+            <code>INIRE</code> (Reset)</p>
+          <p>Die Variable wird bei NC-Reset, BAG-Reset, Teileprogrammende (M02 / M30) oder Power On reinitialisiert.</p>
+        </li>
+        <li>
+          <p>
+            <code>INICF</code> (NEWCONF)</p>
+          <p>Die Variable wird bei der Funktion "Maschinendaten wirksam setzen" über HMI, Teileprogramm-Befehl NEWCONF oder NC-Reset, BAG-Reset, Teileprogrammende (M02 / M30) oder Power On reinitialisiert.</p>
+        </li>
+        <li>
+          <p>
+            <code>PRLOC</code> (programmlokale Änderung)</p>
+          <p>Das Attribut PRLOC darf nur in Zusammenhang mit programmierbaren Settingdaten (siehe folgende Tabelle) verwendet werden.</p>
+          <p>Ein programmierbares Settingdatum wird nur dann bei NC-Reset, BAG-Reset oder Teileprogrammende (M02 / M30) reinitialisiert, wenn dessen Wert im aktuellen Teileprogramm durch Programmierung des entsprechenden NC-Sprachbefehls (siehe Tabellenspalte "NC-Sprachbefehl) verändert wurde. Wird der Wert des Settingdatums durch Programmierung des Bezeichners (siehe Tabellenspalte "Bezeichner) verändert, wird das Settingdatum bei NC-Reset, BAG-Reset oder Teileprogrammende (M02 / M30) nicht reinitialisiert.</p>
+          <a id="table_018980e8-ff18-4bf4-9ffb-ec3f34ea4d06">
+          </a> <a id="table_0"></a> <a id="table_018980e8-ff18-4bf4-9ffb-ec3f34ea4d06"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default_list" border="1"><colgroup><col width="13.4%"><col width="53.3%"><col width="33.3%"></colgroup><tr valign="top"><th colspan="3"><p type="p_table_lb" align="left">Programmierbare Settingdaten</p></th></tr><tr valign="top"><th><p type="p_table_lb" align="left">Nummer</p></th><th><p type="p_table_lb" align="left">Bezeichner</p></th><th><p type="p_table_lb" align="left">NC-Sprachbefehl <sup>1)</sup></p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">42000</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SC_THREAD_START_ANGLE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">SF</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">42010</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SC_THREAD_RAMP_DISP</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DITS / DITE</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">42400</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_PUNCH_DWELLTIME</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">PDELAYON</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">42800</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_SPIND_ASSIGN_TAB</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">SETMS</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43210</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_SPIND_MIN_VELO_G25</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">G25</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43220</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_SPIND_MAX_VELO_G26</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">G26</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43230</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_SPIND_MAX_VELO_LIMS</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LIMS</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43300</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_ASSIGN_FEED_PER_REV_SOURCE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">FPRAON</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43420</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_WORKAREA_LIMIT_PLUS</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">G26</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43430</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_WORKAREA_LIMIT_MINUS</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">G25</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43510</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_FIXED_STOP_TORQUE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">FXST</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43520</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_FIXED_STOP_WINDOW</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">FXSW</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43700</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_OSCILL_REVERSE_POS1</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">OSP1</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43710</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_OSCILL_REVERSE_POS2</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">OSP2</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43720</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_OSCILL_DWELL_TIME1</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">OST1</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43730</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_OSCILL_DWELL_TIME2</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">OST2</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43740</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_OSCILL_VELO</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">FA</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43750</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_OSCILL_NUM_SPARK_CYCLES</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">OSNSC</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43760</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_OSCILL_END_POS</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">OSE</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43770</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_OSCILL_CTRL_MASK</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">OSCTRL</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43780</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_OSCILL_IS_ACTIVE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">OS</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">43790</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">$SA_OSCILL_START_POS</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">OSB</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><sup>1)</sup> mit diesem NC-Sprachbefehl bzw. G-Befehl wird das Settingdatum angesprochen</p></td></tr></table></p></li>
+      </ul>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Randbedingungen</h3>
+      <h4 class="Blocklabel">Initialisierungswert: globale Anwendervariablen (GUD)</h4>
+      <ul>
+        <li>
+          <p>Für globale Anwendervariable (GUD) mit dem Gültigkeitsbereich NC kann als Initialisierungszeitpunkt nur INIPO (Power On) vorgegeben werden.</p>
+        </li>
+        <li>
+          <p>Für globale Anwendervariablen (GUD) mit dem Gültigkeitsbereich CHAN kann als Initialisierungszeitpunkt neben INIPO (Power On) auch INIRE (Reset) oder INICF (NEWCONF) vorgegeben werden.</p>
+        </li>
+        <li>
+          <p>Bei globalen Anwendervariablen (GUD) mit dem Gültigkeitsbereich CHAN und Initialisierungszeitpunkt INIRE (Reset) oder INICF (NEWCONF) werden bei NC-Reset, BAG-Reset und "Maschinendaten wirksam setzen" die Variablen nur in den Kanälen neu initialisiert, in denen die genannten Ereignisse ausgelöst wurden.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Initialisierungswert: Datentyp FRAME</h4>
+      <p>Für Variablen vom Datentyp FRAME darf kein Initialisierungswert angegeben werden. Variablen vom Datentyp FRAME werden implizit immer mit dem Defaultframe initialisiert.</p>
+      <h4 class="Blocklabel">Initialisierungswert: Datentyp CHAR</h4>
+      <p>Für Variablen vom Datentyp CHAR kann statt des ASCII-Codes (0...255) auch das entsprechende ASCII-Zeichen in Anführungszeichen programmiert werden, z.B. "A"</p>
+      <h4 class="Blocklabel">Initialisierungswert: Datentyp STRING</h4>
+      <p>Bei Variablen vom Datentyp STRING muss die Zeichenkette in Anführungszeichen gesetzt werden z.B.: ...= "MASCHINE_1"</p>
+      <h4 class="Blocklabel">Initialisierungswert: Datentyp AXIS</h4>
+      <p>Für Variablen vom Datentyp AXIS muss bei erweiterter Adressschreibweise der Achsbezeichner in Klammern gesetzt werden, z.B.: ...=(X3)</p>
+      <h4 class="Blocklabel">Initialisierungswert: Systemvariable</h4>
+      <p>Für Systemvariable können durch Redefinition keine anwenderspezifischen Initialisierungswerte vorgegeben werden. Die Initialisierungswerte der Systemvariablen sind vom System fest vorgegeben. Durch Redefinition kann aber der Zeitpunkt (INIRE, INICF) zu dem die Systemvariable reinitialisiert wird geändert werden.</p>
+      <h4 class="Blocklabel">Impliziter Initialisierungswert: Datentyp AXIS</h4>
+      <p>Für Variablen vom Datentyp AXIS wird folgender implizite Initialisierungswert verwendet:</p>
+      <ul>
+        <li>
+          <p>Systemdaten: "erste Geometrieachse"</p>
+        </li>
+        <li>
+          <p>Synchronaktions-GUD (Bezeichnung: SYG_A*), PUD, LUD:<br />Achsbezeichner aus Maschinendatum: MD20082 $MC_AXCONF_CHANAX_DEFAULT_NAME</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Impliziter Initialisierungswert: Werkzeug- und Magazindaten</h4>
+      <p>Für Werkzeug- und Magazindaten können Initialisierungswerte über folgendes Maschinendatum vorgegeben werden: MD17520 $MN_TOOL_DEFAULT_DATA_MASK</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Synchronisation</h4>
+            <p class="safety">Die Synchronisation von Ereignissen die eine Reinitialisierung einer globalen Variable auslösen mit dem Lesen dieser Variable an anderer Stelle, liegt ausschließlich in der Verantwortung des Anwenders / Maschinenherstellers.</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <p>Siehe auch:<br />    <a href="156662348683.html">Variablen: Allgemeine Informationen</a></p>
+  </body>
+</html>

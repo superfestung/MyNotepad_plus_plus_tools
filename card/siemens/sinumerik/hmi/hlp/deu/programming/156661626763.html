@@ -1,0 +1,59 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Geschwindigkeitsvorgabe mit Handradüberlagerung / Wegvorgabe mit Handrad (FD, FDA)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Geschwindigkeitsvorgabe mit Handradüberlagerung / Wegvorgabe mit Handrad (FD, FDA)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Über die Adresse FD kann für die programmierten Verfahrbewegungen der Bahnachsen ein Bahnvorschub vorgegeben werden, der nur im aktuellen Satz wirksam ist und der mit dem Handrad überlagert werden kann. Ausgewertet wird dabei das Handrad der ersten Geometrieachse des Kanals. Je nach Drehrichtung wird der über FD vorgegebene Bahnvorschub dabei vergrößert oder verkleinert.</p>
+      <p>Über die Adresse FDA kann für Positionierachsen die Wegvorgabe durch das Handrad aktiviert oder eine im aktuellen Satz wirksame Geschwindigkeit für die Achse vorgegeben werden, die mit dem Handrad überlagert werden kann. Ausgewertet wird dabei das der Achse zugeordnete Handrad.</p>
+      <p>Sobald die programmierte Zielposition erreicht ist, wird der Satzwechsel vorgenommen. Damit wird die "Geschwindigkeitsvorgabe mit Handradüberlagerung" bzw. "Wegvorgabe mit Handrad" automatisch ausgeschaltet und weitere Handrandimpulse sind wirkungslos.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Wichtige Informationen zur Programmierung von FD und FDA:</p>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">Im gleichen NC-Satz muss eine <b>Zielposition</b> programmiert sein.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">Im gleichen NC-Satz können weitere Achsen interpolatorisch oder simultan verfahren werden.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">F und FD bzw. FA und FDA dürfen nicht zusammen in einem NC-Satz programmiert werden.</p>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Bahnachsen</h4>X... Y... FD=&lt;Velocity><h4 class="Blocklabel">Positionierachsen</h4>POS[Axis]=.../POSA[Axis]=... FDA[&lt;Axis>]=&lt;Velocity><a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="40.0%"><col width="17.5%"><col width="15.0%"><col width="27.5%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>X... Y...</code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Zielposition der Bahnachse</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>FD=&lt;Velocity></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Vorgabe eines Bahnvorschubs mit Handradüberlagerung</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Velocity></code>  </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Wert = 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Nicht möglich!</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wert ≠ 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Bahnvorschub</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">FD ist nur zulässig, wenn folgende Bedingungen erfüllt sind:</p><ul class="table"><li><p>G1, G2, G3 oder CIP aktiv</p></li><li><p>Genauhalt G60 aktiv</p></li><li><p>Linearvorschub G94 aktiv</p></li></ul></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>POS[Axis]=...</code> </p><p type="p_table_l" align="left"><code>POSA[Axis]=...</code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Zielposition der Positionierachse</p><p type="p_table_l" align="left">Zielposition der Positionierachse über Satzgrenze</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>FDA[&lt;Axis>]=&lt;Velocity></code>  </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">"Geschwindigkeitsvorgabe mit Handradüberlagerung" oder "Wegvorgabe mit Handrad" für Positionierachse</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Axis></code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Achsbezeichner der Positionierachse</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Velocity></code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Wert = 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Wegvorgabe mit Handrad</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wert ≠ 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Achsgeschwindigkeit</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">FD und FDA sind <b>satzweise </b>wirksam.</p><p class="safety"><b>Ausnahme:</b></p><p class="safety">Bei <b>FDA</b> in Verbindung mit <b>POSA</b> kann die Handradüberlagerung über die Satzgrenze hinaus wirken, da die Satzweiterschaltung durch diese Positionierachse nicht beeinflusst wird.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Beispiele</h3><h4 class="Blocklabel">Beispiel 1: Bahnachsen mit Geschwindigkeitsüberlagerung verfahren</h4><a id="table_101a9049-6622-ceb1-2c6f-4648cbf7d7d6"></a> <a id="table_1"></a> <a id="table_101a9049-6622-ceb1-2c6f-4648cbf7d7d6"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E5F"><colgroup><col width="40.0%"><col width="60.0%"></colgroup><tr valign="top"><th>Programmcode </th><th>Beschreibung</th></tr><tr valign="top"><td>N10 X… Y… F500</td><td>; Bahnvorschub = 500 mm/min</td></tr><tr valign="top"><td>N20 X… Y… FD=700</td><td>; Bahnvorschub = 700 mm/min und Geschwindigkeitsüberlagerung durch Handrad.; In N20 wird von 500 auf 700 mm/min beschleunigt.; Über Handrad kann drehrichtungsabhängig die Bahngeschwindigkeit zwischen 0 und Maximalwert (Maschinendaten) verändert werden.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Beispiel 2: Positionierachsen mit Wegvorgabe verfahren</h4><a id="table_d1218fb1-1318-4693-842a-aa4d7421c860"></a> <a id="table_2"></a> <a id="table_d1218fb1-1318-4693-842a-aa4d7421c860"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EZG"><colgroup><col width="40.0%"><col width="60.0%"></colgroup><tr valign="top"><th>Programmcode </th><th>Beschreibung</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N20 POS[V]=90 FDA[V]=0</td><td>; Zielposition = 90 mm, Vorschub der Achse = 0 mm/min und Wegüberlagerung durch Handrad.; Geschwindigkeit der Achse V am Satzanfang = 0 mm/min.; Weg- und Geschwindigkeitsvorgabe erfolgt durch Handradimpulse.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Im NC-Satz mit programmiertem FDA[&lt;Axis>]=0 wird der Vorschub auf Null gesetzt, so dass vom Programm her keine Fahrbewegung erfolgt. Die programmierte Fahrbewegung zur Zielposition wird jetzt ausschließlich vom Bediener durch Drehen des Handrads gesteuert.</p><p>Bewegungsrichtung, Fahrgeschwindigkeit:</p><p>Die Achsen fahren vorzeichenrichtig den per Handradimpulse vorgegebenen Weg. Je nach Drehrichtung kann vorwärts und rückwärts gefahren werden. Je schneller das Handrad gedreht wird, desto höher die Verfahrgeschwindigkeit.</p><p>Verfahrbereich: <br />Der Verfahrbereich wird durch die Startposition und den programmierten Endpunkt begrenzt.</p><h4 class="Blocklabel">Beispiel 3: Positionierachsen mit Geschwindigkeitsüberlagerung verfahren </h4><a id="table_4ddc4565-0f5a-1ec4-3c27-c3392471f1c3"></a> <a id="table_3"></a> <a id="table_4ddc4565-0f5a-1ec4-3c27-c3392471f1c3"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E2H"><colgroup><col width="40.0%"><col width="60.0%"></colgroup><tr valign="top"><th>Programmcode </th><th>Beschreibung</th></tr><tr valign="top"><td>N10 POS[V]=… FA[V]=100</td><td>; Vorschub der Achse = 100 mm/min</td></tr><tr valign="top"><td>N20 POS[V]=100 FAD[V]=200</td><td>; Zielposition der Achse = 100, Vorschub der Achse = 200 mm/min und Geschwindigkeitsüberlagerung durch Handrad.; In N20 wird von 100 auf 200 mm/min beschleunigt.; Über Handrad kann drehrichtungsabhängig die Geschwindigkeit zwischen 0 und Maximalwert (Maschinendaten) verändert werden.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Im NC-Satz mit programmiertem FDA[…]=… wird der Vorschub vom zuletzt programmierten FA-Wert auf den unter FDA programmierten Wert beschleunigt bzw. verzögert. Ausgehend vom aktuellen Vorschub FDA kann die programmierte Bewegung zur Zielposition durch Drehen des Handrades beschleunigt oder bis Null verzögert werden. Als Maximalgeschwindigkeit gelten die in Maschinendaten parametrierten Werte.</p><p>Verfahrbereich: Der Verfahrbereich wird durch die Startposition und den programmierten Endpunkt begrenzt.</p></div>
+  </body>
+</html>

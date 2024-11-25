@@ -1,0 +1,1192 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="115">p0115[0...6]</a></b></td>
+<td colspan="4"><b>Abtastzeiten f&uuml;r interne Regelkreise / t_Abtast int Reg</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, SERVO_AC, SERVO_840, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(3)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Regelung</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >16000.00</td>
+<td >125.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Abtastzeiten f&uuml;r die Regelkreise.<br />
+Die Vorbelegung erfolgt &uuml;ber p0112 und kann nur bei p0112 = 0 (Experte) einzeln ver&auml;ndert werden.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Empfehlung:</b></td>
+<td>Mit &Auml;nderung der Abtastzeiten von Strom- und Drehzahlregler (siehe auch p0115) empfiehlt sich nach Verlassen der Inbetriebnahme (p0009 = 0) eine Neuberechnung der Reglereinstellungen &uuml;ber p0340 = 4.<br /></td></tr>
+</table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Stromregler<br />
+[1] = Drehzahlregler<br />
+[2] = Flussregler<br />
+[3] = Sollwertkanal<br />
+[4] = Lageregler<br />
+[5] = Positionieren<br />
+[6] = Technologieregler<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Die Abtastzeiten k&ouml;nnen nur dann getrennt verstellt werden, wenn p0112 = 0 (Experte) vorliegt. Wird eine Abtastzeit im Expertenmodus ge&auml;ndert, so werden automatisch alle Abtastzeiten h&ouml;herer Indizes im gleichen Verh&auml;ltnis ver&auml;ndert, wie die Abtastzeit selbst ver&auml;ndert wurde. Dieses Mitf&uuml;hren langsamerer Zeitscheiben geschieht nur dann, wenn die berechnete Abtastzeit auch erlaubt ist. Obere Grenze ist 8 ms.<br />&Uuml;berlagerte Regelungen k&ouml;nnen nur in ganzzahligen Verh&auml;ltnissen zur unterlagerten Regelung gerechnet werden (z. B. p0115[1] = N * p0115[0]; mit N = ganzzahlig). Die Abtastzeit des Drehzahlreglers (p0115[1]) kann maximal den 8-fachen Wert der Stromreglerabtastzeit (p0115[0]) annehmen.<br />Die maximale Abtastzeit des Stromreglers betr&auml;gt bei Servoantrieben 250 &micro;s und bei Vektorantrieben 500 &micro;s.<br />Die Abtastzeiten f&uuml;r Sollwertkanal (p0115[3]), Lageregler (p0115[4]), Positionieren (p0115[5]) und Technologieregler (p0115[6]) m&uuml;ssen mindestens den 2-fachen Wert der Stromreglerabtastzeit (p0115[0]) haben.<br />Siehe auch: r0110, r0111, p0112<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">F&uuml;r aktivierbare Funktionsmodule (z. B. Technologieregler) werden die Parameterwerte vorbelegt.<br />Beim Active Line Module (ALM) und Smart Line Module (SLM) arbeiten Strom- und Zwischenkreisspannungsregler mit der gleichen Abtastzeit. Die maximale Stromreglerabtastzeit beim ALM&#47;SLM betr&auml;gt 400 &micro;s.<br />Beim Basic Line Module (BLM) arbeitet die Messung der Zwischenkreisspannung in der Stromreglerabtastzeit.<br />Bei BLM Booksize ist nur die Stromreglerabtastzeit von 250 &micro;s erlaubt. Bei BLM Chassis ist nur die Stromreglerabtastzeit von 2000 &micro;s erlaubt.<br />Beim Leistungsteiltyp PM340 (r0203) sind nur Stromreglerabtastzeiten von 62.5 &micro;s, 125 &micro;s, 250 &micro;s und 500 &micro;s einstellbar. Die maximale Stromreglerabtastzeit bei Servoantrieben und die minimale Stromreglerabtastzeit bei Vektorantrieben betr&auml;gt 250 &micro;s.<br />Werden Abtastzeiten in p0115 bei p0112 = 0 (Experte) einzeln ge&auml;ndert, so muss beachtet werden, dass die eingestellten Abtastzeiten von Sollwertkanal (p0115[3]), Lageregler (p0115[4]), Positionieren (p0115[5]) und Technologieregler (p0115[6]) immer gr&ouml;&szlig;er oder gleich der doppelten Stromreglerabtastzeit (p0115[0]) sind.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="116">r0116[0...1]</a></b></td>
+<td colspan="4"><b>Antriebsobjekttakt empfohlen / DO_takt empfohlen</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TB30</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Regelung</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der empfohlenen Abtastzeit f&uuml;r die Antriebsobjekte.<br />
+r00116[0] = Empfohlene Abtastzeit:<br />
+Empfohlener Wert, durch den das Gesamtsystem lauff&auml;hig werden w&uuml;rde.<br />
+r00116[1] = Empfohlene Abtastzeit:<br />
+Empfohlener Wert, der nach &Auml;nderung anderer Takte am DRIVE-CLiQ-Strang ein lauff&auml;higes System erzeugen w&uuml;rde.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = &Auml;nderung nur f&uuml;r aktuelles Antriebsobjekt<br />
+[1] = &Auml;nderung aller Objekte am DRIVE-CLiQ-Strang<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0115<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="118">p0118</a></b></td>
+<td colspan="4"><b>Stromregler Rechentotzeit / I_reg t_tot</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, HLA, VECTOR_AC, HLA_840, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Regelung</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >2000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Dieser Parameter wird in Abh&auml;ngigkeit von der Stromreglerabtastzeit (p0115[0]) voreingestellt und muss im Normalfall nicht ver&auml;ndert werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0117<br />Siehe auch: A02100</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei p0118 &lt;= 0.005 &micro;s wird der Stromreglerausgang um eine ganze Stromreglerabtastzeit (p0115[0]) verz&ouml;gert.<br />Nach dem &Auml;ndern von p0118 empfiehlt sich die Anpassung des Stromreglers (p1715).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="120">p0120</a></b></td>
+<td colspan="4"><b>Leistungsteildatens&auml;tze (PDS) Anzahl / PDS Anzahl</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM41</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(3), C2(15)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>1</td>
+<td  >8</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Anzahl der Leistungsteildatens&auml;tze (Power unit Data Set, PDS).<br />
+Der Wert entspricht der Anzahl der zusammengeschalteten Leistungsteile bei Parallelschaltung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0107<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Dieser Parameter ist nur bei den Antriebsobjekten A_INF und VECTOR mit Parallelschaltung von Bedeutung.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="121">p0121[0...n]</a></b></td>
+<td colspan="4"><b>Leistungsteil Komponentennummer / LT Kompo_nr</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(4), C2(15)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> PDS, p0120</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >199</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Mit diesem Parameter wird der Leistungsteildatensatz einem Leistungsteil zugewiesen.<br />
+Diese eindeutige Komponentennummer wird bei der Topologieparametrierung vergeben.<br />
+In diesen Parameter k&ouml;nnen nur Komponentennummern eingetragen werden, die einem Leistungsteil entsprechen.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0107<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameterindex ist bei Parallelschaltungen jeweils einem Leistungsteil zugeordnet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="124">p0124[0...n]</a></b></td>
+<td colspan="4"><b>Leistungsteil Erkennung &uuml;ber LED / LT Erkennung LED</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> PDS, p0120</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Erkennung des zu diesem Antrieb und Datensatz zugeordneten Leistungsteils.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">W&auml;hrend p0124 = 1 blinkt die LED READY am entsprechenden Leistungsteil gr&uuml;n&#47;orange oder rot&#47;orange mit 2 Hz.<br />Der Parameterindex ist bei Parallelschaltungen jeweils einem Leistungsteil zugeordnet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="125">p0125[0...n]</a></b></td>
+<td colspan="4"><b>Leistungsteilkomponente aktivieren&#47;deaktivieren / LT_kompo akt&#47;deakt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(4), T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> PDS, p0120</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung zum Aktivieren&#47;Deaktivieren einer Leistungsteilkomponente.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Komponente deaktivieren<br />1:		Komponente aktivieren<br />2:		Komponente deaktivieren und nicht vorhanden<br /></td></tr>
+<tr><td valign="top" width="15%"><b>Empfehlung:</b></td>
+<td>Nach dem Stecken einer Komponente sollte vor der Aktivierung erst auf die Warnung A01317 gewartet werden.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0126<br />Siehe auch: A01314, A01317</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Vorsicht:</b></td>
+<td width="85%">F&uuml;r Parallelschaltung gilt:<br />Bei Deaktivierung einzelner Leistungsteile &uuml;ber diesen Parameter d&uuml;rfen die betroffenen Leistungsteile der Parallelschaltung nicht angeschlossen sein. Einspeisungen sind vom Netz zu trennen (z. B. mit Hilfe eines Sch&uuml;tzes). Motorzuleitungen sind zu &ouml;ffnen. Defekte Leistungsteile sind zus&auml;tzlich vom Zwischenkreis zu trennen.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Das Deaktivieren von Antriebsobjekten mit freigegebenen Safety-Funktionen ist nicht zul&auml;ssig.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Aktivierung einer Komponente kann abgewiesen werden, wenn die Komponente zum ersten mal gesteckt wurde. In diesem Fall ist eine Aktivierung nur bei Impulssperre aller Antriebsobjekte m&ouml;glich.<br />Bei Parallelschaltger&auml;ten wird bei Deaktivierung einer Leistungsteilkomponente auch die Freigabe in p7001 zur&uuml;ckgenommen.<br />Zu Wert = 0, 2:<br />Durch das Deaktivieren einer Komponente werden von dieser keine Fehler mehr ausgegeben.<br />Zu Wert = 0:<br />Die Komponente wurde vollst&auml;ndig in Betrieb genommen und wird mit diesem Wert deaktiviert. Sie kann fehlerfrei vom DRIVE-CLiQ abgezogen werden.<br />Zu Wert = 1:<br />Die Komponente muss f&uuml;r den fehlerfreien Betrieb vorhanden sein.<br />Zu Wert = 2:<br />Die in einem offline erzeugten Projekt auf diesen Wert gesetzte Komponente darf in der Isttopologie von Anfang an nie gesteckt sein. Damit wird die Komponente zur &Uuml;berbr&uuml;ckung im DRIVE-CLiQ-Strang gekennzeichnet.<br />Bei Komponenten, die aus mehreren Einzelkomponenten bestehen (z. B. Double Motor Module), ist es unzul&auml;ssig, nur eine Teilmenge auf diesen Wert zu stellen.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="126">r0126[0...n]</a></b></td>
+<td colspan="4"><b>Leistungsteilkomponente aktiv&#47;inaktiv / LT_kompo akt&#47;inakt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> PDS, p0120</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Zustandes &quot;aktiv&#47;inaktiv&quot; einer Leistungsteilkomponente.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Komponente inaktiv<br />1:		Komponente aktiv<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0105, p0125, p0897<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="127">r0127[0...n]</a></b></td>
+<td colspan="4"><b>Leistungsteil EEPROM-Daten Version / LT EEPROM Version</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> PDS, p0120</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Version der EEPROM-Daten des Leistungsteils.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0147, r0157<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameterindex ist bei Parallelschaltungen jeweils einem Leistungsteil zugeordnet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="128">r0128[0...n]</a></b></td>
+<td colspan="4"><b>Leistungsteil Firmware-Version / LT FW-Version</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> PDS, p0120</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Firmware-Version des Leistungsteils.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0018, r0148, r0158, r0197, r0198<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Beispiel:<br />Der Wert 1010100 ist als V01.01.01.00 zu interpretieren.<br />Der Parameterindex ist bei Parallelschaltungen jeweils einem Leistungsteil zugeordnet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="140">p0140</a></b></td>
+<td colspan="4"><b>VSM Datens&auml;tze Anzahl / VSM Anzahl</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(3), C2(15)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 8570</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>1</td>
+<td  >8</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Anzahl der VSM-Datens&auml;tze.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Wert ist bei Einspeisungen nicht &auml;nderbar und entspricht der Anzahl der parallelgeschalteten Leistungsteile.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="141">p0141[0...n]</a></b></td>
+<td colspan="4"><b>VSM Komponentennummer / VSM Kompo_nr</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(4), C2(15)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> p0140</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >199</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Mit diesem Parameter wird der VSM-Datensatz einer VSM-Auswertung zugewiesen.<br />
+Diese eindeutige Komponentennummer wird bei der Topologieparametrierung vergeben.<br />
+Es kann nur eine Komponentennummer eingetragen werden, die einer VSM-Auswertung entspricht.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="144">p0144[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module Erkennung &uuml;ber LED / VSM Erkennung LED</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> p0140</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Erkennung des zu dieser Einspeisung zugeordneten Voltage Sensing Modules (VSM).<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="145">p0145[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module aktivieren&#47;deaktivieren / VSM akt&#47;deakt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(4), T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> p0140</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung zum Aktivieren&#47;Deaktivieren eines Voltage Sensing Modules (VSM).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Komponente deaktivieren<br />1:		Komponente aktivieren<br />2:		Komponente deaktivieren und nicht vorhanden<br /></td></tr>
+<tr><td valign="top" width="15%"><b>Empfehlung:</b></td>
+<td>Nach dem Stecken einer Komponente sollte vor der Aktivierung erst auf die Warnung A01317 gewartet werden.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0146<br />Siehe auch: A01314, A01317</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei Chassis-Einspeisungen ist eine Aktivierung&#47;Deaktivierung des Voltage Sensing Modules (VSM) &uuml;ber p0145 nicht m&ouml;glich. Das VSM l&auml;sst sich nur im Verbund mit der entsprechenden Einspeisung &uuml;ber p0125[0...n] aktivieren&#47;deaktivieren.<br />Die Aktivierung einer Komponente kann abgewiesen werden, wenn die Komponente zum ersten mal gesteckt wurde.<br />In diesem Fall ist eine Aktivierung nur bei Impulssperre aller Antriebsobjekte m&ouml;glich.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="146">r0146[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module aktiv&#47;inaktiv / VSM akt&#47;inakt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> p0140</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Zustandes &quot;aktiv&quot; oder &quot;inaktiv&quot; eines Voltage Sensing Modules (VSM).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Komponente inaktiv<br />1:		Komponente aktiv<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0105, p0145<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="147">r0147[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module EEPROM-Daten Version / VSM EEPROM Version</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> p0140</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Version der EEPROM-Daten des Voltage Sensing Modules (VSM).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Beispiel:<br />Der Wert 1010100 ist als V01.01.01.00 zu interpretieren.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="148">r0148[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module Firmware-Version / VSM FW-Version</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> p0140</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Firmware-Version des Voltage Sensing Modules (VSM).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0018, r0128, r0158, r0197, r0198<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Beispiel:<br />Der Wert 1010100 ist als V01.01.01.00 zu interpretieren.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="150">p0150</a></b></td>
+<td colspan="4"><b>VSM2 Datens&auml;tze Anzahl / VSM2 Dat_s&auml;tze Anz</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(3), C2(15)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>1</td>
+<td  >2</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Anzahl der VSM2-Datens&auml;tze.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Das Voltage Sensing Module 2 (VSM2) ist nur bei aktiviertem Funktionsmodul &quot;Netztransformator&quot; (r0108.4 = 1) verwendbar.<br />F&uuml;r das VSM2 sind die Parameter p5460 und folgend von Bedeutung.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Das Voltage Sensing Module 2 (VSM2) wird vorzugsweise an die Prim&auml;rseite des Netztransformators angeschlossen.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="151">p0151[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module 2 Komponentennummer / VSM2 Kompo_nr</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(4), C2(15)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> p0150</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >199</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Mit diesem Parameter wird der VSM2-Datensatz einer VSM2-Auswertung zugewiesen.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die &Auml;nderung dieses Parameters wird erst nach einem Warmstart wirksam.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="154">p0154[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module 2 Erkennung &uuml;ber LED / VSM2 Erkennung LED</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> p0150</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Erkennung des zu dieser Einspeisung zugeordneten Voltage Sensing Modules 2 (VSM2).<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="155">p0155[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module 2 aktivieren&#47;deaktivieren / VSM2 akt&#47;deakt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(4), T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> p0150</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung zum Aktivieren&#47;Deaktivieren eines Voltage Sensing Modules 2 (VSM2).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Komponente deaktivieren<br />1:		Komponente aktivieren<br />2:		Komponente deaktivieren und nicht vorhanden<br /></td></tr>
+<tr><td valign="top" width="15%"><b>Empfehlung:</b></td>
+<td>Nach dem Stecken einer Komponente sollte vor der Aktivierung erst auf die Warnung A01317 gewartet werden.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0156<br />Siehe auch: A01314, A01317</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="156">r0156[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module 2 aktiv&#47;inaktiv / VSM2 akt&#47;inakt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> p0150</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Datensätze</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Zustandes &quot;aktiv&quot; oder &quot;inaktiv&quot; eines Voltage Sensing Modules 2 (VSM2).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Komponente inaktiv<br />1:		Komponente aktiv<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0155<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="157">r0157[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module 2 EEPROM-Daten Version / VSM2 EEPROM Vers</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> p0150</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Version der EEPROM-Daten des Voltage Sensing Modules 2 (VSM2).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Beispiel:<br />Der Wert 1010100 ist als V01.01.01.00 zu interpretieren.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="158">r0158[0...n]</a></b></td>
+<td colspan="4"><b>Voltage Sensing Module 2 Firmware-Version / VSM2 FW-Version</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> p0150</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Firmware-Version des Voltage Sensing Modules 2 (VSM2).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0018, r0197, r0198<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Beispiel:<br />Der Wert 1010100 ist als V01.01.01.00 zu interpretieren.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="170">p0170</a></b></td>
+<td colspan="4"><b>Befehlsdatens&auml;tze (CDS) Anzahl / CDS Anzahl</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, SERVO_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1(3)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Befehle</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>1</td>
+<td  >2</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Anzahl der Befehlsdatens&auml;tze (Command Data Set, CDS).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">&Uuml;ber diese Datensatzumschaltung k&ouml;nnen Befehlsparameter (BICO-Parameter) umgeschaltet werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="171">r0171</a></b></td>
+<td colspan="4"><b>Antriebsobjekte Funktionsmodul 1 / DO Fkt_modul 1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, HLA, VECTOR_AC, HLA_840, HLA_828, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM15DI_DO, TM120, TM150, TB30, ENC, ENC_840</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Regelung</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der aktivierten Funktionsmodule f&uuml;r das jeweilige Antriebsobjekt.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0108, r0172, r0173<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Ein &quot;Funktionsmodul&quot; ist eine Funktionserweiterung eines Antriebsobjektes, das bei der Inbetriebnahme aktiviert werden kann.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="172">r0172</a></b></td>
+<td colspan="4"><b>Antriebsobjekte Funktionsmodul 2 / DO Fkt_modul 2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM15DI_DO, TM120, TM150, TB30, ENC, ENC_840</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Regelung</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der aktivierten Funktionsmodule f&uuml;r das jeweilige Antriebsobjekt.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0108, r0171, r0173<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Ein &quot;Funktionsmodul&quot; ist eine Funktionserweiterung eines Antriebsobjektes, das bei der Inbetriebnahme aktiviert werden kann.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="173">r0173</a></b></td>
+<td colspan="4"><b>Antriebsobjekte Funktionsmodul 3 / DO Fkt_modul 3</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM15DI_DO, TM120, TM150, TB30, ENC, ENC_840</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Regelung</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der aktivierten Funktionsmodule f&uuml;r das jeweilige Antriebsobjekt.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0108, r0171, r0172<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Ein &quot;Funktionsmodul&quot; ist eine Funktionserweiterung eines Antriebsobjektes, das bei der Inbetriebnahme aktiviert werden kann.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="192">r0192</a></b></td>
+<td colspan="4"><b>Leistungsteil Firmware-Eigenschaften 1 / LT FW-Eigensch 1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der von der Firmware des Leistungsteils unterst&uuml;tzten Eigenschaften.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Flankenmodulation m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>01</td><td>Freie Telegrammauswahl m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>02</td><td>Smart Mode bei Active Line Module m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>03</td><td>Safety Integrated bei VECTOR m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>05</td><td>Thermisches Modell erweitert</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>06</td><td>Fl&uuml;ssigkeitsk&uuml;hlung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>07</td><td>SERVO Pulsfrequenzumschaltung DDS-abh&auml;ngig</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>08</td><td>Simulationsbetrieb m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>09</td><td>Interner Ankerkurzschluss m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>10</td><td>Autarker interner Ankerkurzschluss m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>11</td><td>Einspeisung Temperatureing&auml;nge X21.1&#47;2</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>12</td><td>Integrale normiert auf halbe Steuersatztaktfrequenz</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>13</td><td>Filterung thermische Leistungsteilstromgrenze m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>14</td><td>Zwischenkreisspannungskompensation im Leistungsteil m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>15</td><td>PT100 Temperaturauswertung m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>16</td><td>Steuersatz mit Pulsfrequenzwobbeln m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>17</td><td>Compound-Bremsung m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>18</td><td>Erweiterter Spannungsbereich m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>19</td><td>Steuersatz mit Strombegrenzungsregelung verf&uuml;gbar</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>20</td><td>Komponentenstatus m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>21</td><td>Temperaturauswertung &uuml;ber Motor Module&#47;CU-Klemmen m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>22</td><td>Reduzierte Ger&auml;te-Anschlussspannung m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>23</td><td>Strommessung Oversampling verf&uuml;gbar</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>24</td><td>Parken mit relevante Daten behalten verf&uuml;gbar</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>25</td><td>Innenrauml&uuml;fter Betriebsstundenz&auml;hler verf&uuml;gbar</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>26</td><td>Softwaresteuersatz in Control Unit unterst&uuml;tzt</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>27</td><td>Stromreglerdynamik h&ouml;her</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>28</td><td>Reserviert</td><td></td><td></td><td>-</td></tr><tr><td></td><td>29</td><td>Spannungsmessung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>30</td><td>Steuersatz mit allphasiger Strombegrenzung</td><td>Ja</td><td>Nein</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0193<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Diese Informationen stellen die Eigenschaften der Firmware des Leistungsteils dar. Sie geben keine Auskunft &uuml;ber die Eigenschaften der Hardware (z. B. Bit 06 = 1 bedeutet, dass die Firmware zwar &quot;Fl&uuml;ssigkeitsk&uuml;hlung&quot; unterst&uuml;tzt, aber kein Leistungsteil mit Fl&uuml;ssigkeitsk&uuml;hlung vorhanden sein muss).<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Zu Bit 09:<br />Das Motor Module unterst&uuml;tzt den internen Ankerkurzschluss. Diese Funktion wird f&uuml;r den Spannungsschutz intern ben&ouml;tigt (p1231 = 3).<br />Zu Bit 10:<br />Das Motor Module unterst&uuml;tzt den autarken internen Spannungsschutz.<br />Bei aktivierter Funktion &quot;Spannungsschutz intern&quot; (p1231 = 3) entscheidet das Motor Module anhand der Zwischenkreisspannung autark, ob der Kurzschluss aktiviert wird.<br />Zu Bit 23:<br />Die Komponente unterst&uuml;tzt die Erfassung der Stromistwerte (sowie die Ermittlung der Ventileinschaltdauern) mit doppelter Taktung und Phasenshift.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="193">r0193</a></b></td>
+<td colspan="4"><b>Leistungsteil Firmware-Eigenschaften 2 / LT FW-Eigensch 2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der von der Firmware des Leistungsteils unterst&uuml;tzten Eigenschaften.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>01</td><td>Komponenten-Trace</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>06</td><td>PT1000 Temperatursensorauswertung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>08</td><td>Reduzierte Unterspannungsschwelle w&auml;hrend Vorladung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>09</td><td>Wechsel auf 1-phasige Netzspannung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>10</td><td>Wobbeln mit erweiterter Pulsfrequenz</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>12</td><td>Zwischenkreisformierung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>13</td><td>Kondensator Abluft Temperatur&uuml;berwachung vorhanden</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>14</td><td>Schaltfrequenz reduziert auf Nennfrequenz bei du&#47;dt-Filter</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>15</td><td>Motorhaltebremse mit variabler Bremsspannung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>16</td><td>Anzeige thermische Auslastung des Ger&auml;tes m&ouml;glich</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>17</td><td>Erweiterung des thermischen Modells f&uuml;r Chassis</td><td>Ja</td><td>Nein</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0192<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Zu Bit 13:<br />Das gesetzte Bit zeigt au&szlig;erdem an, dass dem Verschlei&szlig;z&auml;hler des K&uuml;hlk&ouml;rper-L&uuml;fters (r0277) ein Modell f&uuml;r die Lebensdauer zugrunde liegt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="194">r0194[0...n]</a></b></td>
+<td colspan="4"><b>VSM Eigenschaften / VSM Eigenschaften</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> p0140</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Geber</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der vom Voltage Sensing Module (VSM) unterst&uuml;tzten Eigenschaften.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Reserviert</td><td>Ja</td><td>Nein</td><td>-</td></tr></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="199">p0199[0...24]</a></b></td>
+<td colspan="4"><b>Antriebsobjekte Name / DO Name</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">Alle Objekte</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C1</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >65535</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Frei vergebbarer Name f&uuml;r ein Antriebsobjekt.<br />
+Beim Inbetriebnahme-Tool kann dieser Name nicht &uuml;ber die Expertenliste eingegeben werden, sondern wird im Konfigurationsassistenten angegeben. Der Objektname kann nachtr&auml;glich &uuml;ber Standard-Windows-Mechanismen im Projektnavigator ver&auml;ndert werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameter wird durch Werkseinstellung einstellen nicht beeinflusst.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="200">r0200[0...n]</a></b></td>
+<td colspan="4"><b>Leistungsteil Codenummer aktuell / LT Codenr akt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> PDS, p0120</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der eindeutigen Codenummer des Leistungsteils.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">r0200 = p0201: Kein Leistungsteil gefunden<br />Der Parameterindex ist bei Parallelschaltungen jeweils einem Leistungsteil zugeordnet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="201">p0201[0...n]</a></b></td>
+<td colspan="4"><b>Leistungsteil Codenummer / LT Codenr</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C2(2)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> PDS, p0120</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >65535</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der aktuellen Codenummer aus r0200 zur Best&auml;tigung des verwendeten Leistungsteils.<br />
+Bei der Erstinbetriebnahme wird die Codenummer automatisch von r0200 in p0201 &uuml;bertragen.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: F07815</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameter dient zur Erkennung der Erstinbetriebnahme eines Antriebs.<br />Nur wenn aktuelle und best&auml;tigte Codenummer identisch sind (p0201 = r0200), kann die Leistungsteil-Inbetriebnahme verlassen werden (p0010 = 2).<br />Der Parameterindex ist bei Parallelschaltungen jeweils einem Leistungsteil zugeordnet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="203">r0203[0...n]</a></b></td>
+<td colspan="4"><b>Leistungsteil Aktueller Typ / LT Aktueller Typ</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> PDS, p0120</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>2</td>
+<td  >400</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des gefundenen Leistungsteiltyps.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">2:		MICROMASTER 440<br />3:		MICROMASTER 411<br />4:		MICROMASTER 410<br />5:		MICROMASTER 436<br />6:		MICROMASTER 440 PX<br />7:		MICROMASTER 430<br />100:		SINAMICS S<br />101:		SINAMICS S (Value)<br />102:		SINAMICS S (Combi)<br />103:		SINAMICS S120M (Dezentral)<br />112:		PM220 (SINAMICS G120)<br />113:		PM230 (SINAMICS G120)<br />114:		PM240 (SINAMICS G120&#47;S120)<br />115:		PM250 (SINAMICS G120&#47;S120)<br />116:		PM260 (SINAMICS G120)<br />118:		SINAMICS G120 Px<br />120:		PM340 (SINAMICS S120&#47;G120)<br />126:		SINAMICS ET200PRO<br />130:		PM250D (SINAMICS G120D)<br />133:		SINAMICS G120C<br />135:		SINAMICS PMV40<br />136:		SINAMICS PMV60<br />137:		SINAMICS PMV80<br />138:		SINAMICS G110M<br />140:		Reserviert<br />141:		SINAMICS S210<br />150:		SINAMICS G<br />151:		PM330 (SINAMICS G120)<br />200:		SINAMICS GM<br />250:		SINAMICS SM<br />260:		SINAMICS MC<br />270:		SINAMICS W180<br />271:		SINAMICS GH180<br />300:		SINAMICS GL<br />350:		SINAMICS SL<br />400:		SINAMICS DCM<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameterindex ist bei Parallelschaltungen jeweils einem Leistungsteil zugeordnet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="204">r0204[0...n]</a></b></td>
+<td colspan="4"><b>Leistungsteil Hardware-Eigenschaften / LT HW-Eigensch</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> PDS, p0120</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der von der Hardware des Leistungsteils unterst&uuml;tzten Eigenschaften.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Ger&auml;tetyp</td><td>DC&#47;AC-Ger&auml;t</td><td>AC&#47;DC-Ger&auml;t</td><td>-</td></tr><tr><td></td><td>01</td><td>RFI-Filter vorhanden</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>02</td><td>Active Line Module vorhanden</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>03</td><td>Smart Line Module vorhanden</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>04</td><td>Basic Line Module mit Thyristorbr&uuml;cke vorhanden</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>05</td><td>Basic Line Module mit Diodenbr&uuml;cke vorhanden</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>06</td><td>Fl&uuml;ssigkeitsk&uuml;hlung mit R&uuml;ckk&uuml;hlanlage (Chassis-LT)</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>07</td><td>F3E Netzr&uuml;ckspeisung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>08</td><td>Internes Braking Module</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>09</td><td>Unterschiedliche K&uuml;hlart unterst&uuml;tzt</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>12</td><td>Sichere Bremsenansteuerung (SBC) unterst&uuml;tzt</td><td>Nein</td><td>Ja</td><td>-</td></tr><tr><td></td><td>13</td><td>Safety Integrated unterst&uuml;tzt</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>14</td><td>Internes LC Ausgangsfilter</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>15</td><td>Netzspannung</td><td>1-phasig</td><td>3-phasig</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameterindex ist bei Parallelschaltungen jeweils einem Leistungsteil zugeordnet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="206">r0206[0...4]</a></b></td>
+<td colspan="4"><b>Leistungsteil Bemessungsleistung / LT P_Bemes</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI, A_INF, S_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> 14_6</td><td><b>Einheitenwahl:</b> p0100</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Bemessungsleistung des Leistungsteils f&uuml;r verschiedene Lastspiele.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bemessungswert<br />
+[1] = Lastspiel mit leichter &Uuml;berlast<br />
+[2] = Lastspiel mit hoher &Uuml;berlast<br />
+[3] = S1-Dauerbetrieb<br />
+[4] = S6-Lastspiel<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">IEC-Antriebe (p0100 = 0): Einheit kW<br />NEMA-Antriebe (p0100 = 1): Einheit hp<br />Siehe auch: p0100, p0205<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="207">r0207[0...4]</a></b></td>
+<td colspan="4"><b>Leistungsteil Bemessungsstrom / LT I_Bemes</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 8021</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Bemessungsstroms des Leistungsteils f&uuml;r verschiedene Lastspiele.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bemessungswert<br />
+[1] = Lastspiel mit leichter &Uuml;berlast<br />
+[2] = Lastspiel mit hoher &Uuml;berlast<br />
+[3] = S1-Dauerbetrieb<br />
+[4] = S6-Lastspiel<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0205<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">F&uuml;r Booksize-Leistungsteile gilt:<br />Der Anzeigewert entspricht dem Bemessungs-Zwischenkreisstrom bei 600 V (gem&auml;&szlig; SINAMICS S120 Ger&auml;tehandbuch).<br />F&uuml;r Chassis-Leistungsteile gilt:<br />Der Anzeigewert entspricht dem Bemessungs-Eingangsstrom bei Netznennspannung (gem&auml;&szlig; SINAMICS S120 Ger&auml;tehandbuch).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="208">r0208</a></b></td>
+<td colspan="4"><b>Leistungsteil Netznennspannung / LT U_nenn</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Netznennspannung des Leistungsteils.<br />
+r0208 = 400: 380 - 480 V +&#47;-10 %<br />
+r0208 = 500: 500 - 600 V +&#47;-10 %<br />
+r0208 = 690: 660 - 690 V +&#47;-10 %<br />
+Beim Basic Line Module (BLM) gilt:<br />
+r0208 = 690 : 500 - 690 V +&#47;-10 %<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="209">r0209[0...4]</a></b></td>
+<td colspan="4"><b>Leistungsteil Maximalstrom / LT I_max</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 8750, 8850, 8950</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des maximalen Ausgangsstromes des Leistungsteils.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Katalog<br />
+[1] = Lastspiel mit leichter &Uuml;berlast<br />
+[2] = Lastspiel mit hoher &Uuml;berlast<br />
+[3] = S1-Lastspiel<br />
+[4] = S6-Lastspiel<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0205<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="210">p0210</a></b></td>
+<td colspan="4"><b>Ger&auml;te-Anschlussspannung / U_Anschluss</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, S_INF_COMBI, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C2(1, 2)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 8860, 8960</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>70</td>
+<td  >1000</td>
+<td >400</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Ger&auml;te-Anschlussspannung (3AC).<br />
+Der Wert entspricht dem Effektivwert der verketteten Netznennspannung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p3400<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Warnung:</b></td>
+<td width="85%">Dauerhafter geregelter Betrieb der Einspeisung bei hohen Zwischenkreisspannungen (p3510 &gt; 660 V) kann abh&auml;ngig von der Applikation zu einer Besch&auml;digung angeschlossener Motoren f&uuml;hren, die nicht f&uuml;r diese hohen Spannungen spezifiziert sind.<br />Vor dem pulsenden Betrieb einer aktiven Einspeisung bei Netzspannungen p0210 &gt; 415 V ist sicherzustellen, dass alle am Zwischenkreis angeschlossenen Komponenten mit Zwischenkreisspannungen &uuml;ber 660 V dauerhaft betrieben werden k&ouml;nnen.<br />Die Freigabe des geregelten Betriebs von Booksize-Leistungsteilen f&uuml;r p0210 &gt; 415 V ist m&ouml;glich, falls die maximale station&auml;re Zwischenkreisspannung (p0280) wie folgt erh&ouml;ht wird:<br />p0280 &gt;= 1.5 x p0210 und p0280 &gt; 660 V<br />Der Sollwert der Zwischenkreisspannung p3510 wird in diesem Fall nicht automatisch angepasst. Es wird p3510 = 1.5 x p0210 empfohlen.<br />Der spannungsgeregelte Betrieb wird mit p3400.0 = 0 und p3400.3 = 1 aktiviert.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">F&uuml;r p0210 &gt; 415 V wird bei Booksize-Leistungsteilen mit Anschlussspannung 3AC 380 ... 480 V automatisch der Smart Mode aktiviert (p3400.0 = 1), da im spannungsgeregelten Betrieb die maximal zul&auml;ssige station&auml;re Zwischenkreisspannung (p0280) &uuml;berschritten w&uuml;rde.<br />Bei Booksize-Leistungsteilen mit Anschlussspannung 3AC 380 ... 480 V gilt:<br />380 V &lt;= p0210 &lt;= 400 V --&gt; Vorbelegung Sollwert f&uuml;r Zwischenkreisspannung: p3510 = 600 V<br />401 V &lt;= p0210 &lt;= 415 V --&gt; Vorbelegung Sollwert f&uuml;r Zwischenkreisspannung: p3510 = 625 V<br />416 V &lt;= p0210 &lt;= 480 V --&gt; Smart Mode mit ungeregelter Zwischenkreisspannung: p3510 = 1.35 x p0210<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">F&uuml;r die Vorbelegung des Sollwertes f&uuml;r die Zwischenkreisspannung (p3510) gilt grunds&auml;tzlich:<br />p3510 = 1.5 x p0210<br />Der Spannungsbereich f&uuml;r die Anschlussspannung ist von Typ und Spannungsklasse des Leistungsteils abh&auml;ngig.<br />F&uuml;r den regul&auml;ren Bereich der Anschlussspannung gilt:<br />400-V-Ger&auml;te: 380 V &lt;= p0210 &lt;= 480 V<br />690-V-Ger&auml;te: 660 V &lt;= p0210 &lt;= 690 V<br />500&#47;690-V-Ger&auml;te: 500 V &lt;= p0210 &lt;= 690 V<br />Dar&uuml;ber hinaus ist f&uuml;r folgende Ger&auml;te ein nach unten erweiterter Spannungsbereich einstellbar:<br />Booksize-Ger&auml;te:<br />ALM, 400-V-Ger&auml;t: 180 V &lt;= p0210<br />SLM, 400-V-Ger&auml;t: 180 V &lt;= p0210<br />Ausgenommen sind 80 kW &#47; 120 kW ALM mit interner und externer K&uuml;hlung.<br />F&uuml;r ALM mit 6SL3130-7TE28-0Axx, 6SL3130-7TE31-2Axx, 6SL3131-7TE28-0Axx, 6SL3131-7TE31-2Axx gilt:<br />380 V &lt;= p0210<br />Chassis-Ger&auml;te:<br />ALM, 400-V-Ger&auml;t: 180 V &lt;= p0210 &lt;= 480 V<br />ALM, 500&#47;690-V-Ger&auml;t: 380 V &lt;= p0210 &lt;= 690 V<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="211">p0211</a></b></td>
+<td colspan="4"><b>Netznennfrequenz / Netznennfrequenz</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 8864, 8964</td></tr><tr><td><b>P-Gruppe:</b> Regelung</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10</td>
+<td  >100</td>
+<td >50</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Netznennfrequenz f&uuml;r die Einspeisung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p3409<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei p3409 = 1 gilt:<br />Die Netznennfrequenz (p0211) wird nach der Betriebsfreigabe automatisch entsprechend der aktuell gemessenen Frequenz auf den Wert 50 oder 60 Hz gesetzt. Der Parameterwert von p0211 wird also unter Umst&auml;nden ge&auml;ndert.<br />Bei p3409 = 0 gilt:<br />Der Parameter p0211 wird vom System nicht ver&auml;ndert.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="212">p0212</a></b></td>
+<td colspan="4"><b>Leistungsteil Konfiguration / LT Konfig</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, R_INF, A_INF_840, S_INF_840, S_INF_COMBI, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C2(2)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung zur Konfiguration des Leistungsteils.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Ger&auml;te-Anschlussspannung reduziert</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>05</td><td>Sch&uuml;tz Eing&auml;nge&#47;Ausg&auml;nge Status anzeigen</td><td>Ja</td><td>Nein</td><td>9814</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Zu Bit 00:<br />Reduzierte Anschlussspannungen bis 100 V werden nur bei Booksize-Leistungsteilen erm&ouml;glicht.<br />Reduzierte Anschlussspannungen bis 180 V werden nur bei A_Infeed-Leistungsteilen (500 V - 690 V) erm&ouml;glicht.<br />Bit 0 = 1 kann nur bei r0192.22 = 1 eingestellt werden.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Vorsicht:</b></td>
+<td width="85%">Zu Bit 00:<br />Wird mit reduzierten Eingangsspannungen gearbeitet, so ist die Unterspannungserkennung dementsprechend abgesenkt.<br />Die Anwendung dieser Funktion ist nur mit Expertenwissen zul&auml;ssig!<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Zu Bit 00 = 0:<br />400-V-Ger&auml;te: Eine Reduzierung der Anschlussspannung in p0210 unter 180 V ist nicht m&ouml;glich.<br />690-V-Ger&auml;te: Eine Reduzierung der Anschlussspannung in p0210 unter 380 V ist nicht m&ouml;glich.<br />Zu Bit 00 = 1:<br />400-V-Ger&auml;te (Booksize): Bei dieser Einstellung kann die Anschlussspannung in p0210 bis auf 70 V reduziert werden.<br />690-V-Ger&auml;te (Chassis): Bei dieser Einstellung kann die Anschlussspannung in p0210 bis auf 180 V reduziert werden.<br />Die Aktivierung dieser Funktion wird im Ger&auml;t netzausfallsicher gespeichert und kann bei unsachgem&auml;&szlig;em Aufbau der Applikation zum Garantieverlust f&uuml;hren!<br />Zu Bit 05 = 1:<br />Der Status der Eing&auml;nge&#47;Ausg&auml;nge f&uuml;r die Leistungsteil-Sch&uuml;tze wird in r0256 angezeigt.<br />Dies gilt nur f&uuml;r Chassis-Leistungsteile mit 3AC-Netzanschluss und Netzsch&uuml;tzen.<br />Die Anzeige des Status wird erst nach Parameter sichern und POWER ON wirksam.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="220">p0220[0...1]</a></b></td>
+<td colspan="4"><b>Einspeisung Netzfiltertyp / INF Netzfiltertyp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, R_INF, A_INF_840, A_INF_828</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C2(1, 2)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 8950</td></tr><tr><td><b>P-Gruppe:</b> Umrichter</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >119</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Netzfiltertyps beim Active Line Module (ALM).<br />
+Bei einem Active Line Module (ALM) wird ein Netzfilter (Active Interface Module, AIM) mit entsprechender Leistung automatisch ausgew&auml;hlt und der Netzfiltertyp (p0220) wie folgt voreingestellt:<br />
+- Bauform &quot;Booksize&quot;: p0220 = 41 ... 45<br />
+- Bauform &quot;Chassis&quot;: p0220 = 10 ... 29 oder 78 ... 105<br />
+- Bauform &quot;Chassis-2&quot;: p0220 = 110 ... 140<br />
+Anhand des Netzfiltertyps werden Filterkapazit&auml;t (p0221), Filterwiderstand (p0222), netzseitige Filterdrossel (p0228) sowie Induktivit&auml;t (p0223) und Widerstand (p0224) der Kommutierungsdrossel vorbelegt. Zudem wird die Einstellung des Pulsfrequenzwobbelns vorbelegt (p1810.2, p1810.4, p1811), f&uuml;r die das AIM ausgelegt ist.<br />
+Die Reglereinstellungen (p3421, p3422, p3424) werden bei der Filterwahl geeignet neu vorbelegt. Daher wird eine anschlie&szlig;ende Netz- und Zwischenkreisidentifikation mit automatischer Reglereinstellung empfohlen (p3410 &gt;= 4).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Kein Netzfilter<br />1:		Wideband Line Filter Booksize 400 V 16 kW (6SL3000-0BE21-6AA0)<br />2:		Wideband Line Filter Booksize 400 V 36 kW (6SL3000-0BE23-6AA0)<br />3:		Wideband Line Filter Booksize 400 V 55 kW (6SL3000-0BE25-5AA0)<br />4:		Wideband Line Filter Booksize 400 V 80 kW (6SL3000-0BE28-0AA0)<br />5:		Wideband Line Filter Booksize 400 V 120 kW (6SL3000-0BE31-2AA0)<br />10:		AIM F 400 V 132 kW 160 kW (6SL3300-7TE32-6Ax0)<br />11:		AIM G 400 V 235 kW (6SL3300-7TE33-8Ax0)<br />12:		AIM G 400 V 300 kW (6SL3300-7TE35-0Ax0)<br />13:		AIM H 400 V 380 kW 500 kW (6SL3300-7TE38-4Ax0)<br />14:		AIM J 400 V 630 kW 900 kW (6SL3300-7TE41-4Ax0)<br />15:		AIM F 690 V 150 kW (6SL3300-7Tx31-4Ax0)<br />16:		AIM G 690 V 330 kW (6SL3300-7Tx33-1Ax0)<br />17:		AIM H 690 V 630 kW (6SL3300-7Tx35-8Ax0)<br />18:		AIM J 690 V 800 kW (6SL3300-7Tx37-4Ax0)<br />19:		AIM J 690 V 1100 kW 1400 kW (6SL3300-7Tx41-3Ax0)<br />20:		AIM F 400 V 132kW 160kW (6SL3300-7TE32-6Ax1)<br />21:		AIM G 400 V 235 kW (6SL3300-7TE33-8Ax1)<br />22:		AIM G 400 V 300 kW (6SL3300-7TE35-0Ax1)<br />23:		AIM H 400 V 380 kW 500 kW (6SL3300-7TE38-4Ax1)<br />24:		AIM J 400 V 630 kW 900 kW (6SL3300-7TE41-4Ax1)<br />25:		AIM F 690 V 150 kW (6SL3300-7Tx31-4Ax1)<br />26:		AIM G 690 V 330 kW (6SL3300-7Tx33-1Ax1)<br />27:		AIM H 690 V 630 kW (6SL3300-7Tx35-8Ax1)<br />28:		AIM J 690 V 800 kW (6SL3300-7Tx37-4Ax1)<br />29:		AIM J 690 V 1100 kW 1400 kW (6SL3300-7Tx41-3Ax1)<br />31:		Basic Line Filter Booksize 400 V 16 kW (6SL3000-0BE21-6DAx)<br />32:		Basic Line Filter Booksize 400 V 36 kW (6SL3000-0BE23-6DAx)<br />33:		Basic Line Filter Booksize 400 V 55 kW (6SL3000-0BE25-5DAx)<br />34:		Basic Line Filter Booksize 400 V 80 kW (6SL3000-0BE28-0DAx)<br />35:		Basic Line Filter Booksize 400 V 120 kW (6SL3000-0BE31-2DAx)<br />41:		AIM 400 V 16 kW (6SL3100-0BE21-6AB0)<br />42:		AIM 400 V 36 kW (6SL3100-0BE23-6AB0)<br />43:		AIM 400 V 55 kW (6SL3100-0BE25-5AB0)<br />44:		AIM 400 V 80 kW (6SL3100-0BE28-0AB0)<br />45:		AIM 400 V 120 kW (6SL3100-0BE31-2AB0)<br />78:		AIM LC 400 V 630 kW 900 kW (6SL3305-7TE41-4AA3)<br />87:		AIM LC 690 V 630 kW 800 kW (6SL3305-7TG37-4AA3)<br />88:		AIM LC 690 V 900 kW 1100 kW (6SL3305-7TG41-0AA3)<br />89:		AIM LC 690 V 1400 kW (6SL3305-7TG41-3AA3)<br />90:		AIM LC 690 V 1700 kW (6SL3305-7TG41-6AA3)<br />100:		AIM LC 400 V 380 kW 500 kW (6SL3305-7TE38-4AA5 &#47; -xAA7)<br />101:		AIM LC 400 V 630 kW 900 kW (6SL3305-7TE41-4AA5 &#47; -xAA7)<br />102:		AIM LC 690 V 630 kW 800 kW (6SL3305-7TG37-4AA5 &#47; -xAA7)<br />103:		AIM LC 690 V 900 kW 1100 kW (6SL3305-7TG41-0AA5 &#47; -xAA7)<br />104:		AIM LC 690 V 1400 kW (6SL3305-7TG41-3AA5 &#47; -xAA7)<br />105:		AIM LC 690 V 1700 kW (6SL3305-7TG41-6AA5 &#47; -xAA7)<br />114:		AIM FS2 400 V 400 kW (6SL3301-7TE36-4AA0)<br />117:		AIM FS4 400 V 630 kW (6SL3301-7TE41-0AA0)<br />119:		AIM FS4+ 400 V 900 kW (6SL3301-7TE41-4AA0)<br /></td></tr>
+</table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Netzfilter<br />
+[1] = Netzfilter optional<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p3665<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Vorsicht:</b></td>
+<td width="85%">Bauform &quot;Booksize&quot;:<br />Bei Verwendung eines Active Interface Modules (AIM) sind die Klemmen f&uuml;r den Temperaturschalter zwischen dem Active Interface Module (X121.1&#47;2) und dem Active Line Module (X21.1&#47;2) zwingend zu verdrahten.<br />Bauform &quot;Chassis&quot;:<br />Ist bei einer Parallelschaltung von AIMs die letzte Stelle der Artikelnummer (MLFB) unterschiedlich, so muss der Temperatursensortyp manuell eingestellt werden (p3665).<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Sondereinstellungen der Modulationsart (p1810, p1811) m&uuml;ssen nach einer &Auml;nderung der Filterauswahl gegebenenfalls erneut durchgef&uuml;hrt werden.<br />F&uuml;r p0220 = 110 ... 140 gilt:<br />Diese Netzfiltertypen sind f&uuml;r den Betrieb mit Pulsfrequenzwobbeln (p1810.2 = 1, p1810.4 = 0, p1811 = 10%) ausgelegt und erf&uuml;llen nur unter dieser Voraussetzung die Anforderungen an einen normgerechten Betrieb. Um dar&uuml;ber hinaus zus&auml;tzlich reduzierte Netzr&uuml;ckwirkungen zu gew&auml;hrleisten, kann die Pulsfrequenz (p1800) abh&auml;ngig vom Leistungsteil erh&ouml;ht werden.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der maximale Filterstrom wird in r3534 angezeigt und wirkt als Scheinstromgrenze f&uuml;r die Regelung.<br />Bei Booksize-Ger&auml;ten kann bei Verwendung eines Active Interface Modules in p0220[0] optional zus&auml;tzlich ein Basic Filter eingesetzt werden, das in p0220[1] parametriert wird.<br />Die aus p0220[0, 1] abgeleitete Einstellung von Filterkapazit&auml;t (p0221) und Filterwiderstand (p0222) wird im spannungsgeregelten Betrieb f&uuml;r die automatische Kompensation des Filterblindstroms ben&ouml;tigt.<br />Bei zwei Leistungsangaben wird der gleiche Netzfilter f&uuml;r beide Leistungen verwendet.<br /></td></tr>
+</table><p></p></body></html>

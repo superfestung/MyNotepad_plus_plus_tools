@@ -1,0 +1,31 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Travel to fixed stop (FXS, FXST, FXSW): Further information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Travel to fixed stop (FXS, FXST, FXSW): Further information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Further information</h3>
+      <h4 class="Blocklabel">Rise ramp</h4>
+      <p>A rate of rise ramp for the new torque limit can be defined in MD to prevent any abrupt changes to the torque limit setting (e.g. insertion of a quill).</p>
+      <h4 class="Blocklabel">Alarm suppression</h4>
+      <p>The fixed stop alarm can be suppressed for applications by the part program by masking the alarm in a machine data item and activating the new MD setting with NEW_CONF.</p>
+      <h4 class="Blocklabel">Activation</h4>
+      <p>The commands for travel to fixed stop can be called from synchronized actions or technology cycles. They can be activated without initiation of a motion, the torque is limited instantaneously. As soon as the axis is moved via a setpoint, the limit stop monitor is activated.</p>
+      <h4 class="Blocklabel">Activation from synchronized actions</h4>
+      <p>Example:</p>
+      <p>If the expected event ($R1) occurs and travel to fixed stop is not yet running, <code>FXS</code> should be activated for axis Y. The torque must correspond to 10% of the rated torque value. The width of the monitoring window is set to the default.</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ECB"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><th>Program code</th><th> </th></tr><tr valign="top"><td>N10 IDS=1 WHENEVER (($R1=1) AND ($AA_FXS[Y]==0)) DO $R1=0 FXS[Y]=1 FXST[Y]=10</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>The normal part program must ensure that $R1 is set at the desired point in time.</p><h4 class="Blocklabel">Deactivation from synchronized actions</h4><p>Example:</p><p>If an anticipated event ($R3) has occurred and the status "Limit stop contacted" (system variable $AA_FXS) is reached, then FXS must be deselected.</p><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EXB"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><th>Program code</th><th> </th></tr><tr valign="top"><td>IDS=4 WHENEVER (($R3==1) AND ($AA_FXS[Y]==1)) DO FXS[Y]=0 FA[Y]=1000 POS[Y]=0</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Fixed stop reached</h4><p>When the fixed stop has been reached:</p><ul><li><p>The distance-to-go is deleted and the set position is tracked.</p></li><li><p>The drive torque increases up to the programmed limit value <code>FXSW</code>, and then remains constant.</p></li><li><p>Fixed stop monitoring is activated within the specified window width.</p></li></ul><h4 class="Blocklabel">Supplementary conditions</h4><ul><li><p>Measurement with delete distance-to-go</p><p>"Measurement with delete distance-to-go" (<code>MEAS</code> command) and "Travel to fixed stop" cannot be programmed at the same time in one block.</p><p><b>Exception</b>: One function acts on a path axis and the other on a positioning axis or both act on positioning axes.</p></li><li><p>Contour monitoring</p><p>Contour monitoring is not performed while "Travel to fixed stop" is active.</p></li><li><p>Positioning axes</p><p>For "Travel to fixed stop" with positioning axes, the block change is performed irrespective of the fixed stop movement.</p></li><li><p>Travel to fixed stop is <b>not</b> possible:</p><ul><li><p>With gantry axes</p></li><li><p>For competing positioning axes that are controlled exclusively from the PLC (<code>FXS</code> must be selected from the NC program).</p></li></ul></li><li><p>If the torque limit is reduced too far, the axis will not be able to follow the specified setpoint; the position controller then goes to the limit and the contour deviation increases. In this operating state, an increase in the torque limit may result in sudden, jerky movements. To ensure that the axis can follow the setpoint, check the contour deviation to make sure it is not greater than the deviation with an unlimited torque.</p></li></ul></div>
+  </body>
+</html>

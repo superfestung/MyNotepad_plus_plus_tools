@@ -1,0 +1,24 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Save modal G functions (SAVE)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Save modal G functions (SAVE)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>If the subprogram definition contains the SAVE attribute, the modal G commands that were active before the subprogram call are saved and reactivated after the end of the subprogram.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>PROC &lt;ProgName> SAVE<a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_981e069e-a0c3-4e24-b99e-1163d218495c"></a> <a id="table_0"></a> <a id="table_981e069e-a0c3-4e24-b99e-1163d218495c"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="20.0%"><col width="80.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>PROC</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Definition operation at the beginning of a program</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>SAVE</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Saves the modal G commands before the subprogram call and restores them after the end of the subprogram.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;ProgName></code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Name of the program</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Example</h3><p>In the CONTOUR subprogram, the modal G command G91 applies (incremental dimension). The modal G command G90 is effective in the main program (absolute dimension). G90 is again effective in the main program after the end of the subprogram as a result of the subprogram definition with SAVE.</p><h4 class="Blocklabel">Subprogram definition:</h4><a id="table_b398d0c5-cf29-49a2-b4da-3ffd39939bc2"></a> <a id="table_1"></a> <a id="table_b398d0c5-cf29-49a2-b4da-3ffd39939bc2"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EJD"><colgroup><col width="45.3%"><col width="54.7%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>PROC CONTOUR (REAL VALUE1) SAVE</td><td>; Subprogram definition with the SAVE parameter</td></tr><tr valign="top"><td>N10 G91 ...</td><td>; Modal G command G91 (incremental dimensioning)</td></tr><tr valign="top"><td>N100 M17</td><td>; End of subprogram</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Main program:</h4><a id="table_7e27e1c3-9f0d-44fe-bbb0-63d765119483"></a> <a id="table_2"></a> <a id="table_7e27e1c3-9f0d-44fe-bbb0-63d765119483"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EHE"><colgroup><col width="45.3%"><col width="54.7%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10 G0 X... Y... G90</td><td>; Modal G command G90 (absolute dimensioning)</td></tr><tr valign="top"><td>N20 ...</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N50 CONTOUR (12.4)</td><td>;Subprogram call</td></tr><tr valign="top"><td>N60 X... Y...</td><td>; Modal G command G90 reactivated using SAVE</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>See also:<br />    <a href="161921468427.html">Save modal G functions (SAVE): More information</a><br />    <a href="156662695307.html">Subprogram call without parameter transfer</a></p>
+  </body>
+</html>

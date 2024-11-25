@@ -1,0 +1,1142 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9385">p9385</a></b></td>
+<td colspan="4"><b>SI Motion actual value sensing sensorless fault tolerance (MM) / ActV sl tol MM</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-1</td>
+<td  >4</td>
+<td >-1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the tolerance of the plausibility monitoring of the current and voltage angle.<br />
+A higher value results in a higher degree of ruggedness when reversing at low speeds, as well as in the field weakening range for load steps.<br />
+An increase is advantageous, if the current or voltage at the motor become small.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9507<br />Refer to: F30681, C30711</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">This parameter is overwritten by the copy function of the safety functions integrated in the drive.<br />Reducing this value can have a negative impact on the actual value sensing and the plausibility check.<br />When the value is increased, this results in a longer evaluation delay and a higher velocity deviation (r9787).<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">This parameter is only effective for encoderless actual value sensing (p9506&#47;p9306 = 1, 3).<br />For synchronous motors, the value 4 must be set.<br />If value = -1:<br />- for synchronous motors, the calculation is automatically made with the value 4.<br />- for induction&#47;reluctance motors, the calculation is automatically made with a value of 0 (if the code number of the power unit p0201[0] &lt; 14000, otherwise with a value of 2).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9386">p9386</a></b></td>
+<td colspan="4"><b>SI Motion actual value sensing sensorless delay time (MM) / ActV sl t_del MM</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>5.00</td>
+<td  >1000.00</td>
+<td >100.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the delay time to evaluate the encoderless actual value sensing after the pulses have been enabled.<br />
+The value must be greater than or equal to the motor magnetizing time (p0346).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: C30711</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Caution:</b></td>
+<td width="85%">The safety functionality is only completely guaranteed after this time has expired.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">This parameter is overwritten by the copy function of the safety functions integrated in the drive.<br />If this value is reduced, this can have a negative impact on the actual value acquisition and plausibility check &ndash; and result in Safety message C30711 with the message value 1041 or 1042.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">This parameter is only effective for encoderless actual value sensing (p9506&#47;p9306 = 1, 3).<br />The set time is rounded internally to an integer multiple of the monitoring clock cycle.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9387">p9387</a></b></td>
+<td colspan="4"><b>SI Motion actual value sensing sensorless filter time (MM) / ActV sl t_filt MM</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >100000.00</td>
+<td >25000.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the filter time for smoothing the actual value with sensorless actual value sensing.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">This parameter is overwritten by the copy function of the safety functions integrated in the drive.<br />A longer filter time results in a longer response time.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">This parameter is only effective for encoderless actual value sensing (p9506&#47;p9306 = 1, 3).<br />The smoothing is realized with a 1st order lowpass filter<br />For p9387 = minimum value, the filter is deactivated.<br />The set time is rounded internally to an integer multiple of the monitoring clock cycle.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9388">p9388</a></b></td>
+<td colspan="4"><b>SI Motion actual value sensing sensorless minimum current (MM) / ActV sl I_min MM</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >1000.00</td>
+<td >10.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the minimum current for encoderless actual value sensing referred to 1 A (i.e. 1 % = 10 mA).<br />
+- the value must be increased if C30711 has occurred with message value 1042.<br />
+- the value must be decreased if C30711 has occurred with message value 1041.<br />
+For synchronous motors, the following condition must be fulfilled:<br />
+|p0305 x p9783| &gt;= p9388 x 1.2<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Recommend.:</b></td>
+<td>If required, the correct value of the motor minimum current should be determined by making the appropriate measurements.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9785<br />Refer to: C30711</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">This parameter is overwritten by the copy function of the safety functions integrated in the drive.<br />If this percentage value is reduced excessively, then this can result in a safety message and an inaccurate actual value.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">This parameter is only effective for encoderless actual value sensing (p9506&#47;p9306 = 1, 3).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9389">p9389</a></b></td>
+<td colspan="4"><b>SI Motion actual value sensing sensorless accel. limit (MM) / ActV sl a_lim MM</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10.00</td>
+<td  >3300.00</td>
+<td >100.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the acceleration limit to filter velocity fluctuations.<br />
+If this percentage value is increased, when accelerating, velocity peaks that do not reflect the real velocity characteristic can occur.<br />
+If this value is decreased, and this dampens the velocity peaks when accelerating.<br />
+- the value must be increased if C30711 with message value 1043 has occurred.<br />
+- the value must be lowered if acceleration procedures have led to an excessive Safety actual velocity.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Recommend.:</b></td>
+<td>The setting of this parameter depends on the motor and closed-loop control, and must be newly determined for each configuration.<br />To do this, a measurement should be performed while the actual value jumps, and the limit in r9785[0] must be set so low using p9389, so that it is exceeded by the value in r9785[1] a maximum of four times per second. The actual value correction filter intervenes at this instant in time. The step is no longer so drastic.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9784<br />Refer to: C30711</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">This parameter is overwritten by the copy function of the safety functions integrated in the drive.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">This parameter is only effective for encoderless actual value sensing (p9506&#47;p9306 = 1, 3).<br />For p9389 = maximum value, the filter is deactivated.<br />Diagnostics parameter p9784 must be used to correctly set this parameter.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9390">r9390[0...3]</a></b></td>
+<td colspan="4"><b>SI Motion version safety motion monitoring (Motor Module) / SI Mtn version MM</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the Safety Integrated version for the safe monitoring functions.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Safety Version (major release)<br />
+[1] = Safety Version (minor release)<br />
+[2] = Safety Version (baselevel or patch)<br />
+[3] = Safety Version (hotfix)<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9590, r9770, r9870, r9890<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Example:<br />r9390[0] = 2, r9390[1] = 60, r9390[2] = 1, r9390[3] = 0 --&gt; SI Motion version V02.60.01.00<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9398">r9398[0...1]</a></b></td>
+<td colspan="4"><b>SI Motion actual checksum SI parameters (Motor Module) / SI Mtn act CRC MM</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the checksum for the checked Safety Integrated parameters of the motion monitoring function (actual checksum) on the Motor Module&#47;Hydraulic Module.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Checksum over SI parameters for motion monitoring<br />
+[1] = Checksum over SI parameters with hardware reference<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9399<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">SI: Safety Integrated<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9399">p9399[0...1]</a></b></td>
+<td colspan="4"><b>SI Motion reference checksum SI parameters (Motor Module) / SI Mtn set CRC MM</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0000 hex</td>
+<td  >FFFF FFFF hex</td>
+<td >0000 hex</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the checksum for the checked Safety Integrated parameters of the motion monitoring function (reference checksum) on the Motor Module&#47;Hydraulic Module.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Checksum over SI parameters for motion monitoring<br />
+[1] = Checksum over SI parameters with hardware reference<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9398<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">SI: Safety Integrated<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9406">r9406[0...19]</a></b></td>
+<td colspan="4"><b>PS file parameter number parameter not transferred / PS par_no n transf</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the parameters that were not able to be transferred when reading the parameter back-up files (PS files) from the non-volatile memory (e.g. memory card).<br />
+r9406[0] = 0<br />
+--&gt; All of the parameter values were able to be transferred error-free.<br />
+r9406[0...x] &gt; 0<br />
+--&gt; indicates the parameter number in the following cases:<br />
+- parameter, whose value was not able to be completely accepted.<br />
+- indexed parameter, where at least 1 index was not able to be accepted. The first index that is not transferred is displayed in r9407.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9407, r9408<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">All indices from r9406 to r9408 designate the same parameter.<br />r9406[x] parameter number, parameter not accepted<br />r9407[x] parameter index, parameter not accepted<br />r9408[x] fault code, parameter not accepted<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9407">r9407[0...19]</a></b></td>
+<td colspan="4"><b>PS file parameter index parameter not transferred / PS parameter index</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the first index of the parameters that could not be transferred when the parameter backup files (PS files) were read from the non-volatile memory (e.g. memory card).<br />
+If, from an indexed parameter, at least one index was not able to be transferred, then the parameter number is displayed in r9406[n] and the first index that was not transferred is displayed in r9407[n].<br />
+r9406[0] = 0<br />
+--&gt; All of the parameter values were able to be transferred error-free.<br />
+r9406[n] &gt; 0<br />
+--&gt; Displays r9407[n] the first index of the parameter number r9406[n] that was not transferred.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9406, r9408<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">All indices from r9406 to r9408 designate the same parameter.<br />r9406[x] parameter number, parameter not accepted<br />r9407[x] parameter index, parameter not accepted<br />r9408[x] fault code, parameter not accepted<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9408">r9408[0...19]</a></b></td>
+<td colspan="4"><b>PS file fault code parameter not transferred / PS fault code</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Only for internal Siemens service purposes.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9406, r9407<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">All indices from r9406 to r9408 designate the same parameter.<br />r9406[x] parameter number, parameter not accepted<br />r9407[x] parameter index, parameter not accepted<br />r9408[x] fault code, parameter not accepted<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9409">r9409</a></b></td>
+<td colspan="4"><b>Number of parameters to be saved / Qty par to save</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, HUB, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the number of modified parameters and those that have still not be saved for this drive object.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0971, p0977<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">Inherent to the system, the list of the parameters to be backed up is empty after the following actions:<br />- Download<br />- Warm restart<br />- Factory setting<br />In these cases, a new parameter backup must be initiated, which is then the starting point for the list of modified parameters.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The modified parameters that still need to be saved are internally listed in r9410 ... r9419.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9450">r9450[0...29]</a></b></td>
+<td colspan="4"><b>Reference value change parameter with unsuccessful calculation / Ref_chg par n poss</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM41, ENC, ENC_840</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the parameters for which the re-calculation was unsuccessful after an internal system reference value change.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: F07086</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9451">r9451[0...29]</a></b></td>
+<td colspan="4"><b>Units changeover adapted parameters / Unit_chgov par</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM41, ENC, ENC_840</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the parameters whose parameter would have to be changed during a units changeover.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: F07088</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9481">r9481</a></b></td>
+<td colspan="4"><b>Number of BICO interconnections / BICO count</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the number of BICO interconnections (signal sinks).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9482, r9483<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The selected BICO interconnections should be entered into r9482 and r9483.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9482">r9482[0...n]</a></b></td>
+<td colspan="4"><b>BICO interconnections BI&#47;CI parameters / BICO BI&#47;CI par</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> r9481</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the signal sinks (binector&#47;connector inputs, BI&#47;CI parameters).<br />
+The number of BICO interconnections is displayed in r9481.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9481, r9483<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The list is sorted according to signal sources and is structured as follows:<br />r9842[0]: Interconnection 1 (signal sink, BICO coded), r9843[0]: Interconnection 1 (signal source, BICO coded)<br />r9842[1]: Interconnection 2 (signal sink, BICO coded), r9843[1]: Interconnection 2 (signal source, BICO coded)<br />...<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9483">r9483[0...n]</a></b></td>
+<td colspan="4"><b>BICO interconnections BO&#47;CO parameters / BICO BO&#47;CO par</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> r9481</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the signal sources (binector&#47;connector outputs, BO&#47;CO parameters).<br />
+The number of BICO interconnections is displayed in r9481.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9481, r9482<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The list is sorted according to signal sources and is structured as follows:<br />r9842[0]: Interconnection 1 (signal sink, BICO coded), r9843[0]: Interconnection 1 (signal source, BICO coded)<br />r9842[1]: Interconnection 2 (signal sink, BICO coded), r9843[1]: Interconnection 2 (signal source, BICO coded)<br />...<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9484">p9484</a></b></td>
+<td colspan="4"><b>BICO interconnections search signal source / BICO s_s srch</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >4294967295</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source (BO&#47;CO parameter, BICO coded) to search in the signal sinks.<br />
+The question is answered:<br />
+How often is a connection made to a signal source in the drive object and from which index are these interconnections saved (r9482 and r9483)?<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9481, r9482, r9483, r9485, r9486<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9485">r9485</a></b></td>
+<td colspan="4"><b>BICO interconnections signal source search count / BICO s_s srch qty</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the number of BICO interconnections to the signal sink being searched for.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9481, r9482, r9483, p9484, r9486<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The signal source to be searched is set in p9484 (BICO-coded).<br />The search result is contained in r9482 and r9483 and is specified by the count (r9485) and the first index (r9486).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9486">r9486</a></b></td>
+<td colspan="4"><b>BICO interconnections signal source search first index / BICO s_s srch idx</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the first index of the signal source being searched for.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9481, r9482, r9483, p9484, r9485<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The signal source to be searched is set in p9484 (BICO-coded).<br />The search result is contained in r9482 and r9483 and is specified by the count (r9485) and the first index (r9486).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9490">r9490</a></b></td>
+<td colspan="4"><b>Number of BICO interconnections to other drives / Qty BICO to drive</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, HUB, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the number of signal sources from this drive to other drives&#47;drive objects (Binector Output&#47;Connector Output, BO&#47;CO).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9491, r9492, p9493<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9491">r9491[0...9]</a></b></td>
+<td colspan="4"><b>BI&#47;CI of BICO interconnections to other drives / BI&#47;CI to drive</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, HUB, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the signal receiver list (Binector Input&#47;Connector Input, BI&#47;CI) for the first interconnections between this drive and other drives&#47;drive objects.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9490, r9492, p9493<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">A drive cannot be deleted if this list is not empty!<br />Otherwise, another drive would continue to attempt to read a signal from a drive that no longer existed.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">All indices of r9491 to p9493 designate the same interconnection.<br />r9491[x] contains the signal receiver and r9492[x] the matching signal source; p9493[x] can be set to modify the interconnection.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9492">r9492[0...9]</a></b></td>
+<td colspan="4"><b>BO&#47;CO of BICO interconnections to other drives / BO&#47;CO to drive</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, HUB, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the signal source list (Binector Output&#47;Connector Output, BO&#47;CO) for the first interconnections between this drive and other drives&#47;drive objects.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9490, r9491, p9493<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">A drive cannot be deleted if this list is not empty!<br />Otherwise, another drive would continue to attempt to read a signal from a drive that no longer existed.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">All indices of r9491 to p9493 designate the same interconnection.<br />r9491[x] contains the signal receiver and r9492[x] the matching signal source; p9493[x] can be set to modify the interconnection.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9493">p9493[0...9]</a></b></td>
+<td colspan="4"><b>Reset BICO interconnections to other drives / Reset BICO to drv</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, TM54F_MA, TM54F_SL, ENC, ENC_840, HUB, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >15</td>
+<td >15</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Setting to reset the BICO interconnections to other drives.<br />
+Each interconnection can be individually reset.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Set connection to 0<br />1:		Set connection to 1 (100 %)<br />2:		Set connection to factory setting<br />15:		Finished<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9490, r9491, r9492<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">All indices of r9491 to p9493 designate the same interconnection.<br />r9491[x] contains the signal receiver and r9492[x] the matching signal source; p9493[x] can be set to modify the interconnection.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9495">p9495</a></b></td>
+<td colspan="4"><b>BICO behavior for deactivated drive objects / Behav for deact DO</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the behavior for BICO interconnections to drive objects that are either not capable of operation or have been deactivated.<br />
+BO&#47;CO parameters are on the drive object that is either not capable of operation or has been deactivated (signal source).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Inactive<br />1:		Save interconnections<br />2:		Save interconnections and establish the factory setting<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9496, p9497, p9498, p9499<br />Refer to: A01318, A01507</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For p9495 = 0, the following applies:<br />- the number of interconnections is zero (p9497 = 0).<br />For p9495 not equal to 0, the following applies:<br />- the BI&#47;CI parameters involved are listed in p9498[0...29] (signal sink).<br />- the associated BO&#47;CO parameters are listed in p9499[0...29] (signal source).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9496">p9496</a></b></td>
+<td colspan="4"><b>BICO behavior when activating drive objects / Behav when act DO</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the behavior when activating BICO interconnections to drive objects that are either not capable of operation or have been deactivated.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Inactive<br />1:		Restore the interconnections from the list<br />2:		Delete the interconnections from the list<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9495, p9497, p9498, p9499<br />Refer to: A01318, A01507</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The BI&#47;CI parameters involved are listed in p9498[0...29] (signal sink).<br />The associated BO&#47;CO parameters are listed in p9499[0...29] (signal source).<br />After p9496 = 1, 2 the following applies:<br />- p9497 = 0<br />- p9496 = 0<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9497">p9497</a></b></td>
+<td colspan="4"><b>BICO interconnections to deactivated drive objects number / Interconn obj qty</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >65535</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the number of saved BICO interconnections to drive objects that are either not capable of operation or have been deactivated.<br />
+BO&#47;CO parameters are on the drive object that is either not capable of operation or has been deactivated (signal source).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9495, p9496, p9498, p9499<br />Refer to: A01318, A01507</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9498">p9498[0...29]</a></b></td>
+<td colspan="4"><b>BICO BI&#47;CI parameters to deactivated drive objects / BI&#47;CI to deact obj</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the saved BI&#47;CI parameters (signal sink), whose source is located on drive objects that are either not capable of operation or have been deactivated.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9495, p9496, p9497, p9499<br />Refer to: A01318, A01507</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A BICO interconnection (signal sink, signal source) is displayed in the same index of p9498 and p9499.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9499">p9499[0...29]</a></b></td>
+<td colspan="4"><b>BICO BO&#47;CO parameters to deactivated drive objects / BO&#47;CO to deact obj</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S_AC_DP, CU_S_AC_PN, CU_S120_PN, CU_S120_DP, CU_I_840, CU_NX_840, CU_I_COMBI, CU_NX_COMBI, CU_I_828, CU_NX_828, SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM31, TM41, TM17, TM15, TM15DI_DO, TM120, TM150, TB30, ENC, ENC_840, CU_LINK</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the saved BO&#47;CO parameters (signal source), which are located on drive objects that are either not capable of operation or have been deactivated.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9495, p9496, p9497, p9498<br />Refer to: A01318, A01507</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A BICO interconnection (signal sink, signal source) is displayed in the same index of p9498 and p9499.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9500">p9500</a></b></td>
+<td colspan="4"><b>SI Motion monitoring clock cycle (Control Unit) / SI Mtn clock CU</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.50000</td>
+<td  >25.00000</td>
+<td >12.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the monitoring clock cycle for safe motion monitoring.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r2064, p9511<br />Refer to: F01652</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A change only becomes effective after a POWER ON.<br />The monitoring clock cycle must be a multiple of the actual value sensing clock cycle (see the parameter description for p9511).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9501">p9501</a></b></td>
+<td colspan="4"><b>SI Motion enable safety functions (Control Unit) / SI Mtn enable CU</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_COMBI, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 0000 0000 0000 0000 0000 0000 0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the enable signals for the safe motion monitoring.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Enable SOS&#47;SLS (SBH&#47;SG)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>01</td><td>Enable SLP (SE)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>02</td><td>Enable absolute position</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>03</td><td>Enable actual value synchronization</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>04</td><td>Enable SS2ESR</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>16</td><td>Enable SSM (n &lt; nx) hysteresis and filtering</td><td>Enable</td><td>Inhibit</td><td>2823</td></tr><tr><td></td><td>17</td><td>Enable SDI</td><td>Enable</td><td>Inhibit</td><td>2824</td></tr><tr><td></td><td>18</td><td>Enable SS2E</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>20</td><td>Enable SLA</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>23</td><td>Enable deactivation SOS&#47;SLS during an external STOP A</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>24</td><td>Enable transfer SLS (SG) limit value via PROFIsafe</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>25</td><td>Enable transfer safe position via PROFIsafe</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>26</td><td>Enable safe gearbox switchover</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>27</td><td>Enable referencing via SCC</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>28</td><td>Enable safe cam</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>29</td><td>Enable synchronous transfer safe position via PROFIsafe</td><td>Enable</td><td>Inhibit</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: F01682, F01683</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A change only becomes effective after a POWER ON.<br />SCA: Safe Cam &#47; SN: Safe software cam<br />SDI: Safe Direction (safe motion direction)<br />SLA: Safely-Limited Acceleration<br />SLS: Safely-Limited Speed &#47; SG: Safely reduced speed<br />SOS: Safe Operating Stop &#47; SBH: Safe operating stop<br />SS2ESR: Safe Stop 2 Extended Stop and Retract<br />SSM: Safe Speed Monitor (safety-relevant feedback signal from the speed monitoring)<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9502">p9502</a></b></td>
+<td colspan="4"><b>SI Motion axis type (Control Unit) / SI Mtn ax type CU</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the axis type (linear axis or rotary axis&#47;spindle).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Linear axis<br />1:		Rotary axis&#47;spindle<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For the commissioning tool, after changing over the axis type, the units dependent on the axis type are only updated after a project upload.<br />A change only becomes effective after a POWER ON.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9503">p9503</a></b></td>
+<td colspan="4"><b>SI Motion SCA (SN) enable (Control Unit) / SI Mtn SCA enab</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 0000 0000 0000 0000 0000 0000 0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Setting to enable the function &quot;Safe Cam&quot; (SCA).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Enable SCA1 (SN1)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>01</td><td>Enable SCA2 (SN2)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>02</td><td>Enable SCA3 (SN3)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>03</td><td>Enable SCA4 (SN4)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>04</td><td>Enable SCA5 (SN5)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>05</td><td>Enable SCA6 (SN6)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>06</td><td>Enable SCA7 (SN7)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>07</td><td>Enable SCA8 (SN8)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>08</td><td>Enable SCA9 (SN9)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>09</td><td>Enable SCA10 (SN10)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>10</td><td>Enable SCA11 (SN11)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>11</td><td>Enable SCA12 (SN12)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>12</td><td>Enable SCA13 (SN13)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>13</td><td>Enable SCA14 (SN14)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>14</td><td>Enable SCA15 (SN15)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>15</td><td>Enable SCA16 (SN16)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>16</td><td>Enable SCA17 (SN17)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>17</td><td>Enable SCA18 (SN18)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>18</td><td>Enable SCA19 (SN19)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>19</td><td>Enable SCA20 (SN20)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>20</td><td>Enable SCA21 (SN21)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>21</td><td>Enable SCA22 (SN22)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>22</td><td>Enable SCA23 (SN23)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>23</td><td>Enable SCA24 (SN24)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>24</td><td>Enable SCA25 (SN25)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>25</td><td>Enable SCA26 (SN26)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>26</td><td>Enable SCA27 (SN27)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>27</td><td>Enable SCA28 (SN28)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>28</td><td>Enable SCA29 (SN29)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr><tr><td></td><td>29</td><td>Enable SCA30 (SN30)</td><td>Enable</td><td>Inhibit</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9501<br />Refer to: F01686</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">SCA: Safe Cam &#47; SN: Safe software cam<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9505">p9505</a></b></td>
+<td colspan="4"><b>SI Motion SP modulo value (Control Unit) / SI mtn SP mod CU</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >737280</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the modulo value in degrees for rotary axes of the &quot;Safe position&quot; function.<br />
+This modulo value is taken into account when safely referencing as well as when transferring the safe position via PROFIsafe when the absolute position is enabled.<br />
+The value should be set so that it is precisely at 2^n revolutions, so that when the range that can be represented (+&#47;-2048) overflows, this does not cause the position actual value to jump.<br />
+The modulo function is deactivated for a value = 0.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9501<br />Refer to: F01681</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">When the &quot;SLP&quot; function is activated, the modulo function must be deactivated as otherwise fault F01681 will be output.<br />If the absolute position is not enabled, then the parameterized modulo value is not taken into account.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">SLP: Safely-Limited Position<br />SP: Safe Position<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9506">p9506</a></b></td>
+<td colspan="4"><b>SI Motion function specification (Control Unit) / SI Mtn fct_spc CU</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >3</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the function specification for the safe motion monitoring.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Safety with encoder and accel_monitoring (SAM) &#47; delay time<br />1:		Safety without encoder with brake ramp (SBR)<br />2:		Safety with encoder with brake ramp (SBR)<br />3:		Safety without encoder with accel_monitoring (SAM) &#47; delay time<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: C01711</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A change only becomes effective after a POWER ON.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9507">p9507</a></b></td>
+<td colspan="4"><b>SI Motion function specification (Control Unit) / SI Mtn config CU</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the function configuration for the safe motion monitoring functions.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Extended message acknowledgment</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>01</td><td>Setpoint velocity limit for STOP F</td><td>No</td><td>Yes</td><td>-</td></tr><tr><td></td><td>02</td><td>Actual value sensing encoderless motor type</td><td>Synchronous motor</td><td>ASM&#47;RESM</td><td>-</td></tr><tr><td></td><td>03</td><td>SS1 with OFF3 (brake response)</td><td>SS1E external stop</td><td>SS1 with OFF3</td><td>-</td></tr><tr><td></td><td>05</td><td>Actual value sensing sensorless edge modulation</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>06</td><td>Configuration test stop motion monitoring functions</td><td>Test automatic</td><td>Test manual</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: C01711</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For bit 00:<br />When the function is activated, a safety-relevant acknowledgment (internal event acknowledge) can be performed by selecting&#47;deselecting STO.<br />For bit 01:<br />When the function is activated, the active setpoint velocity limit (CO: r9733) is set to zero when STOP F is active.<br />For bit 02:<br />This bit defines the type of motor, which the sensorless actual value sensing evaluates.<br />For bit = 0, the actual speed is calculated for an induction&#47;reluctance motor.<br />For bit = 1, the actual velocity is calculated for a synchronous motor. This value depends on the setting in p0300.<br />Bit = 0 should be set if no motor is defined (p0300 = 0).<br />For bit 03:<br />When the bit is activated &ndash; when selecting function SS1 or activating a STOP B &ndash; an SS1E or a STOP B with stop, which should be externally initiated, is triggered instead of SS1 with a drive-based braking response. As a consequence, brake monitoring (SBR, SAM) is deactivated.<br />SS1E: Safe Stop 1 external (Safe Stop 1 with external stop)<br />For bit 05:<br />This bit defines the type of modulation, which the sensorless actual value sensing evaluates.<br />For bit = 0, the actual velocity is calculated for space vector modulation.<br />For bit = 1, the actual velocity is calculated for edge modulation. This value depends on the setting in p1802.<br />For bit 06:<br />For the automatic test stop, the test stop can still be initiated via binector input p9705.<br />The automatic test stop is executed after power up, partial power up or a warm restart.<br />ASM: Induction motor<br />RESM: reluctance synchronous motor (synchronous reluctance motor)<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9509">p9509</a></b></td>
+<td colspan="4"><b>SI Motion behavior during pulse suppression (Control Unit) / SI Mtn behav IL CU</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 0000 1111 1111 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the behavior of safety functions and their feedback during pulse suppression in encoderless operation.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>SSM during pulse suppression and encoderless</td><td>Becomes inactive</td><td>Remains active</td><td>-</td></tr><tr><td></td><td>08</td><td>SDI during pulse suppression and encoderless</td><td>Becomes inactive</td><td>Remains active</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: C01711</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">For bit 00:<br />If the OFF1 or the OFF3 ramp-down time is too low, or there is an insufficient clearance between the SSM limit speed, and the shutdown speed, then it is possible that the &quot;speed under limit value&quot; signal does not change to 1, because no speed actual value below the SSM limit was able to be identified before pulse cancellation. In this case, the OFF1 or the OFF3 ramp-down time or the clearance between the SSM limit speed and shutdown speed must be increased.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">SDI: Safe Direction (safe motion direction)<br />SSM: Safe Speed Monitor (safety-relevant feedback signal from the speed monitoring)<br />For bit 00:<br />For bit = 1 and with the SSM safety function activated, the following applies:<br />- During pulse suppression, monitoring is switched off and the feedback signal has a 0 signal level.<br />For bit = 0 and with the SSM safety function activated, the following applies:<br />- Monitoring continues during pulse suppression. The feedback signal last displayed before pulse suppression is kept and the system goes into the STO state.<br />For bit 08:<br />For bit = 1 and with the SDI safety function activated, the following applies:<br />- During pulse suppression, monitoring is switched off and the status signal indicates inactive.<br />For bit = 0 and with the SDI safety function activated, the following applies:<br />- Monitoring continues during pulse suppression. The status signal indicates active and the system goes into the STO state.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9510">p9510</a></b></td>
+<td colspan="4"><b>SI Motion isochronous PROFIBUS master / SI Mtn sync master</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Setting for isochronous communication between PROFIdrive controller and Control Unit.<br />
+The parameter is only relevant, if the safety-relevant motion monitoring functions integrated in the drive have been enabled (p9601.2 =1).<br />
+If a PROFIdrive controller exchanges process data isochronously with the Control Unit, then p9510 must be set to 1. This also applies if the drive itself does not exchange process data isochronously.<br />
+Examples for isochronous communication:<br />
+- isochronous control for the motion control (e.g. SIMOTION).<br />
+- isochronous PROFIsafe master (e.g. SIMATIC S7-400F).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Communication not isochronous<br />1:		Communication isochronous<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: C01711, A01796</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">As of firmware version 2.6, the parameter has no effect.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9511">p9511</a></b></td>
+<td colspan="4"><b>SI Motion actual value sensing cycle clock (Control Unit) / SI Mtn act clk CU</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >25.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the clock cycle time of the actual value sensing for safe motion monitoring.<br />
+Setting criteria if the motion monitoring functions are executed with an encoder.<br />
+- a slower clock cycle time reduces the maximum permissible velocity - however, it ensures a lower load of the Control Unit for safe actual value sensing.<br />
+- the maximum permissible velocity which, when exceeded, can mean that errors occur during safe actual value sensing, is displayed in r9730.<br />
+- the isochronous PROFIBUS clock cycle is used as a clock cycle time for actual value sensing with a setting of 0 ms; the setting is 1 ms if isochronous operation is not being used.<br />
+Setting criteria if the motion monitoring functions are executed without an encoder:<br />
+- the actual value sensing clock cycle must be set to the same value as the current controller clock cycle (p0115[0]).<br />
+For SINAMICS S120M, the following applies:<br />
+Only setting p9511 = 0 or 2 ms is possible (a value of 0 is internally assumed to be 2).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0115<br />Refer to: F01652</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The parameter is only active for drive-based motion monitoring functions (p9601.2 = 1).<br />The monitoring clock cycle from p9500 must be an integer multiple of this parameter.<br />In the case of motion monitoring functions with encoder, the clock cycle time for actual value sensing must be an integer multiple of the current controller clock cycle and at least 4 times slower than the current controller clock cycle. A factor of at least 8 is recommended.<br />The clock cycle time of the actual value sensing should not be set to more than 8 ms.<br />A change only becomes effective after a POWER ON.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9512">p9512</a></b></td>
+<td colspan="4"><b>Select SI Motion safety functions without selection (CU) / SI Mtn w&#47;o sel CU</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(95)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Safety Integrated</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 0000 0001 0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the safety functions without selection.<br />
+The safety functions without selection are enabled with p9601.5&#47;p9801.5.<br />
+Using this parameter, the individual motion monitoring functions can then be selected (e.g. SLS, SDI positive, SDI negative), which should then be permanently selected.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>04</td><td>SLS static (CU)</td><td>Static selected</td><td>Static deselected</td><td>-</td></tr><tr><td></td><td>12</td><td>SDI positive static (CU)</td><td>Static selected</td><td>Static deselected</td><td>-</td></tr><tr><td></td><td>13</td><td>SDI negative static (CU)</td><td>Static selected</td><td>Static deselected</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9601, p9801<br />Refer to: F01682</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A change becomes immediately effective after exiting the safety commissioning mode.<br />SDI: Safe Direction (safe motion direction)<br />SLS: Safely-Limited Speed<br /></td></tr>
+</table><p></p></body></html>

@@ -1,0 +1,70 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Abstandsbestimmung zweier Schutzbereiche (PROTD)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Abstandsbestimmung zweier Schutzbereiche (PROTD)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Die Funktion <code>PROTD(...)</code> berechnet den Abstand von zwei Schutzbereichen.</p>
+      <p>Funktionseigenschaften:</p>
+      <ul>
+        <li>
+          <p>Die Abstandsberechnung erfolgt unabhängig vom Status der Schutzbereiche (aktiviert, deaktiviert, voraktiviert).</p>
+        </li>
+        <li>
+          <p>Zur Abstandsberechnung zweier Schutzbereiche werden nur solche Schutzbereichselemente herangezogen, welche mit $NP_USAGE = "C" oder "A" gekennzeichnet sind. Schutzbereichselemente des Schutzbereichs, die mit $NP_USAGE = "V" gekennzeichnet sind, werden nicht betrachtet.</p>
+        </li>
+        <li>
+          <p>Schutzbereiche, bei denen alle Schutzbereichselemente des Schutzbereichs mit $NP_USAGE = "V" gekennzeichnet sind, können nicht zur Abstandsberechnung herangezogen werden.</p>
+        </li>
+        <li>
+          <p>Die Abstandsberechnung erfolgt mit den am Ende des Vorgängersatzes gültigen Positionen.</p>
+        </li>
+        <li>
+          <p>Überlagerungen, die im Hauptlauf eingerechnet werden, z. B. DRF-Verschiebung oder externe Nullpunktverschiebungen, gehen mit den zum <b>Interpretationszeitpunkt </b>der Funktion gültigen Werten in die Abstandsberechnung ein.</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Hinweis</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="Blocklabel">Synchronisation</h4>
+                <p class="safety">Bei Anwendung der Funktion <code>PROTD(...)</code> liegt es ausschließlich in der Verantwortung des Anwenders, Haupt- und Vorlauf gegebenenfalls mittels Vorlaufstopp <code>STOPRE</code> zu synchronisieren.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Kollision</h4>
+      <p>Liegt zwischen den angegebenen Schutzbereichen eine Kollision vor, liefert die Funktion einen Abstand von 0,0. Eine Kollision liegt vor, wenn sich die beiden Schutzbereiche berühren oder durchdringen.</p>
+      <p>Der Sicherheitsabstand für die Kollisionsprüfung (MD10622 $MN_COLLISION_SAFETY_DIST) wird bei der Abstandsberechnung nicht berücksichtigt.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>[&lt;RetVal> =] PROTD([&lt;Name_1>],[&lt;Name_2>],VAR &lt;Vector>[,&lt;System>])<a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_c377441f-3a81-405b-b709-21228bfdf632"></a> <a id="table_0"></a> <a id="table_c377441f-3a81-405b-b709-21228bfdf632"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="17.4%"><col width="20.4%"><col width="18.5%"><col width="43.7%"></colgroup><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>PROTD:</code></p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Abstand der beiden angegebenen Schutzbereiche berechnen</p></td></tr><tr valign="top"><td colspan="3"><ul class="table"><li><p>Muss alleine im Satz stehen.</p></li></ul></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>RetVal</code><code>></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Rückgabewert der Funktion: Absolutwert des Abstandes der beiden Schutzbereiche oder 0,0 bei Kollision (siehe oben: Absatz Kollision)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wertebereich:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">0,0 ≤ x ≤ +max. REAL-Wert</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>Name_1</code><code>>, &lt;</code><code>Name_2</code><code>></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Namen der beiden Schutzbereiche, deren Abstand zueinander berechnet werden soll (<b>optional</b>)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">STRING</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wertebereich:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Parametrierte Schutzbereichnamen</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Defaultwert:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">"" (Leerstring)</p><p type="p_table_l" align="left">Sind keine Schutzbereiche angegeben, berechnet die Funktion den aktuell kleinsten Abstand aus allen im Kollisionsmodell enthaltenen aktivierten und voraktivierten Schutzbereichen.</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>Vector</code><code>></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Rückgabewert: 3-dimensionaler Abstandsvektor von Schutzbereich &lt;Name_2> zu Schutzbereich &lt;Name_1> mit:</p><ul class="table"><li><p>&lt;Vector>[0]: X-Koordinate im Weltkoordinatensystem</p></li><li><p>&lt;Vector>[1]: Y-Koordinate im Weltkoordinatensystem</p></li><li><p>&lt;Vector>[2]: Z-Koordinate im Weltkoordinatensystem</p></li></ul><p type="p_table_l" align="left">Bei Kollision: &lt;Vector> == Nullvektor</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">VAR REAL [3]</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wertebereich:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Vector> [n]: 0,0 ≤ x ≤ ±max. REAL-Wert</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>System</code><code>></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Maßsystem (inch/metrisch) für Abstand und Abstandsvektor (<b>optional</b>)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">BOOL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Wert:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">FALSE (Default)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Maßsystem entsprechend dem aktuell aktiven G-Befehl aus G-Gruppe 13 (G70, G71, G700, G710).</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">TRUE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Maßsystem entsprechend des eingestellten Grundsystems:</p><p type="p_table_l" align="left">MD52806 $MN_ISO_SCALING_SYSTEM</p></td></tr></table></p></div>
+    <p>Siehe auch:<br />    <a href="156663218443.html">Allgemeiner Hinweis zu Schutzbereichen der Kollisionsvermeidung</a></p>
+  </body>
+</html>

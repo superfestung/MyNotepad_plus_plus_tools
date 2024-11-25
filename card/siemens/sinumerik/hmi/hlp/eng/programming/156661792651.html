@@ -1,0 +1,68 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Adapt tolerances for rapid traverse motion (STOLF, CTOLG0, OTOLG0)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Adapt tolerances for rapid traverse motion (STOLF, CTOLG0, OTOLG0)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The tolerances for rapid traverse motion (G0 tolerances) configured using machine data can be temporarily adapted in the part program. In so doing, the settings in the machine data are not changed. After channel or end of program reset, the configured tolerances become effective again.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Requirements</h3>
+      <p>G0 tolerances are only effective in compliance with the following conditions:</p>
+      <ul>
+        <li>
+          <p>One of the following functions is active:</p>
+          <ul>
+            <li>
+              <p>Compressor function COMP...</p>
+            </li>
+            <li>
+              <p>Smoothing function G642 or G645</p>
+            </li>
+            <li>
+              <p>Orientation smoothing OST</p>
+            </li>
+            <li>
+              <p>Orientation smoothing ORISON</p>
+            </li>
+            <li>
+              <p>Smoothing for path-relevant orientation ORIPATH</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Several (≥ 2) consecutive G0 blocks in the part program.</p>
+          <p>For a single G0 block, the G0 tolerances are not effective, as at the transition from non G0 motion to G0 motion (and vice versa), the "<b>lower tolerance</b>" always applies (workpiece processing tolerance)!</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <h4 class="Blocklabel">Adaptation of the relative G0 tolerance</h4>
+      <p>
+        <code>STOLF=&lt;Value></code>
+      </p>
+      <h4 class="Blocklabel">Adaptation of the absolute G0 tolerances</h4>
+      <p>
+        <code>CTOLG0=&lt;Value></code> </p>
+      <p>
+        <code>OTOLG0=&lt;Value></code> </p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Meaning</h3>
+      <a id="table_30ed10a5-29da-8827-f11f-1aee37a8c579">
+      </a> <a id="table_0"></a> <a id="table_30ed10a5-29da-8827-f11f-1aee37a8c579"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="12.5%"><col width="12.5%"><col width="10.0%"><col width="7.5%"><col width="57.5%"></colgroup><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>STOLF</code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Address for programming a temporarily effective tolerance factor for rapid traverse motion</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>Value</code><code>></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">G0 tolerance factor</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">≥ 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The G0 tolerance factor can be greater or less than 1.0. If the factor is equal to 1.0 (default value), then the same tolerances are active for rapid traverse motion as for non-rapid traverse motion. Normally, the tolerance factor is set to > 1.0.</p><p type="p_table_l" align="left">The programmed G0 tolerance factor remains effective until it is overwritten by renewed STOLF programming, replaced by CTOLG0/OTOLG0 programming or deleted by channel or end of program reset.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt; 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">the programmed tolerance factor is deleted</p><p type="p_table_l" align="left">⇒ The tolerance value preset in the machine data becomes effective again.</p></td></tr><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>CTOLG0</code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Address for programming a temporarily effective contour tolerance factor for rapid traverse motion</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Value></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Absolute value for the contour tolerance</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">≥ 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The programmed absolute value for the contour tolerance remains effective until it is overwritten by renewed CTOLG0 programming, replaced by STOLF programming or deleted by channel or end of program reset.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt; 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">the programmed tolerance value is deleted</p><p type="p_table_l" align="left">⇒ The tolerance value preset in the machine data becomes effective again.</p></td></tr><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>OTOLG0</code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Address for programming a temporarily effective orientation tolerance factor for rapid traverse motion</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Value></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Absolute value for the orientation tolerance</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">≥ 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The programmed absolute value for the orientation tolerance remains effective until it is overwritten by renewed OTOLG0 programming, replaced by STOLF programming or deleted by channel or end of program reset.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt; 0:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">the programmed tolerance value is deleted</p><p type="p_table_l" align="left">⇒ The tolerance value preset in the machine data becomes effective again.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">The last programmed address always has priority, as shown in the following examples:</p><ul class="safety"><li class="safety"><p class="safety">When CTOLG0 is programmed with active STOLF, the tolerance value programmed with CTOLG0 is applied to smooth the contour.</p></li><li class="safety"><p class="safety">When OTOLG0 is programmed with active STOLF, the tolerance value programmed with OTOLG0 is applied to smooth the orientation.</p></li><li class="safety"><p class="safety">After programming STO again, the tolerance factor for the contour and orientation tolerance is applied.</p></li></ul></td></tr></table><a name="block_4"></a><h3 class="Blocktitle">Examples</h3><h4 class="Blocklabel">Example 1: Adaptation of the relative G0 tolerance</h4><a id="table_ca882b10-aaa0-4548-bea2-4e8aad272fa6"></a> <a id="table_1"></a> <a id="table_ca882b10-aaa0-4548-bea2-4e8aad272fa6"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EKAAC"><colgroup><col width="34.1%"><col width="65.9%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td><b>COMPCAD</b> G645 G1 F10000</td><td>; Compressor function COMPCAD</td></tr><tr valign="top"><td>X... Y... Z...</td><td>; The machine and setting data apply here.</td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0  X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0  X... Y... Z...</td><td>; Machine data $MC_G0_TOLERANCE_FACTOR (e.g. =3) is effective here, i.e. a smoothing tolerance of:$MC_G0_TOLERANCE_FACTOR * $MA_COMPRESS_POS_TOL</td></tr><tr valign="top"><td>CTOL=0.02</td><td> </td></tr><tr valign="top"><td><b>STOLF=4</b></td><td> </td></tr><tr valign="top"><td>G1 X... Y... Z...</td><td>; A contour tolerance of 0.02 mm is applied starting from here.</td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0 X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td>; From here, a G0 tolerance factor of 4 applies, i.e. a contour tolerance of 0.08 mm.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 2: Adaptation of the absolute G0 tolerances</h4><p>The following absolute G0 tolerances should be preset in the machine data:</p><ul><li><p>G0 contour tolerance: 0.1</p></li><li><p>G0 orientation tolerance: 1.0</p></li></ul><p>These tolerances should be temporarily adapted in the part program: </p><a id="table_2dc44b50-dc74-1ad5-909d-5c1e3e19ed33"></a> <a id="table_2"></a> <a id="table_2dc44b50-dc74-1ad5-909d-5c1e3e19ed33"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EJDAC"><colgroup><col width="34.1%"><col width="65.9%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td><b>COMPCAD</b> G645 G1 F10000</td><td>; Compressor function COMPCAD</td></tr><tr valign="top"><td>X... Y... Z...</td><td>; The configured workpiece machining tolerances apply from here.</td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0  X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0  X... Y... Z...</td><td>; The configured absolute G0 tolerances apply here.</td></tr><tr valign="top"><td><b>CTOLG0=0.2 OTOLG0=2.0</b></td><td>; Programming the absolute G0 tolerances. </td></tr><tr valign="top"><td>G1 X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G0 X... Y... Z...</td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td>; The programmed G0 tolerances apply from here.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>See also:<br />    <a href="156661796235.html">Adapt tolerance factor for rapid traverse motion (STOLF, CTOLG0, OTOLG0) Further information</a></p>
+  </body>
+</html>

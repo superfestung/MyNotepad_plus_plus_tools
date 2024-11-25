@@ -1,0 +1,48 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Bahninterpolation: Strategieauswahl</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Bahninterpolation: Strategieauswahl</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Interpolation bedeutet, dass alle Achsen im Kanal denselben Schleppabstand aufweisen. Nach der Optimierung der einzelnen Achsen sind die Regler unterschiedlich eingestellt. Um den Schleppabstand zu vereinheitlichen, werden die Regler einschließlich KV-Faktor und Vorsteuerung entsprechend der Achse mit der langsamsten Reaktion eingestellt. </p>
+      <p>
+        <b>Voreinstellung Strategie 1105</b>: Anpassung durch Hinzufügen einer Zeitkonstanten und Belassen der individuellen Ersatzzeitkontanten (empfohlen) </p>
+      <p>Interpolierende Achsen mit unterschiedlicher Dynamik werden mit einer Zeitkonstante als Dynamikanpassung auf den langsamsten Regelkreis angepasst. Als Zeitkonstante für die Dynamikanpassung wird die Differenz der Ersatzzeitkonstanten des langsamsten Regelkreises zu der jeweiligen Achse ermittelt: </p>
+      <ul>
+        <li>
+          <p>Nach der Achsoptimierung werden unterschiedliche Ersatzzeitkonstanten mit MD32910 $MA_DYN_MATCH_TIME angepasst und mit MD32900 $MA_DYN_MATCH_ENABLE=1 aktiviert. Die Zeitverzögerung wird mit MD32902 $MA_DYN_MATCH_MODE=1 als Phasenfilter konfiguriert.  </p>
+        </li>
+        <li>
+          <p>Mit MD32902 $MA_DYN_MATCH_MODE=0 (PT1-Filter) wird die Zeitkonstante in MD32910 $MA_DYN_MATCH_TIME angepasst und mit MD32900 $MA_DYN_MATCH_ENABLE = 1 aktiviert.</p>
+        </li>
+      </ul>
+      <p>Zusätzlich stehen folgende Strategien zur Auswahl: </p>
+      <p>1102: Anpassung durch Setzen der größten Ersatzzeitkonstante für alle Bahnachsen und moderater Reduktion der Drehzahlregler-Verstärkung</p>
+      <p>1103: Anpassung durch Setzen der größten Ersatzzeitkonstante für alle Bahnachsen</p>
+      <p>1104: Bahnoptimierung mit benutzerdefinierter Strategie</p>
+      <p>
+        <b>Weitere Aktionen:</b>
+      </p>
+      <ul>
+        <li>
+          <p>Mit Softkey "Strategie anpassen" aktivieren Sie die Bearbeitung, um die ausgewählte Strategie benutzerspezifisch anzupassen.</p>
+        </li>
+        <li>
+          <p>Mit Softkey "Optimierungsprotokoll" wird das Fenster "Verlauf Aktivitäten" geöffnet, in dem das Optimierungsprotokoll ausgegeben wird.</p>
+        </li>
+        <li>
+          <p>Mit Softkey "OK" übernehmen Sie die Auswahl.</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

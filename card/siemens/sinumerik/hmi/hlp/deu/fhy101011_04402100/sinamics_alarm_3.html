@@ -1,0 +1,1622 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="201659">F201659</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI CU: Schreibauftrag f&uuml;r Parameter abgewiesen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Schreibauftrag f&uuml;r einen oder mehrere Safety Integrated Parameter auf der Control Unit (CU) wurde abgewiesen.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+1: Das Safety Integrated Passwort ist nicht gesetzt.<br />
+2: Ein Zur&uuml;cksetzen der Antriebsparameter wurde angew&auml;hlt. Die Safety Integrated Parameter wurden jedoch nicht zur&uuml;ckgesetzt, da Safety Integrated gerade freigegeben ist.<br />
+3: Der verschaltete STO-Eingang befindet sich im Simulationsmodus.<br />
+10: Es wurde versucht, die Funktion STO freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann.<br />
+11: Es wurde versucht, die Funktion SBC freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann.<br />
+12: Es wurde versucht, die Funktion SBC freizugeben, obwohl diese bei Parallelschaltung nicht unterst&uuml;tzt werden kann.<br />
+13: Es wurde versucht, die Funktion SS1 freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann.<br />
+14: Es wurde versucht, die PROFIsafe-Kommunikation freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann oder die eingesetzte Version des PROFIsafe-Treibers auf CU und MM unterschiedlich ist.<br />
+15: Es wurde versucht, die antriebsintegrierten Bewegungs&uuml;berwachungen freizugeben, obwohl diese nicht unterst&uuml;tzt werden k&ouml;nnen.<br />
+16: Es wurde versucht, die Funktion STO freizugeben, obwohl diese bei freigegebenem internen Spannungsschutz (p1231) nicht unterst&uuml;tzt werden kann.<br />
+17: Es wurde versucht, die Funktion PROFIsafe freizugeben, obwohl diese bei Parallelschaltung nicht unterst&uuml;tzt werden kann.<br />
+18: Es wurde versucht, die Funktion PROFIsafe f&uuml;r Basic Functions freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann.<br />
+19: Es wurde versucht, SBA (Safe Brake Adapter) freizugeben, obwohl dieser nicht unterst&uuml;tzt werden kann.<br />
+20: Es wurde versucht, die antriebsintegrierten Bewegungs&uuml;berwachungen und die Funktion STO freizugeben, beide angesteuert &uuml;ber F-DI.<br />
+21: Es wurde versucht, die antriebsintegrierten Bewegungs&uuml;berwachungen bei Parallelschaltung freizugeben, obwohl diese nicht unterst&uuml;tzt werden k&ouml;nnen.<br />
+22: Es wurde versucht, die Safety Integrated Funktionen freizugeben, obwohl diese vom angeschlossenen Power Module nicht unterst&uuml;tzt werden k&ouml;nnen.<br />
+23: Es wurde versucht, bei ESR die Verz&ouml;gerung der Impulsl&ouml;schung freizugeben, obwohl dies nicht unterst&uuml;tzt werden kann.<br />
+Siehe auch: p0970, p3900, r9771, r9871<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 1:<br />
+- Safety Integrated Passwort setzen (p9761).<br />
+Zu St&ouml;rwert = 2:<br />
+- Safety Integrated sperren (p9501, p9601) oder Safety Parameter zur&uuml;cksetzen (p0970 = 5), dann Zur&uuml;cksetzen der Antriebsparameter erneut durchf&uuml;hren.<br />
+Zu St&ouml;rwert = 3:<br />
+- Simulationsmodus f&uuml;r den Digitaleingang beenden (p0795).<br />
+Zu St&ouml;rwert = 10, 11, 12, 13, 14, 15, 17, 18, 19, 21, 22 , 23:<br />
+- Pr&uuml;fen, ob St&ouml;rungen im Safety-Funktionsabgleich zwischen der Control Unit und dem betroffenen Motor Module vorliegen (F01655, F30655) und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+- Motor Module einsetzen, das die gew&uuml;nschte Funktion unterst&uuml;tzt.<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Software der Control Unit hochr&uuml;sten.<br />
+Zu St&ouml;rwert = 16:<br />
+- Internen Spannungsschutz sperren (p1231).<br />
+Zu St&ouml;rwert = 20:<br />
+- Einstellung in p9601 korrigieren.<br />
+Zu St&ouml;rwert = 22:<br />
+- Power Module verwenden, das die Safety Integrated Funktionen unterst&uuml;tzt.<br />
+Hinweis:<br />
+CU: Control Unit<br />
+ESR: Extended Stop and Retract (Erweitertes Stillsetzen und R&uuml;ckziehen)<br />
+MM: Motor Module<br />
+SBA: Safe Brake Adapter<br />
+SBC: Safe Brake Control (Sichere Bremsenansteuerung)<br />
+SI: Safety Integrated<br />
+SS1: Safe Stop 1 (entspricht Stop Kategorie 1 nach EN60204)<br />
+STO: Safe Torque Off (Sicher abgeschaltetes Moment) &#47; SH: Safe standstill (Sicherer Halt)<br />
+Siehe auch: p9501, p9601, p9620, p9761, p9801<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201660">F201660</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI CU: Sichere Funktionen nicht unterst&uuml;tzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Motor Module (MM) unterst&uuml;tzt die sicheren Funktionen nicht (z. B. Version des Motor Modules nicht passend). Es ist keine Inbetriebnahme von Safety Integrated m&ouml;glich.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Motor Module einsetzen, das die sicheren Funktionen unterst&uuml;tzt.<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+Hinweis:<br />
+CU: Control Unit<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201663">F201663</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI CU: Kopieren der SI-Parameter abgelehnt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In p9700 ist einer der folgenden Werte gespeichert oder wurde offline eingetragen: 87 oder 208.<br />
+Deshalb wird beim Hochlauf versucht, die SI-Parameter von der Control Unit zum Motor Module zu kopieren. Auf der Control Unit ist jedoch keine sichere Funktion angew&auml;hlt (p9501 = 0, p9601 = 0). Das Kopieren ist deshalb nicht m&ouml;glich.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+Siehe auch: p9700 (SI Motion Kopierfunktion)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- p9700 = 0 setzen.<br />
+- p9501und p9601 kontrollieren und gegebenenfalls korrigieren.<br />
+- Kopierfunktion nochmals starten durch Eintragen des entsprechenden Wertes in p9700.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201664">F201664</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI CU: Kein automatischer Firmware-Update</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Hochlauf wurde erkannt, dass die Funktion &quot;Firmware-Update automatisch&quot; (p7826 = 1) nicht aktiviert ist.<br />
+Dies ist aber f&uuml;r den automatischen Firmware-Update&#47;Downgrade erforderlich, um bei Freigabe der Safety-Funktionen eine nicht zul&auml;ssige Mischung der Versionen zu vermeiden.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+Siehe auch: p7826 (Firmware-Update automatisch)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Bei freigegebenen Sicherheitsfunktionen (p9501 &lt;&gt; 0 und&#47;oder p9601 &lt;&gt; 0):<br />
+1. Die Funktion &quot;Firmware-Update automatisch&quot; aktivieren (p7826 = 1).<br />
+2. Parameter sichern (p0977 = 1) und POWER ON durchf&uuml;hren.<br />
+Beim Deaktivieren der Sicherheitsfunktionen (p9501 = 0, p9601 = 0) l&auml;sst sich die St&ouml;rung nach dem Verlassen des Safety-IBN-Modus quittieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201665">F201665</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI CU: System ist defekt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde ein Defekt im System vor dem letzten oder im aktuellen Hochlauf erkannt. Gegebenenfalls wurde ein neuer Hochlauf (Reset) durchgef&uuml;hrt.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+200000 hex, 400000 hex, 8000yy hex (yy beliebig):<br />
+- Fehler im aktuellen Hochlauf&#47;Betrieb.<br />
+800004 hex:<br />
+- Parameter p9500&#47;p9300 sind unter Umst&auml;nden nicht gleich. Es wird au&szlig;erdem die Safety-Meldung C01711&#47;C30711 angezeigt.<br />
+Weitere Werte:<br />
+- Defekt vor dem letzten Hochlauf im System.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Firmware auf neuere Version hochr&uuml;sten.<br />
+- Hotline kontaktieren.<br />
+Zu St&ouml;rwert = 200000 hex, 400000 hex, 8000yy hex (yy beliebig):<br />
+- Stellen Sie sicher, dass die Control Unit mit dem Power Module verbunden ist.<br />
+Zu St&ouml;rwert = 800004 hex:<br />
+- Parameter p9500&#47;p9300 auf Gleichheit &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201669">A201669 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Kombination von Motor und Leistungsteil ung&uuml;nstig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die verwendete Kombination aus Motor und Leistungsteil ist f&uuml;r den Einsatz der geberlosen sicheren Bewegungs&uuml;berwachungen nicht geeignet.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Motordatensatzes, der den Fehler verursacht hat.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Ein geeignetes Leistungsteil mit geringerer Leistung oder einen Motor mit gr&ouml;&szlig;erer Leistung verwenden.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201670">F201670</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Parametrierung Sensor Module ung&uuml;ltig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Parametrierung eines f&uuml;r Safety Integrated verwendeten Sensor Modules ist unzul&auml;ssig.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem nicht quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+1: Es wurde kein Geber f&uuml;r Safety Integrated parametriert.<br />
+2: Es wurde ein Geber f&uuml;r Safety Integrated parametriert, der nicht &uuml;ber eine Spur A&#47;B (Sinus&#47;Cosinus) verf&uuml;gt.<br />
+3: Der f&uuml;r Safety Integrated angew&auml;hlte Geberdatensatz ist noch nicht g&uuml;ltig.<br />
+4: Bei der Kommunikation mit dem Geber ist ein Fehler aufgetreten.<br />
+5: Anzahl der relevanten Bits in der Gebergroblage ung&uuml;ltig.<br />
+6: Konfiguration DRIVE-CLiQ-Geber ung&uuml;ltig.<br />
+10: Bei einem f&uuml;r Safety Integrated verwendeten Geber sind nicht alle Antriebsdatens&auml;tze (DDS) demselben Geberdatensatz (EDS) zugeordnet (p0187 ... p0189).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 1, 2:<br />
+- Geber einsetzen und parametrieren, der von Safety Integrated unterst&uuml;tzt wird (Geber mit Spur A&#47;B Sinus, p0404.4 = 1).<br />
+Zu St&ouml;rwert = 3:<br />
+- &Uuml;berpr&uuml;fen, ob die Ger&auml;te- oder Antriebs-Inbetriebnahme aktiv ist und gegebenenfalls diese verlassen (p0009 = p00010 = 0), Parameter sichern (p0971 = 1) und POWER ON durchf&uuml;hren.<br />
+Zu St&ouml;rwert = 4:<br />
+- &Uuml;berpr&uuml;fen, ob St&ouml;rungen in der DRIVE-CLiQ-Kommunikation zwischen der Control Unit und dem betroffenen Sensor Module vorliegen und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+Zu St&ouml;rwert = 10:<br />
+- EDS-Zuordnung aller f&uuml;r Safety Integrated verwendeten Geber abgleichen (p0187 ... p0189).<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201671">F201671</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Parametrierung Geber fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Parametrierung des von Safety Integrated verwendeten Gebers ist ungleich der Parametrierung des Standardgebers.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Parameternummer des nicht korrespondierenden Safety-Parameters.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Geberparametrierung zwischen dem Safety-Geber und dem Standardgeber abgleichen.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201672">F201672</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI CU: Motor Module Software&#47;Hardware inkompatibel</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die vorhandene Motor Module Software unterst&uuml;tzt die sichere Bewegungs&uuml;berwachung nicht oder ist zur Software auf der Control Unit inkompatibel oder die Kommunikation zwischen Control Unit und Motor Module ist gest&ouml;rt.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem nicht quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+1: Die vorhandene Motor Module Software unterst&uuml;tzt die sichere Bewegungs&uuml;berwachung nicht.<br />
+2, 3, 6, 8: Die Kommunikation zwischen Control Unit und Motor Module ist gest&ouml;rt.<br />
+4, 5, 7: Die vorhandene Motor Module Software ist zur Software auf der Control Unit inkompatibel.<br />
+9,10,11,12: Die vorhandene Motor Module Software unterst&uuml;tzt die sichere geberlose Bewegungs&uuml;berwachung nicht.<br />
+13: Mindestens ein Motor Module im Parallelbetrieb unterst&uuml;tzt die sichere Bewegungs&uuml;berwachung nicht.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Pr&uuml;fen, ob St&ouml;rungen im Safety-Funktionsabgleich zwischen der Control Unit und dem betroffenen Motor Module vorliegen (F01655, F30655) und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+Zu St&ouml;rwert = 1:<br />
+- Motor Module einsetzen, das sichere Bewegungs&uuml;berwachung unterst&uuml;tzt.<br />
+Zu St&ouml;rwert = 2, 3, 6, 8:<br />
+- Pr&uuml;fen, ob St&ouml;rungen in der DRIVE-CLiQ-Kommunikation zwischen der Control Unit und dem betroffenen Motor Module vorliegen und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+Zu St&ouml;rwert = 4, 5, 7, 9, 13:<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201673">F201673</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Sensor Module Software&#47;Hardware inkompatibel</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die vorhandene Sensor Module Software bzw. Hardware unterst&uuml;tzt die sichere Bewegungs&uuml;berwachung mit der &uuml;bergeordneten Steuerung nicht.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Software des Sensor Modules hochr&uuml;sten.<br />
+- Sensor Module einsetzen, das die sichere Bewegungs&uuml;berwachung unterst&uuml;tzt.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201680">F201680</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Pr&uuml;fsummenfehler sichere &Uuml;berwachungen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die vom Antrieb errechnete und in r9728 eingetragene Ist-Pr&uuml;fsumme &uuml;ber die sicherheitsrelevanten Parameter stimmt nicht mit der bei der letzten Maschinenabnahme gespeicherten Soll-Pr&uuml;fsumme in p9729 &uuml;berein.<br />
+Es wurden sicherheitsrelevante Parameter ge&auml;ndert oder es liegt ein Fehler vor.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+0: Pr&uuml;fsummenfehler bei SI-Parametern f&uuml;r Bewegungs&uuml;berwachung.<br />
+1: Pr&uuml;fsummenfehler bei SI-Parametern f&uuml;r Istwerte.<br />
+2: Pr&uuml;fsummenfehler bei SI-Parametern f&uuml;r Komponentenzuordnung.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Sicherheitsrelevante Parameter &uuml;berpr&uuml;fen und gegebenenfalls korrigieren.<br />
+- POWER ON durchf&uuml;hren, falls Safety-Parameter ge&auml;ndert wurden, die POWER ON ben&ouml;tigen.<br />
+- Abnahmetest durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201681">F201681</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Parameterwert falsch</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Parameter kann mit diesem Wert nicht parametriert werden.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Parameternummer mit dem falschen Wert.<br />
+9522: Die Getriebestufe wurde zu hoch eingestellt.<br />
+9500: p9500 ungleich p9300<br />
+9511: p9511 ungleich p9311<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Parameterwert korrigieren.<br />
+Zu St&ouml;rwert = 9500:<br />
+Parameter 9300 und 9500 abgleichen, Parameter sichern (p0971 = 1) und POWER ON durchf&uuml;hren.<br />
+Bei freigegebener Hysterese&#47;Filterung (p9501.16 = 1) gilt:<br />
+- Parameter p9546&#47;p9346 und p9547&#47;p9347 nach folgender Regel einstellen: p9546 &gt;= 2 x p9547; p9346 &gt;= 2 x p9347.<br />
+- Im Falle freigegebener Istwertsynchronisation (p9501.3 = 1) muss au&szlig;erdem diese Regel eingehalten werden: p9549 &lt;= p9547; p9349 &lt;= p9347.<br />
+Zu St&ouml;rwert = 9507:<br />
+- Synchronmotor oder Asynchronmotor gem&auml;&szlig; p0300 einstellen.<br />
+Zu St&ouml;rwert = p9511:<br />
+Parameter p9311 und p9511 abgleichen, Parameter sichern (p0971 = 1) und POWER ON durchf&uuml;hren.<br />
+Zu St&ouml;rwert = 9517:<br />
+- Auch p9516.0 pr&uuml;fen.<br />
+Zu St&ouml;rwert = 9522:<br />
+- Parameter korrigieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201682">F201682</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: &Uuml;berwachungsfunktion nicht unterst&uuml;tzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die in p9501, p9601 oder p9801 freigegebene &Uuml;berwachungsfunktion wird in dieser Firmware-Version nicht unterst&uuml;tzt.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem nicht quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+1: &Uuml;berwachungsfunktion SLP nicht unterst&uuml;tzt (p9501.1).<br />
+2: &Uuml;berwachungsfunktion SCA nicht unterst&uuml;tzt (p9501.7 und p9501.8 ... 15 und p9503).<br />
+3: &Uuml;berwachungsfunktion SLS-Override nicht unterst&uuml;tzt (p9501.5).<br />
+4: &Uuml;berwachungsfunktion externe ESR-Aktivierung nicht unterst&uuml;tzt (p9501.4).<br />
+5: &Uuml;berwachungsfunktion F-DI in PROFIsafe nicht unterst&uuml;tzt (p9501.30).<br />
+6: Freigabe Istwertsynchronisation nicht unterst&uuml;tzt (p9501.3).<br />
+9: &Uuml;berwachungsfunktion nicht unterst&uuml;tzt, Freigabebit reserviert (p9501.2, p9501.17 ... 29, p9501.31, gegebenenfalls p9501.6).<br />
+10: &Uuml;berwachungsfunktionen nur beim Antriebsobjekt SERVO unterst&uuml;tzt.<br />
+11: Geberlose &Uuml;berwachungsfunktionen nur antriebsintern unterst&uuml;tzt.<br />
+12: &Uuml;berwachungsfunktionen f&uuml;r ncSI werden bei einer CU305 nicht unterst&uuml;tzt.<br />
+20: Antriebsintegrierte Bewegungs&uuml;berwachungsfunktionen nur im Zusammenhang mit PROFIsafe unterst&uuml;tzt (p9501, p9601.1 ... 2 und p9801.1 ... 2).<br />
+21: PROFIsafe nur im Zusammenhang mit antriebsintegrierten Bewegungs&uuml;berwachungsfunktionen unterst&uuml;tzt (p9501, p9601.1 ... 2 und p9801.1 ... 2).<br />
+22: Geberlose &Uuml;berwachungsfunktionen bei Bauform Chassis nicht unterst&uuml;tzt.<br />
+23: Geberbehaftete &Uuml;berwachungsfunktionen bei CU240 nicht unterst&uuml;tzt.<br />
+24: &Uuml;berwachungsfunktion SDI nicht unterst&uuml;tzt (p9501.17).<br />
+25: Antriebsintegrierte Bewegungs&uuml;berwachungsfunktionen nicht unterst&uuml;tzt (p9501, p9601.2)<br />
+26: Hysterese und Filterung f&uuml;r &Uuml;berwachungsfunktion SSM geberlos nicht unterst&uuml;tzt (p9501.16).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Betroffene &Uuml;berwachungsfunktion abw&auml;hlen (p9501, p9503, p9506, p9601, p9801).<br />
+Hinweis:<br />
+ESR: Extended Stop and Retract (Erweitertes Stillsetzen und R&uuml;ckziehen)<br />
+SCA: Safe Cam (Sicherer Nocken) &#47; SN: Safe software cams (Sicherer Software-Nocken)<br />
+SDI: Safe Direction (Sichere Bewegungsrichtung)<br />
+SI: Safety Integrated<br />
+SLP: Safely-Limited Position (Sicher begrenzte Position) &#47; SE: Safe software limit switches (Sicherer Software-Endschalter)<br />
+SLS: Safely-Limited Speed (Sicher begrenzte Geschwindigkeit) &#47; SG: Safely reduced speed (Sicher reduzierte Geschwindigkeit)<br />
+SDI: Safe Direction (Sichere Bewegungsrichtung)<br />
+Siehe auch: p9501 (SI Motion Freigabe sichere Funktionen (Control Unit)), p9503 (SI Motion SCA (SN) Freigabe (Control Unit)), r9771 (SI Gemeinsame Funktionen (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201683">F201683</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: SOS&#47;SLS-Freigabe fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In p9501 ist die sichere Grundfunktion &quot;SOS&#47;SLS&quot; nicht freigegeben, obwohl andere sichere &Uuml;berwachungen freigegeben sind.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Funktion &quot;SOS&#47;SLS&quot; freigeben (p9501.0) und POWER ON durchf&uuml;hren.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+SLS: Safely-Limited Speed (Sicher begrenzte Geschwindigkeit) &#47; SG: Safely reduced speed (Sicher reduzierte Geschwindigkeit)<br />
+SOS: Safe Operating Stop (Sicherer Betriebshalt) &#47; SBH: Safe operating stop (Sicherer Betriebshalt)<br />
+Siehe auch: p9501 (SI Motion Freigabe sichere Funktionen (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201684">F201684</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Sicher begrenzte Position Grenzwerte vertauscht</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>F&uuml;r die Funktion &quot;Sicher begrenzte Position&quot; (SLP) steht in p9534 ein kleinerer Wert als in p9535.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+1: Grenzwerte SLP1 vertauscht.<br />
+2: Grenzwerte SLP2 vertauscht.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Grenzwerte in p9534 und p9535 richtigstellen und POWER ON durchf&uuml;hren.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+SLP: Safely-Limited Position (Sicher begrenzte Position) &#47; SE: Safe software limit switches (Sicherer Software-Endschalter)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201685">F201685</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Sicher begrenzte Geschwindigkeit Grenzwert zu gro&szlig;</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Grenzwert f&uuml;r die Funktion &quot;Sicher begrenzte Geschwindigkeit&quot; (SLS) ist gr&ouml;&szlig;er als die Geschwindigkeit, die einer Gebergrenzfrequenz von 500 kHz entspricht.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Maximal zul&auml;ssige Geschwindigkeit.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Grenzwerte f&uuml;r SLS richtigstellen und POWER ON durchf&uuml;hren.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+SLS: Safely-Limited Speed (Sicher begrenzte Geschwindigkeit) &#47; SG: Safely reduced speed (Sicher reduzierte Geschwindigkeit)<br />
+Siehe auch: p9531 (SI Motion SLS (SG) Grenzwerte (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201686">F201686</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Parametrierung Nockenposition unzul&auml;ssig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Mindestens ein freigegebener &quot;Sicherer Nocken&quot; (SCA) ist in p9536 oder p9537 zu nahe am Toleranzbereich um die Moduloposition parametriert.<br />
+Zum Zuordnen von Nocken zu einer Nockenspur m&uuml;ssen folgende Bedingungen eingehalten werden:<br />
+- Die Nockenl&auml;nge des Nocken x = p9536[x]-p9537[x] muss gr&ouml;&szlig;er oder gleich der Nockentoleranz + der Positionstoleranz (= p9540 + p9542) sein. Damit gilt auch, dass bei Nocken auf einer Nockenspur der Minus-Positionswert kleiner als der Plus-Positionswert sein muss.<br />
+- Der Abstand zwischen 2 Nocken x und y (Minus-Positionswert[y] - Plus-Positionswert[x] = p9537[y] - p9536[x]) auf einer Nockenspur muss gr&ouml;&szlig;er oder gleich der Nockentoleranz + der Positionstoleranz (= p9540 + p9542) sein.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nummer des &quot;Sicheren Nockens&quot; mit unzul&auml;ssiger Position.<br />
+Siehe auch: p9501 (SI Motion Freigabe sichere Funktionen (Control Unit))<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Nockenposition korrigieren und POWER ON durchf&uuml;hren.<br />
+Hinweis:<br />
+SCA: Safe Cam (Sicherer Nocken) &#47; SN: Safe software cams (Sicherer Software-Nocken)<br />
+SI: Safety Integrated<br />
+Siehe auch: p9536, p9537<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201687">F201687</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Parametrierung Modulowert SCA (SN) unzul&auml;ssig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der parametrierte Modulowert f&uuml;r die Funktion &quot;Sicherer Nocken&quot; (SCA) ist kein Vielfaches von 360 000 mGrad.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Modulowert f&uuml;r SCA richtigstellen und POWER ON durchf&uuml;hren.<br />
+Hinweis:<br />
+SCA: Safe Cam (Sicherer Nocken) &#47; SN: Safe software cams (Sicherer Software-Nocken)<br />
+SI: Safety Integrated<br />
+Siehe auch: p9505 (SI Motion SCA (SN) Modulowert (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201688">F201688</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Istwertsynchronisation nicht zul&auml;ssig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>- Die Freigabe der Istwertsynchronisation bei einem 1-Geber-System ist nicht zul&auml;ssig.<br />
+- Eine gleichzeitige Freigabe der Istwertsynchronisation und einer &Uuml;berwachungsfunktion mit Absolutbezug (SCA&#47;SLP) ist nicht zul&auml;ssig.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem nicht quittierbaren STOP A.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Entweder die Funktion &quot;Istwertsynchronisation&quot; abw&auml;hlen oder 2-Geber-System parameterieren.<br />
+- Entweder die Funktion &quot;Istwertsynchronisation&quot; oder die &Uuml;berwachungsfunktionen mit Absolutbezug (SCA&#47;SLP) abw&auml;hlen und POWER ON durchf&uuml;hren.<br />
+Hinweis:<br />
+SCA: Safe Cam (Sicherer Nocken) &#47; SN: Safe software cams (Sicherer Software-Nocken)<br />
+SI: Safety Integrated<br />
+SLP: Safely-Limited Position (Sicher begrenzte Position) &#47; SE: Safe software limit switches (Sicherer Software-Endschalter)<br />
+Siehe auch: p9501 (SI Motion Freigabe sichere Funktionen (Control Unit)), p9526 (SI Motion Geberzuordnung Zweiter Kanal)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201689">C201689</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Achse umkonfiguriert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Konfiguration der Achse wurde ver&auml;ndert (z. B. Umschaltung zwischen Linearachse und Rundachse).<br />
+Der Parameter p0108.13 wird intern auf den korrekten Wert gesetzt.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Parameternummer des Parameters, der die &Auml;nderung ausgel&ouml;st hat.<br />
+Siehe auch: p9502 (SI Motion Achstyp (Control Unit))<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Nach der Umschaltung ist folgendes durchzuf&uuml;hren:<br />
+- Safety-Inbetriebnahmemodus beenden (p0010).<br />
+- Alle Parameter speichern (p0977 = 1 oder &quot;RAM nach ROM kopieren&quot;).<br />
+- POWER ON durchf&uuml;hren.<br />
+Nach dem Hochlauf der Control Unit weist die Safety-Meldung F01680 bzw. F30680 darauf hin, dass sich am Antrieb die Pr&uuml;fsummen in r9398[0] und r9728[0] ge&auml;ndert haben. Deshalb ist folgendes durchzuf&uuml;hren:<br />
+- Safety-Inbetriebnahmemodus erneut aktivieren.<br />
+- Safety-Inbetriebnahme des Antriebs vervollst&auml;ndigen.<br />
+- Safety-Inbetriebnahmemodus beenden (p0010).<br />
+- Alle Parameter speichern (p0977 = 1 oder &quot;RAM nach ROM kopieren&quot;).<br />
+- POWER ON durchf&uuml;hren.<br />
+Hinweis:<br />
+Bei der Inbetriebnahme-Software werden die Einheiten erst nach einem Projekt-Upload konsistent angezeigt.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201690">F201690</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Datensicherungsproblem beim NVRAM</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+ (AUS1, AUS2)Servo: KEINE<br />
+ (AUS1, AUS2, AUS3)Vector: KEINE<br />
+ (AUS1, AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>F&uuml;r die Speicherung der Parameter r9781 und r9782 (Safety-Logbuch) steht nicht gen&uuml;gend Speicherplatz im NVRAM auf dem Antrieb zur Verf&uuml;gung.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+0: Es ist kein physikalisches NVRAM im Antrieb vorhanden.<br />
+1: Es ist kein Speicherplatz im NVRAM mehr frei.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 0:<br />
+- Control Unit mit NVRAM verwenden.<br />
+Zu St&ouml;rwert = 1:<br />
+- Funktionen abw&auml;hlen, die nicht ben&ouml;tigt werden und Speicherplatz im NVRAM belegen.<br />
+- Hotline kontaktieren.<br />
+Hinweis:<br />
+NVRAM: Non-Volatile Random Access Memory (Nichtfl&uuml;chtiger Speicher zum Lesen und Schreiben)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201691">A201691 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Ti und To ungeeignet f&uuml;r den DP-Takt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die projektierten Zeiten f&uuml;r die PROFIBUS-Kommunikation sind unzul&auml;ssig und der DP-Takt wird als Istwerterfassungstakt f&uuml;r die sicheren Bewegungs&uuml;berwachungsfunktionen verwendet:<br />
+Taktsynchroner PROFIBUS: Die Summe von Ti und To ist zu gro&szlig; f&uuml;r den eingestellten DP-Takt. Der DP-Takt sollte mindestens 1 Stromreglertakt gr&ouml;&szlig;er als die Summe von Ti und To sein.<br />
+Nicht taktsynchroner PROFIBUS: Der DP-Takt muss mindestens 4 x Stromreglertakt betragen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Ti und To klein genug f&uuml;r den verwendeten DP-Takt projektieren oder die DP-Zykluszeit erh&ouml;hen.<br />
+Alternative bei freigegebener antriebsintegrierter SI-&Uuml;berwachung (p9601&#47;p9801 &gt; 0):<br />
+Den Istwerterfassungstakt p9511&#47;p9311 verwenden und damit unabh&auml;ngig vom DP-Takt einstellen. Der Istwerterfassungstakt muss mindestens das Vierfache des Stromreglertaktes betragen. Empfohlen wird ein Taktverh&auml;ltnis von mindestens 8:1.<br />
+Siehe auch: p9511 (SI Motion Istwerterfassung Takt (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201692">F201692</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Parameterwert geberlos unzul&auml;ssig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Parameter kann mit diesem Wert nicht parametriert werden, wenn die Bewegungs&uuml;berwachungsfunktionen in p9506 geberlos angew&auml;hlt sind.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Parameternummer mit dem falschen Wert.<br />
+Siehe auch: p9501 (SI Motion Freigabe sichere Funktionen (Control Unit))<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Den im St&ouml;rwert angegebenen Parameter korrigieren.<br />
+- Gegebenenfalls die geberlosen Bewegungs&uuml;berwachungsfunktionen abw&auml;hlen (p9506).<br />
+Siehe auch: p9501 (SI Motion Freigabe sichere Funktionen (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201693">A201693 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI CU: Safety-Parametrierung ge&auml;ndert Warmstart&#47;POWER ON erforderlich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurden Safety-Parameter ge&auml;ndert, die erst nach einem Warmstart oder POWER ON wirksam werden.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Parameternummer des Safety-Parameters, aufgrund dessen &Auml;nderung ein Warmstart oder POWER ON notwendig ist.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Warmstart durchf&uuml;hren (p0009 = 30, p0976 = 2, 3).<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+Hinweis:<br />
+Vor der Durchf&uuml;hrung des Abnahmetests muss ein POWER ON bei allen Komponenten durchgef&uuml;hrt werden.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201694">F201694 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Firmware-Version Motor Module &auml;lter Control Unit</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Firmware-Version des Motor Modules ist &auml;lter als die Version der Control Unit.<br />
+Es ist m&ouml;glich, dass Safety-Funktionen nicht verf&uuml;gbar sind (r9771&#47;r9871).<br />
+Hinweis:<br />
+Diese Meldung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+Diese Meldung kann auch auftreten, wenn nach automatischem Firmware-Update noch kein POWER ON durchgef&uuml;hrt wurde (Warnung A01007).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Firmware des Motor Modules auf neuere Version hochr&uuml;sten.<br />
+Siehe auch: r9390 (SI Motion Version sichere Bewegungsüberwachungen (Motor Module)), r9590 (SI Motion Version sichere Bewegungsüberwachungen (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201695">A201695 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Sensor Module wurde getauscht</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Ein Sensor Module, das f&uuml;r die sicheren Bewegungs&uuml;berwachungen verwendet wird, wurde getauscht. Eine Quittierung des Hardware-Tausches ist erforderlich. Anschlie&szlig;end ist ein Abnahmetest durchzuf&uuml;hren.<br />
+Hinweis:<br />
+Diese Meldung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Folgende Schritte mit der Inbetriebnahme-Software STARTER durchf&uuml;hren:<br />
+- Schaltfl&auml;che &quot;Hardware-Tausch quittieren&quot; in der Safety-Maske bet&auml;tigen.<br />
+- Funktion &quot;RAM nach ROM kopieren&quot; ausf&uuml;hren.<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+Alternativ folgende Schritte in der Expertenliste der Inbetriebnahme-Software durchf&uuml;hren:<br />
+- Kopierfunktion f&uuml;r Node-Identifier auf dem Antrieb starten (p9700 = 1D hex).<br />
+- Hardware-CRC auf dem Antrieb best&auml;tigen (p9701 = EC hex).<br />
+- Alle Parameter speichern (p0977 = 1).<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+Anschlie&szlig;end einen Abnahmetest durchf&uuml;hren (siehe Funktionshandbuch Safety Integrated).<br />
+Siehe auch: p9700 (SI Motion Kopierfunktion), p9701 (SI Motion Datenänderung bestätigen)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201696">A201696 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Testanwahl der Bewegungs&uuml;berwachungen im Hochlauf</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Test der Bewegungs&uuml;berwachungsfunktionen war unzul&auml;ssigerweise bereits beim Hochlauf aktiv.<br />
+Es wird deshalb der Test erst nach einer erneuten Anwahl der in p9705 parametrierten Zwangsdynamisierung durchgef&uuml;hrt.<br />
+Hinweis:<br />
+Diese Meldung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+Siehe auch: p9705 (SI Motion Teststop Signalquelle)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zwangsdynamisierung der sicheren Bewegungs&uuml;berwachungen abw&auml;hlen und erneut anw&auml;hlen.<br />
+Die Signalquelle zur Ausl&ouml;sung ist in Binektoreingang p9705 parametriert.<br />
+Achtung:<br />
+F&uuml;r den Start des Teststops d&uuml;rfen Eing&auml;nge des TM54F nicht verwendet werden.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+Siehe auch: p9705 (SI Motion Teststop Signalquelle)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201697">A201697 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion: Test der Bewegungs&uuml;berwachungen erforderlich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die in p9559 eingestellte Zeit zur Zwangsdynamisierung der Safety-Bewegungs&uuml;berwachungsfunktionen ist &uuml;berschritten. Ein neuer Test ist erforderlich.<br />
+Nach der n&auml;chsten Anwahl der in p9705 parametrierten Zwangsdynamisierung wird die Meldung zur&uuml;ckgenommen und die &Uuml;berwachungszeit zur&uuml;ckgesetzt.<br />
+Hinweis:<br />
+Diese Meldung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+W&auml;hrend eines Hochlaufs werden die Abschaltpfade nicht automatisch gepr&uuml;ft, deshalb steht die Warnung nach dem Hochlauf immer an.<br />
+Siehe auch: p9559 (SI Motion Zwangsdynamisierung Timer (Control Unit)), p9705 (SI Motion Teststop Signalquelle)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zwangsdynamisierung der sicheren Bewegungs&uuml;berwachungen durchf&uuml;hren.<br />
+Die Signalquelle zur Ausl&ouml;sung ist in Binektoreingang p9705 parametriert.<br />
+Achtung:<br />
+F&uuml;r den Start des Teststops d&uuml;rfen Eing&auml;nge des TM54F nicht verwendet werden.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+Siehe auch: p9705 (SI Motion Teststop Signalquelle)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201698">A201698 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI CU: Inbetriebnahmemodus aktiv</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Inbetriebnahme der Funktion &quot;Safety Integrated&quot; ist angew&auml;hlt.<br />
+Diese Meldung wird nach Beendigung der Safety-Inbetriebnahme zur&uuml;ckgenommen.<br />
+Hinweis:<br />
+Diese Meldung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+Siehe auch: p0010<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Keine notwendig.<br />
+Hinweis:<br />
+CU: Control Unit<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201699">A201699 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI CU: Test der Abschaltpfade erforderlich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die in p9659 eingestellte Zeit zur Zwangsdynamisierung der Safety-Abschaltpfade ist &uuml;berschritten. Ein neuer Test der Safety-Abschaltpfade ist erforderlich.<br />
+Nach der n&auml;chsten Abwahl der Funktion &quot;STO&quot; wird die Meldung zur&uuml;ckgenommen und die &Uuml;berwachungszeit zur&uuml;ckgesetzt.<br />
+Hinweis:<br />
+Diese Meldung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+Siehe auch: p9659 (SI Zwangsdynamisierung Timer)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>STO anw&auml;hlen und wieder abw&auml;hlen.<br />
+Hinweis:<br />
+CU: Control Unit<br />
+SI: Safety Integrated<br />
+STO: Safe Torque Off (Sicher abgeschaltetes Moment) &#47; SH: Safe standstill (Sicherer Halt)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201700">C201700</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: STOP A ausgel&ouml;st</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb wird &uuml;ber STOP A stillgesetzt (Impulsl&ouml;schung &uuml;ber den Safety-Abschaltpfad der Control Unit).<br />
+M&ouml;gliche Ursachen:<br />
+- Stopanforderung vom 2. &Uuml;berwachungskanal.<br />
+- Impulse nicht gel&ouml;scht nach parametrierter Zeit (p9557) nach Teststop-Anwahl.<br />
+- Folgereaktion der Meldung C01706 &quot;SI Motion CU: SAM&#47;SBR Grenze &uuml;berschritten&quot;.<br />
+- Folgereaktion der Meldung C01714 &quot;SI Motion CU: Sicher begrenzte Geschwindigkeit &uuml;berschritten&quot;.<br />
+- Folgereaktion der Meldung C01701 &quot;SI Motion CU: STOP B ausgel&ouml;st&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- St&ouml;rungsursache auf dem 2. &Uuml;berwachungskanal beheben.<br />
+- Diagnose bei der anstehenden Meldung C01706 durchf&uuml;hren.<br />
+- Diagnose bei der anstehenden Meldung C01714 durchf&uuml;hren.<br />
+- Diagnose bei der anstehenden Meldung C01701 durchf&uuml;hren.<br />
+- Wert in p9557 (soweit vorhanden) &uuml;berpr&uuml;fen, eventuell den Wert vergr&ouml;&szlig;ern und POWER ON durchf&uuml;hren.<br />
+- Abschaltpfad der Control Unit &uuml;berpr&uuml;fen (DRIVE-CLiQ-Kommunikation &uuml;berpr&uuml;fen falls vorhanden).<br />
+- Motor Module &#47; Power Module tauschen.<br />
+- Control Unit tauschen.<br />
+Diese Meldung kann ohne POWER ON wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe.<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel nur im Abnahmetestmodus.<br />
+Hinweis:<br />
+SAM: Safe Acceleration Monitor (Sichere &Uuml;berwachung auf Beschleunigung)<br />
+SBR: Safe Brake Ramp (Sichere Bremsrampen&uuml;berwachung)<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201701">C201701</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: STOP B ausgel&ouml;st</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS3<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb wird &uuml;ber STOP B stillgesetzt (Abbremsen an der AUS3-R&uuml;cklauframpe).<br />
+Als Folge dieser St&ouml;rung wird nach Ablauf der in p9556 parametrierten Zeit oder Unterschreiten der in p9560 parametrierten Drehzahlschwelle die Meldung C01700 &quot;STOP A ausgel&ouml;st&quot; ausgegeben.<br />
+M&ouml;gliche Ursachen:<br />
+- Stopanforderung vom zweiten &Uuml;berwachungskanal.<br />
+- Folgereaktion der Meldung C01714 &quot;SI Motion CU: Sicher begrenzte Geschwindigkeit &uuml;berschritten&quot;.<br />
+- Folgereaktion der Meldung C01711 &quot;SI Motion CU: Defekt in einem &Uuml;berwachungskanal&quot;.<br />
+- Folgereaktion der Meldung C01707 &quot;SI Motion CU: Toleranz f&uuml;r Sicheren Betriebshalt &uuml;berschritten&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- St&ouml;rungsursache auf dem zweiten &Uuml;berwachungskanal beheben.<br />
+- Diagnose bei der anstehenden Meldung C01714 durchf&uuml;hren.<br />
+- Diagnose bei der anstehenden Meldung C01711 durchf&uuml;hren.<br />
+- Diagnose bei der anstehenden Meldung C01707 durchf&uuml;hren.<br />
+Diese Meldung kann ohne POWER ON wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe.<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel nur im Abnahmetestmodus.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201706">C201706</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: SAM&#47;SBR Grenze &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bewegungs&uuml;berwachungsfunktionen mit Geber (p9506 = 0) oder geberlos mit eingestellter &Uuml;berwachung auf Beschleunigung (p9506 = 3):<br />
+SAM - Sichere &Uuml;berwachung auf Beschleunigung. Nach dem Einleiten von STOP B (SS1) oder STOP C (SS2) hat die Geschwindigkeit die eingestellte Toleranz &uuml;berschritten.<br />
+Bewegungs&uuml;berwachungsfunktionen geberlos mit eingestellter Bremsrampen&uuml;berwachung (p9506 = 1):<br />
+SBR - Sichere Bremsrampen&uuml;berwachung. Nach dem Einleiten von STOP B (SS1) oder SLS-Umschaltung auf die niedrigere Geschwindigkeitsstufe hat die Geschwindigkeit die eingestellte Toleranz &uuml;berschritten.<br />
+Der Antrieb wird durch die Meldung C01700 &quot;SI Motion: STOP A ausgel&ouml;st&quot; stillgesetzt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Das Bremsverhalten &uuml;berpr&uuml;fen, eventuell die Toleranz f&uuml;r die Funktion &quot;SAM&quot; oder die Parametrierung der Funktion &quot;SBR&quot; anpassen.<br />
+Diese Meldung kann ohne POWER ON wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe.<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel nur im Abnahmetestmodus.<br />
+Hinweis:<br />
+SAM: Safe Acceleration Monitor (Sichere &Uuml;berwachung auf Beschleunigung)<br />
+SBR: Safe Brake Ramp (Sichere Rampen&uuml;berwachung)<br />
+SI: Safety Integrated<br />
+Siehe auch: p9548, p9581, p9582, p9583<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201707">C201707</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Toleranz f&uuml;r Sicheren Betriebshalt &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Istposition hat sich weiter als die Stillstandstoleranz von der Sollposition entfernt.<br />
+Der Antrieb wird durch die Meldung C01701 &quot;SI Motion: STOP B ausgel&ouml;st&quot; stillgesetzt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Pr&uuml;fen, ob weitere Safety-St&ouml;rungen anstehen und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+- &Uuml;berpr&uuml;fen ob die Stillstandstoleranz zur Genauigkeit und Regeldynamik der Achse passt.<br />
+- POWER ON durchf&uuml;hren.<br />
+Diese Meldung kann ohne POWER ON wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe.<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel nur im Abnahmetestmodus.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop (Sicherer Betriebshalt) &#47; SBH: Safe operating stop (Sicherer Betriebshalt)<br />
+Siehe auch: p9530 (SI Motion Stillstandstoleranz (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201708">C201708</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: STOP C ausgel&ouml;st</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>STOP2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb wird &uuml;ber STOP C stillgesetzt (Abbremsen an der AUS3-R&uuml;cklauframpe).<br />
+Nach Ablauf der parametrierten Zeitstufe wird &quot;Sicherer Betriebshalt&quot; (SOS) aktiviert.<br />
+M&ouml;gliche Ursachen:<br />
+- Stopanforderung von &uuml;bergeordneter Steuerung.<br />
+- Folgereaktion der Meldung C01714 &quot;SI Motion: Sicher begrenzte Geschwindigkeit &uuml;berschritten&quot;.<br />
+- Folgereaktion der Meldung C01715 &quot;SI Motion: Sichere Endlage &uuml;berschritten&quot;.<br />
+Siehe auch: p9552 (SI Motion Übergangszeit STOP C auf SOS (SBH) (Control Unit))<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- St&ouml;rungsursache auf der Steuerung beheben.<br />
+- Diagnose bei der anstehenden Meldung C01714 durchf&uuml;hren.<br />
+Diese Meldung kann wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop (Sicherer Betriebshalt) &#47; SBH: Safe operating stop (Sicherer Betriebshalt)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201709">C201709</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: STOP D ausgel&ouml;st</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb wird &uuml;ber STOP D stillgesetzt (Bremsen auf der Bahn).<br />
+Nach Ablauf der parametrierten Zeitstufe wird &quot;Sicherer Betriebshalt&quot; (SOS) aktiviert.<br />
+M&ouml;gliche Ursachen:<br />
+- Stopanforderung von &uuml;bergeordneter Steuerung.<br />
+- Folgereaktion der Meldung C01714 &quot;SI Motion: Sicher begrenzte Geschwindigkeit &uuml;berschritten&quot;.<br />
+- Folgereaktion der Meldung C01715 &quot;SI Motion: Sichere Endlage &uuml;berschritten&quot;.<br />
+Siehe auch: p9553 (SI Motion Übergangszeit STOP D auf SOS (SBH) (Control Unit))<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- St&ouml;rungsursache auf der Steuerung beheben.<br />
+- Diagnose bei der anstehenden Meldung C01714 durchf&uuml;hren.<br />
+Diese Meldung kann wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop (Sicherer Betriebshalt) &#47; SBH: Safe operating stop (Sicherer Betriebshalt)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201710">C201710</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: STOP E ausgel&ouml;st</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb wird &uuml;ber STOP E stillgesetzt (R&uuml;ckzugsbewegung).<br />
+Nach Ablauf der parametrierten Zeitstufe wird &quot;Sicherer Betriebshalt&quot; (SOS) aktiviert.<br />
+M&ouml;gliche Ursachen:<br />
+- Stopanforderung von &uuml;bergeordneter Steuerung.<br />
+- Folgereaktion der Meldung C01714 &quot;SI Motion: Sicher begrenzte Geschwindigkeit &uuml;berschritten&quot;.<br />
+- Folgereaktion der Meldung C01715 &quot;SI Motion: Sichere Endlage &uuml;berschritten&quot;.<br />
+Siehe auch: p9554 (SI Motion Übergangszeit STOP E auf SOS (SBH) (Control Unit))<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- St&ouml;rungsursache auf der Steuerung beheben.<br />
+- Diagnose bei der anstehenden Meldung C01714 durchf&uuml;hren.<br />
+Diese Meldung kann wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop (Sicherer Betriebshalt) &#47; SBH: Safe operating stop (Sicherer Betriebshalt)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201711">C201711</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Defekt in einem &Uuml;berwachungskanal</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb hat beim kreuzweisen Vergleich der beiden &Uuml;berwachungskan&auml;le einen Unterschied zwischen Eingangsdaten oder Ergebnissen der &Uuml;berwachungen festgestellt und STOP F ausgel&ouml;st. Eine der &Uuml;berwachungen funktioniert nicht mehr zuverl&auml;ssig, d. h. es ist kein sicherer Betrieb mehr m&ouml;glich.<br />
+Ist mindestens eine &Uuml;berwachungsfunktion aktiv, so wird nach Ablauf der parametrierten Zeitstufe die Meldung C01701 &quot;SI Motion: STOP B ausgel&ouml;st&quot; ausgegeben.<br />
+Der Meldungswert, der zum STOP F gef&uuml;hrt hat, wird in r9725 angezeigt. Die beschriebenen Meldungswerte betreffen den Kreuzvergleich zwischen Control Unit und Motor Module. Wird der Antrieb zusammen mit einer SINUMERIK betrieben, sind die Meldungswerte in der Meldung 27001 der SINUMERIK beschrieben.<br />
+Die nachfolgend beschriebenen Meldungswerte k&ouml;nnen auch in folgenden F&auml;llen auftreten, falls die explizit genannte Ursache nicht zutrifft:<br />
+- Unterschiedlich parametrierte Taktzeiten (p9500&#47;p9300 bzw. p9511&#47;p9311).<br />
+- Unterschiedlich parametrierte Achstypen (p9502&#47;p9302).<br />
+- Zu schnelle Taktzeiten (p9500&#47;p9300, p9511&#47;p9311).<br />
+- Bei Meldungswerte 3, 44 ... 57, 232 und 1-Geber-Systeme, unterschiedlich parametrierte Geberwerte (p9516&#47;p9316, p9517&#47;p9317, p9518&#47;p9318, p9520&#47;p9320, p9521&#47;p9321, p9522&#47;p9322, p9526&#47;p9326).<br />
+- Fehlerhafte Synchronisation.<br />
+Meldungswert (r9749, dezimal interpretieren):<br />
+0 bis 999: Nummer des kreuzweise verglichenen Datums, das zu dieser St&ouml;rung gef&uuml;hrt hat.<br />
+Meldungswerte, die nachfolgend nicht aufgelistet werden, sind nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+0: Stopanforderung vom anderen &Uuml;berwachungskanal.<br />
+1: Zustandsabbild der &Uuml;berwachungsfunktionen SOS, SLS oder SLP (Ergebnisliste 1) (r9710[0], r9710[1]).<br />
+2: Zustandsabbild der &Uuml;berwachungsfunktion SCA oder n &lt; nx (Ergebnisliste 2) (r9711[0], r9711[1]).<br />
+3: Differenz des Lageistwert (r9713) zwischen den beiden &Uuml;berwachungskan&auml;len ist gr&ouml;&szlig;er als die Toleranz in p9542&#47;p9342. Bei freigegebener Istwertsynchronisation (p9501.3&#47;p9301.3) ist die Differenz der Geschwindigkeit (basierend auf Lageistwert) gr&ouml;&szlig;er als die Toleranz in p9549&#47;p9349.<br />
+4: Synchronisation des kreuzweisen Datenvergleichs zwischen den beiden Kan&auml;len fehlerhaft.<br />
+5: Funktions-Freigaben (p9501&#47;p9301).<br />
+6: Grenzwert f&uuml;r SLS1 (p9531[0]&#47;p9331[0]).<br />
+7: Grenzwert f&uuml;r SLS2 (p9531[1]&#47;p9331[1]).<br />
+8: Grenzwert f&uuml;r SLS3 (p9531[2]&#47;p9331[2]).<br />
+9: Grenzwert f&uuml;r SLS4 (p9531[3]&#47;p9331[3]).<br />
+10: Stillstandstoleranz (p9530&#47;p9330).<br />
+31: Positionstoleranz (p9542&#47;p9342) bzw. (p9549&#47;p9349) bei freigegebener Istwertsynchronisation (p9501.3&#47;p9301.3).<br />
+33: Zeit Geschwindigkeitsumschaltung (p9551&#47;p9351).<br />
+35: Verz&ouml;gerungszeit Impulsl&ouml;schung (p9556&#47;p9356).<br />
+36: Pr&uuml;fungszeit der Impulsl&ouml;schung (p9557&#47;p9357).<br />
+37: &Uuml;bergangszeit STOP C nach SOS (p9552&#47;p9352).<br />
+38: &Uuml;bergangszeit STOP D nach SOS (p9553&#47;p9353).<br />
+40: Stopreaktion bei SLS (p9561&#47;p9361).<br />
+42: Abschaltdrehzahl Impulsl&ouml;schung (p9560&#47;p9360).<br />
+43: Speichertest Stopreaktion (STOP A).<br />
+44 ... 57: Allgemein<br />
+M&ouml;gliche Ursache 1 (bei Inbetriebnahme bzw. Parameter&auml;nderung)<br />
+Der Toleranzwert f&uuml;r die &Uuml;berwachungsfunktion ist zwischen den beiden &Uuml;berwachungskan&auml;len unterschiedlich.<br />
+M&ouml;gliche Ursache 2 (bei laufendem Betrieb)<br />
+Die Grenzwerte basieren auf dem aktuellem Istwert (r9713). Bei einer Abweichung der sicheren Istwerte zwischen den beiden &Uuml;berwachungskan&auml;len sind auch die im definierten Abstand liegenden Grenzwerte unterschiedlich (d. h. entspricht St&ouml;rwert 3). Dies ist feststellbar durch Kontrolle der sicheren Istpositionen.<br />
+44: Lageistwert (r9713) + Grenzwert SLS1 (p9531[0]&#47;p9331[0]) * Safety-&Uuml;berwachungstakt.<br />
+45: Lageistwert (r9713) - Grenzwert SLS1 (p9531[0]&#47;p9331[0]) * Safety-&Uuml;berwachungstakt.<br />
+46: Lageistwert (r9713) + Grenzwert SLS2 (p9531[1]&#47;p9331[1]) * Safety-&Uuml;berwachungstakt.<br />
+47: Lageistwert (r9713) - Grenzwert SLS2 (p9531[1]&#47;p9331[1]) * Safety-&Uuml;berwachungstakt.<br />
+48: Lageistwert (r9713) + Grenzwert SLS3 (p9531[2]&#47;p9331[2]) * Safety-&Uuml;berwachungstakt.<br />
+49: Lageistwert (r9713) - Grenzwert SLS3 (p9531[2]&#47;p9331[2]) * Safety-&Uuml;berwachungstakt.<br />
+50: Lageistwert (r9713) + Grenzwert SLS4 (p9531[3]&#47;p9331[3]) * Safety-&Uuml;berwachungstakt.<br />
+51: Lageistwert (r9713) - Grenzwert SLS4 (p9531[3]&#47;p9331[3]) * Safety-&Uuml;berwachungstakt.<br />
+52: Stillstandsposition + Toleranz (p9530&#47;9330).<br />
+53: Stillstandsposition - Toleranz (p9530&#47;9330).<br />
+54: Lageistwert (r9713) + Grenzwert nx (p9546&#47;p9346) + Toleranz (p9542&#47;p9342).<br />
+55: Lageistwert (r9713) + Grenzwert nx (p9546&#47;p9346).<br />
+56: Lageistwert (r9713) - Grenzwert nx (p9546&#47;p9346).<br />
+57: Lageistwert (r9713) - Grenzwert nx (p9546&#47;p9346) - Toleranz (p9542&#47;p9342).<br />
+58: Aktuelle Stillsetzanforderung.<br />
+75: Geschwindigkeitsgrenze nx (p9546, p9346).<br />
+76: Stopreaktion bei SLS1 (p9563[0]&#47;p9363[0]).<br />
+77: Stopreaktion bei SLS2 (p9563[1]&#47;p9363[1]).<br />
+78: Stopreaktion bei SLS3 (p9563[2]&#47;p9363[2]).<br />
+79: Stopreaktion bei SLS4 (p9563[3]&#47;p9363[3]).<br />
+81: Geschwindigkeitstoleranz f&uuml;r SAM (p9548&#47;p9348).<br />
+82: SGEs f&uuml;r SLS-Korrekturfaktor.<br />
+83: Abnahmetesttimer (p9558&#47;p9358).<br />
+84: &Uuml;bergangszeit STOP F (p9555&#47;p9355).<br />
+85: &Uuml;bergangszeit Busausfall (p9580&#47;p9380).<br />
+86: Kennung 1-Geber-System (p9526&#47;p9326).<br />
+87: Geberzuordnung zweiter Kanal (p9526&#47;p9326).<br />
+89: Gebergrenzfrequenz.<br />
+230: Filterzeitkonstante f&uuml;r n &lt; nx.<br />
+231: Hysteresetoleranz f&uuml;r n &lt; nx.<br />
+232: Gegl&auml;tteter Geschwindigkeitsistwert.<br />
+233: Grenzwert nx &#47; Safety-&Uuml;berwachungstakt + Hysteresetoleranz.<br />
+234: Grenzwert nx &#47; Safety-&Uuml;berwachungstakt.<br />
+235: -Grenzwert nx &#47; Safety-&Uuml;berwachungstakt.<br />
+236: -Grenzwert nx &#47; Safety-&Uuml;berwachungstakt - Hysteresetoleranz.<br />
+237: SGA n &lt; nx.<br />
+238: Geschwindigkeitsgrenzwert f&uuml;r SAM (p9568&#47;p9368).<br />
+239: Beschleunigung f&uuml;r SBR (p9581&#47;p9381 und p9583&#47;p9383).<br />
+240: Kehrwert der Beschleunigung f&uuml;r SBR (p9581&#47;p9381 und p9583&#47;p9383).<br />
+241: Verz&ouml;gerungszeit f&uuml;r SBR (p9582&#47;p9382).<br />
+242: Geberloses Safety (p9506&#47;p9306).<br />
+243: Erweiterte Alarmquittierung (p9507&#47;p9307).<br />
+244: Istwerterfassung geberlos Filterzeit (p9587&#47;p9387).<br />
+245: Minimalstrom Istwerterfassung geberlos (p9588&#47;p9388).<br />
+246: Spannungstoleranz Beschleunigung (p9589&#47;p9389).<br />
+247: SDI Toleranz (p9564&#47;p9364).<br />
+248: SDI positiv obere Grenze (0x7fffffff).<br />
+249: Lageistwert (r9713) - SDI Toleranz.<br />
+250: Lageistwert (r9713) + SDI Toleranz.<br />
+251: SDI negativ untere Grenze (0x80000001).<br />
+252: SDI Stopreaktion (p9566&#47;p9366).<br />
+253: SDI Verz&ouml;gerungszeit (p9565&#47;p9365).<br />
+254: Einstellung der Auswerteverz&ouml;gerung bei Istwerterfassung nach Impulsfreigabe (p9586&#47;p9386).<br />
+255: Einstellung Verhalten w&auml;hrend Impulsl&ouml;schung (p9509&#47;p9309).<br />
+256: Zustandsabbild der &Uuml;berwachungsfunktionen SOS, SLS, SLP, Teststop, SBR, SDI (Ergebnisliste 1 Erw) (r9710).<br />
+1000: Kontrolltimer abgelaufen. Es sind zu viele Signalver&auml;nderungen an den sicherheitsgerichteten Eing&auml;ngen aufgetreten.<br />
+1001: Initialisierungsfehler des Kontrolltimers.<br />
+1005: Impulse bereits gel&ouml;scht bei Teststop-Anwahl.<br />
+1011: Abnahmeteststatus zwischen den &Uuml;berwachungskan&auml;len unterschiedlich.<br />
+1012: Plausibilit&auml;tsverletzung des Istwertes vom Geber.<br />
+1020: Ausfall der zyklischen Kommunikation zwischen den &Uuml;berwachungskan&auml;len.<br />
+1021: Ausfall der zyklischen Kommunikation zwischen &Uuml;berwachungskanal und Sensor Module.<br />
+1022: Lebenszeichenfehler f&uuml;r DRIVE-CLiQ-Geber CU.<br />
+1023: Fehler bei Wirksamkeitstests im DRIVE-CLiQ-Geber.<br />
+1032: Lebenszeichenfehler f&uuml;r DRIVE-CLiQ-Geber MM.<br />
+1033: Fehler bei der Pr&uuml;fung des Offsets zwischen POS1 und POS2 f&uuml;r DRIVE-CLiQ-Geber CU.<br />
+1034: Fehler bei der Pr&uuml;fung des Offsets zwischen POS1 und POS2 f&uuml;r DRIVE-CLiQ-Geber MM.<br />
+1041: Strombetrag zu gering (geberlos).<br />
+1042: Plausibilit&auml;tsfehler Strom&#47;Spannung.<br />
+1043: Zu viele Beschleunigungsvorg&auml;nge.<br />
+1044: Plausibilit&auml;tsfehler Stromistwerte.<br />
+5000 ... 5140:<br />
+PROFIsafe-Meldungswerte.<br />
+Bei diesen St&ouml;rwerten werden Failsafe-Ansteuersignale (Failsafe Values) an die Sicherheitsfunktionen &uuml;bertragen.<br />
+5000, 5014, 5023, 5024, 5030 ... 5032, 5042, 5043, 5052, 5053, 5068, 5072, 5073, 5082 ... 5087, 5090, 5091, 5122 ... 5125, 5132 ... 5135, 5140: Ein interner Softwarefehler ist aufgetreten (Nur f&uuml;r Siemens-interne Fehlerdiagnose).<br />
+5012: Fehler bei der Initialisierung des PROFIsafe-Treibers.<br />
+5013: Das Ergebnis der Initialisierung ist auf beiden Controllern unterschiedlich.<br />
+5022: Fehler bei der Auswertung der F-Parameter. Die Werte der &uuml;bertragenen F-Parameter stimmen nicht mit den erwarteten Werten im PROFIsafe-Treiber &uuml;berein.<br />
+5025: Das Ergebnis der F-Parametrierung ist auf beiden Controllern unterschiedlich.<br />
+5026: CRC-Fehler bei den F-Parametern. Der &uuml;bertragene CRC-Wert der F-Parameter stimmt nicht mit dem im PST berechneten Wert &uuml;berein.<br />
+5065: Beim Empfangen des PROFIsafe-Telegramms wurde ein Kommunikationsfehler festgestellt.<br />
+5066: Beim Empfangen des PROFIsafe-Telegramms wurde ein Zeit&uuml;berwachungsfehler festgestellt.<br />
+6000 ... 6166:<br />
+PROFIsafe-Meldungswerte (PROFIsafe-Treiber f&uuml;r PROFIBUS DP V1&#47;V2 und PROFINET).<br />
+Bei diesen St&ouml;rwerten werden Failsafe-Ansteuersignale (Failsafe Values) an die Sicherheitsfunktionen &uuml;bertragen.<br />
+6000: Ein schwerwiegender Fehler in der PROFIsafe-Kommunikation ist aufgetreten.<br />
+6064 ... 6071: Fehler bei der Auswertung der F-Parameter. Die Werte der &uuml;bertragenen F-Parameter stimmen nicht mit den erwarteten Werten im PROFIsafe-Treiber &uuml;berein.<br />
+6064: Zieladresse und PROFIsafe-Adresse sind verschieden (F_Dest_Add).<br />
+6065: Zieladresse ung&uuml;ltig (F_Dest_Add).<br />
+6066: Quelladresse ung&uuml;ltig (F_Source_Add).<br />
+6067: Watchdog Zeitwert ung&uuml;ltig (F_WD_Time).<br />
+6068: Falscher SIL Level (F_SIL).<br />
+6069: Falsche F-CRC L&auml;nge (F_CRC_Length).<br />
+6070: Falsche F-Parameterversion (F_Par_Version).<br />
+6071: CRC-Fehler bei den F-Parametern (CRC1). Der &uuml;bertragene CRC-Wert der F-Parameter stimmt nicht mit dem im PROFIsafe-Treiber berechneten Wert &uuml;berein.<br />
+6072: F-Parametrierung ist inkonsistent.<br />
+6165: Beim Empfangen des PROFIsafe-Telegramms wurde ein Kommunikationsfehler festgestellt. Der Fehler kann auch auftreten, wenn nach dem Aus- und Einschalten der Control Unit oder nach dem Stecken der PROFIBUS-&#47;PROFINET-Leitung ein inkonsistentes oder veraltetes PROFIsafe-Telegramm empfangen wurde.<br />
+6166: Beim Empfangen des PROFIsafe-Telegramms wurde ein Zeit&uuml;berwachungsfehler festgestellt.<br />
+Siehe auch: p9555 (SI Motion Übergangszeit STOP F auf STOP B (Control Unit)), r9725 (SI Motion Diagnose STOP F)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Allgemein gilt:<br />
+Die &Uuml;berwachungstakte in beiden Kan&auml;len und die Achstypen sind auf Gleichheit zu &uuml;berpr&uuml;fen und gegebenenfalls gleich einzustellen. Tritt der Fehler trotzdem weiterhin auf, kann eine Vergr&ouml;&szlig;erung der &Uuml;berwachungstakte eine Abhilfe sein.<br />
+Zu Meldungswert = 0:<br />
+- In diesem &Uuml;berwachungskanal wurde kein Fehler festgestellt. Fehlermeldung des anderen &Uuml;berwachungskanal beachten (bei MM: C30711).<br />
+Zu Meldungswert = 3:<br />
+Inbetriebnahmephase:<br />
+Geberbewertung f&uuml;r eigenem oder zweitem Kanal ist nicht korrekt eingestellt --&gt; Korrektur der Geberbewertung.<br />
+Im Betrieb:<br />
+Kontrolle des mechanischen Aufbaus und der Gebersignale.<br />
+Zu Meldungswert = 4:<br />
+- Die &Uuml;berwachungstakte in beiden Kan&auml;len sind auf Gleichheit zu &uuml;berpr&uuml;fen und gegebenenfalls gleich einzustellen. In Kombination mit St&ouml;rwert 5 vom anderen &Uuml;berwachungskanal (bei MM: C30711) m&uuml;ssen die &Uuml;berwachungstakte gr&ouml;&szlig;er eingestellt werden.<br />
+Zu Meldungswert = 232:<br />
+-Hysteresetoleranz (p9547&#47;p9347) vergr&ouml;&szlig;ern. Evtl. die Filterung (p9545&#47;p9345) gr&ouml;&szlig;er einstellen.<br />
+Zu Meldungswert = 1 ... 999:<br />
+- Wenn der Meldungswert unter Ursache aufgelistet ist: &Uuml;berpr&uuml;fen der kreuzweise verglichenen Parameter, auf die sich der Meldungswert bezieht.<br />
+- Safety-Parameter kopieren.<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Software der Control Unit hochr&uuml;sten.<br />
+- Korrektur der Geberbewertung. Die Istwerte sind aufgrund von mechanischen Fehlern (Keilriemen, Fahren auf mechanische Begrenzung, Verschlei&szlig; und zu enge Fenstereinstellung, Geberfehler, ...) unterschiedlich.<br />
+Zu Meldungswert = 1000:<br />
+- Untersuchen des zum sicherheitsgerichteten Eingang zugeh&ouml;rigen Signals (Kontaktprobleme).<br />
+Zu Meldungswert = 1001:<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Software der Control Unit hochr&uuml;sten.<br />
+Zu Meldungswert = 1005:<br />
+- Pr&uuml;fen der Bedingungen f&uuml;r Impulsfreigabe.<br />
+Zu Meldungswert = 1011:<br />
+- F&uuml;r Diagnose siehe Parameter (r9571).<br />
+Zu Meldungswert = 1012:<br />
+- Software des Sensor Modules hochr&uuml;sten.<br />
+- Bei 1-Geber-Systeme, Geberparameter auf Gleichheit pr&uuml;fen (p9515&#47;p9315, p9519&#47;p9319, p9523&#47;p9323, p9524&#47;p9324, p9525&#47;p9325, p9529&#47;p9329).<br />
+- F&uuml;r DQI-Geber gilt: Gegebenenfalls die Firmware-Version der Control Unit auf eine neuere Version hochr&uuml;sten f&uuml;r die der DQI-Geber freigegeben ist.<br />
+Zu Meldungswert = 1020, 1021:<br />
+- Pr&uuml;fen der Kommunikationsverbindung.<br />
+- Die &Uuml;berwachungstakte gr&ouml;&szlig;er einstellen (p9500, p9511).<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Hardware tauschen.<br />
+Zu Meldungswert = 1033:<br />
+- Gegebenenfalls die Firmware-Version der Control Unit auf eine neuere Version hochr&uuml;sten f&uuml;r die der DQI-Geber freigegeben ist.<br />
+Zu Meldungswert = 1041:<br />
+- Minimalstrom reduzieren (p9588).<br />
+- Bei Synchronmotoren den Betrag von p9783 erh&ouml;hen.<br />
+- &Uuml;berpr&uuml;fen, ob die Funktion &quot;Geregelter Betrieb mit HF-Signalinjektion&quot; aktiviert ist (p1750.5 = 1) und gegebenenfalls deaktivieren.<br />
+Zu Meldungswert = 1042:<br />
+- Hochlaufgeber Hochlaufzeit&#47;R&uuml;cklaufzeit erh&ouml;hen (p1120&#47;p1121).<br />
+- Strom-&#47;Drehzahlregelung auf korrekte Einstellung pr&uuml;fen (Momentenbildender&#47;Feldbildender Strom und Drehzahlistwert darf nicht schwingen).<br />
+- Dynamik des Sollwertes reduzieren.<br />
+- Minimalstrom erh&ouml;hen (p9588).<br />
+Zu Meldungswert = 1043:<br />
+- Spannungstoleranz erh&ouml;hen (p9589).<br />
+- Hochlaufgeber Hochlaufzeit&#47;R&uuml;cklaufzeit erh&ouml;hen (p1120&#47;p1121).<br />
+- Strom-&#47;Drehzahlregelung auf korrekte Einstellung pr&uuml;fen (Momentenbildender&#47;Feldbildender Strom und Drehzahlistwert darf nicht schwingen).<br />
+- Dynamik des Sollwertes reduzieren.<br />
+Zu Meldungswert = 5000, 5014, 5023, 5024, 5030, 5031, 5032, 5042, 5043, 5052, 5053, 5068, 5072, 5073, 5082 ... 5087, 5090, 5091, 5122 ... 5125, 5132 ... 5135, 5140:<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Pr&uuml;fen, ob St&ouml;rungen in der DRIVE-CLiQ-Kommunikation zwischen der Control Unit und dem betroffenen Motor Module vorliegen und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+- Firmware auf neuere Version hochr&uuml;sten.<br />
+- Hotline kontaktieren.<br />
+- Control Unit austauschen.<br />
+Zu Meldungswert = 5012:<br />
+- Einstellung der PROFIsafe-Adresse der Control Unit (p9610) und des Motor Modules (p9810) pr&uuml;fen. Die PROFIsafe-Adresse darf nicht 0 oder FFFF sein!<br />
+Zu Meldungswert = 5013, 5025:<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Einstellung der PROFIsafe-Adresse der Control Unit (p9610) und des Motor Modules (p9810) pr&uuml;fen.<br />
+- Pr&uuml;fen, ob St&ouml;rungen in der DRIVE-CLiQ-Kommunikation zwischen der Control Unit und dem betroffenen Motor Module vorliegen und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+Zu Meldungswert = 5022:<br />
+- Einstellung der Werte der F-Parameter am PROFIsafe-Slave pr&uuml;fen (F_SIL, F_CRC_Length, F_Par_Version, F_Source_Add, F_Dest_add, F_WD_Time).<br />
+Zu Meldungswert = 5026:<br />
+- Einstellung der Werte der F-Parameter und den daraus errechneten F-Parameter-CRC (CRC1) am PROFIsafe-Slave pr&uuml;fen und aktualisieren.<br />
+Zu Meldungswert = 5065:<br />
+- Projektierung und -Kommunikation am PROFIsafe-Slave pr&uuml;fen (lfdNr&#47;CRC).<br />
+- Einstellung des Wertes f&uuml;r F-Parameter F_WD_Time am PROFIsafe-Slave pr&uuml;fen und eventuell vergr&ouml;&szlig;ern.<br />
+- Pr&uuml;fen, ob St&ouml;rungen in der DRIVE-CLiQ-Kommunikation zwischen der Control Unit und dem betroffenen Motor Module vorliegen und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+Zu Meldungswert = 5066:<br />
+- Einstellung des Wertes f&uuml;r F-Parameter F_WD_Time am PROFIsafe-Slave pr&uuml;fen und eventuell vergr&ouml;&szlig;ern.<br />
+- Diagnoseinformation im F-Host auswerten.<br />
+- PROFIsafe-Verbindung &uuml;berpr&uuml;fen.<br />
+Zu Meldungswert = 6000:<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Pr&uuml;fen, ob St&ouml;rungen in der DRIVE-CLiQ-Kommunikation zwischen der Control Unit und dem betroffenen Motor Module vorliegen und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+- Die &Uuml;berwachungstakte gr&ouml;&szlig;er einstellen (p9500, p9511).<br />
+- Firmware auf neuere Version hochr&uuml;sten.<br />
+- Hotline kontaktieren.<br />
+- Control Unit austauschen.<br />
+Zu Meldungswert = 6064:<br />
+- Einstellung des Wertes im F-Parameter F_Dest_Add am PROFIsafe-Slave pr&uuml;fen.<br />
+- Einstellung der PROFIsafe-Adresse der Control Unit (p9610) und des Motor Modules (p9810) pr&uuml;fen.<br />
+Zu Meldungswert = 6065:<br />
+- Einstellung des Wertes im F-Parameter F_Dest_Add am PROFIsafe-Slave pr&uuml;fen. Die Ziel-Adresse darf nicht 0 oder FFFF sein!<br />
+Zu Meldungswert = 6066:<br />
+- Einstellung des Wertes im F-Parameter F_Source_Add am PROFIsafe-Slave pr&uuml;fen. Die Quell-Adresse darf nicht 0 oder FFFF sein!<br />
+Zu Meldungswert = 6067:<br />
+- Einstellung des Wertes im F-Parameter F_WD_Time am PROFIsafe-Slave pr&uuml;fen. Der Watchdog Zeitwert darf nicht 0 sein!<br />
+Zu Meldungswert = 6068:<br />
+- Einstellung des Wertes im F-Parameter F_SIL am PROFIsafe-Slave pr&uuml;fen. Der SIL Level muss SIL2 entsprechen!<br />
+Zu Meldungswert = 6069:<br />
+- Einstellung des Wertes im F-Parameter F_CRC_Length am PROFIsafe-Slave pr&uuml;fen. Die Einstellung der CRC2-L&auml;nge ist 2-Byte-CRC im V1-Mode und 3-Byte-CRC im V2-Mode!<br />
+Zu Meldungswert = 6070:<br />
+- Einstellung des Wertes im F-Parameter F_Par_Version am PROFIsafe-Slave pr&uuml;fen. Der Wert f&uuml;r die F-Parameter Version ist 0 im V1-Mode und 1 im V2-Mode!<br />
+Zu Meldungswert = 6071:<br />
+- Einstellung der Werte der F-Parameter und den daraus errechneten F-Parameter-CRC (CRC1) am PROFIsafe-Slave pr&uuml;fen und eventuell aktualisieren.<br />
+Zu Meldungswert = 6072:<br />
+- Einstellung der Werte der F-Parameter &uuml;berpr&uuml;fen und eventuell korrigieren.<br />
+F&uuml;r die F-Parameter F_CRC_Length und F_Par_Version sind folgende Kombinationen zul&auml;ssig:<br />
+F_CRC_Length = 2-Byte-CRC und F_Par_Version = 0<br />
+F_CRC_Length = 3-Byte-CRC und F_Par_Version = 1<br />
+Zu Meldungswert = 6165:<br />
+- Beim Auftreten des Fehlers nach dem Hochlauf der Control Unit oder nach dem Stecken der PROFIBUS-&#47;PROFINET-Leitung den Fehler quittieren.<br />
+- Projektierung und Kommunikation am PROFIsafe-Slave pr&uuml;fen.<br />
+- Einstellung des Wertes f&uuml;r F-Parameter F_WD_Time am PROFIsafe-Slave pr&uuml;fen und eventuell vergr&ouml;&szlig;ern.<br />
+- Pr&uuml;fen, ob St&ouml;rungen in der DRIVE-CLiQ-Kommunikation zwischen der Control Unit und dem betroffenen Motor Module vorliegen und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+Zu Meldungswert = 6166:<br />
+- Projektierung und Kommunikation am PROFIsafe-Slave pr&uuml;fen.<br />
+- Einstellung des Wertes f&uuml;r F-Parameter F_WD_Time am PROFIsafe-Slave pr&uuml;fen und eventuell vergr&ouml;&szlig;ern.<br />
+- Diagnoseinformation im F-Host auswerten.<br />
+- PROFIsafe-Verbindung &uuml;berpr&uuml;fen.<br />
+Diese Meldung kann wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel<br />
+Siehe auch: p9300 (SI Motion Überwachungstakt (Motor Module)), p9500 (SI Motion Überwachungstakt (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201712">C201712</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Defekt bei F-IO-Verarbeitung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb hat beim kreuzweisen Vergleich der beiden &Uuml;berwachungskan&auml;le einen Unterschied zwischen Parametern oder Ergebnissen der F-IO-Verarbeitung festgestellt und STOP F ausgel&ouml;st. Eine der &Uuml;berwachungen funktioniert nicht mehr zuverl&auml;ssig, d. h. es ist kein sicherer Betrieb mehr m&ouml;glich.<br />
+Die Safety-Meldung C01711 mit Meldungswert 0 wird wegen der Ausl&ouml;sung eines STOP F zus&auml;tzlich angezeigt.<br />
+Ist mindestens eine &Uuml;berwachungsfunktion aktiv, so wird nach Ablauf der parametrierten Zeitstufe die Safety-Meldung C01701 &quot;SI Motion: STOP B ausgel&ouml;st&quot; ausgegeben.<br />
+Meldungswert (r9749, dezimal interpretieren):<br />
+Nummer des kreuzweise verglichenen Datums, das zu dieser Meldung gef&uuml;hrt hat.<br />
+1: SI Diskrepanz &Uuml;berwachungszeit Eing&auml;nge (p10002, p10102).<br />
+2: SI Quittierung internes Ereignis Eingangsklemme (p10006, p10106).<br />
+3: SI STO Eingangsklemme (p10022, p10122).<br />
+4: SI SS1 Eingangsklemme (p10023, p10123).<br />
+5: SI SS2 Eingangsklemme (p10024, p10124).<br />
+6: SI SOS Eingangsklemme (p10025, p10125).<br />
+7: SI SLS Eingangsklemme (p10026, p10126).<br />
+8: SI SLS_Limit(1) Eingangsklemme (p10027, p10127).<br />
+9: SI SLS_Limit(2) Eingangsklemme (p10028, p10128).<br />
+10: SI Safe State Signalauswahl (p10039, p10139).<br />
+11 SI F-DI Eingangsmodus (p10040, p10140).<br />
+12: SI F-DO 0 Signalquellen (p10042, p10142).<br />
+13: Zustand der statisch inaktiven Signalquellen unterschiedlich (p10006, p10022 ... p10028).<br />
+14: SI Diskrepanz &Uuml;berwachungszeit Ausg&auml;nge (p10002, p10102).<br />
+15: SI Quittierung Internes Ereignis (p10006, p10106).<br />
+16: SI Test Sensor R&uuml;ckmeldung Auswahl Testmodus f&uuml;r Teststop (p10046, p10146, p10047, p10147) .<br />
+17: SI Wartezeit f&uuml;r Teststop an DOs (p10001).<br />
+18 ... 25: SI Test Sensor R&uuml;ckmeldung (p10046, p10146, p10047, p10147). Erwartungshaltung internes R&uuml;cklesesignal, gebildet durch den ausgew&auml;hlten Teststop-Modus.<br />
+26 ... 33: SI Test Sensor R&uuml;ckmeldung (p10046, p10146, p10047, p10147). Erwartungshaltung externes R&uuml;cklesesignal, gebildet durch den ausgew&auml;hlten Teststop-Modus.<br />
+34 ... 41: SI Test Sensor R&uuml;ckmeldung (p10046, p10146, p10047, p10147). Erwartungshaltung zweites internes R&uuml;cklesesignal, gebildet durch den ausgew&auml;hlten Teststop-Modus.<br />
+42: Internes Datum f&uuml;r Verarbeitung des zweiten internen R&uuml;cklesesignals, gebildet durch den ausgew&auml;hlten Teststop-Modus (p10047, p10147).<br />
+43: Internes Datum f&uuml;r Verarbeitung des internen R&uuml;cklesesignals, gebildet durch den ausgew&auml;hlten Teststop-Modus (p10047, p10147).<br />
+44: Internes Datum f&uuml;r Verarbeitung des externen R&uuml;cklesesignals, gebildet durch den ausgew&auml;hlten Teststop-Modus (p10047, p10147).<br />
+45: Internes Datum f&uuml;r Initialisierungszustand des Teststop-Moduls, abh&auml;ngig von Teststop-Parametern.<br />
+46: SI Digitaleing&auml;nge Entprellzeit (p10017, p10117).<br />
+47: Auswahl F-DI f&uuml;r PROFIsafe (p10050, p10150).<br />
+48: Auswahl F-DI f&uuml;r PROFIsafe (p10050, p10150).<br />
+49: SI SDI Positiv Eingangsklemme (p10030, p10130).<br />
+50: SI SDI Negativ Eingangsklemme (p10031, p10131).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Parametrierung in den betroffenen Parametern kontrollieren und gegebenenfalls korrigieren.<br />
+- Gleichheit durch Kopieren der SI-Daten auf den zweiten Kanal sicherstellen und danach einen Abnahmetest durchf&uuml;hren.<br />
+- &Uuml;berwachungstakt in p9500 und p9300 auf Gleichheit kontrollieren.<br />
+Hinweis:<br />
+Diese Meldung kann &uuml;ber F-DI oder PROFIsafe quittiert werden.<br />
+Siehe auch: p9300 (SI Motion Überwachungstakt (Motor Module)), p9500 (SI Motion Überwachungstakt (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201714">C201714</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Sicher begrenzte Geschwindigkeit &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb hat sich schneller bewegt als durch den Geschwindigkeitsgrenzwert (p9531) vorgegeben. Der Antrieb wird durch die projektierte Stopreaktion stillgesetzt (p9563).<br />
+Meldungswert (r9749, dezimal interpretieren):<br />
+100: SLS1 &uuml;berschritten.<br />
+200: SLS2 &uuml;berschritten.<br />
+300: SLS3 &uuml;berschritten.<br />
+400: SLS4 &uuml;berschritten.<br />
+1000: Gebergrenzfrequenz &uuml;berschritten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verfahrprogramm auf der Steuerung &uuml;berpr&uuml;fen.<br />
+- Grenzen f&uuml;r &quot;Sicher begrenzte Geschwindigkeit&quot; (SLS) &uuml;berpr&uuml;fen und gegebenenfalls anpassen (p9531).<br />
+Diese Meldung kann wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+SLS: Safely-Limited Speed (Sicher begrenzte Geschwindigkeit) &#47; SG: Safely reduced speed (Sicher reduzierte Geschwindigkeit)<br />
+Siehe auch: p9531 (SI Motion SLS (SG) Grenzwerte (Control Unit)), p9563 (SI Motion SLS(SG)-spezifisch Stopreaktion (Control Unit))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201716">C201716</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Toleranz f&uuml;r sichere Bewegungsrichtung &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde die Toleranz bei der Funktion &quot;Sichere Bewegungsrichtung&quot; &uuml;berschritten. Der Antrieb wird durch die projektierte Stopreaktion stillgesetzt (p9566).<br />
+Meldungswert (r9749, dezimal interpretieren):<br />
+0: Die Toleranz f&uuml;r die Funktion &quot;Sichere Bewegungsrichtung positiv&quot; &uuml;berschritten.<br />
+1: Die Toleranz f&uuml;r die Funktion &quot;Sichere Bewegungsrichtung negativ&quot; &uuml;berschritten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verfahrprogramm auf der Steuerung &uuml;berpr&uuml;fen.<br />
+- Toleranz f&uuml;r die Funktion &quot;SDI&quot; &uuml;berpr&uuml;fen und gegebenenfalls anpassen (p9564).<br />
+Diese Meldung kann wie folgt quittiert werden:<br />
+&Uuml;ber F-DI oder PROFIsafe<br />
+Hinweis:<br />
+SDI: Safe Direction (Sichere Bewegungsrichtung)<br />
+SI: Safety Integrated<br />
+Siehe auch: p9564, p9565, p9566<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201745">C201745</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Bremsmoment beim Bremsentest &uuml;berpr&uuml;fen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>POWER ON ( (SOFORT, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>&Uuml;ber den Parameter p2003 wurde die Normierung des Bremsmoments f&uuml;r den Bremsentest ver&auml;ndert.<br />
+F&uuml;r den Bremsentest muss erneut ein Abnahmetest durchgef&uuml;hrt werden. Damit wird festgestellt, ob der Bremsentest noch mit dem korrekten Bremsmoment durchgef&uuml;hrt wird.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Abnahmetest f&uuml;r den sicheren Bremsentest wiederholen, wenn der Bremsentest verwendet wird.<br />
+Siehe auch: p2003<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201750">C201750</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Hardware-Fehler sicherer Geber</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Geber, der f&uuml;r die sicheren Bewegungs&uuml;berwachungen verwendet wird, liefert einen Hardware-Fehler.<br />
+Meldungswert (r9749, dezimal interpretieren):<br />
+Geberstatuswort 1, Geberstatuswort 2, die zu der Meldung gef&uuml;hrt haben.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Anschluss des Gebers &uuml;berpr&uuml;fen.<br />
+- Geber tauschen.<br />
+Diese Meldung kann wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201751">C201751</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Wirksamkeitstest-Fehler sicherer Geber</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der DRIVE-CLiQ-Geber f&uuml;r die sicheren Bewegungs&uuml;berwachungen liefert einen Fehler bei den Wirksamkeitstests.<br />
+Meldungswert (r9749, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Anschluss des Gebers &uuml;berpr&uuml;fen.<br />
+- Geber tauschen.<br />
+Diese Meldung kann wie folgt quittiert werden:<br />
+- Antriebsintegrierte Bewegungs&uuml;berwachungen: &Uuml;ber Terminal Module 54F (TM54F) oder PROFIsafe<br />
+- Bewegungs&uuml;berwachungen mit SINUMERIK: &Uuml;ber Maschinensteuertafel<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201796">A201796 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Warten auf Kommunikation</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb wartet auf den Kommunikationsaufbau mit SINUMERIK oder TM54F f&uuml;r die Ausf&uuml;hrung der sicheren Bewegungs&uuml;berwachungsfunktionen.<br />
+Hinweis:<br />
+In diesem Zustand sind die Impulse sicher gel&ouml;scht.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Wird die Meldung nach l&auml;ngerer Zeit nicht automatisch zur&uuml;ckgenommen, sind abh&auml;ngig von der Kommunikation folgende &Uuml;berpr&uuml;fungen durchzuf&uuml;hren:<br />
+Bei der Kommunikation mit SINUMERIK gilt:<br />
+- Weitere anstehende Meldungen zur PROFIBUS-Kommunikation pr&uuml;fen und beseitigen.<br />
+- Korrekte Zuordnung der Achsen auf der &uuml;bergeordneten Steuerung zu den Antrieben im Antriebsger&auml;t pr&uuml;fen.<br />
+- Freigabe der sicheren Bewegungs&uuml;berwachungsfunktionen f&uuml;r die korrespondierende Achse auf der &uuml;bergeordneten Steuerung pr&uuml;fen und gegebenenfalls setzen.<br />
+Bei Kommunikation mit TM54F gilt:<br />
+- Weitere anstehende Meldungen zur DRIVE-CLiQ-Kommunikation mit TM54F pr&uuml;fen und beseitigen.<br />
+- Einstellung von p10010 &uuml;berpr&uuml;fen. Es m&uuml;ssen alle durch das TM54F angesteuerten Antriebsobjekte aufgelistet sein.<br />
+Siehe auch: p9601 (SI Freigabe antriebsintegrierte Funktionen (Control Unit)), p9801 (SI Freigabe antriebsintegrierte Funktionen (Motor Module)), p10010 (SI Antriebsobjekte Zuordnung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201798">C201798</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Teststop l&auml;uft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Teststop ist aktiv.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Keine notwendig.<br />
+Die Meldung wird mit Beenden des Teststops zur&uuml;ckgenommen.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201799">C201799</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI Motion CU: Abnahmetestmodus aktiv</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Abnahmetestmodus ist aktiv. Die POWER ON-Meldungen der sicheren Bewegungs&uuml;berwachungsfunktionen k&ouml;nnen w&auml;hrend des Abnahmetests mit der Taste RESET der &uuml;bergeordneten Steuerung quittiert werden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Keine notwendig.<br />
+Die Meldung wird mit Verlassen des Abnahmetestmodus zur&uuml;ckgenommen.<br />
+Hinweis:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201800">F201800</a></b></td>
+<td><b>&lt;Ortsangabe&gt;DRIVE-CLiQ: Hardware&#47;Konfiguration fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+ (AUS1, AUS2)Servo: KEINE<br />
+ (AUS1, AUS2, AUS3, GEBER, IASC/DCBREMSE, STOP1, STOP2)Vector: KEINE<br />
+ (AUS1, AUS2, AUS3, GEBER, IASC/DCBREMSE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist ein Fehler bei der DRIVE-CLiQ-Verbindung aufgetreten.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+100 ... 107:<br />
+Die Kommunikation &uuml;ber DRIVE-CLiQ-Buchse X100 ... X107 ist nicht in den zyklischen Betrieb gewechselt. Die Ursache kann ein fehlerhafter Aufbau oder eine Konfiguration sein, die zu unm&ouml;glichem Bustiming f&uuml;hrt.<br />
+10:<br />
+Verlust der DRIVE-CLiQ-Verbindung. Die Ursache kann z. B. das Abziehen der DRIVE-CLiQ-Leitung von der Control Unit sein oder durch Kurzschluss bei Motoren mit DRIVE-CLiQ entstehen. Dieser Fehler ist erst bei zyklischer Kommunikation quittierbar.<br />
+11:<br />
+Wiederholte Fehler bei der Verbindungserkennung. Dieser Fehler ist erst bei zyklischer Kommunikation quittierbar.<br />
+12:<br />
+Eine Verbindung wurde erkannt aber der Austausch der Teilnehmerkennung funktioniert nicht. Die Ursache ist wahrscheinlich eine defekte Komponente. Dieser Fehler ist erst bei zyklischer Kommunikation quittierbar.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 100 ... 107:<br />
+- Einheitliche Firmware-Version in den DRIVE-CLiQ-Komponenten sicherstellen.<br />
+- Vermeidung langer Topologien bei kurzen Stromreglertakten.<br />
+Zu St&ouml;rwert = 10:<br />
+- DRIVE-CLiQ-Leitungen an der Control Unit pr&uuml;fen.<br />
+- M&ouml;glichen Kurzschluss bei Motoren mit DRIVE-CLiQ beseitigen.<br />
+- POWER ON durchf&uuml;hren.<br />
+Zu St&ouml;rwert = 11:<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+Zu St&ouml;rwert = 12:<br />
+- Betreffende Komponente austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201840">A201840</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SMI: Komponente ohne Motordaten gefunden</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde ein SMI&#47;DQI ohne Motordaten gefunden (z. B. SMI als Ersatzteil eingetauscht).<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Komponentennummer aus der Solltopologie.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>1. Die SMI&#47;DQI-Daten (Motor-&#47;Geberdaten) aus der Datensicherung wieder einspielen (p4690, p4691).<br />
+2. POWER ON bei dieser Komponente durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+Hinweis:<br />
+DQI: DRIVE-CLiQ Sensor Integrated<br />
+SMI: SINAMICS Sensor Module Integrated<br />
+Siehe auch: p4690 (SMI-Ersatzteilfall Komponentennummer), p4691 (SMI-Ersatzteilfall Daten sichern/einspielen)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201900">A201900 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PB&#47;PN: Konfigurationstelegramm fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Ein Controller versucht mit einem fehlerhaften Konfiguriertelegramm eine Verbindung aufzubauen.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1: Verbindungsaufbau zu mehr Antriebsobjekten als im Ger&auml;t projektiert. Die Antriebsobjekte f&uuml;r den Prozessdatenaustausch und ihre Reihenfolge werden in p0978 festgelegt.<br />
+2: Zu viele PZD Datenworte f&uuml;r Output oder Input zu einem Antriebsobjekt. Die Anzahl der m&ouml;glichen PZD eines Antriebsobjektes wird durch die Anzahl der Indizes in r2050&#47;p2051vorgegeben.<br />
+3: Ungerade Byteanzahl f&uuml;r Input oder Output.<br />
+4: Einstelldaten f&uuml;r Synchronisation nicht akzeptiert. Weitere Informationen siehe A01902.<br />
+223: Unzul&auml;ssige Taktsynchronisation f&uuml;r das in p8815[0] eingestellte PZD Interface.<br />
+253: PN Shared Device: Unzul&auml;ssige Mischkonfiguration von PROFIsafe und PZD.<br />
+254: PN Shared Device: Unzul&auml;ssige Doppelbelegung eines Slots&#47;Subslots.<br />
+255: PN: Konfiguriertes und vorhandenes Antriebsobjekt stimmen nicht &uuml;berein.<br />
+501: PROFIsafe Parameter fehlerhaft (z. B. F_Dest).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>&Uuml;berpr&uuml;fung der Busprojektierung auf der Master- und Slaveseite.<br />
+Zu Warnwert = 1:<br />
+Pr&uuml;fen der Liste der Antriebsobjekte mit Prozessdatenaustausch (p0978).<br />
+Mit p0978[x] = 0 werden alle in der Liste folgenden Antriebsobjekte vom Prozessdatenaustausch ausgeschlossen.<br />
+Zu Warnwert = 2:<br />
+Pr&uuml;fen der Anzahl Datenworte f&uuml;r Output und Input zu einem Antriebsobjekt.<br />
+Zu Warnwert = 255:<br />
+Pr&uuml;fen der konfigurierten Antriebsobjekte.<br />
+Zu Warnwert = 501:<br />
+Pr&uuml;fen der eingestellten PROFIsafe Adresse (p9610).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201902">A201902</a></b></td>
+<td><b>&lt;Ortsangabe&gt;IF1: PB&#47;PN Taktsynchroner Betrieb Parametrierung unzul&auml;ssig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Parametrierung f&uuml;r den taktsynchronen Betrieb ist unzul&auml;ssig.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+0: Buszykluszeit Tdp &lt; 0,5 ms.<br />
+1: Buszykluszeit Tdp &gt; 32 ms.<br />
+2: Buszykluszeit Tdp ist kein ganzzahliges Vielfaches des Stromreglertaktes.<br />
+3: Zeitpunkt der Istwerterfassung Ti &gt; Buszykluszeit Tdp oder Ti = 0.<br />
+4: Zeitpunkt der Istwerterfassung Ti ist kein ganzzahliges Vielfaches des Stromreglertaktes.<br />
+5: Zeitpunkt der Sollwert&uuml;bernahme To &gt;= Buszykluszeit Tdp oder To = 0.<br />
+6: Zeitpunkt der Sollwert&uuml;bernahme To ist kein ganzzahliges Vielfaches des Stromreglertaktes.<br />
+7: Master Applikationszykluszeit Tmapc ist kein ganzzahliges Vielfaches des Drehzahlreglertaktes.<br />
+8: Busreserve Buszykluszeit Tdp - Data Exchange Zeit Tdx kleiner zwei Stromreglertakte.<br />
+10: Zeitpunkt der Sollwert&uuml;bernahme nicht To &lt;= Data Exchange Zeit Tdx + To_min.<br />
+11: Master Applikationszykluszeit Tmapc &gt; 14 x Tdp oder Tmapc = 0.<br />
+12: PLL-Toleranzfenster Tpll_w &gt; Tpll_w_max.<br />
+13: Buszykluszeit Tdp kein Vielfaches aller Basistakte p0110[x].<br />
+14: Bei COMM BOARD mit Einstellung To - 1 x Tbase_io = Tdp - Ti ist der Zeitpunkt der Sollwert&uuml;bernahme nicht To &lt;= Data Exchange Zeit Tdx + 2 * To_min.<br />
+15: Diese Konfiguration ist nicht erlaubt f&uuml;r Tdp &lt; 1 ms.<br />
+16: Zeitpunkt der Istwerterfassung Ti ist kleiner als zugelassener Wert (COMM BOARD: Ti &gt;= 2 x Tbase_io).<br />
+17: Die Einstellung (To + Ti = Tdp + 2 x Tbase_io) ist nicht erlaubt f&uuml;r COMM BOARD.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Parametriertelegramm anpassen.<br />
+- Strom- bzw. Drehzahlreglertakt anpassen.<br />
+Zu Warnwert = 15:<br />
+- Anzahl bestimmter Antriebsobjekttypen in der Konfiguration &uuml;berpr&uuml;fen.<br />
+Hinweis:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+Tbase_io: Zeitbasis f&uuml;r Ti, To (= 125us)<br />
+</td></tr>
+</table><p></p></body></html>

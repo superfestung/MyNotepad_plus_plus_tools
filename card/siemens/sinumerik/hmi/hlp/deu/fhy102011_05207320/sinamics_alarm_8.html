@@ -1,0 +1,1870 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="207991">A207991 (N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Motordatenidentifikation aktiviert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Motordatenidentifikation ist aktiviert.<br />
+Mit dem n&auml;chsten Einschaltbefehl wird die Motordatenidentifikation durchgef&uuml;hrt.<br />
+Siehe auch: p1910, p1960<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Keine notwendig.<br />
+Die Warnung wird automatisch nach erfolgreicher Beendigung der Motordatenidentifikation oder bei Einstellung von p1910 = 0 bzw. p1960 = 0 zur&uuml;ckgenommen.<br />
+Wird bei angew&auml;hlter Motordatenidentifikation ein POWER ON oder ein Warmstart durchgef&uuml;hrt, so geht die Anforderung der Motordatenidentifikation verloren. Eine gew&uuml;nschte Motordatenidentifikation muss nach dem Hochlauf erneut manuell angew&auml;hlt werden.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207993">F207993</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Drehfeldrichtung oder Geberistwertinvertierung falsch</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+ (KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Drehfeldrichtung oder der Geberistwert hat ein falsches Vorzeichen. Die Istwertinvertierung (p0410) wurde von der Motordatenidentifikation automatisch ver&auml;ndert um den Regelsinn richtig zu stellen. Dies kann zu einer Drehrichtungs&auml;nderung f&uuml;hren.<br />
+Hinweis:<br />
+Zum Quittieren dieser St&ouml;rung muss zuvor mit p1910 = -2 die Richtigkeit der Drehrichtung best&auml;tigt werden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Drehrichtung &uuml;berpr&uuml;fen (falls vorhanden auch f&uuml;r den Lageregler).<br />
+Bei korrekter Drehrichtung gilt:<br />
+Es sind keine weiteren Ma&szlig;nahmen erforderlich (au&szlig;er p1910 = -2 setzen und die St&ouml;rung quittieren).<br />
+Bei falscher Drehrichtung gilt:<br />
+Zum &Auml;ndern der Drehrichtung m&uuml;ssen zwei Phasen getauscht und die Motoridentifikation wiederholt werden.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207995">F207995</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Pollageidentifikation fehlgeschlagen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Pollageidentifikation ist fehlgeschlagen.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+1: Es wird kein Strom aufgebaut.<br />
+2: Der Anfangsstrom ist nicht Null.<br />
+3: Der eingestellte Maximalweg wurde &uuml;berschritten (p1981).<br />
+4x: Das Messsignal erlaubt keine eindeutige Auswertung.<br />
+5: Der Maximalstrom wurde w&auml;hrend der Messung &uuml;berschritten.<br />
+6: Die Strommessung muss neu kalibriert werden.<br />
+7x: Sensor Module unterst&uuml;tzt die Pollageidentifikation nicht.<br />
+8: Der notwendige Pollageidentifikationsstrom ist gr&ouml;&szlig;er als der Maximalstrom.<br />
+9: Der eingestellte Pollageidentifikationsstrom ist Null.<br />
+10: Datensatzumschaltung w&auml;hrend der Pollageidentifikation.<br />
+11: Die Geberjustage zur Kommutierungswinkelermittlung ist aktiv (p1990 = 1) und der Geber ohne Nullmarke ist nicht feinsynchronisiert oder hat keine g&uuml;ltigen Daten.<br />
+100: Bewegungsbasierte Pollageidentifikation, 1. und 2. Messung unterschiedlich. Motor blockiert oder Strom (p1993) zu klein.<br />
+101: Bewegungsbasierte Pollageidentifikation, keine ausreichende Bewegung, Motor blockiert oder Strom (p1993) zu klein.<br />
+102: Bewegungsbasierte Pollageidentifikation, Bremse vorhanden und geschlossen. Die bewegungsbasierte Pollageidentifikation ist in Verbindung mit Bremse nicht erlaubt.<br />
+103: Bewegungsbasierte Pollageidentifikation ohne Geber.<br />
+104: Bewegungsbasierte Pollageidentifikation, Drehzahlistwert nicht Null nach Einschwingzeit.<br />
+200: Elastizit&auml;tsbasierte Pollageidentifikation, interner Fehler in arctan Berechnung (0&#47;0).<br />
+201: Elastizit&auml;tsbasierte Pollageidentifikation, zu wenig auswertbare Messpunkte.<br />
+202: Elastizit&auml;tsbasierte Pollageidentifikation, Ausrei&szlig;er in der Messreihe.<br />
+203: Elastizit&auml;tsbasierte Pollageidentifikation, maximale Verdrehung ohne Strom.<br />
+204: Elastizit&auml;tsbasierte Pollageidentifikation, keine positive Flanke gefunden.<br />
+205: Elastizit&auml;tsbasierte Pollageidentifikation, das Ergebnis der Fourier Transformation unterscheidet mehr als 480 &deg; elektrisch &#47; p3093 von der groben Sch&auml;tzung.<br />
+206: Elastizit&auml;tsbasierte Pollageidentifikation, Plausibilit&auml;tstest ist fehlgeschlagen.<br />
+207: Elastizit&auml;tsbasierte Pollageidentifikation, kein negativer Messwert gefunden.<br />
+Alle Messwerte sind m&ouml;glicherweise identisch. Die erwartete Auslenkung konnte nicht erreicht werden, weil entweder die Erwartung zu gro&szlig; ist oder zu wenig Strom aufgebaut werden konnte.<br />
+208: Elastizit&auml;tsbasierte Pollageidentifikation, Messstrom ist 0.<br />
+209: Elastizit&auml;tsbasierte Pollageidentifikation, der eingestellte Maximalweg wurde &uuml;berschritten (p3095).<br />
+210: Elastizit&auml;tsbasierte Pollageidentifikation ohne Geber.<br />
+250 ... 260:<br />
+Elastizit&auml;tsbasierte Pollageidentifikation, mehr als 3 Versuche stattgefunden und St&ouml;rwert 200 ... 210 aufgetreten.<br />
+Beispiel:<br />
+St&ouml;rwert = 253 --&gt; Mehr als 3 Versuche und St&ouml;rwert 203 aufgetreten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 1:<br />
+- Motoranschluss und Zwischenkreisspannung &uuml;berpr&uuml;fen.<br />
+- Bei folgenden Parametern sinnvolle und von Null verschiedene Werte einstellen (p0325, p0329).<br />
+Zu St&ouml;rwert = 1, 2:<br />
+- Bei gro&szlig;er Rechenzeitbelastung (z. B. 6 Antriebe mit Safety Integrated) die Rechentotzeit des Stromreglers auf sp&auml;te Transfers einstellen (p0117 = 3).<br />
+Zu St&ouml;rwert = 3:<br />
+- Den Maximalweg vergr&ouml;&szlig;ern (p1981).<br />
+- Die Str&ouml;me f&uuml;r die Pollageidentifikation verkleinern (p0325, p0329).<br />
+- Zur Durchf&uuml;hrung der Pollageidentifikation den Motor stillsetzen.<br />
+Zu St&ouml;rwert = 5:<br />
+- Die Str&ouml;me f&uuml;r die Pollageidentifikation verkleinern (p0325, p0329).<br />
+Zu St&ouml;rwert = 6:<br />
+- Das Motor Module neu kalibrieren lassen.<br />
+Zu St&ouml;rwert = 8:<br />
+- Die Str&ouml;me f&uuml;r die Pollageidentifikation verkleinern (p0329, p0325, p1993).<br />
+- Das Leistungsteil kann den notwendigen Pollageidentifikationsstrom nicht f&uuml;hren (p0209 &lt; p0329, p0325, p1993), Leistungsteil durch ein Leistungsteil mit gr&ouml;&szlig;eren Maximalstrom ersetzen.<br />
+Zu St&ouml;rwert = 9:<br />
+- In den Pollageidentifikationsstrom (p0329, p0325, p1993) einen Wert ungleich Null eintragen.<br />
+Zu St&ouml;rwert = 10:<br />
+- W&auml;hrend der Pollageidentifikation keine Datensatzumschaltung ansto&szlig;en.<br />
+Zu St&ouml;rwert = 11:<br />
+- Bei Inkrementalgebern ohne Kommutierung mit Nullmarke (p0404.15 = 0) macht die Geberjustage zur Kommutierungswinkelermittlung (p1990 = 1) keinen Sinn. In diesem Fall sollte die Funktion wieder abgew&auml;hlt (p1990 = 0) oder bei einem Geber mit geeigneter Nullmarke die Kommutierung mit Nullmarke angew&auml;hlt werden (p0404.15 = 1).<br />
+- Bei Absolutwertgebern die Geberjustage zur Kommutierungswinkelermittlung (p1990 = 1) nur ausf&uuml;hren, wenn der Geber eine Kommutierungsinformation liefert und feinsynchronisiert ist (p1992.8 = 1 und p1992.10 = 1). Der Geber ist m&ouml;glicherweise geparkt, deaktiviert (p0145), nicht einsatzbereit oder meldet eine St&ouml;rung.<br />
+- Die Geberjustage zur Kommutierungswinkelermittlung abw&auml;hlen (p1990 = 0 setzen).<br />
+Zu St&ouml;rwert = 40 ... 49:<br />
+- Die Str&ouml;me f&uuml;r die Pollageidentifikation vergr&ouml;&szlig;ern (p0325, p0329).<br />
+- Zur Durchf&uuml;hrung der Pollageidentifikation den Motor stillsetzen.<br />
+- Ein anderes Verfahren zur Pollageidentifikation w&auml;hlen (p1980).<br />
+- Anderen Motor oder Absolutwertgeber oder Hallsensoren verwenden.<br />
+Zu St&ouml;rwert = 70 ... 79:<br />
+- Software im Sensor Module hochr&uuml;sten.<br />
+Zu St&ouml;rwert = 100, 101:<br />
+- Freie Beweglichkeit des Motor pr&uuml;fen und sicherstellen.<br />
+- Strom f&uuml;r bewegungsbasierte Pollageidentifikation (p1993) erh&ouml;hen.<br />
+Zu St&ouml;rwert = 102:<br />
+- Falls der Motor mit Bremse betrieben werden soll: Anderes Verfahren zur Pollageidentifikation (p1980) anw&auml;hlen.<br />
+- Falls der Motor ohne Bremse betrieben werden kann: Bremse &ouml;ffnen (p1215 = 2).<br />
+Zu St&ouml;rwert = 103:<br />
+- Die bewegungsbasierte Pollageidentifikation kann nur mit Geber ausgef&uuml;hrt werden. Geber anschlie&szlig;en oder anderes Verfahren zur Pollageidentifikation (p1980) w&auml;hlen.<br />
+Zu St&ouml;rwert = 104:<br />
+- Pollageidentifikation Gl&auml;ttungszeit bewegungsbasiert (p1997) vergr&ouml;&szlig;ern.<br />
+- Pollageidentifikation Anstiegszeit bewegungsbasiert (p1994) vergr&ouml;&szlig;ern.<br />
+- Pollageidentifikation Verst&auml;rkung bewegungsbasiert (p1995) &uuml;berpr&uuml;fen.<br />
+- Pollageidentifikation Nachstellzeit bewegungsbasiert (p1996) &uuml;berpr&uuml;fen.<br />
+- Bei Motorgeber mit Spur A&#47;B Rechteck (p0404.3 = 1) und Flankenzeitmessung (p0430.20 = 0) die Nachstellzeit abschalten (p1996 = 0).<br />
+Zu St&ouml;rwert = 200:<br />
+- Parametereinstellung pr&uuml;fen (p3090 ... p3096).<br />
+Zu St&ouml;rwert = 201:<br />
+- Parametereinstellung pr&uuml;fen (p3090 ... p3096).<br />
+- p3094 reduzieren.<br />
+Zu St&ouml;rwert = 202:<br />
+- Parametereinstellung pr&uuml;fen (p3090 ... p3096).<br />
+- St&ouml;rung w&auml;hrend der Identifikation aufgetreten. Messung wiederholen.<br />
+- Bremse oder Bremsenansteuerung pr&uuml;fen.<br />
+Zu St&ouml;rwert = 203:<br />
+- Bremse oder Bremsenansteuerung pr&uuml;fen.<br />
+- Messstrom kontrollieren (p3096).<br />
+- p3094 erh&ouml;hen.<br />
+Zu St&ouml;rwert = 204:<br />
+- Parametereinstellung pr&uuml;fen (p3090 ... p3096).<br />
+Zu St&ouml;rwert = 205:<br />
+- Parametereinstellung pr&uuml;fen (p3090 ... p3096).<br />
+Zu St&ouml;rwert = 206:<br />
+- Parametereinstellung pr&uuml;fen (p3090 ... p3096).<br />
+- St&ouml;rung w&auml;hrend der Identifikation aufgetreten. Messung wiederholen.<br />
+- Bremse oder Bremsenansteuerung pr&uuml;fen.<br />
+Zu St&ouml;rwert = 207:<br />
+- Erwartete Auslenkung reduzieren (p3094).<br />
+- Messstrom erh&ouml;hen (p3096).<br />
+Zu St&ouml;rwert = 208:<br />
+- Messstrom einstellen (p3096).<br />
+Zu St&ouml;rwert = 209:<br />
+- Parametereinstellung p3095 pr&uuml;fen.<br />
+- Bremse oder Bremsenansteuerung pr&uuml;fen.<br />
+Zu St&ouml;rwert = 210:<br />
+- Die elastizit&auml;tsbasierte Pollageidentifikation kann nur mit Geber ausgef&uuml;hrt werden. Geber anschlie&szlig;en oder anderes Verfahren zur Pollageidentifikation (p1980) w&auml;hlen.<br />
+Zu St&ouml;rwert = 250 ... 260:<br />
+- Parametereinstellung pr&uuml;fen (p3090 ... p3096, p1980).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207996">F207996</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Pollageidentifikation nicht erfolgt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>GEBER<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde im Betrieb eine Betriebsarten-Umschaltung durchgef&uuml;hrt, die eine Pollageidentifikation notwendig macht und in diesem Zustand nicht erfolgen kann.<br />
+- Der Antrieb wurde aus dem geberlosen Betrieb fliegend in den Betrieb mit Geber umgeschaltet, ohne dass eine Pollageidentifikation f&uuml;r den Geber vorher durchgef&uuml;hrt wurde. p1404 steht auf einem Wert zwischen Null und Maximaldrehzahl und es wurden die Impulse im Drehzahlbereich oberhalb von p1404 freigegeben, ohne dass vorher im Betrieb mit Geber eine Pollageidentifikation durchgef&uuml;hrt wurde.<br />
+- Es wurde im Betrieb eine EDS-Umschaltung auf einen Geber durchgef&uuml;hrt, bei dem eine Pollageidentifikation notwendig ist. Diese wurde aber noch nicht durchgef&uuml;hrt (p1982 = 1 oder 2 und p1992.7 = 0).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Bei fliegender Umschaltung zwischen Betrieb mit und ohne Geber mit Pollageidentifikation nach POWER ON oder Inbetriebnahme (p0010 ungleich Null) einmal bei Drehzahl Null die Impulse freigeben. Damit wird die Pollageidentifikation durchgef&uuml;hrt und das Ergebnis ist f&uuml;r den Betrieb verf&uuml;gbar.<br />
+- Die EDS-Umschaltung bei Impulssperre durchf&uuml;hren oder vor der Umschaltung mit diesem Datensatz eine Pollageidentifikation ausf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207998">A207998</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Motordatenidentifikation auf anderem Antrieb aktiv</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Motordatenidentifikation ist auf dem im Warnwert angegebenen Antriebsobjekt aktiviert und verriegelt die anderen Antriebsobjekte gegen Einschalten.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Antriebsobjekt mit der aktiven Motordatenidentifikation.<br />
+Siehe auch: p1910, p1960<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Die vollst&auml;ndige Ausf&uuml;hrung der Motordatenidentifikation des im Warnwert bezeichneten Antriebsobjektes abwarten.<br />
+- Die Motordatenidentifikation bei dem im Warnwert bezeichneten Antriebsobjekt (p1910 = 0 oder p1960 = 0) abw&auml;hlen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207999">A207999</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Motordatenidentifikation kann nicht aktiviert werden</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Auf einem Antriebsobjekttyp SERVO ist die Regelung freigegeben. Zum Anw&auml;hlen der Motordatenidentifikation muss bei allen SERVO-Antriebsobjekten die Impulsl&ouml;schung anstehen.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Antriebsobjekt mit freigegebener Regelung.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Auf allen Antrieben die Impulsfreigabe wegnehmen und die Motordatenidentifikation erneut aktivieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208500">F208500 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;COMM BOARD: &Uuml;berwachungszeit Konfiguration abgelaufen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS1<br />
+ (AUS2)Servo: AUS1<br />
+ (AUS2, AUS3)Vector: AUS1<br />
+ (AUS2, AUS3)Hla: AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die &Uuml;berwachungszeit f&uuml;r die Konfiguration ist abgelaufen.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+0: &Uuml;bertragung der Sende-Konfigurationsdaten ist zeitlich &uuml;berschritten.<br />
+1: &Uuml;bertragung der Empfangs-Konfigurationsdaten ist zeitlich &uuml;berschritten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Kommunikationslinie kontrollieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208501">F208501 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PN&#47;COMM BOARD: Sollwert Timeout</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS1<br />
+ (AUS2)Servo: AUS3<br />
+ (AUS1, AUS2, IASC/DCBRK, KEINE, STOP2)Vector: AUS3<br />
+ (AUS1, AUS2, IASC/DCBRK, KEINE, STOP2)Hla: AUS3<br />
+ (AUS1, AUS2, KEINE, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Empfang der Sollwerte vom COMM BOARD ist unterbrochen.<br />
+- Busverbindung unterbrochen.<br />
+- Controller abgeschaltet.<br />
+- Controller in Zustand STOP gesetzt.<br />
+- COMM BOARD defekt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Busverbindung sicherstellen und Controller in Zustand RUN setzen.<br />
+- Bei wiederholtem Fehler die eingestellte Aktualisierungszeit in der Busprojektierung (HW-Konfig) kontrollieren.<br />
+Siehe auch: p8840 (COMM BOARD Überwachungszeit)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208502">F208502 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PN&#47;COMM BOARD: &Uuml;berwachungszeit Lebenszeichen abgelaufen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS1<br />
+ (AUS2)Servo: AUS1<br />
+ (AUS2, AUS3)Vector: AUS1<br />
+ (AUS2, AUS3)Hla: AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die &Uuml;berwachungszeit des Lebenszeichenz&auml;hlers ist abgelaufen.<br />
+Die Verbindung zum COMM BOARD wurde unterbrochen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Kommunikationslinie kontrollieren.<br />
+- COMM BOARD &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208504">A208504 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PN&#47;COMM BOARD: Interner Fehler bei zyklischer Daten&uuml;bertragung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die zyklischen Ist- und&#47;oder Sollwerte wurden nicht rechtzeitig innerhalb der projektierten Zeitpunkte &uuml;bertragen.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Das Parametriertelegramm kontrollieren (Ti, To, Tdp, usw.).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208510">F208510 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PN&#47;COMM BOARD: Sende-Konfigurationsdaten ung&uuml;ltig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS1<br />
+ (AUS2)Servo: AUS1<br />
+ (AUS2, AUS3)Vector: AUS1<br />
+ (AUS2, AUS3)Hla: AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Sende-Konfigurationsdaten wurden nicht akzeptiert vom COMM BOARD.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+R&uuml;ckgabewert der Pr&uuml;fung der Sende-Konfigurationsdaten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Sende-Konfigurationsdaten kontrollieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208511">A208511 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PN&#47;COMM BOARD: Empfangs-Konfigurationsdaten ung&uuml;ltig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Empfangs-Konfigurationsdaten wurden nicht akzeptiert vom Antriebsger&auml;t.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+R&uuml;ckgabewert der Pr&uuml;fung der Empfangs-Konfigurationsdaten.<br />
+1: Verbindungsaufbau zu mehr Antriebsobjekten als im Ger&auml;t projektiert. Die Antriebsobjekte f&uuml;r den Prozessdatenaustausch und ihre Reihenfolge werden in p0978 festgelegt.<br />
+2: Zu viele PZD Datenworte f&uuml;r Output oder Input zu einem Antriebsobjekt. Die Anzahl der m&ouml;glichen PZD eines Antriebsobjektes wird durch die Anzahl der Indizes in r2050&#47;p2051 f&uuml;r PZD IF1 und r8850&#47;p8851 f&uuml;r PZD IF2 vorgegeben.<br />
+3: Ungerade Byteanzahl f&uuml;r Input oder Output.<br />
+4: Einstelldaten f&uuml;r Synchronisation nicht akzeptiert. Weitere Informationen siehe A01902.<br />
+5: Zyklischer Betrieb nicht aktiv.<br />
+17: CBE20 Shared Device: Konfiguration der F-CPU wurde ver&auml;ndert.<br />
+223: Unzul&auml;ssige Taktsynchronisation f&uuml;r das in p8815[0] eingestellte PZD Interface.<br />
+257: PN Shared Device: Zu viele PZD Datenworte f&uuml;r Output oder Input im gesamten Ger&auml;t.<br />
+500: Unzul&auml;ssige PROFIsafe Konfiguration f&uuml;r das in p8815[1] eingestellte Interface<br />
+501: PROFIsafe Parameter fehlerhaft (z. B. F_Dest).<br />
+503: PROFIsafe Verbindung wird abgelehnt solange keine taktsynchrone Verbindung besteht (p8969).<br />
+Weitere Werte:<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Empfangs-Konfigurationsdaten kontrollieren.<br />
+Zu Warnwert = 1, 2:<br />
+- Pr&uuml;fen der Liste der Antriebsobjekte mit Prozessdatenaustausch (p0978). Mit p0978[x] = 0 werden alle in der Liste folgenden Antriebsobjekte vom Prozessdatenaustausch ausgeschlossen.<br />
+Zu Warnwert = 2:<br />
+- Pr&uuml;fen der Anzahl Datenworte f&uuml;r Output und Input zu einem Antriebsobjekt.<br />
+Zu Warnwert = 17:<br />
+- CBE20 Shared Device: A-CPU ziehen&#47;stecken.<br />
+Zu Warnwert = 223, 500:<br />
+- Einstellung in p8839 und p8815 &uuml;berpr&uuml;fen.<br />
+- Sicherstellen, dass nur ein PZD Interface taktsynchron oder mit PROFIsafe betrieben wird.<br />
+Zu Warnwert = 257:<br />
+- Pr&uuml;fen der Anzahl Datenworte f&uuml;r Output und Input zum ganzen Ger&auml;t.<br />
+Zu Warnwert = 501:<br />
+- Pr&uuml;fen der eingestellten PROFIsafe Adresse (p9610).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208520">A208520 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PN&#47;COMM BOARD: Azyklischer Kanal fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Speicher oder der Pufferstatus des azyklischen Kanals ist fehlerhaft.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+0: Fehler im Pufferstatus.<br />
+1: Fehler im Speicher.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Kommunikationslinie kontrollieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208526">A208526 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PN&#47;COMM BOARD: Keine zyklische Verbindung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist keine zyklische Verbindung zur Steuerung vorhanden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zyklische Verbindung herstellen und die Steuerung mit zyklischem Betrieb aktivieren.<br />
+Bei PROFINET die Parameter &quot;Name of Station&quot; und &quot;IP of Station&quot; pr&uuml;fen (r61000, r61001).<br />
+Wenn ein CBE20 gesteckt ist und PROFIBUS &uuml;ber PZD Interface 1 kommunizieren soll, dann muss dies mit dem Inbetriebnahme-Tool STARTER oder direkt &uuml;ber p8839 parametriert werden.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208530">A208530 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PN&#47;COMM BOARD: Meldungskanal fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Speicher oder der Pufferstatus des Meldungskanals ist fehlerhaft.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+0: Fehler im Pufferstatus.<br />
+1: Fehler im Speicher.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Kommunikationslinie kontrollieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208531">A208531 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;CBE20 POWER ON erforderlich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Mindestens ein Parameter von CBE20 (z. B. ein Parameter von SINAMICS Link) wurde durch einen Projekt-Download ver&auml;ndert. Zur Aktivierung der Werte ist ein POWER ON erforderlich.<br />
+Hinweis:<br />
+CBE20: Communication Board Ethernet 20<br />
+Siehe auch: p8811 (SINAMICS Link Projekt Auswahl), p8812 (SINAMICS Link Takteinstellungen), p8835 (CBE20 Firmware Auswahl), p8836 (SINAMICS Link Teilnehmeradresse)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Parameter sichern und POWER ON durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208550">A208550</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PZD Interface Hardware-Zuordnung fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Zuordnung der Hardware zum PZD Interface ist fehlerhaft parametriert.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1: Nur einer der beiden Indizes ist ungleich 99 (automatisch).<br />
+2: Beiden PZD Interfaces ist dieselbe Hardware zugeordnet.<br />
+3: Zugeordnetes COMM BOARD fehlt.<br />
+4: CBC10 ist Interface 1 zugeordnet.<br />
+Siehe auch: p8839 (PZD Interface Hardware-Zuordnung)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Parametrierung &uuml;berpr&uuml;fen und gegebenenfalls korrigieren (p8839).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208560">A208560</a></b></td>
+<td><b>&lt;Ortsangabe&gt;IE: Syntaxfehler in Konfigurationsdatei</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In der ASCII-Konfigurationsdatei f&uuml;r die Industrial Ethernet-Schnittstelle (X127) wurde ein Syntaxfehler erkannt. Die gespeicherte Konfiguration wurde nicht geladen.<br />
+Hinweis:<br />
+IE: Industrial Ethernet<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Schnittstellen-Konfiguration (p8900 und folgende) pr&uuml;fen, gegebenenfalls richtigstellen und aktivieren (p8905 = 1).<br />
+- Parameter f&uuml;r Schnittstellen-Konfiguration speichern (z. B. p8905 = 2).<br />
+oder<br />
+- &Uuml;ber die Maske &quot;Ethernet-Teilnehmer bearbeiten&quot; die Station neu taufen (z. B. mit Inbetriebnahme-Tool STARTER).<br />
+Siehe auch: p8905 (IE Schnittstellen-Konfiguration aktivieren)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208561">A208561</a></b></td>
+<td><b>&lt;Ortsangabe&gt;IE: Konsistenzfehler bei Einstellparametern</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Aktivieren der Konfiguration (p8905) f&uuml;r die Industrial Ethernet-Schnittstelle (X127) wurde ein Konsistenzfehler erkannt.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+0: Allgemeiner Konsistenzfehler.<br />
+1: Fehler in der IP-Konfiguration (IP-Adresse, Subnetzmaske oder Standard-Gateway).<br />
+2: Fehler im Stationsnamen.<br />
+5: Standard-Gateway ist auch an der PROFINET Onboard-Schnittstelle gesetzt.<br />
+6: Der Stationsname ist auch an der PROFINET Onboard-Schnittstelle gesetzt.<br />
+7: IP-Adresse liegt im gleichen Subnetz wie die IP-Adresse der PROFINET Onboard-Schnittstelle.<br />
+Hinweis:<br />
+F&uuml;r Warnwert = 0, 1, 2, 5, 7 gilt: Die Konfiguration wurde nicht ge&auml;ndert.<br />
+F&uuml;r Warnwert = 6 gilt: Die neue Konfiguration wurde jedoch aktiviert.<br />
+IE: Industrial Ethernet<br />
+Siehe auch: p8900 (IE Name of Station), p8901 (IE IP Address), p8902 (IE Default Gateway), p8903 (IE Subnet Mask)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Die gew&uuml;nschte Schnittstellen-Konfiguration (p8900 und folgende) pr&uuml;fen, gegebenenfalls richtigstellen und aktivieren (p8905).<br />
+oder<br />
+- &Uuml;ber die Maske &quot;Ethernet-Teilnehmer bearbeiten&quot; die Station neu taufen (z. B. mit Inbetriebnahme-Tool STARTER).<br />
+Siehe auch: p8905 (IE Schnittstellen-Konfiguration aktivieren)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208562">A208562</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PROFINET: Syntaxfehler in Konfigurationsdatei</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In der ASCII-Konfigurationsdatei f&uuml;r die onboard PROFINET-Schnittstelle wurde ein Syntaxfehler erkannt. Die gespeicherte Konfiguration wurde nicht geladen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Schnittstellen-Konfiguration (p8920 und folgende) pr&uuml;fen, gegebenenfalls richtigstellen und aktivieren (p8925 = 1).<br />
+- Parameter f&uuml;r Schnittstellen-Konfiguration speichern (z. B. p8925 = 2).<br />
+oder<br />
+- &Uuml;ber die Maske &quot;Ethernet-Teilnehmer bearbeiten&quot; die Station neu taufen (z. B. mit Inbetriebnahme-Tool STARTER).<br />
+Siehe auch: p8925 (PN Schnittstellen-Konfiguration aktivieren)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208563">A208563</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PROFINET: Konsistenzfehler bei Einstellparametern</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Aktivieren der Konfiguration (p8925) f&uuml;r die PROFINET-Schnittstelle wurde ein Konsistenzfehler erkannt.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+0: Allgemeiner Konsistenzfehler.<br />
+1: Fehler in der IP-Konfiguration (IP-Adresse, Subnetzmaske oder Standard-Gateway).<br />
+2: Fehler im Namen der Station.<br />
+3: DHCP konnte nicht aktiviert werden, da bereits eine zyklische PROFINET-Verbindung besteht.<br />
+4: Keine zyklische PROFINET-Verbindung m&ouml;glich, da DHCP aktiviert ist.<br />
+5: Standard-Gateway ist auch an der Industrial Ethernet-Schnittstelle (X127) gesetzt.<br />
+6: Der Stationsname ist auch an der Industrial Ethernet-Schnittstelle (X127) gesetzt.<br />
+7: IP-Adresse liegt im gleichen Subnetz wie die IP-Adresse der Industrial Ethernet-Schnittstelle (X127).<br />
+Hinweis:<br />
+F&uuml;r Warnwert = 0, 1, 2, 3, 4, 5, 7 gilt: Die Konfiguration wurde nicht ge&auml;ndert.<br />
+F&uuml;r Warnwert = 6 gilt: Die neue Konfiguration wurde jedoch aktiviert.<br />
+DHCP: Dynamic Host Configuration Protocol<br />
+Siehe auch: p8920 (PN Name of Station), p8921 (PN IP Address), p8922 (PN Default Gateway), p8923 (PN Subnet Mask)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Die gew&uuml;nschte Schnittstellen-Konfiguration (p8940 und folgende) pr&uuml;fen, gegebenenfalls richtigstellen und aktivieren (p8945).<br />
+oder<br />
+- &Uuml;ber die Maske &quot;Ethernet-Teilnehmer bearbeiten&quot; die Station neu taufen (z. B. mit Inbetriebnahme-Tool STARTER).<br />
+Siehe auch: p8925 (PN Schnittstellen-Konfiguration aktivieren)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208564">A208564</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PN&#47;COMM BOARD: Syntaxfehler in Konfigurationsdatei</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In der ASCII-Konfigurationsdatei f&uuml;r das Communication Board Ethernet 20&#47;25&#47;41 (CBE20&#47;CBE25&#47;CBE41) wurde ein Syntaxfehler erkannt. Die gespeicherte Konfiguration wurde nicht geladen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- CBExx-Konfiguration (p8940 und folgende) richtigstellen und aktivieren (p8945 = 2).<br />
+- CBExx neu taufen (z. B. mit Inbetriebnahme-Tool STARTER).<br />
+Hinweis:<br />
+Die Konfiguration wird erst mit dem n&auml;chsten POWER ON wirksam!<br />
+Siehe auch: p8945 (CBExx Schnittstellen-Konfiguration aktivieren)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208565">A208565</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PN&#47;COMM BOARD: Konsistenzfehler bei Einstellparametern</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Aktivieren der Konfiguration (p8945) f&uuml;r das Communication Board Ethernet 20&#47;25&#47;41 (CBE20&#47;CBE25&#47;CBE41) wurde ein Konsistenzfehler erkannt.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+0: Allgemeiner Konsistenzfehler.<br />
+1: Fehler in der IP-Konfiguration (IP-Adresse, Subnetzmaske oder Standard-Gateway).<br />
+2: Fehler im Stationsnamen.<br />
+3: DHCP konnte nicht aktiviert werden, da bereits eine zyklische PROFINET-Verbindung besteht.<br />
+4: Keine zyklische PROFINET-Verbindung m&ouml;glich, da DHCP aktiviert ist.<br />
+Hinweis:<br />
+F&uuml;r alle Warnwerte gilt: Die aktuell eingestellte Konfiguration wurde nicht aktiviert.<br />
+DHCP: Dynamic Host Configuration Protocol<br />
+Siehe auch: p8940 (CBExx Name of Station), p8941 (CBExx IP Address), p8942 (CBExx Default Gateway), p8943 (CBExx Subnet Mask), p8944 (CBExx DHCP Mode)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Die gew&uuml;nschte Schnittstellen-Konfiguration (p8940 und folgende) pr&uuml;fen, gegebenenfalls richtigstellen und aktivieren (p8945).<br />
+oder<br />
+- &Uuml;ber die Maske &quot;Ethernet-Teilnehmer bearbeiten&quot; die Station neu taufen (z. B. mit Inbetriebnahme-Tool STARTER).<br />
+Siehe auch: p8945 (CBExx Schnittstellen-Konfiguration aktivieren)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208800">A208800</a></b></td>
+<td><b>&lt;Ortsangabe&gt;PROFIenergy Energiesparmodus aktiv</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der PROFIenergy Energiesparmodus ist aktiv.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Mode ID des aktiven PROFIenergy Energiesparmodus.<br />
+Siehe auch: r5600 (Pe Energiesparmodus ID)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Warnung wird automatisch mit Verlassen des Energiesparmodus zur&uuml;ckgenommen.<br />
+Hinweis:<br />
+Der Energiesparmodus wird nach folgenden Ereignissen verlassen:<br />
+- Das PROFIenergy Kommando End_Pause wird von der &uuml;bergeordneten Steuerung empfangen.<br />
+- Die &uuml;bergeordnete Steuerung ist in den Betriebszustand STOP gewechselt.<br />
+- Die PROFINET-Verbindung zur &uuml;bergeordneten Steuerung ist abgebrochen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="209000">A209000</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Konfiguration der Webserver-Benutzer fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Konfiguration der Webserver-Benutzer trat ein Fehler auf.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+0: No Admin password<br />
+1: Invalid Admin password<br />
+2: Invalid SINAMICS password<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Benutzerkonfiguration richtigstellen, korrekte Passworte eingeben.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213000">F213000</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Lizenzierung nicht ausreichend</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>- Bei dem Umrichter werden lizenzierungspflichtige Optionen eingesetzt und die Lizenzierung ist nicht ausreichend.<br />
+- Bei der &Uuml;berpr&uuml;fung der vorhandenen Lizenzierung trat ein Fehler auf.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+0:<br />
+Die vorhandene Lizenzierung ist nicht ausreichend.<br />
+1:<br />
+Es konnte keine ausreichende Lizenz ermittelt werden, da die Speicherkarte mit den ben&ouml;tigten Lizenzierungsdaten im Betrieb gezogen wurde.<br />
+2:<br />
+Es konnte keine ausreichende Lizenz ermittelt werden, da auf der Speicherkarte keine Lizenzierungsdaten vorhanden sind.<br />
+3:<br />
+Es konnte keine ausreichende Lizenz ermittelt werden, da ein Pr&uuml;fsummenfehler im License Key vorliegt.<br />
+4:<br />
+Bei der Lizenzierungspr&uuml;fung trat ein interner Fehler auf.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 0:<br />
+Es sind zus&auml;tzliche Lizenzen notwendig und zu aktivieren (p9920, p9921).<br />
+Zu St&ouml;rwert = 1:<br />
+Die zur Anlage passende Speicherkarte im ausgeschalteten Zustand wieder stecken.<br />
+Zu St&ouml;rwert = 2:<br />
+License Key eingeben und aktivieren (p9920, p9921).<br />
+Zu St&ouml;rwert = 3:<br />
+Den eingegebenen License Key (p9920) mit dem License Key auf dem Certificate of License vergleichen.<br />
+License Key erneut eingeben und aktivieren (p9920, p9921).<br />
+Zu St&ouml;rwert = 4:<br />
+- POWER ON durchf&uuml;hren.<br />
+- Firmware auf neuere Version hochr&uuml;sten.<br />
+- Technical Support kontaktieren.<br />
+Hinweis:<br />
+Eine &Uuml;bersicht zu lizenzierungspflichtigen Funktionalit&auml;ten des Umrichters kann &uuml;ber ein Inbetriebnahme-Tool im Online-Betrieb angezeigt werden. Abh&auml;ngig vom Inbetriebnahme-Tool kann hier auch eine notwendige Lizenzierung durchgef&uuml;hrt werden (Seriennummer, License Key, Trial License Mode).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213001">A213001</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Lizenzierung Pr&uuml;fsumme fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der &Uuml;berpr&uuml;fung der Pr&uuml;fsumme des License Key wurde ein Fehler erkannt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Eingegebenen License Key (p9920) mit dem License Key auf dem Certificate of License vergleichen.<br />
+License Key erneut eingeben und aktivieren (p9920, p9921).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213009">F213009</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Lizenzierung Technology Extension nicht lizenziert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist mindestens eine lizenzierungspflichtige Technology Extension nicht lizenziert.<br />
+Hinweis:<br />
+Informationen zu den installierten Technology Extensions sind r4955 und p4955 zu entnehmen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- License Key f&uuml;r lizenzierungspflichtige Technology Extensions eingeben und aktivieren (p9920, p9921).<br />
+- Gegebenenfalls nicht lizenzierte Technology Extensions deaktivieren (p4956).<br />
+Siehe auch: p9920 (Lizenzierung License Key eingeben), p9921 (Lizenzierung License Key aktivieren)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213010">F213010</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Lizenzierung Funktionsmodul nicht lizenziert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist mindestens ein lizenzierungspflichtiges Funktionsmodul nicht lizenziert.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+Bit x = 1: Das entsprechende Funktionsmodul ist nicht lizenziert.<br />
+Hinweis:<br />
+Zuordnung von Bitnummer zu Funktionsmodul siehe p0108 bzw. r0108.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- License Key f&uuml;r lizenzierungspflichtige Funktionsmodule eingeben und aktivieren (p9920, p9921).<br />
+- Gegebenenfalls nicht lizenzierte Funktionsmodule deaktivieren (p0108, r0108).<br />
+Siehe auch: p9920 (Lizenzierung License Key eingeben), p9921 (Lizenzierung License Key aktivieren)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213020">F213020</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Lizenzierung nicht ausreichend in Steuerung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei dem Antriebsger&auml;t werden lizenzierungspflichtige Optionen eingesetzt und die Lizenzierung ist nicht ausreichend.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- License Key f&uuml;r lizenzierungspflichtige Optionen eingeben und aktivieren.<br />
+- Gegebenenfalls nicht lizenzierte Optionen deaktivieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213021">A213021</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Lizenzierung f&uuml;r Ausgangsfrequenz &gt; 550 Hz fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Konfiguration des Umrichters f&uuml;hrt zu einer Ausgangsfrequenz gr&ouml;&szlig;er 550 Hz. Diese Funktion ist lizenzierungspflichtig. Es wird die Lizenz &quot;High Output Frequency&quot; ben&ouml;tigt.<br />
+Hinweis:<br />
+- Die Ausgangsfrequenz wird in diesem Fall auf 550 Hz begrenzt.<br />
+- Die Funktion &quot;Trial License&quot; wirkt nicht f&uuml;r die Lizenz &quot;High Output Frequency&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- License Key f&uuml;r &quot;High Output Frequency&quot; eingeben und aktivieren (p9920, p9921).<br />
+- Gegebenenfalls den Motor unterhalb der Ausgangsfrequenz von 550 Hz betreiben.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213030">A213030</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Trial License aktiviert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Funktion &quot;Trial License&quot; wurde aktiviert. Eine der verf&uuml;gbaren Perioden l&auml;uft ab.<br />
+Siehe auch: p9918 (Lizenzierung Trial License aktivieren), r9919 (Lizenzierung Trial License Status)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Keine notwendig.<br />
+Die Warnung wird automatisch nach Ablauf der Periode zur&uuml;ckgenommen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213031">A213031</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Trial License Periode abgelaufen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Eine der verf&uuml;gbaren Perioden der Funktion &quot;Trial License&quot; ist abgelaufen.<br />
+Siehe auch: p9918 (Lizenzierung Trial License aktivieren), r9919 (Lizenzierung Trial License Status)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Gegebenenfalls eine weitere Periode starten (p9918 = 1).<br />
+- Die lizenzierungspflichtige Funktionalit&auml;t deaktivieren.<br />
+- Entsprechende Lizenzierung auf dem Antriebsger&auml;t durchf&uuml;hren.<br />
+Hinweis:<br />
+Eine nicht ausreichende Lizenzierung wird erst nach dem n&auml;chsten Hochlauf wirksam.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213032">A213032</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Trial License letzte Periode aktiviert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Funktion &quot;Trial License&quot; wurde aktiviert. Die letzte der verf&uuml;gbaren Perioden l&auml;uft ab.<br />
+Siehe auch: p9918 (Lizenzierung Trial License aktivieren), r9919 (Lizenzierung Trial License Status)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Keine notwendig.<br />
+Die Warnung wird automatisch nach Ablauf der letzten Periode zur&uuml;ckgenommen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213033">A213033</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Trial License letzte Periode abgelaufen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die letzte Periode der Funktion &quot;Trial License&quot; ist abgelaufen. Es ist keine weitere Periode verf&uuml;gbar.<br />
+Siehe auch: p9918 (Lizenzierung Trial License aktivieren), r9919 (Lizenzierung Trial License Status)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Die lizenzierungspflichtige Funktionalit&auml;t deaktivieren.<br />
+- Entsprechende Lizenzierung auf dem Antriebsger&auml;t durchf&uuml;hren.<br />
+Hinweis:<br />
+Eine nicht ausreichende Lizenzierung wird erst nach dem n&auml;chsten Hochlauf wirksam.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213100">F213100</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Know-how-Schutz: Kopierschutzfehler</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Know-how-Schutz mit Kopierschutz f&uuml;r die Speicherkarte ist aktiv.<br />
+Bei der &Uuml;berpr&uuml;fung der Speicherkarte ist ein Fehler aufgetreten.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+0: Es steckt keine Speicherkarte.<br />
+2: Es steckt eine ung&uuml;ltige Speicherkarte.<br />
+3: Die Speicherkarte wird in einer anderen Control Unit betrieben.<br />
+12: Es steckt eine ung&uuml;ltige Speicherkarte (OEM-Vorgabe falsch, p7769).<br />
+13: Die Speicherkarte wird in einer anderen Control Unit betrieben (OEM-Vorgabe falsch, p7759).<br />
+Siehe auch: p7765 (KHP Konfiguration)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 0:<br />
+- Passende Speicherkarte stecken und POWER ON durchf&uuml;hren.<br />
+Zu St&ouml;rwert = 2, 3, 12, 13:<br />
+- Zust&auml;ndigen OEM kontaktieren.<br />
+- Kopierschutz deaktivieren (p7765) und St&ouml;rung quittieren (p3981).<br />
+- Know-how-Schutz deaktivieren (p7766 ... p7768) und St&ouml;rung quittieren (p3981).<br />
+Hinweis:<br />
+Der Kopierschutz kann in der Regel nur bei deaktiviertem Know-how-Schutz ge&auml;ndert werden.<br />
+KHP: Know-how protection (Know-how-Schutz)<br />
+Siehe auch: p3981 (Störungen quittieren Antriebsobjekt), p7765 (KHP Konfiguration)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213101">F213101</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Know-how-Schutz: Kopierschutz nicht aktivierbar</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Versuch den Kopierschutz f&uuml;r die Speicherkarte zu aktivieren ist ein Fehler aufgetreten.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+0: Es steckt keine Speicherkarte.<br />
+Hinweis:<br />
+KHP: Know-how protection (Know-how-Schutz)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Speicherkarte stecken und POWER ON durchf&uuml;hren.<br />
+- Erneut versuchen, den Kopierschutz zu aktivieren (p7765).<br />
+Siehe auch: p7765 (KHP Konfiguration)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213102">F213102</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Know-how-Schutz: Konsistenzfehler der gesch&uuml;tzten Daten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Pr&uuml;fung der Konsistenz der gesch&uuml;tzten Dateien wurde ein Fehler festgestellt. Das Projekt auf der Speicherkarte ist daher nicht ablauff&auml;hig.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyyyxxxx hex: yyyy = Objektnummer, xxxx = Fehlerursache<br />
+xxxx = 1:<br />
+Eine Datei hat einen Pr&uuml;fsummenfehler.<br />
+xxxx = 2:<br />
+Die Dateien sind untereinander inkonsistent.<br />
+xxxx = 3:<br />
+Die Projektdateien, die &uuml;ber Laden ins Dateisystem geladen wurden (Download von Speicherkarte), sind inkonsistent.<br />
+Hinweis:<br />
+KHP: Know-how protection (Know-how-Schutz)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Projekt auf der Speicherkarte bzw. Projektdateien zum Download von Speicherkarte ersetzen.<br />
+- Werkseinstellung herstellen und einen neuen Download durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230001">F230001</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;berstrom</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Leistungsteil hat einen &Uuml;berstrom detektiert.<br />
+- Regelung ist fehlerhaft parametriert.<br />
+- Motor hat einen Kurzschluss oder Erdschluss.<br />
+- U&#47;f-Betrieb: Hochlauframpe zu klein eingestellt.<br />
+- U&#47;f-Betrieb: Nennstrom des Motors wesentlich gr&ouml;&szlig;er als vom Motor Module.<br />
+- Einspeisung: Hohe Entlade- und Nachladestr&ouml;me bei Netzspannungseinbruch.<br />
+- Einspeisung: Hohe Nachladestr&ouml;me bei motorischer &Uuml;berlastung und Einbruch der Zwischenkreisspannung.<br />
+- Einspeisung: Kurzschlussstr&ouml;me beim Einschalten wegen fehlender Kommutierungsdrossel.<br />
+- Leistungsleitungen sind nicht korrekt angeschlossen.<br />
+- Leistungsleitungen &uuml;berschreiten die maximal zul&auml;ssige L&auml;nge.<br />
+- Leistungsteil defekt.<br />
+- Netzphase unterbrochen.<br />
+Zus&auml;tzliche Ursachen beim Parallelschaltger&auml;t (r0108.15 = 1):<br />
+- Ein Leistungsteil hat sich mit Erdschlussfehler abgeschaltet.<br />
+- Die Kreisstromregelung ist zu langsam oder zu dynamisch eingestellt.<br />
+St&ouml;rwert (r0949, bitweise interpretieren):<br />
+Bit 0: Phase U.<br />
+Bit 1: Phase V.<br />
+Bit 2: Phase W.<br />
+Bit 3: &Uuml;berstrom im Zwischenkreis.<br />
+Hinweis:<br />
+St&ouml;rwert = 0 bedeutet, dass die Phase mit &Uuml;berstrom nicht bekannt ist (z. B. bei Blocksize-Ger&auml;t).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Motordaten &uuml;berpr&uuml;fen, gegebenenfalls Inbetriebnahme durchf&uuml;hren.<br />
+- Schaltungsart des Motors &uuml;berpr&uuml;fen (Stern&#47;Dreieck).<br />
+- U&#47;f-Betrieb: Hochlauframpe vergr&ouml;&szlig;ern.<br />
+- U&#47;f-Betrieb: Zuordnung der Nennstr&ouml;me von Motor und Motor Module &uuml;berpr&uuml;fen.<br />
+- Einspeisung: Netzqualit&auml;t pr&uuml;fen.<br />
+- Einspeisung: Motorische Belastung verringern.<br />
+- Einspeisung: Korrekten Anschluss des Netzfilters und der Netzkommutierungsdrossel pr&uuml;fen.<br />
+- Anschl&uuml;sse der Leistungsleitungen &uuml;berpr&uuml;fen.<br />
+- Leistungsleitungen auf Kurzschluss oder Erdfehler pr&uuml;fen.<br />
+- L&auml;nge der Leistungsleitungen &uuml;berpr&uuml;fen.<br />
+- Leistungsteil tauschen.<br />
+- Netzphasen pr&uuml;fen.<br />
+Beim Parallelschaltger&auml;t (r0108.15 = 1) gilt zus&auml;tzlich:<br />
+- Schwellen der Erdschluss&uuml;berwachung pr&uuml;fen (p0287).<br />
+- Einstellung der Kreisstromregelung pr&uuml;fen (p7036, p7037).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230002">F230002</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Zwischenkreisspannung &Uuml;berspannung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Leistungsteil hat eine &Uuml;berspannung im Zwischenkreis erkannt.<br />
+- Motor speist zu viel Energie zur&uuml;ck.<br />
+- Ger&auml;te-Anschlussspannung zu hoch.<br />
+- Bei Betrieb mit Voltage Sensing Module (VSM) unterscheidet sich die Phasenzuordnung L1, L2, L3 am VSM von der Phasenzuordnung am Leistungsteil.<br />
+- Netzphase unterbrochen.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Zwischenkreisspannung zum Zeitpunkt der Ausl&ouml;sung [0.1 V].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- R&uuml;cklaufzeit erh&ouml;hen.<br />
+- Zwischenkreisspannungsregler (p1240) aktivieren.<br />
+- Bremswiderstand oder Active Line Module einsetzen.<br />
+- Stromgrenze der Einspeisung erh&ouml;hen bzw. gr&ouml;&szlig;ere Komponente einsetzen (bei Active Line Module).<br />
+- Ger&auml;te-Anschlussspannung &uuml;berpr&uuml;fen.<br />
+- Phasenzuordnung am VSM und am Leistungsteil &uuml;berpr&uuml;fen und korrigieren.<br />
+- Netzphasen pr&uuml;fen.<br />
+Siehe auch: p0210 (Geräte-Anschlussspannung), p1240 (Vdc-Regler oder Vdc-Überwachung Konfiguration)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230003">F230003</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Zwischenkreisspannung Unterspannung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Leistungsteil hat Unterspannung im Zwischenkreis erkannt.<br />
+- Netzausfall.<br />
+- Netzspannung unterhalb des zul&auml;ssigen Wertes.<br />
+- Ausfall oder St&ouml;rung der Netzeinspeisung.<br />
+- Netzphase unterbrochen.<br />
+Hinweis:<br />
+Die &Uuml;berwachungsschwelle f&uuml;r Unterspannung im Zwischenkreis wird in r0296 angezeigt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Netzspannung pr&uuml;fen.<br />
+- Netzeinspeisung pr&uuml;fen und gegebenenfalls Fehlermeldungen der Netzeinspeisung beachten.<br />
+- Netzphasen pr&uuml;fen.<br />
+- Einstellung der Anschlussspannung pr&uuml;fen (p0210).<br />
+- Booksize-Ger&auml;te: Einstellung von p0278 pr&uuml;fen.<br />
+Hinweis:<br />
+Das Betriebsbereit-Signal der Einspeisung r0863 muss mit den zugeh&ouml;rigen Eing&auml;ngen p0864 der Antriebe verschaltet sein.<br />
+Siehe auch: p0210 (Geräte-Anschlussspannung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230004">F230004</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;bertemperatur K&uuml;hlk&ouml;rper Wechselrichter</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Temperatur am K&uuml;hlk&ouml;rper des Leistungsteils hat den zul&auml;ssigen Grenzwert &uuml;berschritten.<br />
+- Unzureichende L&uuml;ftung, L&uuml;fterausfall.<br />
+- &Uuml;berlast.<br />
+- Umgebungstemperatur zu hoch.<br />
+- Pulsfrequenz zu hoch.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperatur [0.01 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- &Uuml;berpr&uuml;fen, ob der L&uuml;fter l&auml;uft.<br />
+- L&uuml;ftermatten pr&uuml;fen.<br />
+- Pr&uuml;fen, ob die Umgebungstemperatur im zul&auml;ssigen Bereich ist.<br />
+- Motorlast pr&uuml;fen.<br />
+- Pulsfrequenz reduzieren, wenn h&ouml;her als Nennpulsfrequenz.<br />
+Achtung:<br />
+Diese St&ouml;rung ist erst nach Unterschreiten der Warnschwelle f&uuml;r die Warnung A05000 quittierbar.<br />
+Siehe auch: p1800<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230005">F230005</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;berlastung I2t</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Leistungsteil wurde &uuml;berlastet (r0036 = 100 %).<br />
+- Der zul&auml;ssige Nennstrom des Leistungsteils wurde unzul&auml;ssig lange &uuml;berschritten.<br />
+- Das zul&auml;ssige Lastspiel wurde nicht eingehalten.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+I2t [100 % = 16384].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Dauerlast verringern.<br />
+- Lastspiel anpassen.<br />
+- Nennstr&ouml;me von Motor und Leistungsteil &uuml;berpr&uuml;fen.<br />
+Siehe auch: r0036, r0206, p0307<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230006">F230006</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Thyristor Control Board</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Thyristor Control Board (TCB) des Basic Line Modules meldet einen Fehler.<br />
+- Es liegt keine Netzspannung an.<br />
+- Das Netzsch&uuml;tz ist nicht geschlossen.<br />
+- Die Netzspannung ist zu gering.<br />
+- Netzfrequenz au&szlig;erhalb zul&auml;ssigem Bereich (45 ... 66 Hz).<br />
+- Es liegt ein Kurzschluss im Zwischenkreis vor.<br />
+- Es liegt ein Erdschluss im Zwischenkreis vor (w&auml;hrend Vorladephase).<br />
+- Es liegt ein Kurzschluss oder Isolationsfehler im Motor (von einem am DC-Kreis angeschlossenen Wechselrichter) vor.<br />
+- Spannungsversorgung des Thyristor Control Boards au&szlig;erhalb Nennbereich (5 ... 18 V) und Netzspannung &gt; 30 V.<br />
+- Es liegt ein interner Fehler im Thyristor Control Board vor.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Fehler werden im Thyristor Control Board gespeichert und m&uuml;ssen quittiert werden. Dazu ist die Versorgungsspannung des Thyristor Control Boards f&uuml;r mindestens 10 s auszuschalten!<br />
+- Netzspannung pr&uuml;fen.<br />
+- Netzsch&uuml;tz pr&uuml;fen bzw. ansteuern.<br />
+- &Uuml;berwachungszeit pr&uuml;fen und gegebenenfalls vergr&ouml;&szlig;ern (p0857).<br />
+- Gegebenenfalls weitere Meldungen des Leistungsteils beachten.<br />
+- Zwischenkreis hinsichtlich Kurzschluss oder Erdschluss pr&uuml;fen.<br />
+- Motor hinsichtlich Kurzschluss oder Erdschluss pr&uuml;fen.<br />
+- Diagnose-LEDs beim Thyristor Control Board auswerten.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230008">F230008</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Lebenszeichenfehler zyklische Daten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+ (AUS1, AUS2)Servo: KEINE<br />
+ (AUS1, AUS2, AUS3)Vector: KEINE<br />
+ (AUS1, AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Control Unit hat die zyklischen Sollwerttelegramme zum Leistungsteil nicht p&uuml;nktlich aktualisiert. Die Anzahl der aufeinanderfolgenden tolerierten Lebenszeichenfehler hat die im Leistungsteil eingestellte St&ouml;rschwelle (p7789) &uuml;berschritten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Bei Projekten mit Antriebsobjekt VECTOR &uuml;berpr&uuml;fen, ob p0117 = 6 auf der Control Unit eingestellt ist.<br />
+- Die St&ouml;rschwelle vergr&ouml;&szlig;ern (p7789).<br />
+- Motor Module &uuml;berpr&uuml;fen und gegebenenfalls tauschen.<br />
+Siehe auch: p0117 (Stromregler Rechentotzeit Modus)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230010">A230010 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Lebenszeichenfehler zyklische Daten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation zwischen der Control Unit und dem betroffenen Leistungsteil ist fehlerhaft.<br />
+Die zyklischen Sollwerttelegramme der Control Unit wurden vom Leistungsteil f&uuml;r mindestens einen Takt nicht p&uuml;nktlich empfangen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Motor Module &uuml;berpr&uuml;fen und gegebenenfalls tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230011">F230011</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Netzphasenausfall im Hauptstromkreis</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+ (AUS1)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Am Leistungsteil &uuml;berschreitet der Rippel der Zwischenkreisspannung den zul&auml;ssigen Grenzwert.<br />
+M&ouml;gliche Ursachen:<br />
+- Eine Netzphase ist ausgefallen.<br />
+- Die 3 Netzphasen sind unzul&auml;ssig unsymmetrisch.<br />
+- Die Kapazit&auml;t des Zwischenkreis-Kondensators bildet eine Resonanzfrequenz mit der Netzinduktivit&auml;t und gegebenenfalls der im Leistungsteil integrierten Drossel.<br />
+- Die Sicherung einer Phase des Hauptstromkreises ist ausgefallen.<br />
+- Eine Motorphase ist ausgefallen.<br />
+- Bei einphasig betriebenen Leistungsteilen wurde die zul&auml;ssige Wirkleistung &uuml;berschritten.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Sicherungen des Hauptstromkreises pr&uuml;fen.<br />
+- Pr&uuml;fen, ob ein einphasiger Verbraucher die Netzspannungen verzerrt.<br />
+- Die Resonanzfrequenz mit der Netzinduktivit&auml;t durch Vorschalten einer Netzdrossel verstimmen.<br />
+- Die Resonanzfrequenz mit der Netzinduktivit&auml;t durch Umschalten auf Zwischenkreisspannungs-Kompensation in Software (siehe p1810) oder st&auml;rkerer Gl&auml;ttung (siehe p1806) d&auml;mpfen. Dies kann jedoch die Drehmoment-Welligkeit am Motor verschlechtern.<br />
+- Motorzuleitungen pr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230012">F230012</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Temperaturf&uuml;hler Drahtbruch</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Verbindung zu einem Temperaturf&uuml;hler im Leistungsteil ist unterbrochen.<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+Bit 0: Baugruppenschacht (Elektronikeinschub)<br />
+Bit 1: Zuluft<br />
+Bit 2: Wechselrichter 1<br />
+Bit 3: Wechselrichter 2<br />
+Bit 4: Wechselrichter 3<br />
+Bit 5: Wechselrichter 4<br />
+Bit 6: Wechselrichter 5<br />
+Bit 7: Wechselrichter 6<br />
+Bit 8: Gleichrichter 1<br />
+Bit 9: Gleichrichter 2<br />
+Bit 14: Kondensator Abluft<br />
+Bit 15: Fl&uuml;ssigkeitszulauf<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Technical Support kontaktieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230013">F230013</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Temperaturf&uuml;hler Kurzschluss</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Ein Temperaturf&uuml;hler im Leistungsteil ist kurzgeschlossen.<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+Bit 0: Baugruppenschacht (Elektronikeinschub)<br />
+Bit 1: Zuluft<br />
+Bit 2: Wechselrichter 1<br />
+Bit 3: Wechselrichter 2<br />
+Bit 4: Wechselrichter 3<br />
+Bit 5: Wechselrichter 4<br />
+Bit 6: Wechselrichter 5<br />
+Bit 7: Wechselrichter 6<br />
+Bit 8: Gleichrichter 1<br />
+Bit 9: Gleichrichter 2<br />
+Bit 14: Kondensator Abluft<br />
+Bit 15: Fl&uuml;ssigkeitszulauf<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Technical Support kontaktieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230015">F230015 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Phasenausfall Motorleitung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde ein Phasenausfall in der Motorzuleitung erkannt.<br />
+Die Meldung kann auch in folgendem Fall ausgegeben werden:<br />
+- Der Motor ist korrekt angeschlossen, aber die Drehzahlregelung ist instabil und dadurch wird ein schwingendes Drehmoment erzeugt.<br />
+Hinweis:<br />
+Bei Chassis-Leistungsteilen gibt es keine &Uuml;berwachung auf Phasenausfall.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Motorzuleitungen pr&uuml;fen.<br />
+- Einstellungen des Drehzahlreglers pr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230016">A230016 (N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Lastversorgung ausgeschaltet</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Zwischenkreisspannung ist zu niedrig.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Zwischenkreisspannung zum Zeitpunkt der Ausl&ouml;sung [V].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Lastversorgung einschalten.<br />
+- Gegebenenfalls Netzanschluss pr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230017">F230017</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Hardware Strombegrenzung zu oft angesprochen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Hardware Strombegrenzung in der jeweiligen Phase (siehe A30031, A30032, A30033) hat zu oft angesprochen. Die Anzahl der zul&auml;ssigen &Uuml;berschreitungen ist abh&auml;ngig von Art und Typ des Leistungsteils.<br />
+Bei Einspeisung gilt:<br />
+- Regelung ist fehlerhaft parametriert.<br />
+- Belastung der Einspeisung zu gro&szlig;.<br />
+- Voltage Sensing Module fehlerhaft angeschlossen.<br />
+- Kommutierungsdrossel fehlt oder falscher Typ.<br />
+- Leistungsteil defekt.<br />
+Bei Motor Module gilt:<br />
+- Regelung ist fehlerhaft parametriert.<br />
+- Fehler im Motor oder in den Leistungsleitungen.<br />
+- Leistungsleitungen &uuml;berschreiten die maximal zul&auml;ssige L&auml;nge.<br />
+- Motorlast zu gro&szlig;.<br />
+- Leistungsteil defekt.<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+Bit 3: Phase U<br />
+Bit 4: Phase V<br />
+Bit 5: Phase W<br />
+Weitere Bits:<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+Hinweis:<br />
+St&ouml;rwert = 0 bedeutet, dass die Phase mit Strombegrenzung nicht bekannt ist (z. B. bei Blocksize-Ger&auml;t).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Bei Einspeisung gilt:<br />
+- Reglereinstellungen pr&uuml;fen, eventuell Regler zur&uuml;cksetzen und identifizieren (p0340 = 2, p3410 = 5).<br />
+- Belastung reduzieren, eventuell Zwischenkreiskapazit&auml;t erh&ouml;hen oder gr&ouml;&szlig;ere Einspeisung einsetzen.<br />
+- Anschluss des optionalen Voltage Sensing Module pr&uuml;fen.<br />
+- Anschluss und technische Daten der Kommutierungsdrossel pr&uuml;fen.<br />
+- Leistungsleitungen auf Kurzschluss oder Erdfehler pr&uuml;fen.<br />
+- Leistungsteil tauschen.<br />
+Bei Motor Module gilt:<br />
+- Motordaten pr&uuml;fen und gegebenenfalls die Reglerparameter neu berechnen (p0340 = 3). Alternativ eine Motordatenidentifikation ausf&uuml;hren (p1910 = 1, p1960 = 1).<br />
+- Schaltungsart des Motors (Stern&#47;Dreieck) pr&uuml;fen.<br />
+- Motorlast pr&uuml;fen.<br />
+- Anschl&uuml;sse der Leistungsleitungen pr&uuml;fen.<br />
+- Leistungsleitungen auf Kurzschluss oder Erdfehler pr&uuml;fen.<br />
+- L&auml;nge der Leistungsleitungen pr&uuml;fen.<br />
+- Leistungsteil tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230020">F230020</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Konfiguration nicht unterst&uuml;tzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wird eine Konfiguration angefordert, die vom Leistungsteil nicht unterst&uuml;tzt wird.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyyyxxxx hex: xxxx = Fehlerursache, yyyy = Zusatzinformation (Siemens-intern)<br />
+xxxx = 0: Autarker Betrieb ist angefordert und kann nicht unterst&uuml;tzt werden.<br />
+xxxx = 1: Das angeforderte DRIVE-CLiQ-Timing ist nicht zul&auml;ssig.<br />
+xxxx = 2: Es wurde ein PM260 mit PS-ASIC Version 2 erkannt. Diese Kombination wird nicht unterst&uuml;tzt.<br />
+xxxx = 3: Die Initialisierung konnte nicht erfolgreich abgeschlossen werden. Eventuell wurde die Control Unit vor oder w&auml;hrend des Hochlaufs vom Power Module abgezogen.<br />
+xxxx = 4: Die Kombination von Leistungsteil und Control Unit bzw. Control Unit Adapter wird nicht unterst&uuml;tzt.<br />
+xxxx = 5: Die h&ouml;here Stromreglerdynamik wird nicht unterst&uuml;tzt.<br />
+xxxx = 6: Betrieb des Motor Modules mit dieser Control Unit und Firmware-Version nicht zugelassen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu Fehlerursache = 0:<br />
+Gegebenenfalls den aktiven internen Spannungsschutz abw&auml;hlen (p1231).<br />
+Zu Fehlerursache = 1:<br />
+Firmware-Update auf Control Unit durchf&uuml;hren oder DRIVE-CLiQ-Topologie &auml;ndern.<br />
+Zu Fehlerursache = 2:<br />
+Das Leistungsteil durch ein PM260 mit PS-ASIC Version 3 (oder h&ouml;her) ersetzen.<br />
+Zu Fehlerursache = 3, 4:<br />
+Control Unit bzw. Control Unit Adapter (CUAxx) auf ein passendes Power Module stecken und POWER ON bei Control Unit bzw. Control Unit Adapter durchf&uuml;hren.<br />
+Zu Fehlerursache = 5:<br />
+- Leistungsteil der Bauform Booksize einsetzen.<br />
+- Bei einem Double Motor Module beide Antriebsregelungen mit der gleichen Stromreglerabtastzeit betreiben (p0115[0]). Andernfalls kann die h&ouml;here Stromreglerdynamik nur auf dem Antrieb mit der gr&ouml;&szlig;eren Abtastzeit aktiviert werden.<br />
+- Gegebenenfalls die h&ouml;here Stromreglerdynamik abw&auml;hlen (p1810.11 = 0). Nach Abwahl die Rechentotzeit und die Reglerverst&auml;rkungen neu berechnen lassen (p0340 = 4). Gegebenenfalls den Drehzahlregler optimieren.<br />
+Zu Fehlerursache = 6:<br />
+- Geeignetes Motor Module einsetzen.<br />
+- Control Unit mit zugelassener Firmware-Version verwenden.<br />
+Siehe auch: p0115, p1231, p1810<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230021">F230021</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Erdschluss</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Leistungsteil hat einen Erdschluss erkannt.<br />
+M&ouml;gliche Ursachen:<br />
+- Erdschluss in den Leistungsleitungen.<br />
+- Erdschluss am Motor.<br />
+- Stromwandler defekt.<br />
+- Schlie&szlig;ende Bremse f&uuml;hrt zum Ansprechen der Hardware-Gleichstrom&uuml;berwachung.<br />
+- Kurzschluss am Bremswiderstand.<br />
+- Die Kreisstromregelung bei Parallelschaltger&auml;ten (r0108.15 = 1) ist zu langsam oder zu dynamisch eingestellt.<br />
+Hinweis:<br />
+Ein Erdschlussfehler wird bei Leistungsteilen auch in r3113.5 abgebildet.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+0:<br />
+- Die Hardware-Gleichstrom&uuml;berwachung hat angesprochen.<br />
+- Kurzschluss am Bremswiderstand liegt vor.<br />
+&gt; 0:<br />
+Betrag Summenstrom-Amplitude [20479 = r0209 * 1.4142].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Anschluss der Leistungsleitungen &uuml;berpr&uuml;fen.<br />
+- Motor &uuml;berpr&uuml;fen.<br />
+- Stromwandler &uuml;berpr&uuml;fen.<br />
+- Leitungen und Kontakte des Bremsenanschlusses &uuml;berpr&uuml;fen (eventuell Drahtbruch).<br />
+- Bremswiderstand &uuml;berpr&uuml;fen.<br />
+F&uuml;r Parallelschaltger&auml;te (r0108.15 = 1) gilt zus&auml;tzlich:<br />
+- Schwellen der Erdschluss&uuml;berwachung pr&uuml;fen (p0287).<br />
+- Einstellung der Kreisstromregelung pr&uuml;fen (p7036, p7037).<br />
+Siehe auch: p0287 (Erdschlussüberwachung Abschaltschwelle)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230022">F230022</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;berwachung U_ce</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Im Leistungsteil hat die &Uuml;berwachung der Kollektor-Emitter-Spannung (U_ce) der Halbleiter angesprochen.<br />
+M&ouml;gliche Ursachen:<br />
+- Lichtwellenleiter unterbrochen.<br />
+- Spannungsversorgung der IGBT-Ansteuerbaugruppe fehlt.<br />
+- Kurzschluss am Ausgang des Leistungsteils.<br />
+- Defekter Halbleiter im Leistungsteil.<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+Bit 0: Kurzschluss in Phase U<br />
+Bit 1: Kurzschluss in Phase V<br />
+Bit 2: Kurzschluss in Phase W<br />
+Bit 3: Lichtsender Freigabe defekt<br />
+Bit 4: Unterbrechung des U_ce Summenfehlersignals<br />
+Siehe auch: r0949 (Störwert)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Lichtwellenleiter pr&uuml;fen und gegebenenfalls ersetzen.<br />
+- Spannungsversorgung der IGBT-Ansteuerbaugruppe pr&uuml;fen (24 V).<br />
+- Anschl&uuml;sse der Leistungsleitungen &uuml;berpr&uuml;fen.<br />
+- Defekten Halbleiter selektieren und auswechseln.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230024">F230024</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;bertemperatur Thermisches Modell</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Temperaturdifferenz zwischen K&uuml;hlk&ouml;rper und Chip und hat den zul&auml;ssigen Grenzwert &uuml;berschritten.<br />
+- Das zul&auml;ssige Lastspiel wurde nicht eingehalten.<br />
+- Unzureichende L&uuml;ftung, L&uuml;fterausfall.<br />
+- &Uuml;berlast.<br />
+- Umgebungstemperatur zu hoch.<br />
+- Pulsfrequenz zu hoch.<br />
+Siehe auch: r0037<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Lastspiel anpassen.<br />
+- &Uuml;berpr&uuml;fen, ob der L&uuml;fter l&auml;uft.<br />
+- L&uuml;ftermatten pr&uuml;fen.<br />
+- Pr&uuml;fen, ob die Umgebungstemperatur im zul&auml;ssigen Bereich ist.<br />
+- Motorlast pr&uuml;fen.<br />
+- Pulsfrequenz reduzieren, wenn h&ouml;her als Nennpulsfrequenz.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230025">F230025</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;bertemperatur Chip</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Chip-Temperatur der Halbleiter hat den zul&auml;ssigen Grenzwert &uuml;berschritten.<br />
+- Das zul&auml;ssige Lastspiel wurde nicht eingehalten.<br />
+- Unzureichende L&uuml;ftung, L&uuml;fterausfall.<br />
+- &Uuml;berlast.<br />
+- Umgebungstemperatur zu hoch.<br />
+- Pulsfrequenz zu hoch.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperaturdifferenz zwischen K&uuml;hlk&ouml;rper und Chip [0.01 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Lastspiel anpassen.<br />
+- &Uuml;berpr&uuml;fen, ob der L&uuml;fter l&auml;uft.<br />
+- L&uuml;ftermatten pr&uuml;fen.<br />
+- Pr&uuml;fen, ob die Umgebungstemperatur im zul&auml;ssigen Bereich ist.<br />
+- Motorlast pr&uuml;fen.<br />
+- Pulsfrequenz reduzieren, wenn h&ouml;her als Nennpulsfrequenz.<br />
+Achtung:<br />
+Diese St&ouml;rung ist erst nach Unterschreiten der Warnschwelle f&uuml;r die Warnung A05001 quittierbar.<br />
+Siehe auch: r0037<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230027">F230027</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Vorladung Zwischenkreis Zeit&uuml;berwachung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Zwischenkreis des Leistungsteils konnte nicht innerhalb der erwarteten Zeit vorgeladen werden.<br />
+1) Es liegt keine Netzspannung an.<br />
+2) Netzsch&uuml;tz&#47;Netzschalter ist nicht geschlossen.<br />
+3) Die Netzspannung ist zu gering.<br />
+4) Netzspannung falsch eingestellt (p0210).<br />
+5) Die Vorladewiderst&auml;nde sind &uuml;berhitzt, da zu viele Vorladungen pro Zeiteinheit vorgenommen wurden.<br />
+6) Die Vorladewiderst&auml;nde sind &uuml;berhitzt, da die Kapazit&auml;t des Zwischenkreises zu gro&szlig; ist.<br />
+7) Die Vorladewiderst&auml;nde sind &uuml;berhitzt, da bei nicht vorhandenem Betriebsbereit (r0863.0) der Einspeisung aus dem Zwischenkreis Leistung entnommen wurde.<br />
+8) Die Vorladewiderst&auml;nde sind &uuml;berhitzt, da w&auml;hrend der Zwischenkreis-Schnellentladung durch das Braking Module das Netzsch&uuml;tz geschlossen war.<br />
+9) Es liegt ein Erdschluss oder Kurzschluss im Zwischenkreis vor.<br />
+10) Vorladeschaltung eventuell defekt (nur Chassis-Ger&auml;te).<br />
+11) Einspeisung defekt und&#47;oder Sicherungsfall in den Motor Modules (nur Booksize-Ger&auml;te).<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+yyyyxxxx hex:<br />
+yyyy = Zustand Leistungsteil<br />
+0: Fehlerzustand (Warten auf AUS und Fehlerquittierung).<br />
+1: Wiedereinschaltsperre (Warten auf AUS).<br />
+2: &Uuml;berspannung erkannt -&gt; Wechsel Fehlerzustand.<br />
+3: Unterspannung erkannt -&gt; Wechsel in Fehlerzustand.<br />
+4: Warten &Uuml;berbr&uuml;ckungssch&uuml;tz &ouml;ffnen -&gt; Wechsel in Fehlerzustand.<br />
+5: Warten &Uuml;berbr&uuml;ckungssch&uuml;tz &ouml;ffnen -&gt; Wechsel in Wiedereinschaltsperre.<br />
+6: Warten &Uuml;berbr&uuml;ckungssch&uuml;tz &ouml;ffnen<br />
+7: Inbetriebnahme.<br />
+8: Bereit f&uuml;r Vorladung.<br />
+9: Vorladung startet, Zwischenkreisspannung kleiner als Mindesteinschaltspannung.<br />
+10: Vorladung l&auml;uft, Zwischenkreisspannung Vorladeende noch nicht erkannt.<br />
+11: Warten auf Prellzeitende des Hauptsch&uuml;tzes nach abgeschlossener Vorladung.<br />
+12: Vorladung beendet, Bereit f&uuml;r Impulsfreigabe.<br />
+13: Ausl&ouml;sen der STO-Klemme am Leistungsteil erkannt.<br />
+xxxx = Fehlende interne Freigaben Leistungsteil (invertiert bitcodiert, FFFF hex -&gt; alle internen Freigaben vorhanden)<br />
+Bit 0: Spannungsversorgung der IGBT-Ansteuerung abgeschaltet.<br />
+Bit 1: Erdschluss erkannt.<br />
+Bit 2: Spitzenstromeingriff.<br />
+Bit 3: I2t &uuml;berschritten.<br />
+Bit 4: Thermisches Modell &Uuml;bertemperatur berechnet.<br />
+Bit 5: (K&uuml;hlk&ouml;rper, Ansteuerbaugruppe Leistungsteil) &Uuml;bertemperatur gemessen.<br />
+Bit 6: Reserviert.<br />
+Bit 7: &Uuml;berspannung erkannt.<br />
+Bit 8: Leistungsteil hat Vorladung beendet, Bereit f&uuml;r Impulsfreigabe.<br />
+Bit 9: STO-Klemme fehlt.<br />
+Bit 10: &Uuml;berstrom erkannt.<br />
+Bit 11: Ankerkurzschluss aktiv.<br />
+Bit 12: DRIVE-CLiQ-Fehler aktiv.<br />
+Bit 13: Uce-Fehler erkannt, Transistor ents&auml;ttigt wegen &Uuml;berstrom&#47;Kurzschluss.<br />
+Bit 14: Unterspannung erkannt.<br />
+Siehe auch: p0210 (Geräte-Anschlussspannung)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Allgemein:<br />
+- Netzspannung an den Eingangsklemmen pr&uuml;fen.<br />
+- Einstellung der Netzspannung &uuml;berpr&uuml;fen (p0210).<br />
+F&uuml;r Booksize-Ger&auml;te gilt:<br />
+- Warten (ca. 8 min), bis die Vorladewiderst&auml;nde abgek&uuml;hlt sind. Dazu vorzugsweise die Einspeisung vom Netz trennen.<br />
+Zu 5):<br />
+- Die zul&auml;ssige Vorladeh&auml;ufigkeit beachten (siehe entsprechendes Handbuch).<br />
+Zu 6):<br />
+- Gesamtkapazit&auml;t des Zwischenkreises pr&uuml;fen und gegebenenfalls entsprechend der maximal zul&auml;ssigen Zwischenkreiskapazit&auml;t verringern (siehe entsprechendes Handbuch).<br />
+Zu 7):<br />
+- Betriebsbereit-Meldung der Einspeisung (r0863.0) in die Freigabelogik der an diesem Zwischenkreis angeschlossenen Antriebe verschalten.<br />
+Zu 8):<br />
+- Verschaltung des externen Netzsch&uuml;tzes pr&uuml;fen. Das Netzsch&uuml;tz muss w&auml;hrend der Zwischenkreis-Schnellentladung ge&ouml;ffnet sein.<br />
+Zu 9):<br />
+- Zwischenkreis hinsichtlich Erdschluss oder Kurzschluss pr&uuml;fen.<br />
+Zu 11):<br />
+- Zwischenkreisspannung von Einspeisung (r0070) und Motor Modules (r0070) pr&uuml;fen.<br />
+Wenn die von der Einspeisung (oder extern) erzeugte Zwischenkreisspannung nicht bei den Motor Modules angezeigt wird (r0070), so liegt Sicherungsfall im Motor Module vor.<br />
+Siehe auch: p0210 (Geräte-Anschlussspannung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230030">A230030</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;bertemperatur Innenraum Warnung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Temperatur im Innenraum des Umrichters hat den zul&auml;ssigen Temperaturgrenzwert &uuml;berschritten.<br />
+- Unzureichende L&uuml;ftung, L&uuml;fterausfall.<br />
+- &Uuml;berlast.<br />
+- Umgebungstemperatur zu hoch.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Eventuell Zusatzl&uuml;fter vorsehen.<br />
+- Pr&uuml;fen, ob die Umgebungstemperatur im zul&auml;ssigen Bereich ist.<br />
+Achtung:<br />
+Diese Warnung wird automatisch nach Unterschreiten des zul&auml;ssigen Temperaturgrenzwertes abz&uuml;glich 5 K zur&uuml;ckgenommen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230031">A230031</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Hardware Strombegrenzung in Phase U</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Hardware Strombegrenzung der Phase U hat angesprochen. Die Pulsung in dieser Phase wird f&uuml;r eine Pulsperiode gesperrt.<br />
+- Regelung ist fehlerhaft parametriert.<br />
+- Fehler im Motor oder in den Leistungsleitungen.<br />
+- Leistungsleitungen &uuml;berschreiten die maximal zul&auml;ssige L&auml;nge.<br />
+- Motorlast zu gro&szlig;.<br />
+- Leistungsteil defekt.<br />
+Hinweis:<br />
+Spricht bei einem Power Module die Hardware Strombegrenzung der Phase U, V oder W an, so wird immer die Warnung A30031 ausgegeben.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Motordaten pr&uuml;fen und gegebenenfalls die Regelungsparameter neu berechnen (p0340 = 3). Alternativ eine Motordatenidentifikation ausf&uuml;hren (p1910 = 1, p1960 = 1).<br />
+- Schaltungsart des Motors &uuml;berpr&uuml;fen (Stern&#47;Dreieck).<br />
+- Motorlast &uuml;berpr&uuml;fen.<br />
+- Anschl&uuml;sse der Leistungsleitungen &uuml;berpr&uuml;fen.<br />
+- Leistungsleitungen auf Kurzschluss oder Erdfehler pr&uuml;fen.<br />
+- L&auml;nge der Leitungsleitungen &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230032">A230032</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Hardware Strombegrenzung in Phase V</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Hardware Strombegrenzung der Phase V hat angesprochen. Die Pulsung in dieser Phase wird f&uuml;r eine Pulsperiode gesperrt.<br />
+- Regelung ist fehlerhaft parametriert.<br />
+- Fehler im Motor oder in den Leistungsleitungen.<br />
+- Leistungsleitungen &uuml;berschreiten die maximal zul&auml;ssige L&auml;nge.<br />
+- Motorlast zu gro&szlig;.<br />
+- Leistungsteil defekt.<br />
+Hinweis:<br />
+Spricht bei einem Power Module die Hardware Strombegrenzung der Phase U, V oder W an, so wird immer die Warnung A30031 ausgegeben.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Motordaten pr&uuml;fen und gegebenenfalls die Regelungsparameter neu berechnen (p0340 = 3). Alternativ eine Motordatenidentifikation ausf&uuml;hren (p1910 = 1, p1960 = 1).<br />
+- Schaltungsart des Motors &uuml;berpr&uuml;fen (Stern&#47;Dreieck).<br />
+- Motorlast &uuml;berpr&uuml;fen.<br />
+- Anschl&uuml;sse der Leistungsleitungen &uuml;berpr&uuml;fen.<br />
+- Leistungsleitungen auf Kurzschluss oder Erdfehler pr&uuml;fen.<br />
+- L&auml;nge der Leistungsleitungen &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230033">A230033</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Hardware Strombegrenzung in Phase W</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Hardware Strombegrenzung der Phase W hat angesprochen. Die Pulsung in dieser Phase wird f&uuml;r eine Pulsperiode gesperrt.<br />
+- Regelung ist fehlerhaft parametriert.<br />
+- Fehler im Motor oder in den Leistungsleitungen.<br />
+- Leistungsleitungen &uuml;berschreiten die maximal zul&auml;ssige L&auml;nge.<br />
+- Motorlast zu gro&szlig;.<br />
+- Leistungsteil defekt.<br />
+Hinweis:<br />
+Spricht bei einem Power Module die Hardware Strombegrenzung der Phase U, V oder W an, so wird immer die Warnung A30031 ausgegeben.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Motordaten pr&uuml;fen und gegebenenfalls die Regelungsparameter neu berechnen (p0340 = 3). Alternativ eine Motordatenidentifikation ausf&uuml;hren (p1910 = 1, p1960 = 1).<br />
+- Schaltungsart des Motors &uuml;berpr&uuml;fen (Stern&#47;Dreieck).<br />
+- Motorlast &uuml;berpr&uuml;fen.<br />
+- Anschl&uuml;sse der Leistungsleitungen &uuml;berpr&uuml;fen.<br />
+- Leistungsleitungen auf Kurzschluss oder Erdfehler pr&uuml;fen.<br />
+- L&auml;nge der Leistungsleitungen &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230034">A230034</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;bertemperatur Innenraum</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Warnschwelle f&uuml;r &Uuml;bertemperatur des Innenraums wurde erreicht.<br />
+Erh&ouml;ht sich die Temperatur des Innenraums weiter bis zur St&ouml;rschwelle, so wird die St&ouml;rung F30036 ausgel&ouml;st.<br />
+- Umgebungstemperatur eventuell zu hoch.<br />
+- Unzureichende L&uuml;ftung, L&uuml;fterausfall.<br />
+Warnwert (r2124, bin&auml;r interpretieren):<br />
+Bit 0 = 1: &Uuml;bertemperatur im Bereich der Steuerelektronik.<br />
+Bit 1 = 1: &Uuml;bertemperatur im Bereich der Leistungselektronik.<br />
+Bit 2 = 1: &Uuml;bertemperatur im Bereich des Prozessors.<br />
+Bit 3 = 1: &Uuml;bertemperatur im Bereich des Prozessors.<br />
+Bit 4 = 1: &Uuml;bertemperatur bei defektem Innenrauml&uuml;fter.<br />
+Bit 5 = 1: &Uuml;bertemperatur der Zuluft.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Umgebungstemperatur pr&uuml;fen.<br />
+- L&uuml;fter f&uuml;r Innenraum pr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230035">F230035</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;bertemperatur Zuluft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Zuluft im Leistungsteil hat den zul&auml;ssigen Temperaturgrenzwert &uuml;berschritten.<br />
+Bei luftgek&uuml;hlten Leistungsteilen liegt die Temperaturgrenze bei 55 &deg;C.<br />
+- Umgebungstemperatur zu hoch.<br />
+- Unzureichende L&uuml;ftung, L&uuml;fterausfall.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperatur [0.01 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- &Uuml;berpr&uuml;fen, ob der L&uuml;fter l&auml;uft.<br />
+- L&uuml;ftermatten pr&uuml;fen.<br />
+- Pr&uuml;fen, ob die Umgebungstemperatur im zul&auml;ssigen Bereich liegt.<br />
+Achtung:<br />
+Diese St&ouml;rung ist erst nach Unterschreiten der Warnschwelle f&uuml;r die Warnung A05002 quittierbar.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230036">F230036</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;bertemperatur Innenraum</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Temperatur im Innenraum des Umrichters hat den zul&auml;ssigen Grenzwert &uuml;berschritten.<br />
+- Unzureichende L&uuml;ftung, L&uuml;fterausfall.<br />
+- &Uuml;berlast.<br />
+- Umgebungstemperatur zu hoch.<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+Bit 0 = 1: &Uuml;bertemperatur im Bereich der Steuerelektronik.<br />
+Bit 1 = 1: &Uuml;bertemperatur im Bereich der Leistungselektronik.<br />
+Bit 2 = 1: &Uuml;bertemperatur im Bereich des Prozessors.<br />
+Bit 3 = 1: &Uuml;bertemperatur im Bereich des Prozessors.<br />
+Bit 4 = 1: &Uuml;bertemperatur bei defektem Innenrauml&uuml;fter.<br />
+Bit 5 = 1: &Uuml;bertemperatur der Zuluft.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- L&uuml;fter f&uuml;r Innenraum &uuml;berpr&uuml;fen.<br />
+- L&uuml;ftermatten pr&uuml;fen.<br />
+- Pr&uuml;fen, ob die Umgebungstemperatur im zul&auml;ssigen Bereich ist.<br />
+Achtung:<br />
+Diese St&ouml;rung ist erst nach Unterschreiten des zul&auml;ssigen Temperaturgrenzwertes abz&uuml;glich 5 K quittierbar.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230037">F230037</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;bertemperatur Gleichrichter</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Temperatur im Gleichrichter des Leistungsteils hat den zul&auml;ssigen Temperaturgrenzwert &uuml;berschritten.<br />
+- Unzureichende L&uuml;ftung, L&uuml;fterausfall.<br />
+- &Uuml;berlast.<br />
+- Umgebungstemperatur zu hoch.<br />
+- Netzphasenausfall.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Temperatur [0.01 &deg;C].<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- &Uuml;berpr&uuml;fen, ob der L&uuml;fter l&auml;uft.<br />
+- L&uuml;ftermatten pr&uuml;fen.<br />
+- Pr&uuml;fen, ob die Umgebungstemperatur im zul&auml;ssigen Bereich ist.<br />
+- Motorlast pr&uuml;fen.<br />
+- Netzphasen pr&uuml;fen.<br />
+Achtung:<br />
+Diese St&ouml;rung ist erst nach Unterschreiten der Warnschwelle f&uuml;r die Warnung A05004 quittierbar.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230040">F230040</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Unterspannung 24&#47;48 V</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Unterspannungsschwelle der 24-V-Spannungsversorgung f&uuml;r das Leistungsteil wurde l&auml;nger als 3 ms unterschritten.<br />
+Hinweis:<br />
+- Bei Booksize-Leistungsteilen ist die Unterspannungsschwelle 15 V.<br />
+- Bei CU310-2, CUA31 und CUA32 ist die Unterspannungsschwelle 16 V.<br />
+- Bei allen anderen Leistungsteilen (z. B. S120M) ist die Unterspannungsschwelle abh&auml;ngig vom Leistungsteil und wird nicht angezeigt.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxxxx hex: yy = Kanal, xxxx = Spannung [0.1 V]<br />
+yy = 0: 24-V-Spannungsversorgung<br />
+yy = 1: 48-V-Spannungsversorgung<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Spannungsversorgung des Leistungsteils pr&uuml;fen.<br />
+- POWER ON bei der Komponente durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230041">A230041 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Unterspannung 24&#47;48 V Warnung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Spannungsversorgung f&uuml;r das Leistungsteil wurde die untere Schwelle unterschritten.<br />
+Warnwert (r2124, hexadezimal interpretieren):<br />
+yyxxxx hex: yy = Kanal, xxxx = Spannung [0.1 V]<br />
+yy = 0: 24-V-Spannungsversorgung<br />
+yy = 1: 48-V-Spannungsversorgung<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Spannungsversorgung des Leistungsteils pr&uuml;fen.<br />
+- POWER ON bei der Komponente durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230042">A230042</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: L&uuml;fter hat maximale Betriebsstunden erreicht</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die maximale Betriebsdauer mindestens eines L&uuml;fters wird demn&auml;chst erreicht oder ist bereits &uuml;berschritten.<br />
+Warnwert (r2124, bin&auml;r interpretieren):<br />
+Bit 0 = 1:<br />
+Der Betriebsstundenz&auml;hler des K&uuml;hlk&ouml;rper-L&uuml;fters wird die maximale Betriebsdauer in 500 Stunden erreichen. Nach Ablauf der 500 Stunden wird im Warnwert Bit 0 gel&ouml;scht und Bit 2 gesetzt.<br />
+Bit 1 = 1:<br />
+Der Verschlei&szlig;z&auml;hler des K&uuml;hlk&ouml;rper-L&uuml;fters hat 99 % erreicht. Die restliche Lebensdauer betr&auml;gt 1 %. Nach Ablauf dieses 1 % wird im Warnwert Bit 1 gel&ouml;scht und Bit 2 gesetzt.<br />
+Bit 2 = 1:<br />
+Der Betriebsstundenz&auml;hler des K&uuml;hlk&ouml;rper-L&uuml;fters hat die maximale Betriebsdauer bzw. der Verschlei&szlig;z&auml;hler die 100 % &uuml;berschritten.<br />
+Bit 8 = 1:<br />
+Der Betriebsstundenz&auml;hler des Innenraum-L&uuml;fters wird die maximale Betriebsdauer in 500 Stunden erreichen. Nach Ablauf der 500 Stunden wird im Warnwert Bit 8 gel&ouml;scht und Bit 10 gesetzt.<br />
+Bit 10 = 1:<br />
+Der Betriebsstundenz&auml;hler des Innenraum-L&uuml;fters hat die maximale Betriebsdauer &uuml;berschritten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>F&uuml;r den jeweils betroffenen L&uuml;fter das Folgende durchf&uuml;hren:<br />
+- L&uuml;fter tauschen.<br />
+- Betriebsstundenz&auml;hler zur&uuml;cksetzen (p0251, p0254).<br />
+Siehe auch: p0251 (Leistungsteil Kühlkörper-Lüfter Betriebsstundenzähler), p0252 (Leistungsteil Kühlkörper-Lüfter Betriebsdauer maximal), p0254 (Leistungsteil Innenraum-Lüfter Betriebsstundenzähler), r0277 (Leistungsteil Kühlkörper-Lüfter Verschleißzähler)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230043">F230043</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;berspannung 24&#47;48 V</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Spannungsversorgung f&uuml;r das Leistungsteil wurde die obere Schwelle &uuml;berschritten.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxxxx hex: yy = Kanal, xxxx = Spannung [0.1 V]<br />
+yy = 0: 24-V-Spannungsversorgung<br />
+yy = 1: 48-V-Spannungsversorgung<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Spannungsversorgung des Leistungsteils pr&uuml;fen.<br />
+</td></tr>
+</table><p></p></body></html>

@@ -1,0 +1,1226 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="648">p0648[0...n]</a></b></td>
+<td colspan="4"><b>Motor kT characteristic kT7 / Mot kT char kT7</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Ext M_ctrl), SERVO_AC (Ext M_ctrl), SERVO_840 (Ext M_ctrl), SERVO_DBSI (Ext M_ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Motor</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> ASM, SESM, REL</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the constant kT7 for the kT characteristic.<br />
+kT(iq) = kT1 + kT3 * iq^2 + kT5 * iq^4 + kT7 * iq^6<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0316, p0645, p0646, p0647, p1780<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">In the case of current reduction (e.g. as a result of the thermal model) while measuring the kT characteristic, it cannot be ensured that the identified characteristic is reliable above the measured values (r1935, r1937).<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For the standard setting, the value in p0316 is effective.<br />The value in p0316 is ignored and the kT characteristic is effective, if the following conditions are fulfilled:<br />- the function module &quot;expanded torque control&quot; has been activated (r0108.1 = 1).<br />- the kT characteristic has been activated (p1780.9 = 1).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="650">p0650[0...n]</a></b></td>
+<td colspan="4"><b>Actual motor operating hours / Mot t_op act</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Motor</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >4294967295</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the operating hours for the corresponding motor.<br />
+The motor operating time counter continues to run when the pulses are enabled. When the pulse enable is withdrawn, the counter is held and the value saved.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">The following prerequisites must be fulfilled in order to be able to save the operating hours counter in a non-volatile fashion:<br />- firmware with V2.2 or higher.<br />- Control Unit 320 (CU320) with hardware version C or higher (module with NVRAM).<br />Refer to: p0651<br />Refer to: A01590</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For p0651 = 0, the operating hours counter is disabled.<br />The operating hours counter in p0650 can only be reset to 0.<br />The operating hours counter only runs with motor data set 0 and 1 (MDS).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="651">p0651[0...n]</a></b></td>
+<td colspan="4"><b>Motor operating hours maintenance interval / Mot t_op maint</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Motor</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >150000</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the service&#47;maintenance intervals in hours for the appropriate motor.<br />
+An appropriate message is output when the operating hours set here are reached.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0650<br />Refer to: A01590</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For p0651 = 0, the operating hours counter is disabled.<br />When setting p0651 to 0, then p0650 is automatically set to 0.<br />The operating hours counter only runs with motor data set 0 and 1 (MDS).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="700">p0700[0...n]</a></b></td>
+<td colspan="4"><b>Macro Binector Input (BI) / Macro BI</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(1), T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >999999</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Runs the corresponding macro files.<br />
+The binector inputs of the corresponding command data set are appropriately interconnected.<br />
+The selected macro file must be available on the memory card&#47;device memory.<br />
+Example:<br />
+p0700 = 6 --&gt; macro file PM000006.ACX is run.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0015, p1000, p1500, r8571<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">No errors were issued during quick commissioning (p3900 = 1) when writing to parameters of the QUICK_IBN group!<br />When executing a specific macro, the corresponding programmed settings are made and become active.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The macros in the specified directory are displayed in r8571. r8571 is not in the expert list of the commissioning tool.<br />Macros available as standard are described in the technical documentation of the particular product.<br />BI: Binector Input<br />CDS: Command Data Set<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="806">p0806</a></b></td>
+<td colspan="4"><b>BI: Inhibit master control / PcCtrl inhibit</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to block the master control.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0807<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The commissioning tool (drive control panel) uses the master control, for example.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="807">r0807.0</a></b></td>
+<td colspan="4"><b>BO: Master control active / PcCtrl active</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays what has the master control.<br />
+The drive can be controlled via the BICO interconnection or from external (e.g. the commissioning tool).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Master control active</td><td>Yes</td><td>No</td><td>5030, 6031</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0806<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The master control only influences control word 1 and speed setpoint 1. Other control word&#47;setpoints can be transferred from another automation device.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Bit 0 = 0: BICO interconnection active<br />Bit 0 = 1: Master control for PC&#47;AOP<br />The commissioning tool (drive control panel) uses the master control, for example.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="809">p0809[0...2]</a></b></td>
+<td colspan="4"><b>Copy Command Data Set CDS / Copy CDS</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8560</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >15</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Copies one Command Data Set (CDS) into another.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Source Command Data Set<br />
+[1] = Target Command Data Set<br />
+[2] = Start copying procedure<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">When copying a command data set (CDS), the values in p0700, p1000 and p1500 are not accepted. As a consequence, the associated macros are not executed and inconsistencies are avoided.<br />Procedure:<br />1. In Index 0, enter which command data set should be copied.<br />2. In index 1, enter the command data set that is to be copied into.<br />3. Start copying: set index 2 from 0 to 1.<br />p0809[2] is automatically set to 0 when copying is completed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="810">p0810</a></b></td>
+<td colspan="4"><b>BI: Command data set selection CDS bit 0 / CDS sel, bit 0</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8560</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to select the Command Data Set bit 0 (CDS bit 0).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0050, p0811, r0836<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The Command Data Set selected using the binector inputs is displayed in r0836.<br />The currently effective command data set is displayed in r0050.<br />A Command Data Set can be copied using p0809.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="819">p0819[0...2]</a></b></td>
+<td colspan="4"><b>Copy Drive Data Set DDS / Copy DDS</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, TM41</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(15)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8565</td></tr><tr><td><b>P-Group:</b> Data sets</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >31</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Copies one Drive Data Set (DDS) into another.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Source Drive Data Set<br />
+[1] = Target Drive Data Set<br />
+[2] = Start copying procedure<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Procedure:<br />1. In Index 0, enter which drive data set is to be copied.<br />2. In index 1, enter the drive data set data that is to be copied into.<br />3. Start copying: set index 2 from 0 to 1.<br />p0819[2] is automatically set to 0 when copying is completed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="820">p0820[0...n]</a></b></td>
+<td colspan="4"><b>BI: Drive Data Set selection DDS bit 0 / DDS sel, bit 0</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, TM41</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 8565, 8575</td></tr><tr><td><b>P-Group:</b> Data sets</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to select the Drive Data Set, bit 0 (DDS, bit 0).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0051, r0837<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="821">p0821[0...n]</a></b></td>
+<td colspan="4"><b>BI: Drive Data Set selection DDS bit 1 / DDS sel, bit 1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, TM41</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 8565, 8570</td></tr><tr><td><b>P-Group:</b> Data sets</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to select the Drive Data Set, bit 1 (DDS, bit 1).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0051, r0837<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="822">p0822[0...n]</a></b></td>
+<td colspan="4"><b>BI: Drive Data Set selection DDS bit 2 / DDS sel, bit 2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, TM41</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 8565</td></tr><tr><td><b>P-Group:</b> Data sets</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to select the Drive Data Set, bit 2 (DDS, bit 2).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0051, r0837<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="823">p0823[0...n]</a></b></td>
+<td colspan="4"><b>BI: Drive Data Set selection DDS bit 3 / DDS sel, bit 3</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, TM41</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 8565</td></tr><tr><td><b>P-Group:</b> Data sets</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to select the Drive Data Set, bit 3 (DDS, bit 3).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0051, r0837<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="824">p0824[0...n]</a></b></td>
+<td colspan="4"><b>BI: Drive Data Set selection DDS bit 4 / DDS sel, bit 4</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, TM41</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 8565, 8575</td></tr><tr><td><b>P-Group:</b> Data sets</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source to select the Drive Data Set, bit 4 (DDS, bit 4).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0051, r0837<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="826">p0826[0...n]</a></b></td>
+<td colspan="4"><b>Motor changeover motor number / Mot_chgov mot no</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, SERVO_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(3)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> 8575</td></tr><tr><td><b>P-Group:</b> Motor</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >15</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the freely assignable motor number for the motor changeover.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0827<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">When changing over motor data sets with the same motor number (e.g. star-delta changeover) and for a motor with brake, the motor brake remains open during the changeover.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">When the motor data sets are changed over, the following applies:<br />The same motor number signifies the same thermal model.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="827">p0827[0...n]</a></b></td>
+<td colspan="4"><b>Motor changeover status word bit number / Mot_chg ZSW bit no</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(3)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> MDS, p0130</td><td><b>Func. diagram:</b> 8575</td></tr><tr><td><b>P-Group:</b> Motor</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >15</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the bit number for every motor data set.<br />
+Example:<br />
+p0827[0] = 0: For MDS0, r0830.0 is switched.<br />
+p0827[1] = 5: For MDS1, r0830.5 is switched.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0826, r0830<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A motor is only changed over (a new motor selected) after the pulses have been suppressed.<br />When the motor data sets are changed over, the following applies:<br />Bit numbers that are not identical, signify that the motor must be changed over.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="828">p0828[0...n]</a></b></td>
+<td colspan="4"><b>BI: Motor changeover feedback signal / Mot_chgov fdbk sig</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 8575</td></tr><tr><td><b>P-Group:</b> Motor</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the feedback signal when changing over the motor.<br />
+For p0833.0 = 1 the following applies:<br />
+This feedback signal (0&#47;1 edge) is required after a motor changeover to enable the pulses.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0833<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="830">r0830.0...15</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Motor changeover status word / Mot_chgov ZSW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8575</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the status word of the motor changeover.<br />
+These signals can be connected to digital outputs to change over the motor.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Motor selection bit 0</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>01</td><td>Motor selection bit 1</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>02</td><td>Motor selection bit 2</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>03</td><td>Motor selection bit 3</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>04</td><td>Motor selection bit 4</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>05</td><td>Motor selection bit 5</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>06</td><td>Motor selection bit 6</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>07</td><td>Motor selection bit 7</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>08</td><td>Motor selection bit 8</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>09</td><td>Motor selection bit 9</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>10</td><td>Motor selection bit 10</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>11</td><td>Motor selection bit 11</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>12</td><td>Motor selection bit 12</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>13</td><td>Motor selection bit 13</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>14</td><td>Motor selection bit 14</td><td>High</td><td>Low</td><td>-</td></tr><tr><td></td><td>15</td><td>Motor selection bit 15</td><td>High</td><td>Low</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0827<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="831">p0831[0...15]</a></b></td>
+<td colspan="4"><b>BI: Motor changeover contactor feedback / Mot_chg cont fdbk</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8575</td></tr><tr><td><b>P-Group:</b> Motor</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the feedback signal of the contactors when changing over motors.<br />
+There is a fixed inter-relationship between energizing the contactor and the feedback signal.<br />
+Example:<br />
+A changeover is to be made between MDS0 (motor 0) and MDS1 (motor 1). The contactors should be switched using bit 4 (contactor 0) and 5 (contactor 1). The changeover should be made with an interconnection of the feedback signal.<br />
+Implementation:<br />
+MDS0: p0827[0] = 4, interconnect output to switch contactor 0 to r0830.4, p0831[4] = &quot;input, feedback signal, contactor 0&quot;<br />
+MDS1: p0827[1] = 5, interconnect output to switch contactor 1 to r0830.5, p0831[5] = &quot;input, feedback signal, contactor 1&quot;<br />
+The following sequence applies when changing over from MDS0 to MDS1:<br />
+1. Status bit r0830.4 is deleted. When the feedback signal (p0831[4]) is connected, the system waits until the feedback signal &quot;contactor open&quot; is displayed. If the feedback signal is not connected, then the system waits for the switch-off interlocking time of 320 ms.<br />
+2. Status bit r0830.5 is set. If the feedback signal (p0831[5]) is connected, the system waits until the feedback signal &quot;contactor closed&quot; is displayed. If the feedback signal is not connected, then the system waits for the switch-on interlocking time of 160 ms.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Feedback signal contactor 0<br />
+[1] = Feedback signal contactor 1<br />
+[2] = Feedback signal contactor 2<br />
+[3] = Feedback signal contactor 3<br />
+[4] = Feedback signal contactor 4<br />
+[5] = Feedback signal contactor 5<br />
+[6] = Feedback signal contactor 6<br />
+[7] = Feedback signal contactor 7<br />
+[8] = Feedback signal contactor 8<br />
+[9] = Feedback signal contactor 9<br />
+[10] = Feedback signal contactor 10<br />
+[11] = Feedback signal contactor 11<br />
+[12] = Feedback signal contactor 12<br />
+[13] = Feedback signal contactor 13<br />
+[14] = Feedback signal contactor 14<br />
+[15] = Feedback signal contactor 15<br />
+</td></tr></table>
+<p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="832">r0832.0...15</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Mot. changeover contactor feedback sig. status word / Mot_chgov fdbk ZSW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8575</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the status word of the contactor feedback signals when changing over a motor.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Feedback signal contactor 0</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>01</td><td>Feedback signal contactor 1</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>02</td><td>Feedback signal contactor 2</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>03</td><td>Feedback signal contactor 3</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>04</td><td>Feedback signal contactor 4</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>05</td><td>Feedback signal contactor 5</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>06</td><td>Feedback signal contactor 6</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>07</td><td>Feedback signal contactor 7</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>08</td><td>Feedback signal contactor 8</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>09</td><td>Feedback signal contactor 9</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>10</td><td>Feedback signal contactor 10</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>11</td><td>Feedback signal contactor 11</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>12</td><td>Feedback signal contactor 12</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>13</td><td>Feedback signal contactor 13</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>14</td><td>Feedback signal contactor 14</td><td>Closed</td><td>Opened</td><td>-</td></tr><tr><td></td><td>15</td><td>Feedback signal contactor 15</td><td>Closed</td><td>Opened</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0831<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="833">p0833</a></b></td>
+<td colspan="4"><b>Data set changeover configuration / DS_chgov config</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, HLA, SERVO_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(15)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8575</td></tr><tr><td><b>P-Group:</b> Data sets</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the configuration for the motor and encoder changeover.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Contactor changeover from the application&#47;drive</td><td>Application</td><td>Drive</td><td>-</td></tr><tr><td></td><td>01</td><td>Pulse suppression by application&#47;drive</td><td>Application</td><td>Drive</td><td>-</td></tr><tr><td></td><td>02</td><td>Suppress drive parking for EDS changeover</td><td>Yes</td><td>No</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For bit 00:<br />When the bit is set and the motor has to be changed over, then p0827 must be set differently in the appropriate motor data sets.<br />For bit 02:<br />The bit defines whether, for an EDS changeover, the status signal Gn_ZSW.14 is suppressed (parking encoder active).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="835">r0835.0...12</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Data set changeover status word / Data set sw ZSW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8575</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and BICO output for the status word of the data set switchover.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Motor changeover active</td><td>Yes</td><td>No</td><td>8575</td></tr><tr><td></td><td>01</td><td>Encoder changeover active</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>02</td><td>Internal parameter calculation active</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>04</td><td>Armature short circuit active</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>05</td><td>Identification running</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>06</td><td>Friction characteristic plot running</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>07</td><td>Rotating measurement running</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>08</td><td>Motor data identification running</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>10</td><td>Wait for pulse suppression</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>11</td><td>Wait for motor changeover feedback signal</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>12</td><td>Frequency response measurement running</td><td>Yes</td><td>No</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">This parameter is only supplied with up-to-date values if data set changeover has been selected or is running.<br />For bit 00:<br />The signal is only influenced when a motor changeover is set via p0827 (unequal bit numbers).<br />For bit 01:<br />The signal is only influenced when an encoder changeover is set via p0187, p0188, or p0189.<br />For bit 02:<br />A data set changeover is delayed by the time required for the internal parameter calculation.<br />For bit 04:<br />A data set changeover is only carried out when the armature short circuit is not activated.<br />For bit 05:<br />The following applies for SERVO:<br />A data set changeover is only carried out when pole position identification, encoder adjustment, motor data identification, and rotating measurement are not running.<br />The following applies for VECTOR:<br />A data set changeover is only carried out when pole position identification is not running.<br />For bit 06:<br />A data set switchover is only carried out when the friction characteristic is not being plotted.<br />For bit 07 (VECTOR only):<br />A data set changeover is only carried out when rotating measurement is not running.<br />For bit 08 (VECTOR only):<br />A data set changeover is only carried out when motor data identification is not running.<br />For bit 10:<br />A motor changeover is set with p0833.1 = 1. It can only be carried out when the application performs pulse suppression.<br />For bit 11:<br />A motor changeover is set with p0833.0 = 1. The pulses are only enabled when the &quot;Motor changeover feedback&quot; signal is detected.<br />For bit 12:<br />A data set switchover is only carried out when the moment of inertia determination (p5320 = 0) is not activated.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="836">r0836.0...3</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Command Data Set CDS selected / CDS selected</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828, TM41</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8560</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the command data set (CDS) selected via the binector input.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>CDS selection bit 0</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>01</td><td>CDS selection bit 1</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>02</td><td>CDS selection bit 2</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>03</td><td>CDS selection bit 3</td><td>ON</td><td>OFF</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0050, p0810, p0811<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Command data sets are selected via binector input p0810 and following.<br />The currently effective command data set is displayed in r0050.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="837">r0837.0...4</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Drive Data Set DDS selected / DDS selected</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, TM41, ENC, ENC_840</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8565</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the drive data set (DDS) selected via the binector input.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>DDS selection bit 0</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>01</td><td>DDS selection bit 1</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>02</td><td>DDS selection bit 2</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>03</td><td>DDS selection bit 3</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>04</td><td>DDS selection bit 4</td><td>ON</td><td>OFF</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0051, p0820, p0821, p0822, p0823, p0824<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Drive data sets are selected via binector input p0820 and following.<br />The currently effective drive data set is displayed in r0051.<br />If there is only one data set, then a value of 0 is displayed in this parameter and not the selection via binector inputs.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="838">r0838[0...3]</a></b></td>
+<td colspan="4"><b>Motor&#47;Encoder Data Set selected / MDS&#47;EDS selected</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8565</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the selected Motor Data Set (MDS) and the selected Encoder Data Sets (EDS).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Motor Data Set MDS selected<br />
+[1] = Encoder 1 Encoder Data Set EDS selected<br />
+[2] = Encoder 2 Encoder Data Set EDS selected<br />
+[3] = Encoder 3 Encoder Data Set EDS selected<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0049, p0186, p0187, p0188, p0189<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Value 99 means the following: No encoder assigned (not configured).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="839">p0839</a></b></td>
+<td colspan="4"><b>Motor changeover contactor control delay time / Mot_chg ctrl t_del</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(3)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Motor</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >500</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the delay time for the contactor control for the motor changeover.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The delay time is taken into account in the following cases:<br />- for feedback signal, previous contactor &quot;Open&quot;. The new motor contactor is controlled (energized) after the delay time has expired.<br />- for the feedback signal, new motor contactor &quot;Closed&quot;. The pulses are enabled after the delay time has expired.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="840">p0840[0...n]</a></b></td>
+<td colspan="4"><b>BI: ON &#47; OFF (OFF1) / ON &#47; OFF (OFF1)</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the command &quot;ON&#47;OFF (OFF1)&quot;.<br />
+For the PROFIdrive profile, this command corresponds to control word 1 bit 0 (STW1.0).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Recommend.:</b></td>
+<td>When the setting for this binector input is changed, the motor can only be switched on by means of an appropriate signal change of the source.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p1055, p1056<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Caution:</b></td>
+<td width="85%">When &quot;master control from PC&quot; is activated, this binector input is ineffective.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">For binector input p0840 = 0 signal, the motor can be moved, jogging using binector input p1055 or p1056.<br />The command &quot;ON&#47;OFF (OFF1)&quot; can be issued using binector input p0840 or p1055&#47;p1056.<br />For binector input p0840 = 0 signal, the switching on inhibited is acknowledged.<br />Only the signal source that originally switched on can also switch off again.<br />The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For drives with closed-loop speed control (p1300 = 20, 21), the following applies:<br />- BI: p0840 = 0 signal: OFF1 (braking with the ramp-function generator, then pulse suppression)<br />For drives with closed-loop torque control (p1300 = 22, 23), the following applies:<br />- BI: p0840 = 0 signal: immediate pulse suppression<br />For drives with closed-loop torque control (activated using p1501), the following applies:<br />- BI: p0840 = 0 signal: No dedicated braking response, but pulse cancelation when standstill is detected (p1226, p1227)<br />For drives with closed-loop speed&#47;torque control, the following applies:<br />- BI: p0840 = 0&#47;1 signal: ON (pulses can be enabled)<br />r0863.1 of a drive can also be selected as signal source.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="844">p0844[0...n]</a></b></td>
+<td colspan="4"><b>BI: No coast-down &#47; coast-down (OFF2) signal source 1 / OFF2 s_s 1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501, 8720, 8820, 8920</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the first signal source for the command &quot;No coast down&#47;coast down (OFF2)&quot;.<br />
+The following signals are AND'ed:<br />
+- BI: p0844 &quot;No coast-down &#47; coast-down (OFF2) signal source 1&quot;<br />
+- BI: p0845 &quot;No coast-down &#47; coast-down (OFF2) signal source 2&quot;<br />
+For the PROFIdrive profile, the result of the AND logic operation corresponds to control word 1 bit 1 (STW1.1).<br />
+BI: p0844 = 0 signal or BI: p0845 = 0 signal<br />
+- OFF2 (immediate pulse suppression and switching on inhibited)<br />
+BI: p0844 = 1 signal and BI: p0845 = 1 signal<br />
+- no OFF2 (enable is possible)<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Caution:</b></td>
+<td width="85%">When &quot;master control from PC&quot; is activated, this binector input is ineffective.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="845">p0845[0...n]</a></b></td>
+<td colspan="4"><b>BI: No coast-down &#47; coast-down (OFF2) signal source 2 / OFF2 s_s 2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501, 8720, 8820, 8920</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the second signal source for the command &quot;No coast down&#47;coast down (OFF2)&quot;.<br />
+The following signals are AND'ed:<br />
+- BI: p0844 &quot;No coast-down &#47; coast-down (OFF2) signal source 1&quot;<br />
+- BI: p0845 &quot;No coast-down &#47; coast-down (OFF2) signal source 2&quot;<br />
+For the PROFIdrive profile, the result of the AND logic operation corresponds to control word 1 bit 1 (STW1.1).<br />
+BI: p0844 = 0 signal or BI: p0845 = 0 signal<br />
+- OFF2 (immediate pulse suppression and switching on inhibited)<br />
+BI: p0844 = 1 signal and BI: p0845 = 1 signal<br />
+- no OFF2 (enable is possible)<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Caution:</b></td>
+<td width="85%">When &quot;master control from PC&quot; is activated, this binector input is effective.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="848">p0848[0...n]</a></b></td>
+<td colspan="4"><b>BI: No Quick Stop &#47; Quick Stop (OFF3) signal source 1 / OFF3 s_s 1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the first signal source for the command &quot;No quick stop&#47;quick stop (OFF3)&quot;.<br />
+The following signals are AND'ed:<br />
+- BI: p0848 &quot;No quick stop &#47; quick stop (OFF3) signal source 1&quot;<br />
+- BI: p0849 &quot;No quick stop &#47; quick stop (OFF3) signal source 2&quot;<br />
+For the PROFIdrive profile, the result of the AND logic operation corresponds to control word 1 bit 2 (STW1.2).<br />
+BI: p0848 = 0 signal or BI: p0849 = 0 signal<br />
+- OFF3 (braking along the OFF3 ramp (p1135), then pulse suppression and switching on inhibited)<br />
+BI: p0848 = 1 signal and BI: p0849 = 1 signal<br />
+- no OFF3 (enable is possible)<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Caution:</b></td>
+<td width="85%">When &quot;master control from PC&quot; is activated, this binector input is ineffective.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For drives with closed-loop torque control (activated using p1501), the following applies:<br />BI: p0848 = 0 signal:<br />- no dedicated braking response, but pulse suppression when standstill is detected (p1226, p1227).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="849">p0849[0...n]</a></b></td>
+<td colspan="4"><b>BI: No Quick Stop &#47; Quick Stop (OFF3) signal source 2 / OFF3 s_s 2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the second signal source for the command &quot;No quick stop&#47;quick stop (OFF3)&quot;.<br />
+The following signals are AND'ed:<br />
+- BI: p0848 &quot;No quick stop &#47; quick stop (OFF3) signal source 1&quot;<br />
+- BI: p0849 &quot;No quick stop &#47; quick stop (OFF3) signal source 2&quot;<br />
+For the PROFIdrive profile, the result of the AND logic operation corresponds to control word 1 bit 2 (STW1.2).<br />
+BI: p0848 = 0 signal or BI: p0849 = 0 signal<br />
+- OFF3 (braking along the OFF3 ramp (p1135), then pulse suppression and switching on inhibited)<br />
+BI: p0848 = 1 signal and BI: p0849 = 1 signal<br />
+- no OFF3 (enable is possible)<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Caution:</b></td>
+<td width="85%">When &quot;master control from PC&quot; is activated, this binector input is effective.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For drives with closed-loop torque control (activated using p1501), the following applies:<br />BI: p0849 = 0 signal:<br />- no dedicated braking response, but pulse suppression when standstill is detected (p1226, p1227).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="852">p0852[0...n]</a></b></td>
+<td colspan="4"><b>BI: Enable operation&#47;inhibit operation / Enable operation</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, A_INF_840, S_INF_840, S_INF_COMBI, A_INF_828, S_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501, 8820, 8920</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the command &quot;enable operation&#47;inhibit operation&quot;.<br />
+For the PROFIdrive profile, this command corresponds to control word 1 bit 3 (STW1.3).<br />
+BI: p0852 = 0 signal<br />
+Inhibit operation (suppress pulses).<br />
+BI: p0852 = 1 signal<br />
+Enable operation (pulses can be enabled).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Caution:</b></td>
+<td width="85%">When &quot;master control from PC&quot; is activated, this binector input is ineffective.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="854">p0854[0...n]</a></b></td>
+<td colspan="4"><b>BI: Control by PLC&#47;no control by PLC / Master ctrl by PLC</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501, 8720, 8820, 8920</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the command &quot;control by PLC&#47;no control by PLC&quot;.<br />
+For the PROFIdrive profile, this command corresponds to control word 1 bit 10 (STW1.10).<br />
+BI: p0854 = 0 signal<br />
+No control by PLC<br />
+BI: p0854 = 1 signal<br />
+Master control by PLC.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Caution:</b></td>
+<td width="85%">When &quot;master control from PC&quot; is activated, this binector input is ineffective.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">This bit is used to initiate a response for the drives when the control fails (F07220). If there is no control available, then binector input p0854 should be set to 1.<br />If a control is available, then STW1.10 must be set to 1 (PZD1) so that the received data is updated. This applies regardless of the setting in p0854 and even in the case of free telegram configuration (p0922 = 999).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="855">p0855[0...n]</a></b></td>
+<td colspan="4"><b>BI: Unconditionally release holding brake / Uncond open brake</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501, 2701, 2707</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the command &quot;unconditionally open holding brake&quot;.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0858<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The signal via binector input p0858 &quot;Unconditionally close holding brake&quot; has a higher priority than via binector input p0855 &quot;Unconditionally open holding brake&quot;.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="856">p0856[0...n]</a></b></td>
+<td colspan="4"><b>BI: Enable speed controller / n_ctrl enable</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501, 2701, 2707</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the command &quot;enable speed controller&quot; (r0898.12).<br />
+0 signal: Set the I component and speed controller output to zero.<br />
+1 signal: Enable speed controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0898<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">If &quot;enable speed controller&quot; is withdrawn, then an existing brake will be closed.<br />If &quot;enable speed controller&quot; is withdrawn, the pulses are not suppressed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="856">p0856[0...n]</a></b></td>
+<td colspan="4"><b>BI: Enable velocity controller / v_ctrl enable</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Lin), SERVO_AC (Lin), SERVO_840 (Lin), SERVO_COMBI (Lin), SERVO_828 (Lin), SERVO_DBSI (Lin)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501, 2701, 2707</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the command &quot;enable speed controller&quot; (r0898.12).<br />
+0 signal: Set the I component and speed controller output to zero.<br />
+1 signal: Enable speed controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0898<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">If &quot;enable speed controller&quot; is withdrawn, then an existing brake will be closed.<br />If &quot;enable speed controller&quot; is withdrawn, the pulses are not suppressed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="857">p0857</a></b></td>
+<td colspan="4"><b>Power unit monitoring time / PU t_mon</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8760, 8864, 8964</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>100.0</td>
+<td  >60000.0</td>
+<td >6000.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the monitoring time for the power unit.<br />
+The following applies for infeeds and drives:<br />
+The monitoring time is started after an 0&#47;1 edge of the ON&#47;OFF1 command. If the power unit does not return a READY signal within the monitoring time, then fault F06000 (infeeds) or F07802 (drives) is output.<br />
+For drives, the following also applies:<br />
+After the pulse enable (operation enabled, p0852), the monitoring time is re-started. If the infeed does not signal ready to the drive within the monitoring time (using binector input p0864 of the drive), fault F07840 is initiated.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: F06000, F07802, F07840, F30027</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The maximum time to precharge the DC link is monitored in the power unit and cannot be changed. The maximum duration of the precharging depends on the power class and the power unit design.<br />The monitoring time for the precharging is started after the ON command (BI: p0840 = 0&#47;1 signal). Fault F30027 is output when the maximum precharging duration is exceeded.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The factory setting for p0857 depends on the power class and the design of the power unit.<br />The monitoring time for the ready signal of the power unit includes the time to precharge the DC link and, if relevant, the de-bounce time of the contactors.<br />If an excessively low value is entered into p0857, then after enable, this results in the corresponding fault.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="858">p0858[0...n]</a></b></td>
+<td colspan="4"><b>BI: Unconditionally close holding brake / Uncond close brake</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> CDS, p0170</td><td><b>Func. diagram:</b> 2501, 2701, 2707</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >10251.13</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the command &quot;unconditionally close holding brake&quot;.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0855<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The signal via binector input p0858 &quot;Unconditionally close holding brake&quot; has a higher priority than via binector input p0855 &quot;Unconditionally open holding brake&quot;.<br />For a 1 signal via binector input p0858, the command &quot;unconditionally close the holding brake&quot; is executed and internally a zero setpoint is entered.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="860">p0860</a></b></td>
+<td colspan="4"><b>BI: Line contactor feedback signal / Line contact fdbk</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2634, 8734, 8834, 8934</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >863.1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the feedback signal from the line contactor.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Recommend.:</b></td>
+<td>When the monitoring is activated (BI: p0860 not equal to r0863.1), then to control the line contactor, signal BO: r0863.1 of its own drive object should be used.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0861, r0863<br />Refer to: F07300</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The line contactor monitoring is deactivated if the control signal of the particular drive object is set as the signal source for the feedback signal of the line contactor (BI: p0860 = r0863.1).<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The state of the line contactor is monitored depending on signal BO: r0863.1.<br />When the monitoring is activated (BI: p0860 not equal to r0863.1), fault F07300 is then also output if the contactor is closed before it is controlled using r0863.1.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="861">p0861</a></b></td>
+<td colspan="4"><b>Line contactor monitoring time / Line cont t_mon</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2634, 8734, 8834, 8934</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >5000</td>
+<td >100</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the monitoring time of the line contactor.<br />
+This time starts each time that the line contactor switches (r0863.1). If a feedback signal is not received from the line contactor within the time, a message is output.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0860, r0863<br />Refer to: F07300</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The monitoring function is disabled for the factory setting of p0860.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="862">p0862</a></b></td>
+<td colspan="4"><b>Power unit ON-delay / PU t_on</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2610, 8732, 8832, 8932</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >65000</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the delay time for the control command of the power unit and a line contactor, if used.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">This means that it is possible to realize a shifted (delayed) precharging or switch-on using a single ON command.<br />When the infeed units are active, before the line contactor is closed, an offset adjustment of the current measurement is carried out for a duration of 120 ms (p3491).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="863">r0863.0...2</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Drive coupling status word&#47;control word / CoupleZSW&#47;STW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI, A_INF, S_INF, R_INF, B_INF, A_INF_840, S_INF_840, B_INF_840, S_INF_COMBI, A_INF_828, S_INF_828, B_INF_828</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and BICO output for the status word and control word of the drive coupling.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Closed-loop control operation</td><td>Yes</td><td>No</td><td>2610, 8710, 8810, 8910</td></tr><tr><td></td><td>01</td><td>Energize contactor</td><td>Yes</td><td>No</td><td>2610, 2634, 7990, 8734, 8834, 8934</td></tr><tr><td></td><td>02</td><td>Infeed line supply failure</td><td>Yes</td><td>No</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0864<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For bit 00:<br />Bit 0 signals that the infeed is ready.<br />When the operating signal is transferred via binector output r0863.0 this allows several drives to start (run-up) staggered over time when they are simultaneously switched on.<br />To realize this, the following connections&#47;interconnections are required:<br />Drive 1: Interconnect binector input p0864 with binector output r0863.0 of the infeed<br />Drive 2: Interconnect binector input p0864 with binector output r0863.0 of drive 1<br />Drive 3: Interconnect binector input p0864 with binector output r0863.0 of drive 2 etc.<br />The first drive only transfers the operating signal to the next drive after it has reached its ready condition.<br />For bit 01:<br />Bit 1 is used to control an external line contactor.<br />For bit 02:<br />This bit only signals line supply failure for Active Infeed (A_INF) and Smart Infeed (S_INF).<br /></td></tr>
+</table><p></p></body></html>

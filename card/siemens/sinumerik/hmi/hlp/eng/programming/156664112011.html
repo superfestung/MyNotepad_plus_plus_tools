@@ -1,0 +1,86 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Activate/deactivate punching and nibbling (SPOF, SON, PON, SONS, PONS, PDELAYON, PDELAYOF, PUNCHACC, SPIF1, SPIF2)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Activate/deactivate punching and nibbling (SPOF, SON, PON, SONS, PONS, PDELAYON, PDELAYOF, PUNCHACC, SPIF1, SPIF2)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <h4 class="Blocklabel">Activate/deactivate punching and nibbling</h4>
+      <p>
+        <code>PON</code> and <code>SON</code> are used to activate the punching and nibble functions. <code>SPOF</code> terminates all punching- and nibble-specific functions. Modal commands <code>PON</code> and <code>SON</code> are mutually exclusive, i.e. <code>PON</code> deactivates <code>SON</code> and vice versa. </p>
+      <h4 class="Blocklabel">Punching/nibbling with leader</h4>
+      <p>The functions <code>SONS</code> and <code>PONS</code> also switch-in the punching or nibbling functions.</p>
+      <p>Unlike <code>SON</code>/<code>PON</code> (stroke control at interpolation level), with these functions, signal-related control of stroke initiation is at servo level. This enables higher stroke frequencies and, as a result, increased punching capacity to be achieved.</p>
+      <p>While signals are being evaluated in the leader, all functions that cause the nibbling or punching axes to change position (e.g. manual handwheel travel, changes to frames via PLC, measurement functions) are inhibited.</p>
+      <h4 class="Blocklabel">Punching with delay</h4>
+      <p>
+        <code>PDELAYON</code> results in a delayed output of the punching stroke. The modally effective command has a preparatory function and therefore is generally located before <code>PON</code>. Normal punching resumes after <code>PDELAYOF</code>.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">The delay time is set in setting data SD42400 $SC_PUNCH_DWELLTIME.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Path-dependent acceleration</h4>
+      <p>
+        <code>PUNCHACC</code> can be used to specify an acceleration characteristic defining different rates of acceleration dependent on the hole spacing.</p>
+      <h4 class="Blocklabel">Second punching interface</h4>
+      <p>Machines which need to use a second punching interface (second punching unit or comparable medium) alternately can be switched over to a second pair of fast digital inputs and outputs on the control (I/O pair). Full punching/nibbling functionality is available on both interfaces. The <code>SPIF1</code> and <code>SPIF2</code> commands are used to switch over between the first and second punching interface.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Requirement: A second I/O pair has to be defined for the punching functionality in the machine data (→ see machine manufacturer's specifications).</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>PON G... X... Y... Z...SON G... X... Y... Z...SONS G... X... Y... Z...PONS G... X... Y... Z...PDELAYONPDELAYOFPUNCHACC(&lt;Smin>,&lt;Amin>,&lt;Smax>,&lt;Amax>)SPIF1/SPIF2SPOF<a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_019773a4-5423-4c10-83e9-5a14323f3ff8"></a> <a id="table_0"></a> <a id="table_019773a4-5423-4c10-83e9-5a14323f3ff8"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="17.4%"><col width="13.6%"><col width="68.9%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>PON</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Activate punching.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>SON</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Activate nibbling</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>PONS</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Activate punching with leader.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>SONS</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Activate nibbling with leader.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>SPOF</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Deactivate punching/nibbling.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>PDELAYON</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Activate punching with delay.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>PDELAYOF</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Deactivate punching with delay.</p></td></tr><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>PUNCHACC</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Activate travel-dependent acceleration.</p><p type="p_table_l" align="left">Parameter:</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Smin></code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Minimum hole spacing</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Amin></code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Initial acceleration</p><p type="p_table_l" align="left"><code>&lt;Amin></code> can be greater than &lt;<code>Amax></code>.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Smax></code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Maximum hole spacing</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Amax></code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Final acceleration</p><p type="p_table_l" align="left"><code>&lt;Amax></code> can be greater than &lt;<code>Amin></code>.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>SPIF1</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Activate <b>first</b> punching interface.</p><p type="p_table_l" align="left">The stroke is controlled using the first pair of fast I/O.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>SPIF2</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Activate <b>second</b> punching interface.</p><p type="p_table_l" align="left">The stroke is controlled using the second pair of fast I/O.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"></p> </td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><b>Note:</b><br />The first punch interface is always active after a RESET or control system power up. If only one punching interface is used, then it need not be programmed.</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Examples</h3><h4 class="Blocklabel"><b>Example 1: Activate nibbling</b></h4><a id="table_44b408c7-614a-4577-a604-aa90ccbf5047"></a> <a id="table_1"></a> <a id="table_44b408c7-614a-4577-a604-aa90ccbf5047"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EYBAC"><colgroup><col width="36.4%"><col width="63.6%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N70 X50 SPOF</td><td>; Position without punch initiation.</td></tr><tr valign="top"><td>N80 X100 SON</td><td>; Activate nibbling, initiate a stroke before the motion (X=50) and on completion of the programmed movement (X=100).</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel"><b>Example 2: Punching with delay</b></h4><a id="table_1ba6c9e3-a34d-481e-8103-ac6c75b34a3c"></a> <a id="table_2"></a> <a id="table_1ba6c9e3-a34d-481e-8103-ac6c75b34a3c"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E3CAC"><colgroup><col width="36.4%"><col width="63.6%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N170 PDELAYON X100 SPOF</td><td>; Position without punch initiation, activate delayed punch initiation.</td></tr><tr valign="top"><td>N180 X800 PON</td><td>; Activate punching. The punch stroke is output with a delay when the end position is reached.</td></tr><tr valign="top"><td>N190 PDELAYOF X700</td><td>; Deactivate punching with delay, normal punch initiation on completion of the programmed movement.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel"><b>Example 3: Punching with two punching interfaces</b></h4><a id="table_16608664-23b4-4a3d-b949-743d2adbd4fa"></a> <a id="table_3"></a> <a id="table_16608664-23b4-4a3d-b949-743d2adbd4fa"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EFEAC"><colgroup><col width="36.4%"><col width="63.6%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N170 SPIF1 X100 PON</td><td>; At the end of the block, a stroke is initiated at the first fast output. The "Stroke active" signal is monitored at the first input.</td></tr><tr valign="top"><td>N180 X800 SPIF2</td><td>; The second stroke is initiated at the second fast output. The "Stroke active" signal is monitored at the second input.</td></tr><tr valign="top"><td>N190 SPIF1 X700</td><td>; All further strokes are controlled with the first interface.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+    <p>See also:<br />    <a href="156664115339.html">Activate/deactivate punching and nibbling (SPOF, SON, PON, SONS, PONS, PDELAYON, PDELAYOF, PUNCHACC, SPIF1, SPIF2): More information</a></p>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Distribution via job lists in the case of 1:N</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Distribution via job lists in the case of 1:N</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Simplified selection of programs</h3>
+      <p>The function is only available in a group of several NCUs ands must be enabled in the "systemconfiguration.ini " configuration file:</p>
+      <p>
+        <code>[miscellaneous] </code>
+      </p>
+      <p>
+        <code>distributeJoblist=true </code>
+      </p>
+      <p>The sources are located on the local drive of the IPC or the PC.</p>
+      <p>The distribution of the programs is done by selecting a job list which is located in a workpiece. The job list may contain COPY and SELECT instructions: </p>
+      <p>
+        <code>; Copy A.MPF to NCU1:</code>
+      </p>
+      <p>
+        <code>COPY A.MPF NC=NCU1</code>
+      </p>
+      <p>
+        <code>; Copy B.MPF to NCU2:</code>
+      </p>
+      <p>
+        <code>COPY B.MPF NC=NCU2</code>
+      </p>
+      <p>
+        <code>; Copy all subprograms to all NCUs:</code>
+      </p>
+      <p>
+        <code>COPY *.SPF *</code>
+      </p>
+      <p>
+        <code>; Select A.MPF on NCU1 in channel 1.</code>
+      </p>
+      <p>
+        <code>SELECT A.MPF ch=NCU1,1</code>
+      </p>
+      <p>
+        <code>; Select B.MPF on NCU2 in channel 2.</code>
+      </p>
+      <p>
+        <code>SELECT B.MPF ch=NCU2,2</code>
+      </p>
+      <h4 class="Blocklabel">Sequence:</h4>
+      <ol>
+        <li>
+          <p>If a distributed job list is active during the selection, all distributed programs on the NCU are deleted without confirmation. If the workpiece on the NCUs is empty, it will be deleted there.</p>
+        </li>
+        <li>
+          <p>The programs are copied to the corresponding workpieces of the relevant NCU.</p>
+        </li>
+        <li>
+          <p>Existing programs are overwritten without any message.</p>
+        </li>
+        <li>
+          <p>Following a change in a distributed program on the local drive, the modified programs using the Editor are copied to the corresponding NCU.</p>
+        </li>
+      </ol>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Sample structure</h3>
+      <a id="table_e92d0b8f-9813-4c98-93f1-e70212a995f3">
+      </a> <a id="table_0"></a> <a id="table_e92d0b8f-9813-4c98-93f1-e70212a995f3"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="28.8%"><col width="35.5%"><col width="35.5%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">/user/sinumerik/data/ prog/JOBA.WPD </p></th><th><p type="p_table_lb" align="left">NCU1</p></th><th><p type="p_table_lb" align="left">NCU2</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.JOB </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">A.MPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">B.MPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/B.MPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/B.MPF</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">UP1.SPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.WPD/UP1.SPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.WPD/UP1.SPF</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">UP2.SPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/UP2.SPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/UP2.SPF</p></td></tr></table></p><a id="table_5112f85c-0783-4a03-961c-f9c11f664e4d"></a> <a id="table_1"></a> <a id="table_5112f85c-0783-4a03-961c-f9c11f664e4d"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="28.8%"><col width="35.5%"><col width="35.5%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">/user/sinumerik/data/ prog/wks.dir/JOBA.WPD</p></th><th><p type="p_table_lb" align="left">NCU1</p></th><th><p type="p_table_lb" align="left">NCU2</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.JOB </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">A.MPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">B.MPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/B.MPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/B.MPF</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">UP1.SPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.WPD/UP1.SPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.WPD/UP1.SPF</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">UP2.SPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/UP2.SPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/UP2.SPF</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Supplementary conditions</h3><p>Special behavior:</p><ul><li><p>Distributed programs are retained during a restart of the operating software.</p></li><li><p>On the local drive, distributed programs can neither be deleted nor renamed nor overwritten using copy/move.</p></li><li><p>Changes of distributed programs on the NCU are lost, if they are not manually saved.</p></li><li><p>The program correction in the machine is not offered.</p></li><li><p>When creating a commissioning archive, all data of the local drive is also automatically saved.</p></li></ul><p>Restrictions:</p><ul><li><p>In the event of changes of distributed programs on the local drive using the Editor, it should be noted that only the channel states are monitored on the NCU currently connected. If the program is still interrupted or active on another NCU, it cannot be correctly distributed after the change.</p></li><li><p>The display of the active block, the marking of the block search as well as the read-only handling of the program opened in the Editor are executed only for the active programs of the currently connected NCU.</p></li><li><p>In the Editor, programs are always opened in the context of the currently connected NCU. This can lead to a faulty step recognition with distributed programs.</p></li><li><p>In the current block display in the "Machine" operating area, you can display only the active/distributed programs of the currently connected NCU.</p></li><li><p>The simulation of job lists via several machines is not possible.</p></li><li><p>If <code>distributeJoblist=true</code> is configured in file "systemconfiguration.ini", then part or subprograms can no longer be selected via the "Program Manager" operating area.</p></li></ul></div>
+  </body>
+</html>

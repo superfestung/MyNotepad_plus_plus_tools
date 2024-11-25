@@ -1,0 +1,42 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SafeUserData - Import</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowAction">
+        <h1 class="title">SafeUserData - Import</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Aus einer gewählten Importdatei können SUD-Aktualwerte in die PLC importiert werden. </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Voraussetzungen</h3>
+      <ul>
+        <li>
+          <p>Der in der Datei enthaltene Hashwert ist korrekt und zeigt die Unversehrtheit der Datei an.</p>
+        </li>
+        <li>
+          <p>Typ und Reihenfolge der Elemente in den Anwenderbausteinen stimmen mit dem geladenen PLC-Projekt überein.</p>
+          <p>Kleinere Unterschiede beim Elementnamen werden toleriert. </p>
+        </li>
+        <li>
+          <p>Alle "writeEnable"-Signale sind aktiv. </p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Aufruf</h3>
+      <p>MENU SELECT > Inbetriebnahme > Menüfortschalttaste > Safety > SafeUserData > Import</p>
+      <p>Anschließend öffnet sich ein Dialog zur Auswahl der SUD-Importdatei. </p>
+      <a id="table_6b81492b-d541-db0e-dc48-8479f8314f1e">
+      </a> <a id="table_0"></a> <TableTitle>Informationen</TableTitle><a id="table_6b81492b-d541-db0e-dc48-8479f8314f1e"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="20.0%"><col width="80.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Name</p></th><th><p type="p_table_lb" align="left">Beschreibung</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">SafeUserData importieren</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Wählen Sie hier die gewünschte Importdatei aus. </p></td></tr></table></p><a id="table_732e05ef-7039-7f21-1fc6-38d55076e6bf"></a> <a id="table_1"></a> <TableTitle>Vertikale Softkeys</TableTitle><a id="table_732e05ef-7039-7f21-1fc6-38d55076e6bf"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="20.1%"><col width="79.9%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Name</p></th><th><p type="p_table_lb" align="left">Beschreibung</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">OK</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Mit diesem Softkey starten Sie den Import der SUD-Aktualwerte aus der gewählten Importdatei. Das Programm prüft die Daten der Importdatei und importiert alle Bausteine mit identischen Symbonamen. </p><p type="p_table_l" align="left">Bei Inkonsistenzen zwischen den Symbolnamen der vorhandenen und der zu importierenden Daten erscheint eine Abfrage. Bestimmen Sie, wie mit diesen Inkonsistenzen verfahren werden soll. </p><p type="p_table_l" align="left">Im Anschluss daran wird das Importergebnis angezeigt. </p><p type="p_table_l" align="left">Mit dem gleichen Softkey bestätigen Sie das angezeigte Importergebnis. </p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Abbruch</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Mit diesem Softkey brechen Sie den Import der Aktualwerte ab.</p><p type="p_table_l" align="left">Nach dem Abbruch wird die Maske "SafeUserData - Übersicht" angezeigt.</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Ergebnis</h3><p>Das Programm schreibt alle Instanzen und überprüft dabei die Aktualwerte. </p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><h4 class="Blocklabel">Abnahmetest erforderlich</h4><p class="safety">Führen Sie nach dem Import von Aktualwerten immer einen Abnahmetest durch. </p></td></tr></table><ul><li><p>War die Überprüfung erfolgreich, erscheint noch eine Maske mit der Zusammenfassung der Überprüfung. Der Import kann mit "OK" gestartet oder mit "Abbruch" abgebrochen werden. Nach Ende des Imports erscheint die Meldung "Der Import der SafeUserData wird beendet".</p></li><li><p>War der Import dagegen nicht erfolgreich, erhalten Sie die Meldung "Der Import der SafeUserData wurde abgebrochen". Mögliche Ursachen sind: </p><ul><li><p>Beim Lesen der Importdatei ist ein Fehler aufgetreten.</p></li><li><p>Der Hashwert der Datei stimmt nicht.</p></li><li><p>Die Version der Datei ist ungültig.</p></li><li><p>Anzahl/Typ/Name der Anwenderbausteine oder Reihenfolge der Elemente eines Bausteins stimmen nicht mit dem aktuellen PLC-Projekt überein.</p></li><li><p>Das "writeEnable"-Signal ist nicht bei allen Anwenderbausteinen aktiv.</p></li></ul></li><li><p>Hat die Überprüfung ergeben, dass die Importdatei weniger Bausteine enthält als der aktive SafeUserData-Datensatz, so werden alle identischen Bausteine aus der Importdatei importiert. Bausteine, die nur im aktiven SafeUserData-Datensatz enthalten sind, werden nicht überschrieben. </p></li><li><p>Hat die Überprüfung ergeben, dass die Importdatei mehr Bausteine enthält als der aktive SafeUserData-Datensatz, so werden alle identischen Bausteine aus der Importdatei importiert. Bausteine, die nur in der Importdatei enthalten sind, werden nicht importiert. </p></li><li><p>Hat die Überprüfung ergeben, dass sich die Symbolnamen der aktiven SafeUserData-Datensätze von den Symbolnamen der Importdatei unterscheiden, wird dies in einer Meldung angezeigt (siehe <a href="konf_sud_import_details.html">SafeUserData - Übersicht - Details</a>). Das weitere Vorgehen können Sie über die Softkeys definieren: </p><ul><li><p>Softkey Abbruch</p><p>Sie können den Import der Importdatei komplett abbrechen. </p></li><li><p>Softkey Verwerfen</p><p>Sie bewerten der Unterschiede (Softkey OK), die in einer Maske angezeigt werden. Sie entscheiden Sie sich dafür, die Werte der abweichenden Symbolnamen für die angezeigte Instanz nicht zu übernehmen. In diesem Fall benutzen Sie den Softkey Verwerfen. Liegen weitere Unterschiede für andere Instanzen vor, werden diese anschließend in Folgemasken angezeigt. </p></li><li><p>Softkey Übernehmen</p><p>Sie bewerten der Unterschiede (Softkey OK), die in einer Maske angezeigt werden. Sie entscheiden Sie sich dafür, alle Werte der abweichenden Symbolnamen aller Instanzen aus der Importdatei zu übernehmen. </p></li></ul><p>Eine Übersicht zeigt anschließend nochmals, welche Entscheidung Sie getroffen haben. Mit dem Softkey OK können Sie den entgültigen Import anstoßen.</p></li></ul></div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Werkzeugkorrekturen aktivieren/deaktivieren (D, D0)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Werkzeugkorrekturen aktivieren/deaktivieren (D, D0)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Den 1 bis 8 (bei aktiver WZV 12) Schneiden eines Werkzeugs können verschiedene Werkzeugkorrekturdatensätze zugeordnet werden (z. B. unterschiedliche Korrekturwerte für die linke und rechte Schneide bei einem Einstechmeißel).</p>
+      <p>Die Aktivierung der Korrekturdaten (u. a. die Daten für die Werkzeuglängenkorrektur) einer speziellen Schneide erfolgt durch Aufruf der D-Nummer. Bei Programmierung von D0 sind die Korrekturen für das Werkzeug unwirksam.</p>
+      <p>Eine Werkzeugradiuskorrektur muss zusätzlich durch G41/G42 eingeschaltet werden.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Werkzeuglängenkorrekturen wirken, wenn die D-Nummer programmiert ist. Wird keine D-Nummer programmiert, ist bei einem Werkzeugwechsel die über Maschinendatum definierte Standardeinstellung aktiv (→ siehe Angaben des Maschinenherstellers).</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <a id="table_4b8c3620-b6ea-63eb-60eb-c7a89cdcf5a0">
+      </a> <a id="table_0"></a> <a id="table_4b8c3620-b6ea-63eb-60eb-c7a89cdcf5a0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EZE"><colgroup><col width="74.2%"><col width="25.8%"></colgroup><tr valign="top"><td><b>D&lt;Nr></b></td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G41/G42 X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G40</td><td> </td></tr><tr valign="top"><td><b>D0</b></td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_647690ca-bdd0-4355-903a-02d79b31e453"></a> <a id="table_1"></a> <a id="table_647690ca-bdd0-4355-903a-02d79b31e453"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="17.4%"><col width="22.6%"><col width="59.9%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>D</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Adresse zur Aktivierung eines Korrekturdatensatzes für das aktive Werkzeug</p><p type="p_table_l" align="left">Die Werkzeuglängenkorrektur wird mit dem ersten programmierten Verfahren der zugehörigen Längenkorrekturachse herausgefahren.</p><p type="p_table_l" align="left"><b>Achtung:</b><br />Eine Werkzeuglängenkorrektur wirkt auch ohne D-Programmierung, wenn für den Werkzeugwechsel die automatische Aktivierung einer Werkzeugschneide projektiert ist (→ siehe Angaben des Maschinenherstellers).</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Nr></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Über die D-Nummer wird der zu aktivierende Werkzeugkorrekturdatensatz angegeben.</p><p type="p_table_l" align="left">Die Art der D-Programmierung ist abhängig von der Projektierung der Maschine (→ siehe Angaben des Maschinenherstellers).</p><p type="p_table_l" align="left">Es gibt folgende Möglichkeiten:</p><ul class="table"><li><p>D-Nummer = Schneidennummer </p><p>Zu jedem Werkzeug T&lt;Nr> (ohne WZV) bzw. T="Name" (mit WZV) existieren D-Nummern von 1 bis max. 12. Diese D-Nummern sind direkt den Schneiden von Werkzeugen zugeordnet. Zu jeder D-Nummer (= Schneidennummer) gehört ein Korrekturdatensatz ($TC_DPx[&lt;t>,&lt;d>]).</p></li><li><p>Freie Wahl von D-Nummern</p><p>Die D-Nummern können den Schneidennummern eines Werkzeugs frei zugeordnet werden. Die Obergrenze der verwendbaren D-Nummern ist durch ein Maschinendatum festgelegt.</p></li></ul></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wertebereich:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">0 - 32000</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>D0</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Deaktivierung des Korrekturdatensatzes für das aktive Werkzeug</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G41</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Befehl zum Einschalten der Werkzeugradiuskorrektur mit Bearbeitungsrichtung <b>links</b> von der Kontur</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G42</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Befehl zum Einschalten der Werkzeugradiuskorrektur mit Bearbeitungsrichtung <b>rechts</b> von der Kontur</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G40</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Befehl zum Ausschalten der Werkzeugradiuskorrektur</p></td></tr></table></p><p class="comment"><b>Weitere Informationen</b> zu G40/G41/G42 siehe Kapitel "<a href="156661960203.html">Werkzeugradiuskorrekturen</a>".</p><a name="block_3"></a><h3 class="Blocktitle">Beispiele</h3><h4 class="Blocklabel">Beispiel 1: Werkzeugwechsel mit T-Befehl (Drehen)</h4><a id="table_c036d003-d926-4865-bcc4-48ff1fbebf2a"></a> <a id="table_2"></a> <a id="table_c036d003-d926-4865-bcc4-48ff1fbebf2a"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EPBAC"><colgroup><col width="27.1%"><col width="72.9%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 T1 D1</td><td>; Werkzeug T1 einwechseln und den Werkzeugkorrekturdatensatz D1 von T1 aktivieren.</td></tr><tr valign="top"><td>N11 G0 X... Z...</td><td>; Die Längenkorrekturen werden herausgefahren.</td></tr><tr valign="top"><td>N50 T4 D2</td><td>; Werkzeug T4 einwechseln und den Werkzeugkorrekturdatensatz D2 von T4 aktivieren.</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N70 G0 Z... D1</td><td>; Andere Schneide D1 für das Werkzeug T4 aktivieren.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Beispiel 2: Unterschiedliche Korrekturwerte für die linke und rechte Schneide bei einem Einstechmeißel</h4><a id="image_129637414155_0"></a> <img border="0" src="images/176065012235.png" width="418" height="295"/><a id="table_"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_legend" border="0"><colgroup><col width="6.9%"><col width="93.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">①</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Einstechdrehmeißel (T2)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">②</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Schneide D1</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">③</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Schneide D6</p></td></tr></table></p></div>
+    <p>Siehe auch:<br />    <a href="156661530891.html">Werkzeugkorrekturen aktivieren/deaktivieren (D, D0): Weitere Informationen</a><br />    <a href="156661533579.html">Werkzeugkorrekturen unterdrücken (SUPD)</a><br />    <a href="156661463179.html">Programmierte Kontur und Werkzeugbahn</a><br />    <a href="156661470091.html">Werkzeuglängenkorrektur</a><br />    <a href="156661473803.html">Werkzeugradiuskorrektur</a><br />    <a href="156661478795.html">Werkzeug-Korrekturspeicher</a></p>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Attribute: Limit values (LLI, ULI)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Attribute: Limit values (LLI, ULI)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>An upper and a lower limit of the definition range can only be defined for the following data types:</p>
+      <ul>
+        <li>
+          <p>INT</p>
+        </li>
+        <li>
+          <p>REAL</p>
+        </li>
+        <li>
+          <p>CHAR</p>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Definition (DEF) of user variables: Limit values and implicit initialization values    </h3>
+      <p>If no explicit initialization value is defined when defining a user variable of one of the above data types, the variable is set to the data type's implicit initialization value.</p>
+      <ul>
+        <li>
+          <p>INT: 0</p>
+        </li>
+        <li>
+          <p>REAL: 0.0</p>
+        </li>
+        <li>
+          <p>CHAR: 0</p>
+        </li>
+      </ul>
+      <p>If the implicit initialization value is outside the definition range specified by the programmed limit values, the variable is initialized with the limit value which is closest to the implicit initialization value:</p>
+      <ul>
+        <li>
+          <p>Implicit initialization value &lt; lower limit value (LLI) ⇒ <br /> initialization value = lower limit value</p>
+        </li>
+        <li>
+          <p>Implicit initialization value > upper limit value (ULI) ⇒ <br /> initialization value = upper limit value</p>
+        </li>
+      </ul>
+      <p>Examples: </p>
+      <a id="table_05e08152-eff9-41b0-b583-0aef8401ca7c">
+      </a> <a id="table_0"></a> <a id="table_05e08152-eff9-41b0-b583-0aef8401ca7c"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="32.5%"><col width="67.5%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>DEF REAL GUD1</td><td>; Lower limit value = definition range limit; Upper limit value = definition range limit; No initialization value programmed; => Implicit initialization value = 0.0</td></tr><tr valign="top"><td>DEF REAL LLI 5.0 GUD2</td><td>; Lower limit value = 5.0; Upper limit value = definition range limit; => Initialization value = 5.0</td></tr><tr valign="top"><td>DEF REAL ULI –5 GUD3</td><td>; Lower limit value = definition range limit; Upper limit value = -5.0; => Initialization value = -5.0</td></tr></table></p><a name="block_2"></a><h3 class="Blocktitle">Redefinition (REDEF) of user variables: Limit values and current actual values</h3><p>If the limit values of a user variable are redefined, they change to the extent that the current actual value is outside the new definition range, an alarm will be issued and the limit values will be rejected.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><h4 class="Blocklabel">Redefinition (REDEF) of user variables</h4><p class="safety">If the limit values of a user variable are redefined, care must be taken to ensure that the following values are changed consistently:</p><ul class="safety"><li class="safety"><p class="safety">Limit values</p></li><li class="safety"><p class="safety">Actual value</p></li><li class="safety"><p class="safety">Initialization value on redefinition and automatic reinitialization on the basis of INIPO, INIRE or INICF</p></li></ul></td></tr></table></div>
+    <p>See also:<br />    <a href="156662348683.html">Variables: General information</a></p>
+  </body>
+</html>

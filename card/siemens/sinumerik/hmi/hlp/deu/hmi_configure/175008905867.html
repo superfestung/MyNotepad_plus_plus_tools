@@ -1,0 +1,71 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Variablenadresse und Parameter</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Variablenadresse und Parameter</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>In einer änderbaren NC/PLC-Trace-Konfiguration können Variablen entweder durch Auswahl aus der Variablenliste oder durch Eingabe in das Adressfeld der Signaltabelle mit Hilfe einer Auto-Vervollständigungsliste zur Konfiguration hinzugefügt werden.</p>
+      <p>Im Adressfeld der Signaltabelle werden PLC-Variablen mit ihren symbolischen Namen angezeigt. Die Speicheradresse wird nur angezeigt, wenn für diese Adresse kein Symbol vorhanden ist. (Als Tool-Tipp für das Feld "Adresse / Symbol" wird sowohl das Symbol als auch die Adresse angezeigt, wenn beide vorhanden sind.)</p>
+      <p>Die Adresse der PLC-Variablen kann bearbeitet werden, wodurch die Adresse durch eine andere PLC-Adresse ersetzt wird. Andere Variablenadressen sind nicht bearbeitbar.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Parameter</h3>
+      <p>Wenn für eine Variable Parameter vorliegen, werden diese in der Spalte "Parameter" der Signaltabelle angezeigt.</p>
+      <p>Maschinenachsen, Geometrieachsen und Kanalparameter können aus Dropdown-Listen ausgewählt werden, die mit den Bezeichnern der auf der Maschine vorhandenen Achsen/Kanäle gefüllt werden. (Kanalachsparameter werden in Maschinenachsbezeichner umgewandelt.)</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Für Geometrieachsen wird der Bezeichner in der Applikation nicht automatisch umgewandelt.</p>
+            <p class="safety">Wenn Sie die Kanal- oder Achskonfigurationen geändert haben, starten Sie die Applikation neu, um die Bezeichner zu aktualisieren.</p>
+          </td>
+        </tr>
+      </table>
+      <p>Numerische Indizes werden in Bearbeitungsfeldern angezeigt. Die Anzahl der Bearbeitungsfelder kann variieren, je nachdem, wie viele Indizes vorhanden sind oder welche Indizes für die betreffende Variable änderbar sind.</p>
+      <p>Wenn der Konfiguration eine Variablenadresse hinzugefügt wird und die Adresse die Indizes nicht enthält, gelten folgende Standardwerte:</p>
+      <ul>
+        <li>
+          <p>Achs- und Kanalbezeichner: Ungültige Auswahl (leeres Kombinationsfeld).</p>
+        </li>
+        <li>
+          <p>BTSS-Einheiten-, Spalten- und Zeilenindizes: Wert 1</p>
+          <p>Die Anwendung prüft weder die Unter- noch die Obergrenze der BTSS-Indizes. Die Online-Hilfe in der Variablenauswahlliste beschreibt die korrekte Indexverwendung für eine bestimmte Variable.</p>
+        </li>
+        <li>
+          <p>Array-Indizes: Der Standardwert ist die untere Grenze des Array-Indexbereichs.</p>
+          <p>Beim Fahren mit dem Mauszeiger über das Bearbeitungsfeld zeigt ein Tool-Tipp die untere und obere Grenze des Indexbereichs an. Die Array-Grenzwerte werden auch in der Variablenauswahlliste angezeigt.</p>
+        </li>
+      </ul>
+      <p>Wenn ein Parameter in einem Kombinationsfeld oder Bearbeitungsfeld geändert wird, werden die Indizes im Adressfeld der Variablen entsprechend aktualisiert.</p>
+      <p>Beim Hinzufügen einer Variablen kann eine Adresse zusammen mit dem Indexteil in die Signaltabelle eingegeben werden. Die eingegebenen Indizes werden dann zum Füllen der Spalte "Parameter" verwendet.</p>
+      <p>Nach dem Hinzufügen oder Bearbeiten einer Variablen werden ungültige Parameterwerte mit roter Hintergrundfarbe angezeigt, und solche Fehler verhindern den Start einer Trace-Aufzeichnung. (Die meisten Parameterfehler werden jedoch nicht direkt nach dem Laden einer Sitzungsdatei angezeigt, solange die Konfiguration nicht geändert wird.)</p>
+      <p>Wenn ein Parameter für ein bereits aufgezeichnetes Signal geändert wird, werden die aufgezeichneten Daten aus dem Trace-Diagramm gelöscht.</p>
+      <a id="image_175384211211_0">
+      </a> <img border="0" src="images/175384215819.png" width="500" height="118"/><a name="block_2"></a><h3 class="Blocktitle">PLC1500-Variablen: Behandeln von geschachtelten Arrays</h3><p>Eine PLC1500-Variable kann als geschachtelte Array-Struktur mit mehr als einem Indexteil in der Adresse definiert werden.</p><p>Beispiel: <code>LBP_AlarmMessages.Channel[1..10].FdStop_1[0..15]</code></p><p class="comment">Für eine solche Variable wird in der Spalte "Parameter" kein Bearbeitungsfeld erstellt. Stattdessen wird im Feld "Adresse" die komplette Adresse angezeigt, und die Indizes müssen dort bearbeitet werden.</p><p class="comment">Nach dem Hinzufügen der Variablen zeigt die Adresse die Indexbereiche an, z. B. <code>[1..10]</code>. Das Adressfeld hat eine rote Hintergrundfarbe, da es noch nicht gültig ist. Doppelklicken Sie auf das Adressfeld oder drücken Sie die Einfg-Taste, um das Feld in den Bearbeitungsmodus zu versetzen. Geben Sie die erforderlichen Indizes in die Adresse ein und drücken Sie die Eingabetaste, um sie erneut zu bestätigen.</p><p class="comment">Solange noch Indexfehler in der Adresse vorhanden sind, informiert Sie ein Tool-Tipp genau über die Art des Fehlers.</p><h4 class="Blocklabel">Beispiel</h4><a id="image_175384219787_0"></a> <img border="0" src="images/175385926795.png" width="500" height="140"/><p class="comment">Der Indexbereiche der Variablen wurde noch nicht durch einen gültigen Index ersetzt. Und der andere Index liegt außerhalb des gültigen Bereichs.</p></div>
+  </body>
+</html>

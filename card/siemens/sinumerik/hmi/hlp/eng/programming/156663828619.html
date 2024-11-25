@@ -1,0 +1,69 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Actions with condition unfulfilled (ELSE)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Actions with condition unfulfilled (ELSE)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>With the keyword ELSE, every synchronized action can be expanded by actions which are to be executed if the condition is not fulfilled. This allows the combination of synchronized actions which have contrary conditions.</p>
+      <p>Example:</p>
+      <p>
+        <code>ID=101 WHENEVER $VA_IM[x] &lt; 100 DO $AC_OVR=100</code> </p>
+      <p>
+        <code>ID=102 WHENEVER $VA_IM[x] >= 100 DO $AC_OVR=50</code> </p>
+      <p>The two synchronized actions can be brought together by programming ELSE:</p>
+      <p>
+        <code>ID=101 WHENEVER $VA_IM[x] &lt; 100 DO $AC_OVR=100 ELSE $AC_OVR=50</code> </p>
+      <h4 class="Blocklabel">Additional properties</h4>
+      <ul>
+        <li>
+          <p>In the ELSE branch, the same constraints apply as for the <a href="156663824907.html">actions with the condition fulfilled</a></p>
+        </li>
+        <li>
+          <p>ELSE is always possible with every condition. The practical use is the responsibility of the user.</p>
+          <p>Example:</p>
+          <p>
+            <code>WHEN $AA_IW[X] > 100 DO $R1=1 ELSE $R1=2</code> </p>
+          <p>
+            <code>G0 X100 F10</code> </p>
+          <p>Here, the expression $R1=2 is executed in each interpolation cycle and the R-parameter is written, even if this is not essential. This must be taken into account by the user.</p>
+        </li>
+        <li>
+          <p>The language command ELSE can be used together with all frequency variants.</p>
+          <p>Examples:</p>
+          <ul>
+            <li>
+              <p>The ELSE branch is always executed when the condition is not fulfilled:</p>
+              <p>
+                <code>WHENEVER $AA_IW[X] > 100 DO $R1=1 ELSE $R1=2</code> </p>
+              <p>
+                <code>EVERY $AA_IW[X] > 100 DO $R1=1 ELSE $R1=2</code> </p>
+            </li>
+            <li>
+              <p>As long as the condition is not fulfilled, the ELSE branch is executed, then always the action: </p>
+              <p>
+                <code>FROM $AA_IW[X] > 100 DO $R1=1 ELSE $R1=2</code> </p>
+            </li>
+            <li>
+              <p>As long as the condition is not fulfilled, the ELSE branch is executed, then the action and the synchronized action are ended:</p>
+              <p>
+                <code>WHEN $AA_IW[X] > 100 DO $R1=1 ELSE $R1=2</code>  </p>
+            </li>
+          </ul>
+          <p> </p>
+        </li>
+      </ul>
+    </div>
+    <p>See also:<br />    <a href="156663797771.html">Definition of a synchronized action</a></p>
+  </body>
+</html>

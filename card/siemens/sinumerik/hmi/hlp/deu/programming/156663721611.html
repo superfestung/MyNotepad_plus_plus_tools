@@ -1,0 +1,33 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Elektronisches Getriebe einschalten (EGON, EGONSYN, EGONSYNE): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Elektronisches Getriebe einschalten (EGON, EGONSYN, EGONSYNE): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Beschreibung der Einschaltvarianten</h4>
+      <p>Variante 1:</p>
+      <p>Die Positionen der Leitachsen sowie der Folgeachse zum Zeitpunkt des Einschaltens werden gespeichert als "Synchronpositionen". Die "Synchronpositionen" können mit den Systemvariablen<code> $AA_EG_SYN </code>gelesen werden.</p>
+      <p>Variante 2:</p>
+      <p>Wenn Modulo-Achsen im Koppelverband sind, werden ihre Positionswerte modulo reduziert. Damit ist gewährleistet, dass die nächstmögliche Synchronposition angefahren wird (sog. <i>relative Synchronisation</i>: z. B. die nächste Zahnlücke). </p>
+      <p>Wenn für die Folgeachse die Folgeachsüberlagerung nicht freigegeben ist, wird nicht auf die Synchronposition gefahren. Stattdessen wird das Programm beim EGONSYN-Satz angehalten und es wird der selbstlöschende Alarm 16771 gemeldet, solange bis das Freigabesignal gesetzt wird.</p>
+      <p>Variante 3:</p>
+      <p>Der Zahnabstand (Grad) ergibt sich aus: 360 * Zi/Ni. Für den Fall, dass die Folgeachse zum Aufrufzeitpunkt steht, liefert wegoptimiert das gleiche Verhalten wie zeitoptimiert. </p>
+      <p>Bei bereits fahrender Folgeachse wird mit NTGP unabhängig von der aktuellen Geschwindigkeit der Folgeachse auf die nächste Zahnlücke synchronisiert. Bei bereits fahrender Folgeachse wird mit NTGT abhängig von der aktuellen Geschwindigkeit der Folgeachse auf die nächste Zahnlücke synchronisiert. Die Achse wird dazu ggf. auch abgebremst.</p>
+      <h4 class="Blocklabel">Kurventabellen</h4>
+      <p>Wird für eine der Leitachsen eine <b>Kurventabelle</b> verwendet, ist folgendes zu beachten:</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="10.6%"><col width="89.3%"></colgroup><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">Ni</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Der Nenner des Koppelfaktors der linearen Kopplungen muss auf den Wert 0 gesetzt werden. </p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">Zi</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Bei Nenner 0 wird der Zähler als Nummer der zu verwendenden Kurventabelle interpretiert. </p><p type="p_table_l" align="left"><b>Hinweis</b></p><p type="p_table_l" align="left">Die Kurventabelle muss zum Einschaltzeitpunkt bereits definiert sein.</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">LAi</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Die Angabe der Leitachse entspricht der Leitachsangabe bei Kopplung über Koppelfaktor (lineare Kopplung).</p></td></tr></table></p><p>Weitere Hinweise über die Nutzung von Kurventabellen und das Kaskadieren von Elektronischen Getrieben und deren Synchronisierung finden Sie in:</p><p><b>Litetarur</b></p><p>Funktionshandbuch Achsen und Spindeln</p><h4 class="Blocklabel">Verhalten des Elektronischen Getriebes bei Power On, RESET, Betriebsartenwechsel, Satzsuchlauf</h4><ul><li><p>Nach Power On ist <b>keine</b> Kopplung aktiv.</p></li><li><p>Aktive Kopplungen bleiben über RESET und Betriebsartenwechsel erhalten.</p></li><li><p>Bei Satzsuchlauf werden Befehle zum Schalten, Löschen, Definieren des Elektronischen Getriebes nicht ausgeführt und nicht aufgesammelt, sondern übergangen.</p></li></ul><h4 class="Blocklabel">Systemvariablen des Elektronischen Getriebes</h4><p>Mit Hilfe der Systemvariablen des Elektronischen Getriebes kann das Teileprogramm aktuelle Zustände eines EG-Achsverbandes ermitteln und ggf. darauf reagieren.</p><p>Die Systemvariablen des Elektronischen Getriebes sind wie folgt gekennzeichnet:</p><p>$AA_EG_ ... </p><p>oder</p><p>$VA_EG_ ... </p></div>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Makrotechnik (DEFINE ... AS)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Makrotechnik (DEFINE ... AS)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Achtung</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Makrotechnik erhöht die Komplexität der Programmierung</h4>
+            <p class="safety">Mit Makrotechnik kann die Programmiersprache der Steuerung stark verändert werden. Makrotechnik darf nur mit großer Sorgfalt eingesetzt werden.</p>
+          </td>
+        </tr>
+      </table>
+      <p>Als Makro bezeichnet man die Zusammenfassung von einzelnen Anweisungen zu einer neuen Gesamtanweisung mit eigenem Namen. Bei Aufruf des Makros im Programmablauf werden die unter dem Makronamen programmierten Anweisungen nacheinander abgearbeitet.</p>
+      <h4 class="Blocklabel">Makro-Typen</h4>
+      <p>Entsprechend dem Gültigkeitsbereich, d. h. dem Bereich in dem die Makrodefinition wirksam ist, gibt es folgende Kategorien von Makros:</p>
+      <ul>
+        <li>
+          <p>Lokale Makros</p>
+          <p>Lokale Makros sind Makros, die am Programmanfang eines NC-Programms definiert sind, das zum Zeitpunkt der Abarbeitung nicht das Hauptprogramm ist. Sie werden beim Aufruf des NC-Programms angelegt und mit Programmende-Reset bzw. dem nächsten Steuerungshochlauf gelöscht. Auf lokale Makros kann nur innerhalb des NC-Programms zugegriffen werden, in dem sie definiert sind.</p>
+        </li>
+        <li>
+          <p>Programmglobale Makros</p>
+          <p>Programmglobale Makros sind Makros, die am Programmanfang eines als Hauptprogramm verwendeten NC-Programms definiert sind. Sie werden beim Aufruf des NC-Programms angelegt und mit Programmende-Reset bzw. dem nächsten Steuerungshochlauf gelöscht. Auf programmglobale Makros kann im Hauptprogramm und in allen Unterprogrammen zugegriffen werden.</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Hinweis</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="Blocklabel">Verfügbarkeit von programmglobalen Makros</h4>
+                <p class="safety">Im Hauptprogramm definierte programmglobale Makros sind nur dann auch in den Unterprogrammen verfügbar, wenn folgendes Maschinendatum gesetzt ist:</p>
+                <p class="safety">MD11120 $MN_LUD_EXTENDED_SCOPE = 1</p>
+                <p class="safety">Mit MD11120 = 0 sind die im Hauptprogramm definierten programmglobalen Makros nur im Hauptprogramm verfügbar.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          <p>Globale Makros</p>
+          <p>Globale Makros sind NC- bzw. Kanal-globale Makros, die in einer Definitionsdatei (Makrodatei) definiert sind und auch nach Programmende-Reset bzw. dem nächsten Steuerungshochlauf erhalten bleiben. Globale Makros können in jedem beliebigen Haupt- oder Unterprogramm aufgerufen und abgearbeitet werden.</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Hinweis</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="safety">Um die Makros einer <b>externen</b> Makrodatei im NC-Programm verwenden zu können, muss die Makrodatei in die NC geladen werden.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Makro-Definitionsregeln</h4>
+      <p>Makros müssen vor ihrer Verwendung definiert worden sein. Folgende Regeln sind dabei zu beachten:</p>
+      <ul>
+        <li>
+          <p>Im Makro können beliebige Bezeichner, G-, M-, H-Funktionen und L-Unterprogrammnamen definiert werden.</p>
+        </li>
+        <li>
+          <p>Die Makrodefinition kann am Programmanfang oder in einer eigenen Definitionsdatei (Makrodatei) erfolgen.</p>
+        </li>
+        <li>
+          <p>Lokale und programmglobale Makros werden am Programmanfang definiert. </p>
+        </li>
+        <li>
+          <p>Globale Makros müssen in einer Makrodatei, z. B. _N_DEF_DIR/_N_UMAC_DEF, definiert werden.</p>
+        </li>
+        <li>
+          <p>G-Befehl-Makros können nur als globale Makros definiert werden.</p>
+        </li>
+        <li>
+          <p>H- und L-Funktionen sind 2-stellig programmierbar.</p>
+        </li>
+        <li>
+          <p>M- und G-Befehle können 3-stellig programmiert werden.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Schachtelung von Makros</h4>
+      <p>Es ist möglich, Makros innerhalb von Makros zu programmieren. Dies wird z. B. für folgende Zwecke genutzt:</p>
+      <ul>
+        <li>
+          <p>Um die Flexibilität der Programmierung zu erhöhen.</p>
+        </li>
+        <li>
+          <p>Um eine einfachere Zyklenprogrammierung zu realisieren.</p>
+        </li>
+      </ul>
+      <p>Innerhalb einer Schachtelung sind maximal 3 Makro-Ebenen möglich.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <h4 class="Blocklabel">Makro-Definition ohne Schachtelung:</h4>DEFINE &lt;Macro_Name> AS &lt;Operation_1> &lt;Operation_2> ...<h4 class="Blocklabel">Makro-Definition mit Schachtelung:</h4><a id="table_5ebcbb0d-df90-d645-2d67-df02076fee2e"></a> <a id="table_0"></a> <a id="table_5ebcbb0d-df90-d645-2d67-df02076fee2e"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EYC"><colgroup><col width="99.0%"><col width="1.0%"></colgroup><tr valign="top"><td>DEFINE &lt;Macro_Name1> AS &lt;Operation_1> &lt;Operation_2> ... </td><td> </td></tr><tr valign="top"><td>DEFINE &lt;Macro_Name2> AS &lt;Macro_Name1> &lt;Operation_1> ...</td><td> </td></tr><tr valign="top"><td>DEFINE &lt;Macro_Name3> AS &lt;Macro_Name2> &lt;Operation_2> ..</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Aufruf im NC-Programm:</h4>&lt;Macro_Name><a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_837a8b49-0e9b-4737-a15d-68b37ea9b1e3"></a> <a id="table_1"></a> <a id="table_837a8b49-0e9b-4737-a15d-68b37ea9b1e3"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="26.5%"><col width="73.4%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>DEFINE ... AS</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Schlüsselwort-Kombination zur Definition eines Makros</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Macro_Name></code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Name des Makros</p><p type="p_table_l" align="left">Als Makronamen sind nur Bezeichner zulässig.</p><p type="p_table_l" align="left">Mit dem Makronamen wird das Makro aus dem NC-Programm heraus aufgerufen.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Operation_1></code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Erste Programmieranweisung im Makro</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Operation_2></code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Zweite Programmieranweisung im Makro</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Schlüsselworte und reservierte Namen dürfen nicht mit Makros überschrieben werden. Das gilt auch für alle Sprungziele innerhalb eines GOTO Befehls und für die Schlüsselworte in Programmschleifen wie FOR, WHILE, LOOP, REPEAT.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Beispiele</h3><h4 class="Blocklabel">Beispiel 1: Makrodefinition am Programmanfang</h4><a id="table_b424435b-7395-487a-a523-e531ff33c099"></a> <a id="table_2"></a> <a id="table_b424435b-7395-487a-a523-e531ff33c099"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EIF"><colgroup><col width="37.5%"><col width="62.5%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>DEFINE LINIE AS G1 G94 F300</td><td>; Makro-Definition</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N70 LINIE X10 Y20</td><td>; Makro-Aufruf</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Beispiel 2: Makrodefinitionen in einer Makrodatei</h4><a id="table_4c9ba2be-9de1-4ba6-a0da-5747c6cfe95f"></a> <a id="table_3"></a> <a id="table_4c9ba2be-9de1-4ba6-a0da-5747c6cfe95f"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EMG"><colgroup><col width="37.7%"><col width="62.3%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>DEFINE M6 AS L6</td><td>; Beim Werkzeugwechsel wird ein Unterprogramm aufgerufen, das den nötigen Datentransfer übernimmt. Im Unterprogramm wird die eigentliche Werkzeugwechsel-M-Funktion ausgegeben (z. B. M106).</td></tr><tr valign="top"><td>DEFINE G81 AS DRILL(81)</td><td>; Nachbildung des DIN-G-Befehls.</td></tr><tr valign="top"><td>DEFINE G33 AS M333 G333</td><td>; Beim Gewindeschneiden wird Synchronisation mit der PLC angefordert. Der ursprüngliche G-Befehl G33 wurde per MD in G333 umbenannt, die Programmierung bleibt für den Anwender gleich.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Beispiel 3: Externe Makrodatei</h4><p>Nach dem Einlesen der externen Makrodatei in die Steuerung muss die Makrodatei in die NC geladen werden. Erst dann können die Makros im NC-Programm verwendet werden.</p><a id="table_5abfa24f-426e-44b0-a5f9-32f2a452c642"></a> <a id="table_4"></a> <a id="table_5abfa24f-426e-44b0-a5f9-32f2a452c642"></a> <a id="table_4"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ELH"><colgroup><col width="37.7%"><col width="62.3%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>%_N_UMAC_DEF</td><td> </td></tr><tr valign="top"><td>;$PATH=/_N_DEF_DIR</td><td>; Kundenspezifische Makros</td></tr><tr valign="top"><td colspan="2">DEFINE PI AS 3.14</td></tr><tr valign="top"><td colspan="2">DEFINE TC1 AS M3 S1000</td></tr><tr valign="top"><td>DEFINE M13 AS M3 M7</td><td>; Spindel rechts, Kühlmittel ein</td></tr><tr valign="top"><td>DEFINE M14 AS M4 M7</td><td>; Spindel links, Kühlmittel ein</td></tr><tr valign="top"><td>DEFINE M15 AS M5 M9</td><td>; Spindel Halt, Kühlmittel aus</td></tr><tr valign="top"><td>DEFINE M6 AS L6</td><td>; Aufruf des Werkzeugwechselprogramms</td></tr><tr valign="top"><td>DEFINE G80 AS MCALL</td><td>; Abwahl Bohrzyklus</td></tr><tr valign="top"><td>M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Beispiel 4: Schachtelung von Makros</h4><a id="table_08058791-0ca7-5f6f-86fa-818f28270942"></a> <a id="table_5"></a> <a id="table_08058791-0ca7-5f6f-86fa-818f28270942"></a> <a id="table_5"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ELBAC"><colgroup><col width="99.0%"><col width="1.0%"></colgroup><tr valign="top"><th>Programmcode</th><th> </th></tr><tr valign="top"><td>%_N_MGUD_DEF</td><td> </td></tr><tr valign="top"><td>;$PATH=/_N_DEF_DIR</td><td> </td></tr><tr valign="top"><td colspan="2">DEFINE _TOP_SURFACE_SMOOTH_ON AS 10</td></tr><tr valign="top"><td colspan="2">DEFINE ROUGH AS CYCLE832( 0.1,_TOP_SURFACE_SMOOTH_ON,1)</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Nachdem die Makrodatei in die Steuerung geladen ist, wird das NC-Programm abgearbeitet. Mit dem ROUGH-Aufruf startet CYCLE832 als geschachteltes Makro.</p></div>
+  </body>
+</html>

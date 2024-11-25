@@ -1,0 +1,51 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Adapting the approach/retract response (NORM, KONT, KONTC, KONTT)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Adapting the approach/retract response (NORM, KONT, KONTC, KONTT)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>If tool radius compensation is active (G41/G42), G Group 17 commands (NORM, KONT, KONTC or KONTT) can be used to adapt the approach and retract paths of the tool to the required contour profile or the shape of the blank (unmachined part).</p>
+      <p>KONTC or KONTT ensure that continuity conditions are maintained in all three axes. It is, therefore, permissible to program a path component perpendicular to the offset plane simultaneously.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">A license is required for option "Polynomial interpolation" in order to use KONTC and KONTT.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><td>G41/G42 <b>NORM</b>/<b>KONT</b>/<b>KONTC</b>/<b>KONTT</b> X... Y... Z...</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>G40 X... Y... Z...</td><td> </td></tr></table></p><a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="15.1%"><col width="84.8%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>NORM</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Activate direct approach/retraction to/from a straight line.</p><p type="p_table_l" align="left">The tool is oriented perpendicular to the contour point.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>KONT</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Activate approach/retract with travel around the starting/end point</p><p type="p_table_l" align="left">The tool travels around the starting point either along a circular path or over the intersection of the equidistants depending on the programmed corner behavior (G450/G451).</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>KONTC</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Activate approach/retraction with constant curvature.</p><p type="p_table_l" align="left">The contour point is approached/exited with constant curvature. There is no jump in the acceleration at the contour point.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>KONTT</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Activate approach/retraction with constant tangent.</p><p type="p_table_l" align="left">The contour point is approached/exited with constant tangent. A jump in the acceleration can occur at the contour point.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">Only G1 blocks are permissible as original approach/retract blocks for KONTC and KONTT. The control replaces these with polynomials for the appropriate approach/retract path.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Constraints</h3><p>KONTT and KONTC are not available in 3D variants of tool radius compensation (CUT3DC, CUT3DCC, CUT3DF). If they are programmed, the control switches internally to NORM without an error message.</p><a name="block_4"></a><h3 class="Blocktitle">Example</h3><p>In the following program example, a full circle with a radius of 70 mm is machined in the X/Y plane. The tool approaches/retracts with KONTC:</p><a id="table_abb5e5ea-8c02-3e7a-fd69-983dad45b4bc"></a> <a id="table_2"></a> <a id="table_abb5e5ea-8c02-3e7a-fd69-983dad45b4bc"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EQF"><colgroup><col width="52.7%"><col width="47.3%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>$TC_DP1[1,1]=121</td><td>; Milling tool</td></tr><tr valign="top"><td>$TC_DP6[1,1]=10</td><td>; Radius 10 mm</td></tr><tr valign="top"><td>N10 G1 X0 Y0 Z60 G64 T1 D1 F10000</td><td> </td></tr><tr valign="top"><td>N20 G41 <b>KONTC</b> X70 Y0 Z0</td><td>; Approach</td></tr><tr valign="top"><td>N30 G2 I-70</td><td>; Full circle</td></tr><tr valign="top"><td>N40 G40 G1 X0 Y0 Z60</td><td>; Retract</td></tr><tr valign="top"><td>N50 M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>As the tool has a radius of 10 mm, the resulting tool center point path describes a circle with a radius of 60 mm. Start and end point are at X0 Y0 Z60. When approaching the full-circle with KONTC (N20), the curvature is adapted to the circular path of the full circle. At the same time, the axis traverses from Z60 to the plane of circle Z0. The axis retracts (N40) in the same fashion.</p><a id="image_146851066763_0"></a> <img border="0" src="images/167290482315.png" width="500" height="259" alt="Tool path"/><a id="table_"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_legend" border="0"><colgroup><col width="5.0%"><col width="95.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">①</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Perpendicular projection</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">②</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Spatial representation</p></td></tr></table></p><p class="imgtitle">Tool path</p></div>
+    <p>See also:<br />    <a href="156661977995.html">Adapting the approach/retract response (NORM, KONT, KONTC, KONTT): More information</a><br />    <a href="156661962891.html">Activating/deactivating tool radius compensation (G40, G41, G42, OFFN):</a></p>
+  </body>
+</html>

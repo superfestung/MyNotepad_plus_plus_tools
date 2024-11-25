@@ -1,0 +1,1120 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block C/DIAGN: Channel-specific diagnosis data</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block C/DIAGN: Channel-specific diagnosis data</h1>
+         </div>
+      </div>This module contains information about channel-specific NC diagnostic data.<br/>
+      Net times: Time without interrupts by higher priority time levels.<br/>
+      Gross times: Time with interrupts by higher priority time levels.<br/>
+      Time levels in order of their priority: position controller, interpolator, block preparation.<br/>
+      
+      <div><a name="3740"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>acIpoBuf</b></td>
+            <td colspan="3" style="border:1px solid black">Level of IPO buffer</td>
+            <td width="20%" style="border:1px solid black">$AC_IPO_BUF</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>11
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Level of IPO buffer (number of blocks)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/acIpoBuf[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="644"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>actCycleTimeBrut</b></td>
+            <td colspan="3" style="border:1px solid black">Current gross cycle time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Current gross run time in ms.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: Reserved<br/>
+                 Line index 10: Reserved<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle.<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                <br/>
+               An offset to the above line index determines the core on which the task is running: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+                 <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a> specifies the number of cores used by the NCK and <a href="../sinumerik_btss_C/C_DIAGN.html#5964">taskAvailable</a> whether the task is available on the core.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/actCycleTimeBrut[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="641"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>actCycleTimeNet</b></td>
+            <td colspan="3" style="border:1px solid black">Current net cycle time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Current net run time in ms.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: CYCLE (SERVO+IPO times related to an IPO cycle)<br/>
+                 Line index 10: NCK   (NCK in total related to an IPO cycle)<br/>
+                                 This value is only available for Solutionline systems.<br/>
+                                 This time is restricted by MD10187 $MN_NCK_PCOS_TIME_RATIO<br/>
+                                 to a portion of the IPO cycle.<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                Line index 14: PLC start delay of the task from the beginning of the PLC cycle.<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                <br/>
+               An offset to the above line index determines the core on which the task runs: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/actCycleTimeNet[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5419"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>aveCycleTimeNet</b></td>
+            <td colspan="3" style="border:1px solid black">Average net run time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>16
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Average net run time in s<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: CYCLE (SERVO+IPO times related to an IPO cycle)<br/>
+                 Line index 10: NCK   (NCK in total related to an IPO cycle)<br/>
+                                 This value is only available for Solutionline systems.<br/>
+                                 This time is restricted by MD10187 $MN_NCK_PCOS_TIME_RATIO<br/>
+                                 to a portion of the IPO cycle.<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                Line index 14: PLC start delay of the task from the beginning of the PLC cycle.<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                <br/>
+               An offset to the above line index determines the core on which the task runs: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/aveCycleTimeNet[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3008"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>cuttingTime</b></td>
+            <td colspan="3" style="border:1px solid black">Tool operating time ( in seconds ).</td>
+            <td width="20%" style="border:1px solid black">$AC_CUTTING_TIME</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>10
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Tool operating time ( in seconds ):<br/>
+               The operating time of the path axes excluding active<br/>
+               rapid traverse is measured in all NC programs between <br/>
+               NC Start and Program End/NC Reset.<br/>
+               The measurement is also interrupted during an active<br/>
+               dwell time. The timer is automatically set to zero<br/>
+               every time the control boots on default values.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (s or user defined)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0.0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/cuttingTime[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3007"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>cycleTime</b></td>
+            <td colspan="3" style="border:1px solid black">Runtime of selected NC program</td>
+            <td width="20%" style="border:1px solid black">$AC_CYCLE_TIME</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>9
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Runtime of selected NC program ( in seconds ):<br/>
+               The runtime between NC Start and Program End / NC<br/>
+               Reset is measured in the selected NC program.<br/>
+               The timer is cleared when a new NC program is<br/>
+               started.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (s or user defined)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0.0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/cycleTime[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="647"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>ipoBufLevel</b></td>
+            <td colspan="3" style="border:1px solid black">Fill  level of the IPO buffer (integer value in %)</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Fill  level of the IPO buffer (integer value in %)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>per cent
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span>100
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/ipoBufLevel[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="646"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>maxCycleTimeBrut</b></td>
+            <td colspan="3" style="border:1px solid black">Maximum gross cycle time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Maximum gross run time in ms.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: Reserved<br/>
+                 Line index 10: Reserved<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle.<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                 Line index 100: ALL (all tasks, write access only)<br/>
+                <br/>
+               An offset to the above line index determines the core on which the task is running: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/maxCycleTimeBrut[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5107"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>maxCycleTimeBrutPo</b></td>
+            <td colspan="3" style="border:1px solid black">Maximum gross run time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>15
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Maximum gross run time since cold restart in ms.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: CYCLE (SERVO+IPO times related to an IPO cycle)<br/>
+                 Line index 10: NCK   (NCK in total related to an IPO cycle)<br/>
+                                         This value is only available for solution line systems.<br/>
+                                         This time is restricted by MD10187 $MN_NCK_PCOS_TIME_RATIO<br/>
+                                          to a portion of the IPO cycle.<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                 Line index 100: ALL (all tasks, write access only)<br/>
+                <br/>
+               An offset to the above line index determines the core on which the task is running: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/maxCycleTimeBrutPo[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="643"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>maxCycleTimeNet</b></td>
+            <td colspan="3" style="border:1px solid black">Maximum net cycle time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Maximum net run time in ms.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: Reserved<br/>
+                 Line index 10: Reserved<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                 Line index 100: ALL (all tasks, write access only)<br/>
+                <br/>
+               An offset to the above line index determines the core on which the task is running: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/maxCycleTimeNet[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5108"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>maxCycleTimeNetPo</b></td>
+            <td colspan="3" style="border:1px solid black">Maximum net run time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>13
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Maximum net run time since cold restart in ms.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: CYCLE (SERVO+IPO times related to an IPO cycle)<br/>
+                 Line index 10: NCK   (NCK in total related to an IPO cycle)<br/>
+                                         This value is only available for solution line systems.<br/>
+                                         This time is restricted by MD10187 $MN_NCK_PCOS_TIME_RATIO<br/>
+                                          to a portion of the IPO cycle.<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                 Line index 100: ALL (all tasks, write access only)<br/>
+                <br/>
+               An offset to the above line index determines the core on which the task is running: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/maxCycleTimeNetPo[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="645"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>minCycleTimeBrut</b></td>
+            <td colspan="3" style="border:1px solid black">minimum gross cycle time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>5
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Minimum gross run time in ms.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: Reserved<br/>
+                 Line index 10: Reserved<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                 Line index 100: ALL (all tasks, write access only)<br/>
+                <br/>
+               An offset to the above line index determines the core on which the task is running: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/minCycleTimeBrut[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5109"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>minCycleTimeBrutPo</b></td>
+            <td colspan="3" style="border:1px solid black">Minimum gross run time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>14
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Minimum gross run time since cold restart in ms.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: CYCLE (SERVO+IPO times related to an IPO cycle)<br/>
+                 Line index 10: NCK   (NCK in total related to an IPO cycle)<br/>
+                                         This value is only available for solution line systems.<br/>
+                                         This time is restricted by MD10187 $MN_NCK_PCOS_TIME_RATIO<br/>
+                                          to a portion of the IPO cycle.<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                 Line index 100: ALL (all tasks, write access only)<br/>
+                <br/>
+               An offset to the above line index determines the core on which the task is running: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/minCycleTimeBrutPo[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="642"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>minCycleTimeNet</b></td>
+            <td colspan="3" style="border:1px solid black">Minimum net cycle time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Minimum net run time in ms.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: CYCLE (SERVO+IPO times related to an IPO cycle)<br/>
+                 Line index 10: NCK   (NCK in total related to an IPO cycle)<br/>
+                                         This value is only available for solution line systems.<br/>
+                                         This time is restricted by MD10187 $MN_NCK_PCOS_TIME_RATIO<br/>
+                                          to a portion of the IPO cycle.<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                 Line index 100: ALL (all tasks, write access only)<br/>
+                <br/>
+               An offset to the above line index determines the core on which the task is running: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/minCycleTimeNet[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5110"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>minCycleTimeNetPo</b></td>
+            <td colspan="3" style="border:1px solid black">Minimum net run time</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>12
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Minimum net run time since cold restart in ms.<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: CYCLE (SERVO+IPO times related to an IPO cycle)<br/>
+                 Line index 10: NCK   (NCK in total related to an IPO cycle)<br/>
+                                         This value is only available for solution line systems.<br/>
+                                         This time is restricted by MD10187 $MN_NCK_PCOS_TIME_RATIO<br/>
+                                          to a portion of the IPO cycle.<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                 Line index 100: ALL (all tasks, write access only)<br/>
+                <br/>
+               An offset to the above line index determines the core on which the task is running: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/minCycleTimeNetPo[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3006"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>operatingTime</b></td>
+            <td colspan="3" style="border:1px solid black">Total runtime NC programs</td>
+            <td width="20%" style="border:1px solid black">$AC_OPERATING_TIME</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>8
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Total runtime of NC programs in Automatic mode<br/>
+               ( in seconds ):<br/>
+               The runtimes of all programs are summed between<br/>
+               NC Start and Program End/NC Reset.<br/>
+               The timer is set to zero on every control boot.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (s or user defined)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0.0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/operatingTime[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5420"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>sumCycleTimeNet</b></td>
+            <td colspan="3" style="border:1px solid black">Sum of net run times</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>17
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Sum of net run times in ms<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: CYCLE (SERVO+IPO times related to an IPO cycle)<br/>
+                 Line index 10: NCK   (NCK in total related to an IPO cycle)<br/>
+                                 This value is only available for Solutionline systems.<br/>
+                                 This time is restricted by MD10187 $MN_NCK_PCOS_TIME_RATIO<br/>
+                                 to a portion of the IPO cycle.<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                Line index 14: PLC start delay of the task from the beginning of the PLC cycle.<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                <br/>
+               An offset to the above line index determines the core on which the task runs: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Time (ms)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/sumCycleTimeNet[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5964"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>taskAvailable</b></td>
+            <td colspan="3" style="border:1px solid black">Task is present</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>19
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Task is present<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>The reasons are bit-coded.<br/>
+               0:  Task not present<br/>
+               1:  Task present<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: CYCLE (SERVO+IPO times for one IPO cycle)<br/>
+                 Line index 10: NCK   (NCK in total for one IPO cycle)<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                <br/>
+               An offset to the above line index determines the core on which the task runs: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/taskAvailable[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5965"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>taskName</b></td>
+            <td colspan="3" style="border:1px solid black">Name of task</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>18
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>See description below
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>(1000 * <a href="../sinumerik_btss_N/N_DIAGN.html#5980">numCores</a>) + 16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Name of task<br/>
+               <br/><span style="font-size: 8pt">Line index:<br></span>Selects a specific SW task on the NCK:<br/>
+                 Line index 1: SERVO<br/>
+                 Line index 2: IPO<br/>
+                 Line index 3: VL<br/>
+                 Line index 4: PLC<br/>
+                 Line index 5: SYNACT<br/>
+                 Line index 6: COS<br/>
+                 Line index 7: DRIVE (low prior.)<br/>
+                 Line index 8: EXCOM (domain services)<br/>
+                 Line index 9: CYCLE (SERVO+IPO times for one IPO cycle)<br/>
+                 Line index 10: NCK   (NCK in total for one IPO cycle)<br/>
+                 Line index 11: INT (compile cycles in the interpreter)<br/>
+                 Line index 12: EES (EES - async. - subtask)<br/>
+                 Line index 13: PREPJOB (non-cyclic task on an auxiliary core)<br/>
+                 Line index 14: PLC start delay of the task from the beginning of the PLC cycle<br/>
+                 Line index 15: PLC task in SERVO cycle <br/>
+                 Line index 16: PLC CYCLE (PLC + PLC task in SERVO cycle) <br/>
+                <br/>
+               An offset to the above line index determines the core on which the task runs: <br/>
+                    0: Any core   <br/>
+                 1000: Main core         <br/>
+                 2000: Additional core 1 <br/>
+                 3000: Additional core 2 <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/ChannelDiagnose/taskName[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

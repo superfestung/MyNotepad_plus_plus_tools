@@ -1,0 +1,35 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Parameter transfer</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Parameter transfer</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Definition of a subprogram with parameter transfer</h3>
+      <p>A subprogram with parameter transfer is defined using the <code>PROC</code> keyword and a complete list of all the parameters expected by the subprogram.  </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Call of a subprogram with parameter transfer</h3>
+      <p>When the subprogram is called, not all the parameters defined in the subprogram interface have to be transferred explicitly. If a parameter is omitted, the default value "0" is transferred for it.</p>
+      <p>So that the parameter sequence can be uniquely identified, however, the commas used as parameter separators always have to be included. The last parameter is an exception. If it is omitted from the call, the last comma can also be left out.</p>
+      <p>
+        <b>Example:</b>
+      </p>
+      <p>Subprogram:</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EDC"><colgroup><col width="53.8%"><col width="46.2%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>PROC SUB_PROG (REAL X, REAL Y, REAL Z)</td><td>; Formal parameters: X, Y, and Z</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N100 RET</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p><p>Main program:</p><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EBD"><colgroup><col width="39.1%"><col width="60.9%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>PROC MAIN_PROG</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N30 SUB_PROG(1.0,2.0,3.0)</td><td>; Subprogram call with complete parameter transfer:X=1.0, Y=2.0, Z=3.0</td></tr><tr valign="top"><td>…</td><td> </td></tr><tr valign="top"><td>N100 M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Examples for the subprogram call in N30 with incomplete parameter transfer:</p><a id="table_2"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="41.5%"><col width="2.3%"><col width="56.1%"></colgroup><tr valign="top"><td>N30 SUB_PROG( ,2.0,3.0)</td><td>;</td><td>X=0.0, Y=2.0, Z=3.0</td></tr><tr valign="top"><td>N30 SUB_PROG(1.0, ,3.0)</td><td>;</td><td>X=1.0, Y=0.0, Z=3.0</td></tr><tr valign="top"><td>N30 SUB_PROG(1.0,2.0)</td><td>;</td><td>X=1.0, Y=2.0, Z=0.0</td></tr><tr valign="top"><td>N30 SUB_PROG( , ,3.0)</td><td>;</td><td>X=0.0, Y=0.0, Z=3.0</td></tr><tr valign="top"><td>N30 SUB_PROG( , , )</td><td>;</td><td>X=0.0, Y=0.0, Z=0.0</td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><h4 class="Blocklabel">Call-by-reference parameter transfer</h4><p class="safety">Parameters transferred using call-by-reference must not be left out of the subprogram call.</p></td></tr></table><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><h4 class="Blocklabel">AXIS data type</h4><p class="safety">AXIS data type parameters must not be left out of the subprogram call.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Checking the transfer parameters  </h3><p>System variable $P_SUBPAR [ n ] where n = 1, 2, etc., can be used to check whether a parameter has been transferred explicitly or left out in the subprogram. The index n refers to the sequence of the formal parameters. Index n = 1 refers to the first formal parameter, index n = 2 to the second formal parameter, and so on.</p><p>The following program excerpt shows an example of how a check can be performed based on the first formal parameter:</p><a id="table_3"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EDG"><colgroup><col width="53.0%"><col width="47.0%"></colgroup><tr valign="top"><th>Programming</th><th>Comment</th></tr><tr valign="top"><td>PROC SUB_PROG (REAL X, REAL Y, REAL Z)</td><td>; Formal parameters: X, Y, and Z</td></tr><tr valign="top"><td>N20 IF $P_SUBPAR[1]==TRUE</td><td>; Check of the first formal parameter X.</td></tr><tr valign="top"><td>...</td><td>; These actions are taken if the formal parameter X has been transferred explicitly.</td></tr><tr valign="top"><td>N40 ELSE</td><td> </td></tr><tr valign="top"><td>...</td><td>; These actions are taken if the formal parameter X has not been transferred.</td></tr><tr valign="top"><td>N60 ENDIF</td><td> </td></tr><tr valign="top"><td>...</td><td>; General actions</td></tr><tr valign="top"><td>N100 RET</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+    <p>See also:<br />    <a href="156662636043.html">Formal and actual parameters</a><br />    <a href="156662619915.html">Subprogram</a></p>
+  </body>
+</html>

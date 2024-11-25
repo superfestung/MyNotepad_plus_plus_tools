@@ -1,0 +1,33 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Reading and writing of individual characters</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Reading and writing of individual characters</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Individual characters can be read and written within a string.</p>
+      <p>The following supplementary conditions must be observed:</p>
+      <ul>
+        <li>
+          <p>Only possible with user-defined variables, not with system variables</p>
+        </li>
+        <li>
+          <p>Individual characters of a string are only transferred "call by value" for subprogram calls</p>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>&lt;Character>=&lt;string>[&lt;index>]&lt;Character>=&lt;string_array>[&lt;array_index>,&lt;index>]&lt;String>[&lt;index>]=&lt;character>&lt;String_array>[&lt;array_index>,&lt;index>]=&lt;character><a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="19.7%"><col width="80.2%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;string></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Any string</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;character></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Variable of type CHAR</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;index></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Position of the character within the string. <br />First character of the string: Index = 0</p><p type="p_table_l" align="left">Range of values: 0 ... (string length - 1)</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Examples</h3><h4 class="Blocklabel">Example 1: Variable message</h4><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E5C"><colgroup><col width="43.4%"><col width="56.6%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td colspan="2">;                         0123456789DEF STRING [50] MESSAGE = "Axis n has reached position"</td></tr><tr valign="top"><td>MESSAGE [6] = "X"</td><td> </td></tr><tr valign="top"><td>MSG (MESSAGE)</td><td>; "Axis X has reached position"</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 2: Evaluating a system variable</h4><a id="table_2"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E3D"><colgroup><col width="43.4%"><col width="56.6%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>DEF STRING[50] STRG</td><td>; Buffer for system variable</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>STRG = $P_MMCA</td><td>; Load system variable</td></tr><tr valign="top"><td>IF STRG[0] == "E" GOTO ...</td><td>; Evaluating the system variable</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 3: Parameter transfer "call by value" and "call by reference"</h4><a id="table_3"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E6E"><colgroup><col width="53.0%"><col width="47.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>;                      0123456DEF STRING[50] STRG = "Axis X"</td><td> </td></tr><tr valign="top"><td>DEF CHAR CHR</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>EXTERN UP_VAL(ACHSE)</td><td>; Definition of subprogram with "call by value" parameters</td></tr><tr valign="top"><td>EXTERN UP_REF(VAR ACHSE)</td><td>; Definition of subprogram with "call by reference" parameters</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>UP_VAL(STRG[6])</td><td>; Parameter transfer "by value"</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>CHR = STRG[6]</td><td>; Buffer</td></tr><tr valign="top"><td>UP_REF(CHR)</td><td>; Parameter transfer "by reference"</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>See also:<br />    <a href="156662495371.html">Overview of possible string operations</a></p>
+  </body>
+</html>

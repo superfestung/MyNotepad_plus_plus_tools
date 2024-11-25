@@ -1,0 +1,104 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Drehinterpolationstransformation TRAINT aktivieren / deaktivieren</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Drehinterpolationstransformation TRAINT aktivieren / deaktivieren</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Die Drehinterpolationstransformation TRAINT wird im NC-Programm über die Anweisung TRAFOON aktiviert und über die Anweisung TRAFOOF deaktiviert.</p>
+      <p>Für die Aktivierung müssen bestimmte Voraussetzungen erfüllt sein, andernfalls wird dies durch einen Alarm abgelehnt.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Voraussetzungen für die Aktivierung</h3>
+      <ul>
+        <li>
+          <p>Die Drehmitte muss als der Nullpunkt des aktuellen Frames definiert sein (WKS-Nullpunkt).</p>
+        </li>
+        <li>
+          <p>Die Richtung der Drehachse entspricht der z-Achse im WKS.</p>
+        </li>
+        <li>
+          <p>Zum Einschalten der Drehinterpolationstransformation TRAINT darf sich die Maschine nicht bewegen, d. h., es verfahren weder Achsen noch dreht die Spindel.</p>
+        </li>
+        <li>
+          <p>Die Richtung der Werkzeugspindel ist antiparallel zur z-Richtung des WKS.</p>
+        </li>
+        <li>
+          <p>Die Achsen sind so positioniert, dass nach TRAFOON (und nach Einberechnen der Werkzeuglängen) der y-Wert im WKS gleich 0 ist.</p>
+        </li>
+        <li>
+          <p>Die Spindel ist so gedreht, dass die gewünschte Lage der Werkzeugschneide zum Werkstück hergestellt ist.</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Hinweis</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="safety">Da die Spindel antiparallel zur Z-Achse zeigt, muss der negative Winkel angefahren werden.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          <p>Der Winkel γ wird für die Korrektur der Schneidenparameter mit der Funktion CUTMODK verwendet. Die eigentliche Anstellung der Werkzeugschneide muss durch entsprechendes Positionieren der Spindel erfolgen.</p>
+        </li>
+        <li>
+          <p>Der Winkel γ muss gleich 0° oder 180° sein.</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Transformation aktivieren</h3>
+      <p>Sind alle Voraussetzungen erfüllt, kann die Drehinterpolationstransformation TRAINT über die Anweisung TRAFOON aktiviert werden:</p>
+      <p>
+        <code>TRAFOON(&lt;Trafoname>,&lt;γ>)</code>
+      </p>
+      <p>Dabei gelten folgende Regeln:</p>
+      <ul>
+        <li>
+          <p>Der Name der Transformation muss über die Systemvariable $NT_NAME[&lt;n>] definiert sein.</p>
+        </li>
+        <li>
+          <p>Der Typ der Transformation muss über die Systemvariable $NT_TRAFO_TYPE[&lt;n>] wie folgt angegeben sein:</p>
+          <p>
+            <code>$NT_TRAFO_TYPE[&lt;n>]="TRAINT"</code>
+          </p>
+        </li>
+        <li>
+          <p>Für die relative Ausrichtung der Werkzeugschneide zur Kreistangente wird der Winkel γ genutzt:</p>
+          <a id="table_14e0f79f-abb7-ae80-52ee-672f804e87aa">
+          </a> <a id="table_0"></a> <a id="table_14e0f79f-abb7-ae80-52ee-672f804e87aa"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default_list" border="1"><colgroup><col width="15.0%"><col width="85.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">γ = 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Die Schneide steht senkrecht auf der Kreistangente und ist außerhalb des Kreises (→ Außenbearbeitung). </p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">γ = 180°</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Die Schneide steht ebenfalls senkrecht auf der Kreistangente, ist aber innerhalb des Kreises (→ Innenbearbeitung).</p></td></tr></table></p></li>
+      </ul>
+      <p>Beide Systemvariablen sind Teil der Transformation auf Basis der kinematische Kette.</p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Transformation deaktivieren</h3>
+      <p>Das Ausschalten der Transformation ist nur bei stehender Spindel möglich und erfolgt über die Anweisung TRAFOOF.</p>
+    </div>
+    <p>Siehe auch:<br />    <a href="156737593739.html">Drehinterpolationstransformation TRAINT aktivieren / deaktivieren: Weitere Informationen</a><br />    <a href="156737595915.html">Winkel zum Ausrichten des Werkzeugs für TRAINT berechnen (CALCTRAVAR)</a></p>
+  </body>
+</html>

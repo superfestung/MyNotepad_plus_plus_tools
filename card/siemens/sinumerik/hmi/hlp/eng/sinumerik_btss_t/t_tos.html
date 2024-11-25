@@ -1,0 +1,147 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block T/TOS: Edge-related location-dependent fine total offsets</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block T/TOS: Edge-related location-dependent fine total offsets</h1>
+         </div>
+      </div>One set of edge-related total offsets exists for each tool edge and operating location.<br/>
+      The maximum number of operating locations is identical for all tool edges and defined by the new variable <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a> ($MN_MAX_SUMCORR_PERCUTTING_EDGE) in "N / Y global system data".<br/>
+      <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a> (currently 9) offsets are provided (depending on location-independent wear values) for each total offset set: Length 1, length
+      2, length 3, radius and 5 others.<br/>
+      <br/>
+      Each replacement tool has its own separate (different) data.<br/>
+      <br/>
+      The NCK resets the data when the associated tool is activated if machine data ($MN_MM_KIND_OF_SUMCORR, bit 1 = 1) is used
+      for activation.<br/>
+      <br/>
+      The total offsets of a tool edge are accessible via the internal T number of the associated tool, edge number, total offset
+      number ("operating location"). <br/>
+      <br/>
+      PI Services may exist for selective creation and deletion of tool edge total offsets.<br/>
+      The existence of total offsets can be controlled selectively via the new machine data $MN_MM_NUM_SUMCORR (OPI: <a href="../sinumerik_btss_N/N_Y.html#2390">maxNumSumCorr</a> in N / Y).<br/>
+      <br/>
+      The following applies:<br/>
+      When the MMC2 tool management function is in use, $MN_MM_NUM_SUMCORR  = -1 must be set to ensure that the total offsets exist
+      for all offset locations (number = <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a>) from creation of the tool edge until its deletion.<br/>
+      (The new PI Services for creation / deletion will not currently be used by the MMC2 tool management for turning applications).
+      For the present, the new NC machine data $MN_MM_NUM_SUMCORR  = -1 must be set to automatic creation / deletion.<br/>
+      <br/>
+      The method of addressing in this module is analogous to accessing "Edge data / offsets" by column addressing with T number
+      (using an array access operation to gain quick access to the total offsets of all tool edge operating locations or all edges
+      of a tool).<br/>
+      <br/>
+      The module contains the location-dependent total offsets for all tools. Each element is addressed via a column and line index:<br/>
+      <br/>
+      The column index is the tool number (T number), i.e. all location-dependent total offsets of this tool (for all edges / locations)
+      can be found in one column. <br/>
+      If a non-existent T number is specified as the column index, the request is acknowledged negatively.<br/>
+      The number of lines is determined by the number of total offset values, the number of operating locations and the maximum
+      possible edge number of a tool: <br/>
+      maxZeilenindex = <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a> * <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a> * <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a><br/>
+      <br/>
+      These variables are stored in "N / Y global system data" and have the following meanings:<br/>
+      <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a>:		No. of wear offsets per location (according to L1, L2, L3, radius and 5 others),  currently 9<br/>
+      <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a>:		Maximum number of locations (SC) per edge<br/>
+      <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a>:	Max. permissible number of edges per tool<br/>
+      <br/>
+      <br/>
+      Several lines can be addressed simultaneously if necessary, allowing, for example, all location-dependent total offsets of
+      all edges of one tool to be read in one request. The location-dependent total offsets of the tools are all of the same data
+      type and have the same physical unit.<br/>
+      <br/>
+      Module T / TOS has a 2-dimensional organization.<br/>
+      <br/>
+      The following lines are provided for each T number (column index):<br/>
+      <br/>
+      Edge 1,		Location 1,		L1<br/>
+      Edge 1,		Location 1,		L2<br/>
+      Edge 1,		Location 1,		L3<br/>
+      Edge 1,		Location 1,		Radius<br/>
+      Edge 1,		Location 1,		Par5<br/>
+      ..........				.....				.....<br/>
+      Edge 1,		Location 1,		Par <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a><br/>
+      Edge 1,		Location 2,		L1<br/>
+      Edge 1,		Location 2,		L2<br/>
+      Edge 1,		.....				......<br/>
+      Edge 1,		Location <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a>,	Par <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a><br/>
+      <br/>
+      Edge 2,		Location 1,		L1<br/>
+      ..........				.....				.....<br/>
+      Edge 2,		Location <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a>,	Par <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a><br/>
+      ..........				.....				.....<br/>
+      Edge <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a>,	Location <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a>,	Par <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a><br/>
+      <br/>
+      <br/>
+      Interrelationship between edge parameters, total offsets and variables:<br/>
+      Edge parameter	DL1		DL2		...	DL4		...<br/>
+      $TC_DP3		$TC_SCP13	$TC_SCP23	...	$TC_SCP43	...<br/>
+      $TC_DP4		$TC_SCP14	$TC_SCP24	...	$TC_SCP44	...<br/>
+      $TC_DP5		$TC_SCP15	$TC_SCP25	...	$TC_SCP45	...<br/>
+      ....<br/>
+      $TC_DP9		$TC_SCP19	$TC_SCP29	...	$TC_SCP49	...<br/>
+      $TC_DP10		$TC_SCP20	$TC_SCP30	...	$TC_SCP50	...<br/>
+      $TC_DP11		$TC_SCP21	$TC_SCP31	...	$TC_SCP51	...<br/>
+      <br/>
+      with DLx, TC_DPy, TC_SCPz<br/>
+      x from 1 to 6 (<a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a> = $MN_MAX_SUMCORR_PERCUTTING_EDGE) and maximum = 6<br/>
+      y from 3 to 11<br/>
+      z = (10 * x) + y<br/>
+      
+      <div><a name="2362"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>edgeSCData</b></td>
+            <td colspan="3" style="border:1px solid black">Total offset - fine</td>
+            <td width="20%" style="border:1px solid black">$TC_SCPx[t,d]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>Tool number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Calculate value<br>((EdgeNo-1) * (<a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a> * <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a>)) + ((EdgeSC - 1)* <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a>) + ParameterNo
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a> * <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a> * <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Total offsets (fine) - location-dependent offsets comprise the error values that make up the deviation of the workpiece from
+               the setpoint dimension. <br/>
+               The parameters of the location-dependent offsets relate to the geometric data of a cutting edge.<br/>
+               DL: Location-dependent offsets related to the particular operating location. <br/>
+               The function is activated by machine data MD18108 $MN_MM_NUM_SUMCORR, MD 10110 $MN_MM_MAX_SUMCORR_PER_CUTTEDGE and MD 18080
+               $MN_MM_TOOL_MANAGEMENT_MASK, bit8. <br/>
+               The individual total offset parameter sets are differentiated by the number ranges of system variable  $TC_SCP:<br/>
+               o  $TC_SCP13-$TC_SCP21, $TC_SCP1_RADIUS3, $TC_SCP1_LEN6 activatable with DL=1<br/>
+               o  $TC_SCP23-$TC_SCP31, $TC_SCP2_RADIUS3, $TC_SCP2_LEN6 activatable with DL=2<br/>
+               o  $TC_SCP33-$TC_SCP41, $TC_SCP3_RADIUS3, $TC_SCP3_LEN6 activatable with DL=3<br/>
+               o  $TC_SCP43-$TC_SCP51, $TC_SCP4_RADIUS3, $TC_SCP4_LEN6 activatable with DL=4<br/>
+               o  $TC_SCP53-$TC_SCP61, $TC_SCP5_RADIUS3, $TC_SCP5_LEN6 activatable with DL=5<br/>
+               o  $TC_SCP63-$TC_SCP71, $TC_SCP6_RADIUS3, $TC_SCP6_LEN6 activatable with DL=6<br/>
+               <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Linear position (mm, inch or user defined)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span>0.0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/Compensation/edgeSCData[u&lt;Tool Area&gt;, c&lt;Column Index&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

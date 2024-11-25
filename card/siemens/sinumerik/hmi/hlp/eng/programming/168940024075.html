@@ -1,0 +1,127 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Basic tool orientation ($TC_DPV[...], $TC_DPV3 - 5[...] and $TC_DPVN3 - 5[...])</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Basic tool orientation ($TC_DPV[...], $TC_DPV3 - 5[...] and $TC_DPVN3 - 5[...])</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>If the function "Parameterizable basic tool orientation" is active (→ MD18114 $MN_MM_ENABLE_TOOL_ORIENTATION), a separate basic orientation can be assigned with the system variable $TC_DPV[...] or the system variables $TC_DPV3 - 5[...] and $TC_DPVN3 - 5[...] to each tool cutting edge.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Setting options</h3>
+      <p>Basically, the following setting options are available:</p>
+      <ul>
+        <li>
+          <p>
+            <b>$TC_DPV[...] == 0 AND $TC_DPV3 - 5[...] == 0</b>
+          </p>
+          <p>The vector for the basic tool orientation results from the active working plane:</p>
+          <ul>
+            <li>
+              <p>G17: Z coordinate</p>
+            </li>
+            <li>
+              <p>G18: Y coordinate</p>
+            </li>
+            <li>
+              <p>G19: X coordinate</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            <b>$TC_DPV[...] == 0 AND $TC_DPV3 - 5[...] &lt;> 0</b>
+          </p>
+          <p>The vector for the basic tool orientation is prescribed by $TC_DPV3 - 5[...] and $TC_DPVN3 - 5[...]:</p>
+          <ul>
+            <li>
+              <p>
+                <code>$TC_DPV3[...] = &lt;L1 component of the orientation vector></code> </p>
+            </li>
+            <li>
+              <p>
+                <code>$TC_DPV4[...] = &lt;L2 component of the orientation vector></code> </p>
+            </li>
+            <li>
+              <p>
+                <code>$TC_DPV5[...] = &lt;L3 component of the orientation vector></code> </p>
+            </li>
+            <li>
+              <p>
+                <code>$TC_DPVN3[...] = &lt;L1 component of the normal vector></code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>$TC_DPVN4[...] = &lt;L2 component of the normal vector></code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>$TC_DPVN5[...] = &lt;L3 component of the normal vector></code> </p>
+            </li>
+          </ul>
+          <p>Example:</p>
+          <p>Basic tool orientation points in the direction of the bisectors in the L1-L3 plane, i.e. for a milling tool and active plane G17, in the direction of the bisectors in the ZX plane.</p>
+          <p>
+            <code>$TC_DPV[1,1]  = 0</code>
+          </p>
+          <p>
+            <code>$TC_DPV3[1,1] = 1.0</code>
+          </p>
+          <p>
+            <code>$TC_DPV4[1,1] = 0.0</code>
+          </p>
+          <p>
+            <code>$TC_DPV5[1,1] = 1.0</code>
+          </p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Note</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="safety">The system variables $TC_DPVN3-5[...] are not relevant for rotationally symmetrical tools such as milling tools.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          <p>
+            <b>$TC_DPV[...] == 1, 2, ... 6</b>
+          </p>
+          <p>The vector for the basic tool orientation is prescribed by $TC_DPV[...].</p>
+          <p>The following tables show which basic tool orientations are predefined and can be selected via $TC_DPV[...].</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Selection of a predefined orientation vector</h3>
+      <p>
+        <code>$TC_DPV[...] = &lt;value></code> </p>
+      <a id="table_8667cca5-c2be-048b-1b65-0bcd81cc037e">
+      </a> <a id="table_0"></a> <TableTitle>Turning / grinding tools ($TC_DP1 = 400 … 599)</TableTitle><a id="table_8667cca5-c2be-048b-1b65-0bcd81cc037e"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="10.0%"><col width="30.0%"><col width="30.0%"><col width="30.0%"></colgroup><tr valign="top"><th><p type="p_table_cb" align="center" class="comment">&lt;value></p><p type="p_table_cb" align="center" class="comment"></p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV3[...] / $TC_DPVN3[...]</p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV5[...] / $TC_DPVN5[...]</p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV4[...] / $TC_DPVN4[...]</p></th></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">2</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">3</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">4</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">5</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">6</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td></tr></table></p><a id="table_762738d1-53e4-82c4-7cdd-6d7034e3e7f2"></a> <a id="table_1"></a> <TableTitle>Milling / special tools ($TC_DP1 &lt;> 400 … 599)</TableTitle><a id="table_762738d1-53e4-82c4-7cdd-6d7034e3e7f2"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="10.0%"><col width="30.0%"><col width="30.0%"><col width="30.0%"></colgroup><tr valign="top"><th><p type="p_table_cb" align="center" class="comment">&lt;value></p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV5[...] / $TC_DPVN5[...]</p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV4[...] / $TC_DPVN4[...]</p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV3[...] / $TC_DPVN3[...]</p></th></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">2</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">3</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">4</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">5</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">6</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td></tr></table></p><h4 class="Blocklabel">Examples</h4><a id="table_dd4e1135-1824-fb82-6e80-c50e63567a20"></a> <a id="table_2"></a> <a id="table_dd4e1135-1824-fb82-6e80-c50e63567a20"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="28.0%"><col width="16.0%"><col width="56.0%"></colgroup><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">Turning/grinding tools:</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><code>$TC_DPV[...] = 2</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">Corresponds to</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><code>$TC_DPV3[...] = 1</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPV4[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPV5[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN3[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN4[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN5[...] = 1</code></p></td></tr></table></p><a id="table_6be16619-76da-8129-25cd-d614298802a0"></a> <a id="table_3"></a> <a id="table_6be16619-76da-8129-25cd-d614298802a0"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="28.0%"><col width="16.0%"><col width="56.0%"></colgroup><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">Milling/special tools:</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><code>$TC_DPV[...] = 3</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">Corresponds to</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><code>$TC_DPV3[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPV4[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPV5[...] = 1</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN3[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN4[...] = 1</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN5[...] = 0</code></p></td></tr></table></p><p class="comment"></p></div>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Schnellrückzug während Gewindeschneiden (LFON, LFOF, DILF, ALF, LFTXT, LFWP, LFPOS, POLF, POLFMASK, POLFMLIN)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Schnellrückzug während Gewindeschneiden (LFON, LFOF, DILF, ALF, LFTXT, LFWP, LFPOS, POLF, POLFMASK, POLFMLIN)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Die Funktion "Schnellrückzug während Gewindeschneiden (G33)" ermöglicht eine zerstörungsfreie Unterbrechung des Gewindeschneidens in folgenden Situationen: </p>
+      <ul>
+        <li>
+          <p>NC-Stop ausgelöst über <code>&lt;Chan>.basic.out.ncStop</code></p>
+        </li>
+        <li>
+          <p>NC-Stop implizit ausgelöst über Alarm</p>
+        </li>
+        <li>
+          <p>
+            <a href="156662766347.html">Schalten eines schnellen Eingangs</a>
+          </p>
+        </li>
+      </ul>
+      <p>Die Rückzugsbewegung ist programmierbar über:</p>
+      <ul>
+        <li>
+          <p>Rückzugweg und Rückzugsrichtung (relativ)</p>
+        </li>
+        <li>
+          <p>Rückzugsposition (absolut)</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Hinweis</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="Blocklabel">NC-Stop-Signale </h4>
+                <p class="safety">Folgende NC-Stop-Signale lösen keinen Schnellrückzug während des Gewindeschneidens aus:</p>
+                <ul class="safety">
+                  <li class="safety">
+                    <p class="safety">
+                      <code>&lt;Chan>.basic.out.ncStopAxesAndSpindles</code> (NC-Stop Achsen plus Spindeln)</p>
+                  </li>
+                  <li class="safety">
+                    <p class="safety">
+                      <code>&lt;Chan>.basic.out.ncStopBlockEnd</code> (NC-Stop an Satzgrenze)</p>
+                  </li>
+                </ul>
+                <h4 class="Blocklabel">Gewindebohren</h4>
+                <p class="safety">Die Funktion "Schnellrückzug" ist beim Gewinde<b>bohren</b> (G331 / G332) <b>nicht</b> anwendbar.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>Schnellrückzug freigeben, Rückzugsbewegung über Rückzugweg und Rückzugsrichtung:</p>G33 ... LFON DILF=&lt;Wert> LFTXT/LFWP ALF=&lt;Wert><p>Schnellrückzug freigeben, Rückzugsbewegung über Rückzugsposition:</p><p><code>POLF[&lt;Achsbezeichner>]=&lt;Wert> LFPOS</code></p>POLFMASK/POLFMLIN(&lt;Achsname1>,&lt;Achsname2>,...)G33 ... LFON<p>Schnellrückzug während Gewindeschneiden sperren:</p>LFOF<a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_dfb82ece-13b1-4ecb-8ed4-03007848ac8c"></a> <a id="table_0"></a> <a id="table_dfb82ece-13b1-4ecb-8ed4-03007848ac8c"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="17.4%"><col width="11.3%"><col width="6.6%"><col width="64.6%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>LFON</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Schnellrückzug während Gewindeschneiden (<code>G33</code>) freigeben</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>LFOF</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Schnellrückzug während Gewindeschneiden (<code>G33</code>) sperren</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>DILF=</code> :</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Länge des Rückzugswegs festlegen</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Der durch MD-Projektierung (MD21200 $MC_LIFTFAST_DIST) voreingestellte Wert kann im Teileprogramm durch Programmierung von <code>DILF</code> verändert werden.</p><p type="p_table_l" align="left"><b>Hinweis:</b><br />Nach NC-RESET ist immer der projektierte MD-Wert aktiv.</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>LFTXT<br />LFWP</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Die Rückzugsrichtung wird in Verbindung mit <code>ALF</code> mit den G-Befehlen <code>LFTXT</code> und <code>LFWP</code> gesteuert.   </p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>LFTXT</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Die Ebene, in welcher die Rückzugsbewegung ausgeführt wird, wird aus der Bahntangente und der Werkzeugrichtung errechnet (Standardeinstellung). </p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>LFWP</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Die Ebene, in welcher die Rückzugsbewegung ausgeführt wird, ist die aktive Arbeitsebene. </p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>ALF=</code> :</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">In der Ebene der Rückzugsbewegung wird mit <code>ALF</code> die Richtung in diskreten Schritten von Grad programmiert.</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Bei <code>LFTXT</code> ist für <code>ALF=1</code> der Rückzug in Werkzeugrichtung festgelegt.</p><p type="p_table_l" align="left">Bei <code>LFWP</code> ergibt sich die Richtung in der Arbeitsebene nach folgender Zuordnung:</p><ul class="table"><li><p><code>G17</code> (X/Y-Ebene)</p><p><code>ALF=1</code> ; Rückzug in X-Richtung</p><p><code>ALF=3</code> ; Rückzug in Y-Richtung</p></li><li><p><code>G18</code> (Z/X-Ebene)</p><p><code>ALF=1</code> ; Rückzug in Z-Richtung</p><p><code>ALF=3</code> ; Rückzug in X-Richtung</p></li><li><p><code>G19</code> (Y/Z-Ebene)</p><p><code>ALF=1</code> ; Rückzug in Y-Richtung</p></li></ul><p type="p_table_l" align="left"><code>ALF=3</code> ; Rückzug in Z-Richtung</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><b>Weitere Informationen </b>zu den Programmiermöglichkeiten mit <code>ALF</code> siehe Kapitel "<a href="156662771211.html">Verfahrrichtung beim Schnellabheben von der Kontur </a>".</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>LFPOS</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Rückzug der mit <code>POLFMASK</code> oder <code>POLFMLIN</code> bekannt gemachten Achse auf die mit <code>POLF</code> programmierte absolute Achsposition</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>POLFMASK</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Freigabe der Achsen <code>(&lt;Achsname1>,&lt;Achsname1>,...)</code> für den unabhängigen Rückzug auf Absolutposition</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>POLFMLIN</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Freigabe der Achsen für den Rückzug auf Absolutposition im linearen Zusammenhang</p><p type="p_table_l" align="left"><b>Hinweis:</b><br />Der lineare Zusammenhang kann je nach dynamischen Verhalten aller beteiligten Achsen bis zum Erreichen der Abhebeposition nicht immer hergestellt werden.</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>POLF[]</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Absolute Rückzugsposition für die im Index angegebene Geometrieachse bzw. Maschinenachse festlegen</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Wirksamkeit:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">modal</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>=&lt;Wert></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Bei Geometrieachsen wird der zugewiesene Wert als Position im Werkstückkoordinatensystem (WKS) interpretiert, bei Maschinenachsen als Position im Maschinenkoordinatensystem (MKS).</p><p type="p_table_l" align="left">Die Wertzuweisung ist auch als Kettenmaßangabe programmierbar:</p><p type="p_table_l" align="left"><code>=IC&lt;Wert></code></p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Achsbezeichner></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Bezeichner einer Geometrie- oder Maschinenachse</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">LFON bzw. LFOF können immer programmiert werden, die Auswertung erfolgt jedoch ausschließlich beim Gewindeschneiden (G33).</p></td></tr></table><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">POLF mit POLFMASK/POLFMLIN sind nicht auf den Einsatz bei Gewindeschneiden beschränkt.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Beispiele</h3><h4 class="Blocklabel">Beispiel 1: Schnellrückzug während Gewindeschneiden freigeben</h4><a id="table_77716ced-4b42-41da-b3c9-0d4c5cbfd814"></a> <a id="table_1"></a> <a id="table_77716ced-4b42-41da-b3c9-0d4c5cbfd814"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E4FAC"><colgroup><col width="53.1%"><col width="46.9%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N55 M3 S500 G90 G18</td><td>; Aktive Bearbeitungsebene</td></tr><tr valign="top"><td>...</td><td>; Anfahren der Startposition</td></tr><tr valign="top"><td>N65 MSG ("Gewindeschneiden")</td><td>; Zustellen des Werkzeugs</td></tr><tr valign="top"><td colspan="2">MM_THREAD:</td></tr><tr valign="top"><td>N67 $AC_LIFTFAST=0</td><td>; Vor Beginn des Gewindes zurücksetzen.</td></tr><tr valign="top"><td colspan="2">N68 G0 Z5</td></tr><tr valign="top"><td colspan="2">N68 X10</td></tr><tr valign="top"><td>N70 G33 Z30 K5 LFON DILF=10 LFWP ALF=7</td><td>; Schnellrückzug während Gewindeschneiden freigeben.Rückzugsweg=10mmRückzugsebene: Z/X (wegen G18)Rückzugsrichtung: -X(mit ALF=3: Rückzugsrichtung +X)</td></tr><tr valign="top"><td colspan="2">N71 G33 Z55 X15</td></tr><tr valign="top"><td>N72 G1</td><td>; Gewindeschneiden abwählen.</td></tr><tr valign="top"><td>N69 IF $AC_LIFTFAST GOTOB MM_THREAD</td><td>; Wenn Gewindeschneiden unterbrochen wurde.</td></tr><tr valign="top"><td colspan="2">N90 MSG("")</td></tr><tr valign="top"><td colspan="2">...</td></tr><tr valign="top"><td colspan="2">N70 M30</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Beispiel 2: Schnellrückzug vor Gewindebohren ausschalten</h4><a id="table_bd142fec-d8b9-4e5c-933a-fbe00cdcec39"></a> <a id="table_2"></a> <a id="table_bd142fec-d8b9-4e5c-933a-fbe00cdcec39"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EQIAC"><colgroup><col width="41.0%"><col width="59.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td colspan="2">N55 M3 S500 G90 G0 X0 Z0</td></tr><tr valign="top"><td colspan="2">...</td></tr><tr valign="top"><td colspan="2">N87 MSG ("Gewindebohren")</td></tr><tr valign="top"><td>N88 LFOF</td><td>; Schnellrückzug vor Gewindebohren ausschalten.</td></tr><tr valign="top"><td>N89 CYCLE...</td><td>; Gewindebohrzyklus mit G33.</td></tr><tr valign="top"><td colspan="2">N90 MSG ("")</td></tr><tr valign="top"><td colspan="2">...</td></tr><tr valign="top"><td colspan="2">N99 M30</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Beispiel 3: Schnellrückzug auf absolute Rückzugsposition</h4><p>Bei einem Stopp wird die Bahninterpolation von X unterdrückt und stattdessen eine Bewegung mit max. Geschwindigkeit auf die Position POLF[X] interpoliert. Die Bewegung der anderen Achsen wird weiterhin durch die programmierte Kontur bzw. die Gewindesteigung und die Spindeldrehzahl bestimmt.</p><a id="table_79cad794-40d2-46a3-905c-39776dec9140"></a> <a id="table_3"></a> <a id="table_79cad794-40d2-46a3-905c-39776dec9140"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EDKAC"><colgroup><col width="38.7%"><col width="61.3%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td colspan="2">N10 G0 G90 X200 Z0 S200 M3</td></tr><tr valign="top"><td colspan="2">N20 G0 G90 X170</td></tr><tr valign="top"><td colspan="2">N22 POLF[X]=210 LFPOS</td></tr><tr valign="top"><td>N23 POLFMASK(X)</td><td>; Aktivieren (Freigeben) des Schnellabhebens von der Achse X.</td></tr><tr valign="top"><td colspan="2">N25 G33 X100 I10 LFON</td></tr><tr valign="top"><td colspan="2">N30 X135 Z-45 K10</td></tr><tr valign="top"><td colspan="2">N40 X155 Z-128 K10</td></tr><tr valign="top"><td colspan="2">N50 X145 Z-168 K10</td></tr><tr valign="top"><td colspan="2">N55 X210 I10</td></tr><tr valign="top"><td colspan="2">N60 G0 Z0 LFOF</td></tr><tr valign="top"><td>N70 POLFMASK()</td><td>; Abheben für alle Achsen sperren.</td></tr><tr valign="top"><td colspan="2">M30</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_4"></a><h3 class="Blocktitle">PLC-Signale</h3><a id="table_e849b817-f8dd-d3c2-26d6-a2643b47f3c7"></a> <a id="table_4"></a> <a id="table_e849b817-f8dd-d3c2-26d6-a2643b47f3c7"></a> <a id="table_4"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="45.0%"><col width="35.0%"><col width="20.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Basic Program Plus</p></th><th colspan="2"><p type="p_table_lb" align="left">Basic Program</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Chan>.basic.out.ncStop</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LBP_Chan*.A_NCStop</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB21, ... DBX7.3</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Chan>.basic.out.ncStopAxesAndSpindles </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LBP_Chan*.A_NCStopASp</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB21, ... DBX7.4</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Chan>.basic.out.ncStopBlockEnd </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LBP_Chan*.A_NCStopBlock</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB21, ... DBX7.2</p></td></tr></table></p></div>
+    <p>Siehe auch:<br />    <a href="156661881483.html">Gewindeschneiden mit konstanter Steigung (G33, SF)</a><br />    <a href="156661891211.html">Gewindeschneiden mit zu- oder abnehmender Steigung (G34, G35)</a></p>
+  </body>
+</html>

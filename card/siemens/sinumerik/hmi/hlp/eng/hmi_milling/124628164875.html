@@ -1,0 +1,70 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Standard log</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Standard log</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Function</h3>
+      <p>Standard logs display the results from measuring cycles in a clear log structure. The output is possible in text or tabular format. Contents and structure are predefined.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Requirement</h3>
+      <p>Standard logs are only possible in conjunction with measuring cycle calls.</p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Log contents</h3>
+      <p>The logs are generally created with fixed English texts. (The measurement result displays appear in the language that has been set for Operate.)</p>
+      <p>Logs of the measuring cycles have the following structures and contents:</p>
+      <ul>
+        <li>
+          <p>Header block - log header</p>
+          <ul>
+            <li>
+              <p>Date/time (when the log was created)  </p>
+            </li>
+            <li>
+              <p>Name and path of the log file   </p>
+            </li>
+            <li>
+              <p>Name of the part program from which the measuring function was called</p>
+            </li>
+            <li>
+              <p>Workpiece number</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Value block - results per measuring point</p>
+          <ul>
+            <li>
+              <p>Number of the measuring point, measuring variant as programmed, time of the measurement<br />Measuring variant as text (e.g. "1 hole")   </p>
+            </li>
+            <li>
+              <p>Specification of the correction target, either <br />measure only – no correction – or<br />for measuring variants with WO correction: Specification of the corrected WO, correction target (WO / fine offset) – or<br />for measuring variants with tool offset: Tool name, D number, tool type, correction target (length/radius, geometry/wear)</p>
+            </li>
+            <li>
+              <p>Setpoints, measured values, differences with specification of the respective axis name or measurement objects (e.g. "Diameter") and the measurement unit</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <a name="block_4">
+      </a>
+      <h3 class="Blocktitle">Procedure</h3>
+      <p>The call of the control CYCLE150 is always at the start of the program. The respective measuring cycle calls are then programmed. If a different parameterization of CYCLE150 is required, it must be called again at the appropriate program position.</p>
+      <h4 class="Blocklabel">Programming example</h4>
+      <a id="table_a7bd8816-aee8-2060-16ad-193e50993e91">
+      </a> <a id="table_0"></a> <a id="table_a7bd8816-aee8-2060-16ad-193e50993e91"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="73.6%"><col width="26.4%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N10 G54</code></p></td><td> </td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N20 T710 D1 M6</code>           </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">; Probe call</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">...</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">; Positioning, etc.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N50 CYCLE150(10,1001,"MESSPROT.TXT")</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">; Activate logging</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N60 CYCLE997(109,1,1,10,1,5,0,45,0,0,0,5,5,5,10,10,10,0,1,,0,)</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">; 1st measurement</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">...</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">; Positioning, etc.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N90 CYCLE978(200,,4000001,1,77,2,8,1,1,1,"END_MILL_D8",,0,1.01,0.1,0.1,0.34,1,10001,,1,0)</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">; 2nd measurement</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">...</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">; Positioning, etc.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N120 CYCLE998(100105,10004,0,1,1,1,,1,5,201,1,10,,,,,1,,1,)</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">; 3. measurement</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N140 M30</code></p></td><td> </td></tr></table></p><a name="block_5"></a><h3 class="Blocktitle">Log in tabular format</h3><p>"Tabular format" must be selected at "Log format" in the CYCLE150 screen form. This format can be imported into spreadsheet programs and processed further.</p><p>The "Tabular format" is defined by the following default settings:</p><a id="table_b7e355de-ac75-a8c5-a15f-e31e7022937b"></a> <a id="table_1"></a> <a id="table_b7e355de-ac75-a8c5-a15f-e31e7022937b"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="39.9%"><col width="60.1%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Separation of the data fields: </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Semicolon</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Decimal character:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Point</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Date format: </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">yyyy-MM-dd</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Number of decimal places:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">As on the screen</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Time format:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">hh:mm:ss</p></td></tr></table></p><p>A log in tabular format contains the same information as in text format. For the statistical evaluation of measurement series, these logs require post processing in the respective spreadsheet programs. </p></div>
+  </body>
+</html>

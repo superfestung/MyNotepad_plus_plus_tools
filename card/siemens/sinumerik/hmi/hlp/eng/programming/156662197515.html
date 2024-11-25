@@ -1,0 +1,62 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Fixed-point approach (G75): Further information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Fixed-point approach (G75): Further information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Further information</h3>
+      <h4 class="Blocklabel">G75</h4>
+      <p>The axes are traversed as machine axes in rapid traverse. The motion is mapped internally using the "SUPA" (suppress all frames) and "G0 RTLIOF" (rapid traverse motion with single-axis interpolation) functions.</p>
+      <p>If the conditions for "RTLIOF" (single-axis interpolation) are not met, the fixed point is approached as a path.</p>
+      <p>When the fixed point is reached, the axes come to a standstill within the "Exact stop fine" tolerance window.</p>
+      <h4 class="Blocklabel">Parameterizable dynamic response for G75</h4>
+      <p>The required dynamic response mode can be set via the following machine data for positioning movements to fixed-point positions (G75): </p>
+      <p>MD18960 $MN_POS_DYN_MODE (type of positioning axis dynamic response)</p>
+      <h4 class="Blocklabel">Additional axis movements</h4>
+      <p>The following additional axis movements are taken into account at the instant in time at which the G75 block is interpreted:</p>
+      <ul>
+        <li>
+          <p>External work offset</p>
+        </li>
+        <li>
+          <p>DRF</p>
+        </li>
+        <li>
+          <p>Synchronization offset ($AA_OFF)</p>
+        </li>
+      </ul>
+      <p>After this, the additional axis movements are not permitted to change until the end of traversing is reached by the G75 block.</p>
+      <p>Additional motion following interpretation of the G75 block will offset the approach to the fixed point accordingly.</p>
+      <p>The following additional movements are not taken into account, irrespective of the point at which interpolation takes place, and will offset the target position accordingly:</p>
+      <ul>
+        <li>
+          <p>Online tool offset</p>
+        </li>
+        <li>
+          <p>Additional movements from compile cycles in the BCS and machine coordinate system</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Active frames</h4>
+      <p>All active frames are ignored. Traversing is performed in the machine coordinate system.</p>
+      <h4 class="Blocklabel">Working area limitation in the workpiece coordinate system/SZS</h4>
+      <p>Coordinate-system-specific working area limitation (WALCS0 ... WALCS10) is not effective in the block with G75. The destination point is monitored as the starting point of the following block.</p>
+      <h4 class="Blocklabel">Axis/Spindle movements with POSA/SPOSA</h4>
+      <p>If programmed axes/spindles were previously traversed with POSA or SPOSA, these movements will be completed first before the fixed point is approached.</p>
+      <h4 class="Blocklabel">Spindle functions in the G75 block</h4>
+      <p>If the spindle is excluded from "fixed-point approach", then additional spindle functions (e.g. positioning with SPOS/SPOSA) can be programmed in the G75 block.</p>
+      <h4 class="Blocklabel">Modulo axes</h4>
+      <p>In the case of modulo axes, the fixed point is approached along the shortest distance.</p>
+    </div>
+  </body>
+</html>

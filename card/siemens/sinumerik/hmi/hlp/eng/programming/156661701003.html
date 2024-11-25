@@ -1,0 +1,56 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Absolute dimensions (G90, AC)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Absolute dimensions (G90, AC)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>With absolute dimensions, the position specifications always refer to the zero point of the currently valid coordinate system, i.e. the absolute position is programmed, on which the tool is to traverse. </p>
+      <p>
+        <b>Modal absolute dimensions</b>
+      </p>
+      <p>Modal absolute dimensions are activated with the <code>G90</code> command. Generally it applies to all axes programmed in subsequent NC blocks.</p>
+      <p>
+        <b>Non-modal absolute dimensions</b>
+      </p>
+      <p>With preset incremental dimensions (<code>G91</code>), the <code>AC</code> command can be used to set non-modal absolute dimensions for individual axes.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Non-modal absolute dimensions (<code>AC</code>) are also possible for spindle positioning (<code>SPOS</code>, <code>SPOSA</code>) and interpolation parameters (<code>I</code>, <code>J</code>, <code>K</code>).</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>G90&lt;axis>=AC(&lt;value>)<a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="19.7%"><col width="80.2%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G90</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Command for the activation of modal absolute dimensions</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>AC</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Command for the activation of non-modal absolute dimensions</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;axis></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Axis identifier of the axis to be traversed</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;value></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Position setpoint of the axis to be traversed in absolute dimensions</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Examples</h3><p><b>Example 1: Milling</b></p><a id="image_779623179_0"></a> <img border="0" src="images/167237151627.png" width="283" height="283"/><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EJF"><colgroup><col width="50.4%"><col width="49.6%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10 G90 G0 X45 Y60 Z2 T1 S2000 M3</td><td>; Absolute dimension input, in rapid traverse to position XYZ, tool selection, spindle on with clockwise direction of rotation.</td></tr><tr valign="top"><td>N20 G1 Z-5 F500</td><td>; Linear interpolation, feed of the tool.</td></tr><tr valign="top"><td>N30 G2 X20 Y35 I=AC(45) J=AC(35)</td><td>; Clockwise circular interpolation, circle end point and circle center point in absolute dimensions.</td></tr><tr valign="top"><td>N40 G0 Z2</td><td>; Traverse</td></tr><tr valign="top"><td>N50 M30</td><td>; End of block</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">For information on the input of the circle center point coordinates I and J, see Section "Circular interpolation".</p></td></tr></table><p></p><p><b>Example 2: Turning</b></p><a id="image_779639435_0"></a> <img border="0" src="images/167237374091.png" width="340" height="204"/><a id="table_2"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E3G"><colgroup><col width="50.4%"><col width="49.6%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N5 T1 D1 S2000 M3</td><td>; Loading of tool T1, spindle on with clockwise direction of rotation.</td></tr><tr valign="top"><td>N10 G0 G90 X11 Z1</td><td>; Absolute dimension input, in rapid traverse to position XZ.</td></tr><tr valign="top"><td>N20 G1 Z-15 F0.2</td><td>; Linear interpolation, feed of the tool.</td></tr><tr valign="top"><td>N30 G3 X11 Z-27 I=AC(-5) K=AC(-21)</td><td>; Counter-clockwise circular interpolation, circle end point and circle center point in absolute dimensions.</td></tr><tr valign="top"><td>N40 G1 Z-40</td><td>; Traverse</td></tr><tr valign="top"><td>N50 M30</td><td>; End of block</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">For information on the input of the circle center point coordinates I and J, see Section "Circular interpolation".</p></td></tr></table></div>
+    <p>See also:<br />    <a href="156661709067.html">Absolute and incremental dimensions for turning and milling (G90/G91)</a><br />    <a href="156661712011.html">Absolute dimensions for rotary axes (DC, ACP, ACN)</a></p>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Asynchrones Pendeln (OS, OSP1, OSP2, OST1, OST2, OSCTRL, OSNSC, OSE, OSB): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Asynchrones Pendeln (OS, OSP1, OSP2, OST1, OST2, OSCTRL, OSNSC, OSE, OSB): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Pendelachse</h4>
+      <p>Für die Pendelachse gilt:</p>
+      <ul>
+        <li>
+          <p>Jede Achse kann als Pendelachse benutzt werden.</p>
+        </li>
+        <li>
+          <p>Gleichzeitig können mehrere Pendelachsen aktiv sein (maximal: Anzahl der Positionierachsen).</p>
+        </li>
+        <li>
+          <p>Für die Pendelachse ist immer - unabhängig vom im Programm aktuell gültigen G-Befehl - Linearinterpolation <code>G1</code> aktiv.</p>
+        </li>
+      </ul>
+      <p>Die Pendelachse kann:</p>
+      <ul>
+        <li>
+          <p>Eingangsachse für die dynamische Transformation sein</p>
+        </li>
+        <li>
+          <p>Führungsachse bei Gantry- und Mitschleppachsen sein</p>
+        </li>
+        <li>
+          <p>verfahren werden:</p>
+          <ul>
+            <li>
+              <p>ohne Ruckbegrenzung "BRISK"</p>
+              <p>oder</p>
+            </li>
+            <li>
+              <p>mit Ruckbegrenzung "SOFT"</p>
+              <p>oder</p>
+            </li>
+            <li>
+              <p>mit geknickter Beschleunigungskennlinie (wie Positionierachsen)</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Pendelumkehrpunkte</h4>
+      <p>Bei der Festlegung der Pendelpositionen sind die aktuellen Verschiebungen zu beachten:</p>
+      <ul>
+        <li>
+          <p>Absolute Angabe</p>
+          <p>"OSP1[Z]=&lt;Wert>"</p>
+          <p>Position Umkehrpunkt = Summe der Verschiebungen + programmierter Wert</p>
+        </li>
+        <li>
+          <p>Relative Angabe</p>
+          <p>"OSP1[Z]=IC(&lt;Wert>)"</p>
+          <p>Position Umkehrpunkt = Umkehrpunkt 1 + programmierter Wert</p>
+        </li>
+      </ul>
+      <p>Beispiel:</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E4B"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><th>Programmcode</th><th> </th></tr><tr valign="top"><td>N10 OSP1[Z]=100 OSP2[Z]=110</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N40 OSP1[Z]=IC(3)</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">WAITP</h4><p>Soll mit einer Geometrieachse gependelt werden, so muss diese mit "WAITP" zum Pendeln freigegeben werden.</p><p>Nach beendetem Pendeln wird mit "WAITP" die Pendelachse wieder als Positionierachse eingetragen und kann wieder normal verwendet werden.</p><h4 class="Blocklabel">Pendeln mit Bewegungssynchronaktionen und Haltezeiten</h4><p>Nach Ablauf der eingestellten Haltezeiten findet beim Pendeln der interne Satzwechsel statt (sichtbar an den neuen Restwegen der Achsen). Beim Satzwechsel wird die Ausschaltfunktion überprüft. Dabei wird nach der eingestellten Steuereinstellung für den Bewegungsablauf (<code>OSCTRL</code>) die Ausschaltfunktion festgelegt. <i>Dieses Zeitverhalten ist durch den Vorschuboverride beeinflussbar.</i></p><p>Unter Umständen wird danach noch ein Pendelhub ausgeführt, bevor die Ausfeuerungshübe gestartet oder die Endposition angefahren wird. <i>Es entsteht dabei der Eindruck, es verändert sich das Ausschaltverhalten. Dies ist aber nicht der Fall.</i></p></div>
+  </body>
+</html>

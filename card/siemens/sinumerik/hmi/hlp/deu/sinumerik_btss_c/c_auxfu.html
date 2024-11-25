@@ -1,0 +1,517 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein C/AUXFU: Hilfsfunktionen</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein C/AUXFU: Hilfsfunktionen</h1>
+         </div>
+      </div>Der Baustein enthält die aktiven Hilfsfunktionen für jede Gruppe.<br/>
+      Über die Zeile wird die Hilfsfunktionsgruppe (64 Gruppen) und die<br/>
+      gewünschte Sichtweise adressiert:<br/>
+      Zeile 1001-1064: Aktive Hilfsfunktion aus Sicht des NCKs<br/>
+      Zeile 2001-2064: Aufgesammelte Hilfsfunktion (nach Suchlauf) aus Sicht des NCKs<br/>
+      Zeile 3001-3064: Aktive Hilfsfunktion aus Sicht der PLC<br/>
+      Zeile    1-  64: Zusammenfassung obiger Sichten<br/>
+      <br/>
+      Nur die Werte der Zeilen 3001-3064 sind schreibbar.<br/>
+      Beim Schreiben von Einzelwerten ist darauf zu achten,<br/>
+      dass die Variable "status" als Letzte geschrieben wird.<br/>
+      Erst beim Schreiben dieser Variable erfolgt die Übernahme<br/>
+      des kompletten Datensatzes einer Hilfsfunktion.<br/>
+      
+      <div><a name="5100"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>acAuxfuMTick</b></td>
+            <td colspan="3" style="border:1px solid black">Zeitstempel der aktiven M-Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black">$AC_AUXFU_M_TICK[groupIndex]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3128
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Die Variable dient zum Lesen des Zeitstempels der zuletzt für eine Hilfsfunktionsgruppe<br/>
+               aufgesammelten (Suchlauf) oder ausgegebenen Hilfsfunktion.<br/>
+               Ist für die spezifizierte Gruppe noch keine Hilfsfunktion ausgegeben worden, <br/>
+               so liefert die Variable den Wert -1.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>-1
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>INT_MIN
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>INT_MAX
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/acAuxfuMTick[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5101"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>acAuxfuPredefIndex</b></td>
+            <td colspan="3" style="border:1px solid black">Predef-Index der aktiven Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black">$AC_AUXFU_PREDEF_INDEX[groupIndex]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3064
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Die Variable dient zum Lesen des vordefinierten Index der zuletzt für eine Hilfsfunktionsgruppe<br/>
+               aufgesammelten (Suchlauf) oder ausgegebenen Hilfsfunktion.<br/>
+               Ist für die spezifizierte Gruppe noch keine Hilfsfunktion ausgegeben worden, <br/>
+               so liefert die Variable den Wert -1.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>-1
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>-1
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>INT_MAX
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/acAuxfuPredefIndex[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5102"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>acAuxfuSpec</b></td>
+            <td colspan="3" style="border:1px solid black">Ausgabespezifikation der aktiven Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black">$AC_AUXFU_SPEC[groupIndex]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>8
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3064
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Die Variable dient zum Lesen der Ausgabe-Spezifikation der zuletzt für eine Hilfsfunktionsgruppe<br/>
+               aufgesammelten (Suchlauf) oder ausgegebenen Hilfsfunktion.<br/>
+               Ist für die spezifizierte Gruppe noch keine Hilfsfunktion ausgegeben worden, <br/>
+               so liefert die Variable den Wert -1.<br/>
+               <br/>
+               Die Ausgabe-Spezifikation ist bit-kodiert:<br/>
+                 Bit  0 = 1 Quittierung "normal" nach einen OB1-Takt<br/>
+                 Bit  1 = 1 Quittierung "quick" mit OB40<br/>
+                 Bit  2 = 1 keine vordefinierte Hilfsfunktion<br/>
+                 Bit  3 = 1 keine Ausgabe an die PLC<br/>
+                 Bit  4 = 1 Spindelreaktion nach der Quittung durch die PLC<br/>
+                 Bit  5 = 1 Ausgabe vor der Bewegung<br/>
+                 Bit  6 = 1 Ausgabe während der Bewegung<br/>
+                 Bit  7 = 1 Ausgabe am Satzende<br/>
+                 Bit  8 = 1 keine Ausgabe nach Satzsuchlauf Type 1,2,4<br/>
+                 Bit  9 = 1 Aufsammlung während Satzsuchlauf Type 5 (SERUPRO)<br/>
+                 Bit 10 = 1 keine Ausgabe während Satzsuchlauf Type 5 (SERUPRO)<br/>
+                 Bit 11 = 1 kanalübergreifende Hilfsfunktion (SERUPRO)<br/>
+                 Bit 12 = 1 Ausgabe erfolgte über Synchronaktion<br/>
+                 Bit 13 = 1 implizite Hilfsfunktion<br/>
+                 Bit 14 = 1 aktives M01<br/>
+                 Bit 15 = 1 keine Ausgabe während Einfahr-Testlauf<br/>
+                 Bit 16 = 1 Nibbeln aus<br/>
+                 Bit 17 = 1 Nibbeln ein<br/>
+                 Bit 18 = 1 Nibbeln<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>-1
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>INT_MIN
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>INT_MAX
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/acAuxfuSpec[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5103"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>acAuxfuTickHifu</b></td>
+            <td colspan="3" style="border:1px solid black">Hilfsfunktionszähler der aktiven Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black">$AC_AUXFU_TICK[groupIndex,2]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>11
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3064
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Die Variable dient zum Lesen des Hilfsfunktionszählers pro Paket<br/>
+               der zuletzt für eine Hilfsfunktionsgruppe<br/>
+               aufgesammelten (Suchlauf) oder ausgegebenen Hilfsfunktion.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>INT_MIN
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>INT_MAX
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/acAuxfuTickHifu[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5104"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>acAuxfuTickPack</b></td>
+            <td colspan="3" style="border:1px solid black">Paketzähler der aktiven Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black">$AC_AUXFU_TICK[groupIndex,1]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>10
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3064
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Die Variable dient zum Lesen des Paketzählers pro Sequenz<br/>
+               der zuletzt für eine Hilfsfunktionsgruppe<br/>
+               aufgesammelten (Suchlauf) oder ausgegebenen Hilfsfunktion.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>INT_MIN
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>INT_MAX
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/acAuxfuTickPack[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5105"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>acAuxfuTickSeq</b></td>
+            <td colspan="3" style="border:1px solid black">Sequenzzähler der aktiven Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black">$AC_AUXFU_TICK[groupIndex,0]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>9
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3064
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Die Variable dient zum Lesen des Ausgabesequenzzählers (Alle Ausgaben innerhalb eines Ipo-Taktes)<br/>
+               der zuletzt für eine Hilfsfunktionsgruppe<br/>
+               aufgesammelten (Suchlauf) oder ausgegebenen Hilfsfunktion.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>INT_MIN
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>INT_MAX
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/acAuxfuTickSeq[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3804"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>extension</b></td>
+            <td colspan="3" style="border:1px solid black">Erweiterung der Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black">$AC_AUXFU_EXT[groupIndex]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3128
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Erweiterung der Hilfsfunktion<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/extension[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3805"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>status</b></td>
+            <td colspan="3" style="border:1px solid black">Status der Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>5
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3128
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Status der Hilfsfunktion<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>Bit0  = 1: Hilfsfunktion ist aufgesammelt             (NCK-Sicht)<br/>
+               Bit1  = 1: Hilfsfunktion ist an PLC ausgegeben        (NCK-Sicht)<br/>
+               Bit2  = 1: Hilfsfunktion ist von PLC quittiert        (NCK-Sicht)<br/>
+               Bit3  = 1: Hilfsfunktion ist von PLC quittiert        (PLC-Sicht)<br/>
+               Bit4  = 1: Hilfsfunktion ist funktional abgeschlossen (PLC-Sicht)<br/>
+               <br/>
+               Bit14 = 1: Der Wert ist vom Typ LONG<br/>
+               Bit15 = 1: Der Wert ist vom Typ DOUBLE<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/status[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3806"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>type</b></td>
+            <td colspan="3" style="border:1px solid black">Art der Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black">$AC_AUXFU_TYPE[groupIndex]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3128
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Art der Hilfsfunktion, z.B. "M", "S", "T", "D", "F", "H", "L".<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/type[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3807"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>valueDo</b></td>
+            <td colspan="3" style="border:1px solid black">Double-Wert der Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black">$AC_AUXFU_VALUE[groupIndex]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3128
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Wert der Hilfsfunktion.<br/>
+               Dieser Wert wird versorgt, falls "status" Bit15 = 1 ist.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/valueDo[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="3808"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>valueLo</b></td>
+            <td colspan="3" style="border:1px solid black">Long-Wert der Hilfsfunktion</td>
+            <td width="20%" style="border:1px solid black">$AC_AUXFU_M_VALUE[groupIndex]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Hilfsfunktionsgruppe/Sichtweise
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>3128
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Wert der Hilfsfunktion.<br/>
+               Dieser Wert wird versorgt, falls "status" Bit14 = 1 ist.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/AuxiliaryFunctions/valueLo[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

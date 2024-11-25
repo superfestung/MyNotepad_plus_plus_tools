@@ -1,0 +1,39 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Freie D-Nummernvergabe: D-Nummern umbenennen (GETDNO, SETDNO)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Freie D-Nummernvergabe: D-Nummern umbenennen (GETDNO, SETDNO)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>D-Nummern müssen eindeutig vergeben werden. Zwei verschiedene Schneiden eines Werkzeuges können nicht dieselbe D-Nummer haben.</p>
+      <h4 class="Blocklabel">GETDNO</h4>
+      <p>Dieser Befehl liefert die D-Nummer einer bestimmten Schneide (ce) eines Werkzeuges mit der T-Nummer t. Existiert keine D-Nummer zu den eingegebenen Parametern, wird d=0 gesetzt. Ist die D‑Nummer ungültig wird ein Wert größer 32000 zurückgegeben.   </p>
+      <h4 class="Blocklabel">SETDNO</h4>
+      <p>Mit diesem Befehl weisen Sie den Wert d der D‑Nummer einer Schneide ce des Werkzeuges t zu. ﾜber state wird das Ergebnis dieser Anweisung zurückgegeben (TRUE oder FALSE). Existiert kein Datensatz zu den eingegebenen Parametern wird FALSE zurückgegeben. Syntaxfehler erzeugen einen Alarm. Die D-Nummer kann nicht explizit auf 0 gesetzt werden.  </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>
+        <code>d = GETDNO (t,ce) </code>
+      </p>
+      <p>
+        <code>state = SETDNO (t,ce,d) </code>
+      </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Bedeutung</h3>
+      <a id="table_58814264-e0ab-4237-81f1-d8ea795c1ca2">
+      </a> <a id="table_0"></a> <a id="table_58814264-e0ab-4237-81f1-d8ea795c1ca2"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="10.6%"><col width="89.3%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>d</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">D-Nummer der Schneide des Werkzeuges</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>t</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">T-Nummer des Werkzeuges</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>ce</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Schneidennummer (CE-Nummer) des Werkzeuges</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>state</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Gibt an, ob der Befehl fehlerfrei ausgeführt werden konnte (TRUE oder FALSE).</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Beispiel Umbenennen einer D-Nummer</h3><a id="table_f7735f5f-ebec-4404-b13b-efa4ff10ef1c"></a> <a id="table_1"></a> <a id="table_f7735f5f-ebec-4404-b13b-efa4ff10ef1c"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E3E"><colgroup><col width="58.0%"><col width="42.0%"></colgroup><tr valign="top"><th>Programmierung</th><th>Kommentar</th></tr><tr valign="top"><td>$TC_DP2[1,2] = 120</td><td> </td></tr><tr valign="top"><td>$TC_DP3[1,2] = 5.5</td><td> </td></tr><tr valign="top"><td>$TC_DPCE[1,2] = 3</td><td>; Schneidennummer CE</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N10 def int DNrAlt, DNrNeu = 17</td><td> </td></tr><tr valign="top"><td>N20 DNrAlt = GETDNO(1,3)</td><td> </td></tr><tr valign="top"><td>N30 SETDNO(1,3,DNrNeu)</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Damit wird der Schneide CE=3 der neue D-Wert 17 zugewiesen. Jetzt werden die Daten dieser Schneide über die D‑Nummer 17 angesprochen; sowohl über die Systemvariablen als auch in der Programmierung mit der NC-Adresse.</p></div>
+    <p>Siehe auch:<br />    <a href="156663353227.html">Freie D-Nummernvergabe, Schneidennummer (Adresse CE)</a><br />    <a href="156663357451.html">Freie D-Nummernvergabe: D-Nummern prüfen (CHKDNO)</a><br />    <a href="156663368459.html">Freie D-Nummernvergabe: T-Nummer zur vorgegebenen D-Nummer ermitteln (GETACTTD)</a><br />    <a href="156663373963.html">Freie D-Nummernvergabe: D-Nummern ungültig setzen (DZERO)</a></p>
+  </body>
+</html>

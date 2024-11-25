@@ -1,0 +1,61 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Function - swivel plane cycle CYCLE800</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Function - swivel plane cycle CYCLE800</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The CYCLE800 swivel cycle is used to swivel to any surface in order to either machine or measure it. In this cycle, the active workpiece zeros and the work offsets are converted to the inclined surface taking into account the kinematic chain of the machine by calling the appropriate NC functions and rotary axes (optionally) are positioned.    </p>
+      <p>Swiveling can be realized:</p>
+      <ul>
+        <li>
+          <p>axis-by-axis</p>
+        </li>
+        <li>
+          <p>via solid angle</p>
+        </li>
+        <li>
+          <p>via projection angle</p>
+        </li>
+        <li>
+          <p>directly</p>
+        </li>
+      </ul>
+      <p>Before the rotary axes are positioned, the linear axes can be retracted if desired.</p>
+      <p>Swiveling always means three geometry axes.</p>
+      <p>In the basic version, the following functions</p>
+      <ul>
+        <li>
+          <p>3 + 2 axes, inclined machining and</p>
+        </li>
+        <li>
+          <p>Toolholder with orientation capability</p>
+        </li>
+      </ul>
+      <p>are available.</p>
+      <h4 class="Blocklabel">Setting/aligning tools for a G code program</h4>
+      <p>The swivel function also includes the "Setting tool", "Align milling tool" and "Align turning tool" functions. When setting and aligning, contrary to swiveling, the coordinate system (WCS) is not rotated at the same time.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Prerequisites before calling the swivel cycle</h3>
+      <p>A tool (tool cutting edge D > 0) and the work offset (WO), with which the workpiece was scratched or measured, must be programmed before the swivel cycle is first called in the main program. </p>
+      <p>Example:</p>
+      <a id="table_5b77fd1f-422f-4677-ae7c-29bdbb756cc6">
+      </a> <a id="table_0"></a> <TableTitle></TableTitle><a id="table_5b77fd1f-422f-4677-ae7c-29bdbb756cc6"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ETF"><colgroup><col width="62.8%"><col width="37.1%"></colgroup><tr valign="top"><td>N1 T1D1</td><td> </td></tr><tr valign="top"><td>N2 M6</td><td> </td></tr><tr valign="top"><td>N3 G17 G54</td><td> </td></tr><tr valign="top"><td>N4 CYCLE800(1,"",0,57,0,0,0,0,0,0,0,0,0,1,0,1))</td><td>;swivel ZERO to 
+;initial position of the 
+;machine kinematics</td></tr><tr valign="top"><td>N5 WORKPIECE(,,,,"BOX",0,0,50,0,0,0,100,100)</td><td>;blank declaration for 
+;simulation and 
+;simultaneous recording</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>For machines where swivel is set-up, each main program with a swivel should start in the initial position of the machine.</p><p>The definition of the blank (WORKPIECE) always refers to the currently effective work offset. For programs that use "swivel", a swivel to zero must be made before the blank is defined. For ShopTurn programs, the blank in the program header is automatically referred to the unswiveled state.</p><p>In the swivel cycle, the work offset (WO) as well as the shifts and rotations of the parameters of the CYCLE800 are converted to the corresponding machining plane. The work offset is kept. Shifts and rotations are saved in system frames - the swivel frames (displayed under parameter/work offsets):</p><ul><li><p>Tool reference ($P_TOOLFRAME)</p></li><li><p>Rotary table reference ($P_PARTFRAME)</p></li><li><p>Workpiece reference ($P_WPFRAME)</p></li></ul><p>The swivel cycle takes into account the actual machining plane (G17, G18, G19).</p><p><b>Swiveling on a machining or auxiliary surface always involves 3 steps:</b></p><ul><li><p>Shifting the WCS before rotation</p></li><li><p>Rotating the WCS (axis-by-axis, ...)</p></li><li><p>Shifting the WCS after rotation</p></li></ul><p><b>The shifts and rotations refer to the coordinate system X, Y, Z of the workpiece and are therefore independent of the machine (with the exception of swivel "rotary axis direct").</b></p><p>No programmable frames are used in the swivel cycle. The frames programmed by the user are taken into account for additive swiveling.</p><p>On the other hand, when swiveling to a new swivel plane, the programmable frames are deleted. Any type of machining operation can be performed on the swivel plane, e.g. by calling standard or measuring cycles.</p><p>The last swivel plane remains active after a program reset or when the power fails. The behavior at reset and power on can be set using machine data.</p><a id="table_2549bb44-85b4-4d97-899b-2e069442a860"></a> <a id="table_1"></a> <TableTitle></TableTitle><a id="table_2549bb44-85b4-4d97-899b-2e069442a860"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="8.4%"><col width="91.5%"></colgroup><tr valign="top"><td><a id="image_766300299_0"></a> <img border="0" src="images/123524983179.png" width="43" height="43"/> </td><td><p type="p_table_l" style="margin-top: 4px" align="left"><b>Machine manufacturer</b></p><p type="p_table_l" align="left">Please refer to the machine manufacturer's specifications.</p></td></tr></table></p><a name="block_2"></a><h3 class="Blocktitle">Block search when swiveling the plane / swiveling the tool</h3><p>For block search with calculation, after NC start, initially, the automatic rotary axes of the active swivel data set are pre-positioned and then the remaining machine axes are positioned. This does not apply if a type TRACYL or TRANSMIT transformation is active after the block search. In this case, all axes simultaneously move to the accumulated positions.</p><a id="table_fffdac6b-65cd-43d1-afb8-828c76c520d1"></a> <a id="table_2"></a> <TableTitle></TableTitle><a id="table_fffdac6b-65cd-43d1-afb8-828c76c520d1"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="8.4%"><col width="91.5%"></colgroup><tr valign="top"><td><a id="image_766300299_1"></a> <img border="0" src="images/123524983179.png" width="43" height="43"/> </td><td><p type="p_table_l" style="margin-top: 4px" align="left"><b>Machine manufacturer</b></p><p type="p_table_l" align="left">Please refer to the machine manufacturer's specifications.</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Aligning tools</h3><p>The purpose of the "Align turning tool" function is to support turning machines with a swivel-mounted B axis. The position and orientation of the turning tool can be changed by rotating swivel axis B (around Y) and the tool spindle.</p><p>In contrast to "Swivel plane", no rotation is operative in the active work offsets in the workpiece coordinate system in the case of "Align tool".</p><p>The maximum angular range for "Align milling tool" is limited by the traversing range of the participating rotary axes. Technological limits are also placed on the angular range depending on the tool used. </p><p>When aligning the tool, using the CUTMOD NC command, the tool data are calculated online based on the tool orientation (positions of the B axis and the tool spindle). For a turning tool, this involves the cutting edge position, the holder angle and the cut direction.</p><a name="block_4"></a><h3 class="Blocktitle">Name of swivel data set</h3><p>Selecting the swivel data set or deselecting the swivel data set.</p><p>The selection can be hidden by the machine data.</p><p>For "Swivel plane" and "Swivel tool" / "Set tool", only the swivel data sets are available for selection where no B axis kinematics, turning technology has been set.</p><p>"Swivel tool" / "Align tool", only the swivel data sets are available for selection where B axis kinematics, turning technology has been set.</p><a id="table_6ecc93a0-c304-47ab-947f-ce788482bb43"></a> <a id="table_3"></a> <TableTitle></TableTitle><a id="table_6ecc93a0-c304-47ab-947f-ce788482bb43"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="8.4%"><col width="91.5%"></colgroup><tr valign="top"><td><a id="image_766300299_2"></a> <img border="0" src="images/123524983179.png" width="43" height="43"/> </td><td><p type="p_table_l" style="margin-top: 4px" align="left"><b>Machine manufacturer</b></p><p type="p_table_l" align="left">Please refer to the machine manufacturer's specifications.</p></td></tr></table></p><p></p></div>
+    <p>See also:<br />    <a href="124634112267.html">Machining - swivel plane cycle CYCLE800</a><br />    <a href="124634096267.html">Approach/retraction - swivel plane CYCLE800</a><br />    <a href="124634114955.html">Calling the cycle - swivel plane CYCLE800</a><br />    <a href="slstepdivalignmilltool.html">Align milling tool - CYCLE800</a><br />    <a href="slstepdivalignturntool.html">Align turning tool - CYCLE800</a><br />    <a href="slstepdivswivelplane.html">Swivel plane - CYCLE800</a></p>
+  </body>
+</html>

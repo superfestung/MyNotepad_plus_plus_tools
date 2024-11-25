@@ -1,0 +1,195 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Safe Brake Test (SBT) diagnostic function</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Safe Brake Test (SBT) diagnostic function</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The "Safe Brake Test" function (SBT) checks the holding torque of a brake (operational or holding brake). The drive purposely generates a configurable torque against the applied brake. If the brake is operating correctly, the axis motion remains within a parameterized tolerance. However, if more significant axis motion is identified from the encoder actual values, the brake is not in a position to provide the specified holding torque. The brake must now be serviced or replaced.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Requirement</h3>
+      <p>The <a href="147125433483.html">commissioning mode</a> must be activated so that the parameters of this safety function can be changed. The SBT safety function is only available for the selected drive if, in <a href="konf_dbsi_options.html">options</a>, an extended function with encoder was previously set and parameterized. </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Commissioning screen "Safe Brake Test - SBT"</h3>
+      <p>You can make the following settings for the drive in window "Safe Brake Test - SBT": </p>
+      <h4 class="Blocklabel">Activation area: </h4>
+      <ul>
+        <li>
+          <p>Enable SBT (p10201.1)</p>
+          <p>Setting to enable the safe brake test. "Enable safe brake test" can be activated using the checkbox. </p>
+        </li>
+        <li>
+          <p>Motor type (p10204)</p>
+          <p>Selecting the motor type for the safe brake test.</p>
+          <ul>
+            <li>
+              <p>0: Rotary</p>
+            </li>
+            <li>
+              <p>1: Linear</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>SBT selection (p10203)</p>
+          <p>Selecting the control of the safe brake test.</p>
+          <ul>
+            <li>
+              <p>0: SBT via SCC (p10235)</p>
+            </li>
+            <li>
+              <p>1: SBT via BICO (p10230)</p>
+            </li>
+            <li>
+              <p>2: SBT for test stop selection (p9705/p10250.8)</p>
+            </li>
+          </ul>
+          <p>For integrated drives (CU_I, CU_NX), only "SBT via SCC" is permissible.</p>
+        </li>
+        <li>
+          <p>Positioning response (MD36968.2 $MA_SAFE_BRAKETEST_CONTROL, bit 2)</p>
+          <p>Selects the positioning response at the end of the brake test.</p>
+          <ul>
+            <li>
+              <p>0: Positioning at the actual axis position</p>
+              <p>To conclude the brake test, the actual axis position for the next path motion is used. (MD36968 $MA_SAFE_BRAKETEST_CONTROL bit 2 = 0). This results in motion to the last programmed axis position on the path.</p>
+            </li>
+            <li>
+              <p>1: Positioning to the last programmed axis position</p>
+              <p>Acceptance of the actual axis position is not carried out. After the axis has been pressed against the brake, the closed-loop position controller withdraws the axis to the last programmed position.</p>
+              <p>Vertical axes can thus be prevented from sagging as a result of a repeated brake test. It is also possible to briefly exceed the software limit switch while pressing against the brake without initiating an alarm.</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Range brake 1/2<b>:</b></h4>
+      <ul>
+        <li>
+          <p>Select brake</p>
+          <p>Selecting the brake to be tested.</p>
+          <ul>
+            <li>
+              <p>Brake 1 (p10202[0])</p>
+            </li>
+            <li>
+              <p>Brake 2 (p10202[1])</p>
+            </li>
+          </ul>
+          <p>The following values refer to the brake set here. </p>
+        </li>
+        <li>
+          <p>Brake test</p>
+          <p>Defines whether and which brake should be tested.</p>
+          <ul>
+            <li>
+              <p>0: Inhibit </p>
+            </li>
+            <li>
+              <p>1: Test motor holding brake </p>
+            </li>
+            <li>
+              <p>2: Test external brake</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Build-up of the test torque</p>
+          <p>Setting the time in ms in which the test torque is ramped up against the closed brake. After the safe brake test, the test torque is ramped-down again.</p>
+          <ul>
+            <li>
+              <p>Brake 1 (p10208[0])</p>
+            </li>
+            <li>
+              <p>Brake 2 (p10208[1])</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>SBT brake holding torque</p>
+          <p>Setting the effective holding torque on the motor side of the brake to be tested Nm.</p>
+          <ul>
+            <li>
+              <p>Brake 1 (p10209[0])</p>
+            </li>
+            <li>
+              <p>Brake 2 (p10209[1])</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Test torque factor</p>
+          <p>Sets the factor for the test force of test sequence 1 or 2 for the safe brake test. The factor is referred to the brake holding force (p10209).</p>
+          <ul>
+            <li>
+              <p>Test frequency 1, brake 1 (p10210[0])</p>
+            </li>
+            <li>
+              <p>Test frequency 1, brake 2 (p10210[1])</p>
+            </li>
+            <li>
+              <p>Test frequency 2, brake 1 (p10220[0])</p>
+            </li>
+            <li>
+              <p>Test frequency 2, brake 2 (p10220[1])</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Calculated test torque (Mt)</p>
+          <p>Value calculated from "SBT holding torque of the brake" and "Test torque factor". </p>
+        </li>
+        <li>
+          <p>Test duration</p>
+          <p>Sets the test duration in ms for test sequence 1 or 2 for the safe brake test.</p>
+          <ul>
+            <li>
+              <p>Test frequency 1, brake 1 (p10211[0])</p>
+            </li>
+            <li>
+              <p>Test frequency 1, brake 2 (p10211[1])</p>
+            </li>
+            <li>
+              <p>Test frequency 2, brake 1 (p10221[0])</p>
+            </li>
+            <li>
+              <p>Test frequency 2, brake 2 (p10221[1])</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Position tolerance </p>
+          <p>Sets the tolerated position deviation for test sequence 1 or 2 for the safe brake test in mm for a linear axis or in degrees for a rotary axis.</p>
+          <ul>
+            <li>
+              <p>Test frequency 1, brake 1 (p10212[0])</p>
+            </li>
+            <li>
+              <p>Test frequency 1, brake 2 (p10212[1])</p>
+            </li>
+            <li>
+              <p>Test frequency 2, brake 1 (p10222[0])</p>
+            </li>
+            <li>
+              <p>Test frequency 2, brake 2 (p10222[1])</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Parameter list</h4>
+      <p>When required, each setting in this dialog screen form can also be made via a parameter list. You can access the <a href="147125442315.html">parameter list</a> using the ">>" softkey followed by the "Parameter list" softkey. </p>
+    </div>
+    <p>See also:<br />    <a href="147125519883.html">Calling function dialogs</a></p>
+  </body>
+</html>

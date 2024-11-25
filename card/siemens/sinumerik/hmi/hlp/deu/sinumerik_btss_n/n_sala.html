@@ -1,0 +1,364 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein N/SALA: Alarme: Liste nach Zeit geordnet, ältester Alarm an 1. Stelle</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein N/SALA: Alarme: Liste nach Zeit geordnet, ältester Alarm an 1. Stelle</h1>
+         </div>
+      </div>Die Alarme der NCK werden in der Reihenfolge ihres Auftretens als Liste angeordnet, wobei der älteste Alarm an 1. Stelle steht.
+      Die Alarmparameter werden als ASCII-Strings übergeben, das erste Zeichen beinhaltet eine Typinformation für den Parameter.
+      Folgende Typen sind möglich:<br/>
+      S: allgemeiner String, z. B. Teileprogrammname<br/>
+      A: Achsname / Spindelname<br/>
+      K: Kanalname<br/>
+      N: Satznummer<br/>
+      Y: Systemfehler<br/>
+      D: Antriebsnummer<br/>
+      <br/>
+      Sind Parameter nicht belegt, so wird ein "S" übergeben.<br/>
+      <br/>
+      Alle Variablen dieses Bausteins sind privilegierte Variablen! D.h. Zyklische Ergebnisquittungen auf diese Variablen werden
+      auch dann geliefert, wenn die zyklischen Dienste aufgrund von Blockzykluszeitproblemen von der NCK nicht mehr bedient werden.
+      <br/>
+      Achtung: die privilegierten Variablen verlieren diese Eigenschaft, wenn sie mit nicht privilegierten Variablen in einem Auftrag
+      gemischt werden. -&gt; Die Alarmvariablen nicht in ein Cluster mit anderen Variablen einbinden!<br/>
+      <br/>
+      Bei den Alarm-Variablen wird weiterhin vorausgesetzt, dass die zyklischen Dienste "bei Änderung" gesetzt und nicht mit anderen
+      Variablen (auch nicht mit privilegierten Variablen) im gleichen Auftrag zusammengefasst sind.<br/>
+      <br/>
+      Der Baustein SALA beinhaltet nur die Alarme, die in der NCK erzeugt werden. Es sind weder PLC- noch HMI-Alarme enthalten.
+      Um alle Alarme zu lesen, sollte der OEM-HMI-Anwender die Mechanismen der Alarmserver verwenden und nicht direkt den Baustein
+      SALA lesen.<br/>
+      
+      <div><a name="35"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>alarmNo</b></td>
+            <td colspan="3" style="border:1px solid black">Ordnungsnummer des Alarms</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Siehe Beschreibung unten
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Ordnungsnummer des Alarms (wievielter Alarm seit Steuerung Ein)<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0 = unbekannter Alarm<br/>
+               <br/><span style="font-size: 8pt">Zeilenindex:<br></span>Alarmlisten-Index<br/>
+               Der maximale Alarmlisten-Index ist über die Variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> im Baustein S lesbar.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Nck/SequencedAlarms/alarmNo[&lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="57"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>clearInfo</b></td>
+            <td colspan="3" style="border:1px solid black">Löschkriterium für Alarm</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Löschkriterium für Alarm<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>1 = Power-On<br/>
+               2 = Reset<br/>
+               3 = Cancel<br/>
+               4 = Alarm wird per NCK-Software gelöscht<br/>
+               5 = Alarm wird durch Start eines Programms gelöscht<br/>
+               6 = Alarm wird durch RESET in allen Kanälen des Bags gelöscht<br/>
+               7 = Alarm wird durch Reset in allen Kanälen der NC gelöscht<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Nck/SequencedAlarms/clearInfo
+            </td>
+         </tr>
+      </table>
+      <div><a name="134"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>fillText1</b></td>
+            <td colspan="3" style="border:1px solid black">Parameter 1 des Alarms</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>5
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Siehe Beschreibung unten
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Parameter 1 des Alarms<br/>
+               <br/><span style="font-size: 8pt">Zeilenindex:<br></span>Alarmlisten-Index<br/>
+               Der maximale Alarmlisten-Index ist über die Variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> im Baustein S lesbar.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Nck/SequencedAlarms/fillText1[&lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="137"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>fillText2</b></td>
+            <td colspan="3" style="border:1px solid black">Parameter 2 des Alarms</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Siehe Beschreibung unten
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Parameter 2 des Alarms<br/>
+               <br/><span style="font-size: 8pt">Zeilenindex:<br></span>Alarmlisten-Index<br/>
+               Der maximale Alarmlisten-Index ist über die Variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> im Baustein S lesbar.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Nck/SequencedAlarms/fillText2[&lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="140"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>fillText3</b></td>
+            <td colspan="3" style="border:1px solid black">Parameter 3 des Alarms</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Siehe Beschreibung unten
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Parameter 3 des Alarms<br/>
+               <br/><span style="font-size: 8pt">Zeilenindex:<br></span>Alarmlisten-Index<br/>
+               Der maximale Alarmlisten-Index ist über die Variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> im Baustein S lesbar.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Nck/SequencedAlarms/fillText3[&lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="143"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>fillText4</b></td>
+            <td colspan="3" style="border:1px solid black">Parameter 4 des Alarms</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>8
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Siehe Beschreibung unten
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Parameter 4 des Alarms<br/>
+               <br/><span style="font-size: 8pt">Zeilenindex:<br></span>Alarmlisten-Index<br/>
+               Der maximale Alarmlisten-Index ist über die Variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> im Baustein S lesbar.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Nck/SequencedAlarms/fillText4[&lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="436"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>textIndex</b></td>
+            <td colspan="3" style="border:1px solid black">Alarmnummer</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Alarmlisten-Index<br>Siehe Beschreibung unten
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Alarmnummer des eigentlichen Alarms<br/>
+               <br/><span style="font-size: 8pt">Zeilenindex:<br></span>Alarmlisten-Index<br/>
+               Der maximale Alarmlisten-Index ist über die Variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> im Baustein S lesbar.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Nck/SequencedAlarms/textIndex[&lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="439"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>timeBCD</b></td>
+            <td colspan="3" style="border:1px solid black">Zeitstempel des Alarms</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Alarmlisten-Index<br>Siehe Beschreibung unten
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>16
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Der Zeitpunkt, zu dem ein Alarm aufgetreten ist, wird mit einem Zeitstempel versehen. Der Zeitstempel wird im entsprechenden
+               PLC-Format angegeben.<br/>
+               <br/><span style="font-size: 8pt">Zeilenindex:<br></span>Alarmlisten-Index<br/>
+               Der maximale Alarmlisten-Index ist über die Variable <a href="../sinumerik_btss_N/N_S.html#324">numAlarms</a> lesbar.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DATETIME
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Nck/SequencedAlarms/timeBCD[&lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

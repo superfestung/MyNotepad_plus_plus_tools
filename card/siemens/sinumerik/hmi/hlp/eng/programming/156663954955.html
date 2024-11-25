@@ -1,0 +1,67 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Output of M, S and H auxiliary functions to the PLC</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Output of M, S and H auxiliary functions to the PLC</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Output timing</h3>
+      <p>Auxiliary functions of the M, S and H type can be output from synchronized actions. The output to the PLC is immediate, i.e. directly in the interpolator clock cycle in which the action is executed.</p>
+      <p>Any output times set via the machine data for auxiliary functions have no effect when output from synchronized actions:</p>
+      <ul>
+        <li>
+          <p>MD11110 $MN_AUXFU_GROUP_SPEC (auxiliary function group specification)  </p>
+        </li>
+        <li>
+          <p>MD22200 $MC_AUXFU_M_SYNC_TYPE (output time of M functions)  </p>
+        </li>
+        <li>
+          <p>MD22210 $MC_AUXFU_S_SYNC_TYPE (output time of the S functions)  </p>
+        </li>
+        <li>
+          <p>MD22230 $MC_AUXFU_H_SYNC_TYPE (output time of the H functions)  </p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Maximum number</h3>
+      <h4 class="Blocklabel">General</h4>
+      <p>A maximum of 10 auxiliary functions can be output simultaneously from the part program and the active synchronized actions of a channel, i.e. in one OB40 cycle of the PLC.</p>
+      <h4 class="Blocklabel">Synchronized-action-specific</h4>
+      <p>The maximum permissible number of auxiliary functions in the action part of a synchronized action is:  </p>
+      <ul>
+        <li>
+          <p>M functions: 5</p>
+        </li>
+        <li>
+          <p>S functions: 3</p>
+        </li>
+        <li>
+          <p>H functions: 3</p>
+        </li>
+      </ul>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Non-modal synchronized actions</h3>
+      <p>In non-modal synchronized actions (without specification of <code>ID</code> or <code>IDS</code>), auxiliary functions can only be output in conjunction with the scanning frequency <code>WHEN</code> or <code>EVERY</code>.</p>
+      <a name="block_4">
+      </a>
+      <h3 class="Blocktitle">Predefined M functions</h3>
+      <p>Predefined M functions generally must not be output in synchronized actions.</p>
+      <p>Exceptions: <code>M3</code>, <code>M4</code>, <code>M5</code>, <code>M40</code>, <code>M41</code>, <code>M42</code>, <code>M43</code>, <code>M44</code>, <code>M45</code>, <code>M70</code> and <code>M17</code></p>
+    </div>
+    <p>See also:<br />    <a href="156663812363.html">Frequency (WHENEVER, FROM, WHEN, EVERY)</a></p>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Activating / deactivating tool offsets (D, D0):</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Activating / deactivating tool offsets (D, D0):</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Cutting edges 1 to 8 of a tool (with active tool management 12) can be assigned different tool offset data blocks (e.g. different correction values for the left and right cutting edges of a grooving tool).</p>
+      <p>The offset data (including the data for the tool length compensation) of a special cutting edge is activated by calling the D number. When D0 is programmed, offsets for the tool have no effect.</p>
+      <p>A tool radius compensation must also be activated by G41/G42.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Tool length compensations take immediate effect when the D number is programmed. If no D number is programmed, the default setting defined by the machine data is active for a tool change (→ see machine manufacturer's specifications).</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <a id="table_4b8c3620-b6ea-63eb-60eb-c7a89cdcf5a0">
+      </a> <a id="table_0"></a> <a id="table_4b8c3620-b6ea-63eb-60eb-c7a89cdcf5a0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EZE"><colgroup><col width="74.2%"><col width="25.8%"></colgroup><tr valign="top"><td><b>D&lt;No></b></td><td> </td></tr><tr valign="top"><td>X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G41/G42 X... Y... Z...</td><td> </td></tr><tr valign="top"><td>G40</td><td> </td></tr><tr valign="top"><td><b>D0</b></td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_647690ca-bdd0-4355-903a-02d79b31e453"></a> <a id="table_1"></a> <a id="table_647690ca-bdd0-4355-903a-02d79b31e453"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="17.4%"><col width="22.6%"><col width="59.9%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>D</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Address for activating an offset data block for the active tool</p><p type="p_table_l" align="left">The tool length compensation is applied with the first programmed traverse of the associated length compensation axis.</p><p type="p_table_l" align="left"><b>Notice:</b><br />A tool length compensation can also take effect without D programming, if the automatic activation of a tool edge has been configured for the tool change (→ see machine manufacturer's specifications).</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;No></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">The tool offset data block to be activated is specified via the D number.</p><p type="p_table_l" align="left">The type of D programming depends on the configuration of the machine (→ see information provided by the machine manufacturer).</p><p type="p_table_l" align="left">There are the following options:</p><ul class="table"><li><p>D number = cutting edge number </p><p>D numbers ranging from 1 to max. 12 are available for every tool T&lt;No> (without TOOLMAN) or T="Name" (with TOOLMAN). These D numbers are assigned directly to the tool cutting edges. An offset data set ($TC_DPx[&lt;t>,&lt;d>]) is assigned to each D number (= cutting edge number).</p></li><li><p>Free selection of D numbers</p><p>The D numbers can be freely assigned to the cutting edge numbers of a tool. A machine data specifies the upper limit for the D numbers that may be used.</p></li></ul></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">0 ... 32000</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>D0</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Deactivating the offset data block for the active tool</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G41</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Command for activating the tool radius compensation with machining direction <b>left</b> of the contour</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G42</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Command for activating the tool radius compensation with machining direction <b>right</b> of the contour</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G40</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Command for deactivating the tool radius compensation</p></td></tr></table></p><p class="comment"><b>Additional information</b> on G40/G41/G42 is provided in the section "<a href="156661960203.html">Tool radius compensation</a>".</p><a name="block_3"></a><h3 class="Blocktitle">Examples</h3><h4 class="Blocklabel">Example 1: Tool change with T command (turning)</h4><a id="table_c036d003-d926-4865-bcc4-48ff1fbebf2a"></a> <a id="table_2"></a> <a id="table_c036d003-d926-4865-bcc4-48ff1fbebf2a"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EPBAC"><colgroup><col width="27.1%"><col width="72.9%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10, T1, D1</td><td>; Load tool T1 and activate tool offset data block D1 of T1.</td></tr><tr valign="top"><td>N11 G0 X... Z...</td><td>; The tool length compensations are applied.</td></tr><tr valign="top"><td>N50, T4, D2</td><td>; Load tool T4 and activate tool offset data block D2 of T4.</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N70 G0 Z... D1</td><td>; Activate other cutting edge D1 for tool T4.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 2: Different correction values for the left and right cutting edges of a grooving tool</h4><a id="image_129637414155_0"></a> <img border="0" src="images/176065012235.png" width="417" height="294"/><a id="table_"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_legend" border="0"><colgroup><col width="6.9%"><col width="93.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">①</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Plunge turning tool (T2)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">②</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Cutting edge D1</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">③</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Cutting edge D6</p></td></tr></table></p></div>
+    <p>See also:<br />    <a href="156661530891.html">Activating / deactivating tool offsets (D, D0): Further information</a><br />    <a href="156661533579.html">Suppressing tool offsets (SUPD)</a><br />    <a href="156661463179.html">Programmed contour and tool path</a><br />    <a href="156661470091.html">Tool length compensation</a><br />    <a href="156661473803.html">Tool radius compensation</a><br />    <a href="156661478795.html">Tool compensation memory</a></p>
+  </body>
+</html>

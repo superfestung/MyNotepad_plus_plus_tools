@@ -1,0 +1,95 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Achstausch, Spindeltausch (RELEASE, GET, GETD): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Achstausch, Spindeltausch (RELEASE, GET, GETD): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Weitere Informationen</h3>
+      <h4 class="Blocklabel">
+        <b>Voraussetzungen für den Achstausch</b>
+      </h4>
+      <ul>
+        <li>
+          <p>Die Achse muss über Maschinendaten in allen Kanälen definiert sein, die Achse verwenden wollen.</p>
+        </li>
+        <li>
+          <p>Über das <b>achs</b>spezifische Maschinendatum muss festgelegt sein, welchem Kanal die Achse nach POWER ON zugeordnet werden soll.</p>
+        </li>
+      </ul>
+      <p>
+      </p>
+      <h4 class="Blocklabel">Beschreibung</h4>
+      <p>
+        <b>Achse freigeben: RELEASE</b>
+      </p>
+      <p>Bei der Achsfreigabe ist zu beachten:</p>
+      <ol>
+        <li>
+          <p>Die Achse darf an keiner Transformation beteiligt sein.</p>
+        </li>
+        <li>
+          <p>Bei Achskopplungen (Tangentialsteuerung), müssen alle Achsen des Verbands freigegeben werden.</p>
+        </li>
+        <li>
+          <p>Eine konkurrierende Positionierachse kann in diesem Zustand nicht getauscht werden.</p>
+        </li>
+        <li>
+          <p>Bei einer Gantry-Masterachse werden auch alle Folgeachsen getauscht.</p>
+        </li>
+        <li>
+          <p>Bei Achskopplungen (Mitschleppen, Leitwertkopplung, Elektronisches Getriebe) kann nur die Leitachse des Verbandes freigegeben werden.</p>
+        </li>
+      </ol>
+      <p>
+        <b>Achse übernehmen: GET</b>
+      </p>
+      <p>Mit diesem Befehl wird der eigentliche Achstausch durchgeführt. Die Verantwortung für die Achse liegt vollständig bei dem Kanal, in dem der Befehl programmiert wurde.</p>
+      <p>
+        <b>Auswirkungen von GET:</b>
+      </p>
+      <p>Achstausch mit Synchronisierung:</p>
+      <p>Eine Achse muss immer dann synchronisiert werden, wenn sie zwischenzeitlich in einem anderen Kanal oder der PLC zugeordnet war, und vor dem GET keine Synchronisierung durch "WAITP", G74 oder Restweglöschen stattgefunden hat.</p>
+      <ul>
+        <li>
+          <p>Ein Vorlaufstopp erfolgt (wie bei STOPRE).</p>
+        </li>
+        <li>
+          <p>Die Bearbeitung wird so lange unterbrochen, bis der Tausch vollständig ausgeführt ist.</p>
+        </li>
+      </ul>
+      <p>
+      </p>
+      <h4 class="Blocklabel">Automatisches "GET"</h4>
+      <p>Wenn eine Achse prinzipiell im Kanal verfügbar, jedoch derzeitig nicht als "Kanal-Achse" vorhanden ist, wird automatisch ein GET ausgeführt. Falls die Achse(n) schon synchronisiert ist (sind), wird kein Vorlaufstopp erzeugt.</p>
+      <p>
+      </p>
+      <h4 class="Blocklabel">Achstauschverhalten veränderbar einstellen</h4>
+      <p>Der Abgabezeitpunkt von Achsen lässt sich über ein Maschinendatum wie folgt einstellen:</p>
+      <ul>
+        <li>
+          <p>Automatischer Achstausch findet zwischen zwei Kanälen auch dann statt, wenn die Achse durch WAITP in einen neutralen Zustand gebracht wurde (Verhalten wie bisher)</p>
+        </li>
+        <li>
+          <p>Bei der Anforderung einer Achs-Containerdrehung werden alle dem ausführenden Kanal zuordenbaren Achsen des Achs-Containers mittels impliziten GET bzw. GETD in den Kanal geholt. Ein anschließender Achstausch ist erst nach dem Abschluss der Achs-Containerdrehung wieder erlaubt.</p>
+        </li>
+        <li>
+          <p>Nach einem eingeschobenen Zwischensatz im Hauptlauf wird geprüft, ob ein Reorganisieren erforderlich ist oder nicht. Nur wenn die Achszustände dieses Satzes mit den aktuellen Achszuständen <b>nicht</b> übereinstimmen, ist ein Reorganisieren erforderlich.</p>
+        </li>
+        <li>
+          <p>Statt eines GET-Satzes mit Vorlaufstopp und Synchronisation zwischen Vorlauf und Hauptlauf kann ein Achstausch auch ohne Vorlaufstopp erfolgen. Es wird dann nur ein Zwischensatz mit der GET-Anforderung erzeugt. Im Hauptlauf wird bei Abarbeitung dieses Satzes überprüft, ob die Zustände der Achse im Satz mit den aktuellen Achszuständen übereinstimmen.</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

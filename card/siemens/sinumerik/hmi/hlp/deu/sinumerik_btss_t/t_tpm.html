@@ -1,0 +1,75 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein T/TPM: Magazindaten: Mehrfachzuordnung von Platzdaten</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein T/TPM: Magazindaten: Mehrfachzuordnung von Platzdaten</h1>
+         </div>
+      </div>Der Datenbaustein TPM ist als 2-dimensionales Variablenfeld organisiert.<br/>
+      ParameterNr = 1: Die Magazinnummer, zu der eine Beziehung besteht.<br/>
+      ParameterNr = 2: Abstand (in Plätzen) des internen Platzes zur Wechselstelle des Magazins (mit der Magazinnummer vergleiche
+      1. Parameter), zu dem die Beziehung eingerichtet wird.<br/>
+      Er enthält Informationen über mögliche Mehrfachzuordnungen. Der Spaltenindex ist die Magazinnummer.<br/>
+       <br/>
+      Zu dem Platz P mit Platznummer p in dem Magazin MP (= Spaltenindex) sind die <a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> -mal möglichen Mehrfachzuordnungen zu anderen Magazinen mit den zugehörigen Abständen zu den Wechselstellen in den jeweiligen
+      Magazinen abgelegt.  Die Berechnung des Offsets für den Zeilenindex zi zu einer Platznummer p erfolgt nach folgender Vorschrift:
+      zi = (p-1) * <a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> * <a href="../sinumerik_btss_N/N_Y.html#349">numPlaceMultiParams</a> + ParameterNr.<br/>
+      <br/>
+      Ermittlung des Abstands von Beladestelle zur Wechselstelle:<br/>
+      <br/>
+      Bei der Variablen <a href="../sinumerik_btss_T/T_TPM.html#606">multiPlace</a> ist unter der Spalte der Wert 9999 (Magazinnr. Beladestelle) vorzugeben. Die PlatzNr (p) für die Zeile ist die Nummer der
+      Beladestelle. Mit ParameterNr = 1 wird die Zeile für die erste Zuordnung berechnet. Hierüber wird beim Lesen der Variablen
+      die Magazinnummer gelesen, die eine Verbindung zur vorgesehenen Wechselstelle hat. Wenn diese Magazinnummer korrekt ist, kann
+      mit der Variablen <a href="../sinumerik_btss_T/T_TPM.html#606">multiPlace</a> mit der nächsthöheren Zeilennummer die Anzahl Plätze von Beladestelle zu Wechselstelle gelesen werden. Falls die gelesene
+      Magazinnr. nicht korrekt war, dann ist mit der um <a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> erhöhten Zeilennummer die folgende Magazinzuordnung zu lesen.<br/>
+      Dieses Verfahren ist maximal <a href="../sinumerik_btss_N/N_Y.html#349">numPlaceMultiParams</a> -mal zu wiederholen, bis die gewünschte Beziehung gefunden wurde.<br/>
+      
+      <div><a name="606"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>multiPlace</b></td>
+            <td colspan="3" style="border:1px solid black">Abstand zur Wechselstelle</td>
+            <td width="20%" style="border:1px solid black">diverse, siehe Variablenbeschreibung</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>Nummer int. Magazin
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Wert berechnen<br>Siehe Beschreibung unten
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span><a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> * <a href="../sinumerik_btss_N/N_Y.html#349">numPlaceMultiParams</a> * <a href="../sinumerik_btss_T/T_TM.html#199">magNrPlaces</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Beim Werkzeugwechsel, Beladen und Entladen benötigt man die aktuelle Magazinposition.<br/>
+               Diese Position bezieht sich auf den vom Maschinenhersteller festgelegten Magazin-Nullpunkt.<br/>
+               In der Regel liegt dieser an der Wechselstelle.<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>o ParameterNr = 1: Abstand zur Wechselstelle des Magazins "n" zum Platz "m" des ersten internen Magazins (9999).<br/>
+               o ParameterNr = 2: Abstand der Wechselstelle des Magazins "n" zum Platz "m" des zweiten internen Magazins (Belademagazin,9998)<br/>
+               <br/><span style="font-size: 8pt">Zeilenindex:<br></span>(PlatzNr - 1) * <a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> * <a href="../sinumerik_btss_N/N_Y.html#349">numPlaceMultiParams</a> + (ZuordnungsNr - 1) * <a href="../sinumerik_btss_N/N_Y.html#348">numPlaceMulti</a> + ParameterNr<br/>
+               Hierbei sind numPlaceMulti und numPlaceMultiParams weitere BTSS Variablen aus dem Baustein Y.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Tool/Magazine/multiPlace[u&lt;Werkzeugber.&gt;, c&lt;Spaltenindex&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

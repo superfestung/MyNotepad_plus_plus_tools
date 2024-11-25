@@ -1,0 +1,29 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Deselect DRF offsets / position offsets (CORROF, DRFOF): More information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Deselect DRF offsets / position offsets (CORROF, DRFOF): More information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Further information</h3>
+      <h4 class="Blocklabel">$AA_OFF_VAL</h4>
+      <p>Once the position offset has been deselected by means of $AA_OFF, system variable $AA_OFF_VAL (integrated distance of axis overlay) for the corresponding axis will equal zero.</p>
+      <h4 class="Blocklabel">$AA_OFF in JOG mode</h4>
+      <p>Also in JOG mode, if $AA_OFF changes, the position offset will be interpolated as an overlaid movement if this function has been enabled via machine data MD 36750 $MA_AA_OFF_MODE.</p>
+      <h4 class="Blocklabel">$AA_OFF in synchronized action</h4>
+      <p>If a synchronized action which immediately resets $AA_OFF (<code>DO $AA_OFF[&lt;axis>]=&lt;value></code>) is active when the position offset is deselected using the <code>CORROF(&lt;axis>,"AA_OFF")</code>, then $AA_OFF will be deselected and not reset, and alarm 21660 will be displayed. However, if the synchronized action becomes active later, e.g. in the block after <code>CORROF</code>, $AA_OFF will remain set and a position offset will be interpolated.</p>
+      <h4 class="Blocklabel">Automatic channel axis exchange</h4>
+      <p>If an axis that is active in another channel has been programmed for a <code>CORROF</code>, it will be fetched into the channel with an axis exchange (requirement: MD30552 $MA_AUTO_GET_TYPE > 0) and the position offset and/or the DRF offset deselected.</p>
+    </div>
+  </body>
+</html>

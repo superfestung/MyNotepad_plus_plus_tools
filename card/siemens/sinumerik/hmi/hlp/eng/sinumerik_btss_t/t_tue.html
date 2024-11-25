@@ -1,0 +1,71 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block T/TUE: Tool edge data: User-defined data</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block T/TUE: Tool edge data: User-defined data</h1>
+         </div>
+      </div>(Previous designation: TUO)<br/>
+      <br/>
+      The data module TUE is organized as a two-dimensional variable field. The module contains user-defined edge data for all tools.
+      Each element can be addressed via a column and line index:<br/>
+      The column index is the tool number (T number), i.e. the user-defined data for all edges of a tool can be found in one column.
+      The assignment of a tool to a T number can be drawn from the module Tool Directory in te related area T.  If a non-existant
+      tool number is entered for the column index, then the job is acknowledged negatively.<br/>
+      The number of lines results from the number of parameters per edge and from the number of edges of a tool: <br/>
+      <br/>
+      maxNumberof lines = <a href="../sinumerik_btss_N/N_Y.html#332">numCuttEdgeParams_tu</a> * <a href="../sinumerik_btss_T/T_TV.html#335">/T/TV/numCuttEdges</a> (T number)<br/>
+      <br/>
+      The number of parameters per edge "<a href="../sinumerik_btss_N/N_Y.html#332">numCuttEdgeParams_tu</a>" can be drawn from module Y in area N. The number of edges  "<a href="../sinumerik_btss_T/T_TV.html#335">/T/TV/numCuttEdges</a>" which can be tool-specific, can be drawn from module TV in the related area T.<br/>
+      <br/>
+      If required, several lines may be addressed so that - for example - in one job all user-defined edge data of a tool can be
+      read.  The data are all of the same type.<br/>
+      
+      <div><a name="5696"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>edgeData</b></td>
+            <td colspan="3" style="border:1px solid black">OEM data for tool edges</td>
+            <td width="20%" style="border:1px solid black">$TC_DPCx[y,z] x=ParamNo,y=ToolNo z=EdgeNo</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>Tool number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Calculate value<br>(TooledgeNo - 1) * <a href="../sinumerik_btss_N/N_Y.html#332">numCuttEdgeParams_tu</a> + ParameterNo
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_N/N_Y.html#332">numCuttEdgeParams_tu</a> * <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">The variable returns the OEM data for tool edges<br/>
+               User-defined tool edge parameter, important: 2-dimensional variable, the column index is the tool number T.<br/>
+               OEM-defined parameters for the cutting edges. They are made available by the MD settings MD bits $MN_MM_TOOL_MANAGEMENT_MASK,
+               bit2=1 and MD18096 $MN_MM_NUM_CC_TOA_PARAM&gt;0.<br/>
+               The data types of the individual parameters are specified by MD18097 $MN_MM_TYPE_CC_TOA_PARAM, and can be determined from
+               the file _N_COMPLETE_TOA_ACX. The transfer in the OPI is always as TYPE_DOUBLE.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/User/edgeData[u&lt;Tool Area&gt;, c&lt;Column Index&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

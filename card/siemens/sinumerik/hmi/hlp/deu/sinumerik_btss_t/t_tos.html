@@ -1,0 +1,147 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein T/TOS: Schneidenbezogene ortsabhängige Summenkorrekturen fein</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein T/TOS: Schneidenbezogene ortsabhängige Summenkorrekturen fein</h1>
+         </div>
+      </div>Pro Werkzeugschneide und Einsatzort existiert je ein Satz von schneidenbezogenen Summenkorrekturen fein.<br/>
+      Die maximale Anzahl von Einsatzorten ist für alle Werkzeugschneiden gleich und durch die neue Variable <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a> ($MN_MAX_SUMCORR_PERCUTTING_EDGE) in "N / Y Globale Systemdaten" festgelegt.<br/>
+      Je Summenkorrektursatz existieren (entsprechend den ortsunabhängigen Verschleißwerten) <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a> (derzeit 9) Korrekturen: Länge 1, Länge 2, Länge 3, Radius und 5 weitere.<br/>
+      <br/>
+      Für jedes Schwesterwerkzeug existieren eigene (unterschiedliche) Daten.<br/>
+      <br/>
+      Die Daten werden von NCK beim Aktivieren des zugehörigen Werkzeugs zurückgesetzt, wenn per Maschinendatum ($MN_MM_KIND_OF_SUMCORR,
+      Bit 1 = 1) aktiviert.<br/>
+      <br/>
+      Die Summenkorrekturen einer Schneide sind über die interne T-Nummer des zugehörigen Werkzeugs, Schneidennummer, Summenkorrekturnummer
+      ("Einsatzort") zugänglich. <br/>
+      <br/>
+      Zum gezielten Erzeugen bzw. Löschen von Schneiden-Summenkorrekturen werden eventuell PI-Dienste existieren.<br/>
+      Um die Existenz der Summenkorrekturen gezielt zu steuern wird das neue Maschinendatum $MN_MM_NUM_SUMCORR (BTSS: <a href="../sinumerik_btss_N/N_Y.html#2390">maxNumSumCorr</a> in N / Y) eingeführt.<br/>
+      <br/>
+      Es gilt:<br/>
+      Bei Verwendung der MMC2-Werkzeugverwaltung muss $MN_MM_NUM_SUMCORR  = -1 gesetzt sein, damit die Summenkorrekturen für alle
+      Einsatzkorrekturorte (Anzahl = <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a>) vom Erzeugen der Werkzeugschneide bis zum Löschen dieser Schneide existieren.<br/>
+      (Die neuen PI-Dienste zum Erzeugen / Löschen werden von der MMC2-Werkzeugverwaltung für Drehen vorerst nicht benutzt werden).
+      Hierfür  muss das neue NC-Maschinendatum $MN_MM_NUM_SUMCORR  = -1 auf automatisches Erzeugen / Löschen eingestellt sein.<br/>
+      <br/>
+      Die Adressierung in diesem Baustein erfolgt analog zum Zugriff auf die "Schneidendaten / Korrekturen" per Spaltenadressierung
+      mit T-Nummer. (Um per Array-Zugriff die Summenkorrekturen aller Einsatzorte einer Schneide bzw. aller Schneiden eines Werkzeugs
+      schnell lesen zu können.)<br/>
+      <br/>
+      Der Baustein enthält die ortsabhängige Summenkorrekturen für alle Werkzeuge. Jedes Element wird über einen Spalten- und Zeilenindex
+      adressiert:<br/>
+      <br/>
+      Der Spaltenindex ist die Werkzeugnummer (T-Nummer.), d. h. in einer Spalte sind alle ortsabhängigen Summenkorrekturen dieses
+      Werkzeugs (für alle Schneiden / Orte) zu finden. <br/>
+      Wird als Spaltenindex eine nicht vorhandene T-Nummer angegeben, wird der Auftrag negativ quittiert.<br/>
+      Die Anzahl der Zeilen ergibt sich aus der Anzahl der Summenkorrekturwerte, der Anzahl Einsatzorte und aus der maximal möglichen
+      Schneidenanzahl eines Werkzeugs: <br/>
+      maxZeilenindex = <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a> * <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a> * <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a><br/>
+      <br/>
+      Diese Variablen befinden sich in "N / Y Globale Systemdaten" und haben folgende Bedeutung:<br/>
+      <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a>:	Anzahl Verschleißkorrekturen pro Ort (entsprechend L1, L2, L3, Radius, und 5 weitere),  derzeit 9<br/>
+      <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a>:	Maximale Anzahl Orte (SC) je Schneide<br/>
+      <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a>:	max. zulässige Schneidenanzahl je Werkzeug<br/>
+      <br/>
+      <br/>
+      Bei Bedarf können mehrere Zeilen gleichzeitig adressiert werden, so dass in einem Auftrag z. B. alle ortsabhängigen Summenkorrekturen
+      aller Schneiden eines Werkzeuges gelesen werden können. Die ortsabhängigen Summenkorrekturen der Werkzeuge sind alle vom gleichen
+      Datentyp und haben die gleiche physikalische Einheit.<br/>
+      <br/>
+      Der Baustein T / TOS ist 2-dimensional organisiert.<br/>
+      <br/>
+      Zu jeder T-Nummer (Spaltenindex) existieren folgende Zeilen:<br/>
+      <br/>
+      Schneide 1,				Ort 1,			L1<br/>
+      Schneide 1,				Ort 1,			L2<br/>
+      Schneide 1,				Ort 1,			L3<br/>
+      Schneide 1,				Ort 1,			Radius<br/>
+      Schneide 1,				Ort 1,			Par5<br/>
+      ..........					.....			.....<br/>
+      Schneide 1,				Ort 1,			Par <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a><br/>
+      Schneide 1,				Ort 2,			L1<br/>
+      Schneide 1,				Ort 2,			L2<br/>
+      Schneide 1,				.....			......<br/>
+      Schneide 1,				Ort <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a>,	Par <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a><br/>
+      <br/>
+      Schneide 2,				Ort 1,			L1<br/>
+      ..........					.....			.....<br/>
+      Schneide 2,				Ort <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a>,	Par <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a><br/>
+      ..........					.....			.....<br/>
+      Schneide <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a>,	Ort <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a>,	Par <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a><br/>
+      <br/>
+      <br/>
+      Zusammenhang zwischen den Schneidenparametern, Summenkorrekturen und Variablen:<br/>
+      SchneidenParameter	DL1		DL2		...	DL4		...<br/>
+      $TC_DP3		$TC_SCP13	$TC_SCP23	...	$TC_SCP43	...<br/>
+      $TC_DP4		$TC_SCP14	$TC_SCP24	...	$TC_SCP44	...<br/>
+      $TC_DP5		$TC_SCP15	$TC_SCP25	...	$TC_SCP45	...<br/>
+      ....<br/>
+      $TC_DP9		$TC_SCP19	$TC_SCP29	...	$TC_SCP49	...<br/>
+      $TC_DP10		$TC_SCP20	$TC_SCP30	...	$TC_SCP50	...<br/>
+      $TC_DP11		$TC_SCP21	$TC_SCP31	...	$TC_SCP51	...<br/>
+      <br/>
+      mit DLx, TC_DPy, TC_SCPz<br/>
+      x von 1 bis 6 (<a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a> = $MN_MAX_SUMCORR_PERCUTTING_EDGE) und Maximum = 6<br/>
+      y von 3 bis 11<br/>
+      z = (10 * x) + y<br/>
+      
+      <div><a name="2362"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>edgeSCData</b></td>
+            <td colspan="3" style="border:1px solid black">Summenkorrektur - fein</td>
+            <td width="20%" style="border:1px solid black">$TC_SCPx[t,d]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>Werkzeugnummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Wert berechnen<br>((SchneidenNr-1) * (<a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a> * <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a>)) + ((EdgeSC - 1) * <a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a>) + ParameterNr
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span><a href="../sinumerik_btss_N/N_Y.html#2383">numParams_SC</a> * <a href="../sinumerik_btss_N/N_Y.html#2382">maxnumEdgeSC</a> * <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Summenkorrekturen (fein) - einsatzortsabhängige Korrekturen setzen - setzen sich aus den Fehlergrößen zusammen, die die Abweichung
+               des Werkstücks vom Sollmaß ausmachen. <br/>
+               Die Parameter der einsatzortsabhängigen Korrekturen beziehen sich auf die geometrischen Daten einer Schneide. <br/>
+               DL: Location dependent; Korrekturen bezüglich des jeweiligen Einsatzorts.<br/>
+               Die Funktion wird über die Maschinendaten MD18108 $MN_MM_NUM_SUMCORR, MD10110 $MN_MM_MAX_SUMCORR_PER_CUTTEDGE und MD18080
+               $MN_MM_TOOL_MANAGEMENT_MASK, Bit8  aktiviert.<br/>
+               Die einzelnen Summenkorrekturparametersätze werden durch Nummernbereiche der Systemvariablen $TC_SCP unterschieden:<br/>
+               o  $TC_SCP13-$TC_SCP21, $TC_SCP1_RADIUS3, $TC_SCP1_LEN6 aktivierbar mit  DL=1<br/>
+               o  $TC_SCP23-$TC_SCP31, $TC_SCP2_RADIUS3, $TC_SCP2_LEN6 aktivierbar mit  DL=2<br/>
+               o  $TC_SCP33-$TC_SCP41, $TC_SCP3_RADIUS3, $TC_SCP3_LEN6 aktivierbar mit  DL=3<br/>
+               o  $TC_SCP43-$TC_SCP51, $TC_SCP4_RADIUS3, $TC_SCP4_LEN6 aktivierbar mit  DL=4<br/>
+               o  $TC_SCP53-$TC_SCP61, $TC_SCP5_RADIUS3, $TC_SCP5_LEN6 aktivierbar mit  DL=5<br/>
+               o  $TC_SCP63-$TC_SCP71, $TC_SCP6_RADIUS3, $TC_SCP6_LEN6 aktivierbar mit  DL=6<br/>
+               <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>Linearposition (mm, inch oder userdef)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0.0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Tool/Compensation/edgeSCData[u&lt;Werkzeugber.&gt;, c&lt;Spaltenindex&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

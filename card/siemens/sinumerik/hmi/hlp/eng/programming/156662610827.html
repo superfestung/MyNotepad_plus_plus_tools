@@ -1,0 +1,150 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Macro technique (DEFINE ... AS)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Macro technique (DEFINE ... AS)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Notice</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Macro technology increases the complexity of the programming</h4>
+            <p class="safety">Macros can significantly alter the control's programming language. Macro technology may only be used with great care.</p>
+          </td>
+        </tr>
+      </table>
+      <p>A macro is a sequence of individual statements which have together been assigned a name of their own. When a macro is called during a program run, the statements programmed under the program name are executed one after the other.</p>
+      <h4 class="Blocklabel">Macro types</h4>
+      <p>According to the range of validity (in other words, the range in which the macro definition is active), there are the following macro categories:</p>
+      <ul>
+        <li>
+          <p>Local macros</p>
+          <p>Local macros are macros that are defined at the beginning of an NC program, which at the time of execution is not the main program. They are created when the NC program is called, and deleted with an end of program reset – or the next time that the control system powers up. Local macros can only be accessed within the NC program in which they are defined.</p>
+        </li>
+        <li>
+          <p>Program-global macros</p>
+          <p>Program-global macros are macros that are defined at the beginning of an NC program, which is used as a main program. They are created when the NC program is called, and deleted with an end of program reset – or the next time that the control system powers up. Program-global macros can be accessed in the main program and in all subprograms.</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Note</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="Blocklabel">Availability of program-global macros</h4>
+                <p class="safety">Program-global macros defined in the main program are only available in subprograms if the following machine data is set:</p>
+                <p class="safety">MD11120 $MN_LUD_EXTENDED_SCOPE = 1</p>
+                <p class="safety">If MD11120 = 0, the program-global macros defined in the main program will only be available in the main program.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          <p>Global macros</p>
+          <p>Global macros are NC or channel-global macros, which are defined in a definition file (macro file) – and are retained even after an end of program reset or the next time that the control system powers up. Global macros can be called in any main program or subprogram and executed.</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Note</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="safety">In order to use the macros of an <b>external</b> macro file in the NC program, the macro file must be downloaded to the NC.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Macro definition rules</h4>
+      <p>Macros must be defined before they can be used. The following rules must be observed in this context:</p>
+      <ul>
+        <li>
+          <p>Any identifier, G, M, H functions and L subprogram names can be defined in a macro.</p>
+        </li>
+        <li>
+          <p>The macro can be defined at the beginning of the program or in a dedicated definition file (macro file).</p>
+        </li>
+        <li>
+          <p>Local and program-global macros are defined at the beginning of the program. </p>
+        </li>
+        <li>
+          <p>Global macros must be defined in a macro file, e.g._N_DEF_DIR/_N_UMAC_DEF.</p>
+        </li>
+        <li>
+          <p>G command macros can only be defined as global macros.</p>
+        </li>
+        <li>
+          <p>H and L functions can be programmed with 2 digits.</p>
+        </li>
+        <li>
+          <p>M and G commands can be programmed with 3 digits.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Nesting of macros</h4>
+      <p>It is possible to program macros within macros. This is used for the following purposes, for example:</p>
+      <ul>
+        <li>
+          <p>To increase the flexibility of programming.</p>
+        </li>
+        <li>
+          <p>To implement a simpler cycle programming.</p>
+        </li>
+      </ul>
+      <p>A maximum of 3 macro levels are possible within a nesting.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <h4 class="Blocklabel">Macro definition without nesting:</h4>DEFINE &lt;Macro_name> AS &lt;Operation_1> &lt;Operation_2> ...<h4 class="Blocklabel">Macro definition with nesting:</h4><a id="table_5ebcbb0d-df90-d645-2d67-df02076fee2e"></a> <a id="table_0"></a> <a id="table_5ebcbb0d-df90-d645-2d67-df02076fee2e"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EYC"><colgroup><col width="99.0%"><col width="1.0%"></colgroup><tr valign="top"><td>DEFINE &lt;Macro_Name1> AS &lt;Operation_1> &lt;Operation_2> ... </td><td> </td></tr><tr valign="top"><td>DEFINE &lt;Macro_Name2> AS &lt;Macro_Name1> &lt;Operation_1> ...</td><td> </td></tr><tr valign="top"><td>DEFINE &lt;Macro_Name3> AS &lt;Macro_Name2> &lt;Operation_2> ...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Call in the NC program:</h4>&lt;Macro_name><a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_837a8b49-0e9b-4737-a15d-68b37ea9b1e3"></a> <a id="table_1"></a> <a id="table_837a8b49-0e9b-4737-a15d-68b37ea9b1e3"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="26.5%"><col width="73.4%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>DEFINE ... AS</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Keyword combination to define a macro</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Macro_name></code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Macro name</p><p type="p_table_l" align="left">Only identifiers are permissible as macro names.</p><p type="p_table_l" align="left">The macro is called from the NC program by the macro name.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Operation_1></code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">First programming instruction in the macro</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Operation_2></code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Second programming instruction in the macro</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">Keywords and reserved names may not be overwritten by macros. This also applies to all jump destinations within a GOTO command, and to the keywords in program loops, such as FOR, WHILE, LOOP, REPEAT.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Examples</h3><h4 class="Blocklabel">Example 1: Macro definition at the beginning of the program</h4><a id="table_b424435b-7395-487a-a523-e531ff33c099"></a> <a id="table_2"></a> <a id="table_b424435b-7395-487a-a523-e531ff33c099"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EIF"><colgroup><col width="37.5%"><col width="62.5%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>DEFINE LINE AS G1 G94 F300</td><td>; Macro definition</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N70 LINE X10 Y20</td><td>; Macro call</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 2: Macro definitions in a macro file</h4><a id="table_4c9ba2be-9de1-4ba6-a0da-5747c6cfe95f"></a> <a id="table_3"></a> <a id="table_4c9ba2be-9de1-4ba6-a0da-5747c6cfe95f"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EMG"><colgroup><col width="37.7%"><col width="62.3%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>DEFINE M6 AS L6</td><td>; A subprogram is called at tool change to handle the necessary data transfer. The actual tool change M function is output in the subprogram (e.g. M106).</td></tr><tr valign="top"><td>DEFINE G81 AS DRILL(81)</td><td>; Emulation of the DIN-G command.</td></tr><tr valign="top"><td>DEFINE G33 AS M333 G333</td><td>; During thread cutting, synchronization is requested with the PLC. The original G command G33 was renamed to G333 by machine data so that the programming remains identical for the user.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 3: External macro file</h4><p>After reading the external macro file into the control, the macro file must be downloaded into the NC. Only then can macros be used in the NC program.</p><a id="table_5abfa24f-426e-44b0-a5f9-32f2a452c642"></a> <a id="table_4"></a> <a id="table_5abfa24f-426e-44b0-a5f9-32f2a452c642"></a> <a id="table_4"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ELH"><colgroup><col width="37.7%"><col width="62.3%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>%_N_UMAC_DEF</td><td> </td></tr><tr valign="top"><td>;$PATH=/_N_DEF_DIR</td><td>; Customer-specific macros</td></tr><tr valign="top"><td colspan="2">DEFINE PI AS 3.14</td></tr><tr valign="top"><td colspan="2">DEFINE TC1 AS M3 S1000</td></tr><tr valign="top"><td>DEFINE M13 AS M3 M7</td><td>; Spindle clockwise, coolant on</td></tr><tr valign="top"><td>DEFINE M14 AS M4 M7</td><td>; Spindle counter-clockwise, coolant on</td></tr><tr valign="top"><td>DEFINE M15 AS M5 M9</td><td>; Spindle stop, coolant off</td></tr><tr valign="top"><td>DEFINE M6 AS L6</td><td>; Call tool change program</td></tr><tr valign="top"><td>DEFINE G80 AS MCALL</td><td>; Deselect drilling cycle</td></tr><tr valign="top"><td>M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 4: Nesting of macros</h4><a id="table_08058791-0ca7-5f6f-86fa-818f28270942"></a> <a id="table_5"></a> <a id="table_08058791-0ca7-5f6f-86fa-818f28270942"></a> <a id="table_5"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ELBAC"><colgroup><col width="99.0%"><col width="1.0%"></colgroup><tr valign="top"><th>Program code</th><th> </th></tr><tr valign="top"><td>%_N_MGUD_DEF</td><td> </td></tr><tr valign="top"><td>;$PATH=/_N_DEF_DIR</td><td> </td></tr><tr valign="top"><td colspan="2">DEFINE _TOP_SURFACE_SMOOTH_ON AS 10</td></tr><tr valign="top"><td colspan="2">DEFINE ROUGH AS CYCLE832( 0.1,_TOP_SURFACE_SMOOTH_ON,1)</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>After the macro file has been loaded into the controller, the NC program is processed. With the ROUGH call, CYCLE832 starts as a nested macro.</p></div>
+  </body>
+</html>

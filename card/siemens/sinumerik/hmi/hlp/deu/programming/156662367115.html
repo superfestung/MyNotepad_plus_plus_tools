@@ -1,0 +1,58 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Vordefinierte Anwendervariablen: Globale Rechenparameter (RG)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Vordefinierte Anwendervariablen: Globale Rechenparameter (RG)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Funktion</h3>
+      <p>Neben den kanalspezifischen R-Parametern stehen dem Anwender auch globale R-Parameter zur Verfügung. Sie existieren innerhalb der Steuerung einmal und können von allen Kanälen aus gelesen/geschrieben werden.</p>
+      <p>Globale R-Parameter werden z. B. verwendet, um Informationen von einem Kanal in den nächsten zu bekommen. Ein anderes Beispiel sind globale Einstellungen, die für alle Kanäle ausgewertet werden sollen, wie z. B. die Auskragung des Rohteils aus der Spindel.</p>
+      <p>Lesen und Schreiben der globalen R-Parameter erfolgt über die Bedienoberfäche oder im NC-Programm im Vorlauf. Eine Verwendung in Synchronaktionen oder Technologiezyklen ist nicht möglich.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Beim Lesen und Schreiben von globalen R-Parametern erfolgt <b>keine</b> Synchronisation zwischen den Kanälen.</p>
+            <p class="safety">Da das Lesen und Schreiben im Vorlauf erfolgt, ist der Zeitpunkt, zu dem ein geschriebener Wert von einem Kanal aus in einem anderen Kanal wirksam wird, nicht definiert.</p>
+            <p class="safety">Beispiel:</p>
+            <p class="safety">Im Kanal1 läuft eine Schleife mit einem globalen R-Parameter als Schleifenzähler. Kanal 2 schreibt einen Wert in diesen globalen R-Parameter, der zu einem Schleifenabbruch in Kanal 1 führt. Alle bis zu diesem Zeitpunkt im Kanal1 im Vorlauf interpretierten Schleifen werden jedoch noch ausgeführt. Wie viele Schleifen das sind ist nicht definiert und hängt unter anderem von der Auslastung des Kanals ab.</p>
+            <p class="safety">Eine Synchronisation zwischen den Kanälen muss der Anwender applikativ, z. B. mit WAIT-Marken, selbst realisieren!</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <h4 class="Blocklabel">Schreiben im NC-Programm </h4>RG[&lt;n>]=&lt;Wert>RG[&lt;Ausdruck>]=&lt;Wert>   <h4 class="Blocklabel">Lesen im NC-Programm</h4>R...=RG[&lt;n>]R...=RG[&lt;Ausdruck>]<a name="block_3"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_8357889e-4230-2535-eb9b-21453942db1e"></a> <a id="table_0"></a> <a id="table_8357889e-4230-2535-eb9b-21453942db1e"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="21.6%"><col width="19.2%"><col width="59.2%"></colgroup><tr valign="top"><td><p style="margin-top: 4px"><code>RG</code>:</p></td><td colspan="2"><p style="margin-top: 4px">Default-Name der NC-Adresse für <b>globale</b> R-Parameter</p><p><b>Hinweis:</b><br />Der Name der NC-Adresse ist einstellbar über MD15800 $MN_R_PARAM_NCK_NAME</p></td></tr><tr valign="top"><td rowspan="3"><p style="margin-top: 4px"><code>&lt;n></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Nummer des globalen R-Parameters</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Typ:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wertebereich:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">0 ... MAX_INDEX</p><p type="p_table_l" align="left"><b>Hinweis</b><br />MAX_INDEX ergibt sich aus der parametrierten Anzahl an globalen R-Parametern: <br />MAX_INDEX = (MD18156 $MN_MM_NUM_R_PARAM_NCK) - 1</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Ausdruck></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Als Feldindex kann ein beliebiger Ausdruck angegeben werden, solange das Ergebnis des Ausdrucks in den Datentyp INT gewandelt werden kann (INT, REAL, BOOL, CHAR)</p></td></tr><tr valign="top"><td rowspan="4"><p style="margin-top: 4px"><code>&lt;Wert></code>:</p></td><td colspan="2"><p style="margin-top: 4px">Wert des globalen R-Parameters</p></td></tr><tr valign="top"><td><p style="margin-top: 4px">Typ:</p></td><td><p style="margin-top: 4px">REAL</p></td></tr><tr valign="top"><td rowspan="2"><p style="margin-top: 4px">Wertebereich:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Bei nicht-exponentieller Schreibweise:</p><p type="p_table_l" align="left">± (0.000 0001 ... 9999 9999)</p><p type="p_table_l" align="left"><b>Hinweis:<br /></b>Es sind maximal 8 Dezimalstellen erlaubt</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Bei exponentieller Schreibweise:</p><p type="p_table_l" align="left">± (1*10<sup>-300</sup> ... 1*10<sup>+300</sup>)</p><p type="p_table_l" align="left"><b>Hinweis:</b></p><ul class="table"><li><p>Schreibweise: &lt;Mantisse>EX&lt;exponent> z.B. 8.2EX-3</p></li><li><p>Es sind maximal 10 Zeichen einschließlich Vorzeichen und Dezimalpunkt erlaubt.</p></li></ul></td></tr></table></p></div>
+    <p>Siehe auch:<br />    <a href="156662362891.html">Vordefinierte Anwendervariablen: Kanalspezifische Rechenparameter (R)</a><br />    <a href="156662348683.html">Variablen: Allgemeine Informationen</a></p>
+  </body>
+</html>

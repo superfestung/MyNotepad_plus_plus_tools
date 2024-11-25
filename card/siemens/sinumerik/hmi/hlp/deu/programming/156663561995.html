@@ -1,0 +1,40 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Maximalen Achsruck anpassen (JERKLIM)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Maximalen Achsruck anpassen (JERKLIM)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Mit dem Befehl JERKLIM kann im Teileprogramm der per Maschinendatum eingestellte maximal mögliche Ruck einer Achse bei Bahnbewegung in kritischen Programmabschnitten reduziert oder überhöht werden.  </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Voraussetzung</h3>
+      <p>Der Beschleunigungsmodus SOFT muss aktiv sein.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Wirksamkeit</h3>
+      <p>JERKLIM wirkt:</p>
+      <ul>
+        <li>
+          <p>in den AUTOMATIK-Betriebsarten</p>
+        </li>
+        <li>
+          <p>nur auf Bahnachsen</p>
+        </li>
+      </ul>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>JERKLIM[&lt;Ax>]=&lt;Value><a name="block_4"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_42817d9a-8c58-4ee3-9b9b-83cee69fc039"></a> <a id="table_0"></a> <a id="table_42817d9a-8c58-4ee3-9b9b-83cee69fc039"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="20.0%"><col width="20.0%"><col width="60.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>JERKLIM</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Ruckgrenzwert anpassen</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Ax></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Maschinenachse, deren Ruckgrenzwert angepasst werden soll</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Wert></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Prozentualer Korrekturwert</p><p type="p_table_l" align="left">Der Korrekturwert bezieht sich auf den projektierten maximalen Achsruck bei Bahnbewegung (MD32431 $MA_MAX_AX_JERK).</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wertebereich:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">1 ... 200</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Der Wert 100 bewirkt keine Beeinflussung des Rucks.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><h4 class="Blocklabel">Verhalten bei Teileprogrammende und Kanal-Reset</h4><p class="safety">Das Verhalten von JERKLIM bei Teileprogrammende und Kanal-Reset ist abhängig von der Einstellung von Bit 0 im Maschinendatum MD32320 $MA_DYN_LIMIT_RESET_MASK.</p></td></tr></table><a name="block_5"></a><h3 class="Blocktitle">Beispiel</h3><a id="table_b75ab7c8-730a-2a6e-6b94-801833b4fdea"></a> <a id="table_1"></a> <a id="table_b75ab7c8-730a-2a6e-6b94-801833b4fdea"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E4E"><colgroup><col width="50.0%"><col width="50.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N1000 G0 X0 Y0 F10000 SOFT G64</td><td> </td></tr><tr valign="top"><td>N1100 G1 X20 RNDM=5 ACC[X]=20 ACC[Y]=30</td><td> </td></tr><tr valign="top"><td>N1200 G1 Y20 JERKLIM[Y]=200</td><td>; Der Achsschlitten in Y-Richtung kann mit max. 200% des für die Achse zulässigen Rucks beschleunigt/verzögert werden.</td></tr><tr valign="top"><td>N1300 G1 X0 JERKLIM[X]=2</td><td>; Der Achsschlitten in X-Richtung soll nur mit max. 2% des für die Achse zulässigen Rucks beschleunigt/verzögert werden.</td></tr><tr valign="top"><td>N1400 G1 Y0</td><td> </td></tr><tr valign="top"><td>M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+    <p>Siehe auch:<br />    <a href="156663557899.html">Maximale Achsgeschwindigkeit oder Spindeldrehzahl anpassen (VELOLIM)</a><br />    <a href="156663566091.html">Maximale Bahngeschwindigkeit anpassen (FLIM)</a><br />    <a href="156663569931.html">Maximale Bahnbeschleunigung anpassen (PACCLIM)</a></p>
+  </body>
+</html>

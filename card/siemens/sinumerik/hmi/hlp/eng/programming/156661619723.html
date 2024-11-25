@@ -1,0 +1,37 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Programmable axial acceleration correction (ACC)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Programmable axial acceleration correction (ACC)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>In critical program sections, it may be necessary to reduce the maximum possible axis or spindle acceleration temporarily, for example, to prevent mechanical vibrations.</p>
+      <p>For this purpose, the NC command ACC is available with which acceleration correction can be programmed for each path axis, positioning axis, or spindle.</p>
+      <p>The correction value is a percentage that refers to the parameterized maximum acceleration of the affected axis/spindle. The product of the correction value and the parameterized maximum acceleration is the effective maximum acceleration of the axis/spindle. For a correction value of 100%, the parameterized maximum acceleration remains unchanged.</p>
+      <p>The axial acceleration correction can be programmed independently for axis/spindle movements in the NC program and for axis/spindle movements in synchronized actions:</p>
+      <ul>
+        <li>
+          <p>If the command is in the NC program, the acceleration correction only affects path axis or positioning axis movements or spindle movements that are programmed in the NC program for this axis/spindle. Movements of the axis/spindle that are programmed in synchronized actions are not corrected.</p>
+        </li>
+        <li>
+          <p>If the command is in a synchronized action, the acceleration correction only affects movements of the axis/spindle that are programmed in synchronized actions. Movements of the axis/spindle that are programmed in the NC program are not corrected.</p>
+        </li>
+      </ul>
+      <p>The axial acceleration correction is effective for all types of interpolation.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <h4 class="Blocklabel">Activation</h4>ACC[&lt;Ax>]=&lt;value>ACC[SPI(&lt;n>)]=&lt;value>ACC(S&lt;n>)=&lt;value><h4 class="Blocklabel">Deactivation</h4>ACC[...]=100<a name="block_2"></a><h3 class="Blocktitle">Syntax</h3><a id="table_0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="26.5%"><col width="9.0%"><col width="11.3%"><col width="53.2%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>ACC</code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Acceleration change for the specified axle/spindle</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Ax></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Channel axis name</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>SPI(&lt;n>)</code> / <code>S&lt;n></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Spindle identifier</p><p type="p_table_l" align="left">SPI(&lt;n>) and S&lt;n> are identical in terms of function.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;n></code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Spindle number</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><b>Note:</b><br />SPI converts spindle numbers into axis identifiers. The transfer parameter (&lt;n>) must contain a valid spindle number.</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;value></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Acceleration change in percent</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">1 … 200</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Examples</h3><h4 class="Blocklabel">Example 1: Acceleration corrections for axis and spindle movements in the NC program</h4><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EZE"><colgroup><col width="35.0%"><col width="65.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N50 ACC[X]=80</td><td>; The axis slide in the X direction should only be traversed with 80% acceleration.</td></tr><tr valign="top"><td>N60 ACC[SPI(1)]=50</td><td>; Spindle 1 should only accelerate or brake with 50% of the acceleration capacity.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 2: Acceleration correction for path and positioning axis movements in the NC program</h4><a id="table_0e658384-4089-44ac-a9f9-1fc1c7aacb41"></a> <a id="table_2"></a> <a id="table_0e658384-4089-44ac-a9f9-1fc1c7aacb41"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EZF"><colgroup><col width="35.0%"><col width="65.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N100 <b>ACC[X]=1</b></td><td> </td></tr><tr valign="top"><td>N110 DO POS[X]=100</td><td>; ACC not effective.</td></tr><tr valign="top"><td>N120 WAITP(X)</td><td> </td></tr><tr valign="top"><td>N130 X=0</td><td>; ACC effective.</td></tr><tr valign="top"><td>N140 POS[X]=100</td><td>; ACC effective.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Example 3: Acceleration correction for axis movements in synchronized actions</h4><a id="table_cd91bec6-fb41-0c57-8f41-11dd29ec7a48"></a> <a id="table_3"></a> <a id="table_cd91bec6-fb41-0c57-8f41-11dd29ec7a48"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ELH"><colgroup><col width="35.0%"><col width="65.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N100 <b>DO ACC[X]=1</b></td><td> </td></tr><tr valign="top"><td>N110 DO POS[X]=100</td><td>; ACC effective.</td></tr><tr valign="top"><td>N120 WAITP(X)</td><td> </td></tr><tr valign="top"><td>N130 X=0</td><td>; ACC not effective.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+    <p>See also:<br />    <a href="156661623563.html">Programmable axial acceleration correction (ACC): More information</a></p>
+  </body>
+</html>

@@ -1,0 +1,798 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9904">p9904</a></b></td>
+<td colspan="4"><b>Topology comparison, acknowledge differences / Topo_compare ackn</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Topology</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0000 hex</td>
+<td  >FFFF FFFF hex</td>
+<td >0000 hex</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">If, when comparing the actual topology and target topology, only error has occurred, that can be acknowledged, then using this parameter, a new comparison can be started - acknowledging the error in the target topology.<br />
+Differences that can be acknowledged:<br />
+- topology comparison, component shifted<br />
+- topology comparison, serial number of a component has been detected to be different (byte 3 = 1)<br />
+- topology comparison shows one component that is connected differently<br />
+The following parameter values are available:<br />
+p9904 = 1 --&gt; the procedure is started.<br />
+p9904 = 0 after starting --&gt; the procedure has been successfully completed.<br />
+p9904 = 1 after starting --&gt; the procedure has not been successfully completed.<br />
+The possible causes for an unsuccessful procedure are located in bytes 4, 3, 2.<br />
+Byte 2:<br />
+Number of structural differences.<br />
+Byte 3:<br />
+Number of differences that can be acknowledged (p9904).<br />
+Byte 4:<br />
+Number of differences. These differences can be resolved as follows:<br />
+- sets the topology comparison (p9906 or p9907&#47;p9908).<br />
+- change over the actual topology.<br />
+The appropriate action should be selected corresponding to the message that is displayed&#47;output.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">In order to permanently accept the acknowledgement of the fault that can be resolved, then it must be saved in a non-volatile fashion (p0977).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9905">p9905</a></b></td>
+<td colspan="4"><b>Device specialization / Specialization</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Topology</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">With p9905 = 1, the serial numbers and the hardware versions of all of the components are transferred from the actual topology into the target topology and a new comparison is started..<br />
+For this device specialization, the components of the target topology may only differ from those of the actual topology by the serial numbers.<br />
+With p9905 = 2, the serial numbers, the hardware versions and the order numbers of all of the components are transferred from the actual topology into the target topology and a new comparison is started..<br />
+For this device specialization, the components of the target topology may only differ from those of the actual topology by the serial numbers and order numbers.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">p9905 is automatically set to 0 at the end of the operation.<br />In order to permanently accept the data, it is necessary to save in a non-volatile fashion (p0977).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9906">p9906</a></b></td>
+<td colspan="4"><b>Topology comparison, comparison stage of all components / Topo_cmpr tot comp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Topology</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >99</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the type of comparison between the actual topology and target topology.<br />
+The comparison is started by setting the required value.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		High: Compares the complete electronic rating plate<br />1:		Average: Compares the component type and the Order number<br />2:		Low: Compares the component type<br />3:		Minimum: Compares the component class<br />99:		Topology has different comparison stages<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The electronic rating plate comprises the following data:<br />- component type (e.g. &quot;SMC20&quot;)<br />- Order No. (e.g. &quot;6SL3055-0AA0-5BA0&quot;)<br />- manufacturer (e.g. SIEMENS)<br />- hardware version (e.g. &quot;A&quot;)<br />- Serial No. (e.g. &quot;T-P30050495&quot;)<br />When comparing the topology, the following data is compared in the target and actual topologies:<br />p9906 = 0: Component type, Order No., Hardware version, Manufacturer, Serial No.<br />p9906 = 1: Component type, Order No.<br />p9906 = 2: Component type<br />p9906 = 3: Component class (e.g. Sensor Module or Motor Module)<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9907">p9907</a></b></td>
+<td colspan="4"><b>Topology comparison, comparison stage of the component number / Topo_cmpr comp_no</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Topology</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >199</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Enters the number of the component where the setting of how the actual topology should be compared to the target topology should be changed.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9908<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9908">p9908</a></b></td>
+<td colspan="4"><b>Topology comparison, comparison stage of a component / Topo_cmpr 1 comp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Topology</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >99</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the type of comparison of a component in the target topology with the actual topology.<br />
+The comparison is started by setting the required value.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		High: Compares the complete electronic rating plate<br />1:		Average: Compares the component type and the Order number<br />2:		Low: Compares the component type<br />3:		Minimum: Compares the component class<br />99:		Topology has different comparison stages<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9907<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The electronic rating plate comprises the following data:<br />- component type (e.g. &quot;SMC20&quot;)<br />- Order No. (e.g. &quot;6SL3055-0AA0-5BA0&quot;)<br />- manufacturer (e.g. SIEMENS)<br />- hardware version (e.g. &quot;A&quot;)<br />- Serial No. (e.g. &quot;T-P30050495&quot;)<br />When comparing the topology, the following data is compared in the target and actual topologies:<br />p9908 = 0: Component type, Order No., Hardware version, Manufacturer, Serial No.<br />p9908 = 1: Component type, Order No.<br />p9908 = 2: Component type<br />p9908 = 3: Component class (e.g. Sensor Module or Motor Module)<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9909">p9909</a></b></td>
+<td colspan="4"><b>Topology comparison, component replacement / Topo_cmpr replace</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Topology</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">For p9909 = 1, the serial number and the hardware version of the new replaced component is automatically transferred from the actual topology into the target topology and then saved in a non-volatile fashion.<br />
+For the components that have been replaced, the electronic type plate must match as far as the following data is concerned:<br />
+- component type (e.g. &quot;SMC20&quot;)<br />
+- Order No. (e.g. &quot;6SL3055-0AA0-5BA0&quot;)<br />
+For p9909 = 0, serial numbers and hardware versions are not automatically transferred. In this case, the transfer must be made using p9904.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9904, p9905<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The modified target topology is automatically saved in a non-volatile fashion when the drive object runs-up (e.g. after a POWER ON).<br />Special case for Control Unit and option slot modules:<br />When replacing these components, independent of p9909, the serial number and hardware version are automatically transferred and saved in a non-volatile fashion.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9910">p9910</a></b></td>
+<td colspan="4"><b>Transfer additional components into the target topology / Transfer comp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Topology</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >6</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Transfer additional inserted DRIVE-CLiQ components into the target topology and add the appropriate drive objects to the project.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		No selection<br />1:		Drive object type SERVO<br />2:		Drive object type VECTOR<br />3:		SINAMICS GM (DFEMV &amp; VECTORMV)<br />4:		SINAMICS SM (AFEMV &amp; VECTORMV)<br />5:		SINAMICS GL (VECTORGL)<br />6:		SINAMICS SL (VECTORSL)<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9911">p9911[0...3]</a></b></td>
+<td colspan="4"><b>Insert drive object / Drv_obj insert</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >4294967295</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">New drive objects can be created using this parameter.<br />
+Index 0:<br />
+The values 2 ... 62 are permissible.<br />
+Index 1:<br />
+Number of the drive object type (e.g. 11 for type SERVO).<br />
+Index 2:<br />
+Function modules defined for the drive object.<br />
+Index 3:<br />
+= 0: Ready.<br />
+= 1: Reset (only indices 0 ... 3).<br />
+= 2: Reset all (indices 0 ... 3 and flagged entries).<br />
+= 3: Check and flag for insertion.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Drive object number<br />
+[1] = Drive object type<br />
+[2] = Drive object function module<br />
+[3] = Reset or check and flag for insertion<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Only for internal Siemens use.<br />The parameter is not displayed for the STARTER commissioning software.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9912">p9912[0...1]</a></b></td>
+<td colspan="4"><b>Delete drive object / Drv_obj delete</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(3)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >62</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Drive objects can be deleted using this parameter.<br />
+Index 0:<br />
+The values 2 ... 62 are permissible.<br />
+Index 1:<br />
+= 0: Ready.<br />
+= 1: Reset (only indices 0 and 1)<br />
+= 2: Reset all (indices 0 and 1 and flagged entries).<br />
+= 3: Check and flag for deletion.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Drive object number<br />
+[1] = Reset or check and flag for deletion<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Only for internal Siemens use.<br />The parameter is not displayed for the STARTER commissioning software.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9913">p9913[0...2]</a></b></td>
+<td colspan="4"><b>Change drive object number / Change drv_obj_no</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(4)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >62</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Existing drive objects can be assigned new numbers using these parameters.<br />
+Index 0:<br />
+The values 2 ... 62 are permissible.<br />
+Index 1:<br />
+The values 2 ... 62 are permissible.<br />
+Index 2:<br />
+= 0: Ready.<br />
+= 1: Reset (only indices 0 ... 2).<br />
+= 2: Reset all (indices 0 ... 2 and flagged entries).<br />
+= 3: Check and flag for modification.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Drive object number old<br />
+[1] = Drive object number new<br />
+[2] = Reset or check and flag for modification<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Only for internal Siemens use.<br />The parameter is not displayed for the STARTER commissioning software.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9914">p9914[0...2]</a></b></td>
+<td colspan="4"><b>Change component number / Change comp_no</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >199</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">You can change the number of topology components using this parameter.<br />
+Index 0:<br />
+The values 2 ... 199 are permissible.<br />
+Index 1:<br />
+The values 2 ... 199 are permissible.<br />
+Index 2:<br />
+= 0: Ready.<br />
+= 1: Reset (only indices 0 ... 2).<br />
+= 2: Reset all (indices 0 ... 2 and flagged entries).<br />
+= 3: Check and flag for modification.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Component number old<br />
+[1] = Component number new<br />
+[2] = Reset or check and flag for modification<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Only for internal Siemens use.<br />The parameter is not displayed for the STARTER commissioning software.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9915">p9915</a></b></td>
+<td colspan="4"><b>DRIVE-CLiQ data transfer error shutdown threshold master / DLQ fault master</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Topology</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0000 hex</td>
+<td  >0007 07FF hex</td>
+<td >0007 02FF hex</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Only for internal Siemens service purposes.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9916">p9916</a></b></td>
+<td colspan="4"><b>DRIVE-CLiQ data transfer error shutdown threshold slave / DLQ fault slave</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Topology</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0000 hex</td>
+<td  >0007 07FF hex</td>
+<td >0007 02FF hex</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Only for internal Siemens service purposes.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9917">p9917[0...1]</a></b></td>
+<td colspan="4"><b>Delete component / Delete comp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(30)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >199</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Excessive components that have not been assigned can be removed from the component reference topology using this parameter.<br />
+Index 0:<br />
+The values 2 ... 199 are permissible.<br />
+Index 1:<br />
+= 0: Ready.<br />
+= 1: Reset (only indices 0 and 1)<br />
+= 2: Reset all (indices 0 and 1 and flagged entries).<br />
+= 3: Check and flag for deletion.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Component number<br />
+[1] = Reset or check and flag for deletion<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Only for internal Siemens use.<br />The parameter is not displayed for the STARTER commissioning software.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9920">p9920[0...19]</a></b></td>
+<td colspan="4"><b>Licensing, enter license key / Enter license key</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Enters the license key for this drive unit.<br />
+Example of the license key:<br />
+EACZ-QBCA = 69 65 67 90 45 81 66 67 65 dec (ASCII characters)<br />
+Index 0 = license key character 1 (e.g. 69 dec)<br />
+Index 1 = license key character 2 (e.g. 65 dec)<br />
+...<br />
+Index 19 = license key character 20 (e.g. 0 dec)<br />
+With the STARTER commissioning software, ASCII characters are not entered coded, i.e. the characters of the license key can be entered as printed in the Certificate of License. In this case, STARTER codes the characters.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r7843, p9921<br />Refer to: A13000, A13001</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Onlyy the ASCII characters, contained in a license key can be entered.<br />When changing p9920[x] to the value 0, all of the following indices are also set to 0.<br />After entering the license key, the license key must be activated (p9921).<br />If the licensing is not adequate, then the following alarm is displayed together with LED:<br />- A13000 --&gt; licensing not sufficient<br />- LED READY --&gt; flashes green&#47;red with 0.5 Hz<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9921">p9921</a></b></td>
+<td colspan="4"><b>Licensing, activate license key / Act license key</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Activates the entered license key.<br />
+The following is executed when activating the license key.<br />
+- the checksum of the entered license key is checked.<br />
+- the entered license key is saved in the a non-volatile fashion on the CompactFlash card.<br />
+- re-enter the license key.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Inactive<br />1:		Activate start license key<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9920<br />Refer to: A13000, A13001</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Before activation, the license key entered using parameter p9920 is checked. If this check identifies an error, activation is rejected. In this case, writing a 1 to p9921 is rejected.<br />When the license key has been activated, p9921 is automatically set to 0.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9925">r9925[0...99]</a></b></td>
+<td colspan="4"><b>Firmware file incorrect / FW file incorrect</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the directory and name of the file whose status as shipped from the factory was identified as impermissible.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9926<br />Refer to: A01016</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The directory and name of the file is displayed in the ASCII code.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9926">r9926</a></b></td>
+<td colspan="4"><b>Firmware check status / Firmw check status</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the status when the firmware is checked on startup.<br />
+0: Firmware not yet checked.<br />
+1: Check running.<br />
+2: Check successfully completed.<br />
+3: Check indicates an error.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9925<br />Refer to: A01016</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9930">p9930[0...8]</a></b></td>
+<td colspan="4"><b>System logbook activation / SYSLOG activation</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >255</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Only for service purposes.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = System logbook stage (0: Not active)<br />
+[1] = COM2&#47;COM1 (0: COM2, 1: COM1)<br />
+[2] = Activate file write (0: Not active)<br />
+[3] = Display time stamp (0: Not displayed)<br />
+[4] = Reserved<br />
+[5] = Reserved<br />
+[6] = Reserved<br />
+[7] = Reserved<br />
+[8] = System logbook file size (stages, each 10 kB)<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">Before powering down the Control Unit, ensure that the system logbook is switched out (p9930[0] = 0).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9931">p9931[0...99]</a></b></td>
+<td colspan="4"><b>System logbook module selection / SYSLOG mod select.</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0000 hex</td>
+<td  >FFFF FFFF hex</td>
+<td >0000 hex</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Only for service purposes.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9932">p9932</a></b></td>
+<td colspan="4"><b>Save system logbook EEPROM / SYSLOG EEPROM save</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >255</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Only for service purposes.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9935">r9935.0</a></b></td>
+<td colspan="4"><b>BO: POWER ON delay signal / PO Ver_sig</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">After power-on, binector output r9935.0 is set with the start of the first sampling time and is again reset after approx. 100 ms.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>POWER ON delay signal</td><td>High</td><td>Low</td><td>-</td></tr></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9941">p9941</a></b></td>
+<td colspan="4"><b>Delete property for all components in the target topology / Delete data</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Topology</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">The serial numbers for all components of the target topology are set to zero by writing the parameter to the value 1.<br />
+Through activation and deactivation this enables the actual topology components to be newly assigned to the target topology components.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">p9941 is automatically set to 0 at the end of the operation.<br />After p9 = 0 a warm restart is automatically triggered and a re-assignment takes place.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9950">p9950</a></b></td>
+<td colspan="4"><b>Runtime measurement control / Runtime_meas ctrl</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >3</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Setting to control the runtime measurement.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Stop runtime measurement<br />1:		Start runtime meas (internal)<br />2:		Clear trace buffer (internal)<br />3:		Activate calculation of remaining computing time<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r9976<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9976">r9976[0...7]</a></b></td>
+<td colspan="4"><b>System load / Sys_load</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the system load.<br />
+The system load measurement is automatically started after run-up.<br />
+The individual values (computation load and cyclic load) are measured over short time slices and from the measurements, the maximum, the minimum and the average value are formed and displayed in the appropriate indices. Further, the degree of memory utilization of the data and program memory is displayed.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Computing time load (min)<br />
+[1] = Computing time load (averaged)<br />
+[2] = Computing time load (max)<br />
+[3] = Computing time load cyclic (min)<br />
+[4] = Computing time load cyclic (avg)<br />
+[5] = Computing time load cyclic (max)<br />
+[6] = Data memory locked<br />
+[7] = Program memory locked<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p9950<br />Refer to: A01053</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="9999">r9999[0...99]</a></b></td>
+<td colspan="4"><b>Software error internal supplementary diagnostics / SW_err int diag</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_CX32, CU_I, CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Diagnostics parameter to display additional information for internal software errors.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Only for internal Siemens troubleshooting.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="61000">r61000[0...239]</a></b></td>
+<td colspan="4"><b>PROFINET Name of Station / PN Name of Station</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S (PROFINET), CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays PROFINET Name of Station.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">An ASCII table (excerpt) can be found, for example, in the following List Manual:<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="61001">r61001[0...3]</a></b></td>
+<td colspan="4"><b>PROFINET IP of Station / PN IP of Station</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S (PROFINET), CU_S</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays PROFINET IP of Station.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p></body></html>

@@ -1,0 +1,119 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Function</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Function</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Function   </h3>
+      <p>With the "Measure kinematics" measuring variant (CYCLE996), it is possible to calculate the geometric vectors used to define the kinematic 5-axis transformation (TRAORI and TCARR) by measuring the positions of the sphere in space.</p>
+      <p>The measurement is essentially carried out by means of workpiece probes which scan three positions of a measuring sphere on each rotary axis. The sphere positions can be defined in accordance with user specifications so that they correspond to the geometric ratios on the machine. The only way of setting the sphere positions is to reposition the rotary axis that is to be measured in each case.</p>
+      <p>Precise knowledge of the mechanical system of the machine is not required when using CYCLE996. No dimension drawings or structural drawings are necessary to make measurements.</p>
+      <p>If the vectors of the machine are approximately known, the drawing dimensions must be entered in the vectors of the swivel data set and the machine measured with active orientable tool carrier (TCARR) or active 5-axis transformation (TRAORI). See also the programming example at the end of this chapter.</p>
+      <p>
+        <b>Further information:</b> Programming Manual <i>NC Programming</i></p>
+      <h4 class="Blocklabel">Possible fields of application</h4>
+      <p>The measuring variant "Measure kinematics" can be used to determine transformation-relevant data for kinematic transformations that contain rotary axes (TRAORI, TCARR).</p>
+      <ul>
+        <li>
+          <p>Redetermination of swivel data sets</p>
+          <ul>
+            <li>
+              <p>Machine start-up</p>
+            </li>
+            <li>
+              <p>Use of swivel-mounted workholders as TCARR</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Check of swivel data sets</p>
+          <ul>
+            <li>
+              <p>Service following collisions</p>
+            </li>
+            <li>
+              <p>Checking the kinematics during the machining process</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>Kinematics with manual axes (manually adjustable rotary tables, swivel-mounted workholders) can be measured in the same way as kinematics with NC-controlled rotary axes. </p>
+      <p>When starting <i>CYCLE996 </i>a swivel data set must be parameterized with the basic data (for kinematic type, see the Programming Manual <i>SINUMERIK 840D sl/840D/840Di sl Cycles</i>, CYCLE800). The measurement itself must be carried out without an active kinematic transformation. </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Requirements</h3>
+      <p>The following requirements must be met in order to use <code>CYCLE996</code> (Measure kinematics):</p>
+      <ul class="comment">
+        <li class="comment">
+          <p class="comment">Calibrated 3D probe (probe type 710).</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Mounted calibration sphere.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Oriented tool carrier has been set up (general MD 18088: $MN_MM_NUM_TOOL_CARRIER > 0)</p>
+        </li>
+        <li class="comment">
+          <p class="comment">The basic geometry of the machine (X, Y, Z) is rectangular and referenced.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">The right angle refers to the workpiece spindle and should be preferably checked using a test mandrel or with the <i>CYCLE995</i> measuring cycle.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Defined position of the rotary axes involved in the transformation.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Defined traverse directions in compliance with the standard of all axes involved in the transformation according to ISO 841-2001 and/or DIN 66217 (right-hand rule).</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Linear and rotary axes must have their optimum dynamic settings. This applies especially, when the machine is to perform tool orientations during machining with active TRAORI.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">The probe must be calibrated precisely. The calibrated tool length of the probe is included directly in the calculated vectors of the kinematics.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">When measuring, the measuring variant "Circling around the calibration sphere with tracking of the switching direction" should be used.</p>
+        </li>
+      </ul>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">The vectors of the measured kinematics are only entered in the swivel data set if the manufacturer's password is active. Kinematics can only be corrected when no persistent transformation is active. </p>
+          </td>
+        </tr>
+      </table>
+      <a id="table_74773dc1-a920-4037-a4c0-304c168f22f3">
+      </a> <a id="table_0"></a> <a id="table_74773dc1-a920-4037-a4c0-304c168f22f3"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="15.6%"><col width="84.4%"></colgroup><tr valign="top"><td><a id="image_27512720779_0"></a> <img border="0" src="images/27513393163.png" width="44" height="44"/> </td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><b>Machine manufacturer</b></p><p type="p_table_l" align="left" class="comment">Please observe the information provided by the machine manufacturer.</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Measuring principle</h3><p>The "Measure kinematics" measuring variant always requires the following procedure:</p><ol><li><p>Measure a rotary axis</p></li><li><p>Measure a second rotary axis (if this exists)</p></li><li><p>Calculate the swivel data sets (calculate kinematics)</p></li><li><p>The calculated data is activated automatically or with the aid of the user</p></li></ol><p>The user (preferably the machine manufacturer) should ensure compliance with the specified sequence.</p><p>If the position of the calibration sphere within the machine can be specified as an inherent part of the design, then it will be possible to store the entire kinematic measurement process (carried out using CYCLE996) as a part program, which is extremely advantageous. As a result, the user can carry out measurement of the kinematics under a set of predefined conditions at any given point in time.</p><p>The measurement of the rotary axis must be performed in the basic system of the machine. Metric machine with G710 and positions in mm. "INCH" machine with G700 and positions in INCHES.</p><a id="table_d5e9c715-f2af-c9af-c1fb-76664370cd8a"></a> <a id="table_1"></a> <a id="table_d5e9c715-f2af-c9af-c1fb-76664370cd8a"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="50.0%"><col width="49.9%"></colgroup><tr valign="top"><td><a id="image_28732831883_0"></a> <img border="0" src="images/28732874507.png" width="330" height="350"/> </td><td><a id="image_28731411467_0"></a> <img border="0" src="images/28732823691.png" width="328" height="286"/> </td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Measure: Kinematic (CYCLE996), <br />1. Measurement swivel table</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Measure: Kinematic (CYCLE996), <br />3. Measurement swivel head</p></td></tr></table></p><p></p><h4 class="Blocklabel">Measuring kinematics</h4><p>Starting from the kinematics initial state, the relevant rotary axes are measured individually.</p><ul><li><p>Rotary axes 1 or 2 can be measured in any order. If the machine kinematics only have one rotary axis, this is measured as rotary axis 1.</p></li><li><p>The basic data for the kinematics is always the data of the tool carrier with orientation capability. The 1st dynamic 5-axis transformation can be supported, this should preferably have transformation type 72 (vectors from TCARR data).</p></li><li><p>The linear and rotary axes must be prepositioned at starting positions P1 to P3 before measuring cycle CYCLE996<code> </code> is called in the NC program. The starting position is automatically accepted in <i>CYCLE996 </i> as the position setpoint for the "Measure sphere" function.</p></li><li><p>In each of the sphere (rotary axis) positions selected, measuring is performed in accordance with the parameters and by calling <i>CYCLE996</i>.</p></li><li><p>The kinematics are calculated using a separate, parameterized call of <i>CYCLE996</i>.</p></li><li><p>When the 3rd measurement has been completed, the results of the measurement and the<i> CYCLE996</i> setting "Calculate kinematics" are written to the _OVR[ ] result parameters. When the "Enter vectors" function is selected (refer to <code>S_MVAR</code>, <code>S_TC</code>), then data is output to the swivel data set that has been set-up (TCARR, TRAORI(1)).</p></li><li><p>A protocol file with the measurement results in an appropriate data format (machine data or TCARR data) can be optionally output.</p></li></ul><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><h4 class="Blocklabel">Requirements for measuring the kinematics with active TRAORI or active TCARR</h4><ul class="safety"><li class="safety"><p class="safety">Set SD 55740: $SCS:MEA_FUNCTION_MASK, bit8 = 1</p></li><li class="safety"><p class="safety">Data set (swivel data or machine data) of the kinematics must be roughly set up (±1 mm).</p></li><li class="safety"><p class="safety">The probe must be positioned perpendicular on the measuring plane at the individual measuring points of the rotary axes. This can be performed with the swivel function (<code>CYCLE800</code>) or by positioning the rotary axes with TRAORI and then TOROT (for G17).</p></li><li class="safety"><p class="safety">If very small values are entered in the XYZ components of the rotary axis vectors (V1, V2), the kinematics should always be measured with active TCARR or active TRAORI.</p></li></ul></td></tr></table><h4 class="Blocklabel">Input screen forms "kinematics"</h4><p class="comment"><code>CYCLE996</code> has to be called three times in order to complete the entire measuring and vector calculation process for one rotary axis. Between cycle calls, the user must reposition the rotary axis to be measured. Any rotary axis that is not being measured must not be repositioned during the measurement procedure. The linear axes are positioned at the starting positions P1, P2, P3.</p><p class="comment">The 1st to 3rd measurements are called using the respective softkeys.</p><p class="comment">At the end of the 3rd measurement, the vectors of the measured rotary axis are calculated at the call. The requirement for this is that the 1st to 3rd measurements have been performed for the respective rotary axis and that the corresponding measurement results (center points of the calibration the calibration sphere) have been saved. The vectors of the machine kinematics are then calculated in full when both rotary axes have been measured. The measurement counter, parameter _OVR[40], is displayed in the result bit or in the protocol.</p><p class="comment">Measurement for kinematics with swivel head:</p><a id="table_e6134319-e3f0-f840-ad08-6db3d24c7f27"></a> <a id="table_2"></a> <a id="table_e6134319-e3f0-f840-ad08-6db3d24c7f27"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="33.3%"><col width="33.3%"><col width="33.3%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">1st measurement P1 (initial state)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">2nd measurement P2</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">3rd measurement P3</p></td></tr><tr valign="top"><td><a id="image_3781584011_0"></a> <img border="0" src="images/120947972363.png" width="135" height="136"/> </td><td><a id="image_3781608843_0"></a> <img border="0" src="images/120948088843.png" width="135" height="144"/> </td><td><a id="image_3781596427_0"></a> <img border="0" src="images/120948218123.png" width="135" height="140"/> </td></tr></table></p><p class="comment">For the 2nd and 3rd measurements, the rotary axis to be measured is rotated around the largest possible angle. The calibration sphere position must be stationary during the measurements.</p><a name="block_4"></a><h3 class="Blocktitle">Starting position before the measurement</h3><p>A rotary axis is measured by calling <i>CYCLE996</i> three times (measurements 1 to 3).</p><p>The probe ball must be able to reach the equator of the calibration sphere. The 1st measurement must take place in the initial state of the kinematics. If the 1st rotary axis rotates parallel to the spindle without an offset in head kinematics (clevis head), the 1st rotary axis can be measured with the probe applied. The 2nd rotary axis is not in the initial state when measuring the 1st rotary axis.</p><p>The starting position of the probe must be approached by the user or from the user program (see example program). The probe must be prepositioned in the direction of the tool orientation (ORI) above the highest point of the calibration sphere (probe aligned with the center of the sphere). After approaching the starting position, the distance (A) from the calibration sphere should be approximately DFA.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><h4 class="Blocklabel">Measuring variant "Positioning on a circular path":</h4><p class="safety">For the variant "Positioning on circular path", positioning through 90° is always in the mathematical positive direction.</p></td></tr></table><a name="block_5"></a><h3 class="Blocktitle">Position after the end of the measuring cycle</h3><p>After each measurement (1 to 3) of a rotary axis, the probe is located above the calibration sphere at a maximum distance of the measurement path DFA.</p></div>
+    <p>See also:<br />    <a href="slstepmekinematic_m.html">Measure: Kinematics (CYCLE996)</a><br />    <a href="slstepmekinematic_c.html">Measure: Kinematics (CYCLE996)</a><br />    <a href="124627817227.html">Measuring an individual rotary axis</a><br />    <a href="124627819915.html">Calculating kinematics and activating the swivel data sets</a></p>
+  </body>
+</html>

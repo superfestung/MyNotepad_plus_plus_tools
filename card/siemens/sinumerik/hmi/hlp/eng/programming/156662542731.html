@@ -1,0 +1,33 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Return jump to the start of the program (GOTOS)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Return jump to the start of the program (GOTOS)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The GOTOS command can be used to jump back to the beginning of a main or subprogram in order to repeat the program. </p>
+      <p>Machine data can be used to set that for every return jump is made to the program start:</p>
+      <ul>
+        <li>
+          <p>The program runtime is set to "0".</p>
+        </li>
+        <li>
+          <p>Workpiece counting is incremented by the value "1".</p>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>GOTOS<a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_e84ad246-6c0f-46a4-8c16-135f7840fe39"></a> <a id="table_0"></a> <a id="table_e84ad246-6c0f-46a4-8c16-135f7840fe39"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="15.1%"><col width="11.4%"><col width="73.4%"></colgroup><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><code>GOTOS</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Jump statement where the destination is the beginning of the program.</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">The execution is controlled via the NC/PLC interface signal:</p><p type="p_table_l" align="left"><code>&lt;Chan>.basic.out.enableGoToStart</code> (control program branch)</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center"><b>Value</b></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left"><b>Meaning</b></p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">No return jump to the beginning of the program. Program execution is resumed with the next part program block after GOTOS.</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">1</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Return jump to the beginning of the program. The part program is repeated. </p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Constraints</h3><ul><li><p>GOTOS internally initiates a STOPRE (preprocessing stop).</p></li><li><p>For a part program with data definitions (local user variables (LUD)) with the GOTOS, a jump is made to the first program block after the definition section, i.e. data definitions are not executed again. The defined variables therefore retain the value reached in the GOTOS block and are not reset to the default values programmed in the definition section.</p></li><li><p>If programs with jump instructions are to be executed from an external program memory via the "Execution from external source" function, the jump destinations must be located within the reload memory. </p><p>This condition is especially problematic regarding jump instructions to the start of the program (GOTOS), since the programs are typically much too large to fit entirely in the reload memory. When reloading for the first time, the start of the program is removed from the reload memory. If a jump instruction to the beginning of the program is executed, the function is no longer able to find the jump destination. The program is aborted and alarm 14000 is output.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">To be able to execute external programs without restrictions with regard to the programmed jump instructions, it is recommended to use the option "Execution from External Storage (EES)" instead of the function "Execution from external source".</p></td></tr></table></li><li><p>The GOTOS command is not available in synchronized actions and technology cycles.</p></li></ul><a name="block_4"></a><h3 class="Blocktitle">Example</h3><a id="table_e02adddc-0928-fd08-e214-c496a84846a0"></a> <a id="table_1"></a> <a id="table_e02adddc-0928-fd08-e214-c496a84846a0"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EPE"><colgroup><col width="29.4%"><col width="70.6%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10 ...</td><td>; Start of the program.</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N90 GOTOS</td><td>; Jump to beginning of the program.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_5"></a><h3 class="Blocktitle">PLC signals</h3><a id="table_e849b817-f8dd-d3c2-26d6-a2643b47f3c7"></a> <a id="table_2"></a> <a id="table_e849b817-f8dd-d3c2-26d6-a2643b47f3c7"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="45.0%"><col width="35.0%"><col width="20.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Basic Program Plus</p></th><th colspan="2"><p type="p_table_lb" align="left">Basic Program</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Chan>.basic.out.enableGoToStart</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LBP_Chan*.A_ProgJump</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB21, ... DBX384.0</p></td></tr></table></p></div>
+    <p>See also:<br />    <a href="156662549387.html">Program jumps to jump markers (GOTOB, GOTOF, GOTO, GOTOC)</a><br />    <a href="156662553995.html">Program branch (CASE ... OF ... DEFAULT ...)</a></p>
+  </body>
+</html>

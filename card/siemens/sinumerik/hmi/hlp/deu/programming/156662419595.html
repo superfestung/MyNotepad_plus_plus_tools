@@ -1,0 +1,50 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Definition und Initialisierung von Feldvariablen (DEF, SET, REP): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Definition und Initialisierung von Feldvariablen (DEF, SET, REP): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen (SET)</h3>
+      <h4 class="Blocklabel">Initialisierung bei der Definition</h4>
+      <ul>
+        <li>
+          <p>Es werden, beginnend beim 1. Feldelement, so viele Feldelemente mit den Werten aus der Werteliste initialisiert, wie Elemente in der Werteliste programmiert sind.</p>
+        </li>
+        <li>
+          <p>Feldelemente ohne explizit angegebene Werte in der Werteliste (Lücken in der Werteliste) werden mit 0 belegt.</p>
+        </li>
+        <li>
+          <p>Bei Variablen vom Datentyp AXIS sind Lücken in der Werteliste nicht zugelassen.</p>
+        </li>
+        <li>
+          <p>Enthält die Werteliste mehr Werte als Feldelemente definiert sind, wird ein Alarm angezeigt.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Wertzuweisung im Programmablauf </h4>
+      <p>Bei der Wertzuweisung im Programmablauf gelten die oben bei der Definition beschriebenen Regeln. Zusätzlich gibt es folgende Möglichkeiten: </p>
+      <ul>
+        <li>
+          <p>Als Elemente in der Werteliste sind auch Ausdrücke erlaubt.</p>
+        </li>
+        <li>
+          <p>Die Wertzuweisung beginnt bei dem programmierten Feldindex. Hierdurch lassen sich gezielt Teilfelder mit Werten belegen.</p>
+        </li>
+      </ul>
+      <p>Beispiel:</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EGB"><colgroup><col width="45.0%"><col width="55.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>DEF INT ARRAY[5,5]</td><td>; Felddefinition</td></tr><tr valign="top"><td>ARRAY[0,0]=SET(1,2,3,4,5)</td><td>; Wertzuweisung an die ersten 5 Feldelemente [0,0] ... [0,4]</td></tr><tr valign="top"><td>ARRAY[0,0]=SET(1,2, , ,5)</td><td>; Wertzuweisung mit Lücke an die ersten 5 Feldelemente [0,0] ... [0,4]; Feldelemente [0,2] und [0,3] = 0</td></tr><tr valign="top"><td>ARRAY[2,3]=SET(VARIABLE,4*5.6)</td><td>; Wertzuweisung mit Variable und Ausdruck ab Feldindex [2,3]:
+[2,3] = VARIABLE
+[2,4] = 4 * 5.6 = 22.4</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_2"></a><h3 class="Blocktitle">Weitere Informationen (REP)</h3><h4 class="Blocklabel">Initialisierung bei der Definition</h4><ul><li><p>Alle oder die optional angegebene Anzahl an Feldelementen werden mit dem angegebenen Wert (Konstante) initialisiert.</p></li><li><p>Variablen vom Datentyp FRAME können nicht initialisiert werden.</p></li></ul><p>Beispiel:</p><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EYC"><colgroup><col width="45.0%"><col width="55.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>DEF REAL VarName[10]=REP(3.5,4)</td><td>; Felddefinition und Feldelemente [0] bis [3] mit Wert 3,5 initialisieren</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Wertzuweisung im Programmablauf </h4><p>Bei der Wertzuweisung im Programmablauf gelten die oben bei der Definition beschriebenen Regeln. Zusätzlich gibt es folgende Möglichkeiten: </p><ul><li><p>Als Elemente in der Werteliste sind auch Ausdrücke erlaubt.</p></li><li><p>Die Wertzuweisung beginnt bei dem programmierten Feldindex. Hierdurch lassen sich gezielt Teilfelder mit Werten belegen.</p></li></ul><p>Beispiele:</p><a id="table_2"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ETD"><colgroup><col width="40.0%"><col width="60.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>DEF REAL VarName[10]</td><td>; Felddefinition</td></tr><tr valign="top"><td>VarName[5]=REP(4.5,3)</td><td>; Feldelemente [5] bis [7] = 4,5</td></tr><tr valign="top"><td>R10=REP(2.4,3)</td><td>; R-Parameter R10 bis R12 = 2,4</td></tr><tr valign="top"><td>DEF FRAME FRM[10]</td><td>; Felddefinition</td></tr><tr valign="top"><td>FRM[5]=REP(CTRANS(X,5))</td><td>; Feldelemente [5] bis [9] = CTRANS(X,5)</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

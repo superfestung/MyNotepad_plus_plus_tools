@@ -1,0 +1,36 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Measurement result: Position controller data overview</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Measurement result: Position controller data overview</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The result of tuning the position controller is displayed here: </p>
+      <ul>
+        <li>
+          <p>
+            <b>"User tuned" column </b>displays the tuned values which the user can change. These values can also be changed in the Bode diagram display via "Diagram" → "Manual parameters". The values are written to the drive parameters by pressing the "Accept" softkey.</p>
+        </li>
+        <li>
+          <p>
+            <b>"Auto tuned" column </b>displays the new tuned values of the automatic servo tuning. </p>
+        </li>
+        <li>
+          <p>
+            <b>"Active" column</b> displays the currently active drive parameters in the drive. </p>
+        </li>
+      </ul>
+      <a id="table_61755065-1ceb-ccb2-774f-2ab9950f64f4">
+      </a> <a id="table_0"></a> <a id="table_61755065-1ceb-ccb2-774f-2ab9950f64f4"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="79.6%"><col width="20.4%"></colgroup><tr valign="top"><td><p style="margin-top: 4px">Servo gain factor</p></td><td><p style="margin-top: 4px">MD32200</p></td></tr><tr valign="top"><td><p style="margin-top: 4px">Feedforward control mode: Torque feedforward control is recommended.</p></td><td><p style="margin-top: 4px">MD32620</p></td></tr><tr valign="top"><td><ul class="table"><li><p>Equivalent time constant current control loop for feedforward control</p><p>The calculated time constant of the subordinate controller (total time including dead times and current setpoint filter). </p></li></ul></td><td><p style="margin-top: 4px">MD32800</p></td></tr><tr valign="top"><td><ul class="table"><li><p>Equivalent time constant, current control loop MD32800</p><p>As the time constants are already taken into account in the SINUMERIK, the value in MD32800 is added to the internal time constants. As a consequence, this value can differ from the line above. This time constant defines the following error. A higher following error is obtained if this is selected too high. If this is selected to be too low, the axis overshoots when positioning.</p></li></ul></td><td><p style="margin-top: 4px">--</p></td></tr><tr valign="top"><td><p style="margin-top: 4px">Feedforward control mode: Speed feedforward control</p></td><td><p style="margin-top: 4px">MD32620</p></td></tr><tr valign="top"><td><ul class="table"><li><p>Equivalent time constant speed control loop for feedforward control</p></li></ul></td><td><p style="margin-top: 4px">MD32810</p></td></tr><tr valign="top"><td><ul class="table"><li><p>Equivalent time constant for the speed control loop MD32810</p></li></ul></td><td><p style="margin-top: 4px">--</p></td></tr><tr valign="top"><td><p style="margin-top: 4px">Speed feedforward control balancing time constant [ms]</p><p>This value is effective in addition to the time constants set in MD32800. p1429 only acts on the setpoints of the speed feedforward control, and can be used to finely adapt the speed feedforward control values when torque feedforward control is active.</p></td><td><p style="margin-top: 4px">p1429</p></td></tr><tr valign="top"><td><p style="margin-top: 4px">Moment of inertia for torque feedforward control [kgm²]</p><p>Here, the total moment of inertia of this axis is displayed, converted over to the motor side [kgm²​]. This value is used to calculate the feedforward control torque. The calculated value can be changed. </p></td><td><p style="margin-top: 4px">MD32650</p></td></tr><tr valign="top"><td><p style="margin-top: 4px">Dynamic Stiffness Control (DSC) active: </p><p>DSC is always recommended to improve the position controller dynamic response, therefore DSC is automatically activated. In the drive, the encoder selection for DSC (p1192) and the factor of the encoder adaptation (p1193) are not changed.</p></td><td><p style="margin-top: 4px">MD32640</p></td></tr></table></p><p>The <b>current setpoint filters </b>are displayed according to the same criteria.</p><p><b>⇒ Further actions:</b></p><ul><li><p>Softkey "<a href="ast_controller_review_speed_form.html">Speed controller</a>" is only active if a complete tuning run has already been performed, or after selecting "Show result"/"Load axis data". </p></li><li><p>Softkey "Bode diagrams" to switch over from the parameter view to the frequency response display.</p></li><li><p>Softkey "<b>>></b>" to toggle the softkey bar. </p><ul><li><p>Softkey "Retune" to recalculate the controller data with modified tuning objective or (to recalculate) with reserved filters. No new measurements have to be performed for this. This operation can be repeated as many times as necessary.</p></li><li><p>Softkey "Return to tuned" to copy values from the "Auto tuned" column to the "User tuned" column if user-tuned changes are not required.</p></li><li><p>Softkey "Return to original" to copy values from the "Active" column to the "User tuned" column and to check the current effective settings on the Bode diagram.</p></li><li><p>Softkey "<b>&lt;&lt;</b>" to toggle the softkey bar.</p></li><li><p>Softkey "Save in file" to create an XML file with the controller data shown here (parameter and Bode diagram) and the previous measurements. The file also contains the data and diagrams of the speed controller. For instance, this file can also be saved to a USB storage medium. Using these methods, the controller data and measurements generated here can be saved and transferred and opened on another SINUMERIK Operate. The saved xml file can also be used for "Offline tuning", as it includes the axis measurements. It is also possible to tune the controller without having a connection to the machine. If you want to load this file to another machine, you have the option of loading the measured values to the NC or to the drive.</p></li><li><p>Softkey "Generate report" to generate an RTF document with tables and Bode diagrams.</p></li></ul></li><li><p>Softkey "Machine data" to display the list of active and tuned controller data.</p></li><li><p>Softkey "Filter details" to display the Bode diagram of the selected filter and change parameters.</p><p>This softkey is only active if a speed setpoint filter is selected.</p></li><li><p>Softkey "Accept" to write the values from the "User tuned" column to the drive.</p></li></ul></div>
+  </body>
+</html>

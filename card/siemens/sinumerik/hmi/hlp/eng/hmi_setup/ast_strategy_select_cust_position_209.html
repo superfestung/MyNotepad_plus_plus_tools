@@ -1,0 +1,88 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Position: User-defined strategy (209)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Position: User-defined strategy (209)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Strategy 203 "Kv without speed setpoint filter and maximize FFW" is the recommended strategy.</p>
+      <p>Strategy 209 includes the tuning of the position controller gain (MD32200) without speed setpoint filter. In this case, feedforward control is also parameterized. </p>
+      <p>If feedforward control is not desirable, for example because other axes have not been set up for feedforward control, then strategy 207 (FFWOF) can be selected. When selecting a predefined strategy (203 or 207) the tuning objective (rugged control response, normal control responsible or fast control response) can be selected. If other adaptations are required, then the user can select a user-defined strategy (209) or "Adapt strategy". When using "Adapt strategy", the predefined values are transferred into the user-defined strategy and can be edited.</p>
+      <p>For large machines or axes with low natural frequencies, we recommend that the position controller is tuned using speed setpoint filters. This is selected by activating the "Methods for maximum Kv" checkbox.</p>
+      <p>
+        <b>DSC active:</b>
+      </p>
+      <p>Dynamic stiffness control (DSC) is automatically used and activated by the automatic servo tuning. It is recommended as it facilitates higher gain factors. Depending on the tuning objective (rugged/standard/fast), the following are specified for the gain factor:</p>
+      <ul>
+        <li>
+          <p>Kv reduction</p>
+        </li>
+        <li>
+          <p>Kv upper limit</p>
+        </li>
+      </ul>
+      <p>
+        <b>Kv reduction:</b>
+      </p>
+      <p>With this factor (= 0: 100% reserve, = 1: no reserve) you define as to whether the maximum possible gain factor should be set. The gain factor is limited by the amplitude response of the controller. It is not permissible that the position controller overshoots. Servo gain factor = 1: The position controller just manages not to overshoot. The gain value determined on the basis of the amplitude response is taken over with any reserve. </p>
+      <p>In order to make the position controller more robust with respect to mechanical changes, depending on the tuning objective (robust/moderate/maximum responsiveness), it is preassigned with: 0.4/0.6/0.8</p>
+      <p>
+        <b>Kv upper limit:</b>
+      </p>
+      <p>Even if, from a pure theoretical perspective, higher values for the Kv factor would be possible, the Kv factor is additionally limited using this absolute numerical value. This also achieves the appropriate level of ruggedness. The Kv factor must be entered in the m/mm/min unit. </p>
+      <p>
+        <b>Feedforward control mode:</b>
+      </p>
+      <p>In addition to deselecting feedforward control (= "none"), speed feedforward control and torque feedforward control can be selected. If telegram 136 is selected for communication between the drive and NC, then torque feedforward control is set. This permits a minimum following error, and therefore the highest contour precision. All axes interpolating along a path must have the same feedforward control mode.</p>
+      <p>
+        <b>Methods for maximum Kv: </b>
+      </p>
+      <p>If the position control gain (Kv factor) is limited as a result of mechanical natural frequencies, the following options are available to dampen any oscillation: </p>
+      <ul>
+        <li>
+          <p>Standard: Maximizing the Kv factor with the actual speed controller setting.</p>
+        </li>
+        <li>
+          <p>PT1 speed setpoint filter 2: Use the second speed setpoint filter as low pass filter to smooth any mechanical oscillation. By using filter 2, speed feedforward control setpoints are also smoothed. </p>
+        </li>
+        <li>
+          <p>Damping tuned speed controller: The speed controller is post-tuned with the objective of achieving the highest possible damping with the lowest mechanical natural frequency.</p>
+        </li>
+        <li>
+          <p>PT2 speed setpoint filter 1: The same as for "PT1 speed setpoint filter 2", however, the speed setpoint filter 1 is only in the closed position control loop when DSC is active. As a consequence only the position controller output is smoothed.</p>
+        </li>
+      </ul>
+      <p>
+        <b>Speed setpoint filter: </b>
+      </p>
+      <p>If it is already known in advance that setpoint filters will be required to stabilize the position control loop, then these can be preset and reserved here. In this case, a pre-assignment is not made when selecting the strategy. To activate the required filters, they must be reserved by activating the "Res" checkbox. The filter parameters can then be set.</p>
+      <p>
+        <b>⇒ Further actions:</b>
+      </p>
+      <ul>
+        <li>
+          <p>Softkey "Adapt strategy" to adapt the pre-assigned values of a predefined strategy. The user-defined strategy (209) is assigned the values of the predefined strategy. All parameters can be set in the "User-defined strategy". The tuning objective "Moderate responsiveness" is the presetting for the "User-defined strategy".</p>
+        </li>
+        <li>
+          <p>Softkey "Meas. parameters >" to adapt the parameters for a measurement. This softkey is only active when "User-defined strategy" is selected. </p>
+        </li>
+        <li>
+          <p>Softkeys "<a href="ast_strategy_select_cust_axis_108.html">Axis</a>" and "<a href="ast_strategy_select_cust_speed_309.html">Speed</a>" to toggle between axis and speed controller when selecting a strategy.</p>
+        </li>
+        <li>
+          <p>Softkeys "Cancel" and "OK" to cancel or accept the new settings.</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

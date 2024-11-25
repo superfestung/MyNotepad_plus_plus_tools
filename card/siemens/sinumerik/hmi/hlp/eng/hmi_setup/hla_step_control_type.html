@@ -1,0 +1,88 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Hydraulic linear drives: Configuration - control mode/setpoints</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Hydraulic linear drives: Configuration - control mode/setpoints</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>You set the control type and the PROFIBUS telegram type as well as the number of drive data sets (DDS) in this dialog. The control type, PROFIBUS PZD telegram and the number of DDS are generally pre-assigned correctly.</p>
+      <p>
+        <b>Control mode:</b>
+      </p>
+      <p>If a pressure sensor is installed and connected for the pressures at A and B, the force limitation and/or stiction input functions in p1400 can be activated. Before the force limitation or stiction input is activated, the associated machine data for force limitation (p1520, p1521, p1532) or friction force (p1554, p1555) should be set. These data may contain the force of weight values and might not be preset correctly by the defaults. If the cylinder load changes and the force of weight must be held by the cylinder, then the stiction input function cannot be utilized, as the values in p1554 and p1555 vary depending on the load. </p>
+      <ul>
+        <li>
+          <p>
+            <b>Static friction compensation with force controller (p1400.2 = 1)</b>
+          </p>
+          <p>If the pressures at A and B are sensed, then the stiction compensation using the force controller can be activated. Static friction compensation using the force controller should not be activated if the cylinder is required to hold a fluctuating force due to weight. In addition, the offset of the valve control voltage and the piston must already have been calibrated. Parameters p1552 to p1556 can be calibrated using the circularity test.</p>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <p>
+            <b>Force limitation mode 1 (p1400.0 = 1)</b> </p>
+          <p>Force limitation mode 1 is always effective, even without the "Travel to fixed stop" function. The force limit is specified using p1520, p1521. If the "Travel to fixed stop" function is active, the lowest force limit always takes effect (p1520/p1521 or value of FXST[x]). You define the reference value (100 % value) of the force limit for the NC using parameters p1522 and p1523. If the actual current force limit is exceeded, the speed controller again becomes active, also for "Travel to fixed stop". This can have a negative effect on "Travel to fixed stop". At higher velocities, this can also cause the system to continuously alternate between the force and velocity controllers. Therefore, this mode is only suitable for low velocities (&lt; 10% of the maximum velocity). </p>
+        </li>
+        <li>
+          <p>
+            <b>Force limitation mode 2 (p1400.1 = 1) </b>
+          </p>
+          <p>Force limitation mode 2 becomes active when the limit value was exceeded, and the "Travel to fixed stop" function is active. In each case, the lowest force limitation becomes active: p1520/p1521 or MD37010 $MA_FIXED_STOP_TORQUE_DEF or the value from FXST[x]. You define the reference value (100 % value) of the force limit for the NC using parameters p1522 and p1523. Force limiting remains active until the function "Travel to fixed stop" is deactivated, even if the force has already fallen below the actual force limit. </p>
+        </li>
+      </ul>
+      <p>
+        <b>References: </b>SINAMICS S120 System Manual: Hydraulic Drive, Chapter "Drive functions"</p>
+      <p>
+        <b>PROFIBUS PZD telegram:</b>
+      </p>
+      <p>When commissioning for the first time (not a change run), the telegram that was determined from the STEP 7 HW configuration is set. The default setting "SIEMENS telegram 166 PZD-15/19" is used if the telegram cannot be uniquely determined. In the change run, the telegram set in the drive is displayed.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Telegram 166 mandatory</h4>
+            <p class="safety">Telegram 166 must be set for the operation of hydraulic drives.</p>
+          </td>
+        </tr>
+      </table>
+      <p>
+        <b>Number of DDS for this MDS:</b>
+      </p>
+      <p>The default number for the DDS is 1. If a drive data set switchover is required, several DDS can be set up if necessary. Note: A large number of DDS slows down the SINAMICS system boot up. Further DDS can also be created subsequently in the data set wizard.</p>
+      <p>
+        <b>See also:</b>
+      </p>
+      <p>
+        <a href="hla_step_encoder.html">&lt; Previous step</a> </p>
+      <p>
+        <a href="hla_step_bico.html">Next step ></a> </p>
+    </div>
+  </body>
+</html>

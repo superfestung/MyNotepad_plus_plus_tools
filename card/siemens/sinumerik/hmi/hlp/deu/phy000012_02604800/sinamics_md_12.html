@@ -1,0 +1,1179 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1225">p1225</a></b></td>
+<td colspan="4"><b>CI: Stillstandserkennung Schwellwert / Stillstand Schw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw Bremse), VECTOR (Erw Bremse)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2704</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> p2000</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >63[0]</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle &quot;Schwellwert&quot; f&uuml;r die Stillstandserkennung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1226, p1228, r1229<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1226">p1226</a></b></td>
+<td colspan="4"><b>Stillstandserkennung Drehzahlschwelle / n_still n_schw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2701, 2704</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> 3_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >210000.0</td>
+<td >20.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Drehzahlschwelle f&uuml;r die Stillstandserkennung.<br />
+Wirkt auf Istwert- und Sollwert&uuml;berwachung.<br />
+Beim Bremsen mit AUS1 oder AUS3 wird beim Unterschreiten dieser Schwelle der Stillstand erkannt.<br />
+Bei aktivierter Bremsenansteuerung gilt:<br />
+Mit Unterschreiten der Schwelle wird die Bremsenansteuerung gestartet und die Schlie&szlig;zeit in p1217 abgewartet. Anschlie&szlig;end werden die Impulse gel&ouml;scht.<br />
+Bei nicht aktivierter Bremsenansteuerung gilt:<br />
+Mit Unterschreiten der Schwelle werden die Impulse gel&ouml;scht und der Antrieb &quot;trudelt&quot; aus.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1215, p1216, p1217, p1227<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Stillstand wird erkannt, wenn der Drehzahlistwert die Drehzahlschwelle in p1226 unterschreitet oder wenn die bei Drehzahlsollwert &lt;= Drehzahlschwelle (p1226) gestartete &Uuml;berwachungszeit (p1227) abgelaufen ist.<br />Bei der Istwerterfassung entsteht ein Messrauschen. Bei zu kleiner Drehzahlschwelle kann deshalb der Stillstand nicht erkannt werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1227">p1227</a></b></td>
+<td colspan="4"><b>Stillstandserkennung &Uuml;berwachungszeit / n_still t_&Uuml;berw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2701, 2704</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >300.000</td>
+<td >4.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der &Uuml;berwachungszeit f&uuml;r die Stillstandserkennung.<br />
+Beim Bremsen mit AUS1 oder AUS3 wird nach Ablauf dieser Zeit Stillstand erkannt, nachdem die Solldrehzahl p1226 unterschritten hat (siehe auch p1145).<br />
+Danach wird die Bremsenansteuerung gestartet, die Schlie&szlig;zeit in p1217 abgewartet und anschlie&szlig;end die Impulse gel&ouml;scht.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1215, p1216, p1217, p1226<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Stillstand wird erkannt, wenn w&auml;hrend der gesamten &Uuml;berwachungszeit (p1227) der Drehzahlsollwert die Drehzahlschwelle (p1226) unterschreitet.<br />Bei p1227 = 300.000 s gilt:<br />Die &Uuml;berwachung ist ausgeschaltet.<br />Bei p1227 = 0.000 s gilt:<br />Mit AUS1 oder AUS3 und R&uuml;cklaufzeit = 0 werden die Impulse sofort gel&ouml;scht und der Motor &quot;trudelt&quot; aus.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1228">p1228</a></b></td>
+<td colspan="4"><b>Impulsl&ouml;schung Verz&ouml;gerungszeit / Impulsl&ouml;sch t_Ver</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2701, 2704</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >10.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Verz&ouml;gerungszeit f&uuml;r die Impulsl&ouml;schung.<br />
+Nach AUS1 oder AUS3 und Stillstandserkennung wird diese Zeit abgewartet und danach die Impulse gel&ouml;scht.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1226, p1227<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Stillstand wird erkannt, wenn w&auml;hrend der gesamten Verz&ouml;gerungszeit (p1228) der Drehzahlistwert die Drehzahlschwelle (p1226) unterschreitet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1229">r1229.1...11</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Motorhaltebremse Zustandswort / Bremse ZSW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw Bremse), VECTOR (Erw Bremse)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Zustandswortes f&uuml;r die Motorhaltebremse.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>01</td><td>Befehl Bremse &ouml;ffnen (Dauersignal)</td><td>Ja</td><td>Nein</td><td>2711</td></tr><tr><td></td><td>03</td><td>Impulsfreigabe Erweiterte Bremsensteuerung</td><td>Ja</td><td>Nein</td><td>2711</td></tr><tr><td></td><td>04</td><td>Bremse &ouml;ffnet nicht</td><td>Ja</td><td>Nein</td><td>2711</td></tr><tr><td></td><td>05</td><td>Bremse schlie&szlig;t nicht</td><td>Ja</td><td>Nein</td><td>2711</td></tr><tr><td></td><td>06</td><td>Bremsschwelle &uuml;berschritten</td><td>Ja</td><td>Nein</td><td>2707</td></tr><tr><td></td><td>07</td><td>Bremse Schwellwert unterschritten</td><td>Ja</td><td>Nein</td><td>2704</td></tr><tr><td></td><td>08</td><td>Bremse &Uuml;berwachungszeit abgelaufen</td><td>Ja</td><td>Nein</td><td>2704</td></tr><tr><td></td><td>09</td><td>Anforderung Impulsfreigabe fehlt&#47;n_reg gesperrt</td><td>Ja</td><td>Nein</td><td>2707</td></tr><tr><td></td><td>10</td><td>Bremse ODER-Verkn&uuml;pfung Ergebnis</td><td>Wahr</td><td>Falsch</td><td>2707</td></tr><tr><td></td><td>11</td><td>Bremse UND-Verkn&uuml;pfung Ergebnis</td><td>Wahr</td><td>Falsch</td><td>2707</td></tr></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1230">p1230[0...n]</a></b></td>
+<td colspan="4"><b>BI: Ankerkurzschluss&#47;Gleichstrombremse Aktivierung / ASC Akt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> 7014, 7016, 7017</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle zum Aktivieren des Ankerkurzschlusses oder der Gleichstrombremse.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1231, p1232, p1233, p1234, p1235, p1236, p1237, r1238, r1239<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">1-Signal: Ankerkurzschluss&#47;Gleichstrombremse aktiviert.<br />0-Signal: Ankerkurzschluss&#47;Gleichstrombremse deaktiviert.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1231">p1231[0...n]</a></b></td>
+<td colspan="4"><b>Ankerkurzschluss&#47;Gleichstrombremse Konfiguration / ASC Konfig</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 7014, 7016, 7017</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >4</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung zum Aktivieren der verschiedenen Arten f&uuml;r Ankerkurzschluss&#47;Gleichstrombremse.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Keine Funktion<br />1:		Ankerkurzschluss extern mit Sch&uuml;tzr&uuml;ckmeldung<br />2:		Ankerkurzschluss extern ohne Sch&uuml;tzr&uuml;ckmeldung<br />3:		Spannungsschutz intern<br />4:		Ankerkurzschluss intern&#47;Gleichstrombremse<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0300, p1230, p1232, p1233, p1234, p1235, p1236, p1237, r1238, r1239<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Zu p1231 = 1, 2:<br />Der externe Ankerkurzschluss kann nur bei Synchronmotoren (p0300) eingestellt werden. In diesem Fall muss das Steuerbit BO: r1239.0 zum Schalten des externen Sch&uuml;tzes verschaltet werden (z. B. auf einen Digitalausgang).<br />Zu p1231 = 3:<br />Der interne Spannungsschutz (durch internen Ankerkurzschluss) kann nur bei Synchronmotoren (p0300) und Booksize Motor Modules eingestellt werden. Au&szlig;erdem darf Safety nicht aktiv sein (d. h. p9501 = 0 und p9601 = 0). Der interne Spannungsschutz verhindert, dass die Zwischenkreiskapazit&auml;t bei fehlender R&uuml;ckspeisef&auml;higkeit von der EMK eines in Feldschw&auml;chung betriebenen Motors geladen wird. Das Motor Module muss diese Funktion unterst&uuml;tzen (r0192.9 = 1).<br />a) Wenn das Motor Module den autarken internen Ankerkurzschluss nicht unterst&uuml;tzt (r0192.10 = 0) wird der Ankerkurzschuss aktiviert, sobald das Aktivierungskriterium (siehe unten) erf&uuml;llt ist.<br />b) Wenn das Motor Module den autarken internen Spannungsschutz unterst&uuml;tzt (r0192.10 = 1), entscheidet das Motor Module anhand der Zwischenkreisspannung selbstst&auml;ndig das Aktivieren des Kurzschlusses. In diesem Fall besteht der Schutz auch, wenn die DRIVE-CLiQ-Verbindung zwischen Control Unit und Motor Module unterbrochen wurde. Bei &Uuml;berschreitung der Zwischenkreisspannung von 800 V wird der Kurzschluss aktiviert. F&auml;llt die Zwischenkreisspannung unter 450 V, wird der Kurzschluss wieder aufgehoben. Damit wird sichergestellt, dass die n&ouml;tige Eingangsspannung f&uuml;r das Control Supply Module aufrecht erhalten wird.<br />Zu p1231 = 4:<br />Sobald das Aktivierungskriterium erf&uuml;llt ist, wird die Funktion aktiviert.<br />- Die Funktion kann durch AUS2 abgel&ouml;st werden.<br />a) F&uuml;r Synchronmotoren (p0300 = 2xx, 4xx) wird der interne Ankerkurzschluss ausgel&ouml;st.<br />- Das Motor Module muss diese Funktion unterst&uuml;tzen (r0192.9 = 1).<br />b) F&uuml;r Asynchronmotoren (p0300 = 1xx) wird die Gleichstrombremse ausgel&ouml;st.<br />Aktivierungskriterium (eines der folgenden Kriterien ist erf&uuml;llt):<br />- 1-Signal &uuml;ber Binektoreingang p1230 (Gleichstrombremse Aktivierung).<br />- Der Antrieb ist nicht im Zustand &quot;S4: Betrieb&quot; oder in S5x (siehe Funktionsplan 2610).<br />- Die interne Impulsfreigabe fehlt (r0046.19 = 0).<br />Hinweis:<br />ASC: Ankerkurzschluss (Armature Short-Circuit)<br />IVP: Interner Spannungsschutz (Internal Voltage Protection)<br />USV: Unterbrechungsfreie Spannungsversorgung<br />CSM: Control Supply Module<br />DC Brake: Gleichstrombremse<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1232">p1232[0...n]</a></b></td>
+<td colspan="4"><b>Gleichstrombremse Bremsstrom / DCBRK I_Brems</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 7017</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> PEM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >10000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Bremsstroms f&uuml;r die Gleichstrombremse.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1230, p1231, p1233, p1234, r1239, p1345, p1346<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Eine &Auml;nderung des Bremsstromes wird beim n&auml;chsten Einschalten der Gleichstrombremse wirksam.<br />F&uuml;r den Stromregler werden die Einstellungen der Parameter p1345 und p1346 (Imax-Begrenzungsregler) verwendet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1233">p1233[0...n]</a></b></td>
+<td colspan="4"><b>Gleichstrombremse Zeitdauer / DCBRK Zeitdauer</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 7017</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> PEM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >3600.0</td>
+<td >1.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Zeitdauer f&uuml;r die Gleichstrombremse.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1230, p1231, p1232, p1234, r1239<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1234">p1234[0...n]</a></b></td>
+<td colspan="4"><b>Gleichstrombremse Startdrehzahl / DCBRK n_Start</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 7017</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> PEM, REL, FEM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >210000.00</td>
+<td >40000.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Startdrehzahl f&uuml;r die Gleichstrombremse.<br />
+Unterschreitet die Istdrehzahl diese Schwelle, so wird die Gleichstrombremse aktiviert.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1230, p1231, p1232, p1233, r1239<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Vorsicht:</b></td>
+<td width="85%">Tritt im geregelten Betrieb mit Geber ein Geberfehler auf, so kann der Antrieb nicht mehr geregelt bis zur Gleichstrombremse Startdrehzahl p1234 abgebremst werden. In diesem Fall wird die DC-Bremse sofort aktiviert und pr&auml;gt nach der Entmagnetisierung den Bremsstrom p1232 f&uuml;r die Bremsstromdauer p1233 ein.<br />Bremsstrom und -dauer m&uuml;ssen f&uuml;r diesen Fall ausreichend bemessen werden um den Antrieb bis zum Stillstand abzubremsen.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1235">p1235[0...n]</a></b></td>
+<td colspan="4"><b>BI: Ankerkurzschluss extern Sch&uuml;tzr&uuml;ckmeldung / ASC ext R&uuml;ckm</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle f&uuml;r die Sch&uuml;tzr&uuml;ckmeldung beim externen Ankerkurzschluss.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1230, p1231, p1236, p1237, r1239<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">1-Signal: Das Sch&uuml;tz ist geschlossen.<br />0-Signal: Das Sch&uuml;tz ist offen.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1236">p1236[0...n]</a></b></td>
+<td colspan="4"><b>Ankerkurzschluss extern Sch&uuml;tzr&uuml;ckmeldung &Uuml;berwachungszeit / ASC ext t_&Uuml;berw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1000</td>
+<td >200</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der &Uuml;berwachungszeit der Sch&uuml;tzr&uuml;ckmeldung bei der externen Ankerkurzschlussschaltung.<br />
+Bei parametrierter Sch&uuml;tzr&uuml;ckmeldung (p1235) wird das entsprechende R&uuml;ckmeldesignal (r1239.1) nach dem &Ouml;ffnen oder Schlie&szlig;en des Sch&uuml;tzes innerhalb dieser &Uuml;berwachungszeit erwartet.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1230, p1231, p1235, p1237, r1239<br />Siehe auch: A07904, F07905</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1237">p1237[0...n]</a></b></td>
+<td colspan="4"><b>Ankerkurzschluss extern Wartezeit beim &Ouml;ffnen / ASC ext t_Warte</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1000</td>
+<td >200</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Wartezeit beim &Ouml;ffnen des Sch&uuml;tzes der externen Ankerkurzschlussschaltung.<br />
+Ist keine Sch&uuml;tzr&uuml;ckmeldung eingestellt (p1235), so wird diese Zeit gewartet bevor die Impulse eingeschaltet werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1230, p1231, p1235, p1236, r1239<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Diese Wartezeit muss mindestens so gro&szlig; sein, dass die Sch&uuml;tzkontakte sicher offen sind bevor die Impulse eingeschaltet werden. Die Wartezeit muss gr&ouml;&szlig;er sein als die Reaktionszeit des Sch&uuml;tzes. Eine zu kurze Wartezeit kann zur Besch&auml;digung des Motor Modules f&uuml;hren.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1238">r1238</a></b></td>
+<td colspan="4"><b>CO: Ankerkurzschluss extern Zustand / EASC Zustand</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2610</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >6</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Zustands f&uuml;r den externen Ankerkurzschluss.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Ausgeschaltet<br />1:		Bereit<br />2:		Aktiv<br />3:		Aktiv - R&uuml;ckmeldung &quot;Geschlossen&quot; OK<br />4:		Aktiv - R&uuml;ckmeldung &quot;Geschlossen&quot; fehlt<br />5:		Anfrage zum Aufheben des Ankerkurzschlusses<br />6:		Aktiv - R&uuml;ckmeldung &quot;Offen&quot; fehlt<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1230, p1231, p1235, p1236, p1237, r1239<br />Siehe auch: A07904, F07905</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Aktivierungskriterium (eines der folgenden Kriterien ist erf&uuml;llt):<br />- Das Signal an BI: p1230 (Ankerkurzschluss Aktivierung) ist 0.<br />- Der Antrieb ist nicht im Zustand &quot;S4: Betrieb&quot; oder in S5x (siehe Funktionsplan 2610).<br />- Die interne Impulsfreigabe fehlt (r0046.19 = 0).<br />Zu Zustand &quot;Ausgeschaltet&quot; (r1238 = 0):<br />- Der externe Ankerkurzschluss kann mit p1231 = 1 angew&auml;hlt werden.<br />Zu Zustand &quot;Bereit&quot; (r1238 = 1):<br />- Sobald das Aktivierungskriterium erf&uuml;llt ist, wird in den Zustand &quot;Aktiv&quot; (r1238 = 2) &uuml;bergegangen.<br />Zu Zustand &quot;Aktiv&quot; (r1238 = 2), &quot;Aktiv - R&uuml;ckmeldung &quot;Geschlossen&quot; O. K.&quot; (r1238 = 3), &quot;Aktiv - R&uuml;ckmeldung &quot;Geschlossen&quot; fehlt&quot; (r1238 = 4):<br />- Das Steuersignal zum Schlie&szlig;en des Sch&uuml;tzes r1239.0 wird auf &quot;1&quot; (Geschlossen) gesetzt und die Impulse werden gel&ouml;scht.<br />- Ist keine Sch&uuml;tzr&uuml;ckmeldung verbunden (BI: p1235 = 0-Signal), wird sofort in Zustand 3 &uuml;bergegangen.<br />- Ist eine Sch&uuml;tzr&uuml;ckmeldung verbunden, wird in den Zustand 3 &uuml;bergegangen wenn das R&uuml;ckmeldesignal an BI: p1235 innerhalb der &Uuml;berwachungszeit (p1236) auf &quot;1&quot; (Geschlossen) geht.<br />- Ansonsten wird in den Zustand 4 &uuml;bergegangen.<br />Zu Zustand &quot;Anfrage zum Aufheben des Ankerkurzschlusses&quot; (r1238 = 5):<br />- Das Aktivierungskriterium ist nicht mehr erf&uuml;llt. Es wird versucht den Ankerkurzschluss wieder aufzuheben.<br />- Das Steuersignal zum Schlie&szlig;en des Sch&uuml;tzes r1239.0 wird auf &quot;0&quot; (Offen) gesetzt und die Impulse bleiben gel&ouml;scht.<br />- Ist keine Sch&uuml;tzr&uuml;ckmeldung verbunden (BI: p1235 = 0-Signal), wird die Wartezeit (p1237) abgewartet, bis in den Zustand 1 &uuml;bergegangen wird.<br />- Ist eine Sch&uuml;tzr&uuml;ckmeldung verbunden, wird gewartet bis das R&uuml;ckmeldesignal an BI: p1235 auf &quot;0&quot; (Offen) geht, bis in den Zustand 1 &uuml;bergegangen wird. Geschieht dies nicht innerhalb &Uuml;berwachungzeit (p1236) wird in den Zustand 6 &uuml;bergegangen.<br />Zu Zustand &quot;Aktiv - R&uuml;ckmeldung &quot;Offen&quot; fehlt&quot; (r1238 = 6):<br />- Dieser Fehlerzustand kann verlassen werden, indem der externe Ankerkurzschluss abgew&auml;hlt wird (p1231 = 0).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1239">r1239.0...10</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Ankerkurzschluss &#47; DC-Bremse Zustandswort / ASC ZSW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 1</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Zustandswortes f&uuml;r Ankerkurzschluss.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Ankerkurzschluss extern</td><td>Aktiv</td><td>Inaktiv</td><td>-</td></tr><tr><td></td><td>01</td><td>Ankerkurzschluss extern Sch&uuml;tzr&uuml;ckmeldung</td><td>Geschlossen</td><td>Offen</td><td>-</td></tr><tr><td></td><td>02</td><td>Ankerkurzschluss extern bereit</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>03</td><td>Ankerkurzschluss extern mit Sch&uuml;tzr&uuml;ckmeldung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>04</td><td>Ankerkurzschluss intern</td><td>Aktiv</td><td>Inaktiv</td><td>-</td></tr><tr><td></td><td>05</td><td>Ankerkurzschluss intern R&uuml;ckmeldung vom Leistungsteil</td><td>Aktiv</td><td>Inaktiv</td><td>-</td></tr><tr><td></td><td>06</td><td>Ankerkurzschluss intern bereit</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>08</td><td>Gleichstrombremse aktiv</td><td>Aktiv</td><td>Inaktiv</td><td>7017</td></tr><tr><td></td><td>10</td><td>Gleichstrombremse bereit</td><td>Ja</td><td>Nein</td><td>7017</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1230, p1231, p1232, p1233, p1234, p1235, p1236, p1237<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Externer Ankerkurzschluss (Bit 0 ... 3):<br />Zu Bit 00:<br />&Uuml;ber dieses Signal wird der Motor &uuml;ber eine externe Sch&uuml;tzschaltung kurzgeschlossen. Dazu muss dieser BO: p1239.0 z. B. auf einen Digitalausgang verschaltet werden.<br />Zu Bit 01:<br />Dieses Signal meldet den Zustand des Sch&uuml;tzes zum Schalten des Ankerkurzschlusses. Dazu muss der BI: p1235 mit einem Digitaleingang verschaltet werden.<br />Zu Bit 02:<br />Die externe Ankerkurzschlussschaltung ist bereit und wird aktiviert sobald das Aktivierungskriterium erf&uuml;llt ist.<br />Zu Bit 03:<br />1: Es wurde eine R&uuml;ckmeldung in BI: p1235 vom externen Sch&uuml;tz parametriert.<br />Interner Spannungsschutz &#47; interner Ankerkurzschluss (Bit 4 ... 6):<br />Zu Bit 04:<br />a) Interner Spannungsschutz (p1231 = 3) wurde gew&auml;hlt und das Motor Module unterst&uuml;tzt den autarken internen Spannungsschutz nicht (r0192.10 = 0).<br />Die Control Unit erteilt den Befehl an das Motor Module, den Motor &uuml;ber die Leistungshalbleiter kurzzuschlie&szlig;en.<br />b) Interner Spannungsschutz (p1231 = 3) wurde gew&auml;hlt und das Motor Module unterst&uuml;tzt den autarken internen Spannungsschutz (r0192.10 = 1).<br />Das Motor Module entscheidet autark, ob der Ankerkurzschluss aktiviert wird. Hier gilt: r1239.4 = r1239.5.<br />c) Interner Ankerkurzschluss (p1231 = 4) wurde gew&auml;hlt.<br />Die Control Unit erteilt den Befehl an das Motor Module, den Motor &uuml;ber die Leistungshalbleiter kurzzuschlie&szlig;en.<br />Zu Bit 05:<br />Das Motor Module meldet, dass der Motor &uuml;ber die Leistungshalbleiter im Motor Module kurzgeschlossen ist.<br />Zu Bit 06:<br />a) Interner Spannungsschutz (p1231 = 3) wurde gew&auml;hlt und das Motor Module unterst&uuml;tzt den autarken internen Spannungsschutz nicht (r0192.10 = 0).<br />Der interne Spannungsschutz ist bereit und wird aktiviert, sobald das Aktivierungskriterium erf&uuml;llt ist.<br />b) Interner Spannungsschutz (p1231 = 3) wurde gew&auml;hlt und das Motor Module unterst&uuml;tzt den autarken internen Spannungsschutz (r0192.10 = 1).<br />Der interne Spannungsschutz ist bereit und das Motor Module entscheidet anhand der Zwischenkreisspannung selbstst&auml;ndig, ob der Kurzschluss aktiviert wird. In diesem Fall besteht der Schutz auch, wenn die DRIVE-CLiQ-Verbindung zwischen Control Unit und Motor Module unterbrochen wurde. &Uuml;berschreitet die Zwischenkreisspannung 800 V so wird der Kurzschluss aktiviert. F&auml;llt die Zwischenkreisspannung unter 450 V, wird der Kurzschluss wieder aufgehoben.<br />c) Interner Ankerkurzschluss (p1231 = 4) wurde gew&auml;hlt.<br />Der interne Ankerkurzschuss ist bereit und wird aktiviert, sobald das Aktivierungskriterium erf&uuml;llt ist.<br />Aktivierungskriterium (eines der folgenden Kriterien ist erf&uuml;llt):<br />- Das Signal an BI: p1230 (Ankerkurzschluss Aktivierung) ist 1.<br />- Der Antrieb ist nicht im Zustand &quot;S4: Betrieb&quot; oder in S5x (siehe Funktionsplan 2610).<br />- Die interne Impulsfreigabe fehlt (r0046.19 = 0).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1240">p1240[0...n]</a></b></td>
+<td colspan="4"><b>Vdc-Regler oder Vdc-&Uuml;berwachung Konfiguration / Vdc_reg Konfig</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >6</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Konfiguration des Reglers f&uuml;r die Zwischenkreisspannung (Vdc-Regler) in der Betriebsart Regelung.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Vdc-Regler sperren<br />1:		Vdc_max-Regler freigeben<br />2:		Vdc_min-Regler freigeben (kinetische Pufferung)<br />3:		Vdc_min-Regler und Vdc_max-Regler freigeben<br />4:		Vdc_max-&Uuml;berwachung aktivieren<br />5:		Vdc_min-&Uuml;berwachung aktivieren<br />6:		Vdc_min-&Uuml;berwachung und Vdc_max-&Uuml;berwachung aktivieren<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1245<br />Siehe auch: A07400, A07401, A07402, F07403, F07404, F07405, F07406</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">p1240 = 1, 3:<br />Beim Erreichen der f&uuml;r das Motor Module spezifizierten Zwischenkreisspannungsgrenze gilt:<br />- Der Vdc_max-Regler begrenzt die zur&uuml;ckgespeiste Energie, um die Zwischenkreisspannung beim Bremsen unterhalb der maximalen Zwischenkreisspannung zu halten.<br />- Die R&uuml;cklaufzeiten werden automatisch erh&ouml;ht.<br />p1240 = 2, 3:<br />Beim Erreichen des Einschaltpegels des Vdc_min-Reglers (p1245) gilt:<br />- Der Vdc_min-Regler begrenzt die aus dem Zwischenkreis entnommene Energie, um die Zwischenkreisspannung beim Beschleunigen oberhalb der minimalen Zwischenkreisspannung zu halten.<br />- Abbremsen des Motors, um dessen kinetische Energie zur Pufferung des Zwischenkreises zu verwenden.<br />p1240 = 4, 5, 6:<br />Die &Uuml;berwachung der Zwischenkreisspannung l&ouml;st bei Erreichen der Schwelle in r1242 bzw. r1246 eine St&ouml;rung (F07403 bzw. F07404) mit einer Reaktion aus und verringert damit weitere negative Auswirkungen auf die Zwischenkreisspannung.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1242">r1242</a></b></td>
+<td colspan="4"><b>Vdc_max-Regler Einschaltpegel / Vdc_max Ein_peg</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> p2001</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Einschaltpegels f&uuml;r den Vdc_max-Regler.<br />
+Falls p1254 = 0 (Automatische Erfassung des Einschaltpegels = Aus), gilt:<br />
+AC&#47;AC-Ger&auml;t: r1242 = 1.15 * sqrt(2) * V_mains = 1.15 * sqrt(2) * p0210 (Anschlussspannung)<br />
+DC&#47;AC-Ger&auml;t: r1242 = 1.15 * Udc = 1.15 * p0210 (Anschlussspannung)<br />
+Falls p1254 = 1 (Automatische Erfassung des Einschaltpegels = Ein), gilt:<br />
+r1242 = Vdc_max - 50.0 V (Vdc_max: &Uuml;berspannungsschwelle des Leistungsteils)<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1243">p1243[0...n]</a></b></td>
+<td colspan="4"><b>Vdc_max-Regler Dynamikfaktor / Vdc_max Dyn_faktor</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>1</td>
+<td  >10000</td>
+<td >100</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Dynamikfaktors f&uuml;r den Regler der Zwischenkreisspannung (Vdc_max-Regler).<br />
+100 % bedeutet, dass p1250, p1251 und p1252 (Verst&auml;rkung, Nachstellzeit und Vorhaltezeit) entsprechend ihrer Grundeinstellungen verwendet werden, basierend auf einer theoretischen Regleroptimierung.<br />
+Ist eine nachtr&auml;gliche Optimierung notwendig, so kann dies &uuml;ber den Dynamikfaktor erfolgen. Dabei werden p1250, p1251, p1252 mit dem Dynamikfaktor p1243 bewertet.<br />
+Sind mehrere Module am Zwischenkreis angeschlossen, so muss der Dynamikfaktor entsprechend des Verh&auml;ltnisses der zus&auml;tzlichen Kapazit&auml;ten zur Kapazit&auml;t des betrachteten Moduls erh&ouml;ht werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Voreinstellung des Dynamikfaktors erfolgt auf Basis der am DRIVE-CLiQ angeschlossenen Leistungsteile. Es wird davon ausgegangen, dass die &uuml;ber DRIVE-CLiQ verbundenen Leistungsteile auch elektrisch mit dem Zwischenkreis verbunden sind. Ist das nicht der Fall, so muss der Dynamikfaktor per Hand optimiert werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1245">p1245[0...n]</a></b></td>
+<td colspan="4"><b>Vdc_min-Regler Einschaltpegel (kinetische Pufferung) / Vdc_min Ein_peg</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>65</td>
+<td  >150</td>
+<td >76</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Einschaltpegels f&uuml;r den Vdc_min-Regler (kinetische Pufferung).<br />
+Der Wert ergibt sich wie folgt:<br />
+AC&#47;AC-Ger&auml;t: r1246[V] = p1245[%] * sqrt(2) * p0210<br />
+DC&#47;AC-Ger&auml;t: r1246[V] = p1245[%] * p0210<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0210<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Warnung:</b></td>
+<td width="85%">Ein zu gro&szlig;er Wert beeinflusst m&ouml;glicherweise den Normalbetrieb des Antriebs negativ. Werte bis 150 % sind f&uuml;r die Betriebsarten p1240 = 5, 6 vorgesehen.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1246">r1246</a></b></td>
+<td colspan="4"><b>Vdc_min-Regler Einschaltpegel (kinetische Pufferung) / Vdc_min Ein_peg</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> p2001</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Einschaltpegels f&uuml;r den Vdc_min-Regler (kinetische Pufferung).<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1247">p1247[0...n]</a></b></td>
+<td colspan="4"><b>Vdc_min-Regler Dynamikfaktor (kinetische Pufferung) / Vdc_min Dyn_faktor</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>1</td>
+<td  >10000</td>
+<td >100</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Dynamikfaktors f&uuml;r den Vdc_min-Regler (kinetische Pufferung).<br />
+100 % bedeutet, dass p1250, p1251 und p1252 (Verst&auml;rkung, Nachstellzeit und Vorhaltezeit) entsprechend ihrer Grundeinstellungen basierend auf einer theoretischen Regleroptimierung verwendet werden.<br />
+Ist eine nachtr&auml;gliche Optimierung notwendig, so kann dies &uuml;ber den Dynamikfaktor erfolgen. Dabei werden p1250, p1251, p1252 mit dem Dynamikfaktor p1247 bewertet.<br />
+Sind mehrere Module am Zwischenkreis angeschlossen, so muss der Dynamikfaktor entsprechend des Verh&auml;ltnisses der zus&auml;tzlichen Kapazit&auml;ten zur Kapazit&auml;t des betrachteten Moduls erh&ouml;ht werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Voreinstellung des Dynamikfaktors erfolgt auf Basis der am DRIVE-CLiQ angeschlossenen Leistungsteile. Es wird davon ausgegangen, dass die &uuml;ber DRIVE-CLiQ verbundenen Leistungsteile auch elektrisch mit dem Zwischenkreis verbunden sind. Ist das nicht der Fall, so muss der Dynamikfaktor per Hand optimiert werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1249">p1249[0...n]</a></b></td>
+<td colspan="4"><b>Vdc_max-Regler Drehzahlschwelle / Vdc_max n_schwelle</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> 3_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >210000.0</td>
+<td >10.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der unteren Drehzahlschwelle f&uuml;r den Vdc_max-Regler. Bei Unterschreitung wird die Vdc_max-Regelung ausgeschaltet und die Drehzahl &uuml;ber den Hochlaufgeber gef&uuml;hrt.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Mit Vergr&ouml;&szlig;ern der Drehzahlschwelle und Einstellung einer Endverrundungszeit im Hochlaufgeber (p1131) kann bei einem schnellen Abbremsvorgang, bei dem die Hochlaufgebernachf&uuml;hrung aktiv wurde, ein Drehen des Antriebs in entgegengesetzte Drehrichtung verhindert werden. Dies wird durch eine dynamische Einstellung des Drehzahlreglers unterst&uuml;tzt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1250">p1250[0...n]</a></b></td>
+<td colspan="4"><b>Vdc-Regler Proportionalverst&auml;rkung / Vdc_reg Kp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >100.00</td>
+<td >1.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Proportionalverst&auml;rkung f&uuml;r den Vdc-Regler (Regler f&uuml;r Zwischenkreisspannung).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Die wirksame Proportionalverst&auml;rkung ergibt sich unter Ber&uuml;cksichtigung von p1243 (Vdc_max-Regler Dynamikfaktor).<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Verst&auml;rkungsfaktor ist proportional zur Kapazit&auml;t des Zwischenkreises. Der Parameter wird auf einen Wert voreingestellt, der optimal zur Kapazit&auml;t des einzelnen Motor Modules passt. Die Kapazit&auml;ten der &uuml;brigen Leistungsteile, die mit dem Zwischenkreis verbunden sind, k&ouml;nnen mit Hilfe des Dynamikfaktors (p1247 bzw. p1243) ber&uuml;cksichtigt werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1251">p1251[0...n]</a></b></td>
+<td colspan="4"><b>Vdc-Regler Nachstellzeit / Vdc_reg Tn</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >10000</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Nachstellzeit f&uuml;r den Vdc-Regler (Regler f&uuml;r Zwischenkreisspannung).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Die wirksame Nachstellzeit ergibt sich unter Ber&uuml;cksichtigung von p1243 (Vdc_max-Regler Dynamikfaktor).<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Eine Nachstellzeit ist in der Regel bei Einachsantrieben nicht notwendig. Bei Mehrachsantrieben dagegen kann versucht werden mittels der Nachstellzeit (Integralanteil) St&ouml;reinfl&uuml;sse der anderen Achsen auszuregeln. Eine Nachstellzeit von 0 (default) deaktiviert den Regler.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1252">p1252[0...n]</a></b></td>
+<td colspan="4"><b>Vdc-Regler Vorhaltezeit / Vdc_reg t_Vorhalt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1000</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Vorhaltezeitkonstante f&uuml;r den Vdc-Regler (Regler f&uuml;r Zwischenkreisspannung).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Die wirksame Vorhaltezeit ergibt sich unter Ber&uuml;cksichtigung von p1243 (Vdc_max-Regler Dynamikfaktor).<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Im geregelten Betrieb hat der Parameter keine Wirkung.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1254">p1254</a></b></td>
+<td colspan="4"><b>Vdc_max-Regler Automatische Erfassung EIN-Pegel / Vdc_max Erf Einpeg</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Aktiviert&#47;deaktiviert die automatische Erfassung des Einschaltpegels f&uuml;r den Vdc_max-Regler.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Automatische Erfassung gesperrt<br />1:		Automatische Erfassung freigegeben<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1255">p1255[0...n]</a></b></td>
+<td colspan="4"><b>Vdc_min-Regler Zeitschwelle / Vdc_min t_schwelle</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >10000.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Zeitschwelle f&uuml;r den Vdc_min-Regler (kinetische Pufferung). Bei &Uuml;berschreitung erfolgt die Ausl&ouml;sung eines Fehlers, der auf eine gew&uuml;nschte Reaktion parametriert werden kann.<br />
+Voraussetzung: p1256 = 1.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: F07406</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1256">p1256[0...n]</a></b></td>
+<td colspan="4"><b>Vdc_min-Regler Reaktion (kinetische Pufferung) / Vdc_min Reaktion</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Reaktion f&uuml;r den Vdc_min-Regler (kinetische Pufferung).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Vdc st&uuml;tzen bis Unterspg., n&lt;p1257 -&gt; F07405<br />1:		Vdc st&uuml;tzen bis Unterspg., n&lt;p1257 -&gt; F07405, t&gt;p1255 -&gt; F07406<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: F07405, F07406</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1257">p1257[0...n]</a></b></td>
+<td colspan="4"><b>Vdc_min-Regler Drehzahlschwelle / Vdc_min n_schwelle</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> 3_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >210000.0</td>
+<td >50.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Drehzahlschwelle f&uuml;r den Vdc_min-Regler (kinetische Pufferung). Bei Unterschreitung erfolgt die Ausl&ouml;sung eines Fehlers, der auf eine gew&uuml;nschte Reaktion parametriert werden kann.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1258">r1258</a></b></td>
+<td colspan="4"><b>CO: Vdc-Regler Ausgang / Vdc_reg Ausgang</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 6220</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> 6_2</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> p2002</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des aktuellen Ausgangs des Vdc-Reglers (Regler f&uuml;r Zwischenkreisspannung).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die generatorische Leistungsgrenze p1531 dient bei Vektorregelung zur Vorsteuerung des Vdc_max-Reglers. Je kleiner die Leistungsgrenze eingestellt ist, um so kleiner sind die Korrektursignale des Reglers bei Erreichen der Spannungsgrenze.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1260">p1260</a></b></td>
+<td colspan="4"><b>Bypass Konfiguration / Bypass Konfig</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >3</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Auswahl der Bypass-Funktionalit&auml;t.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Bypass deaktiviert<br />1:		Bypass mit Synchronisieren und &Uuml;berlappung<br />2:		Bypass mit Synchronisieren ohne &Uuml;berlappung<br />3:		Bypass ohne Synchronisation<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Die Bypass-Funktionalit&auml;t wird zusammen mit dem Funktionsmodul &quot;Technologieregler&quot; (r0108.16) freigeschaltet.<br />Bei p1260 = 2 (Bypass mit Synchronisieren ohne &Uuml;berlappung) und p1260 = 3 (Bypass ohne Synchronisieren) muss die Funktion &quot;Fangen&quot; (p1200) aktiviert sein.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Ist die Funktion &quot;Bypass&quot; angew&auml;hlt (p1260 &gt; 0), so wird bei Wiederanlauf des Leistungsteils nach POWER OFF der Zustand der Bypass-Schalter ausgewertet. Damit kann nach dem Hochlauf direkt in den Stand-By-Modus gewechselt werden. Dies ist nur m&ouml;glich bei p1267 = 0 (Bypass durch Steuersignal) und wenn der Steuerbefehl nach dem Hochlauf noch ansteht (p1266). Die Priorit&auml;t dieser Funktion ist h&ouml;her als die der Wiedereinschaltautomatik (p1210).<br />Die Funktion &quot;Bypass&quot; kann nur dann wieder ausgeschaltet werden (p1260 = 0), wenn der Bypass nicht aktiv ist oder eine Bypass-St&ouml;rung vorliegt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1261">r1261.0...9</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Bypass Steuer-&#47;Zustandswort / Bypass STW&#47;ZSW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Steuer- und R&uuml;ckmeldesignale der Bypass Schalter.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Befehl Schalter Motor - Antrieb</td><td>Schlie&szlig;en</td><td>&Ouml;ffnen</td><td>-</td></tr><tr><td></td><td>01</td><td>Befehl Schalter Motor - Netz</td><td>Schlie&szlig;en</td><td>&Ouml;ffnen</td><td>-</td></tr><tr><td></td><td>02</td><td>Synchronisation angefordert</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>03</td><td>Staging Zustand</td><td>Aktiv</td><td>Nicht aktiv</td><td>-</td></tr><tr><td></td><td>05</td><td>R&uuml;ckmeldung Schalter Motor - Antrieb</td><td>Geschlossen</td><td>Ge&ouml;ffnet</td><td>-</td></tr><tr><td></td><td>06</td><td>R&uuml;ckmeldung Schalter Motor - Netz</td><td>Geschlossen</td><td>Ge&ouml;ffnet</td><td>-</td></tr><tr><td></td><td>07</td><td>Bypass-Befehl (von p1266)</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>08</td><td>R&uuml;ckmeldung Synchronisation beendet (von p1268)</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>09</td><td>Staging angefordert (von p2369)</td><td>Ja</td><td>Nein</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2369<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Steuerbits 0 und 1 sind auf Signalausg&auml;nge zu verschalten, &uuml;ber die die Schalter in den Motorzugangsleitungen angesteuert werden sollen. Diese sind f&uuml;r das Schalten unter Last auszulegen.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1262">p1262[0...n]</a></b></td>
+<td colspan="4"><b>Bypass Totzeit / Bypass t_tot</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >20.000</td>
+<td >1.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Totzeit f&uuml;r unsynchronisierten Bypass.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Mit diesem Parameter wird die Umschaltzeit der Sch&uuml;tze festgelegt. Sie sollte nicht kleiner sein als die Entmagnetisierungszeit des Motors (p0347).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1263">p1263</a></b></td>
+<td colspan="4"><b>Debypass Verz&ouml;gerungszeit / Debypass t_Ver</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >300.000</td>
+<td >1.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Verz&ouml;gerungszeit f&uuml;r das Zur&uuml;ckschalten auf Umrichterbetrieb bei unsynchronisiertem Bypass.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1264">p1264</a></b></td>
+<td colspan="4"><b>Bypass Verz&ouml;gerungszeit / Bypass t_Ver</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >300.000</td>
+<td >1.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Verz&ouml;gerungszeit f&uuml;r das Schalten auf Netzbetrieb bei unsynchronisiertem Bypass.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1265">p1265</a></b></td>
+<td colspan="4"><b>Bypass Drehzahlschwelle / Bypass n_schwelle</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> 3_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> REL</td><td><b>Normierung:</b> p2000</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >210000</td>
+<td >1480</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Drehzahlschwelle f&uuml;r das Aktivieren des Bypass.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei Anwahl p1260 = 3 und p1267.1 = 1 wird bei Erreichen dieser Drehzahl automatisch der Bypass aktiviert.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1266">p1266</a></b></td>
+<td colspan="4"><b>BI: Bypass Steuerbefehl / Bypass Befehl</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle f&uuml;r den Befehl zum Bypass.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1267">p1267</a></b></td>
+<td colspan="4"><b>Bypass Umschaltquelle Konfiguration / Umsch_quel Konfig</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned8</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Ursache, die den Bypass ausl&ouml;sen soll.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bypass &uuml;ber Signal (BI: p1266)</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>01</td><td>Bypass &uuml;ber Erreichen der Drehzahlschwelle</td><td>Ja</td><td>Nein</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameter hat nur Auswirkung bei unsynchronisiertem Bypass.<br />p1267 Bit 0 = 1:<br />Der Bypass wird &uuml;ber das Setzen eines Bin&auml;rsignals ausgel&ouml;st. Beim Zur&uuml;cksetzen des Befehls wird nach Ablauf der Debypass Verz&ouml;gerungszeit (p1263) wieder auf Betrieb am Motor Module geschaltet.<br />p1267 Bit 1 = 1:<br />Bei Erreichen der in p1265 eingetragenen Drehzahlschwelle wird der Bypass eingeschaltet. Zur&uuml;ckgeschaltet wird erst, wenn der Drehzahlsollwert wieder unter den Schwellwert kommt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1268">p1268</a></b></td>
+<td colspan="4"><b>BI: Bypass R&uuml;ckmeldung Synchronisation abgeschlossen / R&uuml;ckm Sync fertig</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >3819.2</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Eingang f&uuml;r die R&uuml;ckmeldung, dass das Synchronisieren erfolgreich abgeschlossen wurde.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r3819<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1269">p1269[0...1]</a></b></td>
+<td colspan="4"><b>BI: Bypass Schalter R&uuml;ckmeldung / Bypass R&uuml;ckm</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle zur R&uuml;ckmeldung der Bypass Schalter.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Schalter Motor - Antrieb<br />
+[1] = Schalter Motor - Netz<br />
+</td></tr></table>
+<p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1272">p1272</a></b></td>
+<td colspan="4"><b>Simulationsbetrieb / Simulationsbetrieb</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Im Simulationsbetrieb kann die Regelung oder U&#47;f-Steuerung ohne Motor betrieben werden.<br />
+Der Simulationsbetrieb dient zum Testen des Leistungsteils. Trotz fehlender Zwischenkreisspannung wird beim Einschalten Impulsfreigabe erteilt. Die Zwischenkreisvorladung wird umgangen und die Unterspannungserkennung ausgeschaltet.<br />
+Drehzahlregelung mit Geber ist m&ouml;glich, wenn der Drehmomentsollwert (r0079) genutzt wird, um einen zweiten Antrieb in Drehmomentregelung zu betreiben.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Aus<br />1:		Ein<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Im Simulationsbetrieb sind folgende Funktionen deaktiviert:<br />- Motordatenidentifikation<br />- Motordatenidentifikation drehend ohne Geber<br />- Pollageidentifikation<br />Bei U&#47;f-Steuerung und geberloser Vektorregelung wird kein Fangen durchgef&uuml;hrt (siehe p1200).<br />Siehe auch: r0192, p1900, p1910, p1960, p1990<br />Siehe auch: A07825, F07826</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Simulationsbetrieb ist nur bei Zwischenkreisspannungen unter 40 V m&ouml;glich. Damit die Regelung gerechnet werden kann, wird die angezeigte Zwischenkreisspannung (r0026, r0070) auf die Nennzwischenkreisspannung gelegt (siehe p0210). Stromregelung und Motormodell sind ausgeschaltet, ebenso der Drehzahlregler bei geberloser Drehzahlregelung.<br />Der Parameter wird bei Fehlermeldungen nicht automatisch zur&uuml;ckgesetzt. Die Funktion ist nicht f&uuml;r SINAMICS GM realisiert.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1274">p1274[0...1]</a></b></td>
+<td colspan="4"><b>Bypass Schalter &Uuml;berwachungszeit / Schalter t_&Uuml;berw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (Tech_reg)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >5000</td>
+<td >1000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der &Uuml;berwachungszeit der Bypass-Schalter.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Schalter Motor - Antrieb<br />
+[1] = Schalter Motor - Netz<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei p1274 = 0 ms ist die &Uuml;berwachung ausgeschaltet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1275">p1275</a></b></td>
+<td colspan="4"><b>Motorhaltebremse Steuerwort / Bremse STW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw Bremse), VECTOR (Erw Bremse)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Steuerwortes f&uuml;r die Motorhaltebremse.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Invertierung BI: 1219[0]</td><td>Ja</td><td>Nein</td><td>2707</td></tr><tr><td></td><td>01</td><td>Invertierung BI: 1219[1]</td><td>Ja</td><td>Nein</td><td>2707</td></tr><tr><td></td><td>02</td><td>Invertierung BI: 1224[0]</td><td>Ja</td><td>Nein</td><td>2704</td></tr><tr><td></td><td>03</td><td>Invertierung BI: 1224[1]</td><td>Ja</td><td>Nein</td><td>2704</td></tr><tr><td></td><td>05</td><td>Bremse mit R&uuml;ckmeldung</td><td>Ja</td><td>Nein</td><td>2711</td></tr></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1276">p1276</a></b></td>
+<td colspan="4"><b>Motorhaltebremse Stillstandserkennung &Uuml;berbr&uuml;ckung / Bremse Still Br&uuml;ck</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw Bremse), VECTOR (Erw Bremse)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2704</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >300.000</td>
+<td >300.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Verz&ouml;gerungszeit f&uuml;r Bremse schlie&szlig;en bei Stillstand.<br />
+Nach Ablauf dieser Zeit wird bei anstehendem &quot;Bremse schlie&szlig;en bei Stillstand&quot; oder AUS1&#47;AUS3 die Bremse geschlossen und die Impulse gel&ouml;scht.<br />
+Mit p1276 = 300.000 s wird der Timer deaktiviert, d. h. der Ausgang des Timers ist immer Null.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1277">p1277</a></b></td>
+<td colspan="4"><b>Motorhaltebremse Verz&ouml;gerung Bremsschwelle &uuml;berschritten / Verz Schw &uuml;berschr</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw Bremse), VECTOR (Erw Bremse)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2707</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >300.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Verz&ouml;gerungszeit f&uuml;r das Signal &quot;Bremsschwelle &uuml;berschritten&quot; (BO: r1229.6).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1220, p1221, r1229<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1278">p1278</a></b></td>
+<td colspan="4"><b>Bremsenansteuerung Diagnoseauswertung / Bremse Diagnose</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Typs der Bremsenansteuerung (mit oder ohne Diagnoseauswertung).<br />
+Beispiel f&uuml;r Bremsenansteuerung mit Diagnoseauswertung:<br />
+- Bremsenansteuerung in Booksize Motor Modules<br />
+- Safe Brake Relay f&uuml;r AC Drive<br />
+Beispiel f&uuml;r Bremsenansteuerung ohne Diagnoseauswertung:<br />
+- Brake Relay f&uuml;r AC Drive<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Bremsenansteuerung mit Diagnoseauswertung<br />1:		Bremsenansteuerung ohne Diagnoseauswertung<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Ist die Konfiguration der Motorhaltebremse (p1215) im Hochlauf auf &quot;Keine Motorhaltebremse vorhanden&quot; eingestellt, so wird eine automatische Identifikation der Motorhaltebremse durchgef&uuml;hrt. Wird eine Bremsenansteuerung ohne Diagnoseauswertung erkannt (z. B. Brake Relay f&uuml;r AC Drive), so wird der Parameter auf &quot;Bremsenansteuerung ohne Diagnoseauswertung&quot; gesetzt.<br />Die Parametrierung &quot;Bremsenansteuerung ohne Diagnoseauswertung&quot; und &quot;Sichere Bremsenansteuerung&quot; freigegeben (p1278 = 1, p9602 = 1, p9802 = 1) ist nicht zul&auml;ssig.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1279">p1279[0...3]</a></b></td>
+<td colspan="4"><b>BI: Motorhaltebremse ODER-&#47;UND-Verkn&uuml;pfung / Bremse ODER UND</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO (Erw Bremse), VECTOR (Erw Bremse)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2707</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquellen f&uuml;r die ODER-&#47;UND-Verkn&uuml;pfung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r1229<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">[0]: ODER-Verkn&uuml;pfung Eingang 1 --&gt; Ergebnis wird in r1229.10 angezeigt.<br />[1]: ODER-Verkn&uuml;pfung Eingang 2 --&gt; Ergebnis wird in r1229.10 angezeigt.<br />[2]: UND-Verkn&uuml;pfung Eingang 1 --&gt; Ergebnis wird in r1229.11 angezeigt.<br />[3]: UND-Verkn&uuml;pfung Eingang 2 --&gt; Ergebnis wird in r1229.11 angezeigt.<br /></td></tr>
+</table><p></p></body></html>

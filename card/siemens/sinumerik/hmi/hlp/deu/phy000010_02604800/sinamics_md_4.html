@@ -1,0 +1,1303 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1214">r1214.0...15</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Wiedereinschaltautomatik Status / WEA Status</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Funktionen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Status bei der Wiedereinschaltautomatik (WEA).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Initialisierung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>01</td><td>Warten auf Alarm</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>02</td><td>Wiederanlauf aktiv</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>03</td><td>Quittierbefehl setzen</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>04</td><td>Alarme quittieren</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>05</td><td>Wiedereinschalten</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>06</td><td>Wartezeit l&auml;uft nach automatischem Einschalten</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>07</td><td>St&ouml;rung</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>12</td><td>Anlaufz&auml;hler Bit 0</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>13</td><td>Anlaufz&auml;hler Bit 1</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>14</td><td>Anlaufz&auml;hler Bit 2</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>15</td><td>Anlaufz&auml;hler Bit 3</td><td>Ein</td><td>Aus</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Zu Bit 00:<br />Zustand zur Anzeige der einmaligen Initialisierung nach POWER ON.<br />Zu Bit 01:<br />Zustand, in dem die Wiedereinschaltautomatik auf St&ouml;rungen wartet (Grundzustand).<br />Zu Bit 02:<br />Generelle Anzeige, dass eine St&ouml;rung erkannt und der Wiederanlauf bzw. die Quittierung eingeleitet wurde.<br />Zu Bit 03:<br />Anzeige des Quittierbefehl innerhalb des Zustands &quot;Alarme quittieren&quot; (Bit 4 = 1). Bei Bit 5 = 1 oder Bit 6 = 1 wird der Quittierbefehl dauerhaft angezeigt.<br />Zu Bit 04:<br />Zustand, in dem die anstehenden St&ouml;rungen quittiert werden. Der Zustand wird bei erfolgreicher Quittierung wieder verlassen. Es wird erst in den n&auml;chsten Zustand gewechselt, wenn nach einem Quittierbefehl (Bit 3 = 1) zur&uuml;ckgemeldet wird, dass keine St&ouml;rung mehr ansteht.<br />Zu Bit 05:<br />Zustand, in dem der Antrieb automatisch eingeschaltet wird (nur bei p1210 = 4, 6).<br />Zu Bit 06:<br />Zustand, in dem nach dem Einschalten auf das Ende des Anlaufversuchs gewartet wird.<br />Bei p1210 = 1 wird dieses Signal direkt nach erfolgreicher Quittierung der St&ouml;rungen gesetzt.<br />Zu Bit 07:<br />Zustand, der bei Auftreten einer St&ouml;rung innerhalb der Wiedereinschaltautomatik eingenommen wird.<br />Zu Bit 12 ... 15:<br />Aktueller Stand des Anlaufz&auml;hlers (bin&auml;r codiert).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1815">p1815</a></b></td>
+<td colspan="4"><b>Phase f&uuml;r PWM-Erzeugung Teilverband / Ph f&uuml;r PWM Verband</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Modulation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0001 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung von Bit 0 zur Aufnahme des Leistungsteils in den Teilverband f&uuml;r das &quot;versetzte Takten&quot;.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Aufnahme in Teilverband f&uuml;r versetztes Takten</td><td>Ja</td><td>Nein</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p1818, p1819<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Eine &Auml;nderung wird erst nach erneutem Hochlauf wirksam.<br />Ist eine der folgenden Randbedingungen nicht erf&uuml;llt, so wird f&uuml;r alle Leistungsteile in dem Teilverband das &quot;versetzte Takten&quot; deaktiviert, d. h. alle Leisungsteile des Teilverbandes werden nicht versetzt getaktet.<br />Randbedingungen f&uuml;r das versetzte Takten:<br />- Die PWM-Frequenz (p1800[D]) aller Leistungsteile im Teilverband muss gleich sein.<br />- Die PWM-Frequenz (p1800[D]) in allen Antriebsdatens&auml;tzen im Teilverband muss gleich sein.<br />- F&uuml;r das Verh&auml;ltnis von PWM-Takt (1&#47;p1800[D]) und Stromreglertakt (p0115[0]) muss folgendes gelten:<br />F&uuml;r alle Leistungsteile im Teilverband muss das Verh&auml;ltnis von (1&#47;p1800[D]) &#47; (p0115[0]) ganzzahlig und gerade sein (2, 4, 6, ...).<br />oder<br />F&uuml;r alle Leistungsteile im Teilverband muss das Verh&auml;ltnis von (p0115[0]) &#47; (1&#47;p1800[D]) ganzzahlig sein (1, 2, 3, ...).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1816">p1816</a></b></td>
+<td colspan="4"><b>Phase f&uuml;r PWM-Erzeugung manuell setzen / Ph f&uuml;r PWM setzen</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF, SERVO, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Modulation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-1</td>
+<td  >16</td>
+<td >-1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung zum manuellen Setzen und &Uuml;berschreiben der automatisch ermittelten Phasenverschiebung f&uuml;r das &quot;versetzte Takten&quot;.<br />
+Bei p1816 = -1 gilt:<br />
+Automatischer Mode. Der Wert der Phasenverschiebung wird automatisch ermittelt.<br />
+Bei p1816 = 0 ... 16 gilt:<br />
+Manueller Mode. Der Wert der Phasenverschiebung sollte vom Anwender wie folgt festgelegt werden:<br />
+1. PWM-Takt (1&#47;p1800) &gt; Stromreglertakt (p0115[0])<br />
+Das Leistungsteil f&uuml;hrt eine Phasenverschiebung von Tshift = Stromreglertakt (p0115[0]) * p1816 aus.<br />
+2. PWM-Takt (1&#47;p1800) &lt;= Stromreglertakt (p0115[0])<br />
+Das Leistungsteil f&uuml;hrt bei p1816 &gt;=1 eine Phasenverschiebung von Tshift = PWM-Takt&#47;2 aus.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0115, p1800, p1819<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1819">p1819</a></b></td>
+<td colspan="4"><b>Phase f&uuml;r PWM-Erzeugung / Ph f&uuml;r PWM</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Modulation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-1</td>
+<td  >16</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige f&uuml;r das &quot;versetzte Takten&quot;. Der Wert wird je nach Fall unterschiedlich interpretiert:<br />
+1. Fall:<br />
+Der PWM-Takt (1&#47;p1800[D]) ist gr&ouml;&szlig;er als der Stromreglertakt (p115[0]) und ein ganzzahliges, gerades Vielfaches (z. B. p0115[0] = 125 &micro;s, p1800[D] = 4 kHz, 2 kHz, 1 kHz).<br />
+Der angezeigte Wert bedeutet: die Phasenverschiebung in Stromgreglertakten, die das Leistungsteil ausf&uuml;hren soll.<br />
+2. Fall:<br />
+Der Stromreglertakt (p0115[0]) ist gr&ouml;&szlig;er oder gleich dem PWM-Takt (1&#47;p1800[D]) und ein ganzzahliges Vielfaches (z. B. p0115[0] = 125 &micro;s, p1800[D] = 8 kHz, 16 kHz).<br />
+Der angezeigte Wert 1 bedeutet: das Leistungsteil soll eine Phasenverschiebung um 180 &deg; (vom PWM-Takt) ausf&uuml;hren.<br />
+3. Fall:<br />
+Falls weder der 1. noch der 2. Fall f&uuml;r mindestens ein Leistungsteil zutrifft, wird der Wert 0 f&uuml;r alle Leistungsteile eingetragen.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0108, r0108, p0115, p1800, p1818<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Aus Gr&uuml;nden der Kompatibilit&auml;t hat der Parameter das Attribut WRITE, er fungiert jedoch als reiner Leseparameter. Damit hat auch die Werkseinstellung -1 keine Bedeutung mehr und ist nur noch aus Gr&uuml;nden der Kompatibilit&auml;t vorhanden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="1827">p1827</a></b></td>
+<td colspan="4"><b>Einspeisung Kompensation Ventilverriegelungszeit Betriebsart / INF Komp t_Verr BA</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, S_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Modulation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> PEM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Betriebsart f&uuml;r die Kompensation der Ventilverriegelungszeit.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Kompensation Ventilverriegelungszeit deaktiviert<br />1:		Kompensation Ventilverriegelungszeit aktiviert<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Kompensation ist unabh&auml;ngig vom Wert dieses Parameters immer aktiv, wenn bei Parallelschaltung von Leistungsteilen die Regelung zur Unterdr&uuml;ckung von Kreisstr&ouml;men aktiviert ist (p7035).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2000">p2000</a></b></td>
+<td colspan="4"><b>Bezugsfrequenz / Bezugs_f</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.10</td>
+<td  >1000.00</td>
+<td >50.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Bezugsgr&ouml;&szlig;e f&uuml;r die Frequenz.<br />
+Alle relativ angegebenen Frequenzen beziehen sich auf diese Bezugsgr&ouml;&szlig;e.<br />
+Die Bezugsgr&ouml;&szlig;e in diesem Parameter entspricht 100 % bzw. 4000 hex oder 4000 0000 hex.<br />
+Dabei gilt: Bezugsfrequenz (in Hz)<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2001">p2001</a></b></td>
+<td colspan="4"><b>Bezugsspannung / Bezugsspannung</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10</td>
+<td  >100000</td>
+<td >1000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Bezugsgr&ouml;&szlig;e f&uuml;r Spannungen.<br />
+Alle relativ angegebenen Spannungen beziehen sich auf diese Bezugsgr&ouml;&szlig;e.<br />
+Die Bezugsgr&ouml;&szlig;e in diesem Parameter entspricht 100 % bzw. 4000 hex oder 4000 0000 hex.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei der automatischen Berechnung (p0340 = 1, p3900 &gt; 0) erfolgt nur dann eine entsprechende Vorbelegung, wenn der Parameter nicht &uuml;ber p0573 = 1 gegen &Uuml;berschreiben gesperrt ist.<br />Wird eine BICO-Verschaltung zwischen unterschiedlichen physikalischen Gr&ouml;&szlig;en hergestellt, so dienen die jeweiligen Bezugsgr&ouml;&szlig;en als interner Umrechnungsfaktor.<br />Bei Einspeisungen wird die Bezugsgr&ouml;&szlig;e mit der parametrierten Ger&auml;te-Anschlussspannung (p0210) vorbelegt.<br />Beispiel:<br />Der Istwert der Zwischenkreisspannung (r0070) wird auf eine Messbuchse (z. B. p0771[0]) verschaltet. Zyklisch wird der aktuelle Spannungswert in Prozent der Bezugsspannung (p2001) umgerechnet und entsprechend der eingestellten Skalierung ausgegeben.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2002">p2002</a></b></td>
+<td colspan="4"><b>Bezugsstrom / Bezugsstrom</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.10</td>
+<td  >100000.00</td>
+<td >100.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Bezugsgr&ouml;&szlig;e f&uuml;r Str&ouml;me.<br />
+Alle relativ angegebenen Str&ouml;me beziehen sich auf diese Bezugsgr&ouml;&szlig;e.<br />
+Die Bezugsgr&ouml;&szlig;e in diesem Parameter entspricht 100 % bzw. 4000 hex oder 4000 0000 hex.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei der automatischen Berechnung (p0340 = 1, p3900 &gt; 0) erfolgt nur dann eine entsprechende Vorbelegung, wenn der Parameter nicht &uuml;ber p0573 = 1 gegen &Uuml;berschreiben gesperrt ist.<br />Wird eine BICO-Verschaltung zwischen unterschiedlichen physikalischen Gr&ouml;&szlig;en hergestellt, so dienen die jeweiligen Bezugsgr&ouml;&szlig;en als interner Umrechnungsfaktor.<br />Bei Einspeisungen wird die Bezugsgr&ouml;&szlig;e mit dem Netznennstrom vorbelegt, der sich aus Nennleistung und parametrierter Netznennspannung ergibt (p2002 = r0206 &#47; p0210 &#47; 1.73).<br />Beispiel:<br />Der Istwert eines Phasenstromes (r0069[0]) wird auf eine Messbuchse (z. B. p0771[0]) verschaltet. Zyklisch wird der aktuelle Stromwert in Prozent des Bezugsstromes (p2002) umgerechnet und entsprechend der eingestellten Skalierung ausgegeben.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2004">r2004</a></b></td>
+<td colspan="4"><b>Bezugsleistung / Bezugsleistung</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> 14_10</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Bezugsgr&ouml;&szlig;e f&uuml;r Leistungen.<br />
+Alle relativ angegebenen Leistungen beziehen sich auf diese Bezugsgr&ouml;&szlig;e.<br />
+Die Bezugsgr&ouml;&szlig;e in diesem Parameter entspricht 100 % bzw. 4000 hex oder 4000 0000 hex.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Dieser Wert wird wie folgt berechnet:<br />Einspeisung: Berechnung aus Spannung mal Strom.<br />Regelung: Berechnung aus Moment mal Drehzahl.<br />Siehe auch: p2000, p2001, p2002, p2003<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Wird eine BICO-Verschaltung zwischen unterschiedlichen physikalischen Gr&ouml;&szlig;en hergestellt, so dienen die jeweiligen Bezugsgr&ouml;&szlig;en als interner Umrechnungsfaktor.<br />Die Bezugsleistung berechnet sich wie folgt:<br />Motor: 2 * Pi * Bezugsdrehzahl &#47; 60 * Bezugsdrehmoment<br />Einspeisung: Bezugsspannung * Bezugsstrom * Wurzel(3)<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2032">r2032</a></b></td>
+<td colspan="4"><b>Steuerungshoheit Steuerwort wirksam / PcCtrl STW wirk</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Anzeigen, Signale</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des wirksamen Steuerwortes 1 (STW1) des Antriebs bei Steuerungshoheit.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>EIN &#47; AUS1</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>01</td><td>BB &#47; AUS2</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>03</td><td>Betrieb freigeben</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>07</td><td>St&ouml;rung quittieren</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>10</td><td>F&uuml;hrung durch PLC</td><td>Ja</td><td>Nein</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Steuerungshoheit wird von der Inbetriebnahme-Software (Antriebssteuertafel) und vom Advanced Operator Panel (AOP, LOCAL Mode) verwendet.<br />BB: Betriebsbedingung<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2037">p2037</a></b></td>
+<td colspan="4"><b>PROFIdrive STW1.10 = 0 Modus / PD STW1.10=0 Modus</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Bearbeitungsmodus f&uuml;r PROFIdrive STW1.10 &quot;F&uuml;hrung durch PLC&quot;.<br />
+Mit dem ersten Empfangswort (PZD1) wird in der Regel das Steuerwort 1 empfangen (konform zum PROFIdrive-Profil). Das Verhalten von STW1.10 = 0 entspricht dem PROFIdrive-Profil. Bei abweichenden Anwendungen kann das Verhalten &uuml;ber diesen Parameter angepasst werden.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Sollwerte einfrieren und Lebenszeichen weiter verarbeiten<br />1:		Sollwerte und Lebenszeichen einfrieren<br />2:		Sollwerte nicht einfrieren<br /></td></tr>
+<tr><td valign="top" width="15%"><b>Empfehlung:</b></td>
+<td>Die Einstellung p2037 = 0 unver&auml;ndert lassen.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Wird mit PZD1 nicht das STW1 nach PROFIdrive &uuml;bertragen (mit Bit 10 &quot;F&uuml;hrung durch PLC&quot;), so ist p2037 = 2 einzustellen.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2044">p2044</a></b></td>
+<td colspan="4"><b>PROFIdrive St&ouml;rverz&ouml;gerung / PD St&ouml;rverz&ouml;gerung</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2410</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >100</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Verz&ouml;gerungszeit zum Ausl&ouml;sen der St&ouml;rung F01910 nach Sollwertausfall.<br />
+Die Zeit bis zum Ausl&ouml;sen der St&ouml;rung kann von der Applikation genutzt werden. Damit kann auf den Ausfall bei laufendem Antrieb reagiert werden (z. B. Notr&uuml;ckzug).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r2043<br />Siehe auch: F01910</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2050">r2050[0...4]</a></b></td>
+<td colspan="4"><b>CO: IF1 PROFIdrive PZD empfangen Wort / IF1 PZD empf Wort</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, TB30, TM15DI_DO, TM31</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> 4000H</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Konnektorausgang zum Verschalten der vom PROFIBUS-Master empfangenen PZD (Sollwerte) mit Wort-Format.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">IF1: Interface 1<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2051">p2051[0...7]</a></b></td>
+<td colspan="4"><b>CI: IF1 PROFIdrive PZD senden Wort / IF1 PZD send Wort</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> 4000H</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Auswahl der zum PROFIBUS-Master zu sendenden PZD (Istwerte) mit Wort-Format.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+[5] = PZD 6<br />
+[6] = PZD 7<br />
+[7] = PZD 8<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">IF1: Interface 1<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2053">r2053[0...7]</a></b></td>
+<td colspan="4"><b>IF1 PROFIdrive Diagnose PZD senden Wort / IF1 Diag send Wort</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der an den PROFIBUS-Master gesendeten PZD (Istwerte) mit Wort-Format.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>Ein</td><td>Aus</td><td>-</td></tr></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+[5] = PZD 6<br />
+[6] = PZD 7<br />
+[7] = PZD 8<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">IF1: Interface 1<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2074">r2074[0...4]</a></b></td>
+<td colspan="4"><b>IF1 PROFIdrive Diagnose Busadresse PZD empfangen / IF1 Diag Adr empf</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, TB30, TM15DI_DO, TM31</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der PROFIBUS-Adresse des Senders, von dem das Prozessdatum (PZD) empfangen wird.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">IF1: Interface 1<br />Wertebereich:<br />0 - 125: Busadresse des Senders<br />255: Nicht belegt<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2075">r2075[0...4]</a></b></td>
+<td colspan="4"><b>IF1 PROFIdrive Diagnose Telegrammoffset PZD empfangen / IF1 Diag Offs empf</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, TB30, TM15DI_DO, TM31</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Byte-Offsets des PZD im PROFIdrive-Empfangstelegramm (Master-Output).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">IF1: Interface 1<br />Wertebereich:<br />0 - 242: Byte-Offset<br />65535: Nicht belegt<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2076">r2076[0...7]</a></b></td>
+<td colspan="4"><b>IF1 PROFIdrive Diagnose Telegrammoffset PZD senden / IF1 Diag Offs send</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des Byte-Offsets des PZD im PROFIdrive-Sendetelegramm (Master Input).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+[5] = PZD 6<br />
+[6] = PZD 7<br />
+[7] = PZD 8<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">IF1: Interface 1<br />Wertebereich:<br />0 - 242: Byte-Offset<br />65535: Nicht belegt<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2079">p2079</a></b></td>
+<td colspan="4"><b>PROFIdrive PZD Telegrammauswahl erweitert / PD PZD Telegr erw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>370</td>
+<td  >999</td>
+<td >999</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Sende- und Empfangstelegrammes.<br />
+Im Unterschied zu p0922 kann mit p2079 ein Telegramm eingestellt und nachtr&auml;glich erweitert werden.<br />
+Bei p0922 &lt; 999 gilt:<br />
+p2079 hat den gleichen Wert und ist gesperrt. Alle im Telegramm enthaltenen Verschaltungen und Erweiterungen sind gesperrt.<br />
+Bei p0922 = 999 gilt:<br />
+p2079 kann frei eingestellt werden. Wird auch p2079 = 999 eingestellt, so sind alle Verschaltungen einstellbar.<br />
+Bei p0922 = 999 und p2079 &lt; 999 gilt:<br />
+Die im Telegramm enthaltenen Verschaltungen sind gesperrt. Das Telegramm kann jedoch erweitert werden.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">370:		SIEMENS Telegramm 370, PZD-1&#47;1<br />371:		SIEMENS Telegramm 371, PZD-5&#47;8<br />999:		Freie Telegrammprojektierung mit BICO<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0922<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2080">p2080[0...15]</a></b></td>
+<td colspan="4"><b>BI: Binektor-Konnektor-Wandler Zustandswort 1 / Bin&#47;Kon ZSW1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2472</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Auswahl der zum PROFIBUS-&#47;PROFINET-Master zu sendenden Bits.<br />
+Die einzelnen Bits werden zum Zustandswort 1 zusammengefasst.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bit 0<br />
+[1] = Bit 1<br />
+[2] = Bit 2<br />
+[3] = Bit 3<br />
+[4] = Bit 4<br />
+[5] = Bit 5<br />
+[6] = Bit 6<br />
+[7] = Bit 7<br />
+[8] = Bit 8<br />
+[9] = Bit 9<br />
+[10] = Bit 10<br />
+[11] = Bit 11<br />
+[12] = Bit 12<br />
+[13] = Bit 13<br />
+[14] = Bit 14<br />
+[15] = Bit 15<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2088, r2089<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Der Parameter ist eventuell aufgrund p0922 oder p2079 gesch&uuml;tzt und kann nicht ver&auml;ndert werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2081">p2081[0...15]</a></b></td>
+<td colspan="4"><b>BI: Binektor-Konnektor-Wandler Zustandswort 2 / Bin&#47;Kon ZSW2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2472</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Auswahl der zum PROFIBUS-&#47;PROFINET-Master zu sendenden Bits.<br />
+Die einzelnen Bits werden zum Zustandswort 2 zusammengefasst.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bit 0<br />
+[1] = Bit 1<br />
+[2] = Bit 2<br />
+[3] = Bit 3<br />
+[4] = Bit 4<br />
+[5] = Bit 5<br />
+[6] = Bit 6<br />
+[7] = Bit 7<br />
+[8] = Bit 8<br />
+[9] = Bit 9<br />
+[10] = Bit 10<br />
+[11] = Bit 11<br />
+[12] = Bit 12<br />
+[13] = Bit 13<br />
+[14] = Bit 14<br />
+[15] = Bit 15<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2088, r2089<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei taktsynchronem Betrieb sind im Zustandswort 2 das Bit 12 bis 15 f&uuml;r die &Uuml;bertragung des Lebenszeichens reserviert und d&uuml;rfen nicht frei verschaltet werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2082">p2082[0...15]</a></b></td>
+<td colspan="4"><b>BI: Binektor-Konnektor-Wandler Zustandswort 3 / Bin&#47;Kon ZSW3</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2472</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Auswahl der zum PROFIBUS-&#47;PROFINET-Master zu sendenden Bits.<br />
+Die einzelnen Bits werden zum freien Zustandswort 3 zusammengefasst.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bit 0<br />
+[1] = Bit 1<br />
+[2] = Bit 2<br />
+[3] = Bit 3<br />
+[4] = Bit 4<br />
+[5] = Bit 5<br />
+[6] = Bit 6<br />
+[7] = Bit 7<br />
+[8] = Bit 8<br />
+[9] = Bit 9<br />
+[10] = Bit 10<br />
+[11] = Bit 11<br />
+[12] = Bit 12<br />
+[13] = Bit 13<br />
+[14] = Bit 14<br />
+[15] = Bit 15<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2088, r2089<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Der Parameter ist eventuell aufgrund p0922 oder p2079 gesch&uuml;tzt und kann nicht ver&auml;ndert werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2083">p2083[0...15]</a></b></td>
+<td colspan="4"><b>BI: Binektor-Konnektor-Wandler Zustandswort 4 / Bin&#47;Kon ZSW4</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2472</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Auswahl der zum PROFIBUS-&#47;PROFINET-Master zu sendenden Bits.<br />
+Die einzelnen Bits werden zum freien Zustandswort 4 zusammengefasst.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bit 0<br />
+[1] = Bit 1<br />
+[2] = Bit 2<br />
+[3] = Bit 3<br />
+[4] = Bit 4<br />
+[5] = Bit 5<br />
+[6] = Bit 6<br />
+[7] = Bit 7<br />
+[8] = Bit 8<br />
+[9] = Bit 9<br />
+[10] = Bit 10<br />
+[11] = Bit 11<br />
+[12] = Bit 12<br />
+[13] = Bit 13<br />
+[14] = Bit 14<br />
+[15] = Bit 15<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2088, r2089<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2084">p2084[0...15]</a></b></td>
+<td colspan="4"><b>BI: Binektor-Konnektor-Wandler Zustandswort 5 / Bin&#47;Kon ZSW5</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2472</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Auswahl der zum PROFIBUS-&#47;PROFINET-Master zu sendenden Bits.<br />
+Die einzelnen Bits werden zum freien Zustandswort 5 zusammengefasst.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bit 0<br />
+[1] = Bit 1<br />
+[2] = Bit 2<br />
+[3] = Bit 3<br />
+[4] = Bit 4<br />
+[5] = Bit 5<br />
+[6] = Bit 6<br />
+[7] = Bit 7<br />
+[8] = Bit 8<br />
+[9] = Bit 9<br />
+[10] = Bit 10<br />
+[11] = Bit 11<br />
+[12] = Bit 12<br />
+[13] = Bit 13<br />
+[14] = Bit 14<br />
+[15] = Bit 15<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2088, r2089<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2088">p2088[0...4]</a></b></td>
+<td colspan="4"><b>Binektor-Konnektor-Wandler Zustandswort invertieren / Bin&#47;Kon ZSW inv</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2472</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung zur Invertierung der einzelnen Binektoreing&auml;nge des Binektor-Konnektor-Wandlers.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Zustandswort 1<br />
+[1] = Zustandswort 2<br />
+[2] = Freies Zustandswort 3<br />
+[3] = Freies Zustandswort 4<br />
+[4] = Freies Zustandswort 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2080, p2081, p2082, p2083, r2089<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2089">r2089[0...4]</a></b></td>
+<td colspan="4"><b>CO: Binektor-Konnektor-Wandler Zustandswort senden / Bin&#47;Kon ZSW senden</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2472</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Konnektorausgang zum Verschalten der Zustandsw&ouml;rter auf ein PZD-Sendewort.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>Ein</td><td>Aus</td><td>-</td></tr></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Zustandswort 1<br />
+[1] = Zustandswort 2<br />
+[2] = Freies Zustandswort 3<br />
+[3] = Freies Zustandswort 4<br />
+[4] = Freies Zustandswort 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2051, p2080, p2081, p2082, p2083<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">r2089 bildet zusammen mit p2080 bis p2083 vier Binektor-Konnektor-Wandler.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2090">r2090.0...15</a></b></td>
+<td colspan="4"><b>BO: IF1 PROFIdrive PZD1 empfangen bitweise / IF1 PZD1 empf bitw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2468</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Binektorausgang zum bitweise Verschalten des vom PROFIBUS-Master empfangenen PZD1 (normalerweise Steuerwort 1).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>Ein</td><td>Aus</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">IF1: Interface 1<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2091">r2091.0...15</a></b></td>
+<td colspan="4"><b>BO: IF1 PROFIdrive PZD2 empfangen bitweise / IF1 PZD2 empf bitw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2468</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Binektorausgang zum bitweise Verschalten des vom PROFIBUS-Master empfangenen PZD2.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>Ein</td><td>Aus</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">IF1: Interface 1<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2094">r2094.0...15</a></b></td>
+<td colspan="4"><b>BO: Konnektor-Binektor-Wandler Binektorausgang / Kon&#47;Bin Ausg</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2468</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Binektorausgang zum bitweise Weiterverschalten eines vom PROFIBUS-&#47;PROFINET-Master empfangenen PZD-Wortes.<br />
+Die Auswahl des PZD erfolgt mit p2099[0].<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>Ein</td><td>Aus</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2099<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2095">r2095.0...15</a></b></td>
+<td colspan="4"><b>BO: Konnektor-Binektor-Wandler Binektorausgang / Kon&#47;Bin Ausg</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2468</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Binektorausgang zum bitweise Verschalten eines vom PROFIBUS-&#47;PROFINET-Master empfangenen PZD Wortes.<br />
+Die Auswahl des PZD erfolgt mit p2099[1].<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>Ein</td><td>Aus</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>Ein</td><td>Aus</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p2099<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2098">p2098[0...1]</a></b></td>
+<td colspan="4"><b>Konnektor-Binektor-Wandler Binektorausgang invertieren / Kon&#47;Bin Ausg inv</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2468</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung zur Invertierung der einzelnen Binektorausg&auml;nge des Konnektor-Binektor-Wandlers.<br />
+Mit p2098[0] werden die Signale von CI: p2099[0] beeinflusst.<br />
+Mit p2098[1] werden die Signale von CI: p2099[1] beeinflusst.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>Invertiert</td><td>Nicht invertiert</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r2094, r2095, p2099<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2099">p2099[0...1]</a></b></td>
+<td colspan="4"><b>CI: Konnektor-Binektor-Wandler Signalquelle / Kon&#47;Bin S_q</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 2468</td></tr><tr><td><b>P-Gruppe:</b> Kommunikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle f&uuml;r den Konnektor-Binektor-Wandler.<br />
+Als Signalquelle kann ein PZD-Empfangswort ausgew&auml;hlt werden. Die Signale stehen zur bitweisen Weiterverschaltung zur Verf&uuml;gung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r2094, r2095<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Von der &uuml;ber den Konnektoreingang eingestellten Signalquelle werden die entsprechenden unteren 16 Bit gewandelt.<br />p2099[0...1] bildet zusammen mit r2094.0...15 und r2095.0...15 zwei Konnektor-Binektor-Wandler:<br />Konnektoreingang p2099[0] nach Binektorausgang r2094.0...15<br />Konnektoreingang p2099[1] nach Binektorausgang r2095.0...15<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2100">p2100[0...19]</a></b></td>
+<td colspan="4"><b>St&ouml;rungsnummer f&uuml;r St&ouml;rreaktion einstellen / St&ouml;r_nr St&ouml;rreakt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">Alle Objekte</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 1750, 8075</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >65535</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Auswahl der St&ouml;rungen, bei denen die St&ouml;rreaktion ge&auml;ndert werden soll.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Auswahl der St&ouml;rung und Einstellung der gew&uuml;nschten St&ouml;rreaktion erfolgt unter dem gleichen Index.<br />Siehe auch: p2101<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Das Umparametrieren der St&ouml;rreaktion einer St&ouml;rung ist in folgenden F&auml;llen nicht m&ouml;glich:<br />- Bei nicht existierender St&ouml;rungsnummer.<br />- Der Meldungstyp ist nicht &quot;St&ouml;rung&quot; (F).<br />- Bei anstehender St&ouml;rung.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2101">p2101[0...19]</a></b></td>
+<td colspan="4"><b>Einstellung St&ouml;rreaktion / St&ouml;rreaktion</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 1750, 8075</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der St&ouml;rreaktion f&uuml;r die ausgew&auml;hlte St&ouml;rung.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		KEINE<br />1:		AUS1<br />2:		AUS2<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Auswahl der St&ouml;rung und Einstellung der gew&uuml;nschten St&ouml;rreaktion erfolgt unter dem gleichen Index.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2103">p2103[0...n]</a></b></td>
+<td colspan="4"><b>BI: 1. Quittieren St&ouml;rungen / 1. Quittieren</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> 2441, 2442, 2443, 2447, 2475, 2546, 9220, 9677, 9678</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der ersten Signalquelle f&uuml;r das Quittieren von St&ouml;rungen.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Das Quittieren von St&ouml;rungen wird mit einem 0&#47;1-Signal ausgel&ouml;st.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2104">p2104[0...n]</a></b></td>
+<td colspan="4"><b>BI: 2. Quittieren St&ouml;rungen / 2. Quittieren</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> 2546, 8060</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der zweiten Signalquelle f&uuml;r das Quittieren von St&ouml;rungen.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Das Quittieren von St&ouml;rungen wird mit einem 0&#47;1-Signal ausgel&ouml;st.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2105">p2105[0...n]</a></b></td>
+<td colspan="4"><b>BI: 3. Quittieren St&ouml;rungen / 3. Quittieren</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> 2546, 8060</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der dritten Signalquelle f&uuml;r das Quittieren von St&ouml;rungen.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Das Quittieren von St&ouml;rungen wird mit einem 0&#47;1-Signal ausgel&ouml;st.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2106">p2106[0...n]</a></b></td>
+<td colspan="4"><b>BI: Externe St&ouml;rung 1 / Externe St&ouml;rung 1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> 2546</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle f&uuml;r die Externe St&ouml;rung 1.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: F07860</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Eine externe St&ouml;rung wird mit einem 1&#47;0-Signal ausgel&ouml;st.<br />Wird diese St&ouml;rung an der Control Unit ausgel&ouml;st, so wird sie an alle vorhandene Antriebsobjekte weitergeleitet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2107">p2107[0...n]</a></b></td>
+<td colspan="4"><b>BI: Externe St&ouml;rung 2 / Externe St&ouml;rung 2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> 2546</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle f&uuml;r die Externe St&ouml;rung 2.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: F07861</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Eine externe St&ouml;rung wird mit einem 1&#47;0-Signal ausgel&ouml;st.<br />Wird diese St&ouml;rung an der Control Unit ausgel&ouml;st, so wird sie an alle vorhandene Antriebsobjekte weitergeleitet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2108">p2108[0...n]</a></b></td>
+<td colspan="4"><b>BI: Externe St&ouml;rung 3 / Externe St&ouml;rung 3</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> 2546</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle f&uuml;r die Externe St&ouml;rung 3.<br />
+Die Externe St&ouml;rung 3 wird durch folgende UND-Verkn&uuml;pfung ausgel&ouml;st:<br />
+- BI: p2108 negiert<br />
+- BI: p3111<br />
+- BI: p3112 negiert<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p3110, p3111, p3112<br />Siehe auch: F07862</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Eine externe St&ouml;rung wird mit einem 1&#47;0-Signal ausgel&ouml;st.<br />Wird diese St&ouml;rung an der Control Unit ausgel&ouml;st, so wird sie an alle vorhandene Antriebsobjekte weitergeleitet.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2109">r2109[0...63]</a></b></td>
+<td colspan="4"><b>St&ouml;rzeit behoben in Millisekunden / t_St&ouml;r behob ms</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">Alle Objekte</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 1750, 8060</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Systemlaufzeit in Millisekunden, an der die St&ouml;rung behoben wurde.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0945, r0947, r0948, r0949, r2114, r2130, r2133, r2136, r3115<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Pufferparameter werden zyklisch im Hintergrund aktualisiert (siehe Zustandssignal in r2139).<br />Der Aufbau des St&ouml;rpuffers sowie die Belegung der Indizes ist in r0945 dargestellt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2110">r2110[0...63]</a></b></td>
+<td colspan="4"><b>Warnnummer / Warnnummer</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">Alle Objekte</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 8065</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Dieser Parameter ist identisch mit r2122.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2111">p2111</a></b></td>
+<td colspan="4"><b>Warnungen Z&auml;hler / Warnungen Z&auml;hler</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">Alle Objekte</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> 1750, 8065</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >65535</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzahl der aufgetretenen Warnungen nach dem letzten Zur&uuml;cksetzen.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Mit p2111 = 0 setzen wird folgendes ausgel&ouml;st:<br />- Alle gegangenen Warnungen des Warnpuffers [0...7] werden in die Warnhistorie [8...63] &uuml;bernommen.<br />- Der Warnpuffer [0...7] wird gel&ouml;scht.<br />Siehe auch: r2110, r2122, r2123, r2124, r2125<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameter wird bei POWER ON auf 0 zur&uuml;ckgesetzt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2112">p2112[0...n]</a></b></td>
+<td colspan="4"><b>BI: Externe Warnung 1 / Externe Warnung 1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / Binary</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> 2546</td></tr><tr><td><b>P-Gruppe:</b> Meldungen</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle f&uuml;r die Externe Warnung 1.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: A07850</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Eine externe Warnung wird mit einem 1&#47;0-Signal ausgel&ouml;st.<br /></td></tr>
+</table><p></p></body></html>

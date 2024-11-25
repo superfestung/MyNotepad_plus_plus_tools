@@ -1,0 +1,33 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Programmteilwiederholung (REPEAT, REPEATB, ENDLABEL, P): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Programmteilwiederholung (REPEAT, REPEATB, ENDLABEL, P): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Schachtelung</h4>
+      <p>Programmteilwiederholung kann geschachtelt aufgerufen werden. Jeder Aufruf belegt eine Unterprogrammebene.</p>
+      <h4 class="Blocklabel">M17 / RET</h4>
+      <p>Ist während der Bearbeitung einer Programmteilwiederholung <code>M17</code> oder <code>RET</code> programmiert, so wird die Programmteilwiederholung abgebrochen. Das Programm wird mit dem auf die <code>REPEAT</code>-Zeile folgenden Satz fortgesetzt.</p>
+      <h4 class="Blocklabel">Programmanzeige</h4>
+      <p>In der aktuellen Programmanzeige wird die Programmteilwiederholung als eigene Unterprogrammebene angezeigt.</p>
+      <h4 class="Blocklabel">Ebenenabbruch</h4>
+      <p>Wird während der Programmteil-Bearbeitung Ebenenabbruch ausgelöst, so wird das Programm nach dem Aufruf der Programmteilbearbeitung fortgesetzt.</p>
+      <p>Beispiel:</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EUB"><colgroup><col width="38.7%"><col width="61.3%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N5 R10=15</td><td> </td></tr><tr valign="top"><td>N10 BEGIN: R10=R10+1</td><td>; Breite</td></tr><tr valign="top"><td>N20 Z=10-R10</td><td> </td></tr><tr valign="top"><td>N30 G1 X=R10 F200</td><td> </td></tr><tr valign="top"><td>N40 Y=R10</td><td>; Ebenenabbruch</td></tr><tr valign="top"><td>N50 X=-R10</td><td> </td></tr><tr valign="top"><td>N60 Y=-R10</td><td> </td></tr><tr valign="top"><td>N70 END: Z10</td><td> </td></tr><tr valign="top"><td>N80 Z10</td><td> </td></tr><tr valign="top"><td>N90 CYCLE(10,20,30)</td><td> </td></tr><tr valign="top"><td>N100 REPEAT BEGIN END P=3</td><td> </td></tr><tr valign="top"><td>N120 Z10</td><td>; Programmbearbeitung fortsetzen.</td></tr><tr valign="top"><td>N130 M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Kontrollstrukturen und Programmteilwiederholung</h4><p>Kontrollstrukturen und Programmteilwiederholung können kombiniert genutzt werden. Es sollte jedoch keine Überschneidungen geben. Eine Programmteilwiederholung sollte innerhalb eines Kontrollstruktur-Zweigs liegen bzw. eine Kontrollstruktur innerhalb einer Programmteilwiederholung.</p><h4 class="Blocklabel">Sprünge und Programmteilwiederholung </h4><p>Bei der Mischung von Sprüngen und Programmteilwiederholung werden die Sätze rein sequentiell abgearbeitet. Erfolgt z. B. ein Sprung aus einer Programmteilwiederholung, so wird solange bearbeitet, bis das programmierte Programmteilende gefunden wird.</p><p>Beispiel:</p><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EHE"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><th>Programmcode</th><th> </th></tr><tr valign="top"><td>N10 G1 F300 Z-10</td><td> </td></tr><tr valign="top"><td>N20 BEGIN1:</td><td> </td></tr><tr valign="top"><td>N30 X=10</td><td> </td></tr><tr valign="top"><td>N40 Y=10</td><td> </td></tr><tr valign="top"><td>N50 GOTOF BEGIN2</td><td> </td></tr><tr valign="top"><td>N60 ENDLABEL:</td><td> </td></tr><tr valign="top"><td>N70 BEGIN2:</td><td> </td></tr><tr valign="top"><td>N80 X20</td><td> </td></tr><tr valign="top"><td>N90 Y30</td><td> </td></tr><tr valign="top"><td>N100 ENDLABEL: Z10</td><td> </td></tr><tr valign="top"><td>N110 X0 Y0 Z0</td><td> </td></tr><tr valign="top"><td>N120 Z-10</td><td> </td></tr><tr valign="top"><td>N130 REPEAT BEGIN1 P=2</td><td> </td></tr><tr valign="top"><td>N140 Z10</td><td> </td></tr><tr valign="top"><td>N150 X0 Y0</td><td> </td></tr><tr valign="top"><td>N160 M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Die REPEAT-Anweisung sollte hinter den Verfahrsätzen stehen.</p></td></tr></table><h4 class="Blocklabel">Abarbeiten von Extern und Programmteilwiederholung</h4><p>Bei externen Programmen mit Programmteilwiederholung muss die zu wiederholende Programmzeile (bei REPEATB) bzw. der Beginn des zu wiederholenden Programmbereichs (bei REPEAT) innerhalb des Nachladespeichers liegen. Andernfalls wird das Sprungziel nicht gefunden und es kommt zum Programmabbruch und zur Ausgabe von Alarm 14000.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Um externe Programme ohne Einschränkungen hinsichtlich Programmteilwiederholungen abarbeiten zu können, wird empfohlen, statt der Funktion "Abarbeiten von Extern" die Funktion "Abarbeiten vom externen Speicher (EES)" zu verwenden.</p></td></tr></table><h4 class="Blocklabel">Variable Sprungziele</h4><p>Variable Sprungziele wie bei den <a href="156662549387.html">GOTO-Befehlen</a> sind bei der Programmteilwiederholung mit REPEAT/REPEATB <b>nicht</b> zulässig.</p></div>
+  </body>
+</html>

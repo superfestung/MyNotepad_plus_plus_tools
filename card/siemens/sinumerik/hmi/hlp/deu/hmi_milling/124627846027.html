@@ -1,0 +1,149 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Funktion</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Funktion</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Mit der Messvariante "Kinematik komplett vermessen" (<code>CYCLE9960</code>) ist es möglich, über ein Vermessen von Kugelpositionen im Raum, die geometrischen Vektoren zur Definition der kinematischen 5-Achs-Transformation, auf Basis kinematischer Ketten und des Toolcarriers (klassisch über $TC_CARR und auf Basis der kinematischen Kette ) zu korrigieren.</p>
+      <p>Die Vermessung erfolgt grundsätzlich so, dass mithilfe von Werkstückmesstastern pro Rundachse bis zu zwölf Positionen einer Messkugel abgetastet werden. Die Kugelpositionen sind gleichmäßig in einem vom Anwender vorgegebenen Bereich, entsprechend den geometrischen Verhältnissen an der Maschine festgelegt. Die Kugelpositionen werden automatisch durch alleiniges Umpositionieren der jeweils zu vermessenden Rundachse eingestellt. </p>
+      <p>Für den Einsatz des <code>CYCLE9960</code> muss die Kinematik nach Zeichnungsmaßen genau eingerichtet sein, um das automatische Umpositionieren gewährleisten zu können.</p>
+      <p>Der <code>CYCLE9960</code> bietet die Möglichkeit, nach der Vermessung und Korrektur der Kinematik, zusätzlich die Abweichung an der Werkzeugspitze (TCP) bei aktiver Transformation für verschiedene Rundachspositionen zu messen. Diese Abweichungen können mit dem Compilezyklus "VCS Rotary" kompensiert werden.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Mögliche Einsatzbereiche</h3>
+      <ul>
+        <li>
+          <p>Überprüfung und Korrektur der Maschinenkinematik</p>
+          <ul>
+            <li>
+              <p>Service nach Kollisionen</p>
+            </li>
+            <li>
+              <p>Überprüfung der Kinematik während des Bearbeitungsprozesses</p>
+            </li>
+            <li>
+              <p>Eine bereits vermesse Kinematik kann korrigiert werden</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Referenz vermessen (nur bei Kinematiken mit Wechselköpfen)</p>
+          <ul>
+            <li>
+              <p>Verwendung des Z-Maßes eines Referenzkopfs</p>
+            </li>
+            <li>
+              <p>Vektor der Werkzeugachse bleibt so wie vom Maschinenhersteller eingetragen und unverändert</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>An Referenz anpassen (nur bei Kinematiken mit Wechselköpfen)</p>
+          <ul>
+            <li>
+              <p>Ermöglicht die Verwendung mehrerer Köpfe für die Bearbeitung eines Werkstücks</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Stützpunkte messen und korrigieren (nur wenn "VCS Rotary" installiert ist)</p>
+          <ul>
+            <li>
+              <p>Kompensation des TCP bei Rundachsbewegung mithilfe des Compile-Zyklus "VCS Rotary" </p>
+            </li>
+            <li>
+              <p>Automatisches Erstellen einer Kompensationsdatei</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Orientierung der Rundachsen messen und kompensieren (nur wenn "VCS" installiert ist)</p>
+          <ul>
+            <li>
+              <p>Kompensation der Orientierung der Rundachsen mithilfe des Compile-Zyklus "VCS"</p>
+            </li>
+            <li>
+              <p>Automatisches Erstellen einer Kompensationsdatei</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>Bei der Vermessung muss eine Transformation oder ein Toolcarrier aktiv sein.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Voraussetzungen</h3>
+      <p>Folgende Voraussetzungen müssen zum Einsatz des <code>CYCLE9960</code> (Kinematik vermessen) erfüllt sein:</p>
+      <ul class="comment">
+        <li class="comment">
+          <p class="comment">Kalibrierter 3D-Messtaster oder Monotaster</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Montierte Kalibrierkugel</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Es muss eine Transformation auf Basis kinematischer Ketten oder ein Toolcarrier eingerichtet sein.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Rechtwinklige, referenzierte Grundgeometrie der Maschine (X, Y, Z)</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Die Rechtwinkligkeit bezieht sich auf die Werkzeugspindel und ist vorzugsweise mithilfe eines Messdorns oder mit dem Messzyklus <code>CYCLE995</code> zu kontrollieren.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Definierte Stellung der an der Transformation beteiligten Rundachsen</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Definierte, normgerechte Verfahrrichtungen aller an der Transformation beteiligten Achsen nach ISO 841-2001 bzw. DIN 66217 (Rechte Handregel)</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Linear- und Rundachsen müssen dynamisch optimal eingestellt sein.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Der Messtaster muss exakt kalibriert sein. Die kalibrierte Werkzeuglänge des Messtasters geht direkt in die berechneten Vektoren der Kinematik ein.</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Beim Messen sollte die Messvariante "Umkreisen der Kalibrierkugel mit Nachführen der Schaltrichtung" angewendet werden. </p>
+        </li>
+        <li class="comment">
+          <p class="comment">Messen mit aktivem Schwenken (TCARR) oder aktivem TRAORI, SD55740: $SCS:MEA_FUNCTION_MASK, Bit 8 = 1 setzen.</p>
+        </li>
+      </ul>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">
+            </h4>
+            <p class="safety">Eine Kinematik kann nur dann korrigiert werden, wenn keine persistente Transformation aktiv ist. In diesem Fall kann die Kinematik mit "nur Messen" vermessen werden. Die Ergebnisvektoren können von den Parametern _OVR[1] bis _OVR[20] gelesen werden.</p>
+          </td>
+        </tr>
+      </table>
+      <a id="table_60767799-d4a2-f709-68df-e9d23254fe6c">
+      </a> <a id="table_0"></a> <a id="table_60767799-d4a2-f709-68df-e9d23254fe6c"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="15.6%"><col width="84.3%"></colgroup><tr valign="top"><td><a id="image_766300299_0"></a> <img border="0" src="images/123524983179.png" width="43" height="43"/> </td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><b>Maschinenhersteller</b></p><p type="p_table_l" align="left" class="comment">Beachten Sie bitte die Hinweise des Maschinenherstellers.</p></td></tr></table></p><p class="comment">Die Vermessung der Rundachse muss im Grundsystem der Maschine ausgeführt werden. Metrische Maschine mit G710 und Positionen in mm. "INCH"-Maschine mit G700 und Positionen in INCH.</p></div>
+  </body>
+</html>

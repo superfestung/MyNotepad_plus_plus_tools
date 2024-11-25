@@ -1,0 +1,361 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block T/AEV: Working offsets: Directory</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block T/AEV: Working offsets: Directory</h1>
+         </div>
+      </div>The active tool edges are sorted in consecutive ascending D number sequence in the AEV module. This module also contains the
+      essential tool data for each D number entered. "Active" in this case refers to the replacement tools. <br/>
+      (If the "unique D numbers" option is not activated in the NC, the edges are sorted according to ascending ToolIdent and DuploNumber.
+      The D number variable is then set to 0 on all lines in this module.)<br/>
+      <br/>
+      The D number assignment is not necessarily unique for active tools. For this reason, the same D number may be entered in several
+      lines (successively).<br/>
+      The line number is a serial number which is not related to the D number.<br/>
+      The number of active tool edges is stored in <a href="../sinumerik_btss_T/T_AEV.html#2350">numActDEdges</a> (module AEV), e.g. example 10,<br/>
+      i.e. module AEV contains entries for 10 tool edges. These are sorted in ascending D number sequence. The tool edge with the
+      lowest D number has index (serial number) 1, the next-higher D number index 2, etc. and the edge with the highest D number
+      index 10.<br/>
+      <br/>
+      When tools are activated/deactivated and D numbers re-assigned, the entries for a D number change line dynamically. <br/>
+      Module T / AEV is organized as a 1-dimensional variable array and can be used for the following purposes:<br/>
+      - Display all tool edges, including D numbers, of active tools.<br/>
+      - Display associated tool data<br/>
+      <br/>
+      The module contains the following information which can be addressed via a column index:<br/>
+      - Single column, in 1st line only. Number of D numbers (lines, tool edges) in the current list<br/>
+      - The other columns apply to all lines, each line contains tool edge data with the following information:<br/>
+         - D number<br/>
+         - Internal T number of associated tool<br/>
+      - Tool edge number relative to tool <br/>
+         - Tool identifier<br/>
+         - Duplo number<br/>
+         - Magazine number and<br/>
+         - Location number of tool<br/>
+      <br/>
+      Individual values cannot be altered via this module.<br/>
+      <br/>
+      Re-assignment of D numbers and changes in allocation to tools (deactivate, activate replacement tools) and other modifications
+      to data cause changes to <a href="../sinumerik_btss_C/C_S.html#2012">toolCounter</a> in "C / S Channel-specific status data".<br/>
+      <br/>
+      Variable <a href="../sinumerik_btss_N/N_Y.html#2388">modeSpindleToolRevolver</a> (module N/Y, global system data) defines for circular magazines (T / TM, magazine data, general data, MagKind=3) whether
+      the tool in OPI modules "T / TP, magazine data, location data", "T / TD, tool data, general data", "T/TV, tool data, directory"
+      and "T / AEV, working offsets, directory" remains (new functionality) in its circular magazine location during operation or
+      changes to the buffer magazine (earlier behaviour)).<br/>
+      
+      <div><a name="2356"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>cuttEdgeNo</b></td>
+            <td colspan="3" style="border:1px solid black">Tool edge number</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>No. active cut. edge<br>Consecutive number of the active cutting edges
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_T/T_AEV.html#2350">numActDEdges</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Cutting edge number of the cutting edge located at the consecutive number (= line index) in the AEV module list.<br/>
+               Note: This is not the D number of the cutting edge as used in the NC language (see variable "dNo").<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span>1
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span><a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/ActiveCatalogue/cuttEdgeNo[u&lt;Tool Area&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2353"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>DNo</b></td>
+            <td colspan="3" style="border:1px solid black">D-number</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>No. active cut. edge<br>Consecutive number of the active cutting edges
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_T/T_AEV.html#2350">numActDEdges</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">D number of the cutting edge located at the consecutive number (= line index) in the AEV module list.<br/>
+               Note: Not to be confused with the cutting edge number (see variable "cuttEdgeNo").<br/>
+               Defined only in connection with the "unique D numbers" function.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/ActiveCatalogue/DNo[u&lt;Tool Area&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2358"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>duploNo</b></td>
+            <td colspan="3" style="border:1px solid black">Duplo number</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Consecutive number<br>Consecutive number of the active tools
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_T/T_AEV.html#2350">numActDEdges</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Tool number of the tool located at the consecutive number (= line index) in the AEV module list.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/ActiveCatalogue/duploNo[u&lt;Tool Area&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2350"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numActDEdges</b></td>
+            <td colspan="3" style="border:1px solid black">Number of D numbers in the T_AEV module</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">The variable returns the number of D numbers in the AEV module<br/>
+               Defined only in connection with the "Unique D numbers" function.<br/>
+               For active tool management:<br/>
+               Specifies the number of cutting edges belonging to tools with "active" status (contained in the TO unit)<br/>
+               When tool management function is not active:<br/>
+               Specifies the number of all cutting edges contained in the TO unit.<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>=0: If the "Unique D number" function is not active, the value "=0" is always returned.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/ActiveCatalogue/numActDEdges[u&lt;Tool Area&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2357"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>toolIdent</b></td>
+            <td colspan="3" style="border:1px solid black">Tool identifier</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>5
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>No. active cut. edge<br>Consecutive number of the active cutting edges
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_T/T_AEV.html#2350">numActDEdges</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Internal tool number of the tool located at the consecutive number (= line index) in the AEV module list.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/ActiveCatalogue/toolIdent[u&lt;Tool Area&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2359"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>toolInMag</b></td>
+            <td colspan="3" style="border:1px solid black">Magazine in which the tool is currently located</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>No. active cut. edge<br>Consecutive number of the active cutting edges
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_T/T_AEV.html#2350">numActDEdges</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">The variable returns the magazine number of the magazine in which the tool is currently located, which is contained in the
+               list of AEV at the consecutive number (=line index).<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>o Number of entries &gt; <a href="../sinumerik_btss_T/T_AEV.html#2350">numActDEdges</a>: error code is output.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/ActiveCatalogue/toolInMag[u&lt;Tool Area&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2360"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>toolInPlace</b></td>
+            <td colspan="3" style="border:1px solid black">Current magazine location of the tool</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>8
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>No. active cut. edge<br>Consecutive number of the active cutting edges
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_T/T_AEV.html#2350">numActDEdges</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Magazine location number of the location where the tool is currently located, which is contained in the list of AEV at the
+               consecutive number (=line index).<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>o Number of entries &gt; <a href="../sinumerik_btss_T/T_AEV.html#2350">numActDEdges</a>: error code is output.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/ActiveCatalogue/toolInPlace[u&lt;Tool Area&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2354"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>toolNo</b></td>
+            <td colspan="3" style="border:1px solid black">Tool number T</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>No. active cut. edge<br>Consecutive number of the active cutting edges
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span><a href="../sinumerik_btss_T/T_AEV.html#2350">numActDEdges</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Internal tool number of the tool located at the consecutive number (= line index) in the AEV module list.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Tool/ActiveCatalogue/toolNo[u&lt;Tool Area&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

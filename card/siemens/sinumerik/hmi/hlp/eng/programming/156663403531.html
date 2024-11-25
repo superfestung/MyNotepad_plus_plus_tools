@@ -1,0 +1,27 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Online tool length compensation (TOFFON, TOFFOF): Further Information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Online tool length compensation (TOFFON, TOFFOF): Further Information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">More information</h3>
+      <h4 class="Blocklabel">Block preparation</h4>
+      <p>In the case of block preparation in forward motion, the tool length offset currently active in the main run is considered. In order to utilize the maximum permissible axis velocities as far as possible, it is necessary to halt the block preparation with a preprocessing stop (STOPRE) while a tool length offset is being generated.</p>
+      <p>The tool length offset is always known at the prerun time even if the tool length offsets are not changed after the program start. Or if, after a change in tool length offsets, more blocks have been processed than the IPO buffer can accommodate between the prerun and the main run. In this way, correct axis velocities are applied quickly for short blocks.</p>
+      <h4 class="Blocklabel">System variables</h4>
+      <p>Information on online tool length compensation can be queried via the following system variables:</p>
+      <a id="table_2a9be8c4-a87b-4b17-8d69-9e6358f792a1">
+      </a> <a id="table_0"></a> <a id="table_2a9be8c4-a87b-4b17-8d69-9e6358f792a1"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="32.5%"><col width="8.5%"><col width="59.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">System variable</p></th><th colspan="2"><p type="p_table_lb" align="left">Meaning for online tool length compensation</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">$AA_TOFF_VAL[&lt;n>]</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Integrated value of the overlaid compensation movement in the corresponding tool direction</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">$AA_TOFF_LIMIT[&lt;n>]</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Status of the limitation by:</p><ul class="table"><li><p>SD42970 $SC_TOFF_LIMIT (upper limit of online tool length compensation)</p></li><li><p>SD42972 $SC_TOFF_LIMIT_MINUS (lower limit of online tool length compensation)</p></li></ul></td></tr><tr valign="top"><td rowspan="3"> </td><td><p type="p_table_l" style="margin-top: 4px" align="left">= 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Limit value not reached</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">= 1</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Limit value reached in positive axis direction</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">= -1</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Limit value reached in negative axis direction</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">$AA_TOFF_PREP_DIFF[&lt;n>]</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">The difference between the currently active compensation in the interpolator and the compensation that was active at the time of block preparation.</p></td></tr></table></p><h4 class="Blocklabel">Tool change / orientation changes</h4><p>When changing the tool or changing the tool direction, the active online tool length compensations $AA_TOFF[&lt;n>] are retained.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">Changing the effective tool length using online tool length compensation produces changes in the compensatory movements of the axes in the event of changes in orientation. The resulting velocities can be higher or lower depending on machine kinematics and the current axis position.</p></td></tr></table><h4 class="Blocklabel">TOFFOF</h4><p>After deselecting online tool length compensation in the specified compensation direction, the accumulated tool length compensations are removed and transferred to the base coordinate system. The prerun is synchronized with the current position in main run. Since no axes are traversed here, the values of the system variable $AA_IM[&lt;Ax>] (current MCS setpoint of an axis) do not change. Only the values of the system variables $AA_IW[&lt;Ax>] (actual WCS setpoint of an axis) or $AA_IB[&lt;Ax>] (actual BCS setpoint of an axis) are changed. These variables now contain the deselected share of tool length compensation.</p><p></p></div>
+  </body>
+</html>

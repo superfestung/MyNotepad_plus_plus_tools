@@ -1,0 +1,29 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Zwischensatzerzeugung einschalten (TLIFT)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Zwischensatzerzeugung einschalten (TLIFT)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Überschreitet die Tangentenänderung der Folgeachse an einer Stelle der programmierten Bahn der Leitachsen den im Maschinendatum MD37400 $MA_EPS_TLIFT_TANG_STEP parametrierten Grenzwert, erfolgt die weitere Bahnplanung abhängig vom eingestellten Eckenverhalten. Ohne Verwendung der vordefinierten Prozedur TLIFT(...) wird entsprechend des im Zusammenhang mit <a href="156663754123.html">TANG(...)</a> und <a href="156663763339.html">TANGON(...)</a> programmierten Überschleifenverhaltens verfahren.</p>
+      <h4 class="Blocklabel">Zwischensatzerzeugung einschalten</h4>
+      <p>Mit Programmierung von TLIFT(...) im Anschluss an TANG(...) wird vom Vorlauf beim Erkennen einer Ecke an dieser Stelle der Bahn ein von der Steuerung automatisch generierter Zwischensatz eingefügt. </p>
+      <p>Bei der Abarbeitung des Programms werden dann bei Erreichen des Zwischensatzes die Leitachsen angehalten. Im Zwischensatz wird die Folgeachse mit maximaler Achsdynamik in Richtung der Bahntangente des nachfolgenden Satzes gedreht. Danach werden die Leitachsen weiter auf der programmierten Bahn verfahren.</p>
+      <h4 class="Blocklabel">Zwischensatzerzeugung ausschalten</h4>
+      <p>Zum Ausschalten der Zwischensatzerzeugung muss die Tangentialkopplung mittels TANG(...), aber ohne nachfolgendes Einschalten der Zwischensatzerzeugung mittels TLIFT(...), erneut definiert werden.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>TLIFT(&lt;FAx>)<a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_f45789cb-4418-450f-b22b-b025ce7459a3"></a> <a id="table_0"></a> <a id="table_f45789cb-4418-450f-b22b-b025ce7459a3"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="30.0%"><col width="18.0%"><col width="52.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>TLIFT(...)</code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Einschalten der Eckenerkennung mit Zwischensatzberechnung</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;FAx></code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Achsname der Folgeachse (Rundachse)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">AXIS</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wertebereich:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Kanalachsnamen</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Drehgeschwindigkeit der Folgeachse</h3><h4 class="Blocklabel">Bahnachse</h4><p>Wurde die Folgeachse vor der Aktivierung der Tangentialkopplung schon als Bahnachse verfahren, erfolgt die Drehbewegung im Zwischensatz als Bahnachse. </p><p>Durch die Vorgabe des Bezugsradius mit <code>FGREF[&lt;Ax>]=0.001</code> erfolgt die Drehbewegung mit der parametrierten maximalen Achsgeschwindigkeit:</p><p class="comment">MD32000 $MA_MAX_AX_VELO[&lt;Folgeachse>]</p><h4 class="Blocklabel">Positionierachse</h4><p class="comment">Wurde die Folgeachse vor der Aktivierung der Tangentialkopplung noch nicht als Bahnachse verfahren, erfolgt die Drehung im Zwischensatz als Positionierachse. </p><p class="comment">Die Drehbewegung erfolgt dabei mit der parametrierten Positionierachsgeschwindigkeit:</p><p class="comment">MD32060 $MA_POS_AX_VELO[&lt;Folgeachse>]</p></div>
+    <p>Siehe auch:<br />    <a href="156663746571.html">Tangentialsteuerung: Einleitung und Übersicht</a></p>
+  </body>
+</html>

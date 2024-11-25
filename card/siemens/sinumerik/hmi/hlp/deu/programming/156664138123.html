@@ -1,0 +1,88 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>ESR: Allgemeine Funktionalität</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">ESR: Allgemeine Funktionalität</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Die Funktion "Erweitertes Stillsetzen und Rückziehen", im weiteren Verlauf mit ESR bezeichnet, bietet die Möglichkeit, in Fehlersituationen prozessabhängig flexibel zu reagieren: </p>
+      <ul>
+        <li>
+          <p>
+            <b>Erweitertes Stillsetzen</b>
+          </p>
+          <p>Soweit es die spezifische Fehlersituation erlaubt, werden alle für das Erweiterte Stillsetzen freigegebenen Achsen geordnet stillgesetzt.</p>
+        </li>
+        <li>
+          <p>
+            <b>Rückziehen</b>
+          </p>
+          <p>Das sich im Eingriff befindliche Werkzeug wird schnellstmöglich vom Werkstück zurückgezogen.</p>
+        </li>
+        <li>
+          <p>
+            <b>Generatorbetrieb (SINAMICS-Antriebsfunktion "Vdc-Regelung")</b>
+          </p>
+          <p>Bei Unterschreitung eines parametrierbaren Werts der Zwischenkreisspannung, z. B. bei Ausfall der Netzspannung, wird die für das Rückziehen benötigte elektrische Energie durch Rückspeisen der Bremsenergie eines dafür vorgesehenen Antriebs (Generatorbetrieb) erzeugt.</p>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Auslösequellen</h3>
+      <h4 class="Blocklabel">Allgemeine Quellen (NC-extern/global oder BAG-/kanalspezifisch)</h4>
+      <ul>
+        <li>
+          <p>Digitale Eingänge (z. B. auf NCU-Baugruppe) bzw. das steuerungsinterne, rücklesbare Abbild digitaler Ausgänge ($A_IN, $A_OUT)</p>
+        </li>
+        <li>
+          <p>Kanalzustand ($AC_STAT)</p>
+        </li>
+        <li>
+          <p>VDI-Signale ($A_DBB)</p>
+        </li>
+        <li>
+          <p>Sammelmeldungen einer Anzahl von Alarmen ($AC_ALARM_STAT)</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Axiale Quellen</h4>
+      <ul>
+        <li>
+          <p>Notrückzugsschwelle der Folgeachse (Synchronlauf der elektronischen Kopplung, $VC_EG_SYNCDIFF[&lt;Folgeachse>])</p>
+        </li>
+        <li>
+          <p>Antrieb: Zwischenkreis-Warnschwelle (drohende Unterspannung), $AA_ESR_STAT[&lt;Achse>]</p>
+        </li>
+        <li>
+          <p>Antrieb: Generator-Minimaldrehzahl-Schwelle (keine rückspeisbare Rotationsenergie mehr vorhanden), $AA_ESR_STAT[&lt;Achse>].</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Verknüpfungslogik der statischen Synchronaktionen: Quellen-/Reaktions-Verknüpfung</h3>
+      <p>Die flexiblen Verknüpfungsmöglichkeiten der statischen Synchronaktionen werden genutzt, um aufgrund von Quellen relativ zeitnah bestimmte Reaktionen auszulösen.</p>
+      <p>Die Verknüpfung aller relevanten Quellen mit Hilfe statischer Synchronaktionen liegt in den Händen des Anwenders. Er kann die Quellen-Systemvariablen als Ganzes oder mit Hilfe von Bit-Masken auch selektiv auswerten und hieran seine gewünschten Reaktionen knüpfen. Die statischen Synchronaktionen sind in allen Betriebsarten wirksam.</p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Aktivierung</h3>
+      <h4 class="Blocklabel">Funktionsfreigabe</h4>
+      <p>Die Funktionen Generatorbetrieb, Stillsetzen, Rückziehen werden durch Setzen des zugehörigen Steuersignals $AA_ESR_ENABLE freigegeben. Dieses Steuersignal kann von Synchronaktionen verändert werden.   </p>
+      <h4 class="Blocklabel">Funktionsauslösung</h4>
+      <p>ESR wird gemeinsam für alle freigegebenen Achsen ausgelöst durch Setzen der Systemvariablen $AC_ESR_TRIGGER.   </p>
+      <p>Der Generatorbetrieb wird "automatisch" im Antrieb bei Erkennung drohender Zwischenkreis-Unterspannung aktiv.</p>
+      <p>Antriebsautarkes Stillsetzen und/oder Rückziehen werden aktiv bei Erkennung eines Kommunikationsausfalls (zwischen NC und Antrieb) sowie bei Erkennung einer Zwischenkreis-Unterspannung im Antrieb (Konfiguration und Freigabe vorausgesetzt). </p>
+      <p>Antriebsautarkes Stillsetzen und/oder Rückziehen können zusätzlich auch von der NC-Seite her ausgelöst werden durch das Setzen des entsprechenden Steuersignals $AN_ESR_TRIGGER (Broadcast-Kommando an alle Antriebe).   </p>
+      <a name="block_4">
+      </a>
+      <h3 class="Blocktitle">Weitere Informationen</h3>
+      <p>Funktionshandbuch Achsen und Spindeln</p>
+    </div>
+  </body>
+</html>

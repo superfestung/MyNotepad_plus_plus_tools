@@ -1,0 +1,40 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Context variable ($P_TECCYCLE)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Context variable ($P_TECCYCLE)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Function   </h3>
+      <p>If an NC program is used as part program as well as also technology cycle, then context-specific program sections can be defined using system variable $P_TECCYCLE:</p>
+      <ul>
+        <li>
+          <p>$P_TECCYCLE == TRUE ⇒ The NC program is currently being executed as technology cycle</p>
+        </li>
+        <li>
+          <p>$P_TECCYCLE == FALSE ⇒ The NC program is currently being executed as part program </p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Application</h3>
+      <p>The (<code>DEF</code>) variables and (<code>DEFINE</code>) macro definitions have no effect in technology cycles. If an NC program is executed as a technology cycle that contains the appropriate definitions, a context-specific case distinction has to be made in the program code as the variables and macros are then no longer available.</p>
+      <h4 class="Blocklabel">Example</h4>
+      <p class="comment">Travel parameters via user variables in the part program and R parameters in the technology cycle</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EIC"><colgroup><col width="56.4%"><col width="43.6%"></colgroup><tr valign="top"><th>Program code</th><th>Comment: Use in</th></tr><tr valign="top"><td>PROC UP_1</td><td> </td></tr><tr valign="top"><td>  DEF REAL POS_X=100.0</td><td>Part program</td></tr><tr valign="top"><td>  DEF REAL F_X=250.0</td><td>Part program</td></tr><tr valign="top"><td>  IF $P_TECCYCLE==TRUE</td><td> </td></tr><tr valign="top"><td>    $R1=100.0</td><td>Technology cycle</td></tr><tr valign="top"><td>    $R2=250.0</td><td>Technology cycle</td></tr><tr valign="top"><td>  ENDIF</td><td> </td></tr><tr valign="top"><td>  IF $P_TECCYCLE==TRUE</td><td> </td></tr><tr valign="top"><td>    N100 POS[X]=$R1 FA[X]=$R2</td><td>Technology cycle</td></tr><tr valign="top"><td>  ELSE</td><td> </td></tr><tr valign="top"><td>    N200 POS[X]=POS_X FA[X]=F_X</td><td>Part program</td></tr><tr valign="top"><td>  ENDIF</td><td> </td></tr><tr valign="top"><td>RET</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>See also:<br />    <a href="156664077579.html">Definitions (DEF, DEFINE)</a><br />    <a href="156664065547.html">Technology cycles: General information</a></p>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Axis selection and status display</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Axis selection and status display</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>In the dialog "Axis selection for automatic tuning", for each channel, select the axes for automatic friction compensation. </p>
+      <h4 class="Blocklabel">Automatic tuning:</h4>
+      <p>
+        <b>Before starting</b> automatic tuning:</p>
+      <p>For<b> </b><a href="friction_comp_auto_start.html">Automatic tuning</a>, in a channel, select several axes that should be automatically tuned one after the other. The automatic tuning for the selected axes is started for each channel. </p>
+      <h4 class="Blocklabel">Status display:</h4>
+      <p>The following status data is displayed while tuning: </p>
+      <ul>
+        <li>
+          <p>"waits" for the selected axes, where tuning has still not been started.</p>
+        </li>
+        <li>
+          <p>"being tuned" for the axis that is presently being tuned.</p>
+        </li>
+        <li>
+          <p>"tuned" for axes, where tuning has already been successfully completed and saved.</p>
+        </li>
+      </ul>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Time required (radius, feedrates) </h4>
+            <p class="safety">The time required for the automatic tuning is obtained from the selected feedrates and the radius: Align the feedrates in the <a href="friction_comp_view_md.html">channel setting data</a> for the tuning of the axes to the machining velocities of the machine.</p>
+          </td>
+        </tr>
+      </table>
+      <p>
+        <b>After completing</b> automatic tuning:</p>
+      <p>To visualize the measurement results, for the automatic tuning process, after each step, the tuning result is saved as screenshot under the following path: ../user/sinumerik/hmi/data/cst  </p>
+      <p>When tuning an axis, the resolution for the screenshots is the same for all feedrates, and is not selected less than 1 μm.</p>
+      <p>After completing tuning of an axis in the channel, the compensation values are written to the axis machine data and the status display updated.</p>
+      <h4 class="Blocklabel">Tuning quality: </h4>
+      <p>The displayed maximum deviation can vary when repeating the tuning process at the same axis. If, after measurement, the deviation for a feedrate has not improved when compared to the initial state, compensation values are not written to the axis machine data. </p>
+      <h4 class="Blocklabel">Commissioning archive:</h4>
+      <p>The tuning results in the axis machine data and also the tuning status of the axes are backed up in the "NC data" commissioning archive. If the commissioning archive with the tuning data from machine A is read into another machine B, then the NC data is completely read in. </p>
+      <ul>
+        <li>
+          <p>The axis machine data is read in and becomes effective. </p>
+        </li>
+        <li>
+          <p>The axis tuning status is read in. </p>
+          <p>When selecting dialog "Friction compensation", you are prompted to accept or reject the tuning status from the archive. </p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Constraints for the commissioning sequence:</h4>
+      <ul>
+        <li>
+          <p>For a feedrate override not equal to 100 %, the selected axis traverses with the reduced feed. The tuning (automatic and manual) is held, and the circular representation is suppressed until the feedrate override has been again set to 100%. </p>
+        </li>
+        <li>
+          <p>The computational resolution in MD10200 $MN_INT_INCR_PER_MM and MD10210 $MN_INT_INCR_PER_DEG must be at least 10000.</p>
+        </li>
+        <li>
+          <p>Tuning is not started if, for the selected axis, the following machine data cannot have a value of 0: </p>
+          <p>MD32450 $MA_BACKLASH</p>
+          <p>MD32456 $MA_BACKLASH_DYN</p>
+          <p>MD32572 $MA_FRICT_V_PULSE_DELAY_TIME</p>
+          <p>MD32575 $MA_FRICT_V_PULSE_SMOOTH_TIME</p>
+          <p>MD32578 $MA_FRICT_T_PULSE_SMOOTH_TIME</p>
+          <p>MD32579 $MA_FRICT_PRETRIGGER_TIME</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Manual tuning:</h4>
+      <p>
+        <b>To start </b>manual tuning press the "Manual tuning" softkey. In the next dialog, select the axes that you wish to tune.</p>
+      <p>After completing tuning for an axis in the channel, the compensation values are written to the axis machine data and the status display updated.</p>
+      <h4 class="Blocklabel">⇒ Further actions:</h4>
+      <ul>
+        <li>
+          <p>"Start" softkey to start automatic friction compensation.</p>
+        </li>
+        <li>
+          <p>"Manual tuning >" softkey, to start friction compensation with manual input of the compensation values.</p>
+        </li>
+        <li>
+          <p>"OK" softkey to confirm your selection.</p>
+        </li>
+        <li>
+          <p>"Cancel" softkey to cancel the selection.</p>
+        </li>
+      </ul>
+    </div>
+    <p>See also:<br />    <a href="61373027211.html">Requirements</a><br />    <a href="friction_comp_prog_editor.html">Operating the program editor</a><br />    <a href="60621972491.html">Friction compensation with torque injection pulse</a><br />    <a href="80245209099.html">Example for a linear axis (automatic tuning)</a></p>
+  </body>
+</html>

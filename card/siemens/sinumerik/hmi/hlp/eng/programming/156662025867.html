@@ -1,0 +1,56 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Behavior for tools with relevant cutting edge position</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Behavior for tools with relevant cutting edge position</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>For tools with the relevant cutting edge position (turning and grinding tools, tool types 400 - 599), then the tool length always refers to the cutting edge reference point. The necessary offsets when activating tool radius compensation are completely executed in preprocessing.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Intersection calculation</h3>
+      <p>The straight line between the tool edge center points at the block start and block end is used to calculate intersection points with the approach and retraction block. The difference between the tool edge reference point and the tool edge center point is superimposed on this movement. For approach and/or retraction with KONT, the movement is superimposed in the linear subblock of the approach or retraction movement. Therefore, the geometrical conditions for tools with or without relevant cutting edge position are identical.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Constraints</h3>
+      <h4 class="Blocklabel">Tool change</h4>
+      <p>In circle blocks and in motion blocks containing rational polynomials with a denominator degree > 4, it is not permitted to change a tool with active tool radius compensation in cases where the distance between the tool edge center point and the tool edge reference point changes. With other types of interpolation, contrary to the previous state, it is now possible to change when a transformation is active (e.g. TRANSMIT).</p>
+      <h4 class="Blocklabel">3D circumferential milling</h4>
+      <p>For tool radius compensation with variable tool orientation, the transformation from the tool edge reference point to the tool edge center point can no longer be performed using a simple work offset. Tools with a relevant tool cutting edge are therefore not permitted for 3D peripheral milling (alarm)</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">The subject is irrelevant with respect to face milling as only defined tool types without relevant cutting edge position are permitted for this operation.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Behavior for tools without permitted tool type</h4>
+      <p>Tools with a type, which has not been explicitly approved, are treated as a ball end mill with the specified radius. The specification of a cutting edge position is ignored.</p>
+    </div>
+  </body>
+</html>

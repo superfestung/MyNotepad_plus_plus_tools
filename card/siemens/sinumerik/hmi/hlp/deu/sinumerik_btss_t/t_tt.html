@@ -1,0 +1,64 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein T/TT: Magazindaten: Platztypen</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein T/TT: Magazindaten: Platztypen</h1>
+         </div>
+      </div>Der Baustein TT ist als 2-dimensionales Variablenfeld organisiert, wobei die Variable mit dem Index (1/1) die maximale Anzahl
+      der Spalten (entspricht den Platzhierarchien) in diesem Baustein enthält. Jedes Element ist über einen Spalten- und Zeilenindex
+      adressierbar:<br/>
+      Der Spaltenindex ist die Nummer der Platzhierarchie + 1. Der Zeilenindex ist die Nummer des Platztyps + 1. Die Zeile 1 enthält
+      als spezielle Information die aktuelle Anzahl der Zeilen für eine bestimmte Platzhierarchie.<br/>
+      <br/>
+      Sollen für eine Platzhierarchie alle Platztypen ausgelesen werden, muss man 2stufig vorgehen:<br/>
+      1. In der 1. Zeile jeder Platzhierarchie steht die Anzahl der belegten Platztypen für diese Hierarchie<br/>
+      2. Die Zeilen 2 ... n können in einem Auftrag ausgelesen werden.<br/>
+      
+      <div><a name="601"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>placeType</b></td>
+            <td colspan="3" style="border:1px solid black">Magazinplatzhierarchie</td>
+            <td width="20%" style="border:1px solid black">$TC_MPTH[n,m]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>Platztyphierarchie+1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Platztyp+1<br>Nummer des Platztypes+1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>Wert aus Zeile 1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Über die Hierarchisierung von Platztypen lassen sich Suchstrategien für die Leerplatzsuche innerhalb und zwischen Magazinen
+               ableiten.<br/>
+               Es lassen sich unterschiedliche Hierarchien definieren. Innerhalb einer Hierarchie lässt sich zusätzlich eine Priorisierung
+               der Magazinplätze bei der Suche vorgeben.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Tool/Magazine/placeType[u&lt;Werkzeugber.&gt;, c&lt;Spaltenindex&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

@@ -1,0 +1,99 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Safe Torque Off (STO)/Safe Stop 1 (SS1)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Safe Torque Off (STO)/Safe Stop 1 (SS1)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>In conjunction with a machine function or in the event of a fault, the "Safe Torque Off" (STO) function is used to safely disconnect the torque-generating energy supply to the motor.</p>
+      <p>A restart is prevented by the two-channel pulse suppression. The switching on inhibited prevents an automatic restart after deselection of STO.</p>
+      <p>The "Safe Stop 1" (SS1) function allows the drive to be stopped in accordance with EN 60204-1, Stop Category 1. The drive decelerates with the OFF3 ramp (p1135) once "Safe Stop 1" is selected and switches to "Safe Torque Off" (STO) once the delay time set in p9652 has elapsed.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Precondition</h3>
+      <p>The <a href="147125433483.html">commissioning mode</a> must be activated so that the parameters of this safety function can be changed. A basic function must be set in the <a href="konf_dbsi_options.html">options</a>. </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Settings</h3>
+      <p>You can make the following settings in this window: </p>
+      <ul>
+        <li>
+          <p>Control Unit terminal (p9620[0])</p>
+          <p>Sets the signal source for the STO, SH and SS1 functions of the Control Unit. </p>
+          <p>This is only relevant if a basic function via terminal is set in the <a href="konf_dbsi_options.html">options</a>. Otherwise, the input field is deactivated. </p>
+        </li>
+        <li>
+          <p>SS1 delay time (p9652)</p>
+          <p>Sets the delay time of the pulse cancellation in seconds for the function "Safe Stop 1" (SS1) on the Control Unit to brake along the OFF3 down ramp (p1135).</p>
+        </li>
+        <li>
+          <p>Braking response for SS1 (p9653)</p>
+          <p>Select a predefined braking response below the input field "SS1 delay time". Parameter p9653 is preassigned depending on the selected braking response. </p>
+        </li>
+        <li>
+          <p>F-DI input filter (p9651)</p>
+          <p>Setting the debounce time in ms for the failsafe digital inputs to control STO/SBC/SS1.</p>
+        </li>
+        <li>
+          <p>Simultaneity monitoring (p9650)</p>
+          <p>Sets the discrepancy time in ms to change over the safety-relevant inputs (SGE) on the Control Unit.</p>
+        </li>
+        <li>
+          <p>Delay time STOP F -> STOP A (p9658)</p>
+          <p>Sets the transition time from STOP F to STOP A in ms on the Control Unit.</p>
+        </li>
+        <li>
+          <p>Forced checking procedure of the switch-off signal paths (p9659)</p>
+          <p>Sets the time interval in hours for carrying out the forced checking procedure and testing the switch-off signal paths.</p>
+        </li>
+        <li>
+          <p>Switch-off signal paths must be tested (r9773.31)</p>
+          <p>To evaluate whether the switch-off signal paths must be tested, the status of r9773.31 "Switch-off signal path must be tested" can be interconnected with a parameter via the BICO editor.</p>
+        </li>
+      </ul>
+      <p>The "PROFIsafe" box is only relevant if a basic function via PROFIsafe is set in the <a href="konf_dbsi_options.html">options</a>. If the SS1 delay time p9652 = 0, then the control of SS1 via PROFIsafe is deactivated. In this case, the connection line is shown interrupted.</p>
+      <p>
+      </p>
+      <p>The following LEDs can display the status (blue = active; gray = inactive): </p>
+      <ul>
+        <li>
+          <p>STO selected (r9772.0)</p>
+          <p>"STO selected in the drive" setting</p>
+        </li>
+        <li>
+          <p>No text (brake reaction) (r9773.2)</p>
+          <p>Setting "SS1 Delay time active in the drive"</p>
+        </li>
+        <li>
+          <p>Pulse inhibit channel 1 active (r9772.1)</p>
+          <p>Setting "STO or safe pulse cancellation active on the CU"</p>
+        </li>
+        <li>
+          <p>Pulse inhibit channel 2 active (r9872.1)</p>
+          <p>Setting "STO on Motor Module active"</p>
+        </li>
+        <li>
+          <p>STO active (r9773.1)</p>
+          <p>Setting "STO active in the drive"</p>
+        </li>
+        <li>
+          <p>Switch-off signal paths must be tested (r9773.31)</p>
+          <p>Setting "Switch-off signal paths must be tested"</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Parameter list</h4>
+      <p>When required, each setting in this dialog window can also be made via a parameter list. You can access the <a href="147125442315.html">parameter list</a> using the ">>" softkey followed by the "Parameter list" softkey. </p>
+    </div>
+    <p>See also:<br />    <a href="147125519883.html">Calling function dialogs</a></p>
+  </body>
+</html>

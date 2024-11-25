@@ -1,0 +1,30 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Activate machine data (NEWCONF)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Activate machine data (NEWCONF)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>The <code>NEWCONF</code> command activates all machine data. The function can also be activated in the HMI user interface by pressing the "MD data effective" softkey.</p>
+      <p>When the "NEWCONF" function is executed there is an implicit preprocessing stop; in other words, path movement is interrupted. </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>
+        <code>NEWCONF</code>
+      </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Meaning</h3>
+      <a id="table_262c0916-25a2-4221-9dde-ee7b2a67b0d6">
+      </a> <a id="table_0"></a> <a id="table_262c0916-25a2-4221-9dde-ee7b2a67b0d6"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="15.1%"><col width="84.8%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>NEWCONF</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Command for setting all machine data of the "NEW_CONFIG" effectiveness level active</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Cross-channel execution of NEWCONF from the part program</h3><p>If changes are made to axial machine data from the part program and then activated with <code>NEWCONF</code>, <code>NEWCONF</code> will only activate the machine data containing changes affecting the part program channel.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">In order to ensure that all changes are applied, the <code>NEWCONF</code> command must be executed in every channel in which the axes or functions affected by the changes to the machine data is being calculated.</p><p class="safety">No axial machine data is effective for <code>NEWCONF</code>.</p><p class="safety">An axial RESET must be performed for axes controlled by the PLC.</p></td></tr></table><a name="block_4"></a><h3 class="Blocktitle">Example</h3><p>Milling: Machine drill position with different technologies</p><a id="table_be5eef69-c4a7-4b85-9a92-f2edbd2c84ae"></a> <a id="table_1"></a> <a id="table_be5eef69-c4a7-4b85-9a92-f2edbd2c84ae"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EOC"><colgroup><col width="45.6%"><col width="54.4%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10 $MA_CONTOUR_TOL[AX]=1.0</td><td>; Change machine data.</td></tr><tr valign="top"><td>N20 NEWCONF</td><td>; Activate machine data.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Achse: Benutzerdefinierte Strategie (108)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Achse: Benutzerdefinierte Strategie (108)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Das Optimierungsziel kann direkt in "Drehzahl" oder "Position" eingegeben werden. Alternativ kann man zunächst eine vordefinierte Strategie (102, etc.) wählen, diese mit "Strategie anpassen" übernehmen und dann Änderungen vornehmen. </p>
+      <p>Mit Hilfe der Kontrollkästchen wählt der Inbetriebnehmer die einzelnen Schritte zum Messen und Optimieren aus. Einige Schritte bedingen sich gegenseitig: Für das Optimieren des Drehzahlreglers ist z. B. vorher immer eine Messung der Drehzahlregelstrecke notwendig. Alle Kontrollkästchen, die eine Messung zur Folge haben, sind mit einem Pfeil gekennzeichnet. Mit dem vertikalen Softkey "Messparameter >" sind weitere Voreinstellungen zur jeweiligen Messung verfügbar. </p>
+      <p>
+        <b>Vorabmessung zur Bestimmung der Anregung durchführen:</b>
+      </p>
+      <p>Die Vorabmessung zur Bestimmung der Anregung kann immer an- oder abgewählt werden. Die Vorabmessung wird bei der ersten Inbetriebnahme der Achse oder bei unbekannten Massenverhältnissen (Last/Motor) empfohlen. Nach der Vorabmessung werden automatisch die Messparameter für die folgende Messung bestimmt. Benutzerdefinierte Messparameter werden dann überschrieben. </p>
+      <p>
+        <b>Nicht unterstützte Reglereigenschaften in NC und Antrieb deaktivieren:</b>
+      </p>
+      <p>Folgende Funktionen werden deaktiviert, falls sie verwendet werden:</p>
+      <ul>
+        <li>
+          <p>Achse:</p>
+          <p>MD32220 $MA_POSCTRL_INTEGR_ENABLE = 0</p>
+          <p>MD32610 $MA_VELO_FFW_WEIGHT = 1.0   (sollte immer 1 sein)</p>
+          <p>MD32930 $MA_POSCTRL_OUT_FILTER_ENABLE = 0</p>
+        </li>
+        <li>
+          <p>Antrieb:</p>
+          <p>Wenn das Funktionsmodul Advanced Positioning Control (APC) aktiviert ist: p3700.0 = 0</p>
+          <p>Geschwindigkeitsregelung Konfiguration: p1400.5 = 0</p>
+          <p>Die Drehzahlregleradaption wird deaktiviert.</p>
+          <p>Drehzahlregler Integratorrückführung Zeitkonstante: p1494 = 0.0</p>
+        </li>
+      </ul>
+      <p>
+        <b>Geglätteten Drehzahlsollwertsprung zur Erstellung eines Mechanikmodells messen:</b>
+      </p>
+      <p>Bei Beginn der Optimierung ist die Lastträgheit, die Steifigkeit der Ankopplung und die Korrektheit der aktuellen Reglereinstellung unbekannt. Zur ersten Abschätzung kann eine Sprungantwort gemessen werden. Dadurch können die Parameter während der Messung der Drehzahlregelstrecke besser automatisch bestimmt werden. </p>
+      <p>
+        <b>Drehzahlregelstrecke messen:</b>
+      </p>
+      <p>Diese Messung ist notwendig, um den Drehzahlregler zu optimieren.</p>
+      <p>Wird zuerst mit maximaler Bandbreite durchgeführt (z. B. 4000 Hz)</p>
+      <p>
+        <b>Drehzahlregelstrecke bei reduzierter Bandbreite messen:</b>
+      </p>
+      <p>Diese Messung ist notwendig, um den Drehzahlregler zu optimieren.</p>
+      <p>Zur Verbesserung der Frequenzauflösung wird diese Messung mit reduzierter Bandbreite ausgeführt.</p>
+      <p>
+        <b>Drehzahlregelkreis für Drehzahlregler-Streckenmodell messen: </b>
+      </p>
+      <p>Diese Messung ist notwendig, wenn der Lageregelkreis (inkl. Vorsteuerung) automatisch optimiert werden soll, aber der Drehzahlregler nicht mit der automatischen Servo Optimierung optimiert wurde.</p>
+      <p>
+        <b>Drehzahlregler optimieren:</b>
+      </p>
+      <p>Auf Basis der gemessenen Drehzahlregelstrecken und des vorgegebenen Optimierungszieles werden die Parameter für den Drehzahlregler (inkl. Stromsollwertfilter) berechnet. Die Parameter werden erst in den Antrieb übernommen, wenn die Optimierung der Achse abgeschlossen ist oder eine Messung zur Überprüfung durchgeführt wird. Es werden die Einstellungen von "Drehzahl" angewendet.</p>
+      <p>
+        <b>Drehzahlregelkreis zur Überprüfung messen: </b>
+      </p>
+      <p>Der geschlossene Drehzahlregler wird mit den neuen Parametern gemessen. Hierzu werden die neuen Parameter in den Antrieb geschrieben.</p>
+      <p>
+        <b>Mechanik vermessen: </b>
+      </p>
+      <p>Übertragungsstrecke zwischen Motorgeber und direktem Geber (z. B. Linearmaßstab) messen. Hierbei ist kein Einfluss der Regelung enthalten. Mit Hilfe dieser Messung kann der Lageregelkreis mit Regelung auf direktem Geber berechnet werden. </p>
+      <p>
+        <b>Lageregler optimieren: ohne Parameter</b>
+      </p>
+      <p>KV-Faktor und Vorsteuerung werden auf Basis der vorangegangenen Messungen optimiert. Hierbei wird auch das Optimierungsziel herangezogen. Es werden die Einstellungen von "Position" angewendet. Wenn ein zweiter Geber eingerichtet ist, wird die Lageregelung immer so berechnet, dass dieser zweite Geber für die Lageregelung benutzt wird.</p>
+      <p>
+        <b>Kontrollmessung Lageregelkreis: </b>
+      </p>
+      <p>Der geschlossene Lageregler wird mit den neuen Parametern gemessen. Hierzu werden die neuen Drehzahl- und Lageregler-Parameter in den Antrieb und die NC geschrieben. Für die Messung muss die Vorsteuerung ausgeschaltet werden. Deswegen kommt - je nach Optionseinstellung - eine Meldung, die zum Drücken der Reset-Taste auf der Maschinensteuertafel auffordert. Nach der Messung wird die Vorsteuerung wieder aktiviert; deshalb kommt nach der Messung eine weitere Aufforderung für Reset (re).</p>
+      <p>
+        <b>⇒ Überprüfung der Messdatenqualität: ohne Parameter</b>
+      </p>
+      <p>Die Software zur automatischen Optimierung überprüft, ob die Anregung und die Offset-Geschwindigkeit ausreichend war und gibt einen entsprechenden Hinweis.</p>
+      <p>
+        <b>⇒ Messparameter:</b>
+      </p>
+      <p>Für jede der folgenden Messungen können individuelle Messparameter eingegeben werden:</p>
+      <ul>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param1.html">Drehzahlsollwertsprung für Mechanikmodell messen</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param2.html">Drehzahlregelstrecke messen</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param3.html">Drehzahlregelstrecke bei reduzierter Bandbreite messen</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param4.html">Drehzahlregelkreis für Drehzahlregler-Streckenmodell messen</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param5.html">Drehzahlregelkreis zur Überprüfung messen</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param6.html">Mechanik vermessen</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a href="ast_strategy_axis_108_param7.html">Kontrollmessung Lageregelkreis</a>
+          </p>
+        </li>
+      </ul>
+      <p>
+        <b>⇒ Weitere Aktionen:</b>
+      </p>
+      <ul>
+        <li>
+          <p>Softkey "Strategie anpassen", um die Vorbelegungswerte einer vordefinierten Strategie anzupassen. Dabei wird die Benutzerdefinierte Strategie (108) mit den Werten der vordefinierten Strategie belegt. In der "Benutzerdefinierten Strategie" sind alle Parameter einstellbar. Voreinstellung bei der "Benutzerdefinierte Strategie" ist das Optimierungsziel "Normale Ausregelung".</p>
+        </li>
+        <li>
+          <p>Softkey "Messparameter >", um die Parameter für eine Messung anzupassen. Dieser Softkey nur bei Anwahl der "Benutzerdefinierten Strategie" bedienbar. </p>
+        </li>
+        <li>
+          <p>Softkey "<a href="ast_strategy_select_cust_position_209.html">Drehzahl</a>"/Softkey "<a href="ast_strategy_select_cust_speed_309.html">Position</a>", um zur Strategieauswahl für Drehzahlreg​ler oder Lageregler zu wechseln.</p>
+        </li>
+        <li>
+          <p>Softkey "Abbruch" und "OK", um abzubrechen oder die neuen Einstellungen zu übernehmen.</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

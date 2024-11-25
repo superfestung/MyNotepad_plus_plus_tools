@@ -1,0 +1,35 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Keep tool radius compensation constant (CUTCONON, CUTCONOF)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Keep tool radius compensation constant (CUTCONON, CUTCONOF)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The "Keep tool radius compensation constant" function is used to suppress tool radius compensation for a number of blocks, whereby a difference between the programmed and the actual tool center path traveled set up by tool radius compensation in the previous blocks is retained as the compensation. It can be an advantage to use this method when several traversing blocks are required during line milling in the reversal points, but the contours produced by the tool radius compensation (follow strategies) are not wanted. It can be used independently of the type of tool radius compensation (2<sup>1</sup>/<sub>2</sub>D, 3D face milling, 3D circumferential milling). </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>
+        <code>CUTCONON</code>
+      </p>
+      <p>
+        <code>CUTCONOF</code>
+      </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Meaning</h3>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="17.4%"><col width="82.5%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>CUTCONON</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Command to activate the "Keep tool radius compensation constant" function</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>CUTCONOF</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Command to deactivate the "Keep tool radius compensation constant" function</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Example</h3><a id="image_793698187_0"></a> <img border="0" src="images/170152097035.png" width="500" height="300"/><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EUD"><colgroup><col width="55.1%"><col width="44.9%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10</td><td>; Definition of tool d1.</td></tr><tr valign="top"><td>N20 $TC_DP1[1,1] = 110</td><td>; Type</td></tr><tr valign="top"><td>N30 $TC_DP6[1,1]= 10.</td><td>; Radius</td></tr><tr valign="top"><td>N40</td><td> </td></tr><tr valign="top"><td>N50 X0 Y0 Z0 G1 G17 T1 D1 F10000</td><td> </td></tr><tr valign="top"><td>N60</td><td> </td></tr><tr valign="top"><td>N70 X20 G42 NORM</td><td> </td></tr><tr valign="top"><td>N80 X30</td><td> </td></tr><tr valign="top"><td>N90 Y20</td><td> </td></tr><tr valign="top"><td>N100 X10 CUTCONON</td><td>; Activation of the compensation suppression.</td></tr><tr valign="top"><td>N110 Y30 KONT</td><td>; If required, insert bypass circle when deactivating the compensation suppression.</td></tr><tr valign="top"><td>N120 X-10 CUTCONOF</td><td> </td></tr><tr valign="top"><td>N130 Y20 NORM</td><td>; No bypass circle when deactivating the TRC.</td></tr><tr valign="top"><td>N140 X0 Y0 G40</td><td> </td></tr><tr valign="top"><td>N150 M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+    <p>See also:<br />    <a href="156662022667.html">Keep tool radius compensation constant (CUTCONON, CUTCONOF): Further information</a><br />    <a href="156661962891.html">Activating/deactivating tool radius compensation (G40, G41, G42, OFFN):</a></p>
+  </body>
+</html>

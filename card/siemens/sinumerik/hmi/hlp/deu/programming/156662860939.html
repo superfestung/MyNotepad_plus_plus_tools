@@ -1,0 +1,85 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Überprüfung auf Schutzbereichsverletzung, Arbeitsfeldbegrenzung und Software-Endschalter (CALCPOSI): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Überprüfung auf Schutzbereichsverletzung, Arbeitsfeldbegrenzung und Software-Endschalter (CALCPOSI): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Achsstatus "Referenziert"</h4>
+      <p>Alle von <code>CALCPOSI()</code> betrachteten Maschinenachsen müssen referenziert sein.</p>
+      <h4 class="Blocklabel">Kreisbezogene Wegangaben</h4>
+      <p>Alle kreisbezogenen Wegangaben werden <b>immer </b>als Radiusangabe interpretiert. Dies ist insbesondere bei Planachsen mit aktivierter Durchmesserprogrammierung (<code>DIAMON</code> / <code>DIAM90</code>) zu berücksichtigen.</p>
+      <h4 class="Blocklabel">Verfahrwegreduzierung</h4>
+      <p>Wird der angegebene Verfahrweg einer Achsen begrenzt, sind im Rückgabewert <code>&lt;MaxDist></code> auch die Verfahrwege der anderen Achsen anteilsmäßig reduziert. Der resultierende Endpunkt liegt dadurch weiterhin auf der vorgegebenen Bahn.</p>
+      <h4 class="Blocklabel">Rundachsen</h4>
+      <p>Rundachsen werden nur überwacht, wenn es keine Modulo-Rundachsen sind.</p>
+      <p>Es ist zulässig, dass für eine oder mehrere der beteiligten Achsen keine Software-Endschalter bzw. Arbeitsfeldbegrenzungen oder Schutzbereiche definiert sind. </p>
+      <h4 class="Blocklabel">Software-Endschalter- und Arbeitsfeldbegrenzungs-Status</h4>
+      <p>Software-Endschalter und Arbeitsfeldbegrenzungen werden nur berücksichtigt, wenn diese bei Ausführung von <code>CALCPOSI()</code>aktiv sind. Der Status kann z. B. beeinflusst werden über:</p>
+      <ul>
+        <li>
+          <p>Maschinendaten: MD21020 $MC_WORKAREA_WITH_TOOL_RADIUS</p>
+        </li>
+        <li>
+          <p>Settingdaten: $AC_WORKAREA_CS_...</p>
+        </li>
+        <li>
+          <p>NC/PLC-Nahtstellensignale:<code> &lt;Axis>.basic.out.swLimitSwitch2Minus</code> / <code>...Plus</code></p>
+        </li>
+        <li>
+          <p>Befehle: <code>WALIMON</code> / <code>WALIMOF</code></p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Software-Endschalter und Transformationen</h4>
+      <p>Bei <code>CALCPOSI()</code>können bei verschiedenen kinematischen Transformationen (z. B. <code>TRANSMIT</code>) aufgrund von Mehrdeutigkeiten an bestimmten Stellen des Verfahrbereichs die Positionen der Maschinenachsen (MKS) nicht immer eindeutig aus den Positionen der Geometrieachsen (WKS) bestimmt werden. Im normalen Verfahrbetrieb ergibt sich die Eindeutigkeit in der Regel aus der Vorgeschichte und der Bedingung, dass einer kontinuierlichen Bewegung im WKS eine kontinuierliche Bewegung der Maschinenachsen im MKS entsprechen muss. Bei der Überwachung der Software-Endschalter wird deshalb in derartigen Fällen die zum Ausführungszeitpunkt von <code>CALCPOSI()</code> vorliegende Maschinenposition zur Auflösung der Mehrdeutigkeit verwendet. </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Vorlaufstopp</h4>
+            <p class="safety">Bei Verwendung von <code>CALCPOSI()</code> im Zusammenhang mit Transformationen liegt es in der alleinigen Verantwortung des Anwenders, zur Synchronisation der Maschinenachspositionen mit dem Vorlauf vor <code>CALCPOSI()</code> einen Vorlaufstopp (<code>STOPRE</code>) zu programmieren.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Schutzbereichsabstand und konventionelle Schutzbereiche</h4>
+      <p>Bei konventionellen Schutzbereichen ist <b>nicht </b>gewährleistet, dass bei einer Verfahrbewegung auf dem vorgegebenen Verfahrweg der im Parameter <code>&lt;Limit>[3]</code> angegebene Sicherheitsabstand gegenüber allen Schutzbereichen eingehalten wird. Es ist nur gewährleistet, dass bei Verlängerung des in <code>&lt;Dist></code> zurückgelieferten Endpunkts um den Sicherheitsabstand in Verfahrrichtung kein Schutzbereich verletzt wird. Die Gerade kann aber in ihrem Verlauf beliebig dicht an einem Schutzbereich vorbei führen.</p>
+      <h4 class="Blocklabel">Schutzbereichsabstand und Schutzbereiche der Kollisionsvermeidung</h4>
+      <p>Bei Schutzbereichen der Kollisionsvermeidung ist gewährleistet, dass bei einer Verfahrbewegung auf dem vorgegebenen Verfahrweg, der im Parameter <code>&lt;Limit>[3]</code> angegebene Sicherheitsabstand gegenüber allen Schutzbereichen eingehalten wird. </p>
+      <p>Der im Parameter <code>&lt;Limit>[3]</code> angegebene Sicherheitsabstand wird nur wirksam, wenn gilt:</p>
+      <p>
+        <code>&lt;Limit>[3]</code> > (MD10619 $MN_COLLISION_TOLERANCE)</p>
+      <p>Ist in Parameter <code>&lt;TestLim></code> Bit 4 gesetzt (Berechnung der weiteren Verfahrrichtung), ist der in <code>&lt;DIST></code> enthaltene Richtungsvektor nur dann gültig, wenn die Einhunderttausenderstelle im Rückgabewert der Funktion (<code>&lt;Status></code>) gesetzt ist. Kann eine solche Richtung nicht ermittelt werden, weil entweder Schutzbereiche verletzt wurden oder eine Transformation aktiv ist, bleibt der Eingangswert in <code>&lt;DIST></code> unverändert. Eine weitere Fehlermeldung erfolgt nicht.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">PLC-Signale</h3>
+      <a id="table_e849b817-f8dd-d3c2-26d6-a2643b47f3c7">
+      </a> <a id="table_0"></a> <a id="table_e849b817-f8dd-d3c2-26d6-a2643b47f3c7"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="45.0%"><col width="35.0%"><col width="20.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Basic Program Plus</p></th><th colspan="2"><p type="p_table_lb" align="left">Basic Program</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Axis>.basic.out.swLimitSwitch2Minus</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left"> LBP_Axis*.A_SWLimit2Minus</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB31, ... .DBX12.2</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Axis>.basic.out.swLimitSwitch2Plus</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LBP_Axis*. A_SWLimit2Plus</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB31, ... .DBX12.3</p></td></tr></table></p></div>
+  </body>
+</html>

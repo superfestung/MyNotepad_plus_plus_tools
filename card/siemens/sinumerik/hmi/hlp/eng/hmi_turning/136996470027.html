@@ -1,0 +1,33 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Special aspects of the selection alternatives for infeed depths</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Special aspects of the selection alternatives for infeed depths</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Note the following special aspects of the selection alternatives for roughing between the parameters D1 "First maximum infeed depth" and ND "Number of roughing cuts" and the selection alternative "Halve first infeed" and "First infeed normal" with degressive infeed.</p>
+      <p>For programming the number of cuts via parameter ND, the depth for the individual infeeds from the thread depth is divided by the number of cuts (constant infeed mode) or is calculated internally in such a way that the cross-sectional area of cut remains constant (degressive infeed mode). </p>
+      <p>For the degressive infeed, you can choose between "Halve first infeed" and "First infeed normal". The calculation algorithm for n-infeeds for "Halve first infeed" is comparable with the calculation algorithm n-1 infeeds for "First infeed normal". The only difference is: The first infeed is halved, so one additional infeed is required in total.</p>
+      <p>For programming the first infeed via parameter D1, the division calculated internally in the cycle also depends on the selection constant or degressive infeed.</p>
+      <p>For constant infeed, the required number of infeeds is calculated based on D1 in such a way that infeed is always executed by the same value. This can cause a smaller infeed value to be applied than the value programmed in D1, resulting in an integer multiple of the actual cut depth from the thread depth.</p>
+      <p>
+        <b>Example 1</b>
+      </p>
+      <p>For a thread depth of 7 mm and a first infeed of 2 mm, 4 cuts of 1.75 mm each are made in this mode.</p>
+      <p>With degressive infeed, the cross-sectional area of cut for the total thread depth is divided into cuts in such a way as to produce an integer multiple of the cross-sectional area of cut per infeed actually executed. In many cases, this also means that the first infeed is less than the value programmed in D1. Here, too, you can choose between "Halve first infeed" and "First infeed normal". When the first infeed is halved, double the value of D1 is used for calculating infeeds for the constant cross-sectional area of cut; if it is not, the single value of D1 is used.</p>
+      <p>
+        <b>Example 2</b>
+      </p>
+      <p>For a thread depth of 7 mm and D1=2 mm and "Halve first infeed", five infeeds and for "First infeed normal", 13 infeeds are executed.</p>
+      <p>However, the first infeed is less than 2 mm.</p>
+    </div>
+  </body>
+</html>

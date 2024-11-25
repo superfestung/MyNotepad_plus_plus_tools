@@ -1,0 +1,155 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Determining compliance using a probe</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowAction">
+        <h1 class="title">Determining compliance using a probe</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Preconditions</h3>
+      <p>If not yet already available, create a commissioning archive with the drive data and connect the probe to a free <a href="109646204427.html">DRIVE-CLiQ interface</a>. Only linear measuring systems are permitted as probes.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Notice</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Deactivate Safety Integrated temporarily</h4>
+            <p class="safety">If axes still have Safety Integrated activated, a message is displayed to inform you that Safety Integrated must be deactivated in order to configure the probe. </p>
+            <p class="safety">Following configuration of the probe, Safety Integrated must be activated once again.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Initiating trace recording </h3>
+      <p>Procedure: </p>
+      <table width="100%" border="0" cellspacing="0" cellpadding="10">
+        <tr>
+          <td>
+            <ol class="action">
+              <li>
+                <p>Select "Trace: Yes" to determine the compliance factor of the selected axis using a probe. </p>
+              </li>
+              <li>
+                <p>Select the measuring system for the encoder position actual value: </p>
+                <p>⇒ Select the drive to which the probe is connected, for example SERVO_3.3:6</p>
+                <p>⇒ Select an encoder, for example "Encoder 3".</p>
+              </li>
+              <li>
+                <p>Create a part program which comprises the following components:</p>
+                <ul>
+                  <li>
+                    <p>Trigger tag $AN_CUTRACE</p>
+                  </li>
+                  <li>
+                    <p>Dwell time of at least 200 ms so that the offset of the probe can be taken into consideration in the graphic representation.</p>
+                  </li>
+                  <li>
+                    <p>Traversing with constant velocity. </p>
+                  </li>
+                  <li>
+                    <p>The accelerating axis is accelerated to at least 1 m/s<sup>2</sup>.</p>
+                  </li>
+                </ul>
+                <p>Example: </p>
+                <a id="table_2f5a1753-2f40-b6ee-b953-2c54f8a61baf">
+                </a> <a id="table_0"></a> <a id="table_2f5a1753-2f40-b6ee-b953-2c54f8a61baf"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default_list" border="1"><colgroup><col width="35.0%"><col width="65.0%"></colgroup><tr valign="top"><td>SOFT</td><td>; acceleration with active jerk limitation</td></tr><tr valign="top"><td>DYNNORM</td><td>; G command for activating the normal dynamic response</td></tr><tr valign="top"><td>$AN_CUTRACE=1</td><td>; trigger tag</td></tr><tr valign="top"><td>G4 F0.2</td><td>; Dwell time</td></tr><tr valign="top"><td>G91 G01 F20000 Y-50</td><td>; relative traversing motion with programmed feed</td></tr><tr valign="top"><td>G4 F0.5</td><td>; Dwell time</td></tr><tr valign="top"><td>Y50</td><td>; traversing motion</td></tr><tr valign="top"><td>G4 F0.5</td><td>; Dwell time</td></tr><tr valign="top"><td>M30</td><td>; End of program</td></tr></table></p></li>
+              <li>
+                <p>Initiate the trace recording with the "Start trace" softkey. Then initiate the part program with &lt;NC-Start>.</p>
+                <table cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td>
+                      <font size="1px">
+                      </font>
+                    </td>
+                  </tr>
+                </table>
+                <table class="safety" border="1" bgcolor="#eeeeee">
+                  <colgroup>
+                    <col width="5%">
+                    <col width="95%">
+                  </colgroup>
+                  <tr>
+                    <td>
+                      <b>Note</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h4 class="Blocklabel">Starting the trace</h4>
+                      <p class="safety">Once trace recording has been initiated by the trigger in the part program, it is no longer possible to cancel the recording process. </p>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <p>As soon as recording is complete, the following data is displayed in a graphic representation:</p>
+                <ul>
+                  <li>
+                    <p>Encoder position actual value (p0479) of the probe</p>
+                  </li>
+                  <li>
+                    <p>Acceleration of the accelerating axis</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p>Enter the compliance factor (positional deviation/acceleration) and repeat the measurement. To clarify the effect of the compliance factor against the first measurement, scaling of the graphic following the first measurement is retained. </p>
+              </li>
+              <li>
+                <p>Once you have determined the optimum compliance factor for the axis, rescaling of the graphic can be performed with the "Rescale" softkey. </p>
+              </li>
+              <li>
+                <p>As soon as the compliance factor is changed, the measurement must be repeated for verification. Only then will the "Accept" softkey become active. </p>
+              </li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+      <p>
+        <b>⇒ additional actions: </b>
+      </p>
+      <ul>
+        <li>
+          <p>"Start trace" softkey to initiate recording of the trace.</p>
+        </li>
+        <li>
+          <p>"Rescale" softkey to automatically scale the graphic.</p>
+        </li>
+        <li>
+          <p>"Cancel" softkey to return to the overview display without any modifications.</p>
+        </li>
+        <li>
+          <p>"Accept" softkey to adopt the new compliance values.</p>
+        </li>
+      </ul>
+    </div>
+    <p>See also:<br />    <a href="nodcomp_axis_overview.html">Nodding compensation - overview</a><br />    <a href="nodcomp_manuel_input.html">Nodding compensation - manually enter</a></p>
+  </body>
+</html>

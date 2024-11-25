@@ -1,0 +1,104 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Setting the measuring system (G70, G71, G700, G710)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Setting the measuring system (G70, G71, G700, G710)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>If a specific system of units (inch/metric) is not explicitly defined in a synchronized action with <code>G70</code>, <code>G71</code>, <code>G700</code>, <code>G710</code>, the measuring system active in the part program at the time the synchronized action is executed takes effect:         </p>
+      <ul>
+        <li>
+          <p>
+            <code>G70/G71</code> active in the part program:</p>
+          <ul>
+            <li>
+              <p>All the <b>programmed</b> position values are interpreted in the <b>programmed</b> system of units.</p>
+            </li>
+            <li>
+              <p>All the <b>read </b> position data is interpreted in the <b>parameterized basic system</b>.</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            <code>G700/G710</code> active in the part program:</p>
+          <ul>
+            <li>
+              <p>All the <b>programmed</b> position values are interpreted in the <b>programmed</b> system of units.</p>
+            </li>
+            <li>
+              <p>All the <b>read </b> position data is interpreted in the <b>parameterized basic system</b>.</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>The following rules apply when defining the system of units in the synchronized action:</p>
+      <ul>
+        <li>
+          <p>If a system of units is programmed in the condition part, this also takes effect in the action part if a measuring system has not been specifically programmed there.</p>
+        </li>
+        <li>
+          <p>If there is only a system of units programmed in the action part, the system which is currently activated in the part program takes effect in the condition part.</p>
+        </li>
+        <li>
+          <p>Different systems of units can be programmed in the condition and action parts.</p>
+        </li>
+        <li>
+          <p>The system of units programmed in the synchronized action has no effect on the part program.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Example</h4>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="73.0%"><col width="3.7%"><col width="13.0%"><col width="10.3%"></colgroup><tr valign="top"><th>Program code</th><th colspan="3">Comment</th></tr><tr valign="top"><td>N10 ID=1 EVERY $AA_IM[Z]>200 DO POS[Z2]=10</td><td>;
+;
+;</td><td>$AA_IM:
+200:
+10:</td><td>#
+#
+#</td></tr><tr valign="top"><td>N20 ID=2 EVERY $AA_IM[Z]>200 DO <b>G70</b> POS[Z2]=10</td><td>;
+;
+;</td><td>$AA_IM:
+200:
+10:</td><td>#
+#
+inch</td></tr><tr valign="top"><td>N30 ID=3 EVERY <b>G71</b> $AA_IM[Z]>200 DO POS[Z2]=10</td><td>;
+;
+;</td><td>$AA_IM:
+200:
+10:</td><td>#
+mm
+mm</td></tr><tr valign="top"><td>N40 ID=4 EVERY <b>G71</b> $AA_IM[Z]>200 DO <b>G70</b> POS[Z2]=10</td><td>;
+;
+;</td><td>$AA_IM:
+200:
+10:</td><td>#
+mm
+inch</td></tr><tr valign="top"><td>N50 ID=5 EVERY $AA_IM[Z]>200 DO <b>G700</b> POS[Z2]=10</td><td>;
+;
+;</td><td>$AA_IM:
+200:
+10:</td><td>#
+#
+inch</td></tr><tr valign="top"><td>N60 ID=6 EVERY <b>G710</b> $AA_IM[Z]>200 DO POS[Z2]=10</td><td>;
+;
+;</td><td>$AA_IM:
+200:
+10:</td><td>mm
+mm
+mm</td></tr><tr valign="top"><td>N70 ID=7 EVERY <b>G710</b> $AA_IM[Z]>200 DO <b>G700</b> POS[Z2]=10</td><td>;
+;
+;</td><td>$AA_IM:
+200:
+10:</td><td>mm
+mm
+inch</td></tr><tr valign="top"><td colspan="4">#: The unit depends on the parameterized basic system (MD10240 $MN_SCALING_SYSTEM_IS_METRIC) and the system of units programmed in the part program</td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><h4 class="Blocklabel">System of units and technology cycles</h4><p class="safety">If a technology cycle is being used, the system of units can also be programmed in the technology cycle instead of the system of units having to be assigned in the action part of the synchronized action.</p></td></tr></table></div>
+  </body>
+</html>

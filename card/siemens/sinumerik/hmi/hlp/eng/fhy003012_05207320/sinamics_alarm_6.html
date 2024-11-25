@@ -1,0 +1,1954 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="206922">F206922</a></b></td>
+<td><b>&lt;location&gt;Braking resistor phase failure</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A phase failure for the brake resistor was detected.<br />
+Fault value (r0949, interpret decimal):<br />
+11: Phase U<br />
+12: Phase V<br />
+13: Phase W<br />
+See also: p3235 (Phase failure signal motor monitoring time)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the feeder cables to the braking resistors.<br />
+See also: p1360 (Braking chopper braking resistor cold), p1362 (Braking chopper activation threshold), r1363 (Braking chopper output voltage), p1364 (Braking chopper resistor asymmetry)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207011">F207011</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor overtemperature</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>KTY84&#47;PT1000 or no sensor:<br />
+The measured motor temperature or model temperature has exceeded the fault threshold (p0605) or the timer (p0606) has elapsed following the alarm threshold (p0604) being exceeded.<br />
+The response parameterized in p0610 becomes active.<br />
+PTC or bimetallic NC contact:<br />
+The response threshold of 1650 Ohm was exceeded or the NC contact opened and the timer (p0606) has expired. The response parameterized in p0610 becomes active.<br />
+Possible causes:<br />
+- motor is overloaded.<br />
+- the motor ambient temperature is too high.<br />
+- PTC &#47; bimetallic NC contact: Wire breakage or sensor not connected.<br />
+Fault value (r0949, interpret decimal):<br />
+200:<br />
+Motor temperature model 1 (I2t): temperature too high.<br />
+Number of the temperature channel leading to the message (for SME&#47;TM120 (p0601 = 10, 11)).<br />
+See also: p0351, p0604, p0605, p0606, p0612, p0613, p0617, p0618, p0619, p0625, p0626, p0627, p0628<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the motor load.<br />
+- check the ambient temperature and the motor ventilation.<br />
+- check the wiring and the connection of the PTC or bimetallic NC contact.<br />
+See also: p0351, p0604, p0605, p0606, p0612, p0617, p0618, p0619, p0625, p0626, p0627, p0628<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207012">A207012 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor temperature model 1&#47;3 overtemperature</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The motor temperature model 1&#47;3 identified that the alarm threshold was exceeded.<br />
+Hysteresis:2K<br />
+Alarm value (r2124, interpret decimal):<br />
+200:<br />
+Motor temperature model 1 (I2t): temperature too high.<br />
+300:<br />
+Motor temperature model 3: temperature too high.<br />
+See also: r0034, p0351, p0605, p0611, p0612, p0613<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the motor load and if required, reduce.<br />
+- check the motor ambient temperature.<br />
+- check activation of the motor temperature model (p0612).<br />
+Motor temperature model 1 (I2t):<br />
+- check the thermal time constant (p0611).<br />
+- check alarm threshold.<br />
+Motor temperature model 3:<br />
+- check the motor type.<br />
+- check alarm threshold.<br />
+- check the model parameters.<br />
+See also: r0034 (Motor utilization thermal), p0351 (Piston position natural frequency minimum), p0605 (Mot_temp_mod 1/2 sensor threshold and temperature value), p0611 (I2t motor model thermal time constant), p0612 (Mot_temp_mod activation), r5397 (Mot_temp_mod 1/3 ambient temperature image p0613)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207014">A207014 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor temperature model configuration alarm</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault has occurred in the configuration of the motor temperature model.<br />
+Alarm value (r2124, interpret decimal):<br />
+1:<br />
+All motor temperature models: It is not possible to save the model temperature<br />
+See also: p0610 (Motor overtemperature response)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- set the response for motor overtemperature to &quot;Alarm and fault, no reduction of I_max&quot; (p0610 = 2).<br />
+See also: p0610 (Motor overtemperature response)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207015">A207015</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor temperature sensor alarm</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error was detected when evaluating the temperature sensor set in p0600 and p0601.<br />
+With the fault, the time in p0607 is started. If the fault is still present after this time has expired, then fault F07016 is output; however, at the earliest, 50 ms after alarm A07015.<br />
+Possible causes:<br />
+- wire breakage or sensor not connected (KTY: R &gt; 1630 Ohm, PT1000: R &gt; 1720 Ohm).<br />
+- measured resistance too low (PTC: R &lt; 20 Ohm, KTY: R &lt; 50 Ohm, PT1000: R &lt; 603 Ohm).<br />
+Alarm value (r2124, interpret decimal):<br />
+- if SME&#47;TM120 is selected (p0601 = 10, 11),<br />
+this is the number of the temperature channel leading to the message.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- make sure that the sensor is connected correctly.<br />
+- check the parameterization (p0600, p0601).<br />
+- check the setting of the lower threshold (p4622).<br />
+See also: r0035, p0600, p0601, p0607, p4622<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207016">F207016</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor temperature sensor fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error was detected when evaluating the temperature sensor set in p0600 and p0601.<br />
+Possible causes:<br />
+- wire breakage or sensor not connected (KTY: R &gt; 1630 Ohm, PT1000: R &gt; 1720 Ohm).<br />
+- measured resistance too low (PTC: R &lt; 20 Ohm, KTY: R &lt; 50 Ohm, PT1000: R &lt; 603 Ohm).<br />
+Note:<br />
+If alarm A07015 is present, the time in p0607 is started. If the fault is still present after this time has expired, then fault F07016 is output; however, at the earliest, 50 ms after alarm A07015.<br />
+Fault value (r0949, interpret decimal):<br />
+- if SME&#47;TM120 is selected (p0601 = 10, 11),<br />
+this is the number of the temperature channel leading to the message.<br />
+See also: p0607 (Temperature sensor fault timer)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- make sure that the sensor is connected correctly.<br />
+- check the parameterization (p0600, p0601).<br />
+- induction motors: Deactivate temperature sensor fault (p0607 = 0).<br />
+- When TM120 and SMC&#47;SME (p0601 = 10, 11) are being used, set the same sensor type on the drive (p4610 ... p4613) as for TM120.<br />
+- check the setting of the lower threshold (p4622).<br />
+See also: r0035, p0600, p0601, p0607, p4622<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207048">F207048</a></b></td>
+<td><b>&lt;location&gt;Drive: Incorrect characteristic measurement</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault has occurred during the characteristic measurement.<br />
+Fault value (r0949, interpret decimal):<br />
+1: Speed threshold for DQ saturation not reached.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1:<br />
+- check the closed-loop load machine control.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207080">F207080</a></b></td>
+<td><b>&lt;location&gt;Drive: Incorrect control parameter</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The closed-loop control parameters have been parameterized incorrectly (e.g. p0356 = L_spread = 0).<br />
+Fault value (r0949, interpret decimal):<br />
+The fault value includes the parameter number involved.<br />
+See also: p0310, p0311, p0341, p0344, p0350, p0354, p0356, p0357, p0358, p0360, p0400, p0404, p0408, p0640, p1082, p1300<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Modify the parameter indicated in the fault value (r0949) (e.g. p0640 = current limit &gt; 0).<br />
+See also: p0311, p0341, p0344, p0350, p0354, p0356, p0358, p0360, p0400, p0404, p0408, p0640, p1082<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207082">F207082</a></b></td>
+<td><b>&lt;location&gt;Macro: Execution not possible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The macro cannot be executed.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+ccccbbaa hex:<br />
+cccc = preliminary parameter number, bb = supplementary information, aa = fault cause<br />
+Fault causes for the trigger parameter itself:<br />
+19: Called file is not valid for the trigger parameter.<br />
+20: Called file is not valid for parameter 15.<br />
+21: Called file is not valid for parameter 700.<br />
+22: Called file is not valid for parameter 1000.<br />
+23: Called file is not valid for parameter 1500.<br />
+24: Data type of a TAG is incorrect (e.g. Index, number or bit is not U16).<br />
+Fault causes for the parameters to be set:<br />
+25: Error level has an undefined value.<br />
+26: Mode has an undefined value.<br />
+27: A value was entered as string in the tag value that is not &quot;DEFAULT&quot;.<br />
+31: Entered drive object type unknown.<br />
+32: A device was not able to be found for the determined drive object number.<br />
+34: A trigger parameter was recursively called.<br />
+35: It is not permissible to write to the parameter via macro.<br />
+36: Check, writing to a parameter unsuccessful, parameter can only be read, not available, incorrect data type, value range or assignment incorrect.<br />
+37: Source parameter for a BICO interconnection was not able to be determined.<br />
+38: An index was set for a non-indexed (or CDS-dependent) parameter.<br />
+39: No index was set for an indexed parameter.<br />
+41: A bit operation is only permissible for parameters with the parameter format DISPLAY_BIN.<br />
+42: A value not equal to 0 or 1 was set for a BitOperation.<br />
+43: Reading the parameter to be changed by the BitOperation was unsuccessful.<br />
+51: Factory setting for DEVICE may only be executed on the DEVICE.<br />
+61: The setting of a value was unsuccessful.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the parameter involved.<br />
+- check the macro file and BICO interconnection.<br />
+See also: p0015, p0700, p1000, p1500<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207083">F207083</a></b></td>
+<td><b>&lt;location&gt;Macro: ACX file not found</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The ACX file (macro) to be executed was not able to be found in the appropriate directory.<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter number with which the execution was started.<br />
+See also: p0015, p0700, p1000, p1500<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether the file is saved in the appropriate directory on the memory card.<br />
+Example:<br />
+If p0015 is set to 1501, then the selected ACX file must be located in the following directory:<br />
+... &#47;PMACROS&#47;DEVICE&#47;P15&#47;PM001501.ACX<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207084">F207084</a></b></td>
+<td><b>&lt;location&gt;Macro: Condition for WaitUntil not fulfilled</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The WaitUntil condition set in the macro was not fulfilled in a certain number of attempts.<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter number for which the condition was set.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check and correct the conditions for the WaitUntil loop.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207085">F207085</a></b></td>
+<td><b>&lt;location&gt;Drive: Open-loop&#47;closed-loop control parameters changed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Open-loop&#47;closed-loop control parameters have had to be changed.<br />
+Possible causes:<br />
+1. As a result of other parameters, they have exceeded the dynamic limits.<br />
+2. They cannot be used due to the fact that the hardware detected not having certain features.<br />
+3. The value is estimated as the thermal time constant is missing.<br />
+4. Motor temperature model 1 is activated as thermal motor protection is missing.<br />
+Fault value (r0949, interpret decimal):<br />
+Changed parameter number.<br />
+340:<br />
+The motor and control parameters were automatically calculated (p0340 = 1), because the vector control was subsequently activated as configuration (r0108.2).<br />
+611:<br />
+The time constant for thermal motor model 1 was estimated.<br />
+612:<br />
+Thermal motor model 1 was activated (p0612.0 = 1).<br />
+1800:<br />
+A more favorable pulse frequency was preassigned.<br />
+See also: p0640, p1082, p1300, p1800<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+It is not necessary to change the parameters as they have already been correctly limited.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207086">F207086</a></b></td>
+<td><b>&lt;location&gt;Units changeover: Parameter limit violation due to reference value change</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A reference parameter was changed in the system. This resulted in the fact that for the parameters involved, the selected value was not able to be written in the per unit notation.<br />
+The values of the parameters were set to the corresponding violated minimum limit&#47;maximum limit or to the factory setting.<br />
+Possible causes:<br />
+- the steady-state minimum limit&#47;maximum limit or that defined in the application was violated.<br />
+Fault value (r0949, parameter):<br />
+Diagnostics parameter to display the parameters that were not able to be re-calculated.<br />
+See also: p0304, p0305, p0310, p0596, p2000, p2001, p2002, p2003, r2004<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the adapted parameter value and if required correct.<br />
+See also: r9450 (Reference value change parameter with unsuccessful calculation)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207088">F207088</a></b></td>
+<td><b>&lt;location&gt;Units changeover: Parameter limit violation due to units changeover</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A changeover of units was initiated. This resulted in a violation of a parameter limit<br />
+Possible causes for the violation of a parameter limit:<br />
+- When rounding off a parameter corresponding to its decimal places, the steady-state minimum limit or maximum limit was violated.<br />
+- inaccuracies for the data type &quot;FloatingPoint&quot;.<br />
+In these cases, when the minimum limit is violated then the parameter value is rounded up and when the maximum limited is violated the parameter value is rounded down.<br />
+Fault value (r0949, interpret decimal):<br />
+Diagnostics parameter r9451 to display all parameters whose value had to be adapted.<br />
+See also: p0100 (IEC/NEMA Standards), p0349 (System of units motor equivalent circuit diagram data), p0505 (Selecting the system of units), p0595 (Technological unit selection)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the adapted parameter values and if required correct.<br />
+See also: r9451 (Units changeover adapted parameters)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207089">A207089</a></b></td>
+<td><b>&lt;location&gt;Changing over units: Function module activation is blocked because the units have been changed over</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An attempt was made to activate a function module. This is not permissible if the units have already been changed over.<br />
+See also: p0100 (IEC/NEMA Standards), p0349 (System of units motor equivalent circuit diagram data), p0505 (Selecting the system of units)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Restore units that have been changed over to the factory setting.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207092">A207092</a></b></td>
+<td><b>&lt;location&gt;Drive: moment of inertia estimator still not ready</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The moment of inertia estimator has still not determined any valid values.<br />
+The acceleration cannot be calculated.<br />
+The moment of inertia estimator has stabilized, if the frictional values (p1563, p1564) as well as the moment of inertia value (p1493) have been determined and the appropriate status signal is set (r1407.26 = 1).<br />
+The following parameters influence the response of the moment of the inertia estimator:<br />
+p1560, p1561, p1562<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Traverse the axis until the moment of inertia estimator has stabilized.<br />
+This alarm is automatically withdrawn after the moment of inertia estimator has stabilized.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207094">A207094</a></b></td>
+<td><b>&lt;location&gt;General parameter limit violation</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>As a result of the violation of a parameter limit, the parameter value was automatically corrected.<br />
+Minimum limit violated --&gt; parameter is set to the minimum value.<br />
+Maximum limit violated --&gt; parameter is set to the maximum value.<br />
+Alarm value (r2124, interpret decimal):<br />
+Parameter number, whose value had to be adapted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the adapted parameter values and if required correct.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207100">F207100</a></b></td>
+<td><b>&lt;location&gt;Drive: Sampling times cannot be reset</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When resetting drive parameter (p0976) sampling times cannot be reset using p0111, p0112, p0115.<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter whose setting prevents the sampling times being reset.<br />
+See also: r0110 (Basic sampling times)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- continue to work with the set sampling times.<br />
+- before resetting the drive parameters, set the basic clock cycle p0110[0] to the original value.<br />
+See also: r0110 (Basic sampling times)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207110">F207110</a></b></td>
+<td><b>&lt;location&gt;Drive: Sampling times and basic clock cycle do not match</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The parameterized sampling times do not match the basic clock cycle.<br />
+Fault value (r0949, interpret decimal):<br />
+The fault value specifies the parameter involved.<br />
+See also: r0110, r0111, p0115<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Enter the current controller sampling times so that they are identical to the basic clock cycle, e.g. by selecting p0112. Note which basic clock cycle is selected in p0111.<br />
+The sampling times in p0115 can only be changed manually in the sampling times pre-setting &quot;Expert&quot; (p0112).<br />
+See also: r0110, r0111, p0112, p0115<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207200">A207200</a></b></td>
+<td><b>&lt;location&gt;Drive: Master control ON command present</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The ON&#47;OFF1 command is present (no 0 signal).<br />
+The command is either influenced via binector input p0840 (current CDS) or control word bit 0 via the master control.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Switch the signal via binector input p0840 (current CDS) or control word bit 0 via the master control to 0.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207220">F207220 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Master control by PLC missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (NONE, OFF2)Servo: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;master control by PLC&quot; signal was missing in operation.<br />
+- interconnection of the binector input for &quot;master control by PLC&quot; is incorrect (p0854).<br />
+- the higher-level control has withdrawn the &quot;master control by PLC&quot; signal.<br />
+- data transfer via the fieldbus (master&#47;drive) was interrupted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the interconnection of the binector input for &quot;master control by PLC&quot; (p0854).<br />
+- check the &quot;master control by PLC&quot; signal and, if required, switch in.<br />
+- check the data transfer via the fieldbus (master&#47;drive).<br />
+Note:<br />
+If the drive should continue to operate after withdrawing &quot;master control by PLC&quot; then fault response must be parameterized to NONE or the message type should be parameterized as alarm.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207300">F207300 (A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Line contactor feedback signal missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- the line contactor was not able to be closed within the time in p0861.<br />
+- the line contactor was not able to be opened within the time in p0861.<br />
+- the line contactor dropped out during operation<br />
+- the line contactor has closed although the drive converter is switched off.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the setting of p0860.<br />
+- check the feedback circuit from the line contactor.<br />
+- increase the monitoring time in p0861.<br />
+- for G150LE (power expansion)&#47;G150HP (High Power), the following applies:<br />
+If, contrary to the appropriate specifications, the circuit breakers are monitored using the line contactor control of drive object B_INF then, for B_INF, parameter p0869.1 must be set = 0.<br />
+See also: p0860 (Line contactor feedback signal), p0861 (Line contactor monitoring time)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207311">F207311</a></b></td>
+<td><b>&lt;location&gt;Bypass motor switch</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Fault value (r0949, interpret bitwise binary):<br />
+Bit 1: Switch &quot;Closed&quot; feedback signal missing.<br />
+Bit 2: Switch &quot;Open&quot; feedback signal missing.<br />
+Bit 3: Switch feedback signal too slow.<br />
+After switching, the system waits for the positive feedback signal. If the feedback signal is received later than the specified time, then a fault trip (shutdown) is issued.<br />
+Bit 6: Drive switch feedback signal not consistent with the bypass state.<br />
+The drive switch is closed when switching-on or when switching-in the motor.<br />
+See also: p1260 (Bypass configuration), r1261 (Bypass control/status word), p1266 (Bypass control command), p1267 (Bypass changeover source configuration), p1269 (Bypass switch feedback signal), p1274 (Bypass switch monitoring time)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the transfer of the feedback signals.<br />
+- check the switch.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207312">F207312</a></b></td>
+<td><b>&lt;location&gt;Bypass Line Side Switch:</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Line Side Switch feedback signal is not plausible.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 1: Switch &quot;Closed&quot; feedback signal missing.<br />
+Bit 2: Switch &quot;Open&quot; feedback signal missing.<br />
+Bit 3: Switch feedback signal too slow.<br />
+After switching, the system waits for the positive feedback signal. If the feedback signal is received later than the specified time, then the system is shut down.<br />
+Bit 6: Line Side Switch feedback signal not consistent with the bypass state.<br />
+When switching-on or when switching-in (staging) the motor, the line side switch is closed without this having been requested from the bypass.<br />
+See also: p1260 (Bypass configuration), r1261 (Bypass control/status word), p1266 (Bypass control command), p1267 (Bypass changeover source configuration), p1269 (Bypass switch feedback signal), p1274 (Bypass switch monitoring time)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the transfer of the feedback signals.<br />
+- check the switch.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207320">F207320</a></b></td>
+<td><b>&lt;location&gt;Drive: Automatic restart interrupted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- the specified number of restart attempts (p1211) has been completely used up because within the monitoring time (p1213) the faults were not able to be acknowledged. The number of restart attempts (p1211) is decremented at each new start attempt.<br />
+- the monitoring time for the power unit has expired (p0857).<br />
+- when exiting commissioning or at the end of the motor identification routine or the speed controller optimization, the drive unit is not automatically switched on again.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- increase the number of restart attempts (p1211). The actual number of starting attempts is displayed in r1214.<br />
+- increase the delay time in p1212 and&#47;or the monitoring time in p1213.<br />
+- either increase or disable the monitoring time of the power unit (p0857).<br />
+- reduce the delay time to reset the start counter p1213[1] so that fewer faults are registered in the time interval.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207321">A207321</a></b></td>
+<td><b>&lt;location&gt;Drive: Automatic restart active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The automatic restart (AR) is active. When the line supply returns and&#47;or the causes of the existing faults are removed the drive is automatically restarted. The pulses are enabled and the motor starts to rotate.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- the automatic restart (AR) should, if required, be inhibited (p1210 = 0).<br />
+- an automatic restart can be directly interrupted by withdrawing the switch-on command (BI: p0840).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207330">F207330</a></b></td>
+<td><b>&lt;location&gt;Flying restart: Measured search current too low</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>During a flying restart, it was identified that the search current reached is too low.<br />
+It is possible that the motor is not connected.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the motor feeder cables.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207331">F207331</a></b></td>
+<td><b>&lt;location&gt;Flying restart: Function not supported</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>It is not possible to power up with the motor rotating (no flying restart).<br />
+In the following cases, the &quot;flying restart&quot; function is not supported:<br />
+Permanent-magnet synchronous motor (PMSM):<br />
+- operation with U&#47;f characteristic.<br />
+- encoderless operation without a Voltage Sensing Module (VSM) being connected.<br />
+Separately excited synchronous motor (SESM):<br />
+- operation with U&#47;f characteristic.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- deactivate the &quot;flying restart&quot; function (p1200 = 0).<br />
+- change the open-loop&#47;closed-loop control mode (p1300).<br />
+- connect a Voltage Sensing Module (VSM) (voltage measurement).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207332">N207332</a></b></td>
+<td><b>&lt;location&gt;Flying restart: maximum speed reduced</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The maximum speed that can be reached is reduced; at very high speeds problems associated with the flying restart can be encountered.<br />
+Possible causes:<br />
+- power ratio, power unit&#47;motor too high<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Parameter changes are not required.<br />
+Note:<br />
+A flying restart at speeds above 3000 rpm should be avoided.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207333">F207333</a></b></td>
+<td><b>&lt;location&gt;Closed-loop control function not supported</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A closed-loop control function that is not supported was activated.<br />
+Fault value (r0949, interpret decimal):<br />
+0:<br />
+Open-loop controlled operation (open-loop mode for speeds &lt; p1755) is not supported in the &quot;encoderless torque&quot; control mode (see p1300, p1501).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 0:<br />
+When keeping encoderless operation, these options include:<br />
+- change the control mode to &quot;Encoderless speed control&quot; (p1300 = 20, p1501 = 0).<br />
+- for continuation of torque control:<br />
+Activate encoderless operation - including zero frequency - with test pulses (p1750.5 = 1, only SINAMICS S120 + licensing).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207334">F207334 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Function not possible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For this configuration, the selected function is not possible.<br />
+Fault value (r0949, interpret decimal):<br />
+0:<br />
+Function &quot;Travel to fixed end stop&quot; (p1545) was selected, although encoderless operation or U&#47;f operation is active.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 0:<br />
+- Operate the closed-loop speed control with an encoder.<br />
+- If necessary, deselect function &quot;Travel to fixed stop&quot;.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207350">A207350 (F)</a></b></td>
+<td><b>&lt;location&gt;Drive: Measuring probe parameterized to a digital output</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The measuring probe is connected to a bi-directional digital input&#47;output and the terminal is set as output.<br />
+Alarm value (r2124, interpret decimal):<br />
+8: DI&#47;DO 8 (X122.9&#47;X132.1)<br />
+9: DI&#47;DO 9 (X122.10&#47;X132.2)<br />
+10: DI&#47;DO 10 (X122.12&#47;X132.3)<br />
+11: DI&#47;DO 11 (X122.13&#47;X132.4)<br />
+12: DI&#47;DO 12 (X132.9)<br />
+13: DI&#47;DO 13 (X132.10)<br />
+14: DI&#47;DO 14 (X132.12)<br />
+15: DI&#47;DO 15 (X132.13)<br />
+Regarding the terminal designation:<br />
+The first designation is valid for CU320, the second for CU305.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- set the terminal as input (p0728).<br />
+- deselect the measuring probe (p0488, p0489, p0580).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207400">A207400 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: DC link voltage maximum controller active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The DC link voltage controller has been activated because the upper switch-in threshold has been exceeded (r1242, r1282).<br />
+The ramp-down times are automatically increased in order to maintain the DC link voltage (r0070) within the permissible limits. There is a system deviation between the setpoint and actual speeds.<br />
+When the DC link voltage controller is switched out (disabled), this is the reason that the ramp-function generator output is set to the speed actual value.<br />
+See also: r0056 (Status word, closed-loop control), p1240 (Vdc controller or Vdc monitoring configuration), p1280 (Vdc controller or Vdc monitoring configuration (U/f))<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>If the controller is not to intervene:<br />
+- increase the ramp-down times.<br />
+- switch off the Vdc_max controller (p1240 = 0 for vector control, p1280 = 0 for U&#47;f control).<br />
+If the ramp-down times are not to be changed:<br />
+- use a chopper or regenerative feedback unit.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207401">A207401 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: DC link voltage maximum controller deactivated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Vdc_max controller can no longer maintain the DC link voltage (r0070) below the limit value (r1242, r1282) and was therefore switched out (disabled).<br />
+- the line supply voltage is permanently higher than specified for the power unit.<br />
+- the motor is permanently in the regenerative mode as a result of a load that is driving the motor.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether the input voltage is within the permissible range (if required, increase the value in p0210).<br />
+- check whether the load duty cycle and load limits are within the permissible limits.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207402">A207402 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: DC link voltage minimum controller active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The DC link voltage controller has been activated as the lower switch-in threshold has been undershot (r1246, r1286).<br />
+The kinetic energy of the motor is used to buffer the DC link. The drive is therefore braked.<br />
+See also: r0056 (Status word, closed-loop control), p1240 (Vdc controller or Vdc monitoring configuration), p1280 (Vdc controller or Vdc monitoring configuration (U/f))<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The alarm disappears when power supply returns.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207403">F207403 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Lower DC link voltage threshold reached</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The DC link voltage monitoring is active (p1240, p1280 = 5, 6) and the lower DC link voltage threshold (r1246, r1286) was reached in the &quot;Operation&quot; state.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the line supply voltage.<br />
+- check the infeed.<br />
+- adapt the device supply voltage (p0210) or the switch-on level (p1245, p1285).<br />
+- disable the DC link voltage monitoring (p1240, p1280 = 0).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207404">F207404</a></b></td>
+<td><b>&lt;location&gt;Drive: Upper DC link voltage threshold reached</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- the DC link voltage monitoring is active (p1240, p1280 = 4, 6) and the upper DC link voltage threshold (r1242, r1282) was reached in the &quot;Operation&quot; state.<br />
+- the monitoring of the DC link voltage (p1284) has responded (only U&#47;f control).<br />
+- the DC link voltage control (only when the technology controller is activated r0108.16 = 1) is available and the supply voltage (p0210, p0212) has been reduced.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the line supply voltage.<br />
+- check the infeed.<br />
+- adapt the device supply voltage (p0210, p0212.0 = 0).<br />
+- if necessary, deactivate the DC link voltage monitoring (p1240, p1280 = 0).<br />
+- adapt the monitoring of the DC link voltage (p1284, only U&#47;f control).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207405">F207405 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Kinetic buffering minimum speed fallen below</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>During kinetic buffering the speed fell below minimum speed (p1257 or p1297 for vector drives with U&#47;f control) and the line supply did not return.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the speed threshold for the Vdc_min controller (kinetic buffering) (p1257, p1297).<br />
+See also: p1257 (Vdc_min controller speed threshold), p1297 (Vdc_min controller speed threshold (U/f))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207406">F207406 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Kinetic buffering maximum time exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF3<br />
+ (IASC/DCBRK, NONE, OFF1, OFF2, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The maximum buffer time (p1255 and p1295 for vector drives with U&#47;f control) has been exceeded without the line supply having returned.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the time threshold for Vdc-min controller (kinetic buffering) (p1255, p1295).<br />
+See also: p1255 (Vdc_min controller time threshold), p1295 (Vdc_min controller time threshold (U/f))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207407">F207407</a></b></td>
+<td><b>&lt;location&gt;Drive: Vdc reduction not permissible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For chassis power units, the reduction of the line voltage (see r0212.0) is only possible for closed-loop control of the DC link voltage.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- Activate DC link voltage control for the motor&#47;generator.<br />
+- deactivate line voltage reduction (p0212.0 = 0).<br />
+See also: p0212 (Power unit configuration)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207409">A207409 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: U&#47;f control, current limiting controller active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The current limiting controller of the U&#47;f control was activated because the current limit was exceeded.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The alarm is automatically withdrawn after one of the following measures:<br />
+- increase current limit (p0640).<br />
+- reduce the load.<br />
+- slow down the ramp up to the setpoint speed.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207410">F207410</a></b></td>
+<td><b>&lt;location&gt;Drive: Current controller output limited</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition &quot;I_act = 0 and Uq_set_1 longer than 16 ms at its limit&quot; is present and can be caused by the following:<br />
+- motor not connected or motor contactor open.<br />
+- motor data and motor configuration (star-delta) do not match.<br />
+- no DC link voltage present.<br />
+- power unit defective.<br />
+- the &quot;flying restart&quot; function is not activated.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- connect the motor or check the motor contactor.<br />
+- check the motor parameterization and the connection type (star-delta).<br />
+- check the DC link voltage (r0070).<br />
+- check the power unit.<br />
+- activate the &quot;flying restart&quot; function (p1200).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207411">F207411</a></b></td>
+<td><b>&lt;location&gt;Drive: Flux setpoint not reached when building up excitation</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When quick magnetizing is configured (p1401.6 = 1) the specified flux setpoint is not reached although 90% of the maximum current is specified.<br />
+- incorrect motor data.<br />
+- motor data and motor configuration (star-delta) do not match.<br />
+- the current limit has been set too low for the motor.<br />
+- induction motor (encoderless, open-loop controlled) in I2t limiting.<br />
+- the Motor Module is too small.<br />
+- the magnetizing time p0346 is too short.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the motor data. Perform motor data identification and rotating measurement.<br />
+- check the motor configuration.<br />
+- correct the current limits (p0640).<br />
+- reduce the induction motor load.<br />
+- if required, use a larger Motor Module.<br />
+- check motor supply cable.<br />
+- check power unit.<br />
+- increase p0346.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207412">F207412</a></b></td>
+<td><b>&lt;location&gt;Drive: Commutation angle incorrect (motor model)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>ENCODER<br />
+ (NONE, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An incorrect commutation angle was detected that can result in a positive coupling in the speed controller.<br />
+Possible causes:<br />
+- the phase sequence of the output phases for the motor is incorrect (e.g. the phases are interchanged).<br />
+- the motor encoder is incorrectly adjusted with respect to the magnet position.<br />
+- the motor encoder is damaged.<br />
+- the angular commutation offset is incorrectly set (p0431).<br />
+- data to calculate the motor model has been incorrectly set (p0356 (motor-stator leakage inductance) and&#47;or p0350 (motor-stator resistance) and&#47;or p0352 (cable resistance)).<br />
+- the changeover speed for the motor model is too low (p1752). The monitoring function only becomes effective above the changeover speed.<br />
+- pole position identification might have calculated an incorrect value when activated (p1982 = 1).<br />
+- the motor encoder speed signal is faulted.<br />
+- the control loop is instable due to incorrect parameterization.<br />
+Fault value (r0949, interpret decimal):<br />
+SERVO:<br />
+0: The comparison of the pole position angle from the encoder and motor model resulted in an excessively high value (p1778[1] &gt; 80 &deg; electrical).<br />
+1: -<br />
+VECTOR:<br />
+0: The comparison of the pole position angle from the encoder and motor model resulted in an excessively high value (&gt; 45 &deg; electrical).<br />
+1: The change in the speed signal from the motor encoder has changed by &gt; p0492 within a current controller clock cycle.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the phase sequence for the motor, and if required, correct (wiring, p1820).<br />
+- if the encoder mounting was changed - re-adjust the encoder.<br />
+- replace the defective motor encoder.<br />
+- correctly set the angular commutation offset (p0431). If required, determine using p1990.<br />
+- correctly set the motor stator resistance, cable resistance and motor-stator leakage inductance (p0350, p0352, p0356).<br />
+Calculate the cable resistance from the cross-section and length, check the inductance and stator resistance using the motor data sheet, measure the stator resistance, e.g. using a multimeter - and if required, again identify the values using the stationary motor data identification (p1910).<br />
+- increase the changeover speed for the motor model (p1752). The monitoring is completely deactivated for p1752 &gt; p1082 (maximum speed).<br />
+- with pole position identification activated (p1982 = 1) check the procedure for pole position identification (p1980) and force a new pole position identification procedure by means of deselection followed by selection (p1982 = 0 -&gt; 1).<br />
+Note:<br />
+For High Dynamic Motors (1FK7xxx-7xxx), for applications with a higher current, if necessary, the monitoring should be disabled.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207413">F207413</a></b></td>
+<td><b>&lt;location&gt;Drive: Commutation angle incorrect (pole position identification)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>ENCODER<br />
+ (NONE, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An incorrect commutation angle was detected that can result in a positive coupling in the speed controller.<br />
+Within the pole position identification routine (p1982 = 2):<br />
+- a difference of &gt; 45 &deg; electrical to the encoder angle was determined.<br />
+For VECTOR, within the encoder adjustment (p1990 = 2):<br />
+- a difference of &gt; 6 &deg; electrical to the encoder angle was determined.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correctly set the angular commutation offset (p0431).<br />
+- re-adjust the motor encoder after the encoder has been replaced.<br />
+- replace the defective motor encoder.<br />
+- check the pole position identification routine. If the pole position identification routine is not suitable for this motor type, then disable the plausibility check (p1982 = 0).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207416">A207416</a></b></td>
+<td><b>&lt;location&gt;Drive: Flux controller configuration</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The configuration of the flux control (p1401) is contradictory.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ccbbaaaa hex<br />
+aaaa = Parameter<br />
+bb = Index<br />
+cc = fault cause<br />
+cc = 01 hex = 1 dec:<br />
+Quick magnetizing (p1401.6) for soft start (p1401.0).<br />
+cc = 02 hex = 2 dec:<br />
+Quick magnetizing (p1401.6) for flux build-up control (p1401.2).<br />
+cc = 03 hex = 3 dec:<br />
+Quick magnetizing (p1401.6) for Rs identification after restart (p0621 = 2).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault cause = 1:<br />
+- Shut down soft start (p1401.0 = 0).<br />
+- Shut down quick magnetizing (p1401.6 = 0).<br />
+For fault cause = 2:<br />
+- switch-on flux build-up control (p1401.2 = 1).<br />
+- Shut down quick magnetizing (p1401.6 = 0).<br />
+For fault cause = 3:<br />
+- Re-parameterize Rs identification (p0621 = 0, 1)<br />
+- Shut down quick magnetizing (p1401.6 = 0).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207417">F207417</a></b></td>
+<td><b>&lt;location&gt;Drive: Pulse technique not plausible (motor model)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The evaluation of the test pulse response indicated incorrect values.<br />
+Fault value (r0949, interpret decimal):<br />
+0:<br />
+An impermissible pulse technique configuration was detected during ramp-up.<br />
+Possible causes:<br />
+- the pulse technique was initially selected when the system powered up (p1750.5 = 1) but the power unit component does not support the current oversampling required (see r0192.23). As a consequence, p1750.0 was deselected automatically.<br />
+10:<br />
+The pulse response is repeatedly implausible.<br />
+Possible causes:<br />
+- incorrect configuration of the power unit component<br />
+- the power unit component is faulty.<br />
+20:<br />
+For the specified pulse amplitude, the measured pulse response is much higher than the expected value.<br />
+Possible causes:<br />
+- Strong oscillations have occurred.<br />
+- the motor is short-circuited for high frequencies (output filter).<br />
+- the motor is damaged.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 0:<br />
+Once the pulse technique has been deselected automatically (p1750.5 = 0), there are two possible options:<br />
+- acknowledge the fault and save parameter p1750.5 = 0 -&gt; field-oriented control mode to standstill is not used and replaced by transition to open-loop control at low speeds.<br />
+- upgrade the power unit firmware (at least V4.3) -&gt; field-oriented control mode to standstill is available.<br />
+For fault value = 10:<br />
+With active selection of the pulse technique (p1750.5 = 1):<br />
+- POWER ON (switch-off&#47;switch-on) the Control Unit and the power unit together again.<br />
+or<br />
+- carry out a manual warm restart (p0009 = 30, p0976 = 2, 3).<br />
+If this does not solve the problem: Replace the power unit component.<br />
+For fault value = 20:<br />
+- control parameters might have been adjusted (factory setting, commissioning).<br />
+- filters must not be connected between motor and converter&#47;inverter.<br />
+- check the motor.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207422">F207422</a></b></td>
+<td><b>&lt;location&gt;Drive: Reference model natural frequency &gt; Shannon frequency</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+ (OFF1, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The natural filter frequency of the PT2 element for the reference model (p1433) is greater than the Shannon frequency.<br />
+The Shannon frequency is calculated according to the following formula: 0.5 &#47; p0115[1]<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the natural frequency of PT2 element for reference model (p1433).<br />
+- reduce the speed controller sampling time (p0115[1]).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207426">F207426 (A)</a></b></td>
+<td><b>&lt;location&gt;Technology controller actual value limited</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The actual value for the technology controller, interconnected via connector input p2264, has reached a limit.<br />
+Fault value (r0949, interpret decimal):<br />
+1: upper limit reached.<br />
+2: lower limit reached.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- adapt the limits to the signal level (p2267, p2268).<br />
+- check the actual value normalization (p0595, p0596).<br />
+- Deactivate evaluation of the limits (p2252.3)<br />
+See also: p0595, p0596, p2264, p2267, p2268<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207428">A207428 (N)</a></b></td>
+<td><b>&lt;location&gt;Technology controller parameterizing error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The technology controller has a parameterizing error.<br />
+Alarm value (r2124, interpret decimal):<br />
+1:<br />
+The upper output limit in p2291 is set lower than the lower output limit in p2292.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For alarm value = 1:<br />
+Set the output limit in p2291 higher than in p2292.<br />
+See also: p2291 (Technology controller maximum limiting), p2292 (Technology controller minimum limiting)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207434">F207434</a></b></td>
+<td><b>&lt;location&gt;Drive: It is not possible to change the direction of rotation with the pulses enabled</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A drive data set was selected - with the pulses enabled - which has a different parameterized direction of rotation (p1821).<br />
+It is only possible to change the motor direction of rotation using p1821 when the pulses are inhibited.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- change over the drive data set with the pulses inhibited.<br />
+- ensure that the changeover to a drive data set does not result in the motor direction of rotation being changed (i.e. for these drive data sets, the same value must be in p1821).<br />
+See also: p1821<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207435">F207435 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Setting the ramp-function generator for sensorless vector control</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>During operation with sensorless vector control (r1407.1) the ramp-function generator was stopped (p1141) or bypassed (p1122). An internal setting command of the ramp-function generator output caused the set setpoint speed to be frozen or was not able to be realized.<br />
+The drive is switched-on with flying restart activated (p1200), and at the same time the ramp-function generator is bypassed (p1122).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- deactivate the holding command for the ramp-function generator (p1141).<br />
+- do not bypass the ramp-function generator (p1122).<br />
+- suppress the fault (p2101, p2119). This is necessary if the ramp-function generator is held using jogging and the speed setpoint is simultaneously inhibited (r0898.6).<br />
+Note:<br />
+For sensorless vector control it is not practical to read in the main setpoint of the speed control via p1155 or p1160 (p0922). In this case, the main setpoint should be injected before the ramp-function generator (p1070). The reason for this is that the ramp-function generator output is automatically set when transitioning from closed-loop speed controlled into open-loop speed controlled operation.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207440">A207440</a></b></td>
+<td><b>&lt;location&gt;EPOS: Jerk time is limited</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The calculation of the jerk time Tr = max(p2572, p2573) &#47; p2574 resulted in an excessively high value so that the jerk time is internally limited to 1000 ms.<br />
+Note:<br />
+The alarm is also output if jerk limiting is not active.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- increase the jerk limiting (p2574).<br />
+- reduce maximum acceleration or maximum deceleration (p2572, p2573).<br />
+See also: p2572 (EPOS maximum acceleration), p2573 (EPOS maximum deceleration), p2574 (EPOS jerk limiting)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207441">A207441</a></b></td>
+<td><b>&lt;location&gt;LR: Save the position offset of the absolute encoder adjustment</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The status of the absolute encoder adjustment has changed.<br />
+In order to permanently save the determined position offset (p2525) and the determined number of the drive data set (p2733), they must be saved in a non-volatile fashion (p0971, p0977).<br />
+Possible causes:<br />
+- motor or encoder were replaced (applies to EQN and DQI).<br />
+- position-relevant parameters were changed.<br />
+- an encoder that was not adjusted was adjusted (save the project in a non-volatile fashion using &quot;Copy RAM to ROM&quot;).<br />
+Note:<br />
+This message is not output when switching-on the axis after having first moved it in the switched-off state, as long as the parameterizable monitoring window was not exited.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Readjust the encoder.<br />
+See also: p2507 (LR absolute encoder adjustment status), p2525 (LR encoder adjustment offset)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207442">F207442 (A)</a></b></td>
+<td><b>&lt;location&gt;LR: Multiturn does not match the modulo range</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The ratio between the multiturn resolution and the modulo range (p2576) is not an integer number.<br />
+This results in the adjustment being set back, as the position actual value cannot be reproduced after switch-off&#47;switch-on.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Make the ration between the multiturn resolution and the modulo range an integer number.<br />
+The ratio v is calculated as follows:<br />
+1. Motor encoder without position tracking<br />
+v = (p0421 * p2506 * p0433 * p2505) &#47; (p0432 * p2504 * p2576)<br />
+2. Motor encoder with position tracking for the measuring gear<br />
+v = (p0412 * p2506 * p2505) &#47; (p2504 * p2576)<br />
+3. Motor encoder with position tracking for the load gear<br />
+v = (p2721 * p2506 * p0433) &#47; (p0432 * p2576)<br />
+4. Motor encoder with position tracking for the load and measuring gear<br />
+v = (p2721 * p2506) &#47; p2576<br />
+5. Direct encoder without position tracking<br />
+v = (p0421 * p2506 * p0433) &#47; (p0432 * p2576)<br />
+6. Direct encoder with position tracking for the measuring gear<br />
+v = (p0412 * p2506) &#47; p2576<br />
+Note:<br />
+With position tracking, it is recommended that p0412 and p2721 are changed<br />
+See also: p0412, p0432, p0433, p2504, p2505, p2506, p2576, p2721<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207443">F207443 (A)</a></b></td>
+<td><b>&lt;location&gt;LR: Reference point coordinate not in the permissible range</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The reference point coordinate received when adjusting the encoder via connector input p2599 lies outside the half of the encoder range and cannot be set as actual axis position.<br />
+Fault value (r0949, interpret decimal):<br />
+Maximum permissible value for the reference point coordinate.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set the reference point coordinate to a lower value than specified in the fault value.<br />
+See also: p2598 (EPOS reference point coordinate signal source), p2599 (EPOS reference point coordinate value)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207446">F207446 (A)</a></b></td>
+<td><b>&lt;location&gt;Load gear: Position tracking cannot be reset</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The position tracking cannot be reset.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reset the position tracking as follows:<br />
+- select encoder commissioning (p0010 = 4).<br />
+- reset position tracking, position (p2720.2 = 1).<br />
+- deselect encoder commissioning (p0010 = 0).<br />
+Then acknowledge the fault and, if necessary, re-adjust the absolute encoder (p2507).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207447">F207447</a></b></td>
+<td><b>&lt;location&gt;Load gear: Position tracking, maximum actual value exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When the position tracking of the load gear is configured, the drive&#47;encoder (motor encoder) identifies a maximum possible absolute position actual value (r2723) that can no longer be represented within 32 bits.<br />
+Maximum value: p0408 * p2721 * 2^p0419<br />
+Fault value (r0949, interpret hexadecimal):<br />
+ccbbaa hex<br />
+aa = encoder data set<br />
+bb = component number<br />
+cc = drive data set<br />
+See also: p0408, p0419 (Fine resolution absolute value Gx_XIST2 (in bits)), p2721 (Load gear rotary absolute encoder revolutions virtual)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the fine resolution (p0419).<br />
+- reduce the multiturn resolution (p2721).<br />
+See also: p0419 (Fine resolution absolute value Gx_XIST2 (in bits)), p2721 (Load gear rotary absolute encoder revolutions virtual)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207448">F207448 (A)</a></b></td>
+<td><b>&lt;location&gt;Load gear: Position tracking, linear axis has exceeded the maximum range</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: NONE<br />
+Servo: OFF1<br />
+ (NONE, OFF2, OFF3)Vector: OFF1<br />
+ (NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For a configured linear axis&#47;no modulo axis, the currently effective motor encoder (encoder 1) has exceeded the maximum possible traversing range.<br />
+For the configured linear axis, the maximum traversing range is defined to be 64x (+&#47;- 32x) of p0421. It should be read in p2721 and interpreted as the number of load revolutions.<br />
+Note:<br />
+Only the motor encoder in the currently effective drive data set is monitored here. The actual effective drive data set is displayed in x = r0051 and the corresponding motor encoder is specified in p0187[x].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The fault should be resolved as follows:<br />
+- select encoder commissioning (p0010 = 4).<br />
+- reset position tracking, position (p2720.2 = 1).<br />
+- deselect encoder commissioning (p0010 = 0).<br />
+The fault should then be acknowledged and the absolute encoder adjusted.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207449">F207449 (A)</a></b></td>
+<td><b>&lt;location&gt;Load gear: Position tracking actual position outside tolerance window</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: NONE<br />
+Servo: OFF1<br />
+ (NONE, OFF2, OFF3)Vector: OFF1<br />
+ (NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When switched off, the currently effective motor encoder was moved through a distance greater than was parameterized in the tolerance window. It is possible that there is no longer any reference between the mechanical system and encoder.<br />
+Note:<br />
+Only the motor encoder in the currently effective drive data set is monitored here. The actual effective drive data set is displayed in x = r0051 and the corresponding motor encoder is specified in p0187[x].<br />
+Fault value (r0949, interpret decimal):<br />
+Deviation (difference) to the last encoder position in increments of the absolute value after the measuring gear - if one is being used. The sign designates the traversing direction.<br />
+Note:<br />
+The deviation (difference) found is also displayed in r2724.<br />
+See also: p2722 (Load gear position tracking tolerance window), r2724 (Load gear position difference)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reset the position tracking as follows:<br />
+- select encoder commissioning (p0010 = 4).<br />
+- reset position tracking, position (p2720.2 = 1).<br />
+- deselect encoder commissioning (p0010 = 0).<br />
+The fault should then be acknowledged and, if necessary, the absolute encoder adjusted (p2507).<br />
+See also: p0010, p2507<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207450">F207450 (A)</a></b></td>
+<td><b>&lt;location&gt;LR: Standstill monitoring has responded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>After the standstill monitoring time (p2543) expired, the drive left the standstill window (p2542).<br />
+- position actual value inversion incorrectly set (p0410).<br />
+- standstill window set too small (p2542).<br />
+- standstill monitoring time set too low (p2543).<br />
+- position loop gain too low (p2538).<br />
+- position loop gain too high (instability&#47;oscillation, p2538).<br />
+- mechanical overload.<br />
+- Connecting cable, motor&#47;drive converter incorrect (phase missing, interchanged).<br />
+- when selecting motor identification, select tracking mode (BI: p2655[0] = 1 signal).<br />
+- when selecting function generator, select tracking mode (BI: p2655[0] = 1 signal) and deactivate position control (BI:p2550 = 0 signal).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the causes and resolve.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207451">F207451 (A)</a></b></td>
+<td><b>&lt;location&gt;LR: Position monitoring has responded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When the position monitoring time (p2545) expired, the drive had still not reached the positioning window (p2544).<br />
+- positioning window parameterized too small (p2544).<br />
+- position monitoring time parameterized too short (p2545).<br />
+- position loop gain too low (p2538).<br />
+- position loop gain too high (instability&#47;oscillation, p2538).<br />
+- drive mechanically locked.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the causes and resolve.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207452">F207452 (A)</a></b></td>
+<td><b>&lt;location&gt;LR: Following error too high</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The difference between the position setpoint position actual value (following error dynamic model, r2563) is higher than the tolerance (p2546).<br />
+- the drive torque or accelerating capacity exceeded.<br />
+- position measuring system fault.<br />
+- encoder cable interrupted.<br />
+- position control sense incorrect.<br />
+- mechanical system locked.<br />
+- excessively high traversing velocity or excessively high position reference value (setpoint) differences<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the causes and resolve.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207453">F207453</a></b></td>
+<td><b>&lt;location&gt;LR: Position actual value preprocessing error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error has occurred during the position actual value preprocessing.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the encoder for the position actual value preprocessing.<br />
+See also: p2502 (LR encoder assignment)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207454">A207454</a></b></td>
+<td><b>&lt;location&gt;LR: Position actual value preprocessing does not have a valid encoder</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>One of the following problems has occurred with the position actual value preprocessing:<br />
+- an encoder is not assigned for the position actual value preprocessing (p2502 = 0).<br />
+- an encoder is assigned, but no encoder data set (p0187 = 99 or p0188 = 99 or p0189 = 99).<br />
+- an encoder and an encoder data set have been assigned, however, the encoder data set does not contain any encoder data (p0400 = 0) or invalid data (e.g. p0408 = 0).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the drive data sets, encoder data sets and encoder assignment.<br />
+See also: p0187 (Encoder 1 encoder data set number), p0188 (Encoder 2 encoder data set number), p0189 (Encoder 3 encoder data set number), p0400 (Encoder type selection), p2502 (LR encoder assignment)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207455">A207455</a></b></td>
+<td><b>&lt;location&gt;EPOS: Maximum velocity limited</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The maximum velocity (p2571) is too high to correctly calculate the modulo correction.<br />
+Within the sampling time for positioning (p0115[5]), with the maximum velocity, a maximum of the half modulo length must be moved through. p2571 was limited to this value.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the maximum velocity (p2571).<br />
+- increase the sampling time for positioning (p0115[5]).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207456">A207456</a></b></td>
+<td><b>&lt;location&gt;EPOS: Setpoint velocity limited</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The actual setpoint velocity is greater than the parameterized maximum velocity (p2571) and is therefore limited.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the entered setpoint velocity.<br />
+- reduce the velocity override (CI: p2646).<br />
+- increase the maximum velocity (p2571).<br />
+- check the signal source for the externally limited velocity (CI: p2594).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207457">A207457</a></b></td>
+<td><b>&lt;location&gt;EPOS: Combination of input signals illegal</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An illegal combination of input signals that are simultaneously set was identified.<br />
+Alarm value (r2124, interpret decimal):<br />
+0: Jog 1 and jog 2 (p2589, p2590).<br />
+1: Jog 1 or jog 2 and direct setpoint input&#47;MDI (p2589, p2590, p2647).<br />
+2: Jog 1 or jog 2 and start referencing (p2589, p2590, p2595).<br />
+3: Jog 1 or jog 2 and activate traversing task (p2589, p2590, p2631).<br />
+4: Direct setpoint input&#47;MDI and starting referencing (p2647, p2595).<br />
+5: Direct setpoint input&#47;MDI and activate traversing task (p2647, p2631).<br />
+6: Start referencing and activate traversing task (p2595, p2631).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the appropriate input signals and correct.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207458">F207458</a></b></td>
+<td><b>&lt;location&gt;EPOS: Reference cam not found</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>After starting the search for reference, the axis moved through the maximum permissible distance to search for the reference cam without actually finding the reference cam.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the &quot;reference cam&quot; binector input (BI: p2612).<br />
+- check the maximum permissible distance to the reference cam (p2606).<br />
+- if axis does not have any reference cam, then set p2607 to 0.<br />
+See also: p2606 (EPOS search for reference reference cam maximum distance), p2607 (EPOS search for reference reference cam present), p2612 (EPOS search for reference reference cam)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207459">F207459</a></b></td>
+<td><b>&lt;location&gt;EPOS: No zero mark</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>After leaving the reference cam, the axis has traversed the maximum permissible distance between the reference cam and zero mark without finding the zero mark.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the encoder regarding the zero mark<br />
+- check the maximum permissible distance between the reference cam and zero mark (p2609).<br />
+- use an external encoder zero mark (equivalent zero mark) (p0495).<br />
+See also: p0495 (Equivalent zero mark input terminal), p2609 (EPOS search for reference max distance ref cam and zero mark)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207460">F207460</a></b></td>
+<td><b>&lt;location&gt;EPOS: End of reference cam not found</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>During the search for reference, when the axis reached the zero mark it also reached the end of the traversing range without detecting an edge at the binector input &quot;reference cam&quot; (BI: p2612).<br />
+Maximum traversing range: -2147483648 [LU] ... -2147483647 [LU]<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the &quot;reference cam&quot; binector input (BI: p2612).<br />
+- repeat the search for reference.<br />
+See also: p2612 (EPOS search for reference reference cam)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207461">A207461</a></b></td>
+<td><b>&lt;location&gt;EPOS: Reference point not set</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When starting a traversing block&#47;direct setpoint input, a reference point is not set (r2684.11 = 0).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reference the system (search for reference, flying referencing, set reference point).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207462">A207462</a></b></td>
+<td><b>&lt;location&gt;EPOS: Selected traversing block number does not exist</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A traversing block selected via binector input p2625 ... p2630 was started via binector input p2631 = 0&#47;1 edge &quot;Activate traversing task&quot;.<br />
+- the number of the started traversing block is not contained in p2616[0...n].<br />
+- the started traversing block is suppressed.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the selected traversing block that is also not available.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the traversing program.<br />
+- select an available traversing block number.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207463">A207463 (F)</a></b></td>
+<td><b>&lt;location&gt;EPOS: External block change not requested in the traversing block</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For a traversing block with the block change enable CONTINUE_EXTERNAL_ALARM, the external block change was not requested.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the traversing block.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Resolve the reason as to why the edge is missing at binector input (BI: p2632).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207464">F207464</a></b></td>
+<td><b>&lt;location&gt;EPOS: Traversing block is inconsistent</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The traversing block does not contain valid information.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the traversing block with invalid information.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the traversing block and where relevant, take into consideration alarms that are present.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207465">A207465</a></b></td>
+<td><b>&lt;location&gt;EPOS: Traversing block does not have a subsequent block</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>There is no subsequent block in the traversing block.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the traversing block with the missing subsequent block.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- parameterize this traversing block with the block change enable END.<br />
+- parameterize additional traversing blocks with a higher block number and for the last block, using the block change enable END.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207466">A207466</a></b></td>
+<td><b>&lt;location&gt;EPOS: Traversing block number assigned a multiple number of times</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The same traversing block number was assigned a multiple number of times.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the traversing block that was assigned a multiple number of times.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the traversing blocks.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207467">A207467</a></b></td>
+<td><b>&lt;location&gt;EPOS: Traversing block has illegal task parameters</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The task parameter in the traversing block contains an illegal value.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the traversing block with an illegal task parameter.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the task parameter in the traversing block.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207468">A207468</a></b></td>
+<td><b>&lt;location&gt;EPOS: Traversing block jump destination does not exist</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In a traversing block, a jump was programmed to a non-existent block.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the traversing block with a jump destination that does not exist.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the traversing block.<br />
+- add the missing traversing block.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207469">A207469</a></b></td>
+<td><b>&lt;location&gt;EPOS: Traversing block &lt; target position &lt; software limit switch minus</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In the traversing block the specified absolute target position lies outside the range limited by the software limit switch minus.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the traversing block with illegal target position.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the traversing block.<br />
+- change software limit switch minus (CI: p2578, p2580).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207470">A207470</a></b></td>
+<td><b>&lt;location&gt;EPOS: Traversing block&gt; target position &gt; software limit switch plus</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In the traversing block the specified absolute target position lies outside the range limited by the software limit switch plus.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the traversing block with illegal target position.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the traversing block.<br />
+- change software limit switch plus (CI: p2579, p2581).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207471">A207471</a></b></td>
+<td><b>&lt;location&gt;EPOS: Traversing block target position outside the modulo range</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In the traversing block the target position lies outside the modulo range.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the traversing block with illegal target position.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- in the traversing block, correct the target position.<br />
+- change the modulo range (p2576).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207472">A207472</a></b></td>
+<td><b>&lt;location&gt;EPOS: Traversing block ABS_POS&#47;ABS_NEG not possible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In the traversing block the positioning mode ABS_POS or ABS_NEG were parameterized with the modulo correction not activated.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the traversing block with the illegal positioning mode.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the traversing block.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207473">A207473 (F)</a></b></td>
+<td><b>&lt;location&gt;EPOS: Beginning of traversing range reached</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When traversing, the axis has moved to the traversing range limit.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Move away in the positive direction.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207474">A207474 (F)</a></b></td>
+<td><b>&lt;location&gt;EPOS: End of traversing range reached</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When traversing, the axis has moved to the traversing range limit.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Move away in the negative direction.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207475">F207475 (A)</a></b></td>
+<td><b>&lt;location&gt;EPOS: Target position &lt; start of traversing range</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The target position for relative traversing lies outside the traversing range.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the target position.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207476">F207476 (A)</a></b></td>
+<td><b>&lt;location&gt;EPOS: Target position &gt; end of the traversing range</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The target position for relative traversing lies outside the traversing range.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the target position.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207477">A207477 (F)</a></b></td>
+<td><b>&lt;location&gt;EPOS: Target position &lt; software limit switch minus</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In the actual traversing operation, the target position is less than the software limit switch minus.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the target position.<br />
+- change software limit switch minus (CI: p2578, p2580).<br />
+See also: p2578 (EPOS software limit switch minus signal source), p2580 (EPOS software limit switch minus), p2582 (EPOS software limit switch activation)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207478">A207478 (F)</a></b></td>
+<td><b>&lt;location&gt;EPOS: Target position &gt; software limit switch plus</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In the actual traversing operation, the target position is greater than the software limit switch plus.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the target position.<br />
+- change software limit switch plus (CI: p2579, p2581).<br />
+See also: p2579 (EPOS software limit switch plus signal source), p2581 (EPOS software limit switch plus), p2582 (EPOS software limit switch activation)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207479">A207479</a></b></td>
+<td><b>&lt;location&gt;EPOS: Software limit switch minus reached</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The axis is at the position of the software limit switch minus. An active traversing block was interrupted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the target position.<br />
+- change software limit switch minus (CI: p2578, p2580).<br />
+See also: p2578 (EPOS software limit switch minus signal source), p2580 (EPOS software limit switch minus), p2582 (EPOS software limit switch activation)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207480">A207480</a></b></td>
+<td><b>&lt;location&gt;EPOS: Software limit switch plus reached</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The axis is at the position of the software limit switch plus. An active traversing block was interrupted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the target position.<br />
+- change software limit switch plus (CI: p2579, p2581).<br />
+See also: p2579 (EPOS software limit switch plus signal source), p2581 (EPOS software limit switch plus), p2582 (EPOS software limit switch activation)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207481">F207481 (A)</a></b></td>
+<td><b>&lt;location&gt;EPOS: Axis position &lt; software limit switch minus</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The actual position of the axis is less than the position of the software limit switch minus.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the target position.<br />
+- change software limit switch minus (CI: p2578, p2580).<br />
+See also: p2578 (EPOS software limit switch minus signal source), p2580 (EPOS software limit switch minus), p2582 (EPOS software limit switch activation)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207482">F207482 (A)</a></b></td>
+<td><b>&lt;location&gt;EPOS: Axis position &gt; software limit switch plus</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The actual position of the axis is greater than the position of the software limit switch plus.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- correct the target position.<br />
+- change software limit switch plus (CI: p2579, p2581).<br />
+See also: p2579 (EPOS software limit switch plus signal source), p2581 (EPOS software limit switch plus), p2582 (EPOS software limit switch activation)<br />
+</td></tr>
+</table><p></p></body></html>

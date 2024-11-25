@@ -1,0 +1,138 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Replaceable geometry axes (GEOAX): Further Information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Replaceable geometry axes (GEOAX): Further Information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">More information</h3>
+      <h4 class="Blocklabel">Relevant machine data</h4>
+      <ul>
+        <li>
+          <p>Assignment of geometry, special and machine axes to channel axes:</p>
+          <ul>
+            <li>
+              <p>MD10000 $MN_AXCONF_MACHAX_NAME_TAB</p>
+            </li>
+            <li>
+              <p>MD20050 $MC_AXCONF_GEOAX_ASIGN_TAB</p>
+            </li>
+            <li>
+              <p>MD20060 $MC_AXCONF_GEOAX_NAME_TAB</p>
+            </li>
+            <li>
+              <p>MD20070 $MC_AXCONF_MACHAX_USED</p>
+            </li>
+            <li>
+              <p>MD20080 $MC_AXCONF_CHANAX_NAME_TAB</p>
+            </li>
+            <li>
+              <p>MD35000 $MA_SPIND_ASSIGN_TO_MACHAX</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Reset response:</p>
+          <ul>
+            <li>
+              <p>MD20110 $MC_RESET_MODE_MASK, bit 12</p>
+            </li>
+            <li>
+              <p>MD20118 $MC_GEOAX_CHANGE_RESET</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>NC start behavior:</p>
+          <ul>
+            <li>
+              <p>MD20112 $MC_START_MODE_MASK, bit 12</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Notification to the PLC user program:</p>
+          <ul>
+            <li>
+              <p>MD22532 $MC_GEOAX_CHANGE_M_CODE</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Conditions, which prevent a geometry axis switchover</h4>
+      <ul>
+        <li>
+          <p>One of the following functions is active:</p>
+          <ul>
+            <li>
+              <p>Transformation</p>
+            </li>
+            <li>
+              <p>Spline interpolation</p>
+            </li>
+            <li>
+              <p>Tool radius compensation</p>
+            </li>
+            <li>
+              <p>Tool fine offset</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>The geometry axis and another channel axis have the same name.</p>
+        </li>
+        <li>
+          <p>One of the axes participating in the geometry axis changeover is involved in an action that goes beyond block limits.</p>
+          <p>For example, modal positioning axis or following axis of an axis coupling.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Rotary axes</h4>
+      <p>Rotary axes cannot be programmed as geometry axes.</p>
+      <h4 class="Blocklabel">Axis state after replacing</h4>
+      <p>An axis replaced by the changeover in the geometry axis group can be programmed as supplementary axis after the changeover operation via its channel axis names.</p>
+      <h4 class="Blocklabel">Frames, protection areas, working area limitations</h4>
+      <p>All frames, protection areas and working area limitations are deleted after changing over the geometry axes.</p>
+      <h4 class="Blocklabel">Polar coordinates</h4>
+      <p>Exchanging the geometry axes with GEOAX sets the modal polar coordinates to a value of 0, analogous to a level change with G17-G19.</p>
+      <h4 class="Blocklabel">DRF, WO</h4>
+      <p>A possible handwheel offset (DRF) or an external work offset (WO) remains effective after the changeover.</p>
+      <h4 class="Blocklabel">Basic configuration of the geometry axes</h4>
+      <p>The GEOAX() command calls the basic configuration of the geometry axis group.</p>
+      <p>The system automatically changes back to the basic configuration after POWER ON and when changing over into the "reference point approach" mode.</p>
+      <h4 class="Blocklabel">Tool length compensation</h4>
+      <p>An active tool length compensation is also effective after the changeover operation. However, for geometry axes that have been newly added or those where the position has been replaced, it is still considered not to have been moved through. For the first motion command for these geometry axes, the resulting traversing distance correspondingly comprises the sum of the tool length compensation and the programmed traversing distance.</p>
+      <p>Geometry axes, which retain their position in the axis group after a replacement operation, also retain their status with respect to tool length compensation.</p>
+      <h4 class="Blocklabel">Geometry axis configuration for active transformation</h4>
+      <ul>
+        <li>
+          <p>The geometry axis configuration parameterized for an active transformation via transformation machine data cannot be changed using the "Switchable geometry axes" function.</p>
+        </li>
+        <li>
+          <p>Different data sets must be parameterized in the transformation machine data for a different geometry axis configuration for a transformation.</p>
+        </li>
+        <li>
+          <p>A geometry axis configuration changed using GEOAX is deleted by activating a transformation.</p>
+        </li>
+        <li>
+          <p>With regard to the geometry axes, the transformation-specific geometry axis parameterizations of active transformations have priority over the parameterizations relevant for the changeover of geometry axes.</p>
+          <p>Example: A transformation is active. According to the machine data, the transformation should be retained at a channel reset. At the same time, the basic configuration of the geometry axes should be restored at a channel reset. The geometry axis configuration that has been specified for the transformation is retained.</p>
+        </li>
+        <li>
+          <p>If a transformation is switched off, the parameterized basic setting of the geometry axis configuration takes effect again.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">JOG mode, REF machine function</h4>
+      <p>When switching over to the JOG mode, REF machine function (reference point approach), the geometry axis configuration parameterized in the machine data becomes active.</p>
+    </div>
+  </body>
+</html>

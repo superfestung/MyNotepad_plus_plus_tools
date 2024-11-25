@@ -1,0 +1,1190 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="208759">A208759</a></b></td>
+<td><b>&lt;location&gt;CAN: PDO COB-ID already available</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An existing PDO COB-ID was allocated.<br />
+Alarm value (r2124, interpret decimal):<br />
+Parameter number.<br />
+Note:<br />
+The COB-ID is included in index zero (p870x[0], p872x[0]).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Select another PDO COB-ID.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208760">A208760</a></b></td>
+<td><b>&lt;location&gt;CAN: maximum size of the IF PZD exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The maximum size of the IF PZD was exceeded.<br />
+Alarm value (r2124, interpret decimal):<br />
+1: error for IF PZD receive.<br />
+2: error for IF PZD send.<br />
+Note:<br />
+IF: interface<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Map fewer process data in PDO.<br />
+Apply one of the following options to delete the alarm:<br />
+- POWER ON (switch-off&#47;switch-on).<br />
+- carry out a warm restart (p0009 = 30, p0976 = 2).<br />
+- execute CANopen NMT command reset node.<br />
+- change CANopen NMT state.<br />
+- delete alarm buffer [0...7] (p2111 = 0).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208800">A208800</a></b></td>
+<td><b>&lt;location&gt;PROFIenergy energy-saving mode active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The PROFIenergy energy-saving mode is active<br />
+Alarm value (r2124, interpret decimal):<br />
+Mode ID of the active PROFIenergy energy-saving mode.<br />
+See also: r5600 (Pe energy-saving mode ID)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The alarm is automatically withdrawn when the energy-saving mode is exited.<br />
+Note:<br />
+The energy-saving mode is exited after the following events:<br />
+- the PROFIenergy command end_pause is received from the higher-level control.<br />
+- the higher-level control has changed into the STOP operating state.<br />
+- the PROFINET connection to the higher-level control has been disconnected.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="209000">A209000</a></b></td>
+<td><b>&lt;location&gt;Web server user incorrectly configured</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error occurred when configuring the web server user.<br />
+Fault value (r0949, interpret decimal):<br />
+0: No admin password<br />
+1: Invalid admin password<br />
+2: Invalid SINAMICS password<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the user configuration, enter a correct password.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213000">F213000</a></b></td>
+<td><b>&lt;location&gt;License not adequate</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- For the converter, the options that require a license are being used but the licenses are not sufficient.<br />
+- an error occurred when checking the existing licenses.<br />
+Fault value (r0949, interpret decimal):<br />
+0:<br />
+The existing license is not sufficient.<br />
+1:<br />
+An adequate license was not able to be determined as the memory card with the required licensing data was withdrawn in operation.<br />
+2:<br />
+An adequate license was not able to be determined as there is no licensing data available on the memory card.<br />
+3:<br />
+An adequate license was not able to be determined as there is a checksum error in the license key.<br />
+4:<br />
+An internal error occurred when checking the license.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 0:<br />
+Additional licenses are required and these must be activated (p9920, p9921).<br />
+For fault value = 1:<br />
+With the system powered down, re-insert the memory card that matches the system.<br />
+For fault value = 2:<br />
+Enter and activate the license key (p9920, p9921).<br />
+For fault value = 3:<br />
+Compare the license key (p9920) entered with the license key on the Certificate of License.<br />
+Re-enter the license key and activate (p9920, p9921).<br />
+For fault value = 4:<br />
+- carry out a POWER ON.<br />
+- upgrade firmware to later version.<br />
+- contact Technical Support.<br />
+Note:<br />
+An overview of the converter functions requiring a license can be displayed using a commissioning tool in the online mode. Depending on the commissioning tool, you can obtain the necessary licenses (serial number, license Key, Trial License Mode).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213001">A213001</a></b></td>
+<td><b>&lt;location&gt;Error in license checksum</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When checking the checksum of the license key, an error was detected.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Compare the license key (p9920) entered with the license key on the Certificate of License.<br />
+Re-enter the license key and activate (p9920, p9921).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213009">F213009</a></b></td>
+<td><b>&lt;location&gt;Licensing Technology Extension not licensed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>At least one Technology Extension that requires a license does not have a license.<br />
+Note:<br />
+Refer to r4955 and p4955 for information about the installed Technology Extensions.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- enter and activate the license key for Technology Extensions that require a license (p9920, p9921).<br />
+- if necessary, deactivate Technology Extensions that are not licensed (p4956).<br />
+See also: p9920 (Licensing enter license key), p9921 (Licensing activate license key)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213010">F213010</a></b></td>
+<td><b>&lt;location&gt;Licensing function module not licensed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>At least one function module requiring a license is not licensed.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Bit x = 1: The corresponding function module does not have a license.<br />
+Note:<br />
+Assigning bit number to function module, see p0108 or r0108.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- enter and activate the license key for function modules that require a license (p9920, p9921).<br />
+- if necessary, deactivate unlicensed function modules (p0108, r0108).<br />
+See also: p9920 (Licensing enter license key), p9921 (Licensing activate license key)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213021">A213021</a></b></td>
+<td><b>&lt;location&gt;Licensing for output frequencies &gt; 550 Hz missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Configuring the converter results in an output frequency greater than 550 Hz. This function requires a license. The &quot;High Output Frequency&quot; license is required.<br />
+Note:<br />
+- in this specific case, the output frequency is limited to 550 Hz.<br />
+- the &quot;Trial License&quot; function is not effective for license &quot;High Output Frequency&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- enter and activate the license key for &quot;High Output Frequency&quot; and activate (p9920, p9921).<br />
+- if necessary operate the motor below the output frequency of 550 Hz.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213030">A213030</a></b></td>
+<td><b>&lt;location&gt;Trial License activated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;Trial License&quot; function was activated. One of the available periods is expiring.<br />
+See also: p9918 (Licensing active Trial License), r9919 (Licensing Trial License status)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+The alarm is automatically withdrawn after the periods have expired.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213031">A213031</a></b></td>
+<td><b>&lt;location&gt;Trial License period expired</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>One of the available periods of the &quot;Trial License&quot; function has expired.<br />
+See also: p9918 (Licensing active Trial License), r9919 (Licensing Trial License status)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- if required, start an additional period (p9918 = 1).<br />
+- deactivate functions requiring a license.<br />
+- appropriately license the drive unit.<br />
+Note:<br />
+A license that is not adequate will only become evident after the next time the system runs up.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213032">A213032</a></b></td>
+<td><b>&lt;location&gt;Trial License last period activated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;Trial License&quot; function was activated. The last of the available periods is expiring.<br />
+See also: p9918 (Licensing active Trial License), r9919 (Licensing Trial License status)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+The alarm is automatically withdrawn after the last period has expired.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213033">A213033</a></b></td>
+<td><b>&lt;location&gt;Trial License last period expired</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The last period of the &quot;Trial License&quot; function has expired. No additional periods available.<br />
+See also: p9918 (Licensing active Trial License), r9919 (Licensing Trial License status)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- deactivate functions requiring a license.<br />
+- appropriately license the drive unit.<br />
+Note:<br />
+A license that is not adequate will only become evident after the next time the system runs up.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213100">F213100</a></b></td>
+<td><b>&lt;location&gt;Know-how protection: Copy protection error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The know-how protection with copy protection for the memory card is active.<br />
+An error has occurred when checking the memory card.<br />
+Fault value (r0949, interpret decimal):<br />
+0: A memory card is not inserted.<br />
+2: An invalid memory card is inserted.<br />
+3: The memory card is being used in another Control Unit.<br />
+12: An invalid memory card is inserted (OEM input incorrect, p7769).<br />
+13: The memory card is being used in another Control Unit (OEM input incorrect, p7759).<br />
+See also: p7765 (KHP configuration)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 0:<br />
+- insert the correct memory card and carry out POWER ON.<br />
+For fault value = 2, 3, 12, 13:<br />
+- contact the responsible OEM.<br />
+- Deactivate copy protection (p7765) and acknowledge the fault (p3981).<br />
+- Deactivate know-how protection (p7766 ... p7768) and acknowledge the fault (p3981).<br />
+Note:<br />
+In general, the copy protection can only be changed when know-how protection is deactivated.<br />
+KHP: Know-How Protection<br />
+See also: p3981 (Acknowledge drive object faults), p7765 (KHP configuration)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213101">F213101</a></b></td>
+<td><b>&lt;location&gt;Know-how protection: Copy protection cannot be activated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error occurred when attempting to activate the copy protection for the memory card.<br />
+Fault value (r0949, interpret decimal):<br />
+0: A memory card is not inserted.<br />
+Note:<br />
+KHP: Know-How Protection<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- insert the memory card and carry out POWER ON.<br />
+- Try to activate copy protection again (p7765).<br />
+See also: p7765 (KHP configuration)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="213102">F213102</a></b></td>
+<td><b>&lt;location&gt;Know-how protection: Consistency error of the protected data</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error was identified when checking the consistency of the protected files. As a consequence, the project on the memory card cannot be run.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyyyxxxx hex: yyyy = object number, xxxx = fault cause<br />
+xxxx = 1:<br />
+A file has a checksum error.<br />
+xxxx = 2:<br />
+The files are not consistent with one another.<br />
+xxxx = 3:<br />
+The project files, which were loaded into the file system via load (download from the memory card), are inconsistent.<br />
+Note:<br />
+KHP: Know-How Protection<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- Replace the project on the memory card or replace project files for download from the memory card.<br />
+- Restore the factory setting and download again.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230036">F230036</a></b></td>
+<td><b>&lt;location&gt;Power unit: Internal overtemperature</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The temperature inside the converter has exceeded the permissible limit value.<br />
+- insufficient cooling, fan failure.<br />
+- overload.<br />
+- ambient temperature too high.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0 = 1: Overtemperature in the control electronics area.<br />
+Bit 1 = 1: Overtemperature in the power electronics area.<br />
+Bit 2 = 1: Overtemperature in the processor area.<br />
+Bit 3 = 1: Overtemperature in the processor area.<br />
+Bit 4 = 1: Overtemperature when the internal fan is defective.<br />
+Bit 5 = 1: Intake air overtemperature.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the internal fan.<br />
+- check the fan elements.<br />
+- check whether the ambient temperature is in the permissible range.<br />
+Notice:<br />
+This fault can only be acknowledged once the permissible temperature limit minus 5 K has been fallen below.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230800">N230800 (F)</a></b></td>
+<td><b>&lt;location&gt;Power unit: Group signal</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The power unit has detected at least one fault.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the other messages that are presently available.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240000">F240000</a></b></td>
+<td><b>&lt;location&gt;Fault at DRIVE-CLiQ socket X100</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault has occurred at the drive object at the DRIVE-CLiQ socket X100.<br />
+Fault value (r0949, interpret decimal):<br />
+First fault that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the fault buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240001">F240001</a></b></td>
+<td><b>&lt;location&gt;Fault at DRIVE-CLiQ socket X101</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault has occurred at the drive object at the DRIVE-CLiQ socket X101.<br />
+Fault value (r0949, interpret decimal):<br />
+First fault that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the fault buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240002">F240002</a></b></td>
+<td><b>&lt;location&gt;Fault at DRIVE-CLiQ socket X102</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault has occurred at the drive object at the DRIVE-CLiQ socket X102.<br />
+Fault value (r0949, interpret decimal):<br />
+First fault that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the fault buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240003">F240003</a></b></td>
+<td><b>&lt;location&gt;Fault at DRIVE-CLiQ socket X103</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault has occurred at the drive object at the DRIVE-CLiQ socket X103.<br />
+Fault value (r0949, interpret decimal):<br />
+First fault that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the fault buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240004">F240004</a></b></td>
+<td><b>&lt;location&gt;Fault at DRIVE-CLiQ socket X104</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault has occurred at the drive object at the DRIVE-CLiQ socket X104.<br />
+Fault value (r0949, interpret decimal):<br />
+First fault that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the fault buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240005">F240005</a></b></td>
+<td><b>&lt;location&gt;Fault at DRIVE-CLiQ socket X105</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault has occurred at the drive object at the DRIVE-CLiQ socket X105.<br />
+Fault value (r0949, interpret decimal):<br />
+First fault that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the fault buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240100">A240100</a></b></td>
+<td><b>&lt;location&gt;Alarm at DRIVE-CLiQ socket X100</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An alarm has occurred at the drive object at the DRIVE-CLiQ socket X100.<br />
+Alarm value (r2124, interpret decimal):<br />
+First alarm that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the alarm buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240101">A240101</a></b></td>
+<td><b>&lt;location&gt;Alarm at DRIVE-CLiQ socket X101</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An alarm has occurred at the drive object at the DRIVE-CLiQ socket X101.<br />
+Alarm value (r2124, interpret decimal):<br />
+First alarm that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the alarm buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240102">A240102</a></b></td>
+<td><b>&lt;location&gt;Alarm at DRIVE-CLiQ socket X102</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An alarm has occurred at the drive object at the DRIVE-CLiQ socket X102.<br />
+Alarm value (r2124, interpret decimal):<br />
+First alarm that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the alarm buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240103">A240103</a></b></td>
+<td><b>&lt;location&gt;Alarm at DRIVE-CLiQ socket X103</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An alarm has occurred at the drive object at the DRIVE-CLiQ socket X103.<br />
+Alarm value (r2124, interpret decimal):<br />
+First alarm that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the alarm buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240104">A240104</a></b></td>
+<td><b>&lt;location&gt;Alarm at DRIVE-CLiQ socket X104</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An alarm has occurred at the drive object at the DRIVE-CLiQ socket X104.<br />
+Alarm value (r2124, interpret decimal):<br />
+First alarm that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the alarm buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240105">A240105</a></b></td>
+<td><b>&lt;location&gt;Alarm at DRIVE-CLiQ socket X105</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An alarm has occurred at the drive object at the DRIVE-CLiQ socket X105.<br />
+Alarm value (r2124, interpret decimal):<br />
+First alarm that has occurred for this drive object.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the alarm buffer of the specified object.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240799">F240799</a></b></td>
+<td><b>&lt;location&gt;CX32: Configured transfer end time exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The configured transfer end time when transferring the cyclic actual values was exceeded.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- contact Technical Support.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240801">F240801</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ: Sign-of-life missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the Control Unit to the controller extension involved.<br />
+Fault cause:<br />
+10 (= 0A hex):<br />
+The sign-of-life bit in the receive telegram is not set.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- replace the component involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240820">F240820</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ: Telegram error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the Control Unit to the controller extension involved.<br />
+Fault cause:<br />
+1 (= 01 hex):<br />
+Checksum error (CRC error).<br />
+2 (= 02 hex):<br />
+Telegram is shorter than specified in the length byte or in the receive list.<br />
+3 (= 03 hex):<br />
+Telegram is longer than specified in the length byte or in the receive list.<br />
+4 (= 04 hex):<br />
+The length of the receive telegram does not match the receive list.<br />
+5 (= 05 hex):<br />
+The type of the receive telegram does not match the receive list.<br />
+6 (= 06 hex):<br />
+The address of the component in the telegram and in the receive list do not match.<br />
+7 (= 07 hex):<br />
+A SYNC telegram is expected - but the received telegram is not a SYNC telegram.<br />
+8 (= 08 hex):<br />
+No SYNC telegram is expected - but the received telegram is one.<br />
+9 (= 09 hex):<br />
+The error bit in the receive telegram is set.<br />
+16 (= 10 hex):<br />
+The receive telegram is too early.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+- check the DRIVE-CLiQ wiring (interrupted cable, contacts, ...).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240825">F240825</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ: Supply voltage failed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The DRIVE-CLiQ communication from the DRIVE-CLiQ component involved to the Control Unit signals that the supply voltage has failed.<br />
+Fault cause:<br />
+9 (= 09 hex):<br />
+The power supply voltage for the components has failed.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- check the supply voltage wiring of the DRIVE-CLiQ component (interrupted cable, contacts, ...).<br />
+- check the dimensioning of the DRIVE-CLiQ component power supply.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240835">F240835</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ: Cyclic data transfer error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the Control Unit to the controller extension involved. The nodes do not send and receive in synchronism.<br />
+Fault cause:<br />
+33 (= 21 hex):<br />
+The cyclic telegram has not been received.<br />
+34 (= 22 hex):<br />
+Timeout in the telegram receive list.<br />
+64 (= 40 hex):<br />
+Timeout in the telegram send list.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- replace the component involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240836">F240836</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ: Send error for DRIVE-CLiQ data</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the Control Unit to the controller extension involved. Data were not able to be sent.<br />
+Fault cause:<br />
+65 (= 41 hex):<br />
+Telegram type does not match send list.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out a POWER ON (switch-off&#47;switch-on).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240837">F240837</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ: Component fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Fault detected on the DRIVE-CLiQ component concerned. Faulty hardware cannot be excluded.<br />
+Fault cause:<br />
+32 (= 20 hex):<br />
+Error in the telegram header.<br />
+35 (= 23 hex):<br />
+Receive error: The telegram buffer memory contains an error.<br />
+66 (= 42 hex):<br />
+Send error: The telegram buffer memory contains an error.<br />
+67 (= 43 hex):<br />
+Send error: The telegram buffer memory contains an error.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the DRIVE-CLiQ wiring (interrupted cable, contacts, ...).<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+- if required, use another DRIVE-CLiQ socket (p9904).<br />
+- replace the component involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240845">F240845</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ: Cyclic data transfer error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the Control Unit to the controller extension involved.<br />
+Fault cause:<br />
+11 (= 0B hex):<br />
+Synchronization error during alternating cyclic data transfer.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out a POWER ON (switch-off&#47;switch-on).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240851">F240851</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ (CU): Sign-of-life missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the controller extension involved to the Control Unit.<br />
+The DRIVE-CLiQ component did not set the sign-of-life to the Control Unit.<br />
+Fault cause:<br />
+10 (= 0A hex):<br />
+The sign-of-life bit in the receive telegram is not set.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Upgrade the firmware of the component involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240860">F240860</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ (CU): Telegram error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the controller extension involved to the Control Unit.<br />
+Fault cause:<br />
+1 (= 01 hex):<br />
+Checksum error (CRC error).<br />
+2 (= 02 hex):<br />
+Telegram is shorter than specified in the length byte or in the receive list.<br />
+3 (= 03 hex):<br />
+Telegram is longer than specified in the length byte or in the receive list.<br />
+4 (= 04 hex):<br />
+The length of the receive telegram does not match the receive list.<br />
+5 (= 05 hex):<br />
+The type of the receive telegram does not match the receive list.<br />
+6 (= 06 hex):<br />
+The address of the power unit in the telegram and in the receive list do not match.<br />
+9 (= 09 hex):<br />
+The error bit in the receive telegram is set.<br />
+16 (= 10 hex):<br />
+The receive telegram is too early.<br />
+17 (= 11 hex):<br />
+CRC error and the receive telegram is too early.<br />
+18 (= 12 hex):<br />
+The telegram is shorter than that specified in the length byte or in the receive list and the receive telegram is too early.<br />
+19 (= 13 hex):<br />
+The telegram is longer than that specified in the length byte or in the receive list and the receive telegram is too early.<br />
+20 (= 14 hex):<br />
+The length of the receive telegram does not match the receive list and the receive telegram is too early.<br />
+21 (= 15 hex):<br />
+The type of the receive telegram does not match the receive list and the receive telegram is too early.<br />
+22 (= 16 hex):<br />
+The address of the power unit in the telegram and in the receive list does not match and the receive telegram is too early.<br />
+25 (= 19 hex):<br />
+The error bit in the receive telegram is set and the receive telegram is too early.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+- check the DRIVE-CLiQ wiring (interrupted cable, contacts, ...).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240875">F240875</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ (CU): Supply voltage failed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The DRIVE-CLiQ communication from the DRIVE-CLiQ component involved to the Control Unit signals that the supply voltage has failed.<br />
+Fault cause:<br />
+9 (= 09 hex):<br />
+The power supply voltage for the components has failed.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- check the supply voltage wiring of the DRIVE-CLiQ component (interrupted cable, contacts, ...).<br />
+- check the dimensioning of the DRIVE-CLiQ component power supply.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240885">F240885</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ (CU): Cyclic data transfer error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the controller extension involved to the Control Unit.<br />
+The nodes do not send and receive in synchronism.<br />
+Fault cause:<br />
+26 (= 1A hex):<br />
+Sign-of-life bit in the receive telegram not set and the receive telegram is too early.<br />
+33 (= 21 hex):<br />
+The cyclic telegram has not been received.<br />
+34 (= 22 hex):<br />
+Timeout in the telegram receive list.<br />
+64 (= 40 hex):<br />
+Timeout in the telegram send list.<br />
+98 (= 62 hex):<br />
+Error at the transition to cyclic operation.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the power supply voltage of the component involved.<br />
+- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- replace the component involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240886">F240886</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ (CU): Error when sending DRIVE-CLiQ data</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the controller extension involved to the Control Unit.<br />
+Data were not able to be sent.<br />
+Fault cause:<br />
+65 (= 41 hex):<br />
+Telegram type does not match send list.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out a POWER ON (switch-off&#47;switch-on).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240887">F240887</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ (CU): Component fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Fault detected on the DRIVE-CLiQ component concerned. Faulty hardware cannot be excluded.<br />
+Fault cause:<br />
+32 (= 20 hex):<br />
+Error in the telegram header.<br />
+35 (= 23 hex):<br />
+Receive error: The telegram buffer memory contains an error.<br />
+66 (= 42 hex):<br />
+Send error: The telegram buffer memory contains an error.<br />
+67 (= 43 hex):<br />
+Send error: The telegram buffer memory contains an error.<br />
+96 (= 60 hex):<br />
+Response received too late during runtime measurement.<br />
+97 (= 61 hex):<br />
+Time taken to exchange characteristic data too long.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the DRIVE-CLiQ wiring (interrupted cable, contacts, ...).<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+- if required, use another DRIVE-CLiQ socket (p9904).<br />
+- replace the component involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="240895">F240895</a></b></td>
+<td><b>&lt;location&gt;CX32 DRIVE-CLiQ (CU): Cyclic data transfer error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ communications error has occurred from the controller extension involved to the Control Unit.<br />
+Fault cause:<br />
+11 (= 0B hex):<br />
+Synchronization error during alternating cyclic data transfer.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = component number, xx = error cause<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out a POWER ON (switch-off&#47;switch-on).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="250002">A250002 (F)</a></b></td>
+<td><b>&lt;location&gt;COMM BOARD: Alarm 2</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>CBE20 SINAMICS Link:<br />
+A specific telegram word (send) is being used twice.<br />
+Alarm value (r2124, interpret decimal):<br />
+Telegram word used twice<br />
+See also: p8871 (SINAMICS Link PZD send word)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>CBE20 SINAMICS Link:<br />
+Correct the parameter assignment.<br />
+See also: p8871 (SINAMICS Link PZD send word)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="250003">A250003 (F)</a></b></td>
+<td><b>&lt;location&gt;COMM BOARD: Alarm 3</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>CBE20 SINAMICS Link:<br />
+A specific telegram word (receive) is being used twice.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+yyyyxxxx hex: yyyy = info. 1, xxxx = info. 2<br />
+Info. 1 (decimal) = Address of sender<br />
+Info. 2 (decimal) = Receive telegram word<br />
+See also: p8870 (SINAMICS Link PZD receive word), p8872 (SINAMICS Link PZD receive address)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>CBE20 SINAMICS Link:<br />
+Correct the parameter assignment.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="250004">A250004 (F)</a></b></td>
+<td><b>&lt;location&gt;COMM BOARD: Alarm 4</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>CBE20 SINAMICS Link:<br />
+- telegram word (receive) and address of sender inconsistent. Both values have to be either equal to zero or not equal to zero.<br />
+- address of the sender &gt; maximum project address.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+yyyyxxxx hex: yyyy = info. 1, xxxx = info. 2<br />
+Info. 1 (decimal) = Drive object number from p8870, p8872<br />
+Info. 2 (decimal) = Index from p8870, p8872<br />
+See also: p8811, p8870, p8872<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>In the case of CBE20 SINAMICS Link:<br />
+Correct the parameter assignment.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="250005">A250005 (F)</a></b></td>
+<td><b>&lt;location&gt;COMM BOARD: Alarm 5</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>CBE20 SINAMICS Link:<br />
+Sender not found on SINAMICS Link.<br />
+Alarm value (r2124, interpret decimal):<br />
+0: synchronization to the bus clock cycle unsuccessful.<br />
+1 ... 64: address of the sender that was not found.<br />
+See also: p8872 (SINAMICS Link PZD receive address)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>CBE20 SINAMICS Link:<br />
+Check the connection to the sender.<br />
+Set parameters p8811, p8812[1] to identical values for all participants&#47;nodes.<br />
+Check parameter p8836 for all participants.<br />
+See also: p8811 (SINAMICS Link project selection), p8812 (SINAMICS Link clock cycle settings), p8836 (SINAMICS link node address)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="250006">A250006 (F)</a></b></td>
+<td><b>&lt;location&gt;COMM BOARD: Alarm 6</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>CBE20 SINAMICS Link:<br />
+The parameter assignment indicates that the sender and the receiver are one and the same. This is not permitted.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+yyyyxxxx hex: yyyy = info. 1, xxxx = info. 2<br />
+Info. 1 (decimal) = Drive object number from p8872<br />
+Info. 2 (decimal) = Index from p8872<br />
+See also: p8836 (SINAMICS link node address), p8872 (SINAMICS Link PZD receive address)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>In the case of CBE20 SINAMICS Link:<br />
+Correct the parameter assignment. All p8872[index] must be set to a value not equal to p8836.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="250007">A250007 (F)</a></b></td>
+<td><b>&lt;location&gt;COMM BOARD: Alarm 7</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>CBE20 SINAMICS Link:<br />
+A send telegram word is greater than possible in the project.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+yyyyxxxx hex: yyyy = info. 1, xxxx = info. 2<br />
+Info. 1 (decimal) = drive object number from p8871<br />
+Info. 2 (decimal) = index from p8871<br />
+See also: p8811 (SINAMICS Link project selection), p8871 (SINAMICS Link PZD send word)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>In the case of CBE20 SINAMICS Link:<br />
+Correct the parameter assignment.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="250008">A250008 (F)</a></b></td>
+<td><b>&lt;location&gt;COMM BOARD: Alarm 8</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>CBE20 SINAMICS Link:<br />
+A receive telegram word is greater than possible in the project.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+yyyyxxxx hex: yyyy = info. 1, xxxx = info. 2<br />
+Info. 1 (decimal) = drive object number from p8870<br />
+Info. 2 (decimal) = index from p8870<br />
+See also: p8811 (SINAMICS Link project selection), p8870 (SINAMICS Link PZD receive word)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>In the case of CBE20 SINAMICS Link:<br />
+Correct the parameter assignment.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="250011">A250011 (F)</a></b></td>
+<td><b>&lt;location&gt;EtherNetIP&#47;COMM BOARD: configuration error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>CBE20 EtherNet&#47;IP:<br />
+An EtherNet&#47;IP controller attempts to establish a connection using an incorrect configuring telegram.<br />
+The telegram length set in the controller does not match the parameterization in the drive device.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the set telegram length.<br />
+Note:<br />
+PZD interface 1:<br />
+For p0922 not equal to 999, then the length of the selected telegram applies.<br />
+For p0922 = 999, the maximum interconnected PZD (r2067) applies.<br />
+PZD interface 2:<br />
+The maximum interconnected PZD (r8867) applies.<br />
+See also: p0922, r2067, r8867<br />
+</td></tr>
+</table><p></p></body></html>

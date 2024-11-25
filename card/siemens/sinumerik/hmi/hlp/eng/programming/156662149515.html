@@ -1,0 +1,56 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Auxiliary function outputs: Further information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Auxiliary function outputs: Further information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Further information</h3>
+      <h4 class="Blocklabel">Number of function outputs per NC block</h4>
+      <p>Up to 10 function outputs can be programmed in one NC block. Auxiliary functions can also be output from the action component of <b>synchronized actions</b>.</p>
+      <h4 class="Blocklabel">Grouping</h4>
+      <p>The functions described can be grouped together. Group assignment is predefined for some M commands. The acknowledgment behavior can be defined by the grouping.</p>
+      <h4 class="Blocklabel">High-speed function outputs (QU)  </h4>
+      <p>Functions, which have not been programmed as high-speed outputs, can be defined as high-speed outputs for individual outputs with the keyword <code>QU</code>. Program execution continues without waiting for the acknowledgment of the miscellaneous function (the program waits for the transport acknowledgment). This helps avoid unnecessary hold points and interruptions to traversing movements.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">The appropriate machine data must be set for the "High-speed function outputs" function (→ <b>machine manufacturer</b>).</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Function outputs for travel commands</h4>
+      <p>The transfer of information as well as waiting for the appropriate response takes time and therefore influences the traversing movements.</p>
+      <h4 class="Blocklabel">High-speed acknowledgment without block change delay</h4>
+      <p>Block change behavior can be influenced by machine data. When the "without block change delay" setting is selected, the system response with respect to high-speed auxiliary functions is as follows:</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="27.0%"><col width="72.9%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Auxiliary function output</p></th><th><p type="p_table_lb" align="left">Response</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><b>Before</b> the movement</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The block transition between blocks with high-speed auxiliary functions occurs <b>without</b> interruption and <b>without</b> a reduction in velocity. The auxiliary function output takes place in the first interpolator clock cycle of the block. The following block is executed with no acknowledgment delay.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><b>During</b> the movement</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The block transition between blocks with high-speed auxiliary functions occurs <b>without</b> interruption and <b>without</b> a reduction in velocity. The auxiliary function output takes place during the block. The following block is executed with no acknowledgment delay.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><b>After</b> the movement</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The movement stops at the end of the block. The auxiliary function output takes place at the end of the block. The following block is executed with no acknowledgment delay.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td align="center" rowspan="2"><img src="images/danger.png"/></td><td><b>Caution</b></td></tr><tr><td><h4 class="Blocklabel">Function outputs in continuous-path mode </h4><p class="safety">Function outputs <b>before</b> traversing motion interrupt the continuous-path mode (G64 / G641) and generate an exact stop for the previous block.</p><p class="safety">Function outputs <b>after</b> the traversing movements interrupt the continuous-path mode (G64 / G641) and generate an exact stop for the current block.</p><p class="safety"><b>Important:</b> Waiting for a pending acknowledgment signal from the PLC can also interrupt the continuous-path mode, e.g. for M command sequences in blocks with extremely short path lengths.</p></td></tr></table></div>
+  </body>
+</html>

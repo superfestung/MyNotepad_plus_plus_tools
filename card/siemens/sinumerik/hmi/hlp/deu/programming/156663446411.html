@@ -1,0 +1,56 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Werkzeugumgebung speichern (TOOLENV): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Werkzeugumgebung speichern (TOOLENV): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Basismaß/Adaptermaß - Werkzeuglängenkorrektur</h4>
+      <p>Ob die Adapterlänge oder das Basismaß (schneidenspezifische Parameter $TC_DP21, $TC_DP22 und $TC_DP23) in die Berechnung der Werkzeuglänge eingeht, entscheidet bei aktiver Werkzeug-Magazinverwaltung (nur verfügbar mit der Option "Werkzeugverwaltung"!) der Wert des Maschinendatums:</p>
+      <p>MD18104 $MN_MM_NUM_TOOL_ADAPTER (WZ-Adapter im TO-Bereich)</p>
+      <p>Da eine Veränderung dieses Maschinendatums nur beim Hochlauf der Steuerung wirksam werden kann, wird es nicht in der Werkzeugumgebung gespeichert.</p>
+      <h4 class="Blocklabel">Resultierende Länge von orientierbaren Werkzeugträgern und Transformationen</h4>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Sowohl bei orientierbaren Werkzeugträgern als auch bei Transformationen gibt es Systemvariablen bzw. Maschinendaten, die wie zusätzliche Werkzeuglängenkomponenten wirken, und die ganz oder teilweise den von diesen ausführbaren Drehungen unterworfen werden. Die zusätzlichen Werkzeuglängenanteile, die sich dadurch ergeben, müssen beim Aufruf von TOOLENV mit abgelegt werden, da sie einen Teil der Umgebung bilden, in der das Werkzeug eingesetzt wird.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Adaptertransformation</h4>
+      <p>Die Adaptertransformation ist eine Eigenschaft des Werkzeugadapters und damit des Gesamtwerkzeugs. Sie ist deshalb nicht Bestandteil einer Werkzeugumgebung, die auf ein anderes Werkzeug angewendet werden kann.</p>
+      <p>Durch das Abspeichern der gesamten für die Bestimmung der Werkzeuggesamtlänge erforderlichen Daten ist es möglich, zu einem späteren Zeitpunkt die effektive Länge eines Werkzeugs zu berechnen, auch wenn es zu diesem Zeitpunkt nicht mehr aktiv ist bzw. wenn sich die Umgebungsbedingungen (z. B. G-Befehle oder Settingdaten) geändert haben. Ebenso kann die effektive Länge eines anderen Werkzeugs berechnet werden mit der Annahme, es würde unter den gleichen Bedingungen eingesetzt wie das Werkzeug, für das der Status abgespeichert wurde.</p>
+      <h4 class="Blocklabel">Maximale Anzahl Datensätze für Werkzeugumgebungen</h4>
+      <p>Mit dem Maschinendatum MD18116 $MN_MM_NUM_TOOL_ENV wird festgelegt, wie viele Datensätze zur Beschreibung von Werkzeugumgebungen maximal abgelegt werden können. Die Daten liegen im TOA-Bereich. Sie bleiben auch beim Ausschalten der Steuerung erhalten.</p>
+      <p>Eine Datensicherung ist nicht möglich. Das bedeutet, dass diese Daten nicht zwischen verschiedenen Steuerungen übertragen werden können.</p>
+    </div>
+  </body>
+</html>

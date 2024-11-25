@@ -1,0 +1,271 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Overview, supported variables and limits</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowAction">
+        <h1 class="title">Overview, supported variables and limits</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>To create an editable trace configuration, you must start a new and empty trace session. </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Procedure</h3>
+      <table width="100%" border="0" cellspacing="0" cellpadding="10">
+        <tr>
+          <td>
+            <ol class="action">
+              <li>
+                <p>You start a new and empty trace session by clicking on the "New trace" softkey.</p>
+                <p>The "New trace session" dialog opens. You obtain the following selection:</p>
+                <ul>
+                  <li>
+                    <p>
+                      <b>New NC/PLC trace</b>: This creates an NC/PLC trace session by default.</p>
+                  </li>
+                  <li>
+                    <p>
+                      <b>New drive trace</b>: This creates a drive trace session.</p>
+                  </li>
+                </ul>
+                <p>For an NC/PLC trace session, only NC or PLC variables can be inserted into the configuration. Analogously, in a drive trace session, only drive trace variables can be inserted. The content and behavior of the signal table and the signal selection list changes accordingly.</p>
+              </li>
+              <li>
+                <p>Select the session type and click on "OK".</p>
+                <p>A new and empty trace session is created.</p>
+              </li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">For a trace session created in this application, new signals can be inserted, either by entering them into the signal table or by selecting the signal/parameter in the signal selection window (variable selection).</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Supported variables</h3>
+      <p>SINUMERIK Operate trace supports:</p>
+      <ul>
+        <li>
+          <p>64-bit servo variables</p>
+        </li>
+        <li>
+          <p>Non-servo NC variables</p>
+        </li>
+        <li>
+          <p>PLC variables and PLC memory addresses from SINUMERIK 840D sl/828D</p>
+        </li>
+        <li>
+          <p>Symbolic PLC1500 variables and PLC memory addresses of SINUMERIK ONE/MCU</p>
+        </li>
+        <li>
+          <p>OEM-PLC variables, imported from symbol files on the SD card</p>
+        </li>
+        <li>
+          <p>GUD variables (global user data) imported from GUD definition files</p>
+        </li>
+        <li>
+          <p>Drive trace parameters</p>
+        </li>
+      </ul>
+      <p>32-bit servo variables are only traceable if they were loaded from a legacy session file. These signals cannot be inserted into a new trace configuration.</p>
+      <p>PLC1500 variables in multidimensional array format are not supported.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">OEM PLC variables, PLC1500 variable names and GUD variables are only imported when the trace application is opened for the first time. Restart the user interface to refresh the variable data, e.g. after integrating a GUD file.</p>
+          </td>
+        </tr>
+      </table>
+      <p class="comment">The following PLC memory address formats are supported:</p>
+      <ul class="comment">
+        <li class="comment">
+          <p class="comment">Data block (DB)</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Bit memory (M)</p>
+        </li>
+        <li class="comment">
+          <p class="comment">Input/output (I/Q or I/O)</p>
+        </li>
+      </ul>
+      <p class="comment">M/I/O addresses are supported on SINUMERIK ONE if at least software version V6.21 is installed on the controller. If not, only data block (DB) addresses are supported.</p>
+      <p class="comment">Type modifiers for PLC addresses are supported (e.g.: DB11.DBW11:INT).</p>
+      <p class="comment">
+      </p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Requirements for trace with symbolic PLC1500 variables</h3>
+      <p>Symbolic PLC1500 variables are compatible with the trace application as of the following software versions:</p>
+      <ul>
+        <li>
+          <p>SINUMERIK software for ONE as of V6.23 or MC as of V1.23</p>
+        </li>
+        <li>
+          <p>Engineering process software SINUMERIK STEP 7 Toolbox as of V19</p>
+        </li>
+        <li>
+          <p>SINUMERIK ONE PLC Basic Program plus:</p>
+          <p>When using this function, use the <code>SINU_Update2</code> instruction for cyclical data exchange from the SINUMERIK ONE V13.0 system library.</p>
+          <p>
+            <b>More information</b> can be found in the instructions SINUMERIK ONE PLC Basic Program plus Function Manual and the online help in the TIA Portal.</p>
+        </li>
+        <li>
+          <p>SINUMERIK PLC Basic Program for ONE as of V6.23 or MC as of V1.23</p>
+        </li>
+      </ul>
+      <a name="block_4">
+      </a>
+      <h3 class="Blocktitle">Total recording buffer size</h3>
+      <p>To diagnose machine problems when setting up the machine and when support is provided in conjunction with debugging axis motion, NC settings and PLC software, SINUMERIK Operate permits a maximum recording size of 500 MB. Trace recording stops when this limit is reached.</p>
+      <p>You can extend the recording time in the SINUMERIK Operate trace by:</p>
+      <ul>
+        <li>
+          <p>Record the signals with a slower sampling rate</p>
+        </li>
+        <li>
+          <p>Reducing the number of signals with high sampling rate (servo signals)</p>
+        </li>
+        <li>
+          <p>Reducing the number of signals or variables to be recorded in general</p>
+        </li>
+      </ul>
+      <p>To record a large amount of data with high sampling rate (servo signals) (more than 500 MB) or to permit recording times of longer than approximately one day, it is recommended to use SINUMERIK Edge applications such as "Capture".</p>
+      <a name="block_5">
+      </a>
+      <h3 class="Blocktitle">Maximum number of signals in a trace configuration</h3>
+      <p>A trace configuration can encompass a maximum of 32 signals.</p>
+      <p>The limit for same signal type can be lower than this, for example see the servo signal limit described below.</p>
+      <h4 class="Blocklabel">Maximum number of servo signals in a configuration</h4>
+      <p>The maximum number of servo signals that can be configured depends on the control type settings.</p>
+      <p>The setting of MD18373 index 5,6,7 defines the maximum number of servo signals and this can be configured. </p>
+      <p>Typically the limit is set to 10 signals:</p>
+      <p>
+        <code>$MN_MM_PROTOC_NUM_SERVO_DATA MD18373[5,6,7]=10</code>
+      </p>
+      <p class="comment">
+      </p>
+      <p class="comment">An error is displayed in SINUMERIK Operate if too many servo or PLC signals are configured.</p>
+      <p class="comment">
+      </p>
+      <p class="comment">You can increase the maximum number of servo signals from the settings as shown in the following example.</p>
+      <p class="comment">
+        <code>$MN_MM_PROTOC_NUM_SERVO_DATA MD18373[5,6,7]=20</code>
+      </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">In the example, the upper limit is set to 20; however, it cannot be ensured that exact number can be reached.</p>
+            <p class="safety">As the maximum limit depends on multiple factors and might vary in the trace configuration on your control.</p>
+          </td>
+        </tr>
+      </table>
+      <p class="comment">
+      </p>
+      <p class="comment">You can configure based on your NC and PLC configuration, for example:</p>
+      <ul class="comment">
+        <li class="comment">
+          <p class="comment">For the default setting of MD18373[5,6,7]=10</p>
+          <p class="comment">10 servo signals</p>
+          <p class="comment">20 PLC signals (bool)</p>
+        </li>
+        <li class="comment">
+          <p class="comment">For a user-specific setting of MD18373[5,6,7]=20</p>
+          <p class="comment">17 servo signals</p>
+          <p class="comment">10 PLC signals (bool)</p>
+        </li>
+      </ul>
+      <a name="block_6">
+      </a>
+      <h3 class="Blocktitle">Maximum number of drive parameters in a trace configuration</h3>
+      <p>A drive trace configuration can comprise a maximum of 8 drive parameters.</p>
+      <p>Parameters 1 to 4 and 5 to 8 are recorded by the control system via separate sessions.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">The start of recording is only synchronized correctly if you configure a start trigger.</p>
+          </td>
+        </tr>
+      </table>
+      <p>You can add more than 8 signals to the configuration if the same drive parameter is added several times with various bit masks.</p>
+    </div>
+  </body>
+</html>

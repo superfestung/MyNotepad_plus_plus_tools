@@ -1,0 +1,28 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Vorhandensein einer Datei prüfen (ISFILE)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Vorhandensein einer Datei prüfen (ISFILE)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Mit dem ISFILE-Befehl kann geprüft werden, ob eine Datei im Programmspeicher existiert.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Voraussetzungen</h3>
+      <h4 class="Blocklabel">Zugriff auf EES-Laufwerke</h4>
+      <p>Externe Programmspeicher auf Laufwerken, für die bei der Inbetriebnahme eine Verwendung durch die Funktion "Abarbeiten von externem Speicher (EES)" eingerichtet wurde, können von Dateihandlings-Befehlen nur dann angesprochen werden, wenn die lizenzpflichtige Option zur Nutzung dieser Funktion gesetzt ist.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>&lt;Result>=ISFILE("&lt;FileName>")<a name="block_3"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_354d71d6-7da1-4201-bc05-cde6b6e16d29"></a> <a id="table_0"></a> <a id="table_354d71d6-7da1-4201-bc05-cde6b6e16d29"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="21.9%"><col width="11.4%"><col width="13.6%"><col width="53.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>ISFILE</code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Befehl zum Prüfen des Vorhandenseins einer Datei</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;FileName></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Name der Datei, deren Vorhandensein geprüft werden soll.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Typ:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">STRING</p></td></tr><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Vor dem eigentlichen Dateinamen kann der absolute Pfad angegeben werden. Ohne Pfadangabe wird die Datei im aktuellen Verzeichnis (= Verzeichnis des angewählten Programms) gesucht.</p><p type="p_table_l" align="left">Regeln zur Pfadangabe siehe "<a href="156662796555.html">Adressierung von Dateien des Programmspeichers</a>".</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Result></code> </p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Ergebnisvariable zur Aufnahme des Prüfergebnisses</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Typ.</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">BOOL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Wert:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">TRUE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Datei vorhanden</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">FALSE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Datei nicht vorhanden</p></td></tr></table></p><a name="block_4"></a><h3 class="Blocktitle">Beispiele</h3><h4 class="Blocklabel">Beispiel 1</h4><a id="table_d7a3650f-8db0-49f1-acc3-cfa7d6d26133"></a> <a id="table_1"></a> <a id="table_d7a3650f-8db0-49f1-acc3-cfa7d6d26133"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EQE"><colgroup><col width="46.8%"><col width="53.2%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 DEF BOOL RESULT</td><td>; Definition der Ergebnisvariablen.</td></tr><tr valign="top"><td>N20 RESULT=ISFILE("TESTFILE")</td><td> </td></tr><tr valign="top"><td>N30 IF(RESULT==FALSE)</td><td> </td></tr><tr valign="top"><td>N40    MSG("DATEI NICHT VORHANDEN")</td><td> </td></tr><tr valign="top"><td>N50    M0</td><td> </td></tr><tr valign="top"><td>N60 ENDIF</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Beispiel 2</h4><a id="table_032eb637-d201-4371-9359-0f2e56490080"></a> <a id="table_2"></a> <a id="table_032eb637-d201-4371-9359-0f2e56490080"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ECG"><colgroup><col width="46.6%"><col width="53.4%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 DEF BOOL RESULT</td><td>; Definition der Ergebnisvariablen.</td></tr><tr valign="top"><td>N20 RESULT=ISFILE("TESTFILE")</td><td> </td></tr><tr valign="top"><td>N30 IF(NOT ISFILE("TESTFILE"))</td><td> </td></tr><tr valign="top"><td>N40    MSG("DATEI NICHT VORHANDEN")</td><td> </td></tr><tr valign="top"><td>N50    M0</td><td> </td></tr><tr valign="top"><td>N60 ENDIF</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

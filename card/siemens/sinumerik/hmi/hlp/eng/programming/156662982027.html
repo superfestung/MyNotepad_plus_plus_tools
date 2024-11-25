@@ -1,0 +1,62 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Set actual value with loss of the referencing status (PRESETON)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Set actual value with loss of the referencing status (PRESETON)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The PRESETON() procedure sets a new actual value for one or more axes in the machine coordinate system (MCS). This corresponds to a work offset of the MCS of the axis. This does not cause the axis to be traversed. </p>
+      <p>A preprocessing stop with synchronization is triggered by PRESETON. The actual position is assigned to the axis only at standstill.</p>
+      <p>If the axis is not assigned to the channel for PRESETON, the next steps depend on the axis-specific configuration of the axis interchange behavior:</p>
+      <p>MD30552 $MA_AUTO_GET_TYPE </p>
+      <h4 class="Blocklabel">Referencing status</h4>
+      <p>By setting a new actual value in the machine coordinate system, the referencing status of the machine axis is reset:</p>
+      <p>
+        <code>&lt;Axis>.basic.in.enc1Synchronized</code> / <code>.enc1Synchronized</code> = 0 (referenced/synchronized measuring system 1 / 2)</p>
+      <p>It is recommended that PRESETON only be used for axes that do not require a reference point. </p>
+      <p>To restore the original machine coordinate system, the measuring system of the machine axis must be referenced again, e.g. through active referencing from the part program (G74).</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td align="center" rowspan="2">
+            <img src="images/danger.png"/>
+          </td>
+          <td>
+            <b>Caution</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Loss of the referencing status</h4>
+            <p class="safety">By setting a new actual value in the machine coordinate system with PRESETON, the referencing status of the machine axis is reset to "not referenced/synchronized". </p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Programming</h3>
+      <h4 class="Blocklabel">Syntax</h4>PRESETON(&lt;axis_1>, &lt;value_1> [, &lt;axis_2>, &lt;value_2>, ... &lt;axis_8>, &lt;value_8>])<h4 class="Blocklabel">Meaning</h4><a id="table_b4d8d6ff-a625-4531-acba-1d8b7079f1d3"></a> <a id="table_0"></a> <a id="table_b4d8d6ff-a625-4531-acba-1d8b7079f1d3"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="19.7%"><col width="20.4%"><col width="59.9%"></colgroup><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>PRESETON</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Actual value setting with loss of the referencing status</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Preprocessing stop:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">yes</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Alone in the block:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">yes</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;axis_x></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Machine axis name</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">AXIS</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Value range:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Machine axis names defined in the channel</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;value_x></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">New actual value of the machine axis in the machine coordinate system (MCS)</p><p type="p_table_l" align="left">The input is made in the currently valid system of units (inch/metric)</p><p type="p_table_l" align="left">An active diameter programming (DIAMON) is taken into account</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr></table></p><a name="block_2"></a><h3 class="Blocktitle">More information</h3><h4 class="Blocklabel">PRESETON in NC programs</h4><p>A detailed description of PRESETON in NC programs is provided in the Function Manual Basic Functions.</p><h4 class="Blocklabel">PRESETONS in synchronized actions</h4><p>A detailed description of PRESETON in synchronized actions is provided in Function Manual Synchronized Actions.</p><a name="block_3"></a><h3 class="Blocktitle">PLC signals</h3><a id="table_279e2cb5-a871-e1b0-3b7f-ef584af13fa9"></a> <a id="table_1"></a> <a id="table_279e2cb5-a871-e1b0-3b7f-ef584af13fa9"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="45.0%"><col width="35.0%"><col width="20.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Basic Program Plus</p></th><th colspan="2"><p type="p_table_lb" align="left">Basic Program</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Axis>.basic.in.enc1Synchronized</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LBP_Axis*.E_RefSyn1</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB31, … DBX60.4</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Axis>.basic.in.enc2Synchronized</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LBP_Axis*.E_RefSyn2</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB31, … DBX60.5</p></td></tr></table></p></div>
+    <p>See also:<br />    <a href="156662988171.html">Set actual value without loss of the referencing status (PRESETONS)</a></p>
+  </body>
+</html>

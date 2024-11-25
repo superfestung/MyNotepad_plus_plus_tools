@@ -1,0 +1,2007 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="201691">A201691 (F)</a></b></td>
+<td><b>&lt;location&gt;SI Motion: Ti and To unsuitable for DP cycle</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The configured times for PROFIBUS communication are not permitted and the DP cycle is used as the actual value acquisition cycle for the safe movement monitoring functions:<br />
+Isochronous PROFIBUS: the total of Ti and To is too high for the set DP cycle. The DP cycle should be at least 1 current controller cycle greater than the sum of Ti and To.<br />
+Non-isochronous PROFIBUS: the DP cycle must be at least 4 x current controller cycle.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Configure Ti and To low so that they are suitable for the DP cycle or increase the DP cycle time.<br />
+Option for enabled drive-based SI monitoring (p9601&#47;p9801 &gt; 0):<br />
+Use the actual value sampling cycle p9511&#47;p9311 and, therefore, set it independently of the DP cycle. The actual value sensing clock cycle must be at least four times the current controller clock cycle. A clock cycle ratio of at least 8:1 is recommended.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201696">A201696 (F)</a></b></td>
+<td><b>&lt;location&gt;SI Motion: Testing of the motion monitoring functions selected when booting</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The test of the motion monitoring functions was already illegally active when booting.<br />
+This is the reason that the test is only carried out again after selecting the forced checking procedure parameterized in p9705.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>De-select the forced checking procedure of the safety motion monitoring functions and then select again.<br />
+The signal source for initiation is parameterized in binector input p9705.<br />
+Note:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201697">A201697 (F)</a></b></td>
+<td><b>&lt;location&gt;SI Motion: Motion monitoring functions must be tested</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The time set in p9559 for the forced checking procedure of the safety motion monitoring functions has been exceeded. A new test is required.<br />
+After next selecting the forced checking procedure parameterized in p9705, the message is withdrawn and the monitoring time is reset.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out the forced checking procedure of the safety motion monitoring functions.<br />
+The signal source for initiation is parameterized in BI: p9705.<br />
+Note:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201698">A201698 (F)</a></b></td>
+<td><b>&lt;location&gt;SI CU: Commissioning mode active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The commissioning of the &quot;Safety Integrated&quot; function is selected.<br />
+This message is withdrawn after the safety functions have been commissioned.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>None necessary.<br />
+Note:<br />
+CU: Control Unit<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201699">A201699 (F)</a></b></td>
+<td><b>&lt;location&gt;SI CU: Shutdown path must be tested</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The time set in p9659 for the forced checking procedure of the safety shutdown paths has been exceeded. The safety shutdown paths must be re-tested.<br />
+After the next time the &quot;STO&quot; function is de-selected, the message is withdrawn and the monitoring time is reset.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Select STO and then deselect again.<br />
+Note:<br />
+CU: Control Unit<br />
+SI: Safety Integrated<br />
+STO: Safe Torque Off &#47; SH: Safe standstill<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201700">C201700</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: STOP A initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive is stopped via a STOP A (pulses are suppressed via the safety shutdown path of the Control Unit).<br />
+Possible causes:<br />
+- stop request from the higher-level control.<br />
+- pulses not suppressed after a parameterized time (p9557) after test stop selection.<br />
+- subsequent response to the message C01706 &quot;SI Motion CU: Safe Acceleration Monitoring limit exceeded&quot;.<br />
+- subsequent response to the message C01714 &quot;SI Motion CU: Safely-Limited Speed exceeded&quot;.<br />
+- subsequent response to the message C01701 &quot;SI Motion CU: STOP B initiated&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- remove the fault cause in the control and carry out a POWER ON.<br />
+- check the value in p9557, if necessary, increase the value, and carry out POWER ON.<br />
+- check the shutdown path of the Control Unit (check DRIVE-CLiQ communication).<br />
+- carry out a diagnostics routine for message C01706.<br />
+- carry out a diagnostics routine for message C01714.<br />
+- carry out a diagnostics routine for message C01701.<br />
+- replace Motor Module.<br />
+- replace Control Unit.<br />
+This message can only be acknowledged as follows in the acceptance test mode without POWER ON:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel.<br />
+Note:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201701">C201701</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: STOP B initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF3<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive is stopped via STOP B (braking along the OFF3 deceleration ramp).<br />
+As a result of this fault, after the time parameterized in p9556 has expired, or the speed threshold parameterized in p9560 has been undershot, message C01700 &quot;STOP A initiated&quot; is output.<br />
+Possible causes:<br />
+- stop request from the higher-level control.<br />
+- subsequent response to the message C01714 &quot;SI Motion: Safely reduced speed exceeded&quot;.<br />
+- subsequent response to the message C01711 &quot;SI Motion: Defect in a monitoring channel&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- remove the fault cause in the control and carry out a POWER ON.<br />
+- carry out a diagnostics routine for message C01714.<br />
+- carry out a diagnostics routine for message C01711.<br />
+This message can only be acknowledged as follows in the acceptance test mode without POWER ON:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel.<br />
+Note:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201706">C201706</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: Safe Acceleration Monitor limit exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>After initiating STOP B or STOP C, the velocity has exceeded the selected tolerance.<br />
+The drive is shut down by the message C01700 &quot;SI Motion: STOP A initiated&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the braking behavior, if required, adapt the tolerance for &quot;Safe Acceleration Monitor&quot;.<br />
+This message can only be acknowledged as follows in the acceptance test mode without POWER ON:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel.<br />
+Note:<br />
+SBR: Safe Acceleration Monitor<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201707">C201707</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: Tolerance for safe operating stop exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The actual position has distanced itself further from the target position than the standstill tolerance.<br />
+The drive is shut down by the message C01701 &quot;SI Motion: STOP B initiated&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether safety faults are present and if required carry out the appropriate diagnostic routines for the particular faults.<br />
+- check whether the standstill tolerance matches the accuracy and control dynamic performance of the axis.<br />
+- carry out a POWER ON.<br />
+This message can only be acknowledged as follows in the acceptance test mode without POWER ON:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel<br />
+Note:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop &#47; SBH: Safe operating stop<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201708">C201708</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: STOP C initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>STOP2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive is stopped via STOP C (braking along the OFF3 deceleration ramp).<br />
+&quot;Safe Operating Stop&quot; (SOS) is activated after the parameterized timer has expired.<br />
+Possible causes:<br />
+- stop request from the higher-level control.<br />
+- subsequent response to the message C01714 &quot;SI Motion: Safely reduced speed exceeded&quot;.<br />
+- subsequent response to the message C01715 &quot;SI Motion: Safe end stop exceeded&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- remove the cause of the fault at the control.<br />
+- carry out a diagnostics routine for message C01714.<br />
+This message can be acknowledged as follows:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel<br />
+Note:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop &#47; SBH: Safe operating stop<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201709">C201709</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: STOP D initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive is stopped via a STOP D (braking along the path).<br />
+&quot;Safe Operating Stop&quot; (SOS) is activated after the parameterized timer has expired.<br />
+Possible causes:<br />
+- stop request from the higher-level control.<br />
+- subsequent response to the message C01714 &quot;SI Motion: Safely reduced speed exceeded&quot;.<br />
+- subsequent response to the message C01715 &quot;SI Motion: Safe end stop exceeded&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- remove the cause of the fault at the control.<br />
+- carry out a diagnostics routine for message C01714.<br />
+This message can be acknowledged as follows:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel<br />
+Note:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop &#47; SBH: Safe operating stop<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201710">C201710</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: STOP E initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive is stopped via a STOP E (retraction motion).<br />
+&quot;Safe Operating Stop&quot; (SOS) is activated after the parameterized timer has expired.<br />
+Possible causes:<br />
+- stop request from the higher-level control.<br />
+- subsequent response to the message C01714 &quot;SI Motion: Safely reduced speed exceeded&quot;.<br />
+- subsequent response to the message C01715 &quot;SI Motion: Safe end stop exceeded&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- remove the cause of the fault at the control.<br />
+- carry out a diagnostics routine for message C01714.<br />
+This message can be acknowledged as follows:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel<br />
+Note:<br />
+SI: Safety Integrated<br />
+SOS: Safe Operating Stop &#47; SBH: Safe operating stop<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201711">C201711</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: Defect in a monitoring channel</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When cross-checking and comparing the two monitoring channels, the drive detected a difference between the input data or results of the monitoring functions and initiated a STOP F. One of the monitoring functions no longer reliably functions - i.e. safe operation is no longer possible.<br />
+If at least one monitoring function is active, then after the parameterized timer has expired, the message C01701 &quot;SI Motion: STOP B initiated&quot; is output.<br />
+The message value that resulted in a STOP F is displayed in r9725. The described message values involve the data cross-check between the Control Unit and Motor Module. If the drive is operated together with a SINUMERIK, the message values are described in message 27001 of SINUMERIK.<br />
+The following message values may also occur in the following cases if the cause that is explicitly mentioned does not apply:<br />
+- differently parameterized cycle times (p9500&#47;p9300, p9511&#47;p9311).<br />
+- differently parameterized axis types (p9502&#47;p9302).<br />
+- excessively fast cycle times (p9500&#47;p9300, p9511&#47;p9311).<br />
+- incorrect synchronization.<br />
+Message value (r9749, interpret decimal):<br />
+0 to 999: Number of the cross-checked data that resulted in this fault.<br />
+Fault values, which are not listed below, are intended solely for Siemens internal troubleshooting.<br />
+0: Stop request from the other monitoring channel.<br />
+1: Status image of monitoring functions SOS, SLS or SLP (result list 1) (r9710[0], r9710[1]).<br />
+2: Status image of monitoring function SCA or n &lt; nx (result list 2) (r9711[0], r9711[1]).<br />
+3: Pos. act. val. (r9712).<br />
+4: Error when synchronizing the crosswise data comparison between the two channels.<br />
+5: Function enable signals (p9501, p9301).<br />
+6: Limit value for SLS1 (p9531[0], p9331[0]).<br />
+7: Limit value for SLS2 (p9531[1], p9331[1]).<br />
+8: Limit value for SLS3 (p9531[2], p9331[2]).<br />
+9: Limit value for SLS4 (p9531[3], p9331[3]).<br />
+10: Standstill tol. (p9530, p9330).<br />
+31: Pos. tol. (p9542, p9342).<br />
+33: Time, velocity changeover (p9551, p9351).<br />
+35: Delay time, pulse supp. (p9556, p9356).<br />
+36: Checking time, pulse supp (p9557, p9357).<br />
+37: Trans. time, STOP C to SOS (p9552, p9352).<br />
+38: Trans. time STOP D to SOS (p9553, p9353).<br />
+40: Stop response for SLS.<br />
+42: Shutdown speed, pulse supp. (p9560, p9360).<br />
+43: Memory test, stop response (STOP A).<br />
+44: Position actual value + limit value SLS1 &#47; safety monitoring clock cycle.<br />
+45: Pos. act. val. - limit value SLS1 &#47; safety monitoring clock cycle.<br />
+46: Pos. act. val. + limit value SLS2 &#47; safety monitoring clock cycle.<br />
+47: Pos. act. val. - limit value SLS2 &#47; safety monitoring clock cycle.<br />
+48: Pos. act. val. + limit value SLS3 &#47; safety monitoring clock cycle.<br />
+49: Pos. act. val. - limit value SLS3 &#47; safety monitoring clock cycle.<br />
+50: Pos. act. val. + limit value SLS4 &#47; safety monitoring clock cycle.<br />
+51: Pos. act. val. - limit value SLS4 &#47; safety monitoring clock cycle.<br />
+52: Standstill position + tolerance.<br />
+53: Standstill position - tolerance<br />
+54: Pos. act. val. + limit value nx &#47; safety monit. clock cycle + tolerance.<br />
+55: Pos. act. val. + limit value nx &#47; safety monit. clock cycle.<br />
+56: Pos. act. val. - limit value nx &#47; safety monit. clock cycle.<br />
+57: Pos. act. val. - limit value nx &#47; safety monit. clock cycle - tolerance.<br />
+58: Current stop request.<br />
+75: Velocity limit nx (p9546, p9346).<br />
+76: Stop response for SLS1 (p9563[0], p9363[0]).<br />
+77: Stop response for SLS2 (p9563[1], p9363[1]).<br />
+78: Stop response for SLS3 (p9563[2], p9363[2]).<br />
+79: Stop response for SLS4 (p9563[3], p9363[3]).<br />
+81: Velocity tolerance for SBR (p9548, p9348).<br />
+82: SGEs for SLS correction factor.<br />
+83: Acceptance test timer (p9558, p9358).<br />
+84: Trans. time STOP F (p9555, p9355).<br />
+85: Trans. time bus failure (p9580, p9380).<br />
+86: Ident. 1-encoder system.<br />
+87: Encoder assignment, 2nd channel (p9526, p9326).<br />
+89: Encoder limit freq.<br />
+230: Filter time constant for n &lt; nx.<br />
+231: Hysteresis tolerance for n &lt; nx.<br />
+232: Smoothed velocity actual value.<br />
+233: Smoothed velocity actual value + limit value nx &#47; safety monitoring clock cycle + hysteresis tolerance.<br />
+234: Smoothed velocity actual value + limit value nx &#47; safety monitoring clock cycle.<br />
+235: Smoothed velocity actual value - limit value nx &#47; safety monitoring clock cycle.<br />
+236: Smoothed velocity actual value - limit value nx &#47; safety monitoring clock cycle - hysteresis tolerance.<br />
+237: SGA n &lt; nx.<br />
+1000: Watchdog timer has expired. Too many signal changes have occurred at safety-relevant inputs.<br />
+1001: Initialization error of watchdog timer.<br />
+1005: Pulses already suppressed for test stop selection.<br />
+1011: Acceptance test status between the monitoring channels differ.<br />
+1012: Plausibility violation of the actual value from the encoder.<br />
+1020: Cyc. communication failure between the monit. cycles.<br />
+1021: Cyc. communication failure between the monit. channel and Sensor Module.<br />
+1022: Sign-of-life error for DRIVE-CLiQ encoder CU<br />
+1023: Error in effectivity test in the DRIVE-CLiQ encoder CU.<br />
+1032: Sign-of-life error for DRIVE-CLiQ encoder MM<br />
+1033: Error checking offset between POS1 and POS2 for DRIVE-CLiQ encoder CU<br />
+1034: Error checking offset between POS1 and POS2 for DRIVE-CLiQ encoder MM<br />
+5000 ... 5140: PROFIsafe message values.<br />
+5000, 5014, 5023, 5024, 5030 ... 5032, 5042, 5043, 5052, 5053, 5068, 5072, 5073, 5082 ... 5087, 5090, 5091, 5122 ... 5125, 5132 ... 5135, 5140: An internal software error has occurred (only for internal Siemens troubleshooting).<br />
+5012: Error when initializing the PROFIsafe driver.<br />
+5013: The result of the initialization is different for the two controllers.<br />
+5022: Error when evaluating the F parameters. The values of the transferred F parameters do not match the expected values in the PROFIsafe driver.<br />
+5025: The result of the F parameterization is different for the two controllers.<br />
+5026: CRC error for the F parameters. The transferred CRC value of the F parameters does not match the value calculated in the PST.<br />
+5065: A communications error was identified when receiving the PROFIsafe telegram.<br />
+5066: A time monitoring error (timeout) was identified when receiving the PROFIsafe telegram.<br />
+6000 ... 6166: PROFIsafe message values (PROFIsafe driver for PROFIBUS DP V1&#47;V2 and PROFINET).<br />
+6000, 6072: An internal software error has occurred (only for internal Siemens troubleshooting).<br />
+6064 ... 6071: Error when evaluating the F parameters. The values of the transferred F parameters do not match the expected values in the PROFIsafe driver.<br />
+6064: Destination address and PROFIsafe address are different (F_Dest_Add).<br />
+6065: Destination address not valid (F_Dest_Add).<br />
+6066: Source address not valid (F_Source_Add).<br />
+6067: Watchdog time not valid (F_WD_Time).<br />
+6068: Incorrect SIL level (F_SIL).<br />
+6069: Incorrect F-CRC length (F_CRC_Length).<br />
+6070: Incorrect F parameter version (F_Par_Version).<br />
+6071: CRC error for the F parameters (CRC1). The transferred CRC value of the F parameters does not match the value calculated in the PROFIsafe driver.<br />
+6165: A communications error was identified when receiving the PROFIsafe telegram.<br />
+6166: A time monitoring error (timeout) was identified when receiving the PROFIsafe telegram.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The following generally applies:<br />
+The monitoring clock cycles in both channels and the axis types should be checked for equality and the same setting applied if necessary. If the error continues to be identified, increasing the monitoring clock cycles may resolve it.<br />
+Re fault value = 0:<br />
+- no error was identified in this monitoring channel. Note the error message of the other monitoring channel (for MM: C30711).<br />
+Re fault value = 4:<br />
+The monitoring clock cycles in both channels should be checked for equality and if required, set the same. In combination with fault value 5 from the other monitoring channel (with MM: C30711), the monitoring clock cycle settings must be increased.<br />
+Re fault value = 1 ... 999:<br />
+- if the fault value is listed under cause: Check the crosswise-compared parameters to which the fault value refers.<br />
+- copy the safety parameters.<br />
+- carry out a POWER ON (power off&#47;on) for all components.<br />
+- upgrade the Motor Module software.<br />
+- upgrade the Control Unit software.<br />
+- correction of the encoder evaluation. The actual values differ as a result of mechanical faults (V belts, travel to a mechanical endstop, wear and window setting that is too narrow, encoder fault, ...).<br />
+Re fault value = 1000:<br />
+- investigate the signal associated with the safety-relevant input (contact problems).<br />
+Re fault value = 1001:<br />
+- carry out a POWER ON (power off&#47;on) for all components.<br />
+- upgrade the Motor Module software.<br />
+- upgrade the Control Unit software.<br />
+Re fault value = 1005:<br />
+- check the conditions for pulse enable.<br />
+Re fault value = 1011:<br />
+- for diagnostics, refer to parameter (r9571).<br />
+Re fault value = 1012:<br />
+- upgrade the Sensor Module software.<br />
+Re fault value = 1020, 1021:<br />
+- check the communication link.<br />
+- increase the monitoring cycle clock settings (p9500, p9511).<br />
+- carry out a POWER ON (power off&#47;on) for all components.<br />
+- replace the hardware.<br />
+Re fault value = 5000, 5014, 5023, 5024, 5030, 5031, 5032, 5042, 5043, 5052, 5053, 5068, 5072, 5073, 5082 ... 5087, 5090, 5091, 5122 ... 5125, 5132 ... 5135, 5140:<br />
+- carry out a POWER ON (power off&#47;on) for all components.<br />
+- check whether there is a DRIVE-CLiQ communication error between the Control Unit and the Motor Module involved and, if required, carry out a diagnostics routine for the faults identified.<br />
+- upgrade firmware to later version.<br />
+- contact the Hotline.<br />
+- replace the Control Unit.<br />
+Re fault value = 5012:<br />
+- check the setting of the PROFIsafe address of the Control Unit (p9610) and that of the Motor Module (p9810). It is not permissible for the PROFIsafe address to be 0 or FFFF!<br />
+Re fault value = 5013, 5025:<br />
+- carry out a POWER ON (power off&#47;on) for all components.<br />
+- check the setting of the PROFIsafe address of the Control Unit (p9610) and that of the Motor Module (p9810).<br />
+- check whether there is a DRIVE-CLiQ communication error between the Control Unit and the Motor Module involved and, if required, carry out a diagnostics routine for the faults identified.<br />
+Re fault value = 5022:<br />
+- check the setting of the values of the F parameters at the PROFIsafe slave (F_SIL, F_CRC_Length, F_Par_Version, F_Source_Add, F_Dest_add, F_WD_Time).<br />
+Re fault value = 5026:<br />
+- check the settings of the values of the F parameters and the F parameter CRC (CRC1) calculated from these at the PROFIsafe slave and update.<br />
+Re fault value = 5065:<br />
+- check the configuration and communication at the PROFIsafe slave (cons. No. &#47; CRC).<br />
+- check the setting of the value for F parameters F_WD_Time at the PROFIsafe slave and increase if necessary.<br />
+- check whether there is a DRIVE-CLiQ communication error between the Control Unit and the Motor Module involved and, if required, carry out a diagnostics routine for the faults identified.<br />
+Re fault value = 5066:<br />
+- check the setting of the value for F parameters F_WD_Time at the PROFIsafe slave and increase if necessary.<br />
+Re fault value = 6000, 6072:<br />
+- carry out a POWER ON (power off&#47;on) for all components.<br />
+- check whether there is a DRIVE-CLiQ communication error between the Control Unit and the Motor Module involved and, if required, carry out a diagnostics routine for the faults identified.<br />
+- increase the monitoring cycle clock settings (p9500, p9511).<br />
+- upgrade firmware to later version.<br />
+- contact the Hotline.<br />
+- replace the Control Unit.<br />
+Re fault value = 6064:<br />
+- check the setting of the value in the F parameter F_Dest_Add at the PROFIsafe slave.<br />
+- check the setting of the PROFIsafe address of the Control Unit (p9610) and that of the Motor Module (p9810).<br />
+Re fault value = 6065:<br />
+- check the setting of the value in the F parameter F_Dest_Add at the PROFIsafe slave. It is not permissible for the destination address to be either 0 or FFFF!<br />
+Re fault value = 6066:<br />
+- check the setting of the value in the F parameter F_Source_Add at the PROFIsafe slave. It is not permissible for the source address to be either 0 or FFFF!<br />
+Re fault value = 6067:<br />
+- check the setting of the value in the F parameter F_WD_Time at the PROFIsafe slave. It is not permissible for the watch time ito be 0!<br />
+Re fault value = 6068:<br />
+- check the setting of the value in the F parameter F_SIL at the PROFIsafe slave. The SIL level must correspond to SIL2!<br />
+Re fault value = 6069:<br />
+- check the setting of the value in the F parameter F_CRC_Length at the PROFIsafe slave. The setting of the CRC2 length is 2-byte CRC in the V1 mode and 3-byte CRC in the V2 mode!<br />
+Re fault value = 6070:<br />
+- check the setting of the value in the F parameter F_Par_Version at the PROFIsafe slave. The value for the F parameter version is 0 in the V1 mode and 1 in the V2 mode!<br />
+Re fault value = 6071:<br />
+- check the settings of the values of the F parameters and the F parameter CRC (CRC1) calculated from these at the PROFIsafe slave and, if required, update.<br />
+Re fault value = 6165:<br />
+- check the configuration and communication at the PROFIsafe slave.<br />
+- check the setting of the value for F parameters F_WD_Time at the PROFIsafe slave and increase if necessary.<br />
+- check whether there is a DRIVE-CLiQ communication error between the Control Unit and the Motor Module involved and, if required, carry out a diagnostics routine for the faults identified.<br />
+Re fault value = 6166:<br />
+- check the configuration and communication at the PROFIsafe slave.<br />
+- check the setting of the value for F parameters F_WD_Time at the PROFIsafe slave and increase if necessary.<br />
+This message can be acknowledged as follows:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201714">C201714</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: Safely-Limited Speed exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive has moved faster than that specified by the velocity limit value (p9531). The drive is stopped as a result of the configured stop response (p9563).<br />
+Message value (r9749, interpret decimal):<br />
+100: SLS1 exceeded.<br />
+200: SLS2 exceeded.<br />
+300: SLS3 exceeded.<br />
+400: SLS4 exceeded.<br />
+1000: Encoder limit frequency exceeded.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the traversing&#47;motion program in the control.<br />
+- check the limits for &quot;Safely-Limited Speed (SLS) and if required, adapt (p9531).<br />
+This message can be acknowledged as follows:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel<br />
+Note:<br />
+SI: Safety Integrated<br />
+SLS: Safely-Limited Speed &#47; SG: Safely reduced speed<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201745">C201745</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: Checking braking torque for the brake test</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON (IMMEDIATELY, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The normalization of the brake torque for the brake test can be changed using parameter p2003.<br />
+An acceptance test must be carried out again for the braking test. This determines whether the braking test is still carried out with the correct braking torque.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (power off&#47;on) for all components.<br />
+- repeat the acceptance test for the safe brake test if the brake test is used.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201750">C201750</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: Hardware fault safety-relevant encoder</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The encoder that is used for the safety-relevant motion monitoring functions signals a hardware fault.<br />
+Message value (r9749, interpret decimal):<br />
+Encoder status word 1, encoder status word 2 that resulted in the message.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the encoder connection.<br />
+- replace the encoder.<br />
+This message can be acknowledged as follows:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201751">C201751</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: eff.test error safe encoder</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Drive-Cliq encoder used for the safety-relevant motion monitoring functions signals an effectiveness test error.<br />
+Message value (r9749, interpret decimal):<br />
+1 - TFD bit in EncoderStatusWord2 set in last effectiveness test set<br />
+2 - Actual effectiveness test no. in last effectiveness test set smaller&#47;greater than expected<br />
+3 - IG1&#47;IG2 bits in EncoderStatusWord2 in last effectiveness test set longer than expected<br />
+4 - F1&#47;F2 bits in EncoderStatusWord2 in last effectiveness test set not dynamized<br />
+5 - Effectiveness tests performed too frequently<br />
+6 - LS1&#47;LS2 were not frozen during effectiveness test<br />
+7 - Effectiveness tests performed too rarely or not at all<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the encoder connection.<br />
+- replace the encoder.<br />
+This message can be acknowledged as follows:<br />
+- motion monitoring functions integrated in the drive: Via Terminal Module 54F (TM54F) or PROFIsafe<br />
+- motion monitoring functions with SINUMERIK: Via the machine control panel.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201796">A201796 (F, N)</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: Wait for communication</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive waits for communication to be established with SINUMERIK or TM54F to execute the safety-relevant motion monitoring functions.<br />
+Note:<br />
+In this state, the pulses are safely suppressed.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>After a longer period of time, if the message is not automatically withdrawn, the following checks should be made dependent on the communication:<br />
+For communication with SINUMERIK, the following applies:<br />
+- check additional messages that are present regarding PROFIBUS communication and resolve.<br />
+- check the correct assignment of the axes on the higher-level control to the drives in the drive unit.<br />
+- check the enable signal of the safety-relevant motion monitoring functions for the corresponding axis on the higher-level control - and if required, set<br />
+For communication with TM54F, the following applies:<br />
+- check additional messages that are present regarding DRIVE-CLiQ communication with TM54F and resolve.<br />
+- check the setting of p10010. All of the drive objects controlled by the TM54F must be listed.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201798">C201798</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: Test stop running</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The test stop is active.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>None necessary.<br />
+The message is withdrawn when the test stop is finished.<br />
+Note:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201799">C201799</a></b></td>
+<td><b>&lt;location&gt;SI Motion CU: Acceptance test mode active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The acceptance test mode is active. The POWER ON signals of the safety-relevant motion monitoring functions can be acknowledged during the acceptance test using the RESET button of the higher-level control.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>None necessary.<br />
+The message is withdrawn when exiting the acceptance test mode.<br />
+Note:<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201800">F201800</a></b></td>
+<td><b>&lt;location&gt;DRIVE-CLiQ: Hardware&#47;configuration error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: NONE<br />
+ (OFF1, OFF2)Servo: NONE<br />
+ (ENCODER, IASC/DCBRAKE, OFF1, OFF2, OFF3, STOP1, STOP2)Vector: NONE<br />
+ (ENCODER, IASC/DCBRAKE, OFF1, OFF2, OFF3, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A DRIVE-CLiQ connection fault has occurred.<br />
+Fault value (r0949, interpret decimal):<br />
+100 ... 107:<br />
+Communication via DRIVE-CLiQ sockets X100 ... X107 has not switched to cyclic mode. The cause may be an incorrect structure or a configuration that results in an impossible bus timing.<br />
+10:<br />
+Loss of the DRIVE-CLiQ connection. The cause may be, for example, that the DRIVE-CLiQ cable was withdrawn from the Control Unit or as a result of a short-circuit for motors with DRIVE-CLiQ. This fault can only be acknowledged in cyclic communication.<br />
+11:<br />
+Repeated faults when detecting the connection. This fault can only be acknowledged in cyclic communication.<br />
+12:<br />
+A connection was detected but the node ID exchange mechanism does not function. The reason is probably that the component is defective. This fault can only be acknowledged in cyclic communication.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Re fault value = 100 ... 107:<br />
+- ensure that the DRIVE-CLiQ components have the same firmware releases.<br />
+- avoid longer topologies for short current controller clock cycles.<br />
+Re fault value = 10:<br />
+- check the DRIVE-CLiQ cables at the Control Unit.<br />
+- remove any short-circuit for motors with DRIVE-CLiQ.<br />
+- carry out a POWER ON.<br />
+Re fault value = 11:<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+Re fault value = 12:<br />
+- replace the component involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201802">F201802 (A)</a></b></td>
+<td><b>&lt;location&gt;CU DRIVE-CLiQ: POWER ON due to basic sampling times</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (OFF1)Servo: OFF2<br />
+ (IASC/DCBRAKE, OFF1)Vector: OFF2<br />
+ (IASC/DCBRAKE, OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>It is not possible to change the DRIVE-CLiQ basic sampling times p0110 in operation. POWER ON is required.<br />
+Fault value (r0949, interpret decimal):<br />
+Index of p0110.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- save (p0971 = 1).<br />
+- carry out a POWER ON.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201840">F201840</a></b></td>
+<td><b>&lt;location&gt;SMI: Component found with changed data</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Another Sensor Module Integrated (SMI) was found.<br />
+The reasons could be as follows:<br />
+1. A motor with DRIVE-CLiQ (SMI) and another order No. were used as replacement.<br />
+2. A Sensor Module Integrated was used as spare part where there is no encoder data and motor data or the incorrect data are present.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+The value should be interpreted as follows as 8-digit hexadecimal number AAAABBBB:<br />
+BBBB = Reserved.<br />
+AAAA = Component number of the component involved.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Re 1.<br />
+- restore the factory setting.<br />
+- carry out the first commissioning.<br />
+Re 2.<br />
+- download the SMI data from the back-up (p4690, p4691).<br />
+- carry out a POWER ON (power off&#47;on) for all components.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201900">A201900 (F)</a></b></td>
+<td><b>&lt;location&gt;PROFIBUS: Configuration telegram error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A PROFIBUS master attempts to establish a connection using an incorrect configuring telegram.<br />
+Alarm value (r2124, interpret decimal):<br />
+50: Syntax error.<br />
+51: Connection established to more drive objects than configured in the device. The drive objects for process data exchange and their sequence were defined using p0978.<br />
+52: Too many data words for input or output to a drive object. A maximum of 16 words is permitted for SERVO and VECTOR; and a maximum of 5 words for A_INFEED, TB30, TM31 and CU320.<br />
+53: Uneven number of bytes for input or output.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the bus configuring on the master and slave sides.<br />
+Re alarm value = 51:<br />
+Check the list of the drive objects with process data exchange (p0978). With p0978[x] = 0, all of the following drive objects in the list are excluded from the process data exchange.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201901">A201901 (F)</a></b></td>
+<td><b>&lt;location&gt;PROFIBUS: Parameterizing telegram error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A PROFIBUS master attempts to establish a connection using an incorrect parameterizing telegram.<br />
+Alarm value (r2124, interpret decimal):<br />
+1: Incorrect parameterizing bits.<br />
+10: Illegal length of an optional parameterizing block.<br />
+11: Illegal ID of an optional parameterizing block.<br />
+20: Double parameterizing block for clock synchronization.<br />
+21: Incorrect parameterizing block for clock synchronization.<br />
+22: Incorrect parameterizing bits for clock synchronization.<br />
+23: Illegal clock synchronization for PZD interface 2.<br />
+30: Double parameterizing block for peer-to-peer data transfer.<br />
+31: Incorrect parameterizing block for peer-to-peer data transfer.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the bus configuration:<br />
+- bus addresses<br />
+- slave configuring<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201902">A201902</a></b></td>
+<td><b>&lt;location&gt;IF1: PB&#47;PN clock cycle synchronous operation parameterization not permissible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Alarm value (r2124, interpret decimal):<br />
+0: Bus cycle time Tdp &lt; 0.5 ms.<br />
+1: Bus cycle time Tdp &gt; 32 ms.<br />
+2: Bus cycle time Tdp is not an integer multiple of the current controller clock cycle.<br />
+3: Instant of the actual value sensing Ti &gt; Bus cycle time Tdp or Ti = 0.<br />
+4: Instant of the actual value sensing Ti is not an integer multiple of the current controller clock cycle.<br />
+5: Instant of the setpoint acceptance To &gt;= Bus cycle time Tdp or To = 0.<br />
+6: Instant of the setpoint acceptance To is not an integer multiple of the current controller clock cycle.<br />
+7: Master application cycle time Tmapc is not an integer multiple of the speed controller clock cycle.<br />
+8: Bus reserve bus cycle time Tdp - data exchange time Tdx less than two current controller clock cycles.<br />
+9: Bus cycle time Tdp has been modified with respect to the first time that the connection was established.<br />
+10: Instant of the setpoint acceptance not To &lt;= data exchange time Tdx + To_min.<br />
+11: Master application cycle time Tmapc &gt; 14 or Tmapc = 0.<br />
+12: PLL tolerance window Tpll_w &gt; Tpll_w_max.<br />
+13: Bus cycle time Tdp is not a multiple of all basic clock cycles p0110[x].<br />
+14: For COMM BOARD with the setting To - 1 = Tdp - Ti, the instant of the setpoint acceptance is not To &lt;= Data exchange time Tdx + 2 * To_min.<br />
+15: This configuration is not permitted for Tdp &lt; 1 ms.<br />
+16: Instant of the actual value sensing Ti is less than the permitted value (COMM BOARD: Ti &gt;= 2).<br />
+17: The setting (To + Ti = Tdp + 2) is not permitted for COMM BOARD.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- adapt the parameterizing telegram.<br />
+- adapt the current and speed controller clock cycle.<br />
+Re alarm value = 9:<br />
+- carry out a POWER ON.<br />
+Re alarm value = 15:<br />
+- check the number of specific drive object types in the configuration.<br />
+Note:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201903">A201903 (F)</a></b></td>
+<td><b>&lt;location&gt;COMM INT: Receive configuration data invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive unit did not accept the receive configuration data.<br />
+Alarm value (r2124, interpret decimal):<br />
+Return value of the receive configuration data check.<br />
+0: Configuration accepted.<br />
+1: Connection established to more drive objects than configured in the device. The drive objects for process data exchange and their sequence were defined using p0978.<br />
+2: Too many data words for input or output to a drive object. A maximum of 16 words is permitted for SERVO and VECTOR; and a maximum of 5 words for A_INFEED, TB30, TM31 and CU320.<br />
+3: Uneven number of bytes for input or output.<br />
+4: Setting data for synchronization not accepted.<br />
+5: Drive still not in cyclic operation.<br />
+6: Buffer system not accepted.<br />
+7: Cyclic channel length too short for this setting.<br />
+8: Cyclic channel address not initialized.<br />
+9: 3-buffer system not permitted.<br />
+10: DRIVE-CLiQ fault.<br />
+11: CU-Link fault.<br />
+12: CX32 not in cyclic operation.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the receive configuration data.<br />
+Re alarm value = 1:<br />
+Check the list of the drive objects with process data exchange (p0978). With p0978[x] = 0, all of the following drive objects in the list are excluded from the process data exchange.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201910">F201910 (N, A)</a></b></td>
+<td><b>&lt;location&gt;PROFIBUS: Setpoint timeout</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF3<br />
+ (IASC/DCBRAKE, NONE, OFF1, OFF2, STOP1, STOP2)Vector: OFF3<br />
+ (IASC/DCBRAKE, NONE, OFF1, OFF2, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The receipt of setpoints from the PROFIBUS interface is interrupted because the bus connection is interrupted or the PROFIBUS master is switched off or was set to the STOP state.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Restore the bus connection and set the PROFIBUS master to RUN.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201911">F201911</a></b></td>
+<td><b>&lt;location&gt;IF1: PB&#47;PN clock cycle synchronous operation clock cycle failure</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The global control telegram to synchronize the clock cycles has failed - in cyclic operation - for several DP clock cycles or has violated the time grid specified in the parameterizing telegram over several consecutive DP clock cycles (refer to the bus cycle time, Tdp and Tpllw).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the PROFIBUS cables and connectors.<br />
+- check whether communication was briefly or permanently interrupted.<br />
+- check the bus and master for utilization level (e.g. bus cycle time Tdp was set too short).<br />
+Note:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201912">F201912</a></b></td>
+<td><b>&lt;location&gt;IF1: PB&#47;PN clock cycle synchronous operation sign-of-life failure</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The maximum permissible number of errors in the master sign-of-life (clock synchronous operation) has been exceeded in cyclic operation.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the physical bus configuration (terminating resistor, shielding, etc.).<br />
+- correct the interconnection of the master sign-of-life (p2045).<br />
+- check whether the master correctly sends the sign-of-life (e.g. create a trace with STW2.12 ... STW2.15 and trigger signal ZSW1.3).<br />
+- check the permissible telegram failure rate (p0925).<br />
+- check the bus and master for utilization level (e.g. bus cycle time Tdp was set too short).<br />
+Note:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201913">F201913 (N, A)</a></b></td>
+<td><b>&lt;location&gt;COMM INT: Monitoring time sign-of-life expired</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (NONE, OFF2)Servo: OFF1<br />
+ (NONE, OFF2, OFF3)Vector: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The monitoring time for the sign-of-life counter has expired.<br />
+The connection between the drive and the higher-level control (SIMOTION, SINUMERIK) has been interrupted for the following reasons:<br />
+- the control was reset.<br />
+- the data transfer to the control was interrupted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- wait until the control has re-booted.<br />
+- restore data transfer to the control.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201914">F201914 (N, A)</a></b></td>
+<td><b>&lt;location&gt;COMM INT: Monitoring time configuration expired</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (NONE, OFF2)Servo: OFF1<br />
+ (NONE, OFF2, OFF3)Vector: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The monitoring time for the configuration has expired.<br />
+Fault value (r0949, interpret decimal):<br />
+0: The transfer time of the send configuration data has been exceeded.<br />
+1: The transfer time of the receive configuration data has been exceeded.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- acknowledge faults that are present.<br />
+- carry out a POWER ON (power off&#47;on) for all components.<br />
+- upgrade firmware to later version.<br />
+- contact the Hotline.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201920">A201920 (F)</a></b></td>
+<td><b>&lt;location&gt;PROFIBUS: Interruption cyclic connection</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The cyclic connection to the PROFIBUS master is interrupted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Establish the PROFIBUS connection and activate the PROFIBUS master in the cyclic mode.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201921">A201921 (F)</a></b></td>
+<td><b>&lt;location&gt;PROFIBUS: Receive setpoints after To</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Output data of PROFIBUS master (setpoints) received at the incorrect instant in time within the PROFIBUS clock cycle.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check bus configuration.<br />
+- check parameters for clock cycle synchronization (ensure To &gt; Tdx).<br />
+Note:<br />
+To: Time of setpoint acceptance<br />
+Tdx: Data exchange time<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201930">A201930</a></b></td>
+<td><b>&lt;location&gt;IF1: PB&#47;PN current controller clock cycle clock cycle synchronous not equal</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The current controller clock cycle of all drives must be set the same for the clock cycle synchronous operation.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the drive object with different current controller clock cycle.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set current controller clock cycles to identical values (p0115[0]).<br />
+Note:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201931">A201931</a></b></td>
+<td><b>&lt;location&gt;IF1: PB&#47;PN speed controller clock cycle clock cycle synchronous not equal</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The speed controller clock cycle of all drives must be set the same for the clock cycle synchronous operation.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the drive object with the different speed controller clock cycle.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set the speed controller clock cycles the same (p0115[1]).<br />
+Note:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201940">A201940</a></b></td>
+<td><b>&lt;location&gt;IF1: PB&#47;PN clock cycle synchronism not reached</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The bus is in the data exchange state and clock synchronous operation has been selected using the parameterizing telegram. It was not possible to synchronize to the clock cycle specified by the master.<br />
+- the master does not send a clock synchronous global control telegram although clock synchronous operation was selected when configuring the bus.<br />
+- the master is using another clock synchronous DP clock cycle than was transferred to the slave in the parameterizing telegram.<br />
+- at least one drive object (that is not controlled from PROFIBUS&#47;PROFINET) has a pulse enable.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the master application and bus configuration.<br />
+- check the consistency between the clock cycle input when configuring the slave and clock cycle setting at the master.<br />
+- ensure that the pulses of drive objects that are not controlled by PROFIBUS&#47;PROFINET are not enabled. Only enable the pulses after synchronizing the PROFIBUS&#47;PROFINET drives.<br />
+Note:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201941">A201941</a></b></td>
+<td><b>&lt;location&gt;IF1: PB&#47;PN clock cycle signal missing when establishing bus communication</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The bus is in the data exchange state and clock synchronous operation has been selected using the parameterizing telegram. The global control telegram for synchronization is not being received.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the master application and bus configuration.<br />
+Note:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201943">A201943</a></b></td>
+<td><b>&lt;location&gt;IF1: PB&#47;PN clock cycle signal error when establishing bus communication</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The bus is in the data exchange state and clock synchronous operation has been selected using the parameterizing telegram. The global control telegram for synchronization is being irregularly received.<br />
+-.the master is sending an irregular global control telegram.<br />
+- the master is using another clock synchronous DP clock cycle than was transferred to the slave in the parameterizing telegram.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the master application and bus configuration.<br />
+- check the consistency between the clock cycle input when configuring the slave and clock cycle setting at the master.<br />
+Note:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201944">A201944</a></b></td>
+<td><b>&lt;location&gt;IF1: PB&#47;PN sign-of-life synchronism not reached</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The bus is in the data exchange state and clock synchronous operation has been selected using the parameterizing telegram. Synchronization with the master sign-of-life (STW2.12 ... STW2.15) could not be completed because the sign-of-life is changing differently to how it was configured in the Tmapc time grid.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- ensure that the master correctly increments the sign-of-life in the master application clock cycle Tmapc.<br />
+- correct the interconnection of the master sign-of-life (p2045).<br />
+Note:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201945">A201945</a></b></td>
+<td><b>&lt;location&gt;PROFIBUS: Connection to the Publisher failed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For PROFIBUS peer-to-peer data transfer, the connection to at least one Publisher has failed.<br />
+Alarm value (r2124, interpret binary):<br />
+Bit 0 = 1: Publisher with address in r2077[0], connection failed.<br />
+...<br />
+Bit 15 = 1: Publisher with address in r2077[15], connection failed.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the PROFIBUS cables.<br />
+- carry out a first commissioning of the Publisher that has the failed connection.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201946">F201946 (A)</a></b></td>
+<td><b>&lt;location&gt;PROFIBUS: Connection to the Publisher aborted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (NONE, OFF2)Servo: OFF1<br />
+ (NONE, OFF2, OFF3)Vector: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>At this drive object, the connection to at least one Publisher for PROFIBUS peer-to-peer data transfer in cyclic operation has been aborted.<br />
+Alarm value (r2124, interpret binary):<br />
+Bit 0 = 1: Publisher with address in r2077[0], connection aborted.<br />
+...<br />
+Bit 15 = 1: Publisher with address in r2077[15], connection aborted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the PROFIBUS cables.<br />
+- check the state of the Publisher that has the aborted connection.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201950">F201950 (N, A)</a></b></td>
+<td><b>&lt;location&gt;IF1: PB&#47;PN clock cycle synchronous operation synchronization unsuccessful</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Synchronization of the internal clock cycle to the global control telegram has failed. The internal clock cycle exhibits an unexpected shift.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Only for internal Siemens troubleshooting.<br />
+Note:<br />
+IF1: Interface 1<br />
+PB: PROFIBUS<br />
+PN: PROFINET<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201951">F201951</a></b></td>
+<td><b>&lt;location&gt;CU DRIVE-CLiQ: Synchronization application clock cycle missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>If DRIVE-CLiQ components with different application clock cycle are operated at a DRIVE-CLiQ port, then this requires synchronization with the Control Unit.<br />
+This synchronization routine was unsuccessful.<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (power off&#47;on) for all components.<br />
+- upgrade the software of the DRIVE-CLiQ components.<br />
+- upgrade the Control Unit software.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201952">F201952</a></b></td>
+<td><b>&lt;location&gt;CU DRIVE-CLiQ: Synchronization of component not supported</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The existing system configuration requires that the connected DRIVE-CLiQ components support the synchronization between the basic clock cycle, DRIVE-CLiQ clock cycle and the application clock cycle.<br />
+However, not all DRIVE-CLiQ components have this functionality.<br />
+Fault value (r0949, interpret decimal):<br />
+Component number of the first faulty DRIVE-CLiQ component.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Upgrade the firmware of the component specified in the fault value.<br />
+Note:<br />
+If required, also upgrade additional components in the DRIVE-CLiQ line.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201953">A201953</a></b></td>
+<td><b>&lt;location&gt;CU DRIVE-CLiQ: Synchronization not completed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>After the drive system is powered up, the synchronization between the basic clock cycle, DRIVE-CLiQ clock cycle and application clock cycle was started but was not completed within the selected time tolerance.<br />
+Alarm value (r2124, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out a POWER ON (power off&#47;on) for all components.<br />
+If the error occurs after the drive sampling times were adjusted, and if a TM31 module is being used, the sampling times (p0115, p4099) should be set as integer multiples to the drive clock cycles (p0115).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201954">F201954</a></b></td>
+<td><b>&lt;location&gt;CU DRIVE-CLiQ: Synchronization unsuccessful</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>After the drive system is powered up, the synchronization between the basic clock cycle, DRIVE-CLiQ clock cycle and application clock cycle was started and was not able to be successfully completed.<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>1. Ensure perfect functioning of the DRIVE-CLiQ.<br />
+2. Initiate a new synchronization, e.g. as follows:<br />
+- remove the PROFIBUS master and re-insert again.<br />
+- restart the PROFIBUS master.<br />
+- power down the Control Unit and power it up again.<br />
+- press the Control Unit reset button.<br />
+- reset the parameter and download the saved parameters (p0009 = 30, p0976 = 2).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201955">A201955</a></b></td>
+<td><b>&lt;location&gt;CU DRIVE-CLiQ: Synchronization DO not completed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>After the drive system is powered up, the synchronization between the basic clock cycle, DRIVE-CLiQ clock cycle and application clock cycle was started but was not completed within the selected time tolerance.<br />
+Alarm value (r2124, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out a POWER ON (power off&#47;on) for all components of the DO.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202000">A202000</a></b></td>
+<td><b>&lt;location&gt;Function generator: Start not possible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The function generator has already been started.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Stop the function generator and restart again if necessary.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202005">A202005</a></b></td>
+<td><b>&lt;location&gt;Function generator: Drive does not exist</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive object specified for connection does not exist.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Use the existing drive object with the corresponding number.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202006">A202006</a></b></td>
+<td><b>&lt;location&gt;Function generator: No drive specified for connection</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>No drive specified for connection in p4815.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>At least one drive to be connected must be specified in p4815.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202007">A202007</a></b></td>
+<td><b>&lt;location&gt;Function generator: Drive not SERVO &#47; VECTOR</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive object specified for connection is not a SERVO &#47; VECTOR.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Use a SERVO &#47; VECTOR drive object with the corresponding number.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202008">A202008</a></b></td>
+<td><b>&lt;location&gt;Function generator: Drive specified a multiple number of times</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive object specified for connection is already specified.<br />
+Alarm value (r2124, interpret decimal):<br />
+Drive object number of the drive object that is specified a multiple number of times.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Specify a different drive object.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202009">A202009</a></b></td>
+<td><b>&lt;location&gt;Function generator: Illegal mode</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The set operating mode (p1300) of the drive object is not permissible when using the function generator.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the drive object involved.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Change the operating mode for this drive object to p1300 = 20 (encoderless speed control) or p1300 = 21 (speed control with encoder).<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202010">A202010</a></b></td>
+<td><b>&lt;location&gt;Function generator: Speed setpoint from the drive is not zero</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The speed setpoint of a drive selected for connection is greater than the value for the standstill detection set using p1226.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the drive object involved.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For all of the drives specified for connection, set the speed setpoints to 0.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202011">A202011</a></b></td>
+<td><b>&lt;location&gt;Function generator: The actual drive speed is not zero</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The speed actual value of a drive selected for connection is greater than the value for the standstill detection set using p1226.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the drive object involved.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set the relevant drives to zero speed before starting the function generator.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202015">A202015</a></b></td>
+<td><b>&lt;location&gt;Function generator: Drive enable signals missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The master control and&#47;or enable signals are missing to connect to the specified drive.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the drive object involved.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Fetch the master control to the specified drive object and set all enable signals.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202016">A202016</a></b></td>
+<td><b>&lt;location&gt;Function generator: Magnetizing running</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Magnetizing has not yet been completed on a drive object specified for connection.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the drive object involved.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Wait for magnetizing of the motor (r0056.4).<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202020">A202020</a></b></td>
+<td><b>&lt;location&gt;Function generator: Parameter cannot be changed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>This parameter setting cannot be changed when the function generator is active (p4800 = 1).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- stop the function generator before parameterizing (p4800 = 0).<br />
+- if required, start the function generator (p4800 = 1).<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202025">A202025</a></b></td>
+<td><b>&lt;location&gt;Function generator: Period too short</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The value for the period is too short.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check and adapt the value for the period.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202026">A202026</a></b></td>
+<td><b>&lt;location&gt;Function generator: Pulse width too high</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The selected pulse width is too high.<br />
+The pulse width must be less than the period duration.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reduce pulse width.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202030">A202030</a></b></td>
+<td><b>&lt;location&gt;Function generator: Physical address equals zero</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The specified physical address is zero.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set a physical address with a value other than zero.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202040">A202040</a></b></td>
+<td><b>&lt;location&gt;Function generator: Illegal value for offset</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The value for the offset is higher than the value for the upper limit or lower than the value for the lower limit.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adjust the offset value accordingly.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202041">A202041</a></b></td>
+<td><b>&lt;location&gt;Function generator: Illegal value for bandwidth</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The bandwidth referred to the time slice clock cycle of the function generator has either been set too low or too high.<br />
+Depending on the time slice clock cycle, the bandwidth is defined as follows:<br />
+Bandwidth_max = 1 &#47; (2 * time slice clock cycle)<br />
+Bandwidth_min = Bandwidth_max &#47; 100000<br />
+Example:<br />
+Assumption: p4830 = 125 &micro;s<br />
+--&gt; Bandwidth_max = 1 &#47; (2 * 125 &micro;s) = 4000 Hz<br />
+--&gt; Bandwidth_min = 4000 Hz &#47; 100000 = 0.04 Hz<br />
+Note:<br />
+p4823: Function generator bandwidth<br />
+p4830: Function generator time slice clock cycle<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the value for the bandwidth and adapt accordingly.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202047">A202047</a></b></td>
+<td><b>&lt;location&gt;Function generator: Time slice clock cycle invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The time slice clock cycle selected does not match any of the existing time slices.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Enter an existing time slice clock cycle. The existing time slices can be read out via p7901.<br />
+Note:<br />
+The alarm is reset as follows:<br />
+- remove the cause of this alarm.<br />
+- restart the function generator.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202050">A202050</a></b></td>
+<td><b>&lt;location&gt;Trace: Start not possible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The trace has already been started.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Stop the trace and, if necessary, start again.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202055">A202055</a></b></td>
+<td><b>&lt;location&gt;Trace: Recording time too short</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The trace duration is too short.<br />
+The minimum is twice the value of the trace clock cycle.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the selected recording time and, if necessary, adjust.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202056">A202056</a></b></td>
+<td><b>&lt;location&gt;Trace: Recording cycle too short</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The selected recording cycle is shorter than the selected basic clock cycle 0 (p0110[0]).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Increase the value for the trace cycle.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202057">A202057</a></b></td>
+<td><b>&lt;location&gt;Trace: Time slice clock cycle invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The time slice clock cycle selected does not match any of the existing time slices.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Enter an existing time slice clock cycle. The existing time slices can be read out via p7901.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202058">A202058</a></b></td>
+<td><b>&lt;location&gt;Trace: Time slice clock cycle for endless trace not valid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The selected time slice clock cycle cannot be used for the endless trace<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Enter the clock cycle of an existing time slice with a cycle time &gt;= 2 ms for up to 4 recording channels or &gt;= 4 ms from 5 recording channels per trace.<br />
+The existing time slices can be read out via p7901.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202059">A202059</a></b></td>
+<td><b>&lt;location&gt;Trace: Time slice clock cycle for 2 x 8 recording channels not valid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The selected time slice clock cycle cannot be used for the setting p4702 = 1 (2 x 8 recording channels).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Enter the clock cycle of an existing time slice with a cycle time &gt;= 4 ms or reduce the number of recording channels to 4 per trace.<br />
+The existing time slices can be read out via p7901.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202060">A202060</a></b></td>
+<td><b>&lt;location&gt;Trace: Signal to be traced missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- a signal to be traced was not specified.<br />
+- the specified signals are not valid.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- specify the signal to be traced.<br />
+- check whether the relevant signal can be traced.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202061">A202061</a></b></td>
+<td><b>&lt;location&gt;Trace: Invalid signal</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- the specified signal does not exist.<br />
+- the specified signal can no longer be traced (recorded).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- specify the signal to be traced.<br />
+- check whether the relevant signal can be traced.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202062">A202062</a></b></td>
+<td><b>&lt;location&gt;Trace: Invalid trigger signal</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- a trigger signal was not specified.<br />
+- the specified signal does not exist.<br />
+- the specified signal is not a fixed-point signal.<br />
+- the specified signal cannot be used as a trigger signal for the trace.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Specify a valid trigger signal.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202063">A202063</a></b></td>
+<td><b>&lt;location&gt;Trace: Invalid data type</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The specified data type to select a signal using a physical address is invalid.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Use a valid data type.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202070">A202070</a></b></td>
+<td><b>&lt;location&gt;Trace: Parameter cannot be changed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The trace parameter settings cannot be changed when the trace is active.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- stop the trace before parameterization.<br />
+- if required, start the trace.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202075">A202075</a></b></td>
+<td><b>&lt;location&gt;Trace: Pretrigger time too long</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The selected pretrigger time must be shorter than the trace time.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the pretrigger time setting and change if necessary.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202080">F202080</a></b></td>
+<td><b>&lt;location&gt;Trace: Delete trace because units changed over</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The trace was deleted due to the fact that the units were changed over or the reference parameters changed.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td></td></tr>
+</table><p></p><table><tr><td><b><a name="202099">A202099</a></b></td>
+<td><b>&lt;location&gt;Trace: Insufficient Control Unit memory</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The memory space still available on the Control Unit is no longer sufficient for the trace function.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reduce the memory required, e.g. as follows:<br />
+- reduce the trace time.<br />
+- increase the trace clock cycle.<br />
+- reduce the number of signals to be traced.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202100">A202100</a></b></td>
+<td><b>&lt;location&gt;CU: Computing dead time current controller too short</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The value in p0118 produces a dead time of one clock cycle because it is prior to setpoint availability. A possible cause could be, for example, that the system characteristics no longer match those parameterized after a component has been replaced.<br />
+Alarm value (r2134, floating point):<br />
+The minimum value for p0118 where a dead time no longer occurs.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- set p0118 to a value greater than or equal to the alarm value.<br />
+- set p0117 to an automatic setting.<br />
+- check the firmware releases of the components involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202150">A202150</a></b></td>
+<td><b>&lt;location&gt;OA: Application cannot be loaded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The system was not able to load an OA application.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (power off&#47;on) for all components.<br />
+- upgrade firmware to later version.<br />
+- contact the Hotline.<br />
+Note:<br />
+OA: Open Architecture<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202151">F202151 (A)</a></b></td>
+<td><b>&lt;location&gt;OA: Internal software error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (NONE, OFF1, OFF3)Vector: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An internal software error has occurred within an OA application.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (power off&#47;on) for all components.<br />
+- upgrade firmware to later version.<br />
+- contact the Hotline.<br />
+- replace the Control Unit.<br />
+Note:<br />
+OA: Open Architecture<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="202152">F202152 (A)</a></b></td>
+<td><b>&lt;location&gt;OA: Insufficient memory</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Too many functions have been configured on this Control Unit (e.g. too many drives, function modules, data sets, OA applications, blocks, etc).<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- change the configuration on this Control Unit (e.g. fewer drives, function modules, data sets, OA applications, blocks, etc).<br />
+- use an additional Control Unit.<br />
+Note:<br />
+OA: Open Architecture<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="203500">F203500 (A)</a></b></td>
+<td><b>&lt;location&gt;TM: Initialization</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When initializing the Terminal Modules, the terminals of the Control Unit or the Terminal Board 30, an internal software error has occurred.<br />
+Fault value (r0949, interpret decimal):<br />
+The thousands digit = 1 ... 3:<br />
+The component number (p0151) of the module involved is specified at the units, tens and hundreds digit.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- power down the power supply for the Control Unit and power it up again.<br />
+- check the DRIVE-CLiQ connection.<br />
+- if required, replace the Terminal Module.<br />
+The Terminal Module should be directly connected to a DRIVE-CLiQ socket of the Control Unit.<br />
+If the fault occurs again, replace the Terminal Module.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="203501">A203501</a></b></td>
+<td><b>&lt;location&gt;TM: Sampling time change</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The sampling times of the inputs&#47;outputs were changed.<br />
+This change only becomes valid after the next boot.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Carry out a POWER ON.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="203505">F203505 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TM: Analog input wire breakage</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The input current of the Terminal Module analog input has exceeded the threshold value parameterized in p4061[x].<br />
+This fault can only occur if p4056[x] = 3 (4 ... 20 mA with monitoring) is set.<br />
+Index x = 0: Analog input 0 (X522.1 to .3)<br />
+Index x = 1: Analog input 1 (X522.4 to .5)<br />
+Fault value (r0949, interpret decimal):<br />
+The component number (p0151) of the module involved is specified at the units, tens and hundreds digit.<br />
+The thousands digit specifies the analog input involved: 0: Analog input 0 (AI 0), 1: Analog input 1 (AI 1)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the connection to the signal source for interruptions.<br />
+Check the magnitude of the injected current - it is possible that the infed signal is too low.<br />
+Please note that the input has a load resistance of 250 Ohm.<br />
+The input current measured by the Terminal Module can be read out from r4052[x].<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="203506">A203506 (F, N)</a></b></td>
+<td><b>&lt;location&gt;24 V power supply missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The 24 V power supply for the digital outputs (X124) is missing.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the terminals for the power supply voltage (X124, L1+, M).<br />
+</td></tr>
+</table><p></p></body></html>

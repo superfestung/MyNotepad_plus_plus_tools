@@ -1,0 +1,36 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Machine and setting data ($$M, $$S)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Machine and setting data ($$M, $$S)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Reading and writing MD and SD</h3>
+      <p>When machine and setting data is used in synchronized actions, a distinction must be made as to whether this remains unchanged during the execution of the synchronized action, or is changed through parallel processes:</p>
+      <ul>
+        <li>
+          <p>Data that remain <b>unchanged </b>can already be read or written in the <b>pre-run</b>.</p>
+        </li>
+        <li>
+          <p>Data that is <b>changed </b>may only be read or written in the <b>main run</b>.</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Data access during preprocessing</h3>
+      <p>Machine and setting data that can already be read and written in synchronized actions during preprocessing, is programmed with the same identifiers as in the part program:</p>
+      <p>$M... or $S...</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_sourcecode" border="1" id="EJB"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Program code</p></th></tr><tr valign="top"><td>; The reversal position of the Z axis $SA_OSCILL_REVERSE_POS2[Z] ; remains unchanged over the entire machining periodID=2 WHENEVER $AA_IM[z]&lt;$SA_OSCILL_REVERSE_POS2[Z]–6 DO $AA_OVR[X]=0</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_3"></a><h3 class="Blocktitle">Data access during the main run</h3><p>Machine and setting data that are only to be read or written in synchronized actions in the main run must be preceded by an additional character "$":</p><p>$$M… or $$S…</p><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_sourcecode" border="1" id="E6B"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Program code</p></th></tr><tr valign="top"><td>; The reversal position of the Z axis $SA_OSCILL_REVERSE_POS2[Z] ; can be changed by operator input at any timeID=1 WHENEVER $AA_IM[z] &lt; $$SA_OSCILL_REVERSE_POS2[Z] DO $AA_OVR[X] = 0</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Writing during the main run</h4><p>The following requirements must be satisfied for writing during the main run:</p><ul><li><p>The access authorization at the time of writing must be sufficient for writing.</p></li><li><p>The machine or setting data must have the property "Effective immediately".</p></li></ul><a id="table_2"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_sourcecode" border="1" id="EXC"><colgroup><col width="100.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Program code</p></th></tr><tr valign="top"><td>; The switching position of the SW cam $SN_SW_CAM_ ... must, ; depending on the current setpoint of the X axis in WCS $AA_IW[X], ; only be written during the main runID=2 WHEN $AA_IW[X] > 10 DO $$SN_SW_CAM_PLUS_POS_TAB_1[0] = 20                            $$SN_SW_CAM_MINUS_POS_TAB_1[0]=20</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>A complete overview of the properties of the machine and setting data can be found in:</p><p><b>More information</b></p><ul><li><p>List Manual System Variables</p></li><li><p>List Manual Machine Data</p></li></ul></div>
+  </body>
+</html>

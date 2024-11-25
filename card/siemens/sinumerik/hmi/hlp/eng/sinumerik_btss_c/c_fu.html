@@ -1,0 +1,265 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Block C/FU: Channel-specific settable frames</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Block C/FU: Channel-specific settable frames</h1>
+         </div>
+      </div>This only applies if $MC_MM_NUM_USER_FRAMES &gt; 0 and $MN_MM_NUM_GLOBAL_USER_FRAMES = 0, otherwise all settable frames have
+      an NCU-global configuration.<br/>
+      <br/>
+      The following frame indices are possible:<br/>
+      0 = G500<br/>
+      1 = G54<br/>
+      2 = G55<br/>
+      3 = G56<br/>
+      4 = G57<br/>
+      5 = G505<br/>
+      6 = G506<br/>
+      :<br/>
+      n = G5n<br/>
+      :<br/>
+      99 = G599<br/>
+      <br/>
+      The maximum frame index is: $MC_MM_NUM_USER_FRAMES - 1<br/>
+      <br/>
+      The PI service SETUFR has to be called in order to activate the settable frames.<br/>
+      
+      <div><a name="174"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>linShift</b></td>
+            <td colspan="3" style="border:1px solid black">Translation of a settable frame</td>
+            <td width="20%" style="border:1px solid black">$P_UIFR[x,y,TR] x=FrameNo,y=Axis</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame<br>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + axis number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_USER_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Translation of settable work offset (the physical unit is defined in basicLengthUnit in module Y in area N).<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Linear position (mm, inch or user defined)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/UserFrame/linShift[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2057"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>linShiftFine</b></td>
+            <td colspan="3" style="border:1px solid black">Fine offset for frames</td>
+            <td width="20%" style="border:1px solid black">$P_UIFR[x,y,FI] x=FrameNo,y=Axis</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame<br>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + axis number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_USER_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Fine offset with frames, expansion of basic frames and settable frames<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Linear position (mm, inch or user defined)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/UserFrame/linShiftFine[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="308"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mirrorImgActive</b></td>
+            <td colspan="3" style="border:1px solid black">Mirroring enabled in a settable frame</td>
+            <td width="20%" style="border:1px solid black">$P_UIFR[x,y,MI] x = FrameNo,y=Axis</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame<br>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + axis number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_USER_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Mirroring enabled in a settable work offset<br/>
+               <br/><span style="font-size: 8pt">Value Range:<br></span>0 = mirroring not active<br/>
+               1 = mirroring active<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/UserFrame/mirrorImgActive[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="398"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>rotation</b></td>
+            <td colspan="3" style="border:1px solid black">Rotation of a settable frame</td>
+            <td width="20%" style="border:1px solid black">$P_UIFR[x,y,RT] x = FrameNo,y=Axis</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame<br>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + axis number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_USER_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Rotation of a settable work offset<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Angle (degree)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/UserFrame/rotation[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5429"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>rotationCoordinate</b></td>
+            <td colspan="3" style="border:1px solid black">Coordinate rotation of settable frames</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + 1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_USER_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Rotation around a coordinate of a settable work offset<br/>
+               1: Rotation around first non-existing geometry axis.<br/>
+               <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>Angle (degree)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/UserFrame/rotationCoordinate[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="402"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>scaleFact</b></td>
+            <td colspan="3" style="border:1px solid black">Scaling factor of a settable frame</td>
+            <td width="20%" style="border:1px solid black">$P_UIFR[x,y,SC] x = FrameNo,y=Axis</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Column index:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Line index:<br></span>Frame<br>Frame index * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a>+<a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>) + axis number
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. line index:<br></span>$MC_MM_NUM_USER_FRAMES * (<a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a>)
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Scaling factor of a settable work offset<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Type<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Unit<br></span>No unit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Default Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimum Value<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximum Value<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Access Path HMI:</span> /Channel/UserFrame/scaleFact[u&lt;Channel numb&gt;, &lt;Line Index&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

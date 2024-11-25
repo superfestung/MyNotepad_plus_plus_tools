@@ -1,0 +1,1762 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="207815">F207815</a></b></td>
+<td><b>&lt;location&gt;Drive: Power unit has been changed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The code number of the actual power unit does not match the saved number. This only occurs if the comparator in p9906 or p9908 is not at 2 (low) or 3 (minimum).<br />
+Fault value (r0949, interpret decimal):<br />
+Number of the incorrect parameter.<br />
+See also: r0200 (Power unit code number actual), p0201 (Power unit code number)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Connect the original power unit and switch on the Control Unit again (POWER ON) or set p0201 to r0200 and exit commissioning with p0010 = 0.<br />
+For infeeds, the following applies:<br />
+Line reactors or line filters must be used that are specified for the new power unit. A line supply and DC link identification routine (p3410 = 5) must then be carried out. It is not possible to change the power unit without re-commissioning the system if the type of infeed (A_Infeed, B_Infeed, S_Infeed), the type of construction&#47;design (booksize, chassis) or the voltage class differ between the old and new power units.<br />
+For inverters, the following applies:<br />
+If the new power unit is accepted, then if required, the current limit (p0640) can be reduced by a lower maximum current of the power unit (r0209) (torque limits stay the same).<br />
+If not only the power unit is changed, but also the motor, then the motor must be re-commissioned (e.g. using p0010 = 1). This is also necessary if motor data is still to be downloaded via DRIVE-CLiQ.<br />
+If the comparison stage in p9906 is set to 2, 3, then commissioning can be exited (p0010 = 0) and the fault acknowledged.<br />
+See also: r0200 (Power unit code number actual)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207820">A207820</a></b></td>
+<td><b>&lt;location&gt;Drive: Temperature sensor not connected</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The temperature sensor for monitoring the motor temperature, specified in p0600, is not available.<br />
+Alarm value (r2124, interpret decimal):<br />
+1: p0601 = 10 (SME), but in p0600 - not evaluated via encoder is selected.<br />
+2: p0600 = 10 (BICO), but the signal source (p0603) is not interconnected.<br />
+3: p0601 = 11 (BICO), but in p0600 - not evaluated via BICO interconnection is selected (20 or 21).<br />
+4: p0601 = 11 (BICO) and p4610-p4613 &gt; 0, but the associated signal source (p0608, p0609) is not interconnected.<br />
+5: Component with sensor evaluation not present or has been removed in the meantime.<br />
+6: Evaluation via Motor Module not possible (r0192.21).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For alarm value = 1:<br />
+- in p0600 set an encoder with temperature sensor.<br />
+For alarm value = 2:<br />
+- interconnect p0603 with the temperature signal.<br />
+For alarm value = 3, 4:<br />
+- set the available temperature sensor (p0600, p0601).<br />
+- set p4610 ... p4613 = 0 (no sensor), or interconnect p0608 or p0609 with an external temperature signal.<br />
+For alarm value = 5:<br />
+- connect the component with the temperature sensor. Check the DRIVE-CLiQ connection.<br />
+For alarm value = 6:<br />
+- update the Motor Module firmware. Connect temperature sensor via encoder.<br />
+See also: p0600 (Motor temperature sensor for monitoring), p0601<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207840">F207840</a></b></td>
+<td><b>&lt;location&gt;Drive: Infeed operation missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The signal &quot;infeed operation&quot; is not present although the enable signals for the drive have been present for longer than the parameterized monitoring time (p0857).<br />
+- infeed not operational.<br />
+- interconnection of the binector input for the ready signal is either incorrect or missing (p0864).<br />
+- infeed is presently carrying out a line supply identification routine.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- bring the infeed into an operational state.<br />
+- check the interconnection of the binector input for the signal &quot;infeed operation&quot; (p0864).<br />
+- increase the monitoring time (p0857).<br />
+- wait until the infeed has completed the line supply identification routine.<br />
+See also: p0857 (Power unit monitoring time), p0864<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207841">F207841 (A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Infeed operation withdrawn</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3)Hla: OFF2<br />
+ (NONE, OFF1, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The signal &quot;infeed operation&quot; was withdrawn in operation.<br />
+- interconnection of the binector input for the signal &quot;infeed operation&quot; is either incorrect or missing (p0864).<br />
+- the enable signals of the infeed were disabled.<br />
+- due to a fault, the infeed withdraws the signal &quot;infeed operation&quot;.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the interconnection of the binector input for the &quot;infeed operation&quot; signal (p0864).<br />
+- check the enable signals of the infeed and if required, enable.<br />
+- remove and acknowledge an infeed fault.<br />
+Note:<br />
+If this drive is intended to back up the DC link regeneratively, then the fault response must be parameterized for NONE, OFF1 or OFF3. so that the drive can continue to operate even after the infeed fails.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207850">A207850 (F)</a></b></td>
+<td><b>&lt;location&gt;External alarm 1</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External alarm 1&quot; is satisfied.<br />
+Note:<br />
+The &quot;External alarm 1&quot; is initiated by a 1&#47;0 edge via binector input p2112.<br />
+See also: p2112 (External alarm 1)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Eliminate the causes of this alarm.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207851">A207851 (F)</a></b></td>
+<td><b>&lt;location&gt;External alarm 2</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External alarm 2&quot; is satisfied.<br />
+Note:<br />
+The &quot;External alarm 2&quot; is initiated by a 1&#47;0 edge via binector input p2116.<br />
+See also: p2116 (External alarm 2)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Eliminate the causes of this alarm.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207852">A207852 (F)</a></b></td>
+<td><b>&lt;location&gt;External alarm 3</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External alarm 3&quot; is satisfied.<br />
+Note:<br />
+The &quot;External alarm 3&quot; is initiated by a 1&#47;0 edge via binector input p2117.<br />
+See also: p2117 (External alarm 3)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Eliminate the causes of this alarm.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207860">F207860 (A)</a></b></td>
+<td><b>&lt;location&gt;External fault 1</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External fault 1&quot; is satisfied.<br />
+Note:<br />
+The &quot;External fault 1&quot; is initiated by a 1&#47;0 edge via binector input p2106.<br />
+See also: p2106 (External fault 1)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- eliminate the causes of this fault.<br />
+- acknowledge fault.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207861">F207861 (A)</a></b></td>
+<td><b>&lt;location&gt;External fault 2</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External fault 2&quot; is satisfied.<br />
+Note:<br />
+The &quot;External fault 2&quot; is initiated by a 1&#47;0 edge via binector input p2107.<br />
+See also: p2107 (External fault 2)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- eliminate the causes of this fault.<br />
+- acknowledge fault.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207862">F207862 (A)</a></b></td>
+<td><b>&lt;location&gt;External fault 3</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External fault 3&quot; is satisfied.<br />
+Note:<br />
+The &quot;External fault 3&quot; is initiated by a 1&#47;0 edge via the following parameters.<br />
+- AND logic operation, binector input p2108, p3111, p3112.<br />
+- switch-on delay p3110.<br />
+See also: p2108, p3110, p3111, p3112<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- eliminate the causes of this fault.<br />
+- acknowledge fault.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207890">F207890</a></b></td>
+<td><b>&lt;location&gt;Internal voltage protection &#47; internal armature short-circuit with STO active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The internal armature short-circuit (p1231 = 4) is not possible as Safe Torque Off (STO) is enabled. The pulses cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Switch out the internal armature short-circuit (p1231=0) or deactivate Safe Torque Off (p9501 = p9561 = 0).<br />
+Note:<br />
+STO: Safe Torque Off &#47; SH: Safe standstill<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207900">F207900 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor blocked&#47;speed controller at its limit</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Motor has been operating at the torque limit longer than the time specified in p2177 and below the speed threshold in p2175.<br />
+This signal can also be initiated if the speed actual value is oscillating and the speed controller output repeatedly goes to its limit.<br />
+See also: p2175, p2177<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the motor can freely move.<br />
+- check the effective torque limit (r1538, r1539).<br />
+- check the parameter, message &quot;Motor blocked&quot; and if required, correct (p2175, p2177).<br />
+- check the inversion of the actual value (p0410).<br />
+- check the motor encoder connection.<br />
+- check the encoder pulse number (p0408).<br />
+- for SERVO with encoderless operation and motors with low power ratings (&lt; 300 W), increase the pulse frequency (p1800).<br />
+- after deselecting the &quot;Basic positioner&quot; (EPOS) function mode, check the motoring (p1528) and regenerative (p1529) torque limit and modify again.<br />
+- blocksize device: for encoderless operation and a current controller sampling time p0115[0] &lt; 80 &micro;s, either set the pulse frequency of p1800 = 1 &#47; p0115[0] or increase the switchover speed of the model p1755.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207901">F207901</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor overspeed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF2<br />
+ (IASC/DCBRK)Hla: OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The maximum permissible speed was either positively or negatively exceeded.<br />
+The maximum permissible positive speed is formed as follows: Minimum (p1082, CI: p1085) + p2162<br />
+The maximum permissible negative speed is formed as follows: Maximum (-p1082, CI: 1088) - p2162<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The following applies for a positive direction of rotation:<br />
+- check r1084 and if required, correct p1082, CI:p1085 and p2162.<br />
+The following applies for a negative direction of rotation:<br />
+- check r1087 and if required, correct p1082, CI:p1088 and p2162.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207902">F207902 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor stalled</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The system has identified that the motor has stalled for a time longer than is set in p2178.<br />
+Fault value (r0949, interpret decimal):<br />
+1: Stall detection using r1408.11 (p1744, p0492).<br />
+2: Stall detection using r1408.12 (p1745) or via the flux difference (r0083 ... r0084).<br />
+3: Stall detection using r0056.11 (only for separately excited synchronous motors).<br />
+See also: p1744 (Motor model speed threshold stall detection), p2178 (Motor stalled delay time)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For closed-loop speed and torque control with speed encoder, the following applies:<br />
+- check the speed signal (interrupted cable, polarity, pulse number, broken encoder shaft).<br />
+- check the speed encoder, if another speed encoder was selected using the data set changeover. This must be connected to the same motor that is controlled for the data set changeover.<br />
+If there is no fault, then the fault tolerance (p1744 and p0492) can be increased.<br />
+For closed-loop speed and torque control without speed encoder, the following applies:<br />
+- check whether the drive in the open-loop controlled mode (r1750.0) stalls under load. If yes, then increase the current setpoint using p1610.<br />
+- check whether the drive stalls due to the load if the speed setpoint is still zero. If yes, then increase the current setpoint using p1610.<br />
+- if the motor excitation (magnetizing) time (r0346) was significantly reduced, then it should be increased again.<br />
+- check the current limits (p0640, r0067). If the current limits are too low, then the drive cannot be magnetized.<br />
+- check the current controller (p1715, p1717) and the speed adaptation controller (p1764, p1767). If the dynamic response was significantly reduced, then this should be increased again.<br />
+- check the speed encoder, if another speed encoder was selected using the data set changeover. This must be connected to the motor that is controlled for the data set changeover.<br />
+If there is no fault, then the fault tolerance (p1745) or the delay time (p2178) can be increased.<br />
+For separately excited synchronous motors (closed-loop control with speed encoder), the following applies:<br />
+- check the speed signal (interrupted cable, polarity, pulse number).<br />
+- ensure the correct motor parameterization (rating plate and equivalent circuit diagram parameters).<br />
+- check the excitation equipment and the interface to the closed-loop control.<br />
+- encoder the highest possible dynamic response of the closed-loop excitation current control.<br />
+- check the speed control for any tendency to oscillate and if resonance effects occur, use a bandstop filter.<br />
+- do not exceed the maximum speed (p2162).<br />
+If there is no fault, then the delay time can be increased (p2178).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207903">A207903</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor speed deviation</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The absolute value of the speed difference from the two setpoints (p2151, p2154) and the speed actual value (r2169) exceeds the tolerance threshold (p2163) longer than tolerated (p2164, p2166).<br />
+The alarm is only enabled for p2149.0 = 1.<br />
+Possible causes could be:<br />
+- the load torque is greater than the torque setpoint.<br />
+- when accelerating, the torque&#47;current&#47;power limit is reached. If the limits are not sufficient, then it is possible that the drive has been dimensioned too small.<br />
+- for closed-loop torque control, the speed setpoint does not track the speed actual value.<br />
+- for active Vdc controller.<br />
+For U&#47;f control, the overload condition is detected as the Imax controller is active.<br />
+See also: p2149 (Monitoring configuration)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- increase p2163 and&#47;or p2166.<br />
+- increase the torque&#47;current&#47;power limits.<br />
+- for closed-loop torque control: The speed setpoint should track the speed actual value.<br />
+- deactivate alarm with p2149.0 = 0.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207904">F207904 (N, A)</a></b></td>
+<td><b>&lt;location&gt;External armature short-circuit: Contactor feedback signal &quot;Closed&quot; missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When closing, the contactor feedback signal (p1235) did not issue the signal &quot;Closed&quot; (r1239.1 = 1) within the monitoring time (p1236).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the contactor feedback signal is correctly connected (p1235).<br />
+- check the logic of the contactor feedback signal (r1239.1 = 1: &quot;Closed&quot;, r1239.1 = 0: &quot;Open&quot;).<br />
+- increase the monitoring time (p1236).<br />
+- if required, set the external armature short-circuit without contactor feedback signal (p1231 = 2).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207905">F207905 (N, A)</a></b></td>
+<td><b>&lt;location&gt;External armature short-circuit: Contactor feedback signal &quot;Open&quot; missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When opening, the contactor feedback signal (p1235) did not issue the signal &quot;Open&quot; (r1239.1 = 0) within the monitoring time (p1236).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the contactor feedback signal is correctly connected (p1235).<br />
+- check the logic of the contactor feedback signal (r1239.1 = 1: &quot;Closed&quot;, r1239.1 = 0: &quot;Open&quot;).<br />
+- increase the monitoring time (p1236).<br />
+- if required, set the external armature short-circuit without contactor feedback signal (p1231 = 2).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207906">F207906</a></b></td>
+<td><b>&lt;location&gt;Armature short-circuit &#47; internal voltage protection: Parameterization error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The armature short-circuit is incorrectly parameterized.<br />
+Fault value (r0949, interpret decimal):<br />
+zzzzyyxx: zzzz = fault cause, xx = motor data set<br />
+zzzz = 0001 hex = 1 dec:<br />
+A permanent-magnet synchronous motor has not been selected.<br />
+zzzz = 0002 hex = 2 dec:<br />
+No induction motor selected.<br />
+zzzz = 0065 hex = 101 dec:<br />
+External armature short-circuit: Output (r1239.0) not wired.<br />
+zzzz = 0066 hex = 102 dec:<br />
+External armature short-circuit with contactor feedback signal: No feedback signal connected (BI:p1235). The feedback signal must be interconnected in all command data sets (CDS).<br />
+zzzz = 0067 hex = 103 dec:<br />
+External armature short-circuit without contactor feedback signal: Wait time when opening (p1237) is 0.<br />
+zzzz = 00C9 hex = 201 dec:<br />
+Internal voltage protection: The maximum output current of the Motor Module (r0209) is less than 1.8 x motor short-circuit current (r0331).<br />
+zzzz = 00CA hex = 202 dec:<br />
+Internal voltage protection: A Motor Module in booksize or chassis format is not being used.<br />
+zzzz = 00CB hex = 203 dec:<br />
+Internal voltage protection: The motor short-circuit current (p0320) is greater than the maximum motor current (p0323).<br />
+zzzz = 00CC hex = 204 dec:<br />
+Internal voltage protection: The activation (p1231 = 4) is not given for all motor data sets with synchronous motors (p0300 = 2xx, 4xx).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1:<br />
+- an armature short-circuit &#47; voltage protection is only permissible for permanent-magnetic synchronous motors. The highest position of the motor type in p0300 must either be 2 or 4.<br />
+For fault value = 101:<br />
+- the contactor for the external armature short-circuit configuration should be controlled using output signal r1239.0. For instance, the signal can be connected to an output terminal via binector input p0738. Before this fault can be acknowledged, p1231 must be set again.<br />
+For fault value = 102:<br />
+- if the external armature short circuit is selected with contactor feedback signal (p1231 = 1), then the feedback signal must be connected to an input terminal (e.g. r0722.x) and then interconnected to binector input p1235.<br />
+- alternatively, the external armature short-circuit without contactor feedback signal (p1231 = 2) can be selected.<br />
+For fault value = 103:<br />
+- if the external armature short-circuit without contactor feedback signal (p1231 = 2) is selected, then a delay time must be parameterized in p1237. This time must always be greater than the actual contactor opening time, as otherwise the Motor Module would be short-circuited!<br />
+For fault value = 201:<br />
+- a Motor Module with a higher maximum current or a motor with a lower short-circuit current must be used. The maximum Motor Module current must be higher than 1.8 x short-circuit current of the motor.<br />
+For fault value = 202:<br />
+- for internal voltage protection, use a Motor Module in booksize or chassis format.<br />
+For fault value = 203:<br />
+- for internal voltage protection, only use short-circuit proof motors.<br />
+For fault value = 204:<br />
+- the internal voltage protection must either be activated for all motor data sets with synchronous motors (p0300 = 2xx, 4xx) (p1231 = 3) or it must be deactivated for all motor data sets (p1231 not equal to 3). This therefore ensures that the protection cannot be accidentally withdrawn as a result of a data set changeover. The fault can only be acknowledged if this condition is fulfilled.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207907">F207907</a></b></td>
+<td><b>&lt;location&gt;Internal armature short-circuit: Motor terminals are not at zero potential after pulse suppression</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The function &quot;Internal voltage protection&quot; (p1231 = 3) was activated.<br />
+The following must be observed:<br />
+- when the internal voltage protection is active, after pulse suppression, all of the motor terminals are at half of the DC link voltage (without an internal voltage protection, the motor terminals are at zero potential)!<br />
+- it is only permissible to use motors that are short-circuit proof (p0320 &lt; p0323).<br />
+- the Motor Module must be able to continually conduct 180% short-circuit current (r0331) of the motor (r0289).<br />
+- the internal voltage protection cannot be interrupted due to a fault response. If an overcurrent condition occurs during the active, internal voltage protection, then this can destroy the Motor Module and&#47;or the motor.<br />
+- if the Motor Module does not support the autonomous, internal voltage protection (r0192.10 = 0), in order to ensure safe, reliable functioning when the line supply fails, an external 24 V power supply (UPS) must be used for the components.<br />
+- if the Motor Module does support the autonomous, internal voltage protection (r0192.10 = 1), in order to ensure safe, reliable functioning when the line supply fails, the 24 V power supply for the components must be provided through a Control Supply Module.<br />
+- if the internal voltage protection is active, it is not permissible that the motor is driven by the load for a longer period of time (e.g. as a result of loads that move the motor or another coupled motor).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+This a note for the user.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207908">A207908</a></b></td>
+<td><b>&lt;location&gt;Internal armature short-circuit active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Motor Module signals that the motor is short-circuited through the power semiconductors (r1239.5 = 1). The pulses cannot be enabled. The internal armature short-circuit is selected (p1231 = 4):<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For synchronous motors, the armature short-circuit braking is activated with binector input p1230 = 1 signal.<br />
+See also: p1230 (Armature short-circuit / DC braking activation), p1231 (Armature short-circuit / DC braking configuration)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207909">F207909</a></b></td>
+<td><b>&lt;location&gt;Internal voltage protection: Deactivation only effective after POWER ON</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The deactivation of the internal voltage protection (p1231 not equal to 3) only becomes effective after POWER ON.<br />
+The status signal r1239.6 = 1 indicates that the internal voltage protection is ready.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+This a note for the user.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207910">A207910 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor overtemperature</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>KTY84&#47;PT1000:<br />
+The motor temperature has exceeded the alarm threshold (p0604, p0616).<br />
+PTC:<br />
+The response threshold of 1650 Ohm was exceeded.<br />
+Alarm value (r2124, interpret decimal):<br />
+this is the number of the temperature channel leading to the message.<br />
+See also: p0604, p0612, p0617, p0618, p0619, p0625, p0626, p0627, p0628<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the motor load.<br />
+- check the motor ambient temperature and cooling.<br />
+- check PTC or bimetallic NC contact.<br />
+- check the monitoring limits (p0604, p0605).<br />
+- activate&#47;check the parameters of the motor temperature model (p0612, p0626 and following).<br />
+See also: p0612, p0617, p0618, p0619, p0625, p0626, p0627, p0628<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207913">F207913</a></b></td>
+<td><b>&lt;location&gt;Excitation current outside the tolerance range</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The difference between the excitation current actual value and setpoint has exceeded the tolerance:<br />
+abs(r1641 - r1626) &gt; p3201 + p3202<br />
+The cause of this fault is again reset for abs(r1641 - r1626) &lt; p3201.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the parameterization (p1640, p3201, p3202).<br />
+- check the interfaces to the excitation equipment (r1626, p1640).<br />
+- check the excitation equipment.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207914">F207914</a></b></td>
+<td><b>&lt;location&gt;Flux out of tolerance</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The difference between the flux actual value and setpoint has exceeded the tolerance:<br />
+abs(r0084 - r1598) &gt; p3204 + p3205<br />
+The cause of this fault is again reset for abs(r0084 - r1598) &lt; p3204.<br />
+The fault is only issued after the delay time in p3206 has expired.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the parameterization (p3204, p3205).<br />
+- check the interfaces to the excitation equipment (r1626, p1640).<br />
+- check the excitation equipment.<br />
+- check the flux control (p1590, p1592, p1597).<br />
+- check the control for oscillation and take the appropriate counter measures (e.g. optimize the speed control loop, parameterize a bandstop filter).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207918">A207918 (N)</a></b></td>
+<td><b>&lt;location&gt;Three-phase setpoint generator operation selected&#47;active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Only for separately excited synchronous motors (p0300 = 5):<br />
+The actual open-loop&#47;closed-loop control mode is I&#47;f control (open-loop) with a fixed current (p1300 = 18).<br />
+The speed is entered via the setpoint channel and the current setpoint is given by the minimum current (p1620).<br />
+It must be ensured that in this mode, the control dynamic performance is very limited. This is the reason that longer ramp-up times should be set for the setpoint speed than for normal operation.<br />
+See also: p1620 (Stator current minimum)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Select another open-loop&#47;closed-loop control mode<br />
+See also: p1300 (Open-loop/closed-loop control operating mode)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207920">A207920</a></b></td>
+<td><b>&lt;location&gt;Drive: Torque&#47;speed too low</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The torque deviates from the torque&#47;speed envelope characteristic (too low).<br />
+See also: p2181 (Load monitoring response)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the connection between the motor and load.<br />
+- adapt the parameterization corresponding to the load.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207921">A207921</a></b></td>
+<td><b>&lt;location&gt;Drive: Torque&#47;speed too high</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The torque deviates from the torque&#47;speed envelope characteristic (too high).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the connection between the motor and load.<br />
+- adapt the parameterization corresponding to the load.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207922">A207922</a></b></td>
+<td><b>&lt;location&gt;Drive: Torque&#47;speed out of tolerance</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The torque deviates from the torque&#47;speed envelope characteristic.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the connection between the motor and load.<br />
+- adapt the parameterization corresponding to the load.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207923">F207923</a></b></td>
+<td><b>&lt;location&gt;Drive: Torque&#47;speed too low</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The torque deviates from the torque&#47;speed envelope characteristic (too low).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the connection between the motor and load.<br />
+- adapt the parameterization corresponding to the load.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207924">F207924</a></b></td>
+<td><b>&lt;location&gt;Drive: Torque&#47;speed too high</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The torque deviates from the torque&#47;speed envelope characteristic (too high).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the connection between the motor and load.<br />
+- adapt the parameterization corresponding to the load.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207925">F207925</a></b></td>
+<td><b>&lt;location&gt;Drive: Torque&#47;speed out of tolerance</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The torque deviates from the torque&#47;speed envelope characteristic.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the connection between the motor and load.<br />
+- adapt the parameterization corresponding to the load.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207926">A207926</a></b></td>
+<td><b>&lt;location&gt;Drive: Envelope curve parameter invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Invalid parameter values were entered for the envelope characteristic of the load monitoring.<br />
+The following rules apply for the speed thresholds:<br />
+p2182 &lt; p2183 &lt; p2184<br />
+The following rules apply for the torque thresholds:<br />
+p2185 &gt; p2186<br />
+p2187 &gt; p2188<br />
+p2189 &gt; p2190<br />
+Load monitoring configuration and response must match.<br />
+It is not permissible that the individual load torque monitoring areas overlap.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the parameter with the invalid value.<br />
+Note:<br />
+The load torque monitoring has not been activated as long as the alarm is active.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- set the parameters for the load monitoring according to the applicable rules.<br />
+- if necessary, deactivate the load monitoring (p2181 = 0, p2193 = 0).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207927">A207927</a></b></td>
+<td><b>&lt;location&gt;DC braking active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The motor is braked with DC current. DC braking is active.<br />
+1)<br />
+A message with response DCBRK is active. The motor is braked with the braking current set in p1232 for the duration set in p1233. If the standstill threshold p1226 is undershot, then braking is prematurely canceled.<br />
+2)<br />
+DC braking has been activated at binector input p1230 with the DC braking set (p1230 = 4). Braking current p1232 is injected until this binector input becomes inactive.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+This alarm is automatically withdrawn after DC braking.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207928">F207928</a></b></td>
+<td><b>&lt;location&gt;Internal voltage protection initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Motor Module signals that the motor is short-circuited through the power semiconductors (r1239.5 = 1). The pulses cannot be enabled. The internal voltage protection is selected (p1231 = 3).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>If the Motor Module supports the autonomous internal voltage protection (r0192.10 = 1), then the Motor Module automatically decides - using the DC link voltage - as to whether the armature short-circuit should be activated.<br />
+The armature short-circuit is activated and response OFF2 is initiated if the DC link voltage exceeds 800 V. If the DC link voltage falls below 450 V, then the armature short-circuit is withdrawn.<br />
+If the motor is still in a critical speed range, the armature short-circuit is re-activated once the DC link voltage exceeds the threshold of 800 V.<br />
+If the autonomous (independent) internal voltage protection is active (r1239.5 = 1) and the line supply returns (450 V &lt; DC link voltage &lt; 800 V), the armature short-circuit is withdrawn after 3 minutes.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207930">F207930</a></b></td>
+<td><b>&lt;location&gt;Drive: Brake control error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Control Unit has detected a brake control error.<br />
+- motor cable is not shielded correctly.<br />
+- defect in the brake control circuit of the Motor Module.<br />
+Fault value (r0949, interpret decimal):<br />
+10, 11:<br />
+Fault in &quot;open holding brake&quot; operation.<br />
+- no brake connected or wire breakage (check whether brake opens for p1278 = 1).<br />
+- ground fault in brake cable.<br />
+- S120M: brake opened via terminal X4.1 for mounting purposes (this is only permissible when the power supply voltage is switched off).<br />
+20:<br />
+Fault in &quot;brake open&quot; state.<br />
+- short-circuit in brake winding.<br />
+30, 31:<br />
+Fault in &quot;close holding brake&quot; operation.<br />
+- no brake connected or wire breakage (check whether brake opens for p1278 = 1).<br />
+- short-circuit in brake winding.<br />
+40:<br />
+Fault in &quot;brake closed&quot; state.<br />
+50:<br />
+Fault in the brake control circuit of the Control Unit or communication fault between the Control Unit and Motor Module (brake control diagnostics).<br />
+80:<br />
+When using the Safe Brake Adapter (SBA), a fault has occurred in the brake control of the Control Unit.<br />
+See also: p1278 (Brake control diagnostics evaluation)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the motor holding brake connection.<br />
+- for a parallel connection, check the setting of the power unit data set to control the holding brake (p7015).<br />
+- check the function of the motor holding brake.<br />
+- check whether there is a DRIVE-CLiQ communication error between the Control Unit and the Motor Module involved and, if required, carry out a diagnostics routine for the faults identified.<br />
+- check that the electrical cabinet design and cable routing are in compliance with EMC regulations (e.g. shield of the motor cable and brake conductors are connected with the shield connecting plate and the motor connectors are tightly screwed to the housing).<br />
+- replace the Motor Module involved.<br />
+Operation with Safe Brake Module:<br />
+- check the Safe Brake Module connection.<br />
+- replace the Safe Brake Module.<br />
+Operation with Safe Brake Adapter (SBA):<br />
+- check the SBA connection and if required, replace the SBA.<br />
+See also: p1215 (Motor holding brake configuration), p1278 (Brake control diagnostics evaluation)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207931">A207931 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Brake does not open</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>This alarm is output for r1229.4 = 1.<br />
+See also: p1216 (Motor holding brake opening time), r1229 (Motor holding brake status word)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the functionality of the motor holding brake.<br />
+- check the feedback signal (p1223).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207932">A207932</a></b></td>
+<td><b>&lt;location&gt;Brake does not close</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>This alarm is output for r1229.5 = 1.<br />
+For r1229.5 = 1, OFF1&#47;OFF3 are suppressed to prevent the drive accelerating by a load that drives the motor - whereby OFF2 remains effective.<br />
+See also: p1217 (Motor holding brake closing time), r1229 (Motor holding brake status word)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the functionality of the motor holding brake.<br />
+- check the feedback signal (p1222).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207934">F207934 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: S120 Combi motor holding brake configuration</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+ (OFF1, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A connected motor holding brake has been detected with an S120 Combi. However, this brake has not been assigned to just one Combi feed drive and, therefore, brake control is not configured (correctly).<br />
+Fault value (r0949, interpret decimal):<br />
+0: No motor holding brake is assigned (p1215 = 0 or 3 on all S120 Combi feed drives).<br />
+1: More than one motor holding brake has been assigned (p1215 = 1 or 2 on more than one S120 Combi feed drive) - or there is more than one DRIVE-CLiQ motor with motor holding brake.<br />
+2: Brake was accidentally assigned to the spindle (p1215 = 1); this is not permitted for this software release.<br />
+3: An attempt was made to enable the function &quot;Safe Brake Control&quot; (SBC, p9602 = p9802 = 1) for the spindle. This is not permitted for this software release.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check whether the motor holding brake has been assigned to one S120 Combi feed drive exclusively (p1215 = 1 or 2).<br />
+The fault will only be withdrawn once the motor holding brake has been assigned to just one of the S120 Combi feed drives (p1215 = 1 or 2 for this one drive). From this point, the motor holding brake will be controlled by this drive.<br />
+See also: p1215 (Motor holding brake configuration)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207935">F207935 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Incorrect motor holding brake configuration</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+ (OFF1, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An incorrect motor holding brake configuration was detected.<br />
+Fault value (r0949, interpret decimal):<br />
+0:<br />
+A motor holding brake was detected where the brake control has not been configured (p1215 = 0).<br />
+The brake control configuration was set to &quot;motor holding brake the same as sequence control&quot; (p1215 = 1) (only when commissioning for the first time).<br />
+For a chassis unit with Safe Brake Adapter (SBA), the interconnection p9621 = r9872.3 was established (only when commissioning for the first time).<br />
+For a parallel connection, the power unit was set in p7015, to which the motor holding brake is connected (only when commissioning for the first time).<br />
+1:<br />
+A motor holding brake was detected where the brake control has not been configured (p1215 = 0).<br />
+The brake control configuration was left at &quot;No motor holding brake available&quot; (p1215 = 0).<br />
+11:<br />
+The identification had detected more than one motor holding brake for a parallel connection.<br />
+12:<br />
+For the parallel connection, in p0121 there is no valid component number for the power unit data set that is set in p7015.<br />
+13:<br />
+With the &quot;Safe Brake Control&quot; (SBC) function activated, an attempt was made to change the value in p7015.<br />
+14:<br />
+For a parallel connection, the power units set in p7015 cannot be addressed.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 0:<br />
+- no remedy required.<br />
+For fault value = 1:<br />
+- if required change the motor holding brake configuration (p1215 = 1, 2).<br />
+- if this fault value unexpectedly occurs, then the motor connections should be checked in order to rule out that they have been interchanged.<br />
+For fault value = 11:<br />
+For a parallel connection, only connect one motor holding brake.<br />
+For fault value = 12:<br />
+Check the setting of the power unit data set for a parallel connection (p7015).<br />
+For fault value = 13:<br />
+Before changing p7015, deactivate the &quot;Safe Brake Control&quot; function (SBC) (p9602).<br />
+For fault value = 14:<br />
+Check whether the power unit supports the brake control for a parallel connection (r9771.14).<br />
+Check whether there is a DRIVE-CLiQ communication error between the Control Unit and the power unit involved and, if required, carry out a diagnostics routine for the faults identified.<br />
+See also: p1215 (Motor holding brake configuration)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207950">F207950 (A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Incorrect motor parameter</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- the motor parameters were incorrectly entered while commissioning (e.g. p0300 = 0, no motor)<br />
+- the braking resistor has still not been parameterized - commissioning cannot be completed.<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter number involved.<br />
+300 (CU250S-2):<br />
+For this control mode, the motor type is not supported.<br />
+307:<br />
+The following motor parameters could be incorrect:<br />
+p0304, p0305, p0307, p0308, p0309<br />
+See also: p0300, p0301, p0304, p0305, p0307, p0310, p0311, p0314, p0315, p0316, p0320, p0322, p0323<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Compare the motor data with the rating plate data and if required, correct.<br />
+For fault value = 300 (CU250S-2):<br />
+Operate a motor type supported by the selected control mode.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207955">F207955</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor has been changed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The code number of the actual motor with DRIVE-CLiQ does not match the saved number. The code numbers of the bearings, gearbox or brake do not match the saved numbers.<br />
+Fault value (r0949, interpret decimal):<br />
+Number of the incorrect parameter<br />
+See also: p0301 (Motor code number selection), r0302 (Motor code number of motor with DRIVE-CLiQ)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Connect the original motor, switch on the Control Unit again (POWER ON) and exit quick commissioning with p0010 = 0.<br />
+Or: set p0300 = 10100, without recommissioning (only if the motor data have not changed)<br />
+Or: set p0300 = 10000 (load the parameters from the motor with DRIVE-CLiQ) and re-commission. The data for bearings, gearbox and brake are reloaded.<br />
+Quick commissioning (p0010 = 1) is automatically exited with p3900 &gt; 0.<br />
+If quick commissioning was exited with p0010 = 0, then an automatic controller calculation (p0340 = 1) is not carried out.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207956">F207956 (A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor code does not match the list (catalog) motor</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The motor code of the connected motor with DRIVE-CLiQ does not match the possible list motor types (see selection in p0300).<br />
+The connected motor with DRIVE-CLiQ might not be supported by this firmware version.<br />
+Fault value (r0949, interpret decimal):<br />
+Motor code of the connected motor with DRIVE-CLiQ.<br />
+Note:<br />
+The first three digits of the motor code generally correspond to the list motor type.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Use a motor with DRIVE-CLiQ and the matching motor code.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207960">A207960</a></b></td>
+<td><b>&lt;location&gt;Drive: Incorrect friction characteristic</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The friction characteristic is incorrect.<br />
+Alarm value (r2124, interpret decimal):<br />
+1:<br />
+Incorrect parameter format.<br />
+1538:<br />
+The friction torque is greater than the maximum from the upper effective torque limit (p1538) and zero. This is the reason that the output of the friction characteristic (r3841) is limited to this value.<br />
+1539:<br />
+The friction torque is less than the minimum from the lower effective torque limit (p1539) and zero. This is the reason that the output of the friction characteristic (r3841) is limited to this value.<br />
+3820 ... 3829:<br />
+Incorrect parameter number. The speeds entered in the parameters for the friction characteristic do not correspond to the following condition:<br />
+0.0 &lt; p3820 &lt; p3821 &lt; ... &lt; p3829 &lt;= p0322 or p1082, if p0322 = 0<br />
+Therefore the output of the friction characteristic (r3841) is set to zero.<br />
+3830 ... 3839:<br />
+Incorrect parameter number. The torques entered in the parameters for the friction characteristic do not correspond to the following condition:<br />
+0 &lt;= p3830, p3831 ... p3839 &lt;= p0333<br />
+Therefore the output of the friction characteristic (r3841) is set to zero.<br />
+See also: r3840 (Friction characteristic status word)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Fulfill the conditions for the friction characteristic.<br />
+For alarm value = 1538:<br />
+Check the upper effective torque limit (e.g. in the field weakening range).<br />
+For alarm value = 1539:<br />
+Check the lower effective torque limit (e.g. in the field weakening range).<br />
+For alarm value = 3820 ... 3839:<br />
+Fulfill the conditions to set the parameters of the friction characteristic.<br />
+If the motor data (e.g. the maximum speed p0322) are changed during commissioning (p0010 = 1, 3), then the technological limits and threshold values, dependent on this, must be re-calculated by selecting p0340= 5.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207961">A207961</a></b></td>
+<td><b>&lt;location&gt;Drive: Record friction characteristic activated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The automatic friction characteristic record is activated.<br />
+The friction characteristic is recorded at the next switch-on command.<br />
+When plotting the friction characteristic, it is not possible to save the parameters (p0971, p0977).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+The alarm is automatically withdrawn after the friction characteristic recording has been successfully completed or recording has been deactivated (p3845 = 0).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207963">F207963</a></b></td>
+<td><b>&lt;location&gt;Drive: Record friction characteristic canceled</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The conditions to record the friction characteristic are not fulfilled.<br />
+Fault value (r0949, interpret decimal):<br />
+0046: Missing enable signals (r0046).<br />
+1082: The highest speed value to be approached (p3829) is greater than the maximum speed (p1082).<br />
+1084: The highest speed value to be approached (p3829) is greater than the maximum speed (r1084, p1083, p1085).<br />
+1087: The highest speed value to be approached (p3829) is greater than the maximum speed (r1087, p1086, p1088).<br />
+1110: Friction characteristic record, negative direction selected (p3845) and negative direction inhibited (p1110).<br />
+1111: Friction characteristic record, positive direction selected (p3845) and positive direction inhibited (p1111).<br />
+1198: Friction characteristic record selected (p3845 &gt; 0) and negative (p1110) and positive directions (p1111) inhibited (r1198).<br />
+1300: The control mode (p1300) has not been set to closed-loop speed control.<br />
+1755: For encoderless closed-loop control (p1300 = 20), the lowest speed value to be approached (p3820) is less than or equal to the changeover speed, open-loop controlled operation (p1755).<br />
+1910: Motor data identification activated.<br />
+1960: Speed controller optimization activated.<br />
+3820 ... 3829: speed (p382x) cannot be approached.<br />
+3840: Friction characteristic incorrect.<br />
+3845: Friction characteristic record deselected.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Fulfill the conditions to record the friction characteristic.<br />
+For fault value = 0046:<br />
+- establish missing enable signals.<br />
+For fault value = 1082, 1084, 1087:<br />
+- Select the highest speed value to be approached (p3829) less than or equal to the maximum speed (p1082, r1084, r1087).<br />
+- Re-calculate the speed points along the friction characteristic (p0340 = 5).<br />
+For fault value = 1110:<br />
+- Select the friction characteristic record, positive direction (p3845).<br />
+For fault value = 1111:<br />
+- Select the friction characteristic record, negative direction (p3845).<br />
+For fault value = 1198:<br />
+- Enable the permitted direction (p1110, p1111, r1198).<br />
+For fault value = 1300:<br />
+- set the control mode (p1300) on the closed-loop speed control (p1300 = 20, 21).<br />
+For fault value = 1755:<br />
+- For encoderless closed-loop speed control (p1300 = 20) select the lowest speed value to be approached (p3820) greater than the changeover speed of open-loop controlled operation (p1755).<br />
+- Re-calculate the speed points along the friction characteristic (p0340 = 5).<br />
+For fault value = 1910:<br />
+- Exit the motor data identification routine (p1910).<br />
+For fault value = 1960:<br />
+- Exit the speed controller optimization routine (p1960).<br />
+For fault value 3820 ... 3829:<br />
+- check the load at speed p382x.<br />
+- check the speed signal (r0063) for oscillation at speed p382x. Check the settings of the speed controller if applicable.<br />
+For fault value = 3840:<br />
+- Make the friction characteristic error-free (p3820 ... p3829, p3830 ... p3839, p3840).<br />
+For fault value = 3845:<br />
+- Activate the friction characteristic record (p3845).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207965">A207965 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Save required</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The angular commutation offset (p0431) was re-defined and has still not been saved.<br />
+In order to permanently accept the new value, it must be saved in a non-volatile fashion (p0971, p0977).<br />
+See also: p0431 (Angular commutation offset), p1990 (Encoder adjustment determine angular commutation offset)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+This alarm is automatically withdrawn after the data has been saved.<br />
+See also: p0971 (Save drive object parameters), p0977 (Save all parameters)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207966">F207966</a></b></td>
+<td><b>&lt;location&gt;Drive: Check the commutation angle</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The speed actual value was inverted and the associated angular commutation offset is not equal to zero and is therefore possibly incorrect.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Angular commutation offset after the actual value inversion or determine it again (p1990=1).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207971">A207971 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Angular commutation offset determination activated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The automatic determination of the angular commutation offset (encoder adjustment) is activated (p1990 = 1).<br />
+Note:<br />
+The automatic determination is carried out at the next switch-on command.<br />
+For SERVO and fault F07414 present, the following applies:<br />
+The determination of the angular commutation offset is automatically activated (p1990 = 1), if a pole position identification technique is set in p1980.<br />
+See also: p1990 (Encoder adjustment determine angular commutation offset)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+The alarm is automatically withdrawn after successful determination or for the setting p1990 = 0.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207979">A207979 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Drive: pole position identification calibration required</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The pole position identification was not successful as the calibration values for the current measurement are not correct.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Replace the Motor Module involved.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207980">A207980</a></b></td>
+<td><b>&lt;location&gt;Drive: Rotating measurement activated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The rotating measurement is activated. For the rotating measurement, the motor can accelerate up to the maximum speed and with maximum torque. Only the parameterized current limit (p0640) and the maximum speed (p1082) are effective. The behavior of the motor can be influenced using the direction inhibit (p1959.14, p1959.15) and the ramp-up&#47;ramp-down time (p1958).<br />
+The rotating measurement is carried out at the next switch-on command.<br />
+See also: p1960<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+The alarm is automatically withdrawn after the rotating measurement has been successfully completed or for the setting p1960 = 0.<br />
+Note:<br />
+If a POWER ON or a warm restart is performed with motor data identification selected, the motor data identification request will be lost. If motor data identification is required, it will need to be selected again manually following ramp-up.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207990">F207990</a></b></td>
+<td><b>&lt;location&gt;Drive: Incorrect motor data identification</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A fault has occurred during the identification routine.<br />
+Fault value (r0949, interpret decimal):<br />
+10: Data set changeover during motor data identification.<br />
+101: Voltage amplitude even at 30% maximum current amplitude is too low to measure the inductance.<br />
+102, 104: Voltage limiting while measuring the inductance.<br />
+103: Maximum frequency exceeded during the rotating inductance measurement.<br />
+110: Motor not finely synchronized before the rotating measurement.<br />
+111: The zero mark is not received within 2 revolutions.<br />
+112:Fine synchronization is not realized within 8 seconds after the zero mark has been passed.<br />
+113: The power, torque or current limit is zero.<br />
+115: U&#47;f control is active.<br />
+120: Error when evaluating the magnetizing inductance.<br />
+125: Cable resistance greater than the total resistance.<br />
+126: Series inductance greater than the total leakage inductance.<br />
+127: Identified leakage inductance negative.<br />
+128: Identified stator resistance negative.<br />
+129: Identified rotor resistance negative.<br />
+130: Drive data set changeover during the motor data identification routine.<br />
+140: The setpoint channel inhibits both directions.<br />
+150: The holding brake is closed using command &quot;Unconditionally close holding brake&quot; (p0858).<br />
+151: The determined force due to weight is higher than the rated motor torque (p0333).<br />
+152: The torque precontrol channel (CI: p1511) is already interconnected.<br />
+153: The saturation characteristic cannot be approximated and evaluated.<br />
+154: The optimum flux characteristic cannot be determined from the saturation characteristic.<br />
+160: Accelerating time when determining kT, moment of inertia or reluctance torque too short or too long.<br />
+161: When measuring the kT characteristic, constants kT1, kT3, kT5 and kT7 were not able to be determined (p0645 ... p0648), as too few points were measured.<br />
+165: The current limit was reduced below the measurement current while determining the reluctance torque.<br />
+173: Internal problem.<br />
+180: identification speed (maximum speed, rated speed, 0.9 x p0348) less than p1755 or no DC link voltage available.<br />
+181: Zero speed at the end of the measurement of periodic position errors.<br />
+182: No complete mechanical revolution at to the end of the measurement of periodic position errors.<br />
+190: Speed setpoint not equal to zero.<br />
+191: An actual speed of zero is not reached.<br />
+192: Speed setpoint not reached.<br />
+193: Inadmissible motion of the motor when identifying the voltage emulation error.<br />
+194: Supplementary torque (r1515) not equal to zero.<br />
+195: Closed-loop torque control active.<br />
+200, 201: Not possible to identify the voltage emulation error characteristic of the drive converter (p1952, p1953).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 10:<br />
+- do not initiate a data set changeover during the motor data identification.<br />
+For fault value = 101:<br />
+- increase current limit (p0640) or torque limit (p1520, p1521).<br />
+- check current controller gain (p1715).<br />
+- reduce current controller sampling time (p0115).<br />
+It may be impossible to completely identify the L characteristic, as required current amplitude is too high.<br />
+- suppress meas. (p1909, p1959).<br />
+For fault value = 102, 104:<br />
+- reduce current limit (p0640).<br />
+- check current controller P gain.<br />
+- suppress meas. (p1909, p1959).<br />
+For fault value = 103:<br />
+- increase external moment of inertia (if possible).<br />
+- reduce current controller sampling time (p0115).<br />
+- suppress meas. (p1909, p1959).<br />
+For fault value = 110:<br />
+- before rotating measurement, traverse motor over zero mark.<br />
+For fault value = 111:<br />
+- it is possible that encoder does not have zero mark. Correct setting in p0404.15.<br />
+- encoder pulse number was incorrectly entered. Correct setting in p0408.<br />
+- if zero mark signal is defective, replace encoder.<br />
+For fault value = 112:<br />
+- upgrade encoder software.<br />
+For fault value = 113:<br />
+- check the limits (p0640, p1520, p1521, p1530, p1531), correct the zero values.<br />
+For fault value = 115:<br />
+- deselect U&#47;f control (p1317 = 0).<br />
+For fault value = 120:<br />
+- check current controller P gain (p1715) and if required, reduce.<br />
+- increase the pulse frequency (p1800).<br />
+For fault value = 125:<br />
+- reduce cable resistance (p0352).<br />
+For fault value = 126:<br />
+- reduce series inductance (p0353).<br />
+For fault = 127, 128, 129:<br />
+- it is possible that current controller is oscillating. Reduce the P gain (p1715).<br />
+- if required, reduce the current limit (p0640).<br />
+For fault value = 130:<br />
+- do not initiate a drive data set changeover during motor ident. routine.<br />
+For fault value = 140:<br />
+- before the measurement, enable at least one direction (p1110 = 0 or p1111 = 0 or p1959.14 = 1 or p1959.15 = 1).<br />
+For fault value = 150:<br />
+- if necessary withdraw command &quot;Unconditionally close holding brake&quot; (BI: p0858 = 0 signal).<br />
+For fault value = 151:<br />
+- the motor cannot continuously hold the force due to weight. Either reduce the force due to weight or use a motor with a higher rated torque.<br />
+For fault value = 152:<br />
+- add the measured force due to weight (p1532) to the signal source of p1511.<br />
+- if necessary withdraw the BICO interconnection from p1511 (p1511 = 0), and repeat the measurement.<br />
+For fault value = 153&#47;154:<br />
+- optimum characteristic was not able to be evaluated and activated. If necessary contact the service department, and attach the values of r1962[0...9] and r1963[0...9].<br />
+For fault value = 160:<br />
+- extend accelerating time when determining kT, moment of inertia and reluctance torque, e.g. by increasing max. speed (p1082), increasing moment of inertia or reducing max. current (p0640).<br />
+- in encoderless operation with load moment of inertia, parameterize the load moment of inertia (p1498).<br />
+- reduce the ramp-up time (p1958).<br />
+- increase speed controller P gain (p1460).<br />
+- suppress meas. (p1959).<br />
+For fault value = 161:<br />
+- reduce the ramp-up time (p1958).<br />
+- increase max. speed (p1082).<br />
+- reduce current limit (p0640).<br />
+- if required, do not activate the kT characteristic (p1780.9 = 0).<br />
+For fault value = 165:<br />
+- decrease max. current (p0640).<br />
+For fault value = 173:<br />
+-<br />
+For fault value = 180:<br />
+- switch-on the infeed<br />
+- increase max. speed (p1082).<br />
+- reduce p1755.<br />
+- suppress meas. (p1909, p1959).<br />
+For fault value = 181, 182:<br />
+- increase max. speed (p1082).<br />
+- if required, deactivate the measurement (p1959.0 = 0).<br />
+Note:<br />
+- to measure periodic position errors, the encoder must have absolute position information (unique zero mark, distance-coded zero marks, absolute encoder, 1-pole resolver p5263.10).<br />
+For fault value = 190:<br />
+- set speed setpoint to zero.<br />
+For fault value = 191:<br />
+- do not start motor data identification routine while motor is still rotating.<br />
+For fault value = 192:<br />
+- check closed-loop speed control (motor rotor may be locked or closed-loop speed control is not functioning).<br />
+- for p1215 = 1, 3 (brake the same as the sequence control) check the control sense (p0410.0).<br />
+- ensure that enable signals are present during measurement.<br />
+- remove any pulling loads from motor.<br />
+- increase max. current (p0640).<br />
+- reduce max. speed (p1082).<br />
+- suppress meas. (p1959).<br />
+For fault value = 193:<br />
+- the motor has moved through more than 5 &deg; electrical (r0093). Lock motor rotor at one of these pole position angles (r0093): 90 &deg;, 210 &deg; or 330 &deg; (+&#47;-5 &deg;) and then start identification.<br />
+For fault value = 194:<br />
+- switch out all supplementary torques (e.g. CI: p1511).<br />
+- for hanging&#47;suspended axes: Lock motor rotor at one of these pole position angles (r0093): 90 &deg;, 210 &deg; or 330 &deg; (+&#47;-1 &deg;) and then start identification.<br />
+For fault value = 195:<br />
+- deselect closed-loop torque control (p1300 = 21 or 20, or set the signal source in p1501 to a 0 signal).<br />
+For fault value = 200, 201:<br />
+- set pulse frequency to 0.5 x current controller frequency (e.g. 4 kHz for a current controller sampling time = 125 us).<br />
+- reduce cable length between Motor Module and motor.<br />
+- read-out measured values (r1950, r1951) and therefore determine suitable values for p1952, p1953 according to your own estimation.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207991">A207991 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor data identification activated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The motor data identification routine is activated.<br />
+The motor data identification routine is carried out at the next switch-on command.<br />
+See also: p1910, p1960<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+The alarm is automatically withdrawn after the motor data identification routine has been successfully completed or for the setting p1910 = 0 or p1960 = 0.<br />
+If a POWER ON or a warm restart is performed with motor data identification selected, the motor data identification request will be lost. If motor data identification is required, it will need to be selected again manually following ramp-up.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207993">F207993</a></b></td>
+<td><b>&lt;location&gt;Drive: Incorrect direction of rotation of the field or encoder actual value inversion</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Either the direction of the rotating field or the encoder actual value has an incorrect sign. The motor data identification automatically changed the actual value inversion (p0410) in order to correct the control sense. This can result in a direction of rotation change.<br />
+Note:<br />
+To acknowledge this fault, the correctness of the direction of rotation must first be acknowledged with p1910 = -2.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the direction of rotation (also for the position controller, if one is being used).<br />
+If the direction of rotation is correct, the following applies:<br />
+No additional measures are required (except set p1910 = -2 and acknowledge fault).<br />
+If the direction of rotation is incorrect, the following applies:<br />
+To change the direction of rotation, two phases must be interchanged and the motor identification routine must be repeated.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207995">F207995</a></b></td>
+<td><b>&lt;location&gt;Drive: Pole position identification not successful</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The pole position identification routine was unsuccessful.<br />
+Fault value (r0949, interpret decimal):<br />
+1: No current is established.<br />
+2: The starting current is not zero.<br />
+3: The selected max. distance was exceeded (p1981).<br />
+4x: The measuring signal does not permit a clear evaluation.<br />
+5: The max. current was exceeded during the measurement.<br />
+6: The current measurement must be re-calibrated.<br />
+7x: The Sensor Module does not support the pole position identification routine.<br />
+8: The pole position identification routine current required is greater than the max. current.<br />
+9: The set pole position identification routine current is zero.<br />
+10: Data set changeover during the pole position identification.<br />
+11: The encoder adjustment to determine the commutation angle is active (p1990 = 1) and the encoder without zero mark is not finely synchronized or does not have any valid data.<br />
+100: motion-based pole position identification, 1st and 2nd Measurements differ. Motor blocked or current (p1993) too low.<br />
+101: Motion-based pole position identification, insufficient motion, motor blocked or current (p1993) too low.<br />
+102: Motion-based pole position identification, brake is being used and is closed. The motion-based pole position identification in conjunction with the brake is not permitted.<br />
+103: Motion-based pole position identification without encoder.<br />
+104: Motion-based pole position identification, speed actual value not zero after stabilizing time.<br />
+200: Elasticity-based pole position identification, internal error in the arctan calculation (0&#47;0).<br />
+201: Elasticity-based pole position identification, too few measuring points that can be evaluated.<br />
+202: Elasticity-based pole position identification, outliers in the measurement series.<br />
+203: Elasticity-based pole position identification, maximum rotation without current.<br />
+204: Elasticity-based pole position identification, no positive edge found.<br />
+205: Elasticity-based pole position identification, the result of the Fourier transformation differs by more than 480 &deg; electrical &#47; p3093 from the rough estimate.<br />
+206: Elasticity-based pole position identification, plausibility test unsuccessful.<br />
+207: Elasticity-based pole position identification, no negative measured value found.<br />
+It is possible that all measured values are identical. The expected deflection was not able to be reached, either because the expectation is too high or not enough current was able to be established.<br />
+208: Elasticity-based pole position identification, measuring current is 0.<br />
+209: Elasticity-based pole position identification, the selected max. distance was exceeded (p3095).<br />
+210: Elasticity-based pole position identification without encoder.<br />
+250 ... 260:<br />
+Elasticity-based pole position identification, more than 3 attempts have been made and fault value 200 ... 210 output.<br />
+Example:<br />
+Fault value= 253 --&gt; more than 3 attempts have been made and fault value 203 output.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1:<br />
+- check the motor connection and DC link voltage.<br />
+- for the following parameters, set practical values that are not zero (p0325, p0329).<br />
+For fault value = 1, 2:<br />
+- in the case of a large computing time load (e.g. 6 drives with Safety Integrated), set the computing dead time of the current controller to late transfers (p0117 = 3).<br />
+For fault value = 3:<br />
+- increase the max. distance (p1981).<br />
+- reduce the currents for the pole position identification routine (p0325, p0329).<br />
+- stop the motor in order to carry out the pole position identification routine.<br />
+For fault value = 5:<br />
+- reduce the currents for the pole position identification routine (p0325, p0329).<br />
+For fault value = 6:<br />
+- re-calibrate the Motor Module.<br />
+For fault value = 8:<br />
+- reduce the currents for the pole position identification routine (p0329, p0325, p1993).<br />
+- the power unit cannot provide the necessary pole position identification routine current (p0209 &lt; p0329, p0325, p1993), replace the power unit with a power unit with a higher max. current.<br />
+For fault value = 9:<br />
+- enter a value not equal to zero in the pole position identification routine current (p0329, p0325, p1993).<br />
+For fault value = 10:<br />
+- do not initiate a data set changeover during the pole position identification.<br />
+For fault value = 11:<br />
+- for incremental encoders without commutation with zero mark (p0404.15 = 0), it does not make sense to adjust the encoder to determine the commutation angle (p1990 = 1). In this case, the function should be deselected (p1990 = 0) or, for an encoder with suitable zero mark, commutation with zero mark should be selected (p0404.15 = 1).<br />
+- for absolute encoders, only adjust the encoder to determine the commutation angle (p1990 = 1) if the encoder supplies commutation information and is finely synchronized (p1992.8 = 1 and p1992.10 = 1). The encoder is possibly parked, deactivated (p0145), not ready for operation or signals a fault condition.<br />
+- deselect the encoder adjustment to determine the commutation angle (set p1990 to 0).<br />
+For fault value = 40 ... 49:<br />
+- increase the currents for the pole position identification routine (p0325, p0329).<br />
+- stop the motor in order to carry out the pole position identification routine.<br />
+- select another technique for pole position identification routine (p1980).<br />
+- use another motor, absolute encoder or Hall sensors.<br />
+For fault value = 70 ... 79:<br />
+- upgrade the software in the Sensor Module.<br />
+For fault value = 100, 101:<br />
+- check and ensure that the motor is free to move.<br />
+- increase the current for motion-based pole position identification (p1993).<br />
+For fault value = 102:<br />
+- if the motor is to be operated with a brake: Select a different technique to identify the pole position (p1980).<br />
+- if the motor can be operated without a brake: Open the brake (p1215 = 2).<br />
+For fault value = 103:<br />
+- the motion-based pole position identification can only be carried out using an encoder. Connect an encoder or select another technique for pole position identification routine (p1980).<br />
+For fault value = 104:<br />
+- pole position identification, increase the smoothing time, motion-based (p1997).<br />
+- pole position identification, increase the rise time, motion-based (p1994).<br />
+- pole position identification, check the gain, motion-based (p1995).<br />
+- pole position identification, check the integral time, motion-based (p1996).<br />
+- for motor encoders with track A&#47;B sq-wave (p0404.3 = 1) and flank time measurement (p0430.20 = 0), disable the integral time (p1996 = 0).<br />
+For fault value = 200:<br />
+- check parameter setting (p3090 ... p3096).<br />
+For fault value = 201:<br />
+- check parameter setting (p3090 ... p3096).<br />
+- reduce p3094.<br />
+For fault value = 202:<br />
+- check parameter setting (p3090 ... p3096).<br />
+- fault has occurred during the identification. Repeat the measurement.<br />
+- check the brake or brake control.<br />
+For fault value = 203:<br />
+- check the brake or brake control.<br />
+- check the measuring current (p3096).<br />
+- increase p3094.<br />
+For fault value = 204:<br />
+- check parameter setting (p3090 ... p3096).<br />
+For fault value = 205:<br />
+- check parameter setting (p3090 ... p3096).<br />
+For fault value = 206:<br />
+- check parameter setting (p3090 ... p3096).<br />
+- fault has occurred during the identification. Repeat the measurement.<br />
+- check the brake or brake control.<br />
+For fault value = 207:<br />
+- reduce the expected deflection (p3094).<br />
+- increase the measuring current (p3096).<br />
+For fault value = 208:<br />
+- set the measuring current (p3096).<br />
+For fault value = 209:<br />
+- check parameter setting p3095.<br />
+- check the brake or brake control.<br />
+For fault value = 210:<br />
+- the elasticity-based pole position identification can only be carried out using an encoder. Connect an encoder or select another technique for pole position identification routine (p1980).<br />
+For fault value = 250 ... 260:<br />
+- check parameter setting (p3090 ... p3096, p1980).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207996">F207996</a></b></td>
+<td><b>&lt;location&gt;Drive: Pole position identification routine not carried out</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>ENCODER<br />
+ (OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In operation, the operating mode that requires a pole position identification was changed over, which is not possible in this state.<br />
+- the drive was changed over, flying, from encoderless operation to operation with encoder without having previously carried out a pole position identification for the encoder. p1404 is then at a value between zero and the max. speed and the pulses in the speed range above p1404 were enabled without a pole position ident. routine having been previously carried out in operation with encoder.<br />
+- in operation, an EDS changeover was made to an encoder where it is necessary to carry out a pole position identification. However, this has still not been carried out (p1982 = 1 or 2 and p1992.7 = 0).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- for a flying changeover between operation with and without encoder with pole position identification after POWER ON or commissioning (p0010 not equal to zero) enable the pulses once at zero speed. This means that the pole position identification routine is carried out and the result is available for operation.<br />
+- carry out the EDS changeover with the pulses inhibited, or, before the changeover, carry out a pole position identification using this data set.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207998">A207998</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor data identification active on another drive</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The motor data identification is activated on the drive object specified in the alarm value, and interlocks the other drive objects so they cannot be switched on.<br />
+Alarm value (r2124, interpret decimal):<br />
+Drive object with the active motor data identification.<br />
+See also: p1910, p1960<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- wait for the complete execution of the motor data identification of the drive object designated in the alarm value.<br />
+- deselect the motor data identification for the drive object designated in the alarm value (p1910 = 0 or p1960 = 0).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207999">A207999</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor data identification cannot be activated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Closed-loop control is enabled on a SERVO drive object type. To select motor data identification, pulses must be suppressed for all SERVO drive objects.<br />
+Alarm value (r2124, interpret decimal):<br />
+Drive object with enabled closed-loop control.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Withdraw the pulse enable on all drives and re-activate the motor data identification.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208000">F208000 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TB: +&#47;-15 V power supply faulted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: NONE<br />
+ (OFF1, OFF2)Servo: NONE<br />
+ (IASC/DCBRK, OFF1, OFF2, OFF3, STOP2)Vector: NONE<br />
+ (IASC/DCBRK, OFF1, OFF2, OFF3, STOP2)Hla: NONE<br />
+ (OFF1, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Terminal Board 30 detects an incorrect internal power supply voltage.<br />
+Fault value (r0949, interpret decimal):<br />
+0: Error when testing the monitoring circuit.<br />
+1: Fault in normal operation.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- replace Terminal Board 30.<br />
+- replace Control Unit.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208010">F208010 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TB: Analog-digital converter</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: NONE<br />
+ (OFF1, OFF2)Servo: NONE<br />
+ (IASC/DCBRK, OFF1, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: NONE<br />
+ (OFF1, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The analog&#47;digital converter on Terminal Board 30 has not supplied any converted data.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the power supply.<br />
+- replace Terminal Board 30.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208500">F208500 (A)</a></b></td>
+<td><b>&lt;location&gt;COMM BOARD: Monitoring time configuration expired</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (OFF2)Servo: OFF1<br />
+ (OFF2, OFF3)Vector: OFF1<br />
+ (OFF2, OFF3)Hla: OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The monitoring time for the configuration has expired.<br />
+Fault value (r0949, interpret decimal):<br />
+0: The transfer time of the send configuration data has been exceeded.<br />
+1: The transfer time of the receive configuration data has been exceeded.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check communications link.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208501">F208501 (N, A)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Setpoint timeout</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (OFF2)Servo: OFF3<br />
+ (IASC/DCBRK, NONE, OFF1, OFF2, STOP2)Vector: OFF3<br />
+ (IASC/DCBRK, NONE, OFF1, OFF2, STOP2)Hla: OFF3<br />
+ (NONE, OFF1, OFF2, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The reception of setpoints from the COMM BOARD has been interrupted.<br />
+- bus connection interrupted.<br />
+- controller switched off.<br />
+- controller set into the STOP state.<br />
+- COMM BOARD defective.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- Restore the bus connection and set the controller to RUN.<br />
+- if the error is repeated, check the update time set in the bus configuration (HW Config).<br />
+See also: p8840 (COMM BOARD monitoring time)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208502">F208502 (A)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Monitoring time sign-of-life expired</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (OFF2)Servo: OFF1<br />
+ (OFF2, OFF3)Vector: OFF1<br />
+ (OFF2, OFF3)Hla: OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The monitoring time for the sign-of-life counter has expired.<br />
+The connection to the COMM BOARD was interrupted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check communications link.<br />
+- check COMM BOARD.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208504">A208504 (F)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Internal cyclic data transfer error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The cyclic actual and&#47;or setpoint values were not transferred within the specified times.<br />
+Alarm value (r2124, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the parameterizing telegram (Ti, To, Tdp, etc.).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208510">F208510 (A)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Send configuration data invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (OFF2)Servo: OFF1<br />
+ (OFF2, OFF3)Vector: OFF1<br />
+ (OFF2, OFF3)Hla: OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>COMM BOARD did not accept the send-configuration data.<br />
+Fault value (r0949, interpret decimal):<br />
+Return value of the send-configuration data check.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the send configuration data.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208511">A208511 (F)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Receive configuration data invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive unit did not accept the receive configuration data.<br />
+Alarm value (r2124, interpret decimal):<br />
+Return value of the receive configuration data check.<br />
+1: Connection established to more drive objects than configured in the device. The drive objects for process data exchange and their sequence are defined in p0978.<br />
+2: Too many PZD data words for output or input to a drive object. The number of possible PZD items in a drive object is determined by the number of indices in r2050&#47;p2051 for PZD IF1, and in r8850&#47;p8851 for PZD IF2.<br />
+3: Uneven number of bytes for input or output.<br />
+4: Setting data for synchronization not accepted. For more information, see A01902.<br />
+5: Cyclic operation not active.<br />
+17: CBE20 Shared Device: Configuration of the F-CPU has been changed.<br />
+223: Illegal clock synchronization for the PZD interface set in p8815[0].<br />
+257: PN Shared Device: Too many PZD data words for output or input in the overall device.<br />
+500: Illegal PROFIsafe configuration for the interface set in p8815[1].<br />
+501: PROFIsafe parameter error (e.g. F_dest).<br />
+503: PROFIsafe connection is rejected as long as there is no isochronous connection (p8969).<br />
+Additional values:<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the receive configuration data.<br />
+For alarm value = 1, 2:<br />
+- check the list of the drive objects with process data exchange (p0978). With p0978[x] = 0, all of the following drive objects in the list are excluded from the process data exchange.<br />
+For alarm value = 2:<br />
+- check the number of data words for output and input to a drive object.<br />
+For alarm value = 17:<br />
+- CBE20 Shared Device: Unplug&#47;plug A-CPU.<br />
+For alarm value = 223, 500:<br />
+- check the setting in p8839 and p8815.<br />
+- ensure that only one PZD interface is operated in clock synchronism or with PROFIsafe.<br />
+For alarm value = 257:<br />
+- check the number of data words for output and input to the complete device.<br />
+For alarm value = 501:<br />
+- check the set PROFIsafe address (p9610).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208520">A208520 (F)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Non-cyclic channel error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The memory or the buffer status of the non-cyclic channel has an error.<br />
+Alarm value (r2124, interpret decimal):<br />
+0: Error in the buffer status.<br />
+1: Error in the memory.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check communications link.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208526">A208526 (F)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: No cyclic connection</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>There is no cyclic connection to the control.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Establish the cyclic connection and activate the control with cyclic operation.<br />
+For PROFINET, check the parameters &quot;Name of Station&quot; and &quot;IP of Station&quot; (r61000, r61001).<br />
+If a CBE20 is inserted and PROFIBUS is to communicate via PZD Interface 1, then this must be parameterized using the STARTER commissioning tool or directly using p8839.<br />
+</td></tr>
+</table><p></p></body></html>

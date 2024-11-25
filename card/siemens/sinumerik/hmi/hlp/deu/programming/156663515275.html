@@ -1,0 +1,113 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Kontur-/Orientierungstoleranz programmieren (CTOL, OTOL, ATOL): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Kontur-/Orientierungstoleranz programmieren (CTOL, OTOL, ATOL): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Systemvariablen</h4>
+      <p>Über folgende Systemvariablen sind die aktuell wirksamen Toleranzen lesbar:</p>
+      <ul>
+        <li>
+          <p>Lesen mit Vorlaufstopp (im Teileprogramm und Synchronaktion) </p>
+          <ul>
+            <li>
+              <p>$AC_CTOL</p>
+              <p>Kanalspezifische Konturtoleranz, die bei der Aufbereitung des aktuellen Hauptlaufsatzes wirksam war. </p>
+              <p>Wenn keine Konturtoleranz wirksam ist, liefert $AC_CTOL die Wurzel aus der Summe der Quadrate der Toleranzen der Geometrieachsen.</p>
+            </li>
+            <li>
+              <p>$AC_OTOL</p>
+              <p>Kanalspezifische Orientierungstoleranz, die bei der Aufbereitung des aktuellen Hauptlaufsatzes wirksam war. </p>
+              <p>Wenn keine Orientierungstoleranz wirksam ist, liefert $AC_OTOL während einer aktiven Orientierungstransformation die Wurzel aus der Summe der Quadrate der Toleranzen der Orientierungsachsen, ansonsten den Wert "-1".</p>
+            </li>
+            <li>
+              <p>$AA_ATOL[&lt;Achse>]</p>
+              <p>Achsspezifische Konturtoleranz, die bei der Aufbereitung des aktuellen Hauptlaufsatzes wirksam war. </p>
+              <p>Wenn eine Konturtoleranz aktiv ist, liefert $AA_ATOL[&lt;Geometrieachse>] die Konturtoleranz geteilt durch die Wurzel aus der Anzahl der Geometrieachsen.</p>
+              <p>Wenn eine Orientierungstoleranz und eine Orientierungstransformation aktiv ist, liefert $AA_ATOL[&lt;Orientierungsachse>] die Orientierungstoleranz geteilt durch die Wurzel aus der Anzahl der Orientierungsachsen.</p>
+            </li>
+          </ul>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Hinweis</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="safety">Wenn keine Toleranzwerte programmiert wurden, dann sind die $A-Variablen nicht differenziert genug, um die Toleranzen der einzelnen Funktionen zu unterscheiden.</p>
+                <p class="safety">Solche Fälle können auftreten, wenn die Maschinen- und Settingdaten unterschiedliche Toleranzen für Kompressor-Funktionen, Überschleifen und Orientierungsglättung einstellen. Die Systemvariablen liefern dann den größten Wert, der bei den gerade aktiven Funktionen auftritt. Wenn z. B. eine Kompressor-Funktion mit Orientierungstoleranz 0,1° und eine Orientierungsglättung ORISON mit 1° aktiv ist, liefert $AC_OTOL den Wert "1". Wird die Orientierungsglättung ausgeschaltet,  liefert $AC_OTOL den Wert "0,1".</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          <p>Lesen ohne Vorlaufstopp (nur im Teileprogramm)</p>
+          <ul>
+            <li>
+              <p>$P_CTOL</p>
+              <p>Aktuell wirksame kanalspezifische Konturtoleranz.</p>
+            </li>
+            <li>
+              <p>$P_OTOL</p>
+              <p>Aktuell wirksame kanalspezifische Orientierungstoleranz. </p>
+            </li>
+            <li>
+              <p>$PA_ATOL</p>
+              <p>Aktuell wirksame achsspezifische Konturtoleranz.</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Randbedingungen</h4>
+      <p>Die mit CTOL, OTOL und ATOL programmierten Toleranzen wirken auch auf Funktionen, die indirekt von diesen Toleranzen abhängen:</p>
+      <ul>
+        <li>
+          <p>Die Begrenzung des Sehnenfehlers bei der Sollwertberechnung</p>
+        </li>
+        <li>
+          <p>Die Grundfunktionen des Freiformflächenmodus</p>
+        </li>
+      </ul>
+      <p>Folgende Überschleif-Funktionen werden durch die Programmierung von CTOL, OTOL und ATOL <b>nicht</b> beeinflusst:</p>
+      <ul>
+        <li>
+          <p>Überschleifen der Orientierung mit OSD</p>
+          <p>OSD verwendet keine Toleranz, sondern eine Distanz zum Satzübergang.</p>
+        </li>
+        <li>
+          <p>Überschleifen mit G644</p>
+          <p>G644 dient nicht der Bearbeitung, sondern der Optimierung von Werkzeugwechseln und anderen Bewegungen ohne Bearbeitung.</p>
+        </li>
+        <li>
+          <p>Überschleifen mit G645</p>
+          <p>G645 verhält sich fast immer wie G642 und verwendet somit die programmierten Toleranzen. Nur an tangentenstetigen Satzübergängen mit einem Krümmungssprung, z. B. einem tangentialen Kreis-Gerade-Übergang, wird der Toleranzwert aus dem Maschinendatum MD33120 $MA_PATH_TRANS_POS_TOL verwendet. Der Überschleifweg kann sich an diesen Stellen nämlich auch auf der Außenseite der programmierten Kontur befinden, wo viele Anwendungen weniger tolerant sind. Außerdem genügt in der Regel eine kleine, fest eingestellte Toleranz zum Ausgleich der Krümmungsänderungen, über die sich der NC-Programmierer keine Gedanken machen muss.</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Orientation types relative to the path</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Orientation types relative to the path</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>By using this expanded function, relative orientation is not only achieved at the end of the block, but across the entire trajectory. The orientation achieved in the previous block is transferred to the programmed end orientation using large-circle interpolation. There are basically two ways of programming the desired orientation relative to the path: </p>
+      <ol>
+        <li>
+          <p>Like the tool rotation, the tool orientation is interpolated relative to the path using ORIPATH, ORPATHTS.</p>
+        </li>
+        <li>
+          <p>The orientation vector is programmed and interpolated in the usual manner. The rotation of the orientation vector is initiated relative to the path tangent using ORIROTC.</p>
+        </li>
+      </ol>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>The type of interpolation of the orientation and the rotation of the tool is programmed using:</p>
+      <a id="table_6bf0f04d-6514-4900-a901-9bc5f149e164">
+      </a> <a id="table_0"></a> <a id="table_6bf0f04d-6514-4900-a901-9bc5f149e164"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="34.0%"><col width="66.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... ORIPATH</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Orientation relative to the path</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... ORIPATHS</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Orientation relative to the path with smoothing of orientation characteristic</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>N... ORIROTC</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Interpolation of the rotation vector relative to the path</p></td></tr></table></p><p></p><p>An orientation blip caused by a corner on the path trajectory can be smoothed using ORIPATHS. The direction and path length of the lift motion is programmed via the vector with components A8 = X, B8 = Y and C8 = Z.</p><p>ORIPATH/ORIPATHS can be used to program various references to the path tangent via the three angles</p><ul><li><p>LEAD = specification of lead angle relative to the path and surface</p></li><li><p>TILT = specification of tilt angle relative to the path and surface</p></li><li><p>THETA= angle of rotation</p></li></ul><p>for the entire trajectory. Polynomials up to the 5th degree can be programmed in addition to the THETA angle of rotation using PO[THT] = (...).</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><h4 class="Blocklabel">Machine manufacturer</h4><p class="safety">Please refer to the machine manufacturer's instructions. Other settings can be made for orientations relative to the path via configurable machine and setting data.</p><p class="safety"><b>Further information: </b>Function Manual Transformations</p></td></tr></table><a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><p>Various settings can be made for the interpolation of angles LEAD and TILT via machine data:</p><ul><li><p>The tool-orientation reference programmed using LEAD and TILT is retained for the entire block.</p></li><li><p>Lead angle LEAD: rotation around the direction vertical to the tangent and normal vector TILT: rotation of the orientation about the normal vector.</p></li><li><p>Lead angle LEAD: rotation around the direction vertical to the tangent and normal vector tilt angle TILT: rotation of the orientation in the direction of the path tangent.</p></li><li><p>Angle of rotation THETA: rotation of the tool about itself with an additional third rotary axis acting as an orientation axis in 6-axis transformation.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><h4 class="Blocklabel">Orientation relative to the path not permitted in conjunction with OSC, OSS, OSSE, OSD and OST</h4><p class="safety">Orientation interpolation relative to the path, that is ORIPATH or ORIPATHS and ORIOTC, cannot be programmed in conjunction with orientation characteristic smoothing with a G command from group 34. OSOF has to be active for this.</p></td></tr></table></li></ul></div>
+    <p>See also:<br />    <a href="156663138059.html">Rotation of the tool orientation relative to the path (ORIPATH, ORIPATHS, angle of rotation)</a><br />    <a href="156663141387.html">Interpolation of the tool rotation relative to the path (ORIROTC, THETA)</a><br />    <a href="156663144459.html">Smoothing of orientation characteristic (ORIPATHS A8=, B8=, C8=)</a></p>
+  </body>
+</html>

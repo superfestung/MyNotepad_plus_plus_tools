@@ -1,0 +1,2005 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="206010">F206010</a></b></td>
+<td><b>&lt;location&gt;Infeed: Power unit EP 24 V missing in operation</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In operation, the pulse enable via terminal EP at the Line Module (X21.3, X21.4) was withdrawn.<br />
+Note:<br />
+EP: Enable Pulses (pulse enable)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- do not open the line side switch in operation - only when the pulses are inhibited.<br />
+- check the wiring of terminal EP (X21.3, X21.4) at the Line Module to exclude any poor contacts.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206100">F206100</a></b></td>
+<td><b>&lt;location&gt;Infeed: Shutdown due to line supply undervoltage condition</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The filtered (steady-state) value of the line supply voltage is less than the fault threshold (p0283).<br />
+Fault condition: Vrms &lt; p0283 * p0210<br />
+Fault value (r0949, floating point):<br />
+Actual steady-state line supply voltage.<br />
+Note:<br />
+The occurrence of this fault is delayed by the time in p3492. If the fault is removed during this design time, then the power unit is not tripped (shut down).<br />
+See also: p0283 (Line supply undervoltage shutdown (trip) threshold), p3492 (Infeed, line supply undervoltage delay time)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the line supply.<br />
+- check the line supply voltage (p0210).<br />
+- check the threshold value (p0283).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206105">A206105 (F)</a></b></td>
+<td><b>&lt;location&gt;Infeed: Line supply undervoltage</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The filtered (steady-state) value of line supply voltage is lower than the alarm threshold (p0282).<br />
+Alarm condition: Vrms &lt; p0282 * p0210<br />
+Alarm value (r2124, floating point):<br />
+Actual steady-state line supply voltage.<br />
+See also: p0282 (Line supply undervoltage alarm threshold)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the line supply.<br />
+- check the line supply voltage (p0210).<br />
+- check the alarm threshold (p0282).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206301">A206301 (F)</a></b></td>
+<td><b>&lt;location&gt;Infeed: Line supply overvoltage</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The filtered (steady-state) value of the rms line supply voltage Vrms is higher than the alarm threshold (p0281).<br />
+Alarm condition: Vrms &gt; p0281 * p0210.<br />
+Alarm value (r2124, floating point):<br />
+Actual steady-state line supply voltage.<br />
+See also: p0281 (Line supply overvoltage alarm threshold)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the line supply.<br />
+- check the line supply voltage (p0210).<br />
+- check the alarm threshold (p0281).<br />
+See also: p0210 (Drive unit line supply voltage), p0281 (Line supply overvoltage alarm threshold)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206310">F206310 (A)</a></b></td>
+<td><b>&lt;location&gt;Infeed: Supply voltage (p0210) incorrectly parameterized</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+ (OFF1, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>After precharging was completed, the line supply voltage Vrms was calculated using the measured DC link voltage. This voltage Vrms is not within the tolerance range of the supply voltage.<br />
+The following applies for the tolerance range: 85 % * p0210 &lt; Vrms &lt; 110 % * p0210<br />
+Fault value (r0949, floating point):<br />
+Line supply voltage Vrms present.<br />
+See also: p0210 (Drive unit line supply voltage)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the parameterized supply voltage and if required change (p0210).<br />
+- check the line supply voltage.<br />
+See also: p0210 (Drive unit line supply voltage)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206311">F206311</a></b></td>
+<td><b>&lt;location&gt;Infeed: Supply voltage (p0210) incorrect</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The line voltage nominal value indicated in p0210 is outside the nominal voltage range of the power unit.<br />
+After precharging was completed, the actual line supply voltage Vrms was calculated using the measured DC link voltage. This voltage Vrms does not lie within the extended tolerance range of the supply voltage set in p0210.<br />
+The following applies for the extended tolerance range: 75 % * p0210 &lt; Vrms &lt; 120 % * p0210<br />
+Alarm value (r2124, floating point):<br />
+Line supply voltage Vrms present.<br />
+See also: p0210 (Drive unit line supply voltage)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the parameterized supply voltage and if required change (p0210).<br />
+- check the line supply voltage.<br />
+See also: p0210 (Drive unit line supply voltage)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206700">F206700 (A)</a></b></td>
+<td><b>&lt;location&gt;Infeed: Switch line contactor for load condition</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+ (OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For an ON command, the infeed line contactor should be switched under load.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- do not load the DC link if the infeed has not issued an operating signal (r0863.0 = 1).<br />
+- after the infeed has been switched off, all power units connected to the DC link should be switched off. To realize this, the operating signal of the infeed (r0863.0) must be suitably interconnected.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206810">A206810 (F)</a></b></td>
+<td><b>&lt;location&gt;Infeed: DC link voltage alarm threshold fallen below</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In operation, the DC link voltage has dropped to below the alarm threshold. The alarm threshold is obtained from the sum of p0279 and r0296.<br />
+Note:<br />
+When the alarm threshold is fallen below, this is also indicated using status bit r3405.7.<br />
+Possible causes:<br />
+- line supply voltage dip or another line supply fault.<br />
+- overload of the infeed.<br />
+- for Active Line Module: Controller incorrectly parameterized.<br />
+See also: p0279 (DC link voltage offset alarm threshold), r0296 (DC link voltage undervoltage threshold), r3405<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the line voltage and line supply quality.<br />
+- reduce the power drawn, avoid step-like load changes<br />
+- for Active Line Module: Adapt the controller parameterization (e.g. automatic line supply identification (p3410 = 4, 5)).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206900">A206900 (F)</a></b></td>
+<td><b>&lt;location&gt;Braking Module: Fault (1 -&gt; 0)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Braking Module signals a fault (1 -&gt; 0) via X21.4 (&quot;booksize&quot; format) or X21.5 (&quot;chassis&quot; format).<br />
+This signal is wired to a system digital input and correspondingly interconnected using binector input p3866[0...7].<br />
+Possible causes:<br />
+- wiring of the signal or BICO interconnection of the signal source incorrect.<br />
+- overtemperature<br />
+- electronics power supply missing.<br />
+- ground fault&#47;short-circuit.<br />
+- internal component fault.<br />
+See also: p3866 (Braking Module fault)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check binector input p3866[0...7] and the wiring from terminal X21.4 (&quot;booksize&quot; format) or X21.5 (&quot;chassis&quot; format).<br />
+- reduce the number of braking operations.<br />
+- check the 24 V power supply of the component.<br />
+- check for a ground fault or short circuit.<br />
+- replace the component if necessary.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206901">A206901</a></b></td>
+<td><b>&lt;location&gt;Braking Module: Pre-alarm I2t shutdown</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Braking Module &quot;Booksize&quot; format signals &quot;Pre-alarm I2t shutdown&quot; via terminal X21.3.<br />
+This signal is wired to a system digital input and correspondingly interconnected using binector input p3865[0...7].<br />
+Note:<br />
+This function is not supported for the &quot;chassis&quot; format.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the number of braking operations.<br />
+- check binector input p3865[0...7] and the wiring from terminal X21.3 of the particular Braking Module.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206904">A206904 (N)</a></b></td>
+<td><b>&lt;location&gt;Braking Module internal is inhibited</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The internal Braking Module was inhibited via binector input p3680 = 1 signal.<br />
+In the inhibited state, energy cannot be dissipated using the braking resistor.<br />
+See also: p3680 (Braking Module internal inhibit)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Release the internal Braking Module (BI: p3680 = 0 signal).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206905">A206905</a></b></td>
+<td><b>&lt;location&gt;Braking Module internal I2t shutdown alarm</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The internal Braking Module outputs an alarm due to the high I2t value.<br />
+80% of the maximum switch-on duration of the braking resistor has been reached.<br />
+Note:<br />
+This message is also displayed via BO: p3685.<br />
+See also: r3685 (Digital Braking Module: Pre-alarm I2t shutdown)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reduce the number of braking operations.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206906">F206906 (A)</a></b></td>
+<td><b>&lt;location&gt;Braking Module internal fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The internal Braking Module outputs a fault due to overcurrent or an excessively high I2t value and is therefore inhibited.<br />
+Note:<br />
+This message is also displayed via BO: p3686.<br />
+Fault value (r0949, interpret bitwise binary):<br />
+Bit 0 = 1: I2t exceeded<br />
+Bit 1 = 1: overcurrent<br />
+See also: r3686 (Digital Braking Module fault)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reduce the number of braking operations.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206907">F206907</a></b></td>
+<td><b>&lt;location&gt;Braking Module internal overtemperature</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE, OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The temperature sensor connected to the braking resistor signals an overtemperature.<br />
+The Braking Module is still active. If the overtemperature persists for more than 60 s, fault F06908 is output, and the braking module is switched off.<br />
+See also: r3687 (Digital Braking Module pre-alarm overtemperature)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the temperature at the sensor.<br />
+- check the temperature sensor connection.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206908">F206908</a></b></td>
+<td><b>&lt;location&gt;Braking Module internal overtemperature shutdown</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (OFF1)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Braking module shut down due to overtemperature at the temperature sensor of the braking resistor.<br />
+The overtemperature is detected by the sensor for longer than 60 s.<br />
+See also: r3688 (Braking Module internal overtemperature shutdown)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the temperature at the sensor.<br />
+- check the temperature sensor connection.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="206909">F206909</a></b></td>
+<td><b>&lt;location&gt;Braking Module internal Vce fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In the power unit, the monitoring of the collector-emitter voltage (U_ce) of the power semiconductor to control the braking resistor has responded.<br />
+Possible causes:<br />
+- short circuit at the braking resistor terminals.<br />
+- defective power semiconductor in the braking resistor control.<br />
+Note:<br />
+Under certain circumstances, this fault is also output if a braking resistor is not connected, and the energy is fed back into the Braking Module.<br />
+See also: r3689 (Digital Braking Module Uce fault)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- connect a braking resistor.<br />
+- check the braking resistor connection.<br />
+- check the braking resistor.<br />
+- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- replace the unit.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207080">F207080</a></b></td>
+<td><b>&lt;location&gt;Drive: Incorrect control parameter</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The closed-loop control parameters have been parameterized incorrectly (e.g. p0356 = L_spread = 0).<br />
+Fault value (r0949, interpret decimal):<br />
+The fault value includes the parameter number involved.<br />
+See also: p0310, p0311, p0341, p0344, p0350, p0354, p0356, p0357, p0358, p0360, p0400, p0404, p0408, p0640, p1082, p1300<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Modify the parameter indicated in the fault value (r0949) (e.g. p0640 = current limit &gt; 0).<br />
+See also: p0311, p0341, p0344, p0350, p0354, p0356, p0358, p0360, p0400, p0404, p0408, p0640, p1082<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207082">F207082</a></b></td>
+<td><b>&lt;location&gt;Macro: Execution not possible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The macro cannot be executed.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+ccccbbaa hex:<br />
+cccc = preliminary parameter number, bb = supplementary information, aa = fault cause<br />
+Fault causes for the trigger parameter itself:<br />
+19: Called file is not valid for the trigger parameter.<br />
+20: Called file is not valid for parameter 15.<br />
+21: Called file is not valid for parameter 700.<br />
+22: Called file is not valid for parameter 1000.<br />
+23: Called file is not valid for parameter 1500.<br />
+24: Data type of a TAG is incorrect (e.g. Index, number or bit is not U16).<br />
+Fault causes for the parameters to be set:<br />
+25: Error level has an undefined value.<br />
+26: Mode has an undefined value.<br />
+27: A value was entered as string in the tag value that is not &quot;DEFAULT&quot;.<br />
+31: Entered drive object type unknown.<br />
+32: A device was not able to be found for the determined drive object number.<br />
+34: A trigger parameter was recursively called.<br />
+35: It is not permissible to write to the parameter via macro.<br />
+36: Check, writing to a parameter unsuccessful, parameter can only be read, not available, incorrect data type, value range or assignment incorrect.<br />
+37: Source parameter for a BICO interconnection was not able to be determined.<br />
+38: An index was set for a non-indexed (or CDS-dependent) parameter.<br />
+39: No index was set for an indexed parameter.<br />
+41: A bit operation is only permissible for parameters with the parameter format DISPLAY_BIN.<br />
+42: A value not equal to 0 or 1 was set for a BitOperation.<br />
+43: Reading the parameter to be changed by the BitOperation was unsuccessful.<br />
+51: Factory setting for DEVICE may only be executed on the DEVICE.<br />
+61: The setting of a value was unsuccessful.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the parameter involved.<br />
+- check the macro file and BICO interconnection.<br />
+See also: p0015, p0700, p1000, p1500<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207083">F207083</a></b></td>
+<td><b>&lt;location&gt;Macro: ACX file not found</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The ACX file (macro) to be executed was not able to be found in the appropriate directory.<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter number with which the execution was started.<br />
+See also: p0015, p0700, p1000, p1500<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether the file is saved in the appropriate directory on the memory card.<br />
+Example:<br />
+If p0015 is set to 1501, then the selected ACX file must be located in the following directory:<br />
+... &#47;PMACROS&#47;DEVICE&#47;P15&#47;PM001501.ACX<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207084">F207084</a></b></td>
+<td><b>&lt;location&gt;Macro: Condition for WaitUntil not fulfilled</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The WaitUntil condition set in the macro was not fulfilled in a certain number of attempts.<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter number for which the condition was set.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check and correct the conditions for the WaitUntil loop.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207085">F207085</a></b></td>
+<td><b>&lt;location&gt;Drive: Open-loop&#47;closed-loop control parameters changed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Open-loop&#47;closed-loop control parameters have had to be changed.<br />
+Possible causes:<br />
+1. As a result of other parameters, they have exceeded the dynamic limits.<br />
+2. They cannot be used due to the fact that the hardware detected not having certain features.<br />
+3. The value is estimated as the thermal time constant is missing.<br />
+4. Motor temperature model 1 is activated as thermal motor protection is missing.<br />
+Fault value (r0949, interpret decimal):<br />
+Changed parameter number.<br />
+340:<br />
+The motor and control parameters were automatically calculated (p0340 = 1), because the vector control was subsequently activated as configuration (r0108.2).<br />
+611:<br />
+The time constant for thermal motor model 1 was estimated.<br />
+612:<br />
+Thermal motor model 1 was activated (p0612.0 = 1).<br />
+1800:<br />
+A more favorable pulse frequency was preassigned.<br />
+See also: p0640, p1082, p1300, p1800<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+It is not necessary to change the parameters as they have already been correctly limited.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207086">F207086</a></b></td>
+<td><b>&lt;location&gt;Units changeover: Parameter limit violation due to reference value change</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A reference parameter was changed in the system. This resulted in the fact that for the parameters involved, the selected value was not able to be written in the per unit notation.<br />
+The values of the parameters were set to the corresponding violated minimum limit&#47;maximum limit or to the factory setting.<br />
+Possible causes:<br />
+- the steady-state minimum limit&#47;maximum limit or that defined in the application was violated.<br />
+Fault value (r0949, parameter):<br />
+Diagnostics parameter to display the parameters that were not able to be re-calculated.<br />
+See also: p0304, p0305, p0310, p0596, p2000, p2001, p2002, p2003, r2004<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the adapted parameter value and if required correct.<br />
+See also: r9450 (Reference value change parameter with unsuccessful calculation)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207088">F207088</a></b></td>
+<td><b>&lt;location&gt;Units changeover: Parameter limit violation due to units changeover</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A changeover of units was initiated. This resulted in a violation of a parameter limit<br />
+Possible causes for the violation of a parameter limit:<br />
+- When rounding off a parameter corresponding to its decimal places, the steady-state minimum limit or maximum limit was violated.<br />
+- inaccuracies for the data type &quot;FloatingPoint&quot;.<br />
+In these cases, when the minimum limit is violated then the parameter value is rounded up and when the maximum limited is violated the parameter value is rounded down.<br />
+Fault value (r0949, interpret decimal):<br />
+Diagnostics parameter r9451 to display all parameters whose value had to be adapted.<br />
+See also: p0100 (IEC/NEMA Standards), p0349 (System of units motor equivalent circuit diagram data), p0505 (Selecting the system of units), p0595 (Technological unit selection)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the adapted parameter values and if required correct.<br />
+See also: r9451 (Units changeover adapted parameters)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207089">A207089</a></b></td>
+<td><b>&lt;location&gt;Changing over units: Function module activation is blocked because the units have been changed over</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An attempt was made to activate a function module. This is not permissible if the units have already been changed over.<br />
+See also: p0100 (IEC/NEMA Standards), p0349 (System of units motor equivalent circuit diagram data), p0505 (Selecting the system of units)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Restore units that have been changed over to the factory setting.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207094">A207094</a></b></td>
+<td><b>&lt;location&gt;General parameter limit violation</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>As a result of the violation of a parameter limit, the parameter value was automatically corrected.<br />
+Minimum limit violated --&gt; parameter is set to the minimum value.<br />
+Maximum limit violated --&gt; parameter is set to the maximum value.<br />
+Alarm value (r2124, interpret decimal):<br />
+Parameter number, whose value had to be adapted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the adapted parameter values and if required correct.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207100">F207100</a></b></td>
+<td><b>&lt;location&gt;Drive: Sampling times cannot be reset</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When resetting drive parameter (p0976) sampling times cannot be reset using p0111, p0112, p0115.<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter whose setting prevents the sampling times being reset.<br />
+See also: r0110 (Basic sampling times)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- continue to work with the set sampling times.<br />
+- before resetting the drive parameters, set the basic clock cycle p0110[0] to the original value.<br />
+See also: r0110 (Basic sampling times)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207110">F207110</a></b></td>
+<td><b>&lt;location&gt;Drive: Sampling times and basic clock cycle do not match</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The parameterized sampling times do not match the basic clock cycle.<br />
+Fault value (r0949, interpret decimal):<br />
+The fault value specifies the parameter involved.<br />
+See also: r0110, r0111, p0115<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Enter the current controller sampling times so that they are identical to the basic clock cycle, e.g. by selecting p0112. Note which basic clock cycle is selected in p0111.<br />
+The sampling times in p0115 can only be changed manually in the sampling times pre-setting &quot;Expert&quot; (p0112).<br />
+See also: r0110, r0111, p0112, p0115<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207200">A207200</a></b></td>
+<td><b>&lt;location&gt;Drive: Master control ON command present</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The ON&#47;OFF1 command is present (no 0 signal).<br />
+The command is either influenced via binector input p0840 (current CDS) or control word bit 0 via the master control.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Switch the signal via binector input p0840 (current CDS) or control word bit 0 via the master control to 0.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207220">F207220 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Master control by PLC missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (NONE, OFF2)Servo: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;master control by PLC&quot; signal was missing in operation.<br />
+- interconnection of the binector input for &quot;master control by PLC&quot; is incorrect (p0854).<br />
+- the higher-level control has withdrawn the &quot;master control by PLC&quot; signal.<br />
+- data transfer via the fieldbus (master&#47;drive) was interrupted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the interconnection of the binector input for &quot;master control by PLC&quot; (p0854).<br />
+- check the &quot;master control by PLC&quot; signal and, if required, switch in.<br />
+- check the data transfer via the fieldbus (master&#47;drive).<br />
+Note:<br />
+If the drive should continue to operate after withdrawing &quot;master control by PLC&quot; then fault response must be parameterized to NONE or the message type should be parameterized as alarm.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207300">F207300 (A)</a></b></td>
+<td><b>&lt;location&gt;Drive: Line contactor feedback signal missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- the line contactor was not able to be closed within the time in p0861.<br />
+- the line contactor was not able to be opened within the time in p0861.<br />
+- the line contactor dropped out during operation<br />
+- the line contactor has closed although the drive converter is switched off.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the setting of p0860.<br />
+- check the feedback circuit from the line contactor.<br />
+- increase the monitoring time in p0861.<br />
+- for G150LE (power expansion)&#47;G150HP (High Power), the following applies:<br />
+If, contrary to the appropriate specifications, the circuit breakers are monitored using the line contactor control of drive object B_INF then, for B_INF, parameter p0869.1 must be set = 0.<br />
+See also: p0860 (Line contactor feedback signal), p0861 (Line contactor monitoring time)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207320">F207320</a></b></td>
+<td><b>&lt;location&gt;Drive: Automatic restart interrupted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>- the specified number of restart attempts (p1211) has been completely used up because within the monitoring time (p1213) the faults were not able to be acknowledged. The number of restart attempts (p1211) is decremented at each new start attempt.<br />
+- the monitoring time for the power unit has expired (p0857).<br />
+- when exiting commissioning or at the end of the motor identification routine or the speed controller optimization, the drive unit is not automatically switched on again.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- increase the number of restart attempts (p1211). The actual number of starting attempts is displayed in r1214.<br />
+- increase the delay time in p1212 and&#47;or the monitoring time in p1213.<br />
+- either increase or disable the monitoring time of the power unit (p0857).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207321">A207321</a></b></td>
+<td><b>&lt;location&gt;Drive: Automatic restart active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The automatic restart (AR) is active. When the line supply returns and&#47;or the causes of the existing faults are removed the drive is automatically restarted. The pulses are enabled and the motor starts to rotate.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- the automatic restart (AR) should, if required, be inhibited (p1210 = 0).<br />
+- an automatic restart can be directly interrupted by withdrawing the switch-on command (BI: p0840).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207350">A207350 (F)</a></b></td>
+<td><b>&lt;location&gt;Drive: Measuring probe parameterized to a digital output</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The measuring probe is connected to a bi-directional digital input&#47;output and the terminal is set as output.<br />
+Alarm value (r2124, interpret decimal):<br />
+8: DI&#47;DO 8 (X122.9&#47;X132.1)<br />
+9: DI&#47;DO 9 (X122.10&#47;X132.2)<br />
+10: DI&#47;DO 10 (X122.12&#47;X132.3)<br />
+11: DI&#47;DO 11 (X122.13&#47;X132.4)<br />
+12: DI&#47;DO 12 (X132.9)<br />
+13: DI&#47;DO 13 (X132.10)<br />
+14: DI&#47;DO 14 (X132.12)<br />
+15: DI&#47;DO 15 (X132.13)<br />
+Regarding the terminal designation:<br />
+The first designation is valid for CU320, the second for CU305.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- set the terminal as input (p0728).<br />
+- deselect the measuring probe (p0488, p0489, p0580).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207448">F207448 (A)</a></b></td>
+<td><b>&lt;location&gt;Load gear: Position tracking, linear axis has exceeded the maximum range</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: NONE<br />
+Servo: OFF1<br />
+ (NONE, OFF2, OFF3)Vector: OFF1<br />
+ (NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For a configured linear axis&#47;no modulo axis, the currently effective motor encoder (encoder 1) has exceeded the maximum possible traversing range.<br />
+For the configured linear axis, the maximum traversing range is defined to be 64x (+&#47;- 32x) of p0421. It should be read in p2721 and interpreted as the number of load revolutions.<br />
+Note:<br />
+Only the motor encoder in the currently effective drive data set is monitored here. The actual effective drive data set is displayed in x = r0051 and the corresponding motor encoder is specified in p0187[x].<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The fault should be resolved as follows:<br />
+- select encoder commissioning (p0010 = 4).<br />
+- reset position tracking, position (p2720.2 = 1).<br />
+- deselect encoder commissioning (p0010 = 0).<br />
+The fault should then be acknowledged and the absolute encoder adjusted.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207449">F207449 (A)</a></b></td>
+<td><b>&lt;location&gt;Load gear: Position tracking actual position outside tolerance window</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: NONE<br />
+Servo: OFF1<br />
+ (NONE, OFF2, OFF3)Vector: OFF1<br />
+ (NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When switched off, the currently effective motor encoder was moved through a distance greater than was parameterized in the tolerance window. It is possible that there is no longer any reference between the mechanical system and encoder.<br />
+Note:<br />
+Only the motor encoder in the currently effective drive data set is monitored here. The actual effective drive data set is displayed in x = r0051 and the corresponding motor encoder is specified in p0187[x].<br />
+Fault value (r0949, interpret decimal):<br />
+Deviation (difference) to the last encoder position in increments of the absolute value after the measuring gear - if one is being used. The sign designates the traversing direction.<br />
+Note:<br />
+The deviation (difference) found is also displayed in r2724.<br />
+See also: p2722 (Load gear position tracking tolerance window), r2724 (Load gear position difference)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reset the position tracking as follows:<br />
+- select encoder commissioning (p0010 = 4).<br />
+- reset position tracking, position (p2720.2 = 1).<br />
+- deselect encoder commissioning (p0010 = 0).<br />
+The fault should then be acknowledged and, if necessary, the absolute encoder adjusted (p2507).<br />
+See also: p0010, p2507<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207500">F207500</a></b></td>
+<td><b>&lt;location&gt;Drive: Power unit data set PDS not configured</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Only for controlled line supply infeed&#47;regenerative feedback units:<br />
+The power unit data set was not configured - this means that a data set number was not entered into the drive data set.<br />
+Fault value (r0949, interpret decimal):<br />
+Drive data set number of p0185.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The index of the power unit data set associated with the drive data set should be entered into p0185.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207501">F207501</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor Data Set MDS not configured</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Only for power units:<br />
+The motor data set was not configured - this means that a data set number was not entered into the associated drive data set.<br />
+Fault value (r0949, interpret decimal):<br />
+The fault value includes the drive data set number of p0186.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The index of the motor data set associated with the drive data set should be entered into p0186.<br />
+See also: p0186 (Motor Data Sets (MDS) number)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207502">F207502</a></b></td>
+<td><b>&lt;location&gt;Drive: Encoder Data Set EDS not configured</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Only for power units:<br />
+The encoder data set was not configured - this means that a data set number was not entered into the associated drive data set.<br />
+Fault value (r0949, interpret decimal):<br />
+The fault value includes the drive data set number of p0187, p0188 and p0189.<br />
+The fault value is increased by 100 * encoder number (e.g. for p0189: Fault value 3xx with xx = data set number).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The index of the encoder data set associated with the drive data set should be entered into p0187 (1st encoder), p0188 (2nd encoder) and p0189 (3rd encoder).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207504">A207504</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor data set is not assigned to a drive data set</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A motor data set is not assigned to a drive object.<br />
+All of the existing motor data sets in the drive data sets must be assigned using the MDS number (p0186[0...n]). There must be at least as many drive data sets as motor data sets.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of the motor data set that has not been assigned.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>In the drive data sets, assign the non-assigned motor data set using the MDS number (p0186[0...n]).<br />
+- check whether all of the motor data sets are assigned to drive data sets.<br />
+- if required, delete superfluous motor data sets.<br />
+- if required, set up new drive data sets and assign to the corresponding motor data sets.<br />
+See also: p0186 (Motor Data Sets (MDS) number)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207509">F207509</a></b></td>
+<td><b>&lt;location&gt;Drive: Component assignment missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A Drive Data Set (DDS) is assigned to a Motor Data Set (MDS) or Encoder Data Set (EDS) that does not have a component number.<br />
+Fault value (r0949, interpret decimal):<br />
+nnmmmxxyyy<br />
+nn: Number of the MDS&#47;EDS.<br />
+mmm: Parameter number of the missing component number.<br />
+xx: Number of the DDS that is assigned to the MDS&#47;EDS.<br />
+yyy: Parameter number that references the MDS&#47;EDS.<br />
+Example:<br />
+p0186[7] = 5: DDS 7 is assigned MDS 5.<br />
+p0131[5] = 0: There is no component number set in MDS 5.<br />
+Alarm value = 0513107186<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>In the drive data sets, no longer assign MDS&#47;EDS using p0186, p0187, p0188, p0189 or set a valid component number.<br />
+See also: p0131, p0141, p0142, p0186, p0187, p0188, p0189<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207510">F207510</a></b></td>
+<td><b>&lt;location&gt;Drive: Identical encoder in the drive data set</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>More than one encoder with identical component number is assigned to a single drive data set. In one drive data set, it is not permissible that identical encoders are operated together.<br />
+Fault value (r0949, interpret decimal):<br />
+1000 * first identical encoder + 100 * second identical encoder + drive data set.<br />
+Example:<br />
+Fault value = 1203 means:<br />
+In drive data set 3, the first (p0187[3]) and second encoder (p0188[3]) are identical.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Assign the drive data set to different encoders.<br />
+See also: p0141, p0187 (Encoder 1 encoder data set number), p0188 (Encoder 2 encoder data set number), p0189 (Encoder 3 encoder data set number)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207511">F207511</a></b></td>
+<td><b>&lt;location&gt;Drive: Encoder used a multiple number of times</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Each encoder may only be assigned to one drive and within a drive must - in each drive data set - either always be encoder 1, always encoder 2 or always encoder 3. This unique assignment has been violated.<br />
+Fault value (r0949, interpret decimal):<br />
+The two parameters in coded form, that refer to the same component number.<br />
+First parameter:<br />
+Index: First and second decimal place (99 for EDS, not assigned DDS)<br />
+Parameter number: Third decimal place (1 for p0187, 2 for p0188, 3 for p0189, 4 for EDS not assigned DDS)<br />
+Drive number: Fourth and fifth decimal place<br />
+Second parameter:<br />
+Index: Sixth and seventh decimal place (99 for EDS, not assigned DDS)<br />
+Parameter number: Eighth decimal place (1 for p0187, 2 for p0188, 3 for p0189, 4 for EDS, not assigned DDS)<br />
+Drive number: Ninth and tenth decimal place<br />
+See also: p0141<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the double use of a component number using the two parameters coded in the fault value.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207512">F207512</a></b></td>
+<td><b>&lt;location&gt;Drive: Encoder data set changeover cannot be parameterized</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Using p0141, a changeover of the encoder data set is prepared that is illegal. In this firmware release, an encoder data set changeover is only permitted for the components in the actual topology.<br />
+Fault value (r0949, interpret decimal):<br />
+Incorrect EDS data set number.<br />
+See also: p0187 (Encoder 1 encoder data set number), p0188 (Encoder 2 encoder data set number), p0189 (Encoder 3 encoder data set number)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Every encoder data set must be assigned its own dedicated DRIVE-CLiQ socket. The component numbers of the encoder interfaces (p0141) must have different values within a drive object.<br />
+The following must apply:<br />
+p0141[0] not equal to p0141[1] not equal to ... not equal to p0141[n]<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207514">A207514 (N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Data structure does not correspond to the interface module</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The interface mode &quot;SIMODRIVE 611 universal&quot; was set (p2038 = 1) and the data structure does not correspond to this mode.<br />
+The following settings are possible, depending on the number of data sets:<br />
+Number of DDS&#47;MDS (p0180&#47;p0130): p0186<br />
+1&#47;1: p0186[0] = 0<br />
+2&#47;2: p0186[0] = 0, p0186[1] = 1<br />
+4&#47;4: p0186[0] = 0, p0186[1] = 1, p0186[2] = 2, p0186[3] = 3<br />
+8&#47;8: p0186[0] = 0, p0186[1] = 1, p0186[2] = 2 ... p0186[7] = 7<br />
+16&#47;16: p0186[0] = 0, p0186[1] = 1, p0186[2] = 2 ... p0186[15] = 15<br />
+32&#47;32: p0186[0] = 0, p0186[1] = 1, p0186[2] = 2 ... p0186[31] = 31<br />
+2&#47;1: p0186[0, 1] = 0<br />
+4&#47;2: p0186[0, 1] = 0, p0186[1, 2] = 1<br />
+8&#47;4: p0186[0, 1] = 0, p0186[1, 2] = 1, p0186[3, 4] = 2, p0186[5, 6] = 3<br />
+16&#47;8: p0186[0, 1] = 0, p0186[1, 2] = 1, p0186[3, 4] = 2 ... p0186[14, 15] = 7<br />
+32&#47;16: p0186[0, 1] = 0, p0186[1, 2] = 1, p0186[3, 4] = 2 ... p0186[30, 31] = 15<br />
+4&#47;1: p0186[0, 1, 2, 3] = 0<br />
+8&#47;2: p0186[0, 1, 2, 3] = 0, p0186[4, 5, 6, 7] = 1<br />
+16&#47;4: p0186[0, 1, 2, 3] = 0, p0186[4, 5, 6, 7] = 1, p0186[8, 9, 10, 11] = 2, p0186[12, 13, 14, 15] = 3<br />
+32&#47;8: p0186[0, 1, 2, 3] = 0, p0186[4, 5, 6, 7] = 1, p0186[8, 9, 10, 11] = 2 ... p0186[28, 29, 30, 31] = 7<br />
+8&#47;1: p0186[0...7] = 0<br />
+16&#47;2: p0186[0...7] = 0, p0186[8...15] = 1<br />
+32&#47;4: p0186[0...7] = 0, p0186[8...15] = 1, p0186[16...23] = 2, p0186[24...31] = 3<br />
+16&#47;1: p0186[0...15] = 0<br />
+32&#47;2: p0186[0...15] = 0, p0186[16...31] = 1<br />
+32&#47;1: p0186[0...31] = 0<br />
+9&#47;2: p0186[0...7] = 0, p0186[8] = 1<br />
+10&#47;2: p0186[0...7] = 0, p0186[8, 9] = 1<br />
+12&#47;2: p0186[0...7] = 0, p0186[8...11] = 1<br />
+See also: p0180, p0186, p2038<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the data structure according to the possible settings mentioned in the cause.<br />
+- check the interface mode (p2038).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207515">F207515</a></b></td>
+<td><b>&lt;location&gt;Drive: Power unit and motor incorrectly connected</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A power unit (via PDS) was assigned to a motor (via MDS) in a drive data set that is not connected in the target topology. It is possible that a motor has not been assigned to the power unit (p0131).<br />
+Fault value (r0949, interpret decimal):<br />
+Number of the incorrectly parameterized drive data set.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- assign the drive data set to a combination of motor and power unit permitted by the target topology.<br />
+- adapt the target topology.<br />
+- if required, for a missing motor, recreate the component (drive Wizard).<br />
+See also: p0121 (Power unit component number), p0131 (Motor component number), p0186 (Motor Data Sets (MDS) number)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207516">F207516</a></b></td>
+<td><b>&lt;location&gt;Drive: Re-commission the data set</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The assignment between the drive data set and motor data set (p0186) or between the drive data set and the encoder data set was modified (p0187). This is the reason that the drive data set must re-commissioned.<br />
+Fault value (r0949, interpret decimal):<br />
+Drive data set to be re-commissioned.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Commission the drive data set specified in the fault value (r0949).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207517">F207517</a></b></td>
+<td><b>&lt;location&gt;Drive: Encoder data set changeover incorrectly parameterized</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In at least two drive data sets (DDS), the same motor data set (MDS) is assigned different encoder data sets (EDS) for the motor encoder. In various DDSs, it is not permissible for an MDS to have different motor encoders.<br />
+The following parameterization therefore results in an error:<br />
+DDS0: p0186[0] = 0, p0187[0] = 0<br />
+DDS1: p0186[1] = 0, p0187[1] = 1<br />
+Fault value (r0949, interpret decimal):<br />
+The lower 16 bits indicate the first DDS. The upper 16 bits indicate the second DDS.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Create two MDS with the same motor data in order to operate one motor with different motor encoders.<br />
+Example:<br />
+DDS0: p0186[0] = 0, p0187[0] = 0<br />
+DDS1: p0186[1] = 1, p0187[1] = 1<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207518">F207518</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor data set changeover incorrectly parameterized</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The system has identified that two motor data sets were incorrectly parameterized.<br />
+Parameter r0313 (calculated from p0314, p0310, p0311), r0315 and p1982 may only have different values if the motor data sets are assigned different motors. p0827 is used to assign the motors and&#47;contactors.<br />
+It is not possible to toggle between motor data sets.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+xxxxyyyy:<br />
+xxxx: First DDS with assigned MDS, yyyy: Second DDS with assigned MDS<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct the parameterization of the motor data sets.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207530">A207530</a></b></td>
+<td><b>&lt;location&gt;Drive: Drive Data Set DDS not present</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The selected drive data set is not available (p0837 &gt; p0180). The drive data set was not changed over.<br />
+See also: p0180, p0820, p0821, p0822, p0823, p0824, r0837<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- select the existing drive data set.<br />
+- set up additional drive data sets.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207531">A207531</a></b></td>
+<td><b>&lt;location&gt;Drive: Command Data Set CDS not present</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The selected command data set is not available (p0836 &gt; p0170). The command data set was not changed over.<br />
+See also: p0810, p0811, r0836<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- select the existing command data set.<br />
+- set up additional command data sets.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207541">A207541</a></b></td>
+<td><b>&lt;location&gt;Drive: Data set changeover not possible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The selected drive data set changeover and the assigned motor changeover are not possible and are not carried out.<br />
+For synchronous motors, the motor contactor may only be switched for actual speeds less than the speed at the start of field weakening (r0063 &lt; p0348).<br />
+See also: r0063, p0348<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reduce the speed to below the speed at the start of field weakening (r0063 &lt; p0348).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207550">A207550 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Not possible to reset encoder parameters</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When carrying out a factory setting (e.g. using p0970 = 1), it was not possible to reset the encoder parameters. The encoder parameters are directly read out of the encoder via DRIVE-CLiQ.<br />
+Alarm value (r2124, interpret decimal):<br />
+Component number of the encoder involved.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- repeat the operation.<br />
+- check the DRIVE-CLiQ connection.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207552">F207552 (A)</a></b></td>
+<td><b>&lt;location&gt;Drive encoder: Encoder configuration not supported</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The requested encoder configuration is not supported. Only bits may be requested in p0404 that are signaled as being supported by the encoder evaluation in r0456.<br />
+Fault value (r0949, interpret decimal):<br />
+ccccbbaa hex: cccc = fault cause, bb = component number, aa = encoder data set<br />
+cccc = 1: encoder sin&#47;cos with absolute track (is supported by SME25).<br />
+cccc = 3: Square-wave encoder (this is supported by SMC30).<br />
+cccc = 4: sin&#47;cos encoder (this is supported by SMC20, SMI20, SME20, SME25).<br />
+cccc = 10: DRIVE-CLiQ encoder (is supported by DQI).<br />
+cccc = 12: sin&#47;cos encoder with reference mark (this is supported by SME20).<br />
+cccc = 15: Commutation with zero mark for separately excited synchronous motors with VECTORMV.<br />
+cccc = 23: Resolver (this is supported by SMC10, SMI10).<br />
+cccc = 65535: Other function (compare r0456 and p0404).<br />
+See also: p0404 (Encoder configuration effective), r0456 (Encoder configuration supported)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the encoder parameterization (p0400, p0404).<br />
+- use the matching encoder evaluation (r0456).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207553">F207553 (A)</a></b></td>
+<td><b>&lt;location&gt;Drive encoder: Sensor Module configuration not supported</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The Sensor Module does not support the requested configuration.<br />
+For incorrect p0430 (cc = 0), the following applies:<br />
+- in p0430 (requested functions), at least 1 bit was set that is not set in r0458 (supported functions) (exception: Bit 19, 28, 29, 30, 31).<br />
+- p1982 &gt; 0 (pole position identification requested), but r0458.16 = 0 (pole position identification not supported).<br />
+For incorrect p0437 (cc = 1), the following applies:<br />
+- in p0437 (requested functions), at least 1 bit was set that is not set in r0459 (supported functions).<br />
+Fault value (r0949, interpret hexadecimal):<br />
+ddccbbaa hex<br />
+aa: encoder data set number<br />
+bb: first incorrect bit<br />
+cc: incorrect parameter<br />
+cc = 0: incorrect parameter is p0430<br />
+cc = 1: incorrect parameter is p0437<br />
+cc = 2: incorrect parameter is r0459<br />
+cc = 3: incorrect parameter is p0454<br />
+dd: reserved (always 0)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the encoder parameterization (p0430, p0437, p0454).<br />
+- check the pole position identification routine (p1982).<br />
+- use the matching encoder evaluation (r0458, r0459).<br />
+See also: p0430, p0437, r0458, r0459, p1982<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207555">F207555 (A)</a></b></td>
+<td><b>&lt;location&gt;Drive encoder: Configuration position tracking</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For position tracking, the configuration is not supported.<br />
+Position tracking can only be activated for absolute encoders.<br />
+For linear axes, it is not possible to simultaneously activate the position tracking for load and measuring gears.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+ddccbbaa hex<br />
+aa = encoder data set<br />
+bb = component number<br />
+cc = drive data set<br />
+dd = fault cause<br />
+dd = 00 hex = 0 dec<br />
+An absolute encoder is not being used.<br />
+dd = 01 hex = 1 dec<br />
+Position tracking cannot be activated because the memory of the internal NVRAM is not sufficient or a Control Unit does not have an NVRAM.<br />
+dd = 02 hex = 2 dec<br />
+For a linear axis, the position tracking was activated for the load and measuring gear.<br />
+dd = 03 hex = 3 dec<br />
+Position tracking cannot be activated because position tracking with another gear ratio, axis type or tolerance window has already been detected for this encoder data set.<br />
+dd = 04 hex = 4 dec<br />
+A linear encoder is being used.<br />
+See also: p0404 (Encoder configuration effective), p0411 (Measuring gear configuration)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value 0:<br />
+- use an absolute encoder.<br />
+For fault value 1:<br />
+- use a Control Unit with sufficient NVRAM.<br />
+For fault value = 2, 4:<br />
+- if necessary, deselect the position tracking (p0411 for the measuring gear, p2720 for the load gear).<br />
+For fault value 3:<br />
+- Only activate position tracking of the load gear in the same encoder data set if the gear ratio (p2504, p2505), axis type (p2720.1) and tolerance window (p2722) are also the same. These parameters must be the same in all drive data sets, which use the same motor encoder (p187).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207556">F207556</a></b></td>
+<td><b>&lt;location&gt;Measuring gear: Position tracking, maximum actual value exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When the position tracking of the measuring gear is configured, the drive&#47;encoder identifies a maximum possible absolute position actual value (r0483) that cannot be represented within 32 bits.<br />
+Maximum value: p0408 * p0412 * 2^p0419<br />
+Fault value (r0949, interpret decimal):<br />
+aaaayyxx hex: yy = component number, xx = encoder data set<br />
+See also: p0408, p0412 (Measuring gear absolute encoder rotary revolutions virtual), p0419 (Fine resolution absolute value Gx_XIST2 (in bits))<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the fine resolution (p0419).<br />
+- reduce the multiturn resolution (p0412).<br />
+See also: p0412 (Measuring gear absolute encoder rotary revolutions virtual), p0419 (Fine resolution absolute value Gx_XIST2 (in bits))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207560">F207560</a></b></td>
+<td><b>&lt;location&gt;Drive encoder: Number of pulses is not to the power of two</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For rotary absolute encoders, the pulse number in p0408 must be to the power of two.<br />
+Fault value (r0949, interpret decimal):<br />
+The fault value includes the encoder data set number involved.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the parameterization (p0408, p0404.1, r0458.5).<br />
+- upgrade the Sensor Module firmware if necessary<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207561">F207561</a></b></td>
+<td><b>&lt;location&gt;Drive encoder: Number of multiturn pulses is not to the power of two</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The multiturn resolution in p0421 must be to the power of two.<br />
+Fault value (r0949, interpret decimal):<br />
+The fault value includes the encoder data set number involved.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the parameterization (p0421, p0404.1, r0458.5).<br />
+- upgrade the Sensor Module firmware if necessary<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207562">F207562 (A)</a></b></td>
+<td><b>&lt;location&gt;Drive, encoder: Position tracking, incremental encoder not possible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The requested position tracking for incremental encoders is not supported.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+ccccbbaa hex<br />
+aa = encoder data set<br />
+bb = component number<br />
+cccc = fault cause<br />
+cccc = 00 hex = 0 dec<br />
+The encoder type does not support the &quot;Position tracking incremental encoder&quot; function.<br />
+cccc = 01 hex = 1 dec<br />
+Position tracking cannot be activated because the memory of the internal NVRAM is not sufficient or a Control Unit does not have an NVRAM.<br />
+cccc = 04 hex = 4 dec<br />
+A linear encoder is used that does not support the &quot;position tracking&quot; function.<br />
+See also: p0404 (Encoder configuration effective), p0411 (Measuring gear configuration), r0456 (Encoder configuration supported)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the encoder parameterization (p0400, p0404).<br />
+- use a Control Unit with sufficient NVRAM.<br />
+- if required, deselect position tracking for the incremental encoder (p0411.3 = 0).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207563">F207563 (A)</a></b></td>
+<td><b>&lt;location&gt;Drive encoder: XIST1_ERW configuration incorrect</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An incorrect configuration was identified for the &quot;Absolute position for incremental encoder&quot; function.<br />
+Fault value (r0949, interpret decimal):<br />
+Fault cause:<br />
+1 (= 01 hex):<br />
+The &quot;Absolute value for incremental encoder&quot; function is not supported (r0459.13 = 0).<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+yyxx dec: yy = fault cause, xx = encoder data set<br />
+See also: r0459, p4652<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1:<br />
+- upgrade the Sensor Module firmware version.<br />
+- check the mode (p4652 = 1, 3 requires the property r0459.13 = 1).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207565">A207565 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Drive: Encoder error in PROFIdrive encoder interface 1</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An encoder error was signaled for encoder 1 via the PROFIdrive encoder interface (G1_ZSW.15).<br />
+Alarm value (r2124, interpret decimal):<br />
+Error code from G1_XIST2, refer to the description regarding r0483.<br />
+Note:<br />
+This alarm is only output if p0480[0] is not equal to zero.<br />
+Encoder control word Gn_STW signal source (p0480[0...2], n = encoder 1, 2, 3)<br />
+Encoder status word Gn_ZSW (r0481[0...2], n = encoder 1, 2, 3)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Acknowledge the encoder error using the encoder control word (G1_STW.15 = 1).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207569">A207569 (F)</a></b></td>
+<td><b>&lt;location&gt;Enc identification active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>During encoder identification (waiting) with p0400 = 10100, the encoder could still not be identified.<br />
+Either the wrong encoder has been installed or no encoder has been installed, the wrong encoder cable has been connected or no encoder cable has been connected to the Sensor Module, or the DRIVE-CLiQ component has not been connected.<br />
+Note:<br />
+Encoder identification must be supported by the encoder and is possible in the following cases:<br />
+- Encoder with EnDat interface.<br />
+- Encoder with SSI interface.<br />
+- Motor with DRIVE-CLiQ.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check and, if necessary, connect the encoder &#47; encoder cable.<br />
+- check and, if necessary, establish the DRIVE-CLiQ connection.<br />
+- for SSI encoders, carry out the required operator actions (see the Function Manual).<br />
+- in the case of encoders that cannot be identified (e.g. encoders without EnDat interface), enter the correct encoder type in p0400.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207575">F207575</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor encoder not ready</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+Servo: OFF2<br />
+ (ENCODER)Vector: OFF2<br />
+ (ENCODER)Hla: OFF2<br />
+ (ENCODER)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The motor encoder signals that it is not ready.<br />
+- initialization of encoder 1 (motor encoder) was unsuccessful.<br />
+- the function &quot;parking encoder&quot; is active (encoder control word G1_STW.14 = 1).<br />
+- the encoder interface (Sensor Module) is deactivated (p0145).<br />
+- the Sensor Module is defective.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate other queued faults via encoder 1.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207580">A207580 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Drive: No Sensor Module with matching component number</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A Sensor Module with the component number specified in p0141 was not found.<br />
+Alarm value (r2124, interpret decimal):<br />
+Encoder data set involved (index of p0141).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Correct parameter p0141.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207800">F207800</a></b></td>
+<td><b>&lt;location&gt;Drive: No power unit present</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The power unit parameters cannot be read or no parameters are stored in the power unit.<br />
+It is possible that the DRIVE-CLiQ cable between the Control Unit and power unit is interrupted or defective.<br />
+Note:<br />
+This fault also occurs if an incorrect topology was selected in the commissioning tool and this parameterization is then downloaded to the Control Unit.<br />
+See also: r0200 (Power unit code number actual)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- check the DRIVE-CLiQ cable between the Control Unit and power unit.<br />
+- check the power unit and replace if necessary.<br />
+- check the Control Unit, and if required replace it.<br />
+- after correcting the topology, the parameters must be again downloaded using the commissioning tool.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207805">A207805 (N)</a></b></td>
+<td><b>&lt;location&gt;Infeed: Power unit overload I2t</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The alarm threshold for I2t overload (p0294) of the power unit has been exceeded.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the continuous load.<br />
+- adapt the load duty cycle.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207810">F207810</a></b></td>
+<td><b>&lt;location&gt;Drive: Power unit EEPROM without rated data</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>No rated data are stored in the power unit EEPROM.<br />
+See also: p0205, r0206 (Rated power unit power), r0207 (Rated power unit current), r0208 (Rated power unit line supply voltage), r0209 (Power unit maximum current)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Replace the power unit or inform Siemens Customer Service.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207815">F207815</a></b></td>
+<td><b>&lt;location&gt;Drive: Power unit has been changed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The code number of the actual power unit does not match the saved number. This only occurs if the comparator in p9906 or p9908 is not at 2 (low) or 3 (minimum).<br />
+Fault value (r0949, interpret decimal):<br />
+Number of the incorrect parameter.<br />
+See also: r0200 (Power unit code number actual), p0201 (Power unit code number)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Connect the original power unit and switch on the Control Unit again (POWER ON) or set p0201 to r0200 and exit commissioning with p0010 = 0.<br />
+For infeeds, the following applies:<br />
+Line reactors or line filters must be used that are specified for the new power unit. A line supply and DC link identification routine (p3410 = 5) must then be carried out. It is not possible to change the power unit without re-commissioning the system if the type of infeed (A_Infeed, B_Infeed, S_Infeed), the type of construction&#47;design (booksize, chassis) or the voltage class differ between the old and new power units.<br />
+For inverters, the following applies:<br />
+If the new power unit is accepted, then if required, the current limit (p0640) can be reduced by a lower maximum current of the power unit (r0209) (torque limits stay the same).<br />
+If not only the power unit is changed, but also the motor, then the motor must be re-commissioned (e.g. using p0010 = 1). This is also necessary if motor data is still to be downloaded via DRIVE-CLiQ.<br />
+See also: r0200 (Power unit code number actual)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207850">A207850 (F)</a></b></td>
+<td><b>&lt;location&gt;External alarm 1</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External alarm 1&quot; is satisfied.<br />
+Note:<br />
+The &quot;External alarm 1&quot; is initiated by a 1&#47;0 edge via binector input p2112.<br />
+See also: p2112 (External alarm 1)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Eliminate the causes of this alarm.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207851">A207851 (F)</a></b></td>
+<td><b>&lt;location&gt;External alarm 2</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External alarm 2&quot; is satisfied.<br />
+Note:<br />
+The &quot;External alarm 2&quot; is initiated by a 1&#47;0 edge via binector input p2116.<br />
+See also: p2116 (External alarm 2)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Eliminate the causes of this alarm.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207852">A207852 (F)</a></b></td>
+<td><b>&lt;location&gt;External alarm 3</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External alarm 3&quot; is satisfied.<br />
+Note:<br />
+The &quot;External alarm 3&quot; is initiated by a 1&#47;0 edge via binector input p2117.<br />
+See also: p2117 (External alarm 3)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Eliminate the causes of this alarm.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207860">F207860 (A)</a></b></td>
+<td><b>&lt;location&gt;External fault 1</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External fault 1&quot; is satisfied.<br />
+Note:<br />
+The &quot;External fault 1&quot; is initiated by a 1&#47;0 edge via binector input p2106.<br />
+See also: p2106 (External fault 1)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- eliminate the causes of this fault.<br />
+- acknowledge fault.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207861">F207861 (A)</a></b></td>
+<td><b>&lt;location&gt;External fault 2</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External fault 2&quot; is satisfied.<br />
+Note:<br />
+The &quot;External fault 2&quot; is initiated by a 1&#47;0 edge via binector input p2107.<br />
+See also: p2107 (External fault 2)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- eliminate the causes of this fault.<br />
+- acknowledge fault.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207862">F207862 (A)</a></b></td>
+<td><b>&lt;location&gt;External fault 3</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Vector: OFF2<br />
+ (IASC/DCBRK, NONE, OFF1, OFF3, STOP2)Hla: OFF2<br />
+ (NONE, OFF1, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The condition for &quot;External fault 3&quot; is satisfied.<br />
+Note:<br />
+The &quot;External fault 3&quot; is initiated by a 1&#47;0 edge via the following parameters.<br />
+- AND logic operation, binector input p2108, p3111, p3112.<br />
+- switch-on delay p3110.<br />
+See also: p2108, p3110, p3111, p3112<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- eliminate the causes of this fault.<br />
+- acknowledge fault.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207904">F207904 (N, A)</a></b></td>
+<td><b>&lt;location&gt;External armature short-circuit: Contactor feedback signal &quot;Closed&quot; missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When closing, the contactor feedback signal (p1235) did not issue the signal &quot;Closed&quot; (r1239.1 = 1) within the monitoring time (p1236).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the contactor feedback signal is correctly connected (p1235).<br />
+- check the logic of the contactor feedback signal (r1239.1 = 1: &quot;Closed&quot;, r1239.1 = 0: &quot;Open&quot;).<br />
+- increase the monitoring time (p1236).<br />
+- if required, set the external armature short-circuit without contactor feedback signal (p1231 = 2).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207905">F207905 (N, A)</a></b></td>
+<td><b>&lt;location&gt;External armature short-circuit: Contactor feedback signal &quot;Open&quot; missing</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When opening, the contactor feedback signal (p1235) did not issue the signal &quot;Open&quot; (r1239.1 = 0) within the monitoring time (p1236).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the contactor feedback signal is correctly connected (p1235).<br />
+- check the logic of the contactor feedback signal (r1239.1 = 1: &quot;Closed&quot;, r1239.1 = 0: &quot;Open&quot;).<br />
+- increase the monitoring time (p1236).<br />
+- if required, set the external armature short-circuit without contactor feedback signal (p1231 = 2).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207918">A207918 (N)</a></b></td>
+<td><b>&lt;location&gt;Three-phase setpoint generator operation selected&#47;active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Only for separately excited synchronous motors (p0300 = 5):<br />
+The actual open-loop&#47;closed-loop control mode is I&#47;f control (open-loop) with a fixed current (p1300 = 18).<br />
+The speed is entered via the setpoint channel and the current setpoint is given by the minimum current (p1620).<br />
+It must be ensured that in this mode, the control dynamic performance is very limited. This is the reason that longer ramp-up times should be set for the setpoint speed than for normal operation.<br />
+See also: p1620 (Stator current minimum)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Select another open-loop&#47;closed-loop control mode<br />
+See also: p1300 (Open-loop/closed-loop control operating mode)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208000">F208000 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TB: +&#47;-15 V power supply faulted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: NONE<br />
+ (OFF1, OFF2)Servo: NONE<br />
+ (IASC/DCBRK, OFF1, OFF2, OFF3, STOP2)Vector: NONE<br />
+ (IASC/DCBRK, OFF1, OFF2, OFF3, STOP2)Hla: NONE<br />
+ (OFF1, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Terminal Board 30 detects an incorrect internal power supply voltage.<br />
+Fault value (r0949, interpret decimal):<br />
+0: Error when testing the monitoring circuit.<br />
+1: Fault in normal operation.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- replace Terminal Board 30.<br />
+- replace Control Unit.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208010">F208010 (N, A)</a></b></td>
+<td><b>&lt;location&gt;TB: Analog-digital converter</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: NONE<br />
+ (OFF1, OFF2)Servo: NONE<br />
+ (IASC/DCBRK, OFF1, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: NONE<br />
+ (OFF1, OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The analog&#47;digital converter on Terminal Board 30 has not supplied any converted data.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the power supply.<br />
+- replace Terminal Board 30.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208500">F208500 (A)</a></b></td>
+<td><b>&lt;location&gt;COMM BOARD: Monitoring time configuration expired</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (OFF2)Servo: OFF1<br />
+ (OFF2, OFF3)Vector: OFF1<br />
+ (OFF2, OFF3)Hla: OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The monitoring time for the configuration has expired.<br />
+Fault value (r0949, interpret decimal):<br />
+0: The transfer time of the send configuration data has been exceeded.<br />
+1: The transfer time of the receive configuration data has been exceeded.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check communications link.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208501">F208501 (N, A)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Setpoint timeout</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (OFF2)Servo: OFF3<br />
+ (IASC/DCBRK, NONE, OFF1, OFF2, STOP2)Vector: OFF3<br />
+ (IASC/DCBRK, NONE, OFF1, OFF2, STOP2)Hla: OFF3<br />
+ (NONE, OFF1, OFF2, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The reception of setpoints from the COMM BOARD has been interrupted.<br />
+- bus connection interrupted.<br />
+- controller switched off.<br />
+- controller set into the STOP state.<br />
+- COMM BOARD defective.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- Restore the bus connection and set the controller to RUN.<br />
+- if the error is repeated, check the update time set in the bus configuration (HW Config).<br />
+See also: p8840 (COMM BOARD monitoring time)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208502">F208502 (A)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Monitoring time sign-of-life expired</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (OFF2)Servo: OFF1<br />
+ (OFF2, OFF3)Vector: OFF1<br />
+ (OFF2, OFF3)Hla: OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The monitoring time for the sign-of-life counter has expired.<br />
+The connection to the COMM BOARD was interrupted.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check communications link.<br />
+- check COMM BOARD.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208504">A208504 (F)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Internal cyclic data transfer error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The cyclic actual and&#47;or setpoint values were not transferred within the specified times.<br />
+Alarm value (r2124, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the parameterizing telegram (Ti, To, Tdp, etc.).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208510">F208510 (A)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Send configuration data invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF1<br />
+ (OFF2)Servo: OFF1<br />
+ (OFF2, OFF3)Vector: OFF1<br />
+ (OFF2, OFF3)Hla: OFF1<br />
+ (OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>COMM BOARD did not accept the send-configuration data.<br />
+Fault value (r0949, interpret decimal):<br />
+Return value of the send-configuration data check.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the send configuration data.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208511">A208511 (F)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Receive configuration data invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive unit did not accept the receive configuration data.<br />
+Alarm value (r2124, interpret decimal):<br />
+Return value of the receive configuration data check.<br />
+1: Connection established to more drive objects than configured in the device. The drive objects for process data exchange and their sequence are defined in p0978.<br />
+2: Too many PZD data words for output or input to a drive object. The number of possible PZD items in a drive object is determined by the number of indices in r2050&#47;p2051 for PZD IF1, and in r8850&#47;p8851 for PZD IF2.<br />
+3: Uneven number of bytes for input or output.<br />
+4: Setting data for synchronization not accepted. For more information, see A01902.<br />
+5: Cyclic operation not active.<br />
+17: CBE20 Shared Device: Configuration of the F-CPU has been changed.<br />
+223: Illegal clock synchronization for the PZD interface set in p8815[0].<br />
+257: PN Shared Device: Too many PZD data words for output or input in the overall device.<br />
+500: Illegal PROFIsafe configuration for the interface set in p8815[1].<br />
+501: PROFIsafe parameter error (e.g. F_dest).<br />
+503: PROFIsafe connection is rejected as long as there is no isochronous connection (p8969).<br />
+Additional values:<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the receive configuration data.<br />
+For alarm value = 1, 2:<br />
+- check the list of the drive objects with process data exchange (p0978). With p0978[x] = 0, all of the following drive objects in the list are excluded from the process data exchange.<br />
+For alarm value = 2:<br />
+- check the number of data words for output and input to a drive object.<br />
+For alarm value = 17:<br />
+- CBE20 Shared Device: Unplug&#47;plug A-CPU.<br />
+For alarm value = 223, 500:<br />
+- check the setting in p8839 and p8815.<br />
+- ensure that only one PZD interface is operated in clock synchronism or with PROFIsafe.<br />
+For alarm value = 257:<br />
+- check the number of data words for output and input to the complete device.<br />
+For alarm value = 501:<br />
+- check the set PROFIsafe address (p9610).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208520">A208520 (F)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Non-cyclic channel error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The memory or the buffer status of the non-cyclic channel has an error.<br />
+Alarm value (r2124, interpret decimal):<br />
+0: Error in the buffer status.<br />
+1: Error in the memory.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check communications link.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208526">A208526 (F)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: No cyclic connection</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>There is no cyclic connection to the control.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Establish the cyclic connection and activate the control with cyclic operation.<br />
+For PROFINET, check the parameters &quot;Name of Station&quot; and &quot;IP of Station&quot; (r61000, r61001).<br />
+If a CBE20 is inserted and PROFIBUS is to communicate via PZD Interface 1, then this must be parameterized using the STARTER commissioning tool or directly using p8839.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208530">A208530 (F)</a></b></td>
+<td><b>&lt;location&gt;PN&#47;COMM BOARD: Message channel error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The memory or the buffer status of the message channel has an error.<br />
+Alarm value (r2124, interpret decimal):<br />
+0: Error in the buffer status.<br />
+1: Error in the memory.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check communications link.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208531">A208531 (F)</a></b></td>
+<td><b>&lt;location&gt;CBE20 POWER ON required</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>At least one parameter of the CBE20 (e.g. a parameter associated with SINAMICS Link) was changed as a result of a project download. A POWER ON is required to activate the values.<br />
+Note:<br />
+CBE20: Communication Board Ethernet 20<br />
+See also: p8811 (SINAMICS Link project selection), p8812 (SINAMICS Link clock cycle settings), p8835 (CBE20 firmware selection), p8836 (SINAMICS link node address)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Back up the parameters and carry out a POWER ON (switch-off&#47;switch-on).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208550">A208550</a></b></td>
+<td><b>&lt;location&gt;PZD Interface Hardware assignment error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The assignment of the hardware to the PZD interface has been incorrectly parameterized.<br />
+Alarm value (r2124, interpret decimal):<br />
+1: Only one of the two indices is not equal to 99 (automatic).<br />
+2: Both PZD interfaces are assigned to the same hardware.<br />
+3: Assigned COMM BOARD missing.<br />
+4: CBC10 is assigned to interface 1.<br />
+See also: p8839 (PZD interface hardware assignment)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Check the parameterization and if required, correct (p8839).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="208560">A208560</a></b></td>
+<td><b>&lt;location&gt;IE: Syntax error in configuration file</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A syntax error has been detected in the ASCII configuration file for the Industrial Ethernet interface (X127). The saved configuration file has not been loaded.<br />
+Note:<br />
+IE: Industrial Ethernet<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- Check the interface configuration (p8900 and following), correct if necessary, and activate (p8905 = 1).<br />
+- Save the parameters for interface configuration (e.g. p8905 = 2)<br />
+or<br />
+- reinitialize the station using the &quot;Edit Ethernet node&quot; screen form (e.g. with STARTER commissioning tool).<br />
+See also: p8905 (Activate IE interface configuration)<br />
+</td></tr>
+</table><p></p></body></html>

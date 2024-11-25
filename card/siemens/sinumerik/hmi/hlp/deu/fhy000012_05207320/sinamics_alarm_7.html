@@ -1,0 +1,1936 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="207447">F207447</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Lastgetriebe: Lageverfolgung maximaler Istwert &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb&#47;Geber (Motorgeber) erkennt bei projektierter Lageverfolgung des Lastgetriebes einen maximal m&ouml;glichen, absoluten Lageistwert (r2723), der nicht mehr innerhalb von 32 Bit dargestellt werden kann.<br />
+Maximaler Wert: p0408 * p2721 * 2^p0419<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+ccbbaa hex<br />
+aa = Geberdatensatz<br />
+bb = Komponentennummer<br />
+cc = Antriebsdatensatz<br />
+Siehe auch: p0408, p0419 (Feinauflösung Absolutwert Gx_XIST2 (in Bits)), p2721 (Lastgetriebe Absolutwertgeber rotatorisch Umdrehungen virtuell)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Feinaufl&ouml;sung verringern (p0419).<br />
+- Multiturnaufl&ouml;sung verringern (p2721).<br />
+Siehe auch: p0419 (Feinauflösung Absolutwert Gx_XIST2 (in Bits)), p2721 (Lastgetriebe Absolutwertgeber rotatorisch Umdrehungen virtuell)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207448">F207448 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Lastgetriebe: Lageverfolgung Linearachse hat maximalen Bereich &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: AUS1<br />
+ (AUS2, AUS3, KEINE)Vector: AUS1<br />
+ (AUS2, AUS3, KEINE)Hla: AUS1<br />
+ (AUS2, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der aktuell wirksame Motorgeber (Geber 1) hat bei projektierter Linearachse&#47;keine Moduloachse den maximal m&ouml;glichen Verfahrbereich &uuml;berschritten.<br />
+Der maximale Verfahrbereich ist bei projektierter Linearachse auf das 64-fache (+&#47;- 32-fache) von p0421 festgelegt. Er ist in p2721 zu lesen und als Anzahl von Lastumdrehungen zu interpretieren.<br />
+Hinweis:<br />
+Nur der Motorgeber im aktuell wirksamen Antriebsdatensatz wird hier &uuml;berwacht. Der aktuell wirksame Antriebsdatensatz wird in x = r0051 angezeigt und der entsprechende Motorgeber wird in p0187[x] vorgegeben.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die St&ouml;rung ist wie folgt zu beheben:<br />
+- Geberinbetriebnahme anw&auml;hlen (p0010 = 4).<br />
+- Lageverfolgung Position zur&uuml;cksetzen (p2720.2 = 1).<br />
+- Geberinbetriebnahme abw&auml;hlen (p0010 = 0).<br />
+Danach ist die St&ouml;rung zu quittieren und eine Justage des Absolutwertgebers durchzuf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207449">F207449 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Lastgetriebe: Lageverfolgung Aktuelle Position au&szlig;erhalb Toleranzfenster</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: AUS1<br />
+ (AUS2, AUS3, KEINE)Vector: AUS1<br />
+ (AUS2, AUS3, KEINE)Hla: AUS1<br />
+ (AUS2, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der aktuell wirksame Motorgeber wurde im ausgeschalteten Zustand um einen gr&ouml;&szlig;eren Wert verfahren als im Toleranzfenster parametriert. Der Bezug zwischen Mechanik und Geber besteht eventuell nicht mehr.<br />
+Hinweis:<br />
+Nur der Motorgeber im aktuell wirksamen Antriebsdatensatz wird hier &uuml;berwacht. Der aktuell wirksame Antriebsdatensatz wird in x = r0051 angezeigt und der entsprechende Motorgeber wird in p0187[x] vorgegeben.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Abweichung zur letzten Geberposition in Inkrementen des Absolutwertes nach dem Messgetriebe, falls vorhanden. Das Vorzeichen kennzeichnet die Verfahrrichtung.<br />
+Hinweis:<br />
+Die gefundene Abweichung wird auch in r2724 angezeigt.<br />
+Siehe auch: p2722 (Lastgetriebe Lageverfolgung Toleranzfenster), r2724 (Lastgetriebe Lagedifferenz)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Lageverfolgung wie folgt zur&uuml;cksetzen:<br />
+- Geberinbetriebnahme anw&auml;hlen (p0010 = 4).<br />
+- Lageverfolgung Position zur&uuml;cksetzen (p2720.2 = 1).<br />
+- Geberinbetriebnahme abw&auml;hlen (p0010 = 0).<br />
+Danach ist die St&ouml;rung zu quittieren und gegebenenfalls eine Justage des Absolutwertgebers durchzuf&uuml;hren (p2507).<br />
+Siehe auch: p0010, p2507<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207450">F207450 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LR: Stillstands&uuml;berwachung hat angesprochen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb hat nach Ablauf der Stillstands&uuml;berwachungszeit (p2543) das Stillstandsfenster (p2542) verlassen.<br />
+- Lageistwert-Invertierung falsch eingestellt (p0410).<br />
+- Stillstandsfenster zu klein eingestellt (p2542).<br />
+- Stillstands&uuml;berwachungszeit zu klein eingestellt (p2543).<br />
+- Lagekreisverst&auml;rkung zu klein (p2538).<br />
+- Lagekreisverst&auml;rkung zu gro&szlig; (Instabilit&auml;t&#47;Schwingverhalten, p2538).<br />
+- Mechanische &Uuml;berlast.<br />
+- Anschlussleitung Motor&#47;Umrichter falsch (Phase fehlt, vertauscht).<br />
+- Bei Anwahl Motoridentifikation den Nachf&uuml;hrbetrieb anw&auml;hlen (BI: p2655[0] = 1-Signal).<br />
+- Bei Anwahl Funktionsgenerator den Nachf&uuml;hrbetrieb anw&auml;hlen (BI: p2655[0] = 1-Signal) und die Lageregelung deaktivieren (BI: p2550 = 0-Signal).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Ursachen &uuml;berpr&uuml;fen und beseitigen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207451">F207451 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LR: Positionier&uuml;berwachung hat angesprochen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb hat mit Ablauf der Positionier&uuml;berwachungszeit (p2545) das Positionierfenster (p2544) noch nicht erreicht.<br />
+- Positionierfenster zu klein parametriert (p2544).<br />
+- Positionier&uuml;berwachungszeit zu klein parametriert (p2545).<br />
+- Lagekreisverst&auml;rkung zu klein (p2538).<br />
+- Lagekreisverst&auml;rkung zu gro&szlig; (Instabilit&auml;t&#47;Schwingverhalten, p2538).<br />
+- Mechanische Klemmung.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Ursachen &uuml;berpr&uuml;fen und beseitigen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207452">F207452 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LR: Schleppabstand zu gro&szlig;</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Differenz aus dem Lagesollwert und dem Lageistwert (Schleppabstand dynamisches Modell, r2563) ist gr&ouml;&szlig;er als die Toleranz (p2546).<br />
+- Drehmomenten- bzw. Beschleunigungsverm&ouml;gen des Antriebs &uuml;berschritten.<br />
+- St&ouml;rung des Lagemesssystems.<br />
+- Geberleitung unterbrochen.<br />
+- Lageregelsinn stimmt nicht.<br />
+- Verklemmung der Mechanik.<br />
+- Zu hohe Verfahrgeschwindigkeit oder zu gro&szlig;e Lagesollwertdifferenzen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Ursachen &uuml;berpr&uuml;fen und beseitigen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207453">F207453</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LR: Lageistwertaufbereitung fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Lageistwertaufbereitung ist ein Fehler aufgetreten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Den Geber f&uuml;r die Lageistwertaufbereitung kontrollieren.<br />
+Siehe auch: p2502 (LR Geberzuordnung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207454">A207454</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LR: Lageistwertaufbereitung hat keinen g&uuml;ltigen Geber</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Lageistwertaufbereitung ist eines der folgenden Probleme aufgetreten:<br />
+- Es ist kein Geber f&uuml;r die Lageistwertaufbereitung zugeordnet (p2502 = 0).<br />
+- Es ist ein Geber zugeordnet, diesem aber kein Geberdatensatz (p0187 = 99 bzw. p0188 = 99 bzw. p0189 = 99).<br />
+- Es ist ein Geber und ein Geberdatensatz zugeordnet, der Geberdatensatz enth&auml;lt aber keine Geberdaten (p0400 = 0) bzw. ung&uuml;ltige Daten (z. B. p0408 = 0).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Antriebsdatens&auml;tze, Geberdatens&auml;tze bzw. Geberzuordnung &uuml;berpr&uuml;fen.<br />
+Siehe auch: p0187 (Geber 1 Geberdatensatz Nummer), p0188 (Geber 2 Geberdatensatz Nummer), p0189 (Geber 3 Geberdatensatz Nummer), p0400 (Gebertyp Auswahl), p2502 (LR Geberzuordnung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207455">A207455</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Maximalgeschwindigkeit begrenzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Maximalgeschwindigkeit (p2571) ist zu gro&szlig; f&uuml;r eine korrekte Berechnung der Modulokorrektur.<br />
+Innerhalb der Abtastzeit f&uuml;r Positionieren (p0115[5]) darf mit der Maximalgeschwindigkeit maximal die halbe Modulol&auml;nge zur&uuml;ckgelegt werden. Auf diesen Wert wurde p2571 begrenzt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Maximalgeschwindigkeit verringern (p2571).<br />
+- Abtastzeit f&uuml;r Positionieren erh&ouml;hen (p0115[5]).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207456">A207456</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Sollgeschwindigkeit begrenzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die aktuelle Sollgeschwindigkeit ist gr&ouml;&szlig;er als die parametrierte Maximalgeschwindigkeit (p2571) und wird deshalb begrenzt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Vorgegebene Sollgeschwindigkeit &uuml;berpr&uuml;fen.<br />
+- Geschwindigkeitsoverride verringern (CI: p2646).<br />
+- Maximalgeschwindigkeit erh&ouml;hen (p2571).<br />
+- Die Signalquelle f&uuml;r die extern begrenzte Geschwindigkeit &uuml;berpr&uuml;fen (CI: p2594).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207457">A207457</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Eingangssignale Kombination unzul&auml;ssig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde eine unzul&auml;ssige Kombination von gleichzeitig gesetzten Eingangssignalen erkannt.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+0: Tippen 1 und Tippen 2 (p2589, p2590).<br />
+1: Tippen 1 oder Tippen 2 und Sollwertdirektvorgabe&#47;MDI (p2589, p2590, p2647).<br />
+2: Tippen 1 oder Tippen 2 und Referenzieren Start (p2589, p2590, p2595).<br />
+3: Tippen 1 oder Tippen 2 und Verfahrauftrag aktivieren (p2589, p2590, p2631).<br />
+4: Sollwertdirektvorgabe&#47;MDI und Referenzieren Start (p2647, p2595).<br />
+5: Sollwertdirektvorgabe&#47;MDI und Verfahrauftrag aktivieren (p2647, p2631).<br />
+6: Referenzieren Start und Verfahrauftrag aktivieren (p2595, p2631).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die entsprechende Eingangssignale &uuml;berpr&uuml;fen und korrigieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207458">F207458</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Referenznocken nicht gefunden</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Nach dem Starten der Referenzpunktfahrt ist die Achse den maximal zul&auml;ssigen Weg zum Suchen des Referenznocken gefahren, ohne den Referenznocken zu finden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Binektoreingang &quot;Referenznocken&quot; &uuml;berpr&uuml;fen (BI: p2612).<br />
+- Maximal zul&auml;ssigen Weg zum Referenznocken &uuml;berpr&uuml;fen (p2606).<br />
+- Wenn Achse ohne Referenznocken, dann p2607 = 0 setzen.<br />
+Siehe auch: p2606 (EPOS Referenzpunktfahrt Referenznocken Maximaler Weg), p2607 (EPOS Referenzpunktfahrt Referenznocken vorhanden), p2612 (EPOS Referenzpunktfahrt Referenznocken)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207459">F207459</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Keine Nullmarke vorhanden</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Nach dem Verlassen des Referenznockens ist die Achse den maximal zul&auml;ssigen Weg zwischen Referenznocken und Nullmarke gefahren, ohne die Nullmarke zu finden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Geber hinsichtlich der Nullmarke &uuml;berpr&uuml;fen.<br />
+- Maximal zul&auml;ssigen Weg zwischen Referenznocken und Nullmarke &uuml;berpr&uuml;fen (p2609).<br />
+- Externe Gebernullmarke (Nullmarkenersatz) verwenden (p0495).<br />
+Siehe auch: p0495 (Nullmarkenersatz Eingangsklemme), p2609 (EPOS Referenzpunktfahrt Max Weg Referenznocken und Nullmarke)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207460">F207460</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Referenznockenende nicht gefunden</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>W&auml;hrend der Referenzpunktfahrt hat die Achse beim Anfahren der Nullmarke das Verfahrbereichsende erreicht, ohne eine Flanke am Binektoreingang &quot;Referenznocken&quot; (BI: p2612) zu erkennen.<br />
+Maximaler Verfahrbereich: -2147483648 [LU] ... -2147483647 [LU]<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Binektoreingang &quot;Referenznocken&quot; (BI: p2612) &uuml;berpr&uuml;fen.<br />
+- Referenzpunktfahrt wiederholen.<br />
+Siehe auch: p2612 (EPOS Referenzpunktfahrt Referenznocken)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207461">A207461</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Referenzpunkt nicht gesetzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Starten eines Verfahrsatzes&#47;Sollwertdirektvorgabe ist kein Referenzpunkt gesetzt (r2684.11 = 0).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Referenzieren durchf&uuml;hren (Referenzpunktfahrt, Fliegendes Referenzieren, Referenzpunkt setzen).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207462">A207462</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Angew&auml;hlte Verfahrsatznummer existiert nicht</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Ein &uuml;ber Binektoreingang p2625 ... p2630 angew&auml;hlter Verfahrsatz wurde &uuml;ber Binektoreingang p2631 = 0&#47;1-Flanke &quot;Verfahrauftrag aktivieren&quot; gestartet.<br />
+- Die Nummer des gestarteten Verfahrsatzes ist in p2616[0...n] nicht enthalten.<br />
+- Der gestartete Verfahrsatz ist ausgeblendet.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des angew&auml;hlten und nicht verf&uuml;gbaren Verfahrsatzes.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verfahrprogramm korrigieren.<br />
+- Eine verf&uuml;gbare Verfahrsatznummer anw&auml;hlen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207463">A207463 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Externer Satzwechsel im Verfahrsatz nicht angefordert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei einem Verfahrsatz mit der Satzweiterschaltung WEITER_EXTERN_ALARM wurde der externe Satzwechsel nicht angefordert.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Verfahrsatzes.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Ursache f&uuml;r das Ausbleiben der Flanke am Binektoreingang (BI: p2632) beheben.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207464">F207464</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrsatz ist inkonsistent</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Verfahrsatz enth&auml;lt nicht g&uuml;ltige Informationen.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Verfahrsatzes mit ung&uuml;ltigen Informationen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Den Verfahrsatz &uuml;berpr&uuml;fen und gegebenenfalls anstehende Warnungen beachten.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207465">A207465</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrsatz hat keinen Folgesatz</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Im Verfahrsatz existiert kein Folgesatz.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Verfahrsatzes mit fehlendem Folgesatz.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Diesen Verfahrsatz mit Weiterschaltbedingung ENDE parametrieren.<br />
+- Weitere Verfahrs&auml;tze mit gr&ouml;&szlig;erer Satznummer und beim letzten Satz die Weiterschaltbedingung ENDE parametrieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207466">A207466</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrsatznummer mehrfach vergeben</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde die gleiche Verfahrsatznummer mehrfach vergeben.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Mehrfach vergebene Nummer des Verfahrsatzes.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Verfahrs&auml;tze korrigieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207467">A207467</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrsatz hat unzul&auml;ssigen Auftragsparameter</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Auftragsparameter im Verfahrsatz beinhaltet einen unzul&auml;ssigen Wert.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Verfahrsatzes mit unzul&auml;ssigem Auftragsparameter.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Im Verfahrsatz den Auftragsparameter korrigieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207468">A207468</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrsatz Sprungziel existiert nicht</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde in einem Verfahrsatz ein Sprung zu einem nicht vorhandenen Satz programmiert.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Verfahrsatzes mit nicht vorhandenem Sprungziel.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verfahrsatz korrigieren.<br />
+- Fehlenden Verfahrsatz erg&auml;nzen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207469">A207469</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrsatz Zielposition &lt; Software-Endschalter Minus</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Im Verfahrsatz liegt die angegebene absolute Zielposition au&szlig;erhalb des durch Software-Endschalter Minus begrenzten Bereichs.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Verfahrsatzes mit nicht erlaubter Zielposition.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verfahrsatz korrigieren.<br />
+- Software-Endschalter Minus &auml;ndern (CI: p2578, p2580).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207470">A207470</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrsatz Zielposition &gt; Software-Endschalter Plus</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Im Verfahrsatz liegt die angegebene absolute Zielposition au&szlig;erhalb des durch den Software-Endschalter Plus begrenzten Bereichs.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Verfahrsatzes mit nicht erlaubter Zielposition.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verfahrsatz korrigieren.<br />
+- Software-Endschalter Plus &auml;ndern (CI: p2579, p2581).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207471">A207471</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrsatz Zielposition au&szlig;erhalb Modulobereich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Im Verfahrsatz liegt die Zielposition au&szlig;erhalb des Modulobereichs.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Verfahrsatzes mit nicht erlaubter Zielposition.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Im Verfahrsatz die Zielposition korrigieren.<br />
+- Modulobereich &auml;ndern (p2576).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207472">A207472</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrsatz ABS_POS&#47;ABS_NEG nicht m&ouml;glich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Im Verfahrsatz wurde der Positioniermodus ABS_POS oder ABS_NEG bei nicht aktivierter Modulokorrektur parametriert.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Verfahrsatzes mit nicht erlaubtem Positioniermodus.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Verfahrsatz korrigieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207473">A207473 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrbereichsanfang angefahren</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Achse ist beim Verfahren an die Verfahrbereichsgrenze gefahren.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>In positiver Richtung wegfahren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207474">A207474 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrbereichsende angefahren</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Achse ist beim Verfahren an die Verfahrbereichsgrenze gefahren.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>In negativer Richtung wegfahren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207475">F207475 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Zielposition &lt; Verfahrbereichsanfang</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Zielposition beim relativen Verfahren liegt au&szlig;erhalb des Verfahrbereichs.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zielposition korrigieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207476">F207476 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Zielposition &gt; Verfahrbereichsende</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Zielposition beim relativen Verfahren liegt au&szlig;erhalb des Verfahrbereichs.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zielposition korrigieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207477">A207477 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Zielposition &lt; Software-Endschalter Minus</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Zielposition beim aktuellen Verfahren ist kleiner als der Software-Endschalter Minus.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Zielposition korrigieren.<br />
+- Software-Endschalter Minus &auml;ndern (CI: p2578, p2580).<br />
+Siehe auch: p2578 (EPOS Software-Endschalter Minus Signalquelle), p2580 (EPOS Software-Endschalter Minus), p2582 (EPOS Software-Endschalter Aktivierung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207478">A207478 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Zielposition &gt; Software-Endschalter Plus</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Zielposition beim aktuellen Verfahren ist gr&ouml;&szlig;er als der Software-Endschalter Plus.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Zielposition korrigieren.<br />
+- Software-Endschalter Plus &auml;ndern (CI: p2579, p2581).<br />
+Siehe auch: p2579 (EPOS Software-Endschalter Plus Signalquelle), p2581 (EPOS Software-Endschalter Plus), p2582 (EPOS Software-Endschalter Aktivierung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207479">A207479</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Software-Endschalter Minus angefahren</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Achse befindet sich an der Position von Software-Endschalter Minus. Ein aktiver Verfahrsatz wurde abgebrochen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Zielposition korrigieren.<br />
+- Software-Endschalter Minus &auml;ndern (CI: p2578, p2580).<br />
+Siehe auch: p2578 (EPOS Software-Endschalter Minus Signalquelle), p2580 (EPOS Software-Endschalter Minus), p2582 (EPOS Software-Endschalter Aktivierung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207480">A207480</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Software-Endschalter Plus angefahren</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Achse befindet sich an der Position von Software-Endschalter Plus. Ein aktiver Verfahrsatz wurde abgebrochen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Zielposition korrigieren.<br />
+- Software-Endschalter Plus &auml;ndern (CI: p2579, p2581).<br />
+Siehe auch: p2579 (EPOS Software-Endschalter Plus Signalquelle), p2581 (EPOS Software-Endschalter Plus), p2582 (EPOS Software-Endschalter Aktivierung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207481">F207481 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Achsposition &lt; Software-Endschalter Minus</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die aktuelle Position der Achse ist kleiner als die Position von Software-Endschalter Minus.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Zielposition korrigieren.<br />
+- Software-Endschalter Minus &auml;ndern (CI: p2578, p2580).<br />
+Siehe auch: p2578 (EPOS Software-Endschalter Minus Signalquelle), p2580 (EPOS Software-Endschalter Minus), p2582 (EPOS Software-Endschalter Aktivierung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207482">F207482 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Achsposition &gt; Software-Endschalter Plus</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die aktuelle Position der Achse ist gr&ouml;&szlig;er als die Position von Software-Endschalter Plus.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Zielposition korrigieren.<br />
+- Software-Endschalter Plus &auml;ndern (CI: p2579, p2581).<br />
+Siehe auch: p2579 (EPOS Software-Endschalter Plus Signalquelle), p2581 (EPOS Software-Endschalter Plus), p2582 (EPOS Software-Endschalter Aktivierung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207483">A207483</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Fahren auf Festanschlag Klemmmoment nicht erreicht</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Festanschlag im Verfahrsatz wurde erreicht ohne dass das Klemmmoment&#47;Klemmkraft erlangt wurde.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Maximalen momentenbildenden Strom pr&uuml;fen (r1533).<br />
+- Momentengrenzen pr&uuml;fen (p1520, p1521).<br />
+- Leistungsgrenzen pr&uuml;fen (p1530, p1531).<br />
+- BICO-Verschaltungen der Momentengrenzen pr&uuml;fen (p1522, p1523, p1528, p1529).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207484">F207484</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Festanschlag au&szlig;erhalb &Uuml;berwachungsfenster</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS3<br />
+ (AUS1, AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Im Zustand &quot;Festanschlag erreicht&quot; hat sich die Achse au&szlig;erhalb des festgelegten &Uuml;berwachungsfensters (p2635) bewegt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- &Uuml;berwachungsfenster &uuml;berpr&uuml;fen (p2635).<br />
+- Mechanik &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207485">F207485 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Festanschlag nicht erreicht</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In einem Verfahrsatz mit dem Auftrag FESTANSCHLAG wurde die Endposition erreicht ohne einen Festanschlag zu erkennen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verfahrsatz &uuml;berpr&uuml;fen und Zielposition weiter ins Werkst&uuml;ck legen.<br />
+- Steuersignal &quot;Festanschlag erreicht&quot; &uuml;berpr&uuml;fen (p2637).<br />
+- Gegebenenfalls das maximale Schleppabstandsfenster zur Festanschlagserkennung verringern (p2634).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207486">A207486</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Zwischenhalt fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In den Betriebsarten &quot;Verfahrs&auml;tze&quot; oder &quot;Sollwertdirektvorgabe&#47;MDI&quot; hat zum Starten der Bewegung der Binektoreingang &quot;Kein Zwischenhalt&#47;Zwischenhalt&quot; (BI: p2640) kein 1-Signal.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Ein 1-Signal am Binektoreingang &quot;Kein Zwischenhalt&#47;Zwischenhalt&quot; (BI: p2640) anlegen und die Bewegung erneut starten.<br />
+Siehe auch: p2640 (EPOS Zwischenhalt (0-Signal))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207487">A207487</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Verfahrauftrag verwerfen fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In den Betriebsarten &quot;Verfahrs&auml;tze&quot; oder &quot;Sollwertdirektvorgabe&#47;MDI&quot; hat zum Starten der Bewegung der Binektoreingang &quot;Kein Verfahrauftrag verwerfen&#47;Verfahrauftrag verwerfen&quot; (BI: p2641) kein 1-Signal.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Ein 1-Signal am Binektoreingang &quot;Kein Verfahrauftrag verwerfen&#47;Verfahrauftrag verwerfen&quot; (BI: p2641) anlegen und die Bewegung erneut starten.<br />
+Siehe auch: p2641 (EPOS Verfahrauftrag verwerfen (0-Signal))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207488">F207488</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Relative Positionierung nicht m&ouml;glich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In der Betriebsart &quot;Sollwertdirektvorgabe&#47;MDI&quot; wurde bei kontinuierlicher &Uuml;bernahme (p2649 = 1) eine relative Positionierung angew&auml;hlt (BI: p2648 = 0-Signal).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Ansteuerung &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207489">A207489</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Referenzpunktkorrektur au&szlig;erhalb Fenster</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Funktion &quot;Fliegendes Referenzieren&quot; liegt die Differenz zwischen der gemessenen Position am Messtaster und der Referenzpunkt-Koordinate au&szlig;erhalb des parametrierten Fensters.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Mechanik &uuml;berpr&uuml;fen.<br />
+- Parametrierung des Fensters &uuml;berpr&uuml;fen (p2602).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207490">F207490 (N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Freigabe w&auml;hrend Verfahren weggenommen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>- Bei Standardbelegung kann eine andere St&ouml;rung aufgetreten sein, die als Folge die Wegnahme der Freigabesignale hatte.<br />
+- Der Antrieb befindet sich im Zustand &quot;Einschaltsperre&quot; (bei Standardbelegung).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Die Freigabesignale setzen bzw. die Ursache der zuerst aufgetretenen St&ouml;rung &uuml;berpr&uuml;fen und beseitigen (bei Standardbelegung).<br />
+- Belegung f&uuml;r die Freigabe des Einfachpositionierers &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207491">F207491 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: STOP-Nocken Minus angefahren</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS3<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Am Binektoreingang p2569 wurde ein 0-Signal erkannt, d. h. der STOP-Nocken Minus wurde angefahren.<br />
+Bei positiver Verfahrrichtung wurde der STOP-Nocken Minus angefahren, d. h. die Verdrahtung der STOP-Nocken ist falsch.<br />
+Siehe auch: p2569 (EPOS STOP-Nocken Minus)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Den STOP-Nocken Minus in positiver Verfahrrichtung verlassen und die Achse in den g&uuml;ltigen Verfahrbereich zur&uuml;ckfahren.<br />
+- Verdrahtung der STOP-Nocken &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207492">F207492 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: STOP-Nocken Plus angefahren</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS3<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Am Binektoreingang p2570 wurde ein 0-Signal erkannt, d. h. der STOP-Nocken Plus wurde angefahren.<br />
+Bei negativer Verfahrrichtung wurde der STOP-Nocken Plus angefahren, d. h. die Verdrahtung der STOP-Nocken ist falsch.<br />
+Siehe auch: p2570 (EPOS STOP-Nocken Plus)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Den STOP-Nocken Plus in negativer Verfahrrichtung verlassen und die Achse in den g&uuml;ltigen Verfahrbereich zur&uuml;ckfahren.<br />
+- Verdrahtung der STOP-Nocken &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207493">F207493</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LR: &Uuml;berlauf des Wertebereiches f&uuml;r Lageistwert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Wertebereich (-2147483648 ... 2147483647) f&uuml;r die Lageistwertdarstellung wurde &uuml;berschritten.<br />
+Mit dem &Uuml;berlauf wird der Status &quot;Referenziert&quot; bzw. &quot;Justage absolutes Messsystem&quot; zur&uuml;ckgesetzt.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+1: Der Lageistwert (r2521) hat den Wertebereich &uuml;berschritten.<br />
+2: Der Geberlageistwert Gn_XIST2 (r0483) bzw. der Absolutwert nach dem Lastgetriebe (r2723) hat den Wertebereich &uuml;berschritten.<br />
+3: Der maximale Geberwert mal dem Faktor zur Umrechnung der absoluten Lage (r0483 bzw. r2723) von Inkrementen nach L&auml;ngeneinheiten (LU) hat den Wertebereich f&uuml;r die Lageistwertdarstellung &uuml;berschritten.<br />
+Hinweis:<br />
+Bei einem Lineargeber muss Folgendes eingehalten werden:<br />
+- p0407 * p2503 &#47; (2^p0418*10^7) &lt; 1<br />
+- p0407 * p2503 &#47; (2^p0419*10^7) &lt; 1<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Verfahrbereich bzw. Lageaufl&ouml;sung (p2506) gegebenenfalls reduzieren.<br />
+Feinaufl&ouml;sung des absoluten Lageistwertes erh&ouml;hen (p0419).<br />
+Hinweis zu St&ouml;rwert = 3:<br />
+Ist die maximal m&ouml;gliche absolute Lage (LU) betragsm&auml;&szlig;ig gr&ouml;&szlig;er als 4294967296, so kann aufgrund eines &Uuml;berlaufs nicht justiert werden.<br />
+Bei rotatorischen Gebern berechnet sich die maximal m&ouml;gliche absolute Lage (LU) wie folgt:<br />
+1. Motorgeber ohne Lageverfolgung<br />
+p2506 * p0433 * p2505 &#47; (p0432 * p2504)<br />
+p2506 * p0433 * p2505 * p0421 &#47; (p0432 * p2504) bei Multiturngeber<br />
+2. Motorgeber mit Lageverfolgung f&uuml;r Messgetriebe<br />
+p2506 * p0412 * p2505 &#47; p2504<br />
+3. Motorgeber mit Lageverfolgung f&uuml;r Lastgetriebe<br />
+p2506 * p2721 * p0433 &#47; p0432<br />
+4. Motorgeber mit Lageverfolgung f&uuml;r Last- und Messgetriebe<br />
+p2506 * p2721<br />
+5. Direkter Geber ohne Lageverfolgung<br />
+p2506 * p0433 &#47; p0432<br />
+p2506 * p0433 * p0421 &#47; p0432 bei Multiturngeber<br />
+6. Direkter Geber mit Lageverfolgung f&uuml;r Messgetriebe<br />
+p2506 * p0412<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207494">F207494</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LR: Antriebsdatensatz-Umschaltung w&auml;hrend Betrieb</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS1<br />
+ (AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Eine Antriebsdatensatz-Umschaltung (DDS-Umschaltung) mit &Auml;nderung der mechanischen Verh&auml;ltnisse (p2503 ... 2506), der Drehrichtung (p1821) oder der Geberzuordnung (p2502) wurde w&auml;hrend des Betriebs angefordert.<br />
+Hinweis:<br />
+DDS: Drive Data Set (Antriebsdatensatz)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zur Umschaltung des Antriebsdatensatzes zun&auml;chst den Modus &quot;Betrieb&quot; verlassen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207495">A207495 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LR: Referenzfunktion abgebrochen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Eine aktivierte Referenzfunktion (Referenzmarkensuche oder Messtasterauswertung) wurde abgebrochen.<br />
+M&ouml;gliche Ursachen:<br />
+- Ein Geberfehler ist aufgetreten (Gn_ZSW.15 = 1).<br />
+- Lageistwert w&auml;hrend aktivierter Referenzfunktion gesetzt.<br />
+- Referenzmarkensuche und Messtasterauswertung gleichzeitig aktiviert (BI: p2508 und BI: p2509 = 1-Signal).<br />
+- Aktivierte Referenzfunktion (Referenzmarkensuche oder Messtasterauswertung) wurde deaktiviert (BI: p2508 und BI: p2509 = 0-Signal).<br />
+- Die Eingangsklemme f&uuml;r den Messtaster ist nicht eingestellt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Ursachen &uuml;berpr&uuml;fen und beseitigen.<br />
+- Ansteuerung zur&uuml;cksetzen (BI: p2508 und BI: p2509 = 0-Signal) und gew&uuml;nschte Funktion aktivieren.<br />
+- Eingangsklemme f&uuml;r Messtaster einstellen (p0488, p0489 bzw. p2517, p2518).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207496">A207496</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Freigabe nicht m&ouml;glich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Freigabe f&uuml;r den Einfachpositionierer ist wegen mindestens einer fehlenden Bedingung nicht m&ouml;glich.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1: EPOS Freigabe fehlt (BI: p2656).<br />
+2: Lageistwert g&uuml;ltig R&uuml;ckmeldung fehlt (BI: p2658).<br />
+Siehe auch: p2656 (EPOS Einfachpositionierer Freigabe), p2658 (EPOS Lageistwert gültig Rückmeldung)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Entsprechende fehlende Bedingung pr&uuml;fen (Binektoreingang, Signalquelle).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207497">A207497 (N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LR: Lagesetzwert aktiviert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Lageistwert wird w&auml;hrend Binektoreingang p2514 = 1-Signal auf den &uuml;ber Konnektoreingang p2515 erhaltenen Wert gesetzt. Eine m&ouml;gliche Regeldifferenz kann nicht ausgeregelt werden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Keine notwendig.<br />
+Die Warnung wird automatisch bei Binektoreingang p2514 = 0-Signal zur&uuml;ckgenommen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207498">A207498 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LR: Messtasterauswertung nicht m&ouml;glich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Auswertung des Messtasters ist ein Fehler aufgetreten.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+6:<br />
+Die Eingangsklemme f&uuml;r den Messtaster ist nicht eingestellt.<br />
+4098:<br />
+Fehler bei der Initialisierung des Messtasters.<br />
+4100:<br />
+Die Frequenz der Messpulse ist zu hoch.<br />
+&gt; 50000:<br />
+Der Messtakt ist kein ganzzahliges Vielfaches des Lagereglertaktes.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Messtasterauswertung deaktivieren (BI: p2509 = 0-Signal).<br />
+Zu Warnwert = 6:<br />
+Eingangsklemme f&uuml;r Messtaster einstellen (p0488, p0489 bzw. p2517, p2518).<br />
+Zu Warnwert = 4098:<br />
+Die Hardware der Control Unit pr&uuml;fen.<br />
+Zu Warnwert = 4100:<br />
+Die Frequenz der Messpulse am Messtaster reduzieren.<br />
+Zu Warnwert &gt; 50000:<br />
+Das Taktverh&auml;ltnis Messtakt zu Lagereglertakt ganzzahlig einstellen.<br />
+Dazu kann der aktuell wirksame Messtakt wie folgt aus dem Warnwert ermittelt werden:<br />
+Tmess [125 &micro;s] = Warnwert - 50000<br />
+Mit PROFIBUS entspricht der Messtakt dem PROFIBUS-Takt (r2064[1]).<br />
+Ohne PROFIBUS ist der Messtakt eine nicht beeinflussbare interne Zykluszeit.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207499">F207499 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Umkehrnocken mit falscher Verfahrrichtung angefahren</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS3<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Umkehrnocken MINUS wurde in positiver Verfahrrichtung angefahren oder der Umkehrnocken PLUS wurde in negativer Verfahrrichtung angefahren.<br />
+Siehe auch: p2613 (EPOS Referenzpunktfahrt Umkehrnocken Minus), p2614 (EPOS Referenzpunktfahrt Umkehrnocken Plus)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verdrahtung der Umkehrnocken &uuml;berpr&uuml;fen (BI: p2613, BI: p2614).<br />
+- Verfahrrichtung zum Anfahren der Umkehrnocken pr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207500">F207500</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Leistungsteildatensatz PDS nicht projektiert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Nur f&uuml;r geregelte Netzeinspeisungen&#47;-r&uuml;ckspeisungen:<br />
+Der Leistungsteildatensatz wurde nicht projektiert, d. h. es wurde keine Datensatznummer in den Antriebsdatensatz eingetragen.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Antriebsdatensatznummer von p0185.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>In p0185 ist der Index des zum Antriebsdatensatz zugeh&ouml;rigen Leistungsteildatensatzes einzutragen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207501">F207501</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Motordatensatz MDS nicht projektiert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Nur f&uuml;r Leistungsteile:<br />
+Der Motordatensatz wurde nicht projektiert, d. h. es wurde keine Datensatznummer in den zugeh&ouml;rigen Antriebsdatensatz eingetragen.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Der St&ouml;rwert enth&auml;lt die Antriebsdatensatznummer von p0186.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>In p0186 ist der Index des zum Antriebsdatensatz zugeh&ouml;rigen Motordatensatzes einzutragen.<br />
+Siehe auch: p0186 (Motordatensatz (MDS) Nummer)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207502">F207502</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Geberdatensatz EDS nicht projektiert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Nur f&uuml;r Leistungsteile:<br />
+Der Geberdatensatz wurde nicht projektiert, d. h. es wurde keine Datensatznummer in den zugeh&ouml;rigen Antriebsdatensatz eingetragen.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Der St&ouml;rwert enth&auml;lt die Antriebsdatensatznummer von p0187, p0188 bzw. p0189.<br />
+Der St&ouml;rwert wird um die 100 * Gebernummer erh&ouml;ht (z. B. f&uuml;r p0189: St&ouml;rwert 3xx mit xx = Datensatznummer).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>In p0187 (1. Geber), p0188 (2. Geber) bzw. p0189 (3. Geber) ist der Index des zum Antriebsdatensatz zugeh&ouml;rigen Geberdatensatzes einzutragen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207503">F207503</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: STOP-Nocken mit falscher Verfahrrichtung angefahren</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Servo: KEINE<br />
+ (AUS1, AUS2, AUS3)Vector: KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der STOP-Nocken MINUS wurde in positiver Verfahrrichtung angefahren oder der STOP-Nocken PLUS wurde in negativer Verfahrrichtung angefahren.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verdrahtung der STOP-Nocken &uuml;berpr&uuml;fen (BI: p2569, BI: p2570).<br />
+- Verfahrrichtung zum Anfahren der STOP-Nocken pr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207504">A207504</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Motordatensatz ist keinem Antriebsdatensatz zugeordnet</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Ein Motordatensatz ist keinem Antriebsdatensatz zugeordnet.<br />
+In den Antriebsdatens&auml;tzen m&uuml;ssen alle vorhandenen Motordatens&auml;tze &uuml;ber die MDS-Nummer (p0186[0...n]) zugeordnet werden. Es m&uuml;ssen mindestens so viele Antriebsdatens&auml;tze wie Motordatens&auml;tze vorhanden sein.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des nicht zugeordneten Motordatensatzes.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>In den Antriebsdatens&auml;tzen den nicht zugeordneten Motordatensatz &uuml;ber die MDS-Nummer (p0186[0...n]) zuordnen.<br />
+- &Uuml;berpr&uuml;fen, ob alle Motordatens&auml;tzen den Antriebsdatens&auml;tzen zugeordnet sind.<br />
+- Gegebenenfalls &uuml;berfl&uuml;ssige Motordatens&auml;tze l&ouml;schen.<br />
+- Gegebenenfalls neue Antriebsdatens&auml;tze anlegen und den entsprechenden Motordatens&auml;tzen zuordnen.<br />
+Siehe auch: p0186 (Motordatensatz (MDS) Nummer)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207505">A207505</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Auftrag Festanschlag bei U&#47;f&#47;SLVC-Betrieb nicht m&ouml;glich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Im U&#47;f&#47;SLVC-Betrieb wurde versucht, einen Verfahrsatz mit Auftrag &quot;Festanschlag&quot; abzufahren. Dies ist nicht m&ouml;glich.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer des Verfahrsatzes mit unzul&auml;ssigem Auftragsparameter.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Verfahrsatz pr&uuml;fen und Auftrag &auml;ndern.<br />
+- Steuerungs-&#47;Regelungs-Betriebsart &auml;ndern (p1300).<br />
+Siehe auch: p1300 (Steuerungs-/Regelungs-Betriebsart), p2621 (EPOS Verfahrsatz Auftrag)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207506">A207506</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: BICO-Verschaltung zwischen EPOS und Lageregler pr&uuml;fen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die BICO-Verschaltungen zum &Uuml;bertragen der Sollwerte zwischen EPOS und LR sind nicht eingestellt, obwohl die BICO-Verschaltungen zum &Uuml;bertragen der Feinaufl&ouml;sungen eingestellt sind.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>1. BICO-Verschaltungen f&uuml;r die Feinaufl&ouml;sungen auftrennen (CI: p2694 = 0, CI: p2695 = 0).<br />
+2. BICO-Verschaltungen f&uuml;r die Sollwerte einstellen (CI: p2530 = r2665, CI: p2531 = r2666).<br />
+3. BICO-Verschaltungen f&uuml;r die Feinaufl&ouml;sungen einstellen (CI: p2694 = r2696, CI: p2695 = r2697).<br />
+Siehe auch: p2530, p2531, r2665, r2666, p2694, p2695, r2696, r2697<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207507">A207507</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EPOS: Referenzpunkt setzen nicht m&ouml;glich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Lagesollwert ist nach der Referenzpunktkorrektur au&szlig;erhalb der Verfahrbereichsgrenzen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Lageregler optimieren.<br />
+- Wegen m&ouml;glicher Lagereglerabweichung sollte die Referenzpunktkoordinate p2599 nicht direkt auf die Verfahrbereichsgrenzen gelegt werden.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207509">F207509</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Komponentenzuordnung fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Einem Antriebsdatensatz (DDS) ist ein Motordatensatz (MDS) oder Geberdatensatz (EDS) zugeordnet, der &uuml;ber keine Komponentennummer verf&uuml;gt.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+nnmmmxxyyy<br />
+nn: Nummer des MDS&#47;EDS.<br />
+mmm: Parameternummer der fehlenden Komponentennummer.<br />
+xx: Nummer des DDS, dem der MDS&#47;EDS zugewiesen ist.<br />
+yyy: Parameternummer, die den MDS&#47;EDS referenziert.<br />
+Beispiel:<br />
+p0186[7] = 5: Dem DDS 7 ist der MDS 5 zugeordnet.<br />
+p0131[5] = 0: Im MDS 5 ist keine Komponentennummer eingestellt.<br />
+Warnwert = 0513107186<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>In den Antriebsdatens&auml;tzen &uuml;ber p0186, p0187, p0188, p0189 den MDS&#47;EDS nicht mehr zuordnen oder eine g&uuml;ltige Komponentennummer einstellen.<br />
+Siehe auch: p0131, p0141, p0142, p0186, p0187, p0188, p0189<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207510">F207510</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Identische Geber im Antriebsdatensatz</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es sind mehr als ein Geber mit identischer Komponentennummer einem einzigen Antriebsdatensatz zugeordnet. In einem Antriebsdatensatz d&uuml;rfen keine identischen Geber zusammen betrieben werden.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+1000 * erster identischer Geber + 100 * zweiter identischer Geber + Antriebsdatensatz.<br />
+Beispiel:<br />
+St&ouml;rwert = 1203 bedeutet:<br />
+Im Antriebsdatensatz 3 sind erster (p0187[3]) und zweiter Geber (p0188[3]) identisch.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Dem Antriebsdatensatz unterschiedliche Geber zuordnen.<br />
+Siehe auch: p0141, p0187 (Geber 1 Geberdatensatz Nummer), p0188 (Geber 2 Geberdatensatz Nummer), p0189 (Geber 3 Geberdatensatz Nummer)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207511">F207511</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Geber mehrfach verwendet</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Jeder Geber darf nur einem Antrieb zugeordnet sein und muss innerhalb eines Antriebs in jedem Antriebsdatensatz entweder immer Geber 1, immer Geber 2 oder immer Geber 3 sein. Diese eindeutige Zuordnung ist verletzt.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Die beiden Parameter in codierter Form, die auf dieselbe Komponentennummer verweisen.<br />
+Erster Parameter:<br />
+Index: erste und zweite Dezimalstelle (99 f&uuml;r EDS keinem DDS zugeordnet)<br />
+Parameternummer: dritte Dezimalstelle (1 f&uuml;r p0187, 2 f&uuml;r p0188, 3 f&uuml;r p0189, 4 f&uuml;r EDS keinem DDS zugeordnet)<br />
+Antriebsnummer: vierte und f&uuml;nfte Dezimalstelle<br />
+Zweiter Parameter:<br />
+Index: sechste und siebte Dezimalstelle (99 f&uuml;r EDS keinem DDS zugeordnet)<br />
+Parameternummer: achte Dezimalstelle (1 f&uuml;r p0187, 2 f&uuml;r p0188, 3 f&uuml;r p0189, 4 f&uuml;r EDS keinem DDS zugeordnet)<br />
+Antriebsnummer: neunte und zehnte Dezimalstelle<br />
+Siehe auch: p0141<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Doppelte Verwendung einer Komponentennummer &uuml;ber die beiden im St&ouml;rwert codierten Parameter korrigieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207512">F207512</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Geberdatensatzumschaltung nicht parametrierbar</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Durch p0141 ist eine nicht erlaubte Umschaltung des Geberdatensatzes vorbereitet. Eine Geberdatensatzumschaltung ist bei dieser Firmware-Version nur f&uuml;r in der Isttopologie vorhandenen Komponenten erlaubt.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Fehlerhafte EDS-Datensatznummer.<br />
+Siehe auch: p0187 (Geber 1 Geberdatensatz Nummer), p0188 (Geber 2 Geberdatensatz Nummer), p0189 (Geber 3 Geberdatensatz Nummer)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Jeder Geberdatensatz muss einem eigenen DRIVE-CLiQ-Buchse zugeordnet sein. Die Komponentennummern der Geberschnittstellen (p0141) m&uuml;ssen innerhalb eines Antriebsobjektes unterschiedliche Werte besitzen.<br />
+Es muss gelten:<br />
+p0141[0] ungleich p0141[1] ungleich ... ungleich p0141[n]<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207514">A207514 (N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Datenaufbau entspricht nicht Interface Mode</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde der Interface Mode &quot;SIMODRIVE 611 universal&quot; eingestellt (p2038 = 1) und der Datenaufbau entspricht nicht diesem Mode.<br />
+Abh&auml;ngig von der Anzahl der Datens&auml;tze sind folgende Einstellungen m&ouml;glich:<br />
+Anzahl DDS&#47;MDS (p0180&#47;p0130): p0186<br />
+1&#47;1: p0186[0] = 0<br />
+2&#47;2: p0186[0] = 0, p0186[1] = 1<br />
+4&#47;4: p0186[0] = 0, p0186[1] = 1, p0186[2] = 2, p0186[3] = 3<br />
+8&#47;8: p0186[0] = 0, p0186[1] = 1, p0186[2] = 2 ... p0186[7] = 7<br />
+16&#47;16: p0186[0] = 0, p0186[1] = 1, p0186[2] = 2 ... p0186[15] = 15<br />
+32&#47;32: p0186[0] = 0, p0186[1] = 1, p0186[2] = 2 ... p0186[31] = 31<br />
+2&#47;1: p0186[0, 1] = 0<br />
+4&#47;2: p0186[0, 1] = 0, p0186[1, 2] = 1<br />
+8&#47;4: p0186[0, 1] = 0, p0186[1, 2] = 1, p0186[3, 4] = 2, p0186[5, 6] = 3<br />
+16&#47;8: p0186[0, 1] = 0, p0186[1, 2] = 1, p0186[3, 4] = 2 ... p0186[14, 15] = 7<br />
+32&#47;16: p0186[0, 1] = 0, p0186[1, 2] = 1, p0186[3, 4] = 2 ... p0186[30, 31] = 15<br />
+4&#47;1: p0186[0, 1, 2, 3] = 0<br />
+8&#47;2: p0186[0, 1, 2, 3] = 0, p0186[4, 5, 6, 7] = 1<br />
+16&#47;4: p0186[0, 1, 2, 3] = 0, p0186[4, 5, 6, 7] = 1, p0186[8, 9, 10, 11] = 2, p0186[12, 13, 14, 15] = 3<br />
+32&#47;8: p0186[0, 1, 2, 3] = 0, p0186[4, 5, 6, 7] = 1, p0186[8, 9, 10, 11] = 2 ... p0186[28, 29, 30, 31] = 7<br />
+8&#47;1: p0186[0...7] = 0<br />
+16&#47;2: p0186[0...7] = 0, p0186[8...15] = 1<br />
+32&#47;4: p0186[0...7] = 0, p0186[8...15] = 1, p0186[16...23] = 2, p0186[24...31] = 3<br />
+16&#47;1: p0186[0...15] = 0<br />
+32&#47;2: p0186[0...15] = 0, p0186[16...31] = 1<br />
+32&#47;1: p0186[0...31] = 0<br />
+9&#47;2: p0186[0...7] = 0, p0186[8] = 1<br />
+10&#47;2: p0186[0...7] = 0, p0186[8, 9] = 1<br />
+12&#47;2: p0186[0...7] = 0, p0186[8...11] = 1<br />
+Siehe auch: p0180, p0186, p2038<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Den Datenaufbau nach den in der Ursache genannten m&ouml;glichen Einstellungen pr&uuml;fen.<br />
+- Interface Mode pr&uuml;fen (p2038).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207515">F207515</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Leistungsteil und Motor falsch verbunden</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In einem Antriebsdatensatz wurde einem Leistungsteil (&uuml;ber PDS) ein Motor (&uuml;ber MDS) zugeordnet, die in der Solltopologie nicht verbunden sind. Eventuell ist dem Leistungsteil kein Motor zugeordnet (p0131).<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nummer des falsch parametrierten Antriebsdatensatzes.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Antriebsdatensatz eine durch die Solltopologie zugelassene Kombination von Motor und Leistungsteil zuordnen.<br />
+- Solltopologie anpassen.<br />
+- Gegebenenfalls bei einem fehlenden Motor die Komponente neu erzeugen (Antriebsassistent).<br />
+Siehe auch: p0121 (Leistungsteil Komponentennummer), p0131 (Motor Komponentennummer), p0186 (Motordatensatz (MDS) Nummer)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207516">F207516</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Datensatz neu in Betrieb nehmen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde die Zuordnung zwischen Antriebsdatensatz und Motordatensatz (p0186) oder zwischen Antriebsdatensatz und Geberdatensatz ge&auml;ndert (p0187). Deshalb muss eine Neuinbetriebnahme des Antriebsdatensatzes durchgef&uuml;hrt werden.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Neu in Betrieb zu nehmender Antriebsdatensatz.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Inbetriebnahme des im St&ouml;rwert (r0949) angegebenen Antriebsdatensatzes durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207517">F207517</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Geberdatensatzumschaltung falsch parametriert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>In mindestens zwei Antriebsdatens&auml;tzen (DDS) sind einem gleichen Motordatensatz (MDS) unterschiedliche Geberdatens&auml;tze (EDS) f&uuml;r den Motorgeber zugeordnet. In verschiedenen DDS darf ein MDS nicht unterschiedliche Motorgeber haben.<br />
+Die folgende Parametrierung f&uuml;hrt daher zum Fehler:<br />
+DDS0: p0186[0] = 0, p0187[0] = 0<br />
+DDS1: p0186[1] = 0, p0187[1] = 1<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Die unteren 16 Bit zeigen den ersten DDS an. Die oberen 16 Bit zeigen den zweiten DDS an.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zwei MDS mit den gleichen Motordaten anlegen, um einen Motor mit unterschiedlichen Motorgebern zu betreiben.<br />
+Beispiel:<br />
+DDS0: p0186[0] = 0, p0187[0] = 0<br />
+DDS1: p0186[1] = 1, p0187[1] = 1<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207518">F207518</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Motordatensatzumschaltung falsch parametriert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es wurde eine falsche Parametrierung von zwei Motordatens&auml;tzen festgestellt.<br />
+Die Parameter r0313 (Berechnung aus p0314, p0310, p0311), r0315 und p1982 d&uuml;rfen nur dann unterschiedliche Werte haben, wenn den Motordatens&auml;tzen unterschiedliche Motoren zugeordnet sind. Die Zuordnung zu den Motoren bzw. Sch&uuml;tzen geschieht &uuml;ber p0827.<br />
+Zwischen den Motordatens&auml;tzen kann nicht umgeschaltet werden.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+xxxxyyyy:<br />
+xxxx: Erster DDS mit zugeordnetem MDS, yyyy: Zweiter DDS mit zugeordnetem MDS<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Parametrierung der Motordatens&auml;tze richtigstellen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207519">A207519</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Motorumschaltung falsch parametriert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Mit Einstellung p0833.0 = 1 wird eine Motorumschaltung &uuml;ber die Applikation gew&uuml;nscht. Deshalb muss p0827 in den entsprechenden Motordatens&auml;tzen unterschiedliche Werte haben.<br />
+Warnwert (r2124, hexadezimal interpretieren):<br />
+xxxxyyyy:<br />
+xxxx: Erster MDS, yyyy: Zweiter MDS<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Die entsprechenden Motordatens&auml;tze unterschiedlich parametrieren (p0827).<br />
+- Die Einstellung p0833.0 = 0 (Motorumschaltung &uuml;ber Antrieb) ausw&auml;hlen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207520">A207520</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Motorumschaltung kann nicht ausgef&uuml;hrt werden</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Motorumschaltung kann nicht ausgef&uuml;hrt werden.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1:<br />
+Das Sch&uuml;tz f&uuml;r den gerade aktiven Motor kann nicht ge&ouml;ffnet werden, weil bei einem Synchronmotor die Drehzahl (r0063) gr&ouml;&szlig;er als die Einsatzdrehzahl f&uuml;r die Feldschw&auml;chung (p0348) ist. Solange r0063 &gt; p0348 wird der Strom im Motor trotz Impulsl&ouml;schung nicht abgebaut.<br />
+2:<br />
+Die R&uuml;ckmeldung &quot;Sch&uuml;tz ge&ouml;ffnet&quot; wurde nicht innerhalb 1 s erkannt.<br />
+3:<br />
+Die R&uuml;ckmeldung &quot;Sch&uuml;tz geschlossen&quot; wurde nicht innerhalb 1 s erkannt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu Warnwert = 1:<br />
+Die Drehzahl kleiner als die Einsatzdrehzahl f&uuml;r die Feldschw&auml;chung einstellen (r0063 &lt; p0348).<br />
+Zu Warnwert = 2, 3:<br />
+Die R&uuml;ckmeldesignale des betroffenen Sch&uuml;tzes &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207530">A207530</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Antriebsdatensatz DDS nicht vorhanden</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der angew&auml;hlte Antriebsdatensatz ist nicht vorhanden (p0837 &gt; p0180). Es wird keine Umschaltung des Antriebsdatensatzes durchgef&uuml;hrt.<br />
+Siehe auch: p0180, p0820, p0821, p0822, p0823, p0824, r0837<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Vorhandenen Antriebsdatensatz anw&auml;hlen.<br />
+- Zus&auml;tzliche Antriebsdatens&auml;tze anlegen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207531">A207531</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Befehlsdatensatz CDS nicht vorhanden</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der angew&auml;hlte Befehlsdatensatz ist nicht vorhanden (p0836 &gt; p0170). Es wird keine Umschaltung des Befehlsdatensatzes durchgef&uuml;hrt.<br />
+Siehe auch: p0810, p0811, r0836<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Vorhandenen Befehlsdatensatz anw&auml;hlen.<br />
+- Zus&auml;tzliche Befehlsdatens&auml;tze anlegen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207541">A207541</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Datensatzumschaltung nicht m&ouml;glich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die angew&auml;hlte Antriebsdatensatzumschaltung und die zugeordnete Motorumschaltung ist nicht m&ouml;glich und wird nicht durchgef&uuml;hrt.<br />
+Das Motorsch&uuml;tz darf bei Synchronmotoren nur bei Istdrehzahlen kleiner der Einsatzdrehzahl f&uuml;r die Feldschw&auml;chung geschaltet werden (r0063 &lt; p0348).<br />
+Siehe auch: r0063, p0348<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Drehzahl unter die Einsatzdrehzahl f&uuml;r die Feldschw&auml;chung reduzieren (r0063 &lt; p0348).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207550">A207550 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Geberparameter zur&uuml;cksetzen nicht m&ouml;glich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Durchf&uuml;hren einer Werkseinstellung (z. B. &uuml;ber p0970 = 1) war das Zur&uuml;cksetzen der Geberparameter nicht m&ouml;glich. Die Geberparameter werden &uuml;ber DRIVE-CLiQ direkt aus dem Geber gelesen.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Komponentennummer des betroffenen Gebers.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Vorgang wiederholen.<br />
+- DRIVE-CLiQ-Verbindung &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207551">F207551</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb Geber: Keine Kommutierungswinkel-Information</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+ (IASC/DCBRK)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Kommutierungswinkel-Information fehlt. Damit ist die Regelung von Synchronmotoren nicht m&ouml;glich.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+yyyyxxxx dez: yyyy = Fehlerursache, xxxx = Antriebsdatensatz<br />
+yyyy = 1 dez:<br />
+Der verwendete Motorgeber liefert keinen absoluten Kommutierungswinkel.<br />
+yyyy = 2 dez:<br />
+Die eingestellte &Uuml;bersetzung des Messgetriebes passt nicht zur Polpaarzahl des Motors.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu Fehlerursache = 1:<br />
+- Geberparametrierung &uuml;berpr&uuml;fen (p0404).<br />
+- Geber mit Spur C&#47;D, EnDat-Schnittstelle oder Hallsensoren einsetzen.<br />
+- Geber mit sinusf&ouml;rmiger Spur A&#47;B einsetzen, f&uuml;r den die Motorpolpaarzahl (r0313) multipliziert mit dem Getriebefaktor (p0432&#47;p0433) kleiner als die Geberstrichzahl (p0408) ist oder ein ganzzahliges Vielfaches der Geberstrichzahl (p0408) ist.<br />
+- Pollageidentifikation aktivieren (p1982 = 1) bei Motorgebern ohne Absolutlage. Anschlie&szlig;end ist mit einer Geberjustage (p1990) der Kommutierungswinkeloffset zu bestimmen.<br />
+Zu Fehlerursache = 2:<br />
+- Der Quotient Polpaarzahl durch &Uuml;bersetzung des Messgetriebes muss ganzzahlig sein: (p0314 * p0433) &#47; p0432<br />
+Hinweis:<br />
+Bei Betrieb mit Spur C&#47;D muss dieser Quotient kleiner gleich 8 sein.<br />
+Siehe auch: p0402 (Getriebetyp Auswahl), p0404 (Geberkonfiguration wirksam), p0432 (Getriebefaktor Geberumdrehungen), p0433 (Getriebefaktor Motor-/Lastumdrehungen)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207552">F207552 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb Geber: Geberkonfiguration nicht unterst&uuml;tzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die angeforderte Geberkonfiguration wird nicht unterst&uuml;tzt. Es d&uuml;rfen in p0404 nur Bits angefordert werden, die von der Geberauswertung in r0456 als unterst&uuml;tzt gemeldet werden.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+ccccbbaa hex: cccc = Fehlerursache, bb = Komponentennummer, aa = Geberdatensatz<br />
+cccc = 1: Geber sin&#47;cos mit Absolutspur (wird unterst&uuml;tzt von SME25).<br />
+cccc = 3: Rechteckgeber (wird unterst&uuml;tzt von SMC30).<br />
+cccc = 4: Geber sin&#47;cos (wird unterst&uuml;tzt von SMC20, SMI20, SME20, SME25).<br />
+cccc = 10: DRIVE-CLiQ-Geber (wird unterst&uuml;tzt von DQI).<br />
+cccc = 12: Geber sin&#47;cos mit Referenzmarke (wird unterst&uuml;tzt von SME20).<br />
+cccc = 15: Kommutierung mit Nullmarke bei fremderregten Synchronmotoren mit VECTORMV.<br />
+cccc = 23: Resolver (wird unterst&uuml;tzt von SMC10, SMI10).<br />
+cccc = 65535: Sonstige Funktion (r0456 und p0404 vergleichen).<br />
+Siehe auch: p0404 (Geberkonfiguration wirksam), r0456 (Geberkonfiguration unterstützt)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Geberparametrierung pr&uuml;fen (p0400, p0404).<br />
+- Passende Geberauswertung einsetzen (r0456).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207553">F207553 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb Geber: Sensor Module Konfiguration nicht unterst&uuml;tzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die angeforderte Konfiguration wird vom Sensor Module nicht unterst&uuml;tzt.<br />
+Bei fehlerhaftem p0430 (cc = 0) gilt:<br />
+- Im p0430 (angeforderte Funktionen) wurde mindestens 1 Bit gesetzt, das in r0458 (unterst&uuml;tzte Funktionen) nicht gesetzt ist (Ausnahme: Bit 19, 28, 29, 30, 31).<br />
+- Es ist p1982 &gt; 0 (Pollageidentifikation angefordert), aber r0458.16 = 0 (Pollageidentifikation nicht unterst&uuml;tzt).<br />
+Bei fehlerhaftem p0437 (cc = 1) gilt:<br />
+- Im p0437 (angeforderte Funktionen) wurde mindestens 1 Bit gesetzt, das in r0459 (unterst&uuml;tzte Funktionen) nicht gesetzt ist.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+ddccbbaa hex<br />
+aa: Geberdatensatznummer<br />
+bb: Erstes fehlerhaftes Bit<br />
+cc: Fehlerhafter Parameter<br />
+cc = 0: Fehlerhafter Parameter ist p0430<br />
+cc = 1: Fehlerhafter Parameter ist p0437<br />
+cc = 2: Fehlerhafter Parameter ist r0459<br />
+cc = 3: Fehlerhafter Parameter ist p0454<br />
+dd: Reserviert (immer 0)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Geberparametrierung pr&uuml;fen (p0430, p0437, p0454).<br />
+- Pollageidentifikation pr&uuml;fen (p1982).<br />
+- Passende Geberauswertung einsetzen (r0458, r0459).<br />
+Siehe auch: p0430, p0437, r0458, r0459, p1982<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207555">F207555 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb Geber: Konfiguration Lageverfolgung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Konfiguration wird bei der Lageverfolgung nicht unterst&uuml;tzt.<br />
+Die Lageverfolgung kann nur bei Absolutwertgebern aktiviert werden.<br />
+Bei Linearachsen kann die Lageverfolgung von Last- und Messgetriebe nicht gleichzeitig aktiviert werden.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+ddccbbaa hex<br />
+aa = Geberdatensatz<br />
+bb = Komponentennummer<br />
+cc = Antriebsdatensatz<br />
+dd = Fehlerursache<br />
+dd = 00 hex = 0 dez<br />
+Es wird kein Absolutwertgeber eingesetzt.<br />
+dd = 01 hex = 1 dez<br />
+Die Lageverfolgung kann nicht aktiviert werden, weil der Speicher des internen NVRAM nicht ausreicht oder eine Control Unit ohne NVRAM vorhanden ist.<br />
+dd = 02 hex = 2 dez<br />
+Bei einer Linearachse wurde die Lageverfolgung f&uuml;r Last- und Messgetriebe aktiviert.<br />
+dd = 03 hex = 3 dez<br />
+Die Lageverfolgung kann nicht aktiviert werden, weil f&uuml;r diesen Geberdatensatz bereits eine Lageverfolgung mit anderem Getriebefaktor, Achstyp oder Toleranzfenster erkannt wurde.<br />
+dd = 04 hex = 4 dez<br />
+Es wird ein Lineargeber eingesetzt.<br />
+Siehe auch: p0404 (Geberkonfiguration wirksam), p0411 (Messgetriebe Konfiguration)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert 0:<br />
+- Absolutwertgeber einsetzen.<br />
+Zu St&ouml;rwert 1:<br />
+- Control Unit mit ausreichendem NVRAM einsetzen.<br />
+Zu St&ouml;rwert 2, 4:<br />
+- Lageverfolgung gegebenenfalls abw&auml;hlen (p0411 f&uuml;r Messgetriebe, p2720 f&uuml;r Lastgetriebe).<br />
+Zu St&ouml;rwert 3:<br />
+- Die Lageverfolgung des Lastgetriebes im selben Geberdatensatz nur aktivieren, wenn auch Getriebefaktor (p2504, p2505), Achstyp (p2720.1) und Toleranzfenster (p2722) gleich sind. Diese Parameter m&uuml;ssen in allen Antriebsdatens&auml;tzen, die den gleichen Motorgeber (p187) benutzen, gleich sein.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207556">F207556</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Messgetriebe: Lageverfolgung maximaler Istwert &uuml;berschritten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Antrieb&#47;Geber erkennt bei projektierter Lageverfolgung des Messgetriebes einen maximal m&ouml;glichen, absoluten Lageistwert (r0483), der nicht mehr innerhalb von 32 Bit dargestellt werden kann.<br />
+Maximaler Wert: p0408 * p0412 * 2^p0419<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+aaaayyxx hex: yy = Komponentennummer, xx = Geberdatensatz<br />
+Siehe auch: p0408, p0412 (Messgetriebe Absolutwertgeber rotatorisch Umdrehungen virtuell), p0419 (Feinauflösung Absolutwert Gx_XIST2 (in Bits))<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Feinaufl&ouml;sung verringern (p0419).<br />
+- Multiturnaufl&ouml;sung verringern (p0412).<br />
+Siehe auch: p0412 (Messgetriebe Absolutwertgeber rotatorisch Umdrehungen virtuell), p0419 (Feinauflösung Absolutwert Gx_XIST2 (in Bits))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207557">A207557 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Referenzpunkt-Koordinate nicht im zul&auml;ssigen Bereich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die bei der Geberjustage &uuml;ber den Konnektoreingang CI: p2599 empfangene Referenzpunkt-Koordinate liegt au&szlig;erhalb des halben Geberbereiches und kann nicht als aktuelle Achsposition gesetzt werden. Der maximal zul&auml;ssige Wert wird in der Zusatzinformation angezeigt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Referenzpunkt-Koordinate kleiner als den Wert aus der Zusatzinformation einstellen.<br />
+Siehe auch: p2598 (EPOS Referenzpunkt-Koordinate Signalquelle)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207558">A207558 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 2: Referenzpunkt-Koordinate nicht im zul&auml;ssigen Bereich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die bei der Geberjustage &uuml;ber den Konnektoreingang CI: p2599 empfangene Referenzpunkt-Koordinate liegt au&szlig;erhalb des halben Geberbereiches und kann nicht als aktuelle Achsposition gesetzt werden. Der maximal zul&auml;ssige Wert wird in der Zusatzinformation angezeigt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Referenzpunkt-Koordinate kleiner als den Wert aus der Zusatzinformation einstellen.<br />
+Siehe auch: p2598 (EPOS Referenzpunkt-Koordinate Signalquelle)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207559">A207559 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 3: Referenzpunkt-Koordinate nicht im zul&auml;ssigen Bereich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die bei der Geberjustage &uuml;ber den Konnektoreingang CI: p2599 empfangene Referenzpunkt-Koordinate liegt au&szlig;erhalb des halben Geberbereiches und kann nicht als aktuelle Achsposition gesetzt werden. Der maximal zul&auml;ssige Wert wird in der Zusatzinformation angezeigt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Referenzpunkt-Koordinate kleiner als den Wert aus der Zusatzinformation einstellen.<br />
+Siehe auch: p2598 (EPOS Referenzpunkt-Koordinate Signalquelle)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207560">F207560</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb Geber: Strichzahl ist keine Zweierpotenz</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei rotatorischen Absolutwertgebern muss die Strichzahl in p0408 eine Zweierpotenz sein.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Der St&ouml;rwert enth&auml;lt die betroffene Geberdatensatznummer.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Parametrierung &uuml;berpr&uuml;fen (p0408, p0404.1, r0458.5).<br />
+- Gegebenenfalls die Firmware des Sensor Modules hochr&uuml;sten.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207561">F207561</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb Geber: Strichzahl Multiturn keine Zweierpotenz</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Multiturnaufl&ouml;sung in p0421 muss eine Zweierpotenz sein.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Der St&ouml;rwert enth&auml;lt die betroffene Geberdatensatznummer.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Parametrierung &uuml;berpr&uuml;fen (p0421, p0404.1, r0458.5).<br />
+- Gegebenenfalls die Firmware des Sensor Modules hochr&uuml;sten.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207562">F207562 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb Geber: Lageverfolgung Inkrementalgeber nicht m&ouml;glich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die angeforderte Lageverfolgung f&uuml;r Inkrementalgeber wird nicht unterst&uuml;tzt.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+ccccbbaa hex<br />
+aa = Geberdatensatz<br />
+bb = Komponentennummer<br />
+cccc = Fehlerursache<br />
+cccc = 00 hex = 0 dez<br />
+Der Gebertyp unterst&uuml;tzt die Funktion &quot;Lageverfolgung Inkrementalgeber&quot; nicht.<br />
+cccc = 01 hex = 1 dez<br />
+Die Lageverfolgung kann nicht aktiviert werden, weil der Speicher des internen NVRAM nicht ausreicht oder eine Control Unit ohne NVRAM vorhanden ist.<br />
+cccc = 04 hex = 4 dez<br />
+Es wird ein Lineargeber eingesetzt, der nicht von der Funktion &quot;Lageverfolgung&quot; unterst&uuml;tzt wird.<br />
+Siehe auch: p0404 (Geberkonfiguration wirksam), p0411 (Messgetriebe Konfiguration), r0456 (Geberkonfiguration unterstützt)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Geberparametrierung pr&uuml;fen (p0400, p0404).<br />
+- Control Unit mit ausreichendem NVRAM einsetzen.<br />
+- Lageverfolgung f&uuml;r den Inkrementalgeber gegebenenfalls abw&auml;hlen (p0411.3 = 0).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207563">F207563 (A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb Geber: XIST1_ERW Konfiguration fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBRK, KEINE, STOP2)Hla: AUS2<br />
+ (AUS1, AUS3, KEINE, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Funktion &quot;Absolutlage bei Inkrementalgeber&quot; wurde eine fehlerhafte Konfiguration erkannt.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Fehlerursache:<br />
+1 (= 01 hex):<br />
+Die Funktion &quot;Absolutwert bei Inkrementalgeber&quot; wird nicht unterst&uuml;tzt (r0459.13 = 0).<br />
+Hinweis zum Meldungswert:<br />
+Die einzelnen Informationen sind im Meldungswert (r0949&#47;r2124) wie folgt verschl&uuml;sselt:<br />
+yyxx dez: yy = Fehlerursache, xx = Geberdatensatz<br />
+Siehe auch: r0459, p4652<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 1:<br />
+- Firmware-Version des Sensor Modules hochr&uuml;sten.<br />
+- Modus &uuml;berpr&uuml;fen (p4652 = 1, 3 ben&ouml;tigt die Eigenschaft r0459.13 = 1).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207565">A207565 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Geberfehler PROFIdrive-Geberschnittstelle 1</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>&Uuml;ber die PROFIdrive-Geberschnittstelle f&uuml;r Geber 1 wird ein Geberfehler gemeldet (G1_ZSW.15).<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Fehlercode aus G1_XIST2, siehe Beschreibung zu r0483.<br />
+Hinweis:<br />
+Diese Warnung wird nur bei p0480[0] ungleich Null ausgegeben.<br />
+Gebersteuerwort Gn_STW Signalquelle (p0480[0...2], n = Geber 1, 2, 3)<br />
+Geberzustandswort Gn_ZSW (r0481[0...2], n = Geber 1, 2, 3)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Geberfehler &uuml;ber das Gebersteuerwort quittieren (G1_STW.15 = 1).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207566">A207566 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Geberfehler PROFIdrive-Geberschnittstelle 2</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>&Uuml;ber die PROFIdrive-Geberschnittstelle f&uuml;r Geber 2 wird ein Geberfehler gemeldet (G2_ZSW.15).<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Fehlercode aus G2_XIST2, siehe Beschreibung zu r0483.<br />
+Hinweis:<br />
+Diese Warnung wird nur bei p0480[1] ungleich Null ausgegeben.<br />
+Gebersteuerwort Gn_STW Signalquelle (p0480[0...2], n = Geber 1, 2, 3)<br />
+Geberzustandswort Gn_ZSW (r0481[0...2], n = Geber 1, 2, 3)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Geberfehler &uuml;ber das Gebersteuerwort quittieren (G2_STW.15 = 1).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207567">A207567 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Geberfehler PROFIdrive-Geberschnittstelle 3</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>&Uuml;ber die PROFIdrive-Geberschnittstelle f&uuml;r Geber 3 wird ein Geberfehler gemeldet (G3_ZSW.15).<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Fehlercode aus G3_XIST2, siehe Beschreibung zu r0483.<br />
+Hinweis:<br />
+Diese Warnung wird nur bei p0480[2] ungleich Null ausgegeben.<br />
+Gebersteuerwort Gn_STW Signalquelle (p0480[0...2], n = Geber 1, 2, 3)<br />
+Geberzustandswort Gn_ZSW (r0481[0...2], n = Geber 1, 2, 3)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Geberfehler &uuml;ber das Gebersteuerwort quittieren (G3_STW.15 = 1).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207569">A207569 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber Identifizierung aktiv</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Geber identifizieren (wartend) mit p0400 = 10100 konnte der Geber noch nicht identifiziert werden.<br />
+Eventuell ist ein falscher oder kein Geber vorhanden, eine falsche oder keine Geberleitung am Sensor Module gesteckt oder die DRIVE-CLiQ-Komponente nicht angeschlossen.<br />
+Hinweis:<br />
+Eine Geberidentifizierung setzt eine Unterst&uuml;tzung durch den Geber voraus und ist in folgenden F&auml;llen m&ouml;glich:<br />
+- Geber mit EnDat-Schnittstelle.<br />
+- Geber mit SSI-Schnittstelle.<br />
+- Motor mit DRIVE-CLiQ.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Geber&#47;Geberleitung pr&uuml;fen und gegebenenfalls anschlie&szlig;en.<br />
+- DRIVE-CLiQ-Verbindung pr&uuml;fen und eventuell herstellen.<br />
+- Bei SSI-Geber die ben&ouml;tigte Bedienhandlung durchf&uuml;hren (siehe Funktionshandbuch).<br />
+- Bei Gebern, die nicht identifiziert werden k&ouml;nnen (z. B. Geber ohne EnDat-Schnittstelle) den entsprechenden Gebertyp in p0400 eintragen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207570">N207570 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber Identifizierung Daten&uuml;bernahme l&auml;uft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Gebertyp wurde mit p0400 = 10100 automatisch bestimmt.<br />
+Hinweis:<br />
+Diese St&ouml;rung bewirkt eine Impulsl&ouml;schung, die zum &Uuml;bertragen der Geberparametrierung nach p0400 und folgende notwendig ist.<br />
+Siehe auch: p0400 (Gebertyp Auswahl)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>St&ouml;rung ohne weitere Ma&szlig;nahmen quittieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207575">F207575</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Motorgeber nicht bereit</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+Servo: AUS2<br />
+ (GEBER)Vector: AUS2<br />
+ (GEBER)Hla: AUS2<br />
+ (GEBER)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Motorgeber meldet nicht bereit.<br />
+- Die Initialisierung von Geber 1 (Motorgeber) ist fehlgeschlagen.<br />
+- Die Funktion &quot;Parkender Geber&quot; ist aktiv (Gebersteuerwort G1_STW.14 = 1).<br />
+- Die Geberschnittstelle (Sensor Module) ist deaktiviert (p0145).<br />
+- Das Sensor Module ist defekt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Weitere anstehende St&ouml;rungen &uuml;ber Geber 1 auswerten.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="207576">A207576</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Antrieb: Geberloser Betrieb aufgrund St&ouml;rung aktiv</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der geberlose Betrieb ist aufgrund einer St&ouml;rung aktiv (r1407.13 = 1).<br />
+Hinweis:<br />
+In p0491 ist das Verhalten f&uuml;r St&ouml;rungen mit St&ouml;rreaktion GEBER eingestellt.<br />
+Siehe auch: p0491 (Motorgeber Störreaktion GEBER)<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Die Ursache f&uuml;r eventuell anstehende Geberfehler beseitigen.<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+</td></tr>
+</table><p></p></body></html>

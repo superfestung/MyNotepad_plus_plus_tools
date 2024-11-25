@@ -1,0 +1,90 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Global frames ($P_NCBFR, $P_UIFR)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Global frames ($P_NCBFR, $P_UIFR)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>There is only one set of global frames for all channels on each control. Global frames can be read and written from all channels. The global frames are activated in the respective channel.</p>
+      <p>
+        <b>Channel axes and machine axes</b> with offsets can be scaled and mirrored by means of global frames.</p>
+      <h4 class="Blocklabel">Geometrical relationships and frame chains </h4>
+      <p>With global frames there is no geometrical relationship between the axes. It is therefore not possible to perform rotations or program geometry axis identifiers.</p>
+      <p>Rotations cannot be used on global frames. The programming of a rotation is denied with alarm 18310 "Channel %1 Block %2 Frame: rotation not allowed".</p>
+      <p>It is possible to chain global frames and channel-specific frames. The resulting frame contains all frame components including the rotations for all axes. The assignment of a frame with rotation components to a global frame is denied with alarm "Frame: rotation not allowed".</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Global frames </h3>
+      <h4 class="Blocklabel">Global basic frames $P_NCBFR[n]</h4>
+      <p>Up to eight global basic frames can be configured: </p>
+      <p>Channel-specific basic frames can also be available.</p>
+      <p>Global frames can be read and written from all channels of a control. When writing global frames, the user must ensure channel coordination. This can be implemented, for example, through wait markers (WAITMC).</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Machine manufacturer</h4>
+            <p class="safety">The number of global basic frames is configured via the machine data.</p>
+          </td>
+        </tr>
+      </table>
+      <p>
+        <b>Further information: </b>Function Manual Basic Functions</p>
+      <h4 class="Blocklabel">Settable frames ($P_UIFR[n])</h4>
+      <p>All settable frames G500, G54...G599 can be configured either globally or channel-specifically.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Machine manufacturer</h4>
+            <p class="safety">All settable frames can be reconfigured as global frames with the aid of machine data MD18601 $MN_MM_NUM_GLOBAL_USER_FRAMES.</p>
+          </td>
+        </tr>
+      </table>
+      <p>Channel axis identifiers and machine axis identifiers can be used as axis identifiers in frame program commands. Programming the geometry identifiers is rejected with an alarm.</p>
+    </div>
+    <p>See also:<br />    <a href="156663001227.html">Channel-specific frames ($P_CHBFR, $P_UBFR)</a><br />    <a href="156663004683.html">Frames active in the channel</a></p>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Funktion</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Funktion</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Funktion   </h3>
+      <p>Mit dieser Messvariante kann eine Kugel vermessen werden. Das Vermessen kann achsparallel oder auf einer Kreisbahn im WKS erfolgen.</p>
+      <p>Aus 3 oder 4 Messpunkten am Umfang und einem Messpunkt am "Nordpol" der Kugel (höchster Punkt) wird der Mittelpunkt (Lage der Kugel) bei bekanntem Durchmesser bestimmt. Mit der Auswahl "Kugeldurchmesser bestimmen" und "keine Messwiederholung", wird mit einer zusätzlichen Messung der Kugeldurchmesser korrekt ermittelt.</p>
+      <p>Erfolgt die Auswahl  "Kugeldurchmesser bestimmen" und "mit Messwiederholung", wird die zusätzlichen Messung nur im 1. Durchlauf ausgeführt.</p>
+      <p>Im 2. Durchlauf (Wiederholungsdurchlauf) wird der Durchmesser intern berechnet ohne Zusatzmessung.</p>
+      <p>Der Messzyklus CYCLE997 kann die Kugel vermessen und zusätzlich eine Nullpunktverschiebung (NV) aufgrund der Lage der Kugelmitte automatisch in den translatorischen Verschiebungen der 3 Achsen der aktiven Ebene korrigieren.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Messprinzip</h3>
+      <p>Die nachfolgende Beschreibung bezieht sich auf die Bearbeitungsebene G17:</p>
+      <ul>
+        <li>
+          <p>Achsen der Ebene: XY</p>
+        </li>
+        <li>
+          <p>Werkzeugachse: Z</p>
+        </li>
+      </ul>
+      <p>Ausgehend von der Startposition wird zuerst in -X und danach in -Z auf den Sollwert des Äquators der Kugel gefahren. Auf dieser Messhöhe erfolgt die Messung von 3 oder 4 Messpunkten.</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="50.0%"><col width="49.9%"></colgroup><tr valign="top"><td><a id="image_28444248331_0"></a> <img border="0" src="images/28444290955.png" width="329" height="245"/><p type="p_table_l" align="left">Messen: Kugel (CYCLE997), <br />Beispiel Positionieren "achsparallel"</p></td><td><a id="image_28444299915_0"></a> <img border="0" src="images/28444547339.png" width="329" height="245"/><p type="p_table_l" align="left">Messen: Kugel (CYCLE997), <br />Beispiel Positionieren "auf Kreisbahn"</p></td></tr></table></p><p></p><ul><li><p>Messvariante Positionieren "achsparallel":</p><p>Bei der Positionierung zwischen Messpunkten (z. B. P1-> P2, P2->P3) wird immer auf die Startposition (am Nordpol der Kugel) zurückgefahren.</p><p>Mit dem Antastwinkel  <b>α0</b> (Startwinkel) wird die Winkellage beim Messen von Messpunkt P1 festgelegt</p></li><li><p>Messvariante Positionieren "auf Kreisbahn":</p><p>Die Positionierung zwischen Messpunkten (z. B. P1-> P2, P2->P3) erfolgt auf einer Kreisbahn auf der Höhe des Äquators der Kugel.</p><p>Mit dem Antastwinkel <b>α0 </b>(Startwinkel) wird die Winkellage beim Messen von Messpunkt P1 festgelegt; mit <b>α1 </b>der Fortschaltwinkel nach P2 und weiter nach P3 und bei Messvariante mit 4 Messpunkten nach P4. </p><p>Die Anzahl der Messpunkte multipliziert mit dem Fortschaltwinkel <b>α1 </b>darf 360 Grad nicht überschreiten.</p></li></ul><p>Aus diesen Messwerten wird intern der Ist-Mittelpunkt des Kreises XY bestimmt (Kugelmitte in der Ebene). Danach wird mit +Z und in XY auf den berechneten "Nordpol" der Kugel gefahren. Dort erfolgt eine Messung in –Z.</p><p>Aus den Messpunkten wird der komplette Ist-Kugelmittelpunkt in den 3 Achsen der Ebene (XYZ) berechnet.</p><p>Bei einer Messwiederholung wird auf dem exakten Äquator der Kugel (aus der 1. Messung) gefahren und gemessen, was zu einer Verbesserung des Messergebnisses führt. </p><p>Soll außer dem Kugelmittelpunkt auch der Ist-Kugeldurchmesser gemessen werden, so erfolgt im 1. Messdurchlauf durch den Zyklus eine achsparallele Zusatzmessung am Äquator in Richtung +X.</p><p>Wurde mit "Messwiederholung" gewählt, erfolgt im 2. Durchlauf (Wiederholungsdurchlauf) keine Zusatzmessung, der Durchmesser wird  intern berechnet.</p><p>Vorzugsweise sollte mit der Messvariante "Positionieren auf einer Kreisbahn" gemessen werden, weil dies ein optimales Positionierverhalten ermöglicht. Zusätzlich kann bei dieser Messvariante der Messtaster beim Umkreisen der Kugel in Schaltrichtung ausgerichtet werden (siehe Parameter "Messtaster ausrichten").</p><h4 class="Blocklabel">Korrektur in eine Nullpunktverschiebung (NV)</h4><p>Es werden die Soll-Ist-Differenzen der Mittelpunktskoordinaten in den translatorischen Anteil der NV verrechnet. Bei der Korrektur nimmt der ermittelte Kugelmittelpunkt in der korrigierten NV die vorgegebene Sollwertposition ein (Werkstückkoordinaten, drei Achsen).</p><a name="block_3"></a><h3 class="Blocktitle">Voraussetzungen</h3><ul><li><p>Der Messtaster muss als Werkzeug mit Werkzeuglängenkorrektur aufgerufen werden und aktiv sein.</p></li><li><p>Werkzeugtyp des Messtasters:</p><ul><li><p>3D Multi-Taster (Typ 710)</p></li><li><p>Monotaster (Typ 712)</p></li></ul></li><li><p>Der zu messende Kugeldurchmesser sollte erheblich größer als der Messtaster-Kugeldurchmesser sein (ca. 10:1).</p></li></ul><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><h4 class="Blocklabel"></h4><p class="safety">In Verbindung mit der Funktion "3D-Taster ausrichten" oder bei Verwendung des Messtastertyp 712 ist eine SPOS-fähige Spindel erforderlich.</p></td></tr></table><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Bei der Messung von Referenzkugeln wird der Referenzkugeldurchmesser nur dann in den Messergebnissen exakt wiedergeben, wenn die mechanische Komplexität der Gesamtheit der Achspositionen berücksichtigt wird. Das kann dadurch erreicht werden, dass der Abgleich entsprechend der nachfolgenden Mess-Situation erfolgt. Diese Aussage kann auf alle Kugelmessungen übertragen werden.</p></td></tr></table><a name="block_4"></a><h3 class="Blocktitle">Ausgangsposition vor dem Messen</h3><p>Der Messtaster ist über dem Soll-Kugelmittelpunkt in Sicherheitshöhe zu positionieren.</p><p>Der Messzyklus erzeugt die Verfahrbewegungen zum Anfahren der Messpunkte selbst und führt die Messungen entsprechend der gewählten Messvariante aus.</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Die zu messende Kugel muss so montiert sein, dass beim Positionieren des Messtasters die Messtasterkugel den Äquator des Messobjektes im WKS sicher erreichen kann und es zu keiner Kollision mit der Kugelaufspannung kommt. Durch Angabe eines variablen Start- und Fortschaltwinkels beim Positionieren auf einer Kreisbahn ist dies auch bei schwierigen Aufspannungen immer gegeben.</p><p class="safety">Der Messweg im Parameter DFA ist so groß zu wählen, dass alle Messpunkte innerhalb des Gesamt-Messweges 2 · DFA erreicht werden. Andernfalls kommt keine Messung zustande oder die Messungen sind unvollständig.</p></td></tr></table><a name="block_5"></a><h3 class="Blocktitle">Position nach Messzyklus-Ende</h3><p>Der Messtaster steht über dem ermittelten Kugelmittelpunkt auf Sicherheitshöhe (Höhe wie Ausgangsposition).</p></div>
+    <p>Siehe auch:<br />    <a href="slstepmeonesphere.html">Messen: Kugel (CYCLE997)</a></p>
+  </body>
+</html>

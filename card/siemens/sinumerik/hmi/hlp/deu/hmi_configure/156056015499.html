@@ -1,0 +1,50 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SMB-Client konfigurieren</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowAction">
+        <h1 class="title">SMB-Client konfigurieren</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Um die NCU und das PC-System im Netzwerk mit einem externen Microsoft Windows-Server zu verbinden, wird das SMB-Serverprotokoll (Server Message Block) verwendet. Microsoft Windows 10 unterstützt SMB-Server mit den Protokollversionen SMBv1, SMBv2 und SMBv3. Verschiedene Server erfordern je nach Konfiguration eine andere Protokollversion, um eine Verbindung mit der NCU und dem PC-System zu ermöglichen.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Achtung</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Netzwerksicherheit</h4>
+            <p class="safety">Vermeiden Sie unbefugten Datenzugriff, z. B. über das Internet.</p>
+            <p class="safety">Verbinden Sie nur Systeme innerhalb des Firmennetzes, wenn Sie über die Konfigurationsdatei <code>basesys.ini</code> das Netzwerk einrichten möchten, z. B. bei einer Remote-Server-Verbindung für das Systemlogbuch (<code>Syslog_Remote_Host</code>).</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Kompatibilität</h3>
+      <p>Die SMB-Protokollversionen sind kompatibel für folgende Software:</p>
+      <a id="table_ae8e70d5-8d36-29a2-5c6d-4f9102c0a82b">
+      </a> <a id="table_0"></a> <a id="table_ae8e70d5-8d36-29a2-5c6d-4f9102c0a82b"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="44.9%"><col width="55.1%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">CNC-Software</p></th><th><p type="p_table_lb" align="left">SMB-Protokollversion</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">V4.7 (828D, 840D sl)</p><p type="p_table_l" align="left">V4.8 (840D sl)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">V1.0</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">V4.93 (828D, 840D sl)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">V1.0, V2.0</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">V4.8 ab SP3 (828D)</p><p type="p_table_l" align="left">V4.95 (828D, 840D sl)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">V1.0, V2.0, V3.0.2</p><p type="p_table_l" align="left"></p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">V6.13 (ONE)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">V1.0, V2.0, V2.1, V3.0.2</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">V6.15 (ONE)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">V1.0, V2.0, V3.0, V3.0.2</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">V5.2x (828D)</p><p type="p_table_l" align="left">V6.2x (ONE)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">V1.0, V2.0, V3.0.2, V3.1.1</p></td></tr></table></p><a name="block_2"></a><h3 class="Blocktitle">Voraussetzung</h3><ul><li><p>Versteckte Verzeichnisse werden nicht ausgeblendet</p></li><li><p>Eine Kopie der Konfigurationsdatei <code>basesys.ini</code> ist im Anwenderverzeichnis <code>user</code> abgelegt:<br /><code>C:\ProgramData\Siemens\MotionControl\</code><b>user</b><code>\System\etc\</code></p></li><li><p>Die Konfigurationsdatei <code>basesys.ini</code> im Verzeichnis <code>user</code> ist nicht schreibgeschützt.</p></li></ul><a name="block_3"></a><h3 class="Blocktitle">Vorgehen</h3><p>Um einen SMB-Server im Netzwerk von NCU und dem PC-System in SINUMERIK Operate zu hinterlegen, gehen Sie folgendermaßen vor:</p><table width="100%" border="0" cellspacing="0" cellpadding="10"><tr><td><ol class="action"><li><p>Öffnen Sie die Konfigurationsdatei <code>basesys.ini</code> im Verzeichnis<br /><code>C:\ProgramData\Siemens\MotionControl\</code><b>user</b><code>\System\etc\</code>.</p></li><li><p>Fügen Sie im Abschnitt <code>[LinuxBase]</code> die Zeile <code>DefaultCIFSVersion</code> ein und setzen Sie den gewünschten Wert, z. B:</p><p><code>DefaultCIFSVersion=3.11</code></p><p>Folgende Werte sind abhängig vom SMB-Server möglich:</p><p><code>none</code>, <code>1.0</code>, <code>2.0</code>, <code>2.1</code>, <code>3.0</code>, <code>3.02</code>, <code>3.11</code> oder <code>auto</code> (Default-Wert)</p></li><li><p>Speichern und schließen Sie die Datei.</p></li><li><p>Starten Sie das PC-System neu.</p></li></ol></td></tr></table><a name="block_4"></a><h3 class="Blocktitle">SMB-Serververbindung in SINUMERIK Operate projektieren</h3><p>Für die Projektierung des SMB-Servers als Softkey im Programm-Manager steht Ihnen im Bedienbereich<br />"Inbetriebnahme > HMI > Log. Laufw." das Fenster "Laufwerke einrichten" zur Verfügung.</p><p>Richten Sie den SMB-Server als Microsoft Windows-Netzlaufwerk "NW Windows" ein.</p><a id="table_556b3346-36f8-0de1-b711-6134238c7a02"></a> <a id="table_1"></a> <a id="table_556b3346-36f8-0de1-b711-6134238c7a02"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="10.0%"><col width="90.0%"></colgroup><tr valign="top"><td><a id="image_118314956171_0"></a> <img border="0" src="images/118314959883.png" width="42" height="31"/> </td><td><p type="p_table_l" style="margin-top: 4px" align="left"><b>Weitere Informationen</b> zur Laufwerksprojektierung finden Sie in der Online-Hilfe von SINUMERIK Operate.</p></td></tr></table></p><a name="block_5"></a><h3 class="Blocktitle">SMB-Serverkonfiguration überprüfen</h3><table width="100%" border="0" cellspacing="0" cellpadding="10"><tr><td><ol class="action"><li><p>Um die SMB-Serverkonfiguration zu prüfen, rufen Sie PuTTY auf.</p></li><li><p>Melden Sie sich als Benutzer "manufact" an.</p></li><li><p>Führen Sie den Befehl <code>mount | grep cifs</code> aus.</p><p>Sie erhalten folgende Ausgabe, die ähnliche Angaben enthält wie z. B.:</p><p><code>192.168.214.241/carlshare auf /tmp/.logdrived_mnt. DEV_6 typ cifs (rw,nosuid,nodev,relatime,</code><b>vers=3.02</b><code>,sec=ntlmssp,cache=strict,...)</code></p><p>Das Beispiel zeigt, dass die CIFS/Microsoft Windows-Freigabe mit dem SMB-Protokoll v3.0.2 für den Server aktiviert wurde.</p></li></ol></td></tr></table><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Wenn die Zeile <code>DefaultCIFSVersion</code> als Standardwert <code>auto</code> enthält, wird bei Verbindung zu einem Microsoft Windows XP/7-System die Aktivierung als SMB-Protokoll <code>vers=2.1</code> oder <code>vers=1.0</code> angezeigt.</p></td></tr></table></div>
+  </body>
+</html>

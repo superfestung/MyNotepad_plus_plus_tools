@@ -1,0 +1,97 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Save tool environment (TOOLENV)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Save tool environment (TOOLENV)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The TOOLENV function is used to save any current states needed for the evaluation of tool data stored in the memory.</p>
+      <p>The individual data are as follows:</p>
+      <ul>
+        <li>
+          <p>The active G command of group:</p>
+          <ul>
+            <li>
+              <p>6 (G17, G18, G19)</p>
+            </li>
+            <li>
+              <p>56 (TOWSTD, TOWMCS, TOWWCS, TOWBCS, TOWTCS, TOWKCS)</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>The active transverse axis</p>
+        </li>
+        <li>
+          <p>Machine data:</p>
+          <ul>
+            <li>
+              <p>MD18112 $MN_MM_KIND_OF_SUMCORR (properties of the summed offsets in the TO area)</p>
+            </li>
+            <li>
+              <p>MD20360 $MC_TOOL_PARAMETER_DEF_MASK (definition of tool parameters).</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Setting data:</p>
+          <ul>
+            <li>
+              <p>SD42900 $SC_MIRROR_TOOL_LENGTH (sign change tool length when mirroring)</p>
+            </li>
+            <li>
+              <p>SD42910 $SC_MIRROR_TOOL_WEAR (sign change tool wear when mirroring)</p>
+            </li>
+            <li>
+              <p>SD42920 $SC_WEAR_SIGN_CUTPOS (sign of the tool wear with cutting edge systems)</p>
+            </li>
+            <li>
+              <p>SD42930 $SC_WEAR_SIGN (sign of wear)</p>
+            </li>
+            <li>
+              <p>SD42935 $SC_WEAR_TRANSFORM (transformations for tool components)</p>
+            </li>
+            <li>
+              <p>SD42940 $SC_LENGTH_CONST (change of the tool length components for a plane change)</p>
+            </li>
+            <li>
+              <p>SD42942 $SC_TOOL_LENGTH_CONST_T (change of tool length components for turning tools at change of plane)</p>
+            </li>
+            <li>
+              <p>SD42950 $SC_TOOL_LENGTH_TYPE (allocation of the tool length components independent of tool type)</p>
+            </li>
+            <li>
+              <p>SD42954 $SC_TOOL_ORI_CONST_M (change of tool orientation components for milling tools at change of plane)</p>
+            </li>
+            <li>
+              <p>SD42956 $SC_TOOL_ORI_CONST_T (change of tool orientation components for turning tools at change of plane)</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>The orientation component of the current complete frame (rotation and mirroring, no work offsets or scaling)</p>
+        </li>
+        <li>
+          <p>The orientation component and the resulting length of the active toolholder with orientation capability</p>
+        </li>
+        <li>
+          <p>The orientation component and the resulting length of an active transformation</p>
+        </li>
+      </ul>
+      <p>In addition to the data describing the environment of the tool, the T number, D number and DL number of the active tool are also stored, so that the tool can be accessed later in the same environment as the TOOLENV call, without having to name the tool again.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>&lt;Status> = TOOLENV(&lt;name>)<a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_dc7626fe-3412-4464-9c5d-7e46e8fb435e"></a> <a id="table_0"></a> <a id="table_dc7626fe-3412-4464-9c5d-7e46e8fb435e"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="3.8%"><col width="16.7%"><col width="10.0%"><col width="7.5%"><col width="62.0%"></colgroup><tr valign="top"><td rowspan="2" colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>TOOLENV(...)</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Predefined function to save a tool environment</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Alone in the block:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Yes</p></td></tr><tr valign="top"><td rowspan="7" colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Status></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Function return value. Negative values indicate error states.</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td rowspan="5"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center">0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Function OK</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">-1</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">No memory reserved for tool environments:</p><p type="p_table_l" align="left">MD18116 $MN_MM_NUM_TOOL_ENV = 0</p><p type="p_table_l" align="left">This means that the "tool environments" functionality is not available.</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">-2</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">No more free memory locations for tool environments available.</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">-3</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Null string illegal as name of a tool environment.</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center">-4</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">No parameter (&lt;name>) specified.</p></td></tr><tr valign="top"><td colspan="5"><p type="p_table_l" style="margin-top: 4px" align="left"><b>Parameters</b></p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">1</p></td><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;name></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Name, under which the current data set should be saved.</p><p type="p_table_l" align="left">If a data set of the same name already exists, then it is overwritten. In this case, the status is "0".</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">STRING</p></td></tr></table></p></div>
+    <p>See also:<br />    <a href="156663446411.html">Save tool environment (TOOLENV): Additional information</a><br />    <a href="156663433611.html">Working with tool environments: Overview</a></p>
+  </body>
+</html>

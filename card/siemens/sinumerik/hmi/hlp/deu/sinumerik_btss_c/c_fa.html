@@ -1,0 +1,267 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein C/FA: Aktive kanalspezifische Frames</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein C/FA: Aktive kanalspezifische Frames</h1>
+         </div>
+      </div>Folgende Frameindizes gibt es:<br/>
+      <br/>
+       0: $P_ACTFRAME   = aktuelle resultierende Nullpunktverschiebung<br/>
+       1: $P_IFRAME     = aktuelle einstellbare Nullpunktverschiebung<br/>
+       2: $P_PFRAME     = aktuelle programmierbare Nullpunktverschiebung<br/>
+       3: EXTFRAME      = aktuelle externe Nullpunktverschiebung<br/>
+       4: TOTFRAME      = aktuelle Gesamtnullpunktverschiebung = Summe aus ACTFRAME und EXTFRAME<br/>
+       5: $P_ACTBFRAME  = aktueller Gesamt-Basisframe<br/>
+       6: $P_SETFRAME   = aktueller 1. Systemframe (Istwertsetzen, Ankratzen)<br/>
+       7: $P_EXTSFRAME  = aktueller 2. Systemframe (Istwertsetzen, Ankratzen)<br/>
+       8: $P_PARTFRAME  = aktueller 3. Systemframe (TCARR und PAROT bei orientierbarem Werkzeugträger)<br/>
+       9: $P_TOOLFRAME  = aktueller 4. Systemframe (TOROT und TOFRAME)<br/>
+      10: $AC_MEASFRAME = Ergebnisframe für die Werkstück- und Werkzeugvermessung<br/>
+      11: $P_WPFRAME    = aktueller 5. Systemframe (Werkstückbezugspunkte)	 ab SW $[[SW440000]]<br/>
+      12: $P_CYCFRAME   = aktueller 6. Systemframe (Zyklen)	ab SW $[[SW440000]]<br/>
+      13: $P_TRAFRAME   = aktueller 7. Systemframe (Transformation)	ab SW $[[SW520000]]<br/>
+      14: $P_ISO1FRAME  = aktueller ISO-Systemframe für G51.1 Spiegeln	ab SW $[[SW660000]]<br/>
+      15: $P_ISO2FRAME  = aktueller ISO-Systemframe für G68 2DROT	ab SW $[[SW660000]]<br/>
+      16: $P_ISO3FRAME  = aktueller ISO-Systemframe für G68 3DROT	ab SW $[[SW660000]]<br/>
+      17: $P_ISO4FRAME  = aktueller ISO-Systemframe für G51 Scale	ab SW $[[SW660000]]<br/>
+      18: $P_ACSFRAME   = aktueller resultierender Frame für das ENS (ACS)	ab SW $[[SW660000]]<br/>
+      19: $P_RELFRAME   = aktueller 12. Systemframe für relative Koordinatensysteme ab SW $[[SW700000]]<br/>
+      20: $P_TRAFRAME_P = aktueller Frame des Werkstückanteils einer aktiven kinematischen (Orientierungs-)Transformation ab SW
+      $[[SW900000]]<br/>
+      21: $P_TRAFRAME_T = aktueller Frame des Werkzeuganteils einer aktiven kinematischen (Orientierungs-)Transformation ab SW $[[SW900000]]<br/>
+      <br/>
+      Der max. Frameindex ist 21.<br/>
+      
+      <div><a name="175"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>linShift</b></td>
+            <td colspan="3" style="border:1px solid black">Translation aktiver Frame</td>
+            <td width="20%" style="border:1px solid black">diverse, siehe Bausteinbescheibung</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Frame<br>Frameindex * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a> + Achsnummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>20 * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Translation einer aktiven Nullpunktverschiebung (die physikalische Einheit steht in basicLengthUnit im Baustein Y im Bereich
+               N).<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>Linearposition (mm, inch oder userdef)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ActualFrame/linShift[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2254"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>linShiftFine</b></td>
+            <td colspan="3" style="border:1px solid black">Feinverschiebung eines aktiven Frames</td>
+            <td width="20%" style="border:1px solid black">diverse, siehe Bausteinbescheibung</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Frameindex * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a> + Achsnummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>20 * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Feinverschiebung eines aktiven Frames<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>Linearposition (mm, inch oder userdef)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ActualFrame/linShiftFine[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="309"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mirrorImgActive</b></td>
+            <td colspan="3" style="border:1px solid black">Spiegeln aktiver Frame</td>
+            <td width="20%" style="border:1px solid black">diverse, siehe Bausteinbescheibung</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Frame<br>Frameindex * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a> + Achsnummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>20 * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Spiegeln einer aktiven Nullpunktverschiebung<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0 = Spiegeln nicht aktiv<br/>
+               1 = Spiegeln aktiv<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ActualFrame/mirrorImgActive[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="399"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>rotation</b></td>
+            <td colspan="3" style="border:1px solid black">Drehung aktiver Frame</td>
+            <td width="20%" style="border:1px solid black">diverse, siehe Bausteinbescheibung</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Frame<br>Frameindex * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a> + Achsnummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>20 * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Drehung einer aktiven Nullpunktverschiebung<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>Winkel (Grad)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ActualFrame/rotation[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5425"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>rotationCoordinate</b></td>
+            <td colspan="3" style="border:1px solid black">Koordinatendrehung aktiver Frame</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Frameindex * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a> + 1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>20 * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Drehung um eine Koordinate einer aktiven Nullpunktverschiebung<br/>
+               1: Drehung um die erste nicht vorhandene Geometrieachse.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>Winkel (Grad)
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ActualFrame/rotationCoordinate[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="403"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>scaleFact</b></td>
+            <td colspan="3" style="border:1px solid black">Skalierungsfaktor aktiver Frame</td>
+            <td width="20%" style="border:1px solid black">diverse, siehe Bausteinbescheibung</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Frame<br>Frameindex * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a> + Achsnummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>20 * <a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Skalierungsfaktor einer aktiven Nullpunktverschiebung<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/ActualFrame/scaleFact[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

@@ -1,0 +1,86 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Programmierung der Orientierungsachsen (ORIAXES, ORIAXESFR, ORIVECT, ORIANGLE, ORIEULER, ORIRPY, ORIRPY2, ORIVIRT1, ORIVIRT2): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Programmierung der Orientierungsachsen (ORIAXES, ORIAXESFR, ORIVECT, ORIANGLE, ORIEULER, ORIRPY, ORIRPY2, ORIVIRT1, ORIVIRT2): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Maschinenhersteller</h4>
+      <ul>
+        <li>
+          <p>MD21102 $MC_ORI_DEF_WITH_G_CODE</p>
+          <p>Mit dem Maschinendatum wird festgelegt, wie die programmierten Winkel A2, B2 und C2 definiert werden:</p>
+          <p>Die Definition kann nach MD21100 $MC_ORIENTATION_IS_EULER (Standard) oder mittels G-Gruppe 50 (ORIEULER, ORIRPY, ORIVIRT1, ORIVIRT2) erfolgen.</p>
+        </li>
+        <li>
+          <p>MD21104 $MC_ORI_IPO_WITH_G_CODE</p>
+          <p>Mit dem Maschinendatum wird festgelegt, welche Interpolationsart wirksam ist. Entweder ORIWKS/ORIMKS oder ORIAXES/ORIVECT.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Betriebsart JOG</h4>
+      <p>Die Orientierungswinkel werden in dieser Betriebsart immer linear interpoliert. Beim kontinuierlichen und inkrementellen Verfahren über Verfahrtasten kann nur eine Orientierungsachse verfahren werden. Über die Handräder können die Orientierungsachsen gleichzeitig verfahren werden. </p>
+      <p>Für das manuelle Verfahren von Orientierungsachsen wirkt der kanalspezifische Vorschub-Override-Schalter bzw. der Eilgang-Override-Schalter bei Eilgangüberlagerung.</p>
+      <p>Mit folgenden Maschinendaten ist eine separate Geschwindigkeitsvorgabe möglich:</p>
+      <ul>
+        <li>
+          <p>MD21160 $MC_JOG_VELO_RAPID_GEO</p>
+        </li>
+        <li>
+          <p>MD21165 $MC_JOG_VELO_GEO</p>
+        </li>
+        <li>
+          <p>MD21150 $MC_JOG_VELO_RAPID_ORI</p>
+        </li>
+        <li>
+          <p>MD21155 $MC_JOG_VELO_ORI</p>
+        </li>
+      </ul>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">SINUMERIK-Steuerung mit "Transformationspaket Handling"</h4>
+            <p class="safety">Mit der Funktion "Kartesisches manuelles Verfahren" kann im JOG-Betrieb die Translation von Geometrieachsen in den Bezugssystemen MKS, WKS und TCS getrennt voneinander eingestellt werden.</p>
+            <p class="safety">
+              <b>Weitere Informationen: </b>Funktionshandbuch Transformationen</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Winkeldefinition</h4>
+      <p>Mit dem Maschinendatum <b>MD21102 $MC_ORI_DEF_WITH_G_CODE</b> wird festgelegt, wie die programmierten Winkel A2, B2, C2 definiert werden:</p>
+      <p>Die Definition kann nach MD21100 $MC_ORIENTATION_IS_EULER (Standard) oder mittels G-Gruppe 50 (ORIEULER, ORIRPY, ORIVIRT1, ORIVIRT2) erfolgen.</p>
+      <h4 class="Blocklabel">Interpolationsart</h4>
+      <p>Mit dem Maschinendatum <b>MD21104 $MC_ORI_IPO_WITH_G_CODE</b> wird festgelegt, welche Interpolationsart wirksam ist. Entweder ORIWKS/ORIMKS oder ORIAXES/ORIVECT.</p>
+      <h4 class="Blocklabel">ORIAXES</h4>
+      <p>Bei ORIAXES werden die Orientierungsachsen auf <b>kürzestem Weg</b> auf die programmierten Positionen verfahren.</p>
+      <a id="table_3750b08b-3526-3d43-3a51-6e40b63902e1">
+      </a> <a id="table_0"></a> <a id="table_3750b08b-3526-3d43-3a51-6e40b63902e1"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EBC"><colgroup><col width="40.2%"><col width="59.8%"></colgroup><tr valign="top"><th>Programcode</th><th>Kommentar</th></tr><tr valign="top"><td>N110 TRAFOOF</td><td> </td></tr><tr valign="top"><td>N120 ROT</td><td> </td></tr><tr valign="top"><td colspan="2">N130 G1 X0 Y0 Z0 A0 C0 F10000</td></tr><tr valign="top"><td>N140 TRAFOON("HD50_500")</td><td>; ORIWKS(0.000, 0.000)</td></tr><tr valign="top"><td>N150 ROT Z90</td><td>; Drehung: WKS, 90° um die Z-Achse</td></tr><tr valign="top"><td>N160 ORIWKS</td><td>; Drehungen erfolgen im WKS</td></tr><tr valign="top"><td>N170 <b>ORIAXES</b></td><td>; Einschalten: Interpolation der Orientierungsachsen auf kürzestem Weg</td></tr><tr valign="top"><td> </td><td>; Position (A-Achse, C-Achse)</td></tr><tr valign="top"><td>N180 M0</td><td>; ORIWKS(0.000, <b>0.000</b>)</td></tr><tr valign="top"><td>N190 A45 C-90</td><td>; ORIWKS(45.000, -90.000)</td></tr><tr valign="top"><td>N195 A45 C-270 </td><td>; ORIWKS(<b>-45.000</b>, <b>-90.000</b>)</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a id="table_9933dc2d-8153-578a-bf00-90d1fe765af5"></a> <a id="table_1"></a> <a id="table_9933dc2d-8153-578a-bf00-90d1fe765af5"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="12.5%"><col width="87.5%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">N180:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Die Position der C-Achse wird bei ORIAXES erst mit dem ersten Verfahrsatz angezeigt. Da N180 kein Verfahrsatz ist, wird für die C-Achse trotz der Drehung in N150 um 90° immer noch die Position 0.0 angezeigt.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">N190:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Die A-Achse verfährt um 45°. Die C-Achse steht durch die Drehung in N150 bereits auf -90° und verfährt daher nicht.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">N195</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Um die programmierten Positionen auf kürzestem Weg anzufahren, wird die C-Achse nicht und die A-Achse um 90° verfahren.</p></td></tr></table></p><h4 class="Blocklabel">ORIAXESFR</h4><p>Bei ORIAXESFR werden die Orientierungsachsen <b>direkt</b>, ohne Berücksichtigung des kürzesten Weges, auf die programmierten Positionen verfahren.</p><a id="table_66841c7a-cbcb-e7c0-9905-4e0f453f623b"></a> <a id="table_2"></a> <a id="table_66841c7a-cbcb-e7c0-9905-4e0f453f623b"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EPF"><colgroup><col width="40.2%"><col width="59.8%"></colgroup><tr valign="top"><th>Programcode</th><th>Kommentar</th></tr><tr valign="top"><td>N210 TRAFOOF</td><td> </td></tr><tr valign="top"><td>N220 ROT</td><td> </td></tr><tr valign="top"><td colspan="2">N230 G1 X0 Y0 Z0 A0 C0 F10000</td></tr><tr valign="top"><td>N240 TRAFOON("HD50_500")</td><td>; ORIWKS (0.000, 0.000)</td></tr><tr valign="top"><td>N250 ROT Z90</td><td>; Drehung: WKS, 90° um die Z-Achse</td></tr><tr valign="top"><td>N260 ORIWKS</td><td>; Drehungen erfolgen im WKS</td></tr><tr valign="top"><td>N270 <b>ORIAXESFR</b></td><td>; Einschalten: Interpolation der Orientierungsachsen auf die programmierten Positionen</td></tr><tr valign="top"><td> </td><td>; Position (A-Achse, C-Achse)</td></tr><tr valign="top"><td>N280 M0</td><td>; ORIWKS(0.000, <b>-90.000</b>)</td></tr><tr valign="top"><td>N290 A45 C-90</td><td>; ORIWKS(45.000, -90.000)</td></tr><tr valign="top"><td>N295 A45 C-270 </td><td>; ORIWKS(<b>45.000</b>, <b>-270.000</b>)</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a id="table_11b0f1eb-ef15-9567-5c0b-6d7d75f2e9aa"></a> <a id="table_3"></a> <a id="table_11b0f1eb-ef15-9567-5c0b-6d7d75f2e9aa"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="12.5%"><col width="87.5%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">N180:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Die Position der C-Achse wird bei ORIAXESFR sofort mit dem nächsten Satz angezeigt. Daher wird bereits mit N280 für die C-Achse wegen der Drehung in N250 um 90° die Position -90.0 angezeigt.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">N190:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Die A-Achse verfährt um 45°. Die C-Achse steht durch die Drehung in N250 bereits auf -90° und verfährt daher nicht.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">N195</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Die A-Achse wird nicht und die C-Achse um 180° verfahren.</p></td></tr></table></p><h4 class="Blocklabel">ORIANGLE</h4><p>Mit dem G-Befehl ORIANGLE wird die Programmierung der Orientierung in virtuellen Achswinkeln aktiviert.</p><p>Der G-Befehl ORIANGLE gehört zur G-Gruppe 51.</p><p>Für die Orientierungspolarisation mit ORIANGLE müssen folgende Maschinendaten gesetzt sein:</p><ul><li><p>MD21104 $MC_ORI_IPO_WITH_G_CODE = TRUE (Definition der Interpolationsart für die Orientierung)</p></li><li><p>MD21102 $MC_ORI_DEF_WITH_G_CODE = TRUE (Definition der Orientierungswinkel A2, B2, C2)</p></li></ul><p><b>Beispiel 1:</b></p><p>Für Beispiel 1 sollen folgende Annahmen gelten:</p><ul><li><p>5-Achs Maschine mit <b>CA’</b> Nutator-Kinematik. </p></li><li><p>Die Drehrichtung der A’-Achse liegt in der Diagonalen der XZ-Ebene. </p></li><li><p>Die C-Achse dreht um die Z-Richtung.</p></li></ul><a id="table_99c4d28a-6e4c-b3b4-9a56-a8109a606f86"></a> <a id="table_4"></a> <a id="table_99c4d28a-6e4c-b3b4-9a56-a8109a606f86"></a> <a id="table_4"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EPBAC"><colgroup><col width="35.0%"><col width="65.0%"></colgroup><tr valign="top"><th>Programcode</th><th>Kommentar</th></tr><tr valign="top"><td>ORIEULER</td><td>; Definition einer "virtuellen" rechtwinkligen CA-Kinematik</td></tr><tr valign="top"><td><b>ORIANGLE</b></td><td>; Aktivierung der Interpolation in diesen virtuellen Achswinkeln </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N10 A3=0 B3=1 C3=1</td><td>; Werkzeugorientierung in Raumrichtung (0.0, 0.707, 0.707) </td></tr><tr valign="top"><td>N20 A3=0 B3=1 C3=0</td><td>; Drehung der Orientierung in Y-Richtung (0.0, 1.0, 0.0)</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Bei der Orientierungsänderung von Satz N10 zu N20 wird die Orientierung in der YZ-Ebene um 45 Grad gedreht. </p><p>Die beiden Eulerwinkel (phi1, phi2) werden dabei folgendermaßen interpoliert: (0.0, 45.0) → (0.0, 90.0). </p><p>Die beiden Rundachsen C und A’ bewegen sich dabei von den Startwinkeln (45.0, 90.0) zu den Endwinkeln (0.0, 180.0).</p><p><b>Beispiel 2:</b></p><p>Für Beispiel 2 sollen folgende Annahmen gelten:</p><ul><li><p>5-Achs Maschine mit <b>AB</b>-Kinematik.</p></li><li><p>Das Werkzeug ist dabei an zwei aufeinander folgenden Rundachsen aufgehängt, sie sich um die X- bzw. um die Y-Achse drehen.</p></li></ul><a id="table_1494c086-1c90-776a-d003-3b10dbcc0fd0"></a> <a id="table_5"></a> <a id="table_1494c086-1c90-776a-d003-3b10dbcc0fd0"></a> <a id="table_5"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EEDAC"><colgroup><col width="35.0%"><col width="65.0%"></colgroup><tr valign="top"><th>Programcode</th><th>Kommentar</th></tr><tr valign="top"><td>ORIEULER</td><td>; Definition einer "virtuellen" CA-Kinematik</td></tr><tr valign="top"><td><b>ORIANGLE</b></td><td>; Aktivierung der Interpolation in diesen virtuellen Achswinkeln </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N10 A3=0 B3=1 C3=1</td><td>; Drehung der Orientierung in Raumrichtung (0.0, 0.707, 0.707)</td></tr><tr valign="top"><td>N20 A3=1 B3=0 C3=1</td><td>; Drehung der Orientierung in Raumrichtung (0.707, 0.0, 0.707)</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Bei der Orientierungsänderung von N10 zu N20 wird dabei die Orientierung auf einem Kegel mit einem Öffnungswinkel von 45 Grad um die Z-Richtung geschwenkt. </p><p>Die beiden Eulerwinkel (phi1, phi2) werden dabei folgendermaßen interpoliert (0.0, 45.0) → (-90.0, 45.0). </p><p>Im Unterschied dazu würde bei einer Großkreisinterpolation die Orientierung in einer Ebene, die durch die beiden Vektoren (0.0, 0.707, 0.707) und (0.707, 0.0, 0.707) aufgespannt wird, gedreht. Dabei würde der “virtuelle” Eulerwinkel phi2 nicht konstant bei 45 Grad stehen bleiben.</p></div>
+  </body>
+</html>

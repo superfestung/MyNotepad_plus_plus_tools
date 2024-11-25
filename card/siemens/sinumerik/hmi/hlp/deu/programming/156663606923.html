@@ -1,0 +1,138 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Umschaltbare Geometrieachsen (GEOAX): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Umschaltbare Geometrieachsen (GEOAX): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Relevante Maschinendaten</h4>
+      <ul>
+        <li>
+          <p>Zuordnung von Geometrie-, Zusatz- und Maschinenachsen zu Kanalachsen:</p>
+          <ul>
+            <li>
+              <p>MD10000 $MN_AXCONF_MACHAX_NAME_TAB</p>
+            </li>
+            <li>
+              <p>MD20050 $MC_AXCONF_GEOAX_ASIGN_TAB</p>
+            </li>
+            <li>
+              <p>MD20060 $MC_AXCONF_GEOAX_NAME_TAB</p>
+            </li>
+            <li>
+              <p>MD20070 $MC_AXCONF_MACHAX_USED</p>
+            </li>
+            <li>
+              <p>MD20080 $MC_AXCONF_CHANAX_NAME_TAB</p>
+            </li>
+            <li>
+              <p>MD35000 $MA_SPIND_ASSIGN_TO_MACHAX</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Reset-Verhalten:</p>
+          <ul>
+            <li>
+              <p>MD20110 $MC_RESET_MODE_MASK, Bit 12</p>
+            </li>
+            <li>
+              <p>MD20118 $MC_GEOAX_CHANGE_RESET</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>NC-Start-Verhalten:</p>
+          <ul>
+            <li>
+              <p>MD20112 $MC_START_MODE_MASK, Bit 12</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Mitteilung an PLC-Anwenderprogramm:</p>
+          <ul>
+            <li>
+              <p>MD22532 $MC_GEOAX_CHANGE_M_CODE</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Bedingungen, die eine Geometrieachsumschaltung verhindern</h4>
+      <ul>
+        <li>
+          <p>Eine der folgenden Funktionen ist aktiv:</p>
+          <ul>
+            <li>
+              <p>Transformation</p>
+            </li>
+            <li>
+              <p>Spline-Interpolation</p>
+            </li>
+            <li>
+              <p>Werkzeugradiuskorrektur</p>
+            </li>
+            <li>
+              <p>Werkzeugfeinkorrektur</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Die Geometrieachse und eine weitere Kanalachse haben den gleichen Namen.</p>
+        </li>
+        <li>
+          <p>Eine der an der Geometrieachsumschaltung beteiligten Achsen ist an einer Aktion beteiligt, die über Satzgrenzen hinweg andauert.</p>
+          <p>Z. B. Satzübergreifende Positionierachse oder Folgeachse einer Achskopplung.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Rundachsen</h4>
+      <p>Rundachsen können nicht zu Geometrieachsen gemacht werden.</p>
+      <h4 class="Blocklabel">Achszustand nach dem Ersetzen</h4>
+      <p>Eine durch die Umschaltung im Geometrieachsverbund ersetzte Achse ist nach dem Umschaltvorgang über ihren Kanalachsnamen als Zusatzachse programmierbar.</p>
+      <h4 class="Blocklabel">Frames, Schutzbereiche, Arbeitsfeldbegrenzungen</h4>
+      <p>Mit dem Umschalten der Geometrieachsen werden alle Frames, Schutzbereiche und Arbeitsfeldbegrenzungen gelöscht.</p>
+      <h4 class="Blocklabel">Polarkoordinaten</h4>
+      <p>Ein Tausch der Geometrieachsen mit GEOAX setzt analog einem Ebenenwechsel mit G17-G19 die modalen Polarkoordinaten auf den Wert 0.</p>
+      <h4 class="Blocklabel">DRF, NPV</h4>
+      <p>Eine eventuelle Handrad-Verschiebung (DRF) oder eine externe Nullpunktverschiebung (NPV) bleibt nach der Umschaltung wirksam.</p>
+      <h4 class="Blocklabel">Grundkonfiguration der Geometrieachsen</h4>
+      <p>Der Befehl GEOAX() ruft die Grundkonfiguration des Geometrieachsverbunds auf.</p>
+      <p>Nach POWER ON und bei Umschalten in die Betriebsart "Referenzpunktfahren" wird automatisch auf die Grundkonfiguration zurückgeschaltet.</p>
+      <h4 class="Blocklabel">Werkzeuglängenkorrektur</h4>
+      <p>Eine aktive Werkzeuglängenkorrektur ist auch nach dem Umschaltvorgang wirksam. Sie gilt jedoch für die neu aufgenommenen bzw. positionsgetauschten Geometrieachsen als noch nicht herausgefahren. Beim ersten Bewegungsbefehl für diese Geometrieachsen besteht der resultierende Verfahrweg dementsprechend aus der Summe von Werkzeuglängenkorrektur und programmiertem Verfahrweg.</p>
+      <p>Geometrieachsen, die bei einer Umschaltung ihre Position im Achsverband beibehalten, behalten auch ihren Status bezüglich der Werkzeuglängenkorrektur.</p>
+      <h4 class="Blocklabel">Geometrieachskonfiguration bei aktiver Transformation</h4>
+      <ul>
+        <li>
+          <p>Die für eine aktive Transformation über Transformations-Maschinendaten parametrierte Geometrieachskonfiguration ist über die Funktion "Umschaltbare Geometrieachsen" nicht änderbar.</p>
+        </li>
+        <li>
+          <p>Unterschiedliche Geometrieachskonfiguration für eine Transformation, müssen in den Transformations-Maschinendaten unterschiedliche Datensätze parametriert werden.</p>
+        </li>
+        <li>
+          <p>Eine über GEOAX geändert Geometrieachskonfiguration wird durch Aktivierung einer Transformation gelöscht.</p>
+        </li>
+        <li>
+          <p>Bezüglich der Geometrieachsen haben die Transformations-spezifischen Geometrieachsparametrierungen von aktiven Transformationen Vorrang vor den die Umschaltung von Geometrieachsen betreffenden Parametrierungen.</p>
+          <p>Beispiel: Eine Transformation ist aktiv. Laut Maschinendaten soll die Transformation bei Kanal-Reset erhalten bleiben. Gleichzeitig soll bei einem Kanal-Reset jedoch die Grundkonfiguration der Geometrieachsen hergestellt werden. Es bleibt die Geometrieachskonfiguration erhalten, die für die Transformation festgelegt ist.</p>
+        </li>
+        <li>
+          <p>Mit dem Ausschalten einer Transformation wird wieder die parametrierte Grundeinstellung der Geometrieachskonfiguration wirksam.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Betriebsart JOG, Maschinenfunktion REF</h4>
+      <p>Beim Umschalten in die Betriebsart JOG, Maschinenfunktion REF (Referenzpunkt fahren), wird die in den Maschinendaten parametrierte Geometrieachskonfiguration wirksam.</p>
+    </div>
+  </body>
+</html>

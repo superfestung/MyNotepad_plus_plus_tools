@@ -1,0 +1,103 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Friction compensation - automatic tuning</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Friction compensation - automatic tuning</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The axes selected in the particular channel are automatically traversed individually one after the other. </p>
+      <p>Procedure:</p>
+      <ol>
+        <li>
+          <p>The radius and the feedrate for the measurements are preset in the following channel setting data and apply for all axes in the channel. </p>
+          <a id="table_bc89775c-afeb-d423-b5b1-73e646be19a3">
+          </a> <a id="table_0"></a> <a id="table_bc89775c-afeb-d423-b5b1-73e646be19a3"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default_list" border="1"><colgroup><col width="30.0%"><col width="17.0%"><col width="53.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Designation</p></th><th><p type="p_table_lb" align="left">Unit</p></th><th><p type="p_table_lb" align="left">Machine data</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Radius (linear axis)</p><p type="p_table_l" align="left">Radius (rotary axis)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">mm</p><p type="p_table_l" align="left">° (degrees)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">SD55820 $SCS_FRICT_OPT_RADIUS</p><p type="p_table_l" align="left">SD55821 $SCS_FRICT_OPT_RADIUS_ROT</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Feedrate (linear axis)</p><p type="p_table_l" align="left">Feedrate (rotary axis)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">[mm/min]</p><p type="p_table_l" align="left">[°/min]</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">SD55822 $SCS_FRICT_OPT_FEED[0...8]</p><p type="p_table_l" align="left">SD55823 $SCS_FRICT_OPT_FEED_ROT[0...8]</p></td></tr></table></p></li>
+        <li>
+          <p>Press the "Start" softkey to start measurements. A part program is then automatically generated; this is done by calling CYCLE790 which reverses the axis with the preset feedrate. Before the part program is started, a check is made as to whether the entered feedrates can be achieved based on the dynamic response of the axis. If feedrates are selected to be too high, a message is output that the feedrates should be reduced. </p>
+        </li>
+        <li>
+          <p>If the entered feedrates have been successfully tested and found to be OK, the part program is opened in order to add additional program instructions. Confirm with "OK" to close the window and continue.</p>
+        </li>
+      </ol>
+      <p>On completion of the tuning of an axis in the channel, the compensation values are saved in the axis machine data and the status display is updated. The next axis is then automatically tuned in this channel. </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Gantry axis grouping</h4>
+            <p class="safety">For a gantry axis grouping, only the guide axis is displayed. On completion of the tuning, the compensation values of the guide axis are copied to the synchronous axes.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Tool carrier</h4>
+            <p class="safety">Unexpected traversing motion can occur if a tool carrier is active when friction compensation is being used. Before starting friction compensation, it is recommended that the tool carrier is deactivated using CYCLE790. This can be done beforehand or when starting by extending the part program to include command "CYCLE800()" at the beginning. The tool carrier is not automatically reactivated.</p>
+          </td>
+        </tr>
+      </table>
+      <p>
+        <b>⇒ Further actions:</b>
+      </p>
+      <ul>
+        <li>
+          <p>"Start" softkey to start tuning.</p>
+        </li>
+        <li>
+          <p>"Graphic" softkey to change to the graphic display.</p>
+        </li>
+        <li>
+          <p>"Data list" softkey to switch to the list of axis machine data and channel setting data.</p>
+        </li>
+        <li>
+          <p>"Cancel" softkey to cancel tuning.</p>
+        </li>
+      </ul>
+    </div>
+    <p>See also:<br />    <a href="friction_comp_auto_select_axis.html">Axis selection and status display</a><br />    <a href="61373027211.html">Requirements</a><br />    <a href="friction_comp_view_md.html">Data list</a><br />    <a href="friction_comp_prog_editor.html">Operating the program editor</a><br />    <a href="60621972491.html">Friction compensation with torque injection pulse</a><br />    <a href="80245209099.html">Example for a linear axis (automatic tuning)</a></p>
+  </body>
+</html>

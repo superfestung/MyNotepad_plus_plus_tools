@@ -1,0 +1,97 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Beispiel: Einstellungen bei 1:N</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowSample">
+        <h1 class="title">Beispiel: Einstellungen bei 1:N</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Konfiguration 1:N</h3>
+      <p>Für eine Konfiguration 1:N gelten folgende Voraussetzungen: </p>
+      <ul>
+        <li>
+          <p>Ein IPC mit SINUMERIK Operate kann mit maximal 4 NCU verbunden werden.</p>
+        </li>
+        <li>
+          <p>Auf allen NCU muss SINUMERIK Operate abgeschaltet sein.</p>
+        </li>
+        <li>
+          <p>Folgende Konfigurationsdateien sind anzupassen:</p>
+          <p>
+            <code>siemens/sinumerik/hmi/template/cfg/</code>
+            <b>netnames.ini</b>
+          </p>
+          <p>
+            <code>siemens/sinumerik/hmi/template/cfg/</code>
+            <b>mmc.ini</b>
+          </p>
+        </li>
+      </ul>
+      <p>Dies wird in den nachfolgenden Abschnitten an einem Beispiel mit 1 IPC und 2 NCU verdeutlicht.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Beispiel "mmc.ini"</h3>
+      <p>
+        <code>[Global]</code>
+      </p>
+      <p class="comment">
+        <code>NcddeMachineNames=net, NCU_ONE_1, NCU_ONE_2</code>
+      </p>
+      <p class="comment">
+        <code>NcddeDefaultMachineName=NCU_ONE_1</code>
+      </p>
+      <p class="comment">
+      </p>
+      <p class="comment">
+        <code>[NCU_ONE_1]</code>
+      </p>
+      <p class="comment">
+        <code>ADDRESS0=192.168.214.1,LINE=14,NAME=/NC,SAP=040d,PROFILE=CLT1__CP_L4_INT</code>
+      </p>
+      <p class="comment">
+        <code>ADDRESS1=192.168.214.1,Line=20,NAME=/PLC,MAX_BUB_CYCLICS=1000</code>
+      </p>
+      <p class="comment">
+        <code>ADDRESS2=192.168.214.1,LINE=14,NAME=/CP,SAP=0502,PROFILE=CLT1__CP_L4_INT</code>
+      </p>
+      <p class="comment">
+        <code>ADDRESS10=192.168.214.1,LINE=14,NAME=/DRIVE_00_000,SAP=0201,</code>
+        <br />
+        <code>SUBNET=0000-00000000:000,PROFILE=CLT1__CP_L4_INT</code>
+      </p>
+      <p class="comment">
+      </p>
+      <p class="comment">
+        <code>[NCU_ONE_2]</code>
+      </p>
+      <p class="comment">
+        <code>ADDRESS0=192.168.214.2,LINE=14,NAME=/NC,SAP=040d,<br />PROFILE=CLT1__CP_L4_INT,PROFILE_PAR=CLT2__CP_L4_INT</code>
+      </p>
+      <p class="comment">
+        <code>ADDRESS1=192.168.214.2,Line=20,NAME=/PLC,MAX_BUB_CYCLICS=1000</code>
+      </p>
+      <p class="comment">
+        <code>ADDRESS2=192.168.214.2,LINE=14,NAME=/CP,SAP=0502,<br />PROFILE=CLT1__CP_L4_INT</code>
+      </p>
+      <p class="comment">
+        <code>ADDRESS10=192.168.214.2,LINE=14,NAME=/DRIVE_00_000,<br />SAP=0201,SUBNET=0000-00000000:000,PROFILE=CLT1__CP_L4_INT</code>
+      </p>
+      <p class="comment">
+        <code>ADDRESS11=192.168.214.2,LINE=14,NAME=/DRIVE_03_003,<br />SAP=0900,PROFILE=CLT1__CP_L4_INT</code>
+      </p>
+      <p class="comment">
+      </p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Beispiel "netnames.ini"</h3>[own]owner=HMI;***************************; ChanMenu;***************************[chan HMI]ShowChanMenu=true;*******************************************************************;Channel-groups;Correlation from channel-group to horizontal softkeys ; -> see config.ini of the TCU;The section [T2M2N] can also be created in the netnames.ini file ;instead of config.ini file. This configuration applies to all TCU,;which are not configured by their config.ini.;*******************************************************************[T2M2N]SK1=CH_GRP_1;SK2=CH_GRP_2[CH_GRP_1];Member&lt;VSK-Index>.Target = &lt;HMI-address>.&lt;NC-address>.#&lt;channel-No.>Text=My%nNCUsMember1.Target=DESKTOP-TEST.NCU_ONE_1.#1Member1.Text=NCU1%nChannel 1Member2.Target=DESKTOP-TEST.NCU_ONE_2.#1Member2.Text=NCU2%nChannel 1<a name="block_4"></a><h3 class="Blocktitle">MCP-Umschaltung im Anwenderprogramm realisieren (FB9)</h3><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Die Umschaltung eines MCP erfolgt nicht mehr mit dem PLC-Baustein FB9. Dieser ist nicht mehr Bestandteil der Grundprogramm-Bibliothek ab V6.20.</p></td></tr></table><p>Die Umschaltung des MCP wird im Anwenderprogramm realisiert.</p><h4 class="Blocklabel">Vorgehen</h4><p>Um die Umschaltung des MCP im Anwenderprogramm zu realisieren, gehen Sie wie folgt vor:</p><table width="100%" border="0" cellspacing="0" cellpadding="10"><tr><td><ol class="action"><li><p>Setzen Sie im OB100 (Aufruf des FC1) <code>"LBP_ConfigData".MCP1BusAdr</code> auf 255 und <code>"LBP_ConfigData".MCP1Stop</code> auf <code>"TRUE"</code>.</p></li><li><p>Fragen Sie im OB1 das Signal <code>"LBP_NC".E_MMCBTSSready</code> ab.</p></li><li><p>Wenn das Signal gesetzt ist, schreiben Sie die MCP-Adresse aus <code>"LBP_HMI".MMC1_MSTT_ADR</code> in <code>"LBP_ConfigData".MCP1BusAdr</code> und löschen Sie das MCP-Stopp-Bit <code>"LBP_ConfigData".MCP1Stop</code>.</p><p>Die MCP ist nun aktiv.</p></li></ol></td></tr></table><h4 class="Blocklabel">Signale</h4><a id="table_47ae5e7c-b9bc-afb0-6ea7-851485f48334"></a> <a id="table_0"></a> <a id="table_47ae5e7c-b9bc-afb0-6ea7-851485f48334"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="50.0%"><col width="50.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left" class="comment">Symbol</p></th><th><p type="p_table_lb" align="left" class="comment">Absolute Adresse</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">"LBP_NC".E_MMCBTSSready</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">DB10.DBX108.3</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">"LBP_HMI".MMC1_MSTT_ADR</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">DB19.DBB123</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">"LBP_ConfigData".MCP1BusAdr</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">DB7.DBW26</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">"LBP_ConfigData".MCP1Stop</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">DB7.DBX62.1</p></td></tr></table></p></div>
+  </body>
+</html>

@@ -1,0 +1,1894 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="231905">F231905 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 1: Encoder parameterization error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: ENCODER<br />
+ (IASC/DCBRK, NONE, OFF1, OFF2, OFF3, STOP2)Vector: ENCODER<br />
+ (IASC/DCBRK, NONE, OFF1, OFF2, OFF3, STOP2)Hla: ENCODER<br />
+ (NONE, OFF1, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error was identified in the encoder parameterization.<br />
+It is possible that the parameterized encoder type does not match the connected encoder.<br />
+The parameter involved can be determined as follows:<br />
+- determine the parameter number using the fault value (r0949).<br />
+- determine the parameter index (p0187).<br />
+Fault value (r0949, interpret decimal):<br />
+yyyyxxxx dec: yyyy = supplementary information, xxxx = parameter<br />
+xxxx = 421:<br />
+For an EnDat&#47;SSI encoder, the absolute position in the protocol must be less than or equal to 30 bits.<br />
+yyyy = 0:<br />
+No additional information available.<br />
+yyyy = 1:<br />
+The component does not support HTL level (p0405.1 = 0) combined with track monitoring A&#47;B &lt;&gt; -A&#47;B (p0405.2 = 1).<br />
+yyyy = 2:<br />
+A code number for an identified encoder has been entered into p0400, however, no identification was carried out. Please start a new encoder identification.<br />
+yyyy = 3:<br />
+A code number for an identified encoder has been entered into p0400, however, no identification was carried out. Please select a listed encoder in p0400 with a code number &lt; 10000.<br />
+yyyy = 4:<br />
+This component does not support SSI encoders (p0404.9 = 1) without track A&#47;B.<br />
+yyyy = 5:<br />
+For SQW encoder, value in p4686 greater than in p0425.<br />
+yyyy = 6:<br />
+DRIVE-CLiQ encoder cannot be used with this firmware version.<br />
+yyyy = 7:<br />
+For an SQW encoder, the XIST1 correction (p0437.2) is only permitted for equidistant zero marks.<br />
+yyyy = 8:<br />
+The motor pole pair width is not supported by the linear scale being used.<br />
+yyyy = 9:<br />
+The length of the position in the EnDat protocol may be a maximum of 32 bits.<br />
+yyyy = 10:<br />
+The connected encoder is not supported.<br />
+yyyy = 11:<br />
+The hardware does not support track monitoring.<br />
+See also: p0491 (Motor encoder fault response ENCODER)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether the connected encoder type matches the encoder that has been parameterized.<br />
+- correct the parameter specified by the fault value (r0949) and p0187.<br />
+- re parameter number = 314:<br />
+- check the pole pair number and measuring gear ratio. The quotient of the &quot;pole pair number&quot; divided by the &quot;measuring gear ratio&quot; must be less than or equal to 1000 ((r0313 * p0433) &#47; p0432 &lt;= 1000).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231912">F231912</a></b></td>
+<td><b>&lt;location&gt;Encoder 1: Device combination is not permissible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: ENCODER<br />
+ (NONE)Servo: ENCODER<br />
+ (IASC/DCBRK, NONE)Vector: ENCODER<br />
+ (IASC/DCBRK, NONE)Hla: ENCODER<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The selected device combination is not supported.<br />
+Fault value (r0949, interpret decimal):<br />
+1003:<br />
+The connected measuring unit cannot be operated with the EnDat 2.2 converter. For instance, the measuring unit has a pulse number&#47;resolution of 2^n.<br />
+1005:<br />
+The type of measuring unit (incremental) is not supported by the EnDat 2.2 converter.<br />
+1006:<br />
+The maximum duration of the EnDat transfer (31.25 &micro;s) was exceeded.<br />
+2001:<br />
+The set combination of current controller cycle, DP cycle and Safety cycle is not supported by the EnDat 2.2 converter.<br />
+2002:<br />
+The resolution of the linear measuring unit does not match the pole pair width of the linear motor<br />
+Pole pair width, minimum = p0422 * 2^20<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1003, 1005, 1006:<br />
+- Use a measuring unit that is permissible.<br />
+For fault value = 2001:<br />
+- set a permissible cycle combination (if required, use standard settings).<br />
+For fault value = 2002:<br />
+- Use a measuring unit with a lower resolution (p0422).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231915">A231915 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 1: Encoder configuration error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The configuration for encoder 1 is incorrect.<br />
+Alarm value (r2124, interpret decimal):<br />
+1:<br />
+Re-parameterization between fault&#47;alarm is not permissible.<br />
+2:<br />
+The cyclic DQ receive telegram is too long and is limited.<br />
+3:<br />
+The cyclic DQ send telegram is too long and is limited.<br />
+419:<br />
+When the fine resolution Gx_XIST2 is configured, the encoder identifies a maximum possible absolute position actual value (r0483) that can no longer be represented within 32 bits.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For alarm value = 1:<br />
+No re-parameterization between fault&#47;alarm.<br />
+For alarm value = 419:<br />
+Reduce the fine resolution (p0419) or deactivate the monitoring (p0437.25), if the complete multiturn range is not required.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231916">F231916 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 1: Encoder parameterization error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (NONE, OFF1)Servo: ENCODER<br />
+ (IASC/DCBRK, NONE, OFF1, OFF2, OFF3, STOP2)Vector: ENCODER<br />
+ (IASC/DCBRK, NONE, OFF1, OFF2, OFF3, STOP2)Hla: ENCODER<br />
+ (NONE, OFF1, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An encoder parameter was detected as being incorrect.<br />
+It is possible that the parameterized encoder type does not match the connected encoder.<br />
+The parameter involved can be determined as follows:<br />
+- determine the parameter number using the fault value (r0949).<br />
+- determine the parameter index (p0187).<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter number.<br />
+See also: p0491 (Motor encoder fault response ENCODER)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check whether the connected encoder type matches the encoder that has been parameterized.<br />
+- correct the parameter specified by the fault value (r0949) and p0187.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231920">A231920 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 1: Temperature sensor fault (motor)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The motor detected a fault when evaluating the temperature sensor.<br />
+Fault cause:<br />
+1 (= 01 hex):<br />
+Wire breakage or sensor not connected.<br />
+KTY: R &gt; 1630 Ohm, PT1000: R &gt; 1720 Ohm<br />
+2 (= 02 hex):<br />
+Measured resistance too low.<br />
+PTC: R &lt; 20 Ohm, KTY: R &lt; 50 Ohm, PT1000: R &lt; 603 Ohm<br />
+Additional values:<br />
+Only for internal Siemens troubleshooting.<br />
+Note regarding the message value:<br />
+The individual information is coded as follows in the message value (r0949&#47;r2124):<br />
+0000yyxx hex: yy = channel number, xx = error cause<br />
+See also: p0491 (Motor encoder fault response ENCODER)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cable is the correct type and is correctly connected.<br />
+- check the temperature sensor selection in p0600 to p0603.<br />
+- replace the Sensor Module (hardware defect or incorrect calibration data).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231930">A231930 (N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 1: Data logger has saved data</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the activated function &quot;Data logger&quot; (p0437.0 = 1) a fault has occurred with the Sensor Module. This alarm indicates that the diagnostics data corresponding to the fault was saved on the memory card.<br />
+The diagnostics data is saved in the following folder:<br />
+&#47;USER&#47;SINAMICS&#47;DATA&#47;SMTRC00.BIN<br />
+...<br />
+&#47;USER&#47;SINAMICS&#47;DATA&#47;SMTRC07.BIN<br />
+&#47;USER&#47;SINAMICS&#47;DATA&#47;SMTRCIDX.TXT<br />
+The following information is contained in the TXT file:<br />
+- Display of the last written BIN file.<br />
+- Number of write operations that are still possible (from 10000 downwards).<br />
+Note:<br />
+Only Siemens can evaluate the BIN files.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+This alarm is automatically withdrawn.<br />
+The data logger is ready to record the next fault case.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231940">A231940 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 1: Spindle sensor S1 voltage incorrect</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The voltage of analog sensor S1 is outside the permissible range.<br />
+Alarm value (r2124, interpret decimal):<br />
+Signal level from sensor S1.<br />
+Note:<br />
+A signal level of 500 mV corresponds to the numerical value 500 dec.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the clamped tool.<br />
+- check the tolerance and if required, adapt (p5040).<br />
+- check the thresholds and if required, adapt (p5041).<br />
+- check analog sensor S1 and connections.<br />
+See also: p5040 (Spindle voltage threshold values tolerance), p5041 (Spindle voltage threshold values)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231950">F231950</a></b></td>
+<td><b>&lt;location&gt;Encoder 1: Internal software error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>ENCODER<br />
+ (OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An internal software error has occurred.<br />
+Fault value (r0949, interpret decimal):<br />
+The fault value contains information regarding the fault source.<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- if necessary, upgrade the firmware in the Sensor Module to a later version.<br />
+- contact Technical Support.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231999">A231999 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 1: Unknown alarm</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A alarm has occurred on the Sensor Module for encoder 1 that cannot be interpreted by the Control Unit firmware.<br />
+This can occur if the firmware on this component is more recent than the firmware on the Control Unit.<br />
+Alarm value (r2124, interpret decimal):<br />
+Alarm number.<br />
+Note:<br />
+If required, the significance of this new alarm can be read about in a more recent description of the Control Unit.<br />
+See also: p0491 (Motor encoder fault response ENCODER)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- replace the firmware on the Sensor Module by an older firmware version (r0148).<br />
+- upgrade the firmware on the Control Unit (r0018).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232100">F232100 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Zero mark distance error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The measured zero mark distance does not correspond to the parameterized zero mark distance.<br />
+For distance-coded encoders, the zero mark distance is determined from zero marks detected pairs. This means that if a zero mark is missing, depending on the pair generation, this cannot result in a fault and also has no effect in the system.<br />
+The zero mark distance for the zero mark monitoring is set in p0425 (rotary encoder) or p0424 (linear encoder).<br />
+Fault value (r0949, interpret decimal):<br />
+Last measured zero mark distance in increments (4 increments = 1 encoder pulse).<br />
+The sign designates the direction of motion when detecting the zero mark distance.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- check the encoder type (encoder with equidistant zero marks).<br />
+- adapt the parameter for the distance between zero marks (p0424, p0425).<br />
+- if message output above speed threshold, reduce filter time if necessary (p0438).<br />
+- replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232101">F232101 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Zero mark failed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The 1.5 x parameterized zero mark distance was exceeded.<br />
+The zero mark distance for the zero mark monitoring is set in p0425 (rotary encoder) or p0424 (linear encoder).<br />
+Fault value (r0949, interpret decimal):<br />
+Number of increments after POWER ON or since the last zero mark that was detected (4 increments = 1 encoder pulse).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- check the encoder type (encoder with equidistant zero marks).<br />
+- adapt the parameter for the clearance between zero marks (p0425).<br />
+- if message output above speed threshold, reduce filter time if necessary (p0438).<br />
+- when p0437.1 is active, check p4686.<br />
+- replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232103">F232103 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Signal level zero track (track R) outside tolerance</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The zero mark signal level (track R) does not lie within the tolerance bandwidth for encoder 2.<br />
+The fault can be initiated when the unipolar voltage level is exceeded (RP&#47;RN) or if the differential amplitude is undershot.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyyyxxxx hex: yyyy = 0, xxxx = Signal level, track R (16 bits with sign)<br />
+The response thresholds of the unipolar signal levels of the encoder are between &lt; 1400 mV and &gt; 3500 mV.<br />
+The response threshold for the differential signal level of the encoder is &lt; -1600 mV.<br />
+A signal level of 500 mV peak value corresponds to the numerical value 5333 hex = 21299 dec.<br />
+Note:<br />
+The analog value of the amplitude error is not measured at the same time with the hardware fault output by the Sensor Module.<br />
+The fault value can only be represented between -32768 ... 32767 dec (-770 ... 770 mV).<br />
+The signal level is not evaluated unless the following conditions are satisfied:<br />
+- Sensor Module properties available (r0459.31 = 1).<br />
+- monitoring active (p0437.31 = 1).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the speed range; frequency characteristic (amplitude characteristic) of the measuring equipment might not be sufficient for the speed range<br />
+- check that the encoder cables and shielding are routed in compliance with EMC.<br />
+- check the plug connections and contacts of the encoder cable.<br />
+- check the encoder type (encoder with zero marks).<br />
+- check whether the zero mark is connected and the signal cables RP and RN have been connected correctly (not connected with the incorrect polarity).<br />
+- replace the encoder cable.<br />
+- if the coding disk is soiled or the lighting aged, replace the encoder.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232110">F232110 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Serial communications error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>There is an error in the transfer of the serial communication protocol between the encoder and internal or external evaluation module.<br />
+Fault value (r0949, interpret binary):<br />
+For an EnDat 2.1 encoder, the significance of the fault value is as follows:<br />
+Bit 0: Alarm bit in the position protocol.<br />
+Bit 1: Incorrect quiescent level on the data line.<br />
+Bit 2: Encoder does not respond (does not supply a start bit within 50 ms).<br />
+Bit 3: CRC error: The checksum in the protocol from the encoder does not match the data.<br />
+Bit 4: Encoder acknowledgment error: The encoder incorrectly understood the task (request) or cannot execute it.<br />
+Bit 5: Internal error in the serial driver: An illegal mode command was requested.<br />
+Bit 6: Timeout when cyclically reading.<br />
+Bit 7: Timeout for the register communication.<br />
+Bit 8: Protocol is too long (e.g. &gt; 64 bits).<br />
+Bit 9: Receive buffer overflow.<br />
+Bit 10: Frame error when reading twice.<br />
+Bit 11: Parity error.<br />
+Bit 12: Data line signal level error during the monoflop time.<br />
+Bit 13: Data line incorrect.<br />
+Bit 14: Fault for the register communication.<br />
+Bit 15: Internal communication error.<br />
+Note:<br />
+For an EnDat 2.2 encoder, the significance of the fault value for F3x135 (x = 1, 2, 3) is described.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value, bit 0 = 1:<br />
+- Enc defect F31111 may provide additional details.<br />
+For fault value, bit 1 = 1:<br />
+- incorrect encoder type &#47; replace the encoder or encoder cable.<br />
+For fault value, bit 2 = 1:<br />
+- incorrect encoder type &#47; replace the encoder or encoder cable.<br />
+For fault value, bit 3 = 1:<br />
+- EMC &#47; connect the cable shield, replace the encoder or encoder cable.<br />
+For fault value, bit 4 = 1:<br />
+- EMC &#47; connect the cable shield, replace the encoder or encoder cable, replace the Sensor Module.<br />
+For fault value, bit 5 = 1:<br />
+- EMC &#47; connect the cable shield, replace the encoder or encoder cable, replace the Sensor Module.<br />
+For fault value, bit 6 = 1:<br />
+- Update Sensor Module firmware.<br />
+For fault value, bit 7 = 1:<br />
+- incorrect encoder type &#47; replace the encoder or encoder cable.<br />
+For fault value, bit 8 = 1:<br />
+- check parameterization (p0429.2).<br />
+For fault value, bit 9 = 1:<br />
+- EMC &#47; connect the cable shield, replace the encoder or encoder cable, replace the Sensor Module.<br />
+For fault value, bit 10 = 1:<br />
+- check parameterization (p0429.2, p0449).<br />
+For fault value, bit 11 = 1:<br />
+- check parameterization (p0436).<br />
+For fault value, bit 12 = 1:<br />
+- check parameterization (p0429.6).<br />
+For fault value, bit 13 = 1:<br />
+- check data line.<br />
+For fault value, bit 14 = 1:<br />
+- incorrect encoder type &#47; replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232111">F232111 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Encoder signals an internal error (detailed information)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The encoder error word provides detailed information (error bit).<br />
+For p0404.8 = 0, the following applies:<br />
+Fault value for internal Siemens troubleshooting.<br />
+For p0404.8 = 1, the following applies:<br />
+Fault value (r0949, interpret binary):<br />
+yyyyxxxx hex: yyyy = supplementary information, xxxx = fault cause<br />
+yyyy = 0:<br />
+Bit 0: Lighting system failed.<br />
+Bit 1: Signal amplitude too low.<br />
+Bit 2: Position value incorrect.<br />
+Bit 3: Encoder power supply overvoltage condition.<br />
+Bit 4: Encoder power supply undervoltage condition.<br />
+Bit 5: Encoder power supply overcurrent condition.<br />
+Bit 6: The battery must be changed.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For yyyy = 0:<br />
+For fault value, bit 0 = 1:<br />
+Encoder is defective. Replace the encoder, where the motor encoder has a direct DRIVE-CLiQ socket: Replace the motor.<br />
+For fault value, bit 1 = 1:<br />
+Encoder is defective. Replace the encoder, where the motor encoder has a direct DRIVE-CLiQ socket: Replace the motor.<br />
+For fault value, bit 2 = 1:<br />
+Encoder is defective. Replace the encoder, where the motor encoder has a direct DRIVE-CLiQ socket: Replace the motor.<br />
+For fault value, bit 3 = 1:<br />
+5 V power supply voltage fault.<br />
+When using an SMC: Check the plug-in cable between the encoder and SMC or replace the SMC.<br />
+When a motor encoder with a direct DRIVE-CLiQ connection is used: Replace the motor.<br />
+For fault value, bit 4 = 1:<br />
+5 V power supply voltage fault.<br />
+When using an SMC: Check the plug-in cable between the encoder and SMC or replace the SMC.<br />
+When using a motor with DRIVE-CLiQ: Replace the motor.<br />
+For fault value, bit 5 = 1:<br />
+Encoder is defective. Replace the encoder, where the motor encoder has a direct DRIVE-CLiQ socket: Replace the motor.<br />
+For fault value, bit 6 = 1:<br />
+The battery must be changed (only for encoders with battery back-up).<br />
+For yyyy = 1:<br />
+Encoder is defective. Replace encoder.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232112">F232112 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Encoder signals an internal error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The encoder signals a set error bit via the serial protocol.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0: Fault bit in the position protocol.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value, bit 0 = 1:<br />
+In the case of an EnDat encoder, F31111 may provide further details.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232115">F232115 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Signal level track A or B too low</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The signal level (root from A^2 + B^2) of the encoder falls below the permissible limit value.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyyyxxxx hex:<br />
+yyyy = Signal level, track B (16 bits with sign).<br />
+xxxx = Signal level, track A (16 bits with sign).<br />
+The nominal signal level of the encoder must lie in the range 375 mV to 600 mV (500 mV -25&#47;+20 %).<br />
+The response threshold is &lt; 170 mV (input frequency &lt;= 256 kHz) or &lt; 120 mV (input frequency &gt; 256 kHz).<br />
+A signal level of 500 mV peak value corresponds to the numerical value 5333 hex = 21299 dec.<br />
+Note for Sensor Modules for resolvers (e.g. SMC10):<br />
+The nominal signal level is at 2900 mV (2.0 Vrms). The response threshold is &lt; 1070 mV.<br />
+A signal level of 2900 mV peak value corresponds to the numerical value 6666 hex = 26214 dec.<br />
+Note:<br />
+The analog values of the amplitude error are not measured at the same time with the hardware fault output by the Sensor Module.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables and shielding are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- replace the encoder or encoder cable.<br />
+- check the Sensor Module (e.g. contacts).<br />
+The following applies to measuring systems without their own bearing system:<br />
+- adjust the scanning head and check the bearing system of the measuring wheel.<br />
+The following applies for measuring systems with their own bearing system:<br />
+- ensure that the encoder housing is not subject to any axial force.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232116">F232116 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Signal level track A or B too low</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The signal level of the rectified encoder signals A and B of the encoder fall below the permissible limit value.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyyyxxxx hex:<br />
+yyyy = Signal level, track B (16 bits with sign).<br />
+xxxx = Signal level, track A (16 bits with sign).<br />
+The nominal signal level of the encoder must lie in the range 375 mV to 600 mV (500 mV -25&#47;+20 %).<br />
+The response threshold is &lt; 130 mV.<br />
+A signal level of 500 mV peak value corresponds to the numerical value 5333 hex = 21299 dec.<br />
+Note:<br />
+The analog values of the amplitude error are not measured at the same time with the hardware fault output by the Sensor Module.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables and shielding are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- replace the encoder or encoder cable.<br />
+- check the Sensor Module (e.g. contacts).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232117">F232117 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Inversion error signals A&#47;B&#47;R</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For a square-wave encoder (bipolar, double ended) signals A*, B* and R* are not inverted with respect to signals A, B and R.<br />
+Fault value (r0949, interpret binary):<br />
+Bits 0 ... 15: Only for internal Siemens troubleshooting.<br />
+Bit 16: Error track A.<br />
+Bit 17: Error track B.<br />
+Bit 18: Error track R.<br />
+Note:<br />
+For SMC30 (only Article No. 6SL3055-0AA00-5CA0 and 6SL3055-0AA00-5CA1), CUA32 and CU310-2, the following applies:<br />
+A square-wave encoder without track R is used and track monitoring (p0405.2 = 1) is activated.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the encoder&#47;cable.<br />
+- Does the encoder supply signals and the associated inverted signals?<br />
+Note:<br />
+For SMC30 (only Article Number 6SL3055-0AA00-5CA0 and 6SL3055-0AA00-5CA1), the following applies:<br />
+- check the setting of p0405 (p0405.2 = 1 is only possible if the encoder is connected at X520).<br />
+For a square-wave encoder without track R, the following jumpers must be set for the connection at X520 (SMC30), X220 (CUA32) or X23 (CU310-2):<br />
+- pin 10 (reference signal R) &lt;--&gt; pin 7 (encoder power supply, ground)<br />
+- pin 11 (reference signal R inverted) &lt;--&gt; pin 4 (encoder power supply)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232118">F232118 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Speed change not plausible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For an HTL&#47;TTL encoder, the speed change has exceeded the value in p0492 over several sampling cycles.<br />
+The change to the averaged speed actual value - if applicable - is monitored in the current controller sampling time.<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+See also: p0492<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the tachometer feeder cable for interruptions.<br />
+- check the grounding of the tachometer shielding.<br />
+- if required, increase the maximum speed difference per sampling cycle (p0492).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232120">F232120 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Encoder power supply fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An encoder power supply fault was detected.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0: Undervoltage condition on the sense line.<br />
+Bit 1: Overcurrent condition for the encoder power supply.<br />
+Bit 2: Overcurrent condition for encoder power supply on cable resolver excitation negative.<br />
+Bit 3: Overcurrent condition for encoder power supply on cable resolver excitation positive.<br />
+Bit 4: The 24 V power supply through the Power Module (PM) is overloaded.<br />
+Bit 5: Overcurrent at the EnDat connection of the converter.<br />
+Bit 6: Overvoltage at the EnDat connection of the converter.<br />
+Bit 7: Hardware fault at the EnDat connection of the converter.<br />
+Note:<br />
+If the encoder cables 6FX2002-2EQ00-.... and 6FX2002-2CH00-.... are interchanged, this can result in the encoder being destroyed because the pins of the operating voltage are reversed.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value, bit 0 = 1:<br />
+- correct encoder cable connected?<br />
+- check the plug connections of the encoder cable.<br />
+- SMC30: Check the parameterization (p0404.22).<br />
+For fault value, bit 1 = 1:<br />
+- correct encoder cable connected?<br />
+- replace the encoder or encoder cable.<br />
+For fault value, bit 2 = 1:<br />
+- correct encoder cable connected?<br />
+- replace the encoder or encoder cable.<br />
+For fault value, bit 3 = 1:<br />
+- correct encoder cable connected?<br />
+- replace the encoder or encoder cable.<br />
+For fault value, bit 5 = 1:<br />
+- Measuring unit correctly connected at the converter?<br />
+- Replace the measuring unit or the cable to the measuring unit.<br />
+For fault value, bit 6, 7 = 1:<br />
+- Replace the defective EnDat 2.2 converter.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232121">F232121 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Determined commutation position incorrect</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A commutation position actual value sensing error was detected.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Replace the motor with DRIVE-CLiQ or the appropriate Sensor Module.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232122">F232122</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Sensor Module hardware fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An internal Sensor Module hardware fault was detected.<br />
+Fault value (r0949, interpret decimal):<br />
+1: Reference voltage error.<br />
+2: Internal undervoltage.<br />
+3: Internal overvoltage.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Replace the motor with DRIVE-CLiQ or the appropriate Sensor Module.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232123">F232123 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Signal level A&#47;B outside tolerance</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The unipolar level (AP&#47;AN or BP&#47;BN) for encoder 2 is outside the permissible tolerance.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0 = 1: Either AP or AN outside the tolerance.<br />
+Bit 16 = 1: Either BP or BN outside the tolerance.<br />
+The unipolar nominal signal level of the encoder must lie in the range 2500 mV +&#47;- 500 mV.<br />
+The response thresholds are &lt; 1700 mV and &gt; 3300 mV.<br />
+Note:<br />
+The signal level is not evaluated unless the following conditions are satisfied:<br />
+- Sensor Module properties available (r0459.31 = 1).<br />
+- monitoring active (p0437.31 = 1).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- make sure that the encoder cables and shielding are installed in an EMC-compliant manner.<br />
+- check the plug connections and contacts of the encoder cable.<br />
+- check the short-circuit of a signal cable with mass or the operating voltage.<br />
+- replace the encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232125">F232125 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Signal level track A or B too high</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The signal level (root from A^2 + B^2) of the encoder exceeds the permissible limit value.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyyyxxxx hex:<br />
+yyyy = Signal level, track B (16 bits with sign).<br />
+xxxx = Signal level, track A (16 bits with sign).<br />
+The nominal signal level of the encoder must lie in the range 375 mV to 600 mV (500 mV -25&#47;+20 %).<br />
+The response threshold is &gt; 750 mV.<br />
+A signal level of 500 mV peak value corresponds to the numerical value 5333 hex = 21299 dec.<br />
+Note for Sensor Modules for resolvers (e.g. SMC10):<br />
+The nominal signal level is at 2900 mV (2.0 Vrms).<br />
+The response threshold is &gt; 3582 mV.<br />
+A signal level of 2900 mV peak value corresponds to the numerical value 6666 hex = 26214 dec.<br />
+Note:<br />
+The analog values of the amplitude error are not measured at the same time with the hardware fault output by the Sensor Module.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables and shielding are routed in compliance with EMC.<br />
+- replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232126">F232126 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Signal level track A or B too high</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The signal level (|A| + |B|) of the encoder exceeds the permissible limit value.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyyyxxxx hex:<br />
+yyyy = Angle<br />
+xxxx = amplitude, i.e. root of A^2 + B^2 (16 bits without sign)<br />
+The nominal signal level of the encoder must lie in the range 375 mV to 600 mV (500 mV -25&#47;+20 %).<br />
+The response threshold for (|A| + |B|) is &gt; 1120 mV or the root of (A^2 + B^2) &gt; 955 mV.<br />
+A signal level of 500 mV peak value corresponds to the numerical value of 299A hex = 10650 dec.<br />
+The angle 0 ... FFFF hex corresponds to 0 ... 360 degrees of the fine position. Zero degrees is present at the negative zero crossover of track B.<br />
+Note:<br />
+The analog values of the amplitude error are not measured at the same time with the hardware fault output by the Sensor Module.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables and shielding are routed in compliance with EMC.<br />
+- replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232129">F232129 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Position difference hall sensor&#47;track C&#47;D and A&#47;B too large</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The error for track C&#47;D is greater than +&#47;-15 &deg; mechanical or +&#47;-60 &deg; electrical or the error for the Hall signals is greater than +&#47;-60 &deg; electrical.<br />
+One period of track C&#47;D corresponds to 360 &deg; mechanical.<br />
+One period of the Hall signal corresponds to 360 &deg; electrical.<br />
+The monitoring responds if, for example, Hall sensors are connected as equivalent for the C&#47;D tracks with the incorrect rotational sense or supply values that are not accurate enough.<br />
+After the fine synchronization using one reference mark or 2 reference marks for distance-coded encoders, this fault is no longer initiated, but instead, Alarm A32429.<br />
+Fault value (r0949, interpret decimal):<br />
+For track C&#47;D, the following applies:<br />
+Measured deviation as mechanical angle (16 bits with sign, 182 dec corresponds to 1 &deg;).<br />
+For Hall signals, the following applies:<br />
+Measured deviation as electrical angle (16 bits with sign, 182 dec corresponds to 1 &deg;).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- track C or D not connected.<br />
+- correct the direction of rotation of the Hall sensor possibly connected as equivalent for track C&#47;D.<br />
+- check that the encoder cables are routed in compliance with EMC.<br />
+- check the adjustment of the Hall sensor.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232130">F232130 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Zero mark and position error from the coarse synchronization</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>After initializing the pole position using track C&#47;D, Hall signals or pole position identification routine, the zero mark was detected outside the permissible range. For distance-coded encoders, the test is carried out after passing 2 zero marks. Fine synchronization was not carried out.<br />
+When initializing via track C&#47;D (p0404) then it is checked whether the zero mark occurs in an angular range of +&#47;-18 &deg; mechanical.<br />
+When initializing via Hall sensors (p0404) or pole position identification (p1982) it is checked whether the zero mark occurs in an angular range of +&#47;-60 &deg; electrical.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyyyxxxx hex<br />
+yyyy: Determined mechanical zero mark position (can only be used for track C&#47;D).<br />
+xxxx: Deviation of the zero mark from the expected position as electrical angle.<br />
+Scaling: 32768 dec = 180 &deg;<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- if the Hall sensor is used as an equivalent for track C&#47;D, check the connection.<br />
+- check the connection of track C or D.<br />
+- replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232131">F232131 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Position deviation incremental&#47;absolute too high</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Absolute encoder:<br />
+When cyclically reading the absolute position, an excessively high difference to the incremental position was detected. The absolute position that was read is rejected.<br />
+Limit value for the deviation:<br />
+- EnDat encoder: Is supplied from the encoder and is a minimum of 2 quadrants (e.g. EQI 1325 &gt; 2 quadrants, EQN 1325 &gt; 50 quadrants).<br />
+- other encoders: 15 pulses = 60 quadrants.<br />
+Incremental encoder:<br />
+When the zero pulse is passed, a deviation in the incremental position was detected.<br />
+For equidistant zero marks, the following applies:<br />
+- the first zero mark passed supplies the reference point for all subsequent checks. The other zero marks must have n times the distance referred to the first zero mark.<br />
+For distance-coded zero marks, the following applies:<br />
+- the first zero mark pair supplies the reference point for all subsequent checks. The other zero mark pairs must have the expected distance to the first zero mark pair.<br />
+Fault value (r0949, interpret decimal):<br />
+Deviation in quadrants (1 pulse = 4 quadrants).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- replace the encoder or encoder cable.<br />
+- check whether the coding disk is dirty or there are strong ambient magnetic fields.<br />
+- adapt the parameter for the clearance between zero marks (p0425).<br />
+- if message output above speed threshold, reduce filter time if necessary (p0438).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232135">F232135</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Fault when determining the position (single turn)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The encoder has identified a position determination fault (singleturn) and supplies status information bit by bit in an internal status&#47;fault word.<br />
+Some of these bits cause this fault to be triggered. Other bits are status displays. The status&#47;fault word is displayed in the fault value.<br />
+Note regarding the bit designation:<br />
+The first designation is valid for DRIVE-CLiQ encoders, the second for EnDat 2.2 encoders.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0: F1 (safety status display).<br />
+Bit 1: F2 (safety status display).<br />
+Bit 2: Reserved (lighting).<br />
+Bit 3: Reserved (signal amplitude).<br />
+Bit 4: Reserved (position value).<br />
+Bit 5: Reserved (overvoltage).<br />
+Bit 6: Reserved (undervoltage)&#47;hardware fault EnDat supply (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 7: Reserved (overcurrent)&#47;EnDat encoder withdrawn when not in the parked state (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 8: Reserved (battery)&#47;overcurrent EnDat supply (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 9: Reserved&#47;overvoltage EnDat supply (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 11: Reserved&#47;internal communication error (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 12: Reserved&#47;internal communication error (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 13: Reserved&#47;internal communication error (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 14: Reserved&#47;internal communication error (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 15: Internal communication error (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 16: Lighting (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 17: Signal amplitude (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 18: Singleturn position 1 (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 19: Overvoltage (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 20: Undervoltage (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 21: Overcurrent (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 22: Temperature exceeded (--&gt; F3x405, x = 1, 2, 3).<br />
+Bit 23: Singleturn position 2 (safety status display).<br />
+Bit 24: Singleturn system (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 25: Singleturn power down (--&gt; F3x135, x = 1, 2, 3)<br />
+Bit 26: Multiturn position 1 (--&gt; F3x136, x = 1, 2, 3).<br />
+Bit 27: Multiturn position 2 (--&gt; F3x136, x = 1, 2, 3).<br />
+Bit 28: Multiturn system (--&gt; F3x136, x = 1, 2, 3).<br />
+Bit 29: Multiturn power down (--&gt; F3x136, x = 1, 2, 3).<br />
+Bit 30: Multiturn overflow&#47;underflow (--&gt; F3x136, x = 1, 2, 3).<br />
+Bit 31: Multiturn battery (reserved).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- determine the detailed cause of the fault using the fault value.<br />
+- replace the encoder if necessary.<br />
+Note:<br />
+An EnDat 2.2 encoder may only be removed and inserted in the &quot;Park&quot; state.<br />
+If an EnDat 2.2 encoder was removed when not in the &quot;Park&quot; state, then after inserting the encoder, a POWER ON (switch-off&#47;switch-on) is necessary to acknowledge the fault.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232136">F232136</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Fault when determining the position (multiturn)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The encoder has identified a position determination fault (multiturn) and supplies status information bit by bit in an internal status&#47;fault word.<br />
+Some of these bits cause this fault to be triggered. Other bits are status displays. The status&#47;fault word is displayed in the fault value.<br />
+Note regarding the bit designation:<br />
+The first designation is valid for DRIVE-CLiQ encoders, the second for EnDat 2.2 encoders.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0: F1 (safety status display).<br />
+Bit 1: F2 (safety status display).<br />
+Bit 2: Reserved (lighting).<br />
+Bit 3: Reserved (signal amplitude).<br />
+Bit 4: Reserved (position value).<br />
+Bit 5: Reserved (overvoltage).<br />
+Bit 6: Reserved (undervoltage)&#47;hardware fault EnDat supply (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 7: Reserved (overcurrent)&#47;EnDat encoder withdrawn when not in the parked state (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 8: Reserved (battery)&#47;overcurrent EnDat supply (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 9: Reserved&#47;overvoltage EnDat supply (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 11: Reserved&#47;internal communication error (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 12: Reserved&#47;internal communication error (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 13: Reserved&#47;internal communication error (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 14: Reserved&#47;internal communication error (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 15: Internal communication error (--&gt; F3x110, x = 1, 2, 3).<br />
+Bit 16: Lighting (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 17: Signal amplitude (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 18: Singleturn position 1 (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 19: Overvoltage (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 20: Undervoltage (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 21: Overcurrent (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 22: Temperature exceeded (--&gt; F3x405, x = 1, 2, 3).<br />
+Bit 23: Singleturn position 2 (safety status display).<br />
+Bit 24: Singleturn system (--&gt; F3x135, x = 1, 2, 3).<br />
+Bit 25: Singleturn power down (--&gt; F3x135, x = 1, 2, 3)<br />
+Bit 26: Multiturn position 1 (--&gt; F3x136, x = 1, 2, 3).<br />
+Bit 27: Multiturn position 2 (--&gt; F3x136, x = 1, 2, 3).<br />
+Bit 28: Multiturn system (--&gt; F3x136, x = 1, 2, 3).<br />
+Bit 29: Multiturn power down (--&gt; F3x136, x = 1, 2, 3).<br />
+Bit 30: Multiturn overflow&#47;underflow (--&gt; F3x136, x = 1, 2, 3).<br />
+Bit 31: Multiturn battery (reserved).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- determine the detailed cause of the fault using the fault value.<br />
+- replace the encoder if necessary.<br />
+Note:<br />
+An EnDat 2.2 encoder may only be removed and inserted in the &quot;Park&quot; state.<br />
+If an EnDat 2.2 encoder was removed when not in the &quot;Park&quot; state, then after inserting the encoder, a POWER ON (switch-off&#47;switch-on) is necessary to acknowledge the fault.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232137">F232137</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Fault when determining the position (single turn)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A position determination fault has occurred in the DRIVE-CLiQ encoder.<br />
+Fault value (r0949, interpret binary):<br />
+yyxxxxxx hex: yy = encoder version, xxxxxx = bit coding of the fault cause<br />
+----------<br />
+For yy = 8 (0000 1000 bin), the following applies:<br />
+Bit 1: Signal monitoring (sin&#47;cos).<br />
+Bit 8: F1 (safety status display) error position word 1.<br />
+Bit 9: F2 (safety status display) error position word 2.<br />
+Bit 16: LED monitoring.<br />
+Bit 17: Fault when determining the position (multiturn).<br />
+Bit 18: Single-step capability monitoring singleturn from the Safety channel.<br />
+Bit 19: ECRC, configuration error in the safety channel.<br />
+Bit 23: Temperature outside the limit values.<br />
+----------<br />
+For yy = 11 (0000 1011 bin), the following applies:<br />
+Bit 0: Position word 1 difference between rotation counter and software counter (XC_ERR).<br />
+Bit 1: Position word 1 track error of the incremental signals (LIS_ERR).<br />
+Bit 2: Position word 1 error when aligning between incremental track signals and absolute value (ST_ERR).<br />
+Bit 3: Maximum permissible temperature exceeded (TEMP_ERR).<br />
+Bit 4: Power supply overvoltage (MON_OVR_VOLT).<br />
+Bit 5: Power supply overcurrent (MON_OVR_CUR).<br />
+Bit 6: Power supply undervoltage (MON_UND_VOLT).<br />
+Bit 7: Rotation error counter (MT_ERR).<br />
+Bit 8: F1 (safety status display) error position word 1.<br />
+Bit 9: F2 (safety status display) error position word 2.<br />
+Bit 11: Position word 1 status bit: singleturn position OK (ADC_ready).<br />
+Bit 12: Position word 1 status bit: rotation counter OK (MT_ready).<br />
+Bit 13: Position word 1 memory error (MEM_ERR).<br />
+Bit 14: Position word 1 absolute position error (MLS_ERR).<br />
+Bit 15: position word 1 LED error, lighting unit error (LED_ERR).<br />
+Bit 18: Position word 2 error when aligning between incremental track signals and absolute value (ST_ERR).<br />
+Bit 21: Position word 2 memory error (MEM_ERR).<br />
+Bit 22: Position word 2 absolute position error (MLS_ERR).<br />
+Bit 23: position word 2 LED error, lighting unit error (LED_ERR).<br />
+----------<br />
+For yy = 12 (0000 1100 bin), the following applies:<br />
+Bit 8: encoder fault.<br />
+Bit 10: error in the internal position data transport.<br />
+----------<br />
+For yy = 14 (0000 1110 bin), the following applies:<br />
+Bit 0: Position word 1 temperature outside limit value.<br />
+Bit 1: Position word 1 position determination error (multiturn).<br />
+Bit 2: Position word 1 FPGA error.<br />
+Bit 3: Position word 1 velocity error.<br />
+Bit 4: Position word 1 communication error between FPGAs&#47;error in the incremental signal.<br />
+Bit 5: Position word 1 timeout absolute value&#47;error when determining the position (singleturn).<br />
+Bit 6: Position word 1 internal hardware fault (clock&#47;power monitor IC&#47;power).<br />
+Bit 7: Position word 1 internal error (FPGA communication&#47;FPGA parameterization&#47;self-test&#47;software).<br />
+Bit 8: F1 (safety status display) error position word 1.<br />
+Bit 9: F2 (safety status display) error position word 2.<br />
+Bit 16: Position word 2 temperature outside limit value.<br />
+Bit 17: Position word 2 position determination error (multiturn).<br />
+Bit 18: Position word 2 FPGA error.<br />
+Bit 19: Position word 2 velocity error.<br />
+Bit 20: Position word 2 communication error between FPGAs.<br />
+Bit 21: Position word 2 position determination error (singleturn).<br />
+Bit 22: Position word 2 internal hardware fault (clock&#47;power monitor IC&#47;power).<br />
+Bit 23: Position word 2 internal error (self-test&#47;software).<br />
+----------<br />
+Note:<br />
+For an encoder version that is not described here, please contact the encoder manufacturer for more detailed information on the bit coding.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- determine the detailed cause of the fault using the fault value.<br />
+- if required, replace the DRIVE-CLiQ encoder.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232138">F232138</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Fault when determining the position (multiturn)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3)Hla: OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A position determination fault has occurred in the DRIVE-CLiQ encoder.<br />
+Fault value (r0949, interpret binary):<br />
+yyxxxxxx hex: yy = encoder version, xxxxxx = bit coding of the fault cause<br />
+----------<br />
+For yy = 8 (0000 1000 bin), the following applies:<br />
+Bit 1: Signal monitoring (sin&#47;cos).<br />
+Bit 8: F1 (safety status display) error position word 1.<br />
+Bit 9: F2 (safety status display) error position word 2.<br />
+Bit 16: LED monitoring.<br />
+Bit 17: Fault when determining the position (multiturn).<br />
+Bit 19: ECRC, configuration error in the safety channel.<br />
+Bit 23: Temperature outside the limit values.<br />
+----------<br />
+For yy = 11 (0000 1011 bin), the following applies:<br />
+Bit 0: Position word 1 difference between rotation counter and software counter (XC_ERR).<br />
+Bit 1: Position word 1 track error of the incremental signals (LIS_ERR).<br />
+Bit 2: Position word 1 error when aligning between incremental track signals and absolute value (ST_ERR).<br />
+Bit 3: Maximum permissible temperature exceeded (TEMP_ERR).<br />
+Bit 4: Power supply overvoltage (MON_OVR_VOLT).<br />
+Bit 5: Power supply overcurrent (MON_OVR_CUR).<br />
+Bit 6: Power supply undervoltage (MON_UND_VOLT).<br />
+Bit 7: Rotation error counter (MT_ERR).<br />
+Bit 8: F1 (safety status display) error position word 1.<br />
+Bit 9: F2 (safety status display) error position word 2.<br />
+Bit 11: Position word 1 status bit: singleturn position OK (ADC_ready).<br />
+Bit 12: Position word 1 status bit: rotation counter OK (MT_ready).<br />
+Bit 13: Position word 1 memory error (MEM_ERR).<br />
+Bit 14: Position word 1 absolute position error (MLS_ERR).<br />
+Bit 15: position word 1 LED error, lighting unit error (LED_ERR).<br />
+Bit 18: Position word 2 error when aligning between incremental track signals and absolute value (ST_ERR).<br />
+Bit 21: Position word 2 memory error (MEM_ERR).<br />
+Bit 22: Position word 2 absolute position error (MLS_ERR).<br />
+Bit 23: position word 2 LED error, lighting unit error (LED_ERR).<br />
+----------<br />
+For yy = 14 (0000 1110 bin), the following applies:<br />
+Bit 0: Position word 1 temperature outside limit value.<br />
+Bit 1: Position word 1 position determination error (multiturn).<br />
+Bit 2: Position word 1 FPGA error.<br />
+Bit 3: Position word 1 velocity error.<br />
+Bit 4: Position word 1 communication error between FPGAs&#47;error in the incremental signal.<br />
+Bit 5: Position word 1 timeout absolute value&#47;error when determining the position (singleturn).<br />
+Bit 6: Position word 1 internal hardware fault (clock&#47;power monitor IC&#47;power).<br />
+Bit 7: Position word 1 internal error (FPGA communication&#47;FPGA parameterization&#47;self-test&#47;software).<br />
+Bit 8: F1 (safety status display) error position word 1.<br />
+Bit 9: F2 (safety status display) error position word 2.<br />
+Bit 16: Position word 2 temperature outside limit value.<br />
+Bit 17: Position word 2 position determination error (multiturn).<br />
+Bit 18: Position word 2 FPGA error.<br />
+Bit 19: Position word 2 velocity error.<br />
+Bit 20: Position word 2 communication error between FPGAs.<br />
+Bit 21: Position word 2 position determination error (singleturn).<br />
+Bit 22: Position word 2 internal hardware fault (clock&#47;power monitor IC&#47;power).<br />
+Bit 23: Position word 2 internal error (self-test&#47;software).<br />
+----------<br />
+Note:<br />
+For an encoder version that is not described here, please contact the encoder manufacturer for more detailed information on the bit coding.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- determine the detailed cause of the fault using the fault value.<br />
+- if required, replace the DRIVE-CLiQ encoder.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232142">F232142 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Battery voltage fault</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When switched-off, the encoder uses a battery to back up the multiturn information. The battery voltage is no longer sufficient to check the multiturn information.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Replace battery.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232150">F232150 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Initialization error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Encoder functionality selected in p0404 cannot be executed.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Encoder malfunction.<br />
+The bit assignment corresponds to that of p0404 (e.g. bit 5 set: Error track C&#47;D).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that p0404 is correctly set.<br />
+- check the encoder type used (incremental&#47;absolute) and for SMCxx, the encoder cable.<br />
+- if relevant, note additional fault messages that describe the fault in detail.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232151">F232151 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Encoder speed for initialization AB too high</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The encoder speed is too high while initializing the Sensor Module.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reduce the speed of the encoder accordingly during initialization.<br />
+If necessary, deactivate monitoring (p0437.29).<br />
+See also: p0437 (Sensor Module configuration extended)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232152">F232152 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Max. signal frequency (track A&#47;B) exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The maximum signal frequency of the encoder evaluation has been exceeded.<br />
+Fault value (r0949, interpret decimal):<br />
+Actual input frequency in Hz.<br />
+See also: p0408<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- reduce the speed.<br />
+- Use an encoder with a lower pulse number (p0408).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232153">F232153 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Identification error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error has occurred when identifying the encoder (waiting) p0400 = 10100.<br />
+The connected encoder was not able to be identified.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0: Data length incorrect.<br />
+See also: p0400 (Encoder type selection)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Manually configure the encoder according to the data sheet.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232160">F232160 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Analog sensor channel A failed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE)Vector: OFF1<br />
+ (IASC/DCBRK, NONE)Hla: OFF1<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The input voltage of the analog sensor is outside the permissible limits.<br />
+Fault value (r0949, interpret decimal):<br />
+1: Input voltage outside detectable measuring range.<br />
+2: Input voltage outside the measuring range set in (p4673).<br />
+3: The absolute value of the input voltage has exceeded the range limit (p4676).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1:<br />
+- check the output voltage of the analog sensor.<br />
+For fault value = 2:<br />
+- check the voltage setting for each encoder period (p4673).<br />
+For fault value = 3:<br />
+- check the range limit setting and increase it if necessary (p4676).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232161">F232161 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Analog sensor channel B failed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE)Vector: OFF1<br />
+ (IASC/DCBRK, NONE)Hla: OFF1<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The input voltage of the analog sensor is outside the permissible limits.<br />
+Fault value (r0949, interpret decimal):<br />
+1: Input voltage outside detectable measuring range.<br />
+2: Input voltage outside the selected measuring range (p4675).<br />
+3: The absolute value of the input voltage has exceeded the range limit (p4676).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1:<br />
+- check the output voltage of the analog sensor.<br />
+For fault value = 2:<br />
+- check the voltage setting for each encoder period (p4675).<br />
+For fault value = 3:<br />
+- check the range limit setting and increase it if necessary (p4676).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232163">F232163 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Analog sensor position value exceeds limit value</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE)Vector: OFF1<br />
+ (IASC/DCBRK, NONE)Hla: OFF1<br />
+ (NONE)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>PULSE INHIBIT</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The position value has exceeded the permissible range of -0.5 ... +0.5.<br />
+Fault value (r0949, interpret decimal):<br />
+1: Position value from the LVDT sensor.<br />
+2: Position value from the encoder characteristic.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1:<br />
+- check the LVDT ratio (p4678).<br />
+- check the reference signal connection at track B.<br />
+For fault value = 2:<br />
+- check the coefficients of the characteristic (p4663 ... p4666).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232400">A232400 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Zero mark distance error (alarm threshold exceeded)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The measured zero mark distance does not correspond to the parameterized zero mark distance.<br />
+For distance-coded encoders, the zero mark distance is determined from zero marks detected pairs. This means that if a zero mark is missing, depending on the pair generation, this cannot result in a fault and also has no effect in the system.<br />
+The zero mark distance for the zero mark monitoring is set in p0425 (rotary encoder) or p0424 (linear encoder).<br />
+Alarm value (r2124, interpret decimal):<br />
+Last measured zero mark distance in increments (4 increments = 1 encoder pulse).<br />
+The sign designates the direction of motion when detecting the zero mark distance.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- check the encoder type (encoder with equidistant zero marks).<br />
+- adapt the parameter for the distance between zero marks (p0424, p0425).<br />
+- replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232401">A232401 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Zero mark failed (alarm threshold exceeded)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The 1.5x parameterized zero mark distance was exceeded without a zero mark being detected.<br />
+The zero mark distance for the zero mark monitoring is set in p0425 (rotary encoder) or p0424 (linear encoder).<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of increments after POWER ON or since the last zero mark that was detected (4 increments = 1 encoder pulse).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- check the encoder type (encoder with equidistant zero marks).<br />
+- adapt the parameter for the clearance between zero marks (p0425).<br />
+- replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232405">F232405 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Temperature in the encoder evaluation exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Servo: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Vector: OFF1<br />
+ (IASC/DCBRK, NONE, OFF2, OFF3, STOP2)Hla: OFF1<br />
+ (NONE, OFF2, OFF3, STOP2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An inadmissibly high temperature was detected in the encoder electronics or the encoder evaluation.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyxxxx hex: yy = temperature sensor number, xxxx = measured module temperature in 0.1 &deg;C.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reduce the ambient temperature for the DRIVE-CLiQ connection of the motor.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232407">A232407 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Function limit reached</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The encoder has reached one of its function limits. A service is recommended.<br />
+Alarm value (r2124, interpret decimal):<br />
+1: Incremental signals<br />
+3: Absolute track<br />
+4: Code connection<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Perform service. Replace the encoder if necessary.<br />
+Note:<br />
+The actual functional reserve of an encoder can be displayed via r4651.<br />
+See also: p4650 (Encoder functional reserve component number), r4651 (Encoder functional reserve)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232410">A232410 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Communication error (encoder and Sensor Module)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Serial communication protocol transfer error between the encoder and evaluation module.<br />
+Alarm value (r2124, interpret binary):<br />
+Bit 0: Alarm bit in the position protocol.<br />
+Bit 1: Incorrect quiescent level on the data line.<br />
+Bit 2: Encoder does not respond (does not supply a start bit within 50 ms).<br />
+Bit 3: CRC error: The checksum in the protocol from the encoder does not match the data.<br />
+Bit 4: Encoder acknowledgment error: The encoder incorrectly understood the task (request) or cannot execute it.<br />
+Bit 5: Internal error in the serial driver: An illegal mode command was requested.<br />
+Bit 6: Timeout when cyclically reading.<br />
+Bit 8: Protocol is too long (e.g. &gt; 64 bits).<br />
+Bit 9: Receive buffer overflow.<br />
+Bit 10: Frame error when reading twice.<br />
+Bit 11: Parity error.<br />
+Bit 12: Data line signal level error during the monoflop time.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- replace encoder.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232411">A232411 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Encoder signals an internal alarm (detailed information)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The absolute encoder fault word includes alarm bits that have been set.<br />
+Alarm value (r2124, interpret binary):<br />
+yyyyxxxx hex: yyyy = supplementary information, xxxx = fault cause<br />
+yyyy = 0:<br />
+Bit 0: Frequency exceeded (speed too high).<br />
+Bit 1: Temperature exceeded.<br />
+Bit 2: Control reserve, lighting system exceeded.<br />
+Bit 3: Battery discharged.<br />
+Bit 4: Reference point passed.<br />
+yyyy = 1:<br />
+Bit 0: Signal amplitude outside the control range.<br />
+Bit 1: Error multiturn interface<br />
+Bit 2: Internal data error (singleturn&#47;multiturn not with single steps).<br />
+Bit 3: Error EEPROM interface.<br />
+Bit 4: SAR converter error.<br />
+Bit 5: Fault for the register data transfer.<br />
+Bit 6: Internal error identified at the error pin (nErr).<br />
+Bit 7: Temperature threshold exceeded or fallen below.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Replace encoder.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232412">A232412 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Encoder signals an internal alarm</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The encoder signals an internal alarm via serial protocol.<br />
+Alarm value (r2124, interpret binary):<br />
+Bit 0: Fault bit in the position protocol.<br />
+Bit 1: Alarm bit in the position protocol.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- replace encoder.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232414">A232414 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Signal level track C or D out of tolerance</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The signal level (C^2 + D^2) of track C or D of the encoder or from the Hall signals, is not within the tolerance bandwidth.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+yyyyxxxx hex:<br />
+yyyy = Signal level, track D (16 bits with sign).<br />
+xxxx = Signal level, track C (16 bits with sign).<br />
+The nominal signal level of the encoder must lie in the range 375 mV to 600 mV (500 mV -25&#47;+20 %).<br />
+The response thresholds are &lt; 230 mV (observe the frequency response of the encoder) and &gt; 750 mV.<br />
+A signal level of 500 mV peak value corresponds to the numerical value 5333 hex = 21299 dec.<br />
+Note:<br />
+If the amplitude is not within the tolerance bandwidth, then it cannot be used to initialize the start position.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- replace the encoder or encoder cable.<br />
+- check the Sensor Module (e.g. contacts).<br />
+- check the Hall sensor box.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232415">N232415 (F, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Signal level track A or B outside tolerance (alarm)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The signal level (root from A^2 + B^2) of the encoder is outside the permissible tolerance.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+yyyyxxxx hex:<br />
+yyyy = Angle<br />
+xxxx = amplitude, i.e. root of A^2 + B^2 (16 bits without sign)<br />
+The nominal signal level of the encoder must lie in the range 375 mV to 600 mV (500 mV -25&#47;+20 %).<br />
+The response threshold is &lt; 230 mV (observe the frequency response of the encoder).<br />
+A signal level of 500 mV peak value corresponds to the numerical value 299A hex = 10650 dec.<br />
+The angle 0 ... FFFF hex corresponds to 0 ... 360 degrees of the fine position. Zero degrees is present at the negative zero crossover of track B.<br />
+Note for Sensor Modules for resolvers (e.g. SMC10):<br />
+The nominal signal level is at 2900 mV (2.0 Vrms). The response threshold is &lt; 1414 mV (1.0 Vrms).<br />
+A signal level of 2900 mV peak value corresponds to the numerical value 3333 hex = 13107 dec.<br />
+Note:<br />
+The analog values of the amplitude error are not measured at the same time with the hardware fault output by the Sensor Module.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the speed range, frequency characteristic (amplitude characteristic) of the measuring equipment is not sufficient for the speed range.<br />
+- check that the encoder cables and shielding are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- replace the encoder or encoder cable.<br />
+- check the Sensor Module (e.g. contacts).<br />
+- if the coding disk is soiled or the lighting aged, replace the encoder.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232418">A232418 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Speed change not plausible (alarm)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For an HTL&#47;TTL encoder, the speed change has exceeded the value in p0492 over several sampling cycles.<br />
+The change to the averaged speed actual value - if applicable - is monitored in the current controller sampling time.<br />
+Alarm value (r2124, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+See also: p0492<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the tachometer feeder cable for interruptions.<br />
+- check the grounding of the tachometer shielding.<br />
+- if required, increase the setting of p0492.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232419">A232419 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Track A or B outside tolerance</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The amplitude&#47;phase&#47;offset correction for track A or B is at the limit.<br />
+Amplitude error correction: Amplitude B &#47; Amplitude A = 0.78 ... 1.27<br />
+Phase: &lt;84 degrees or &gt;96 degrees<br />
+SMC20: Offset correction: +&#47;-140 mV<br />
+SMC10: Offset correction: +&#47;-650 mV<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+xxxx1: Minimum of the offset correction, track B<br />
+xxxx2: Maximum of the offset correction, track B<br />
+xxx1x: Minimum of the offset correction, track A<br />
+xxx2x: Maximum of the offset correction, track A<br />
+xx1xx: Minimum of the amplitude correction, track B&#47;A<br />
+xx2xx: Maximum of the amplitude correction, track B&#47;A<br />
+x1xxx: Minimum of the phase error correction<br />
+x2xxx: Maximum of the phase error correction<br />
+1xxxx: Minimum of the cubic correction<br />
+2xxxx: Maximum of the cubic correction<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check mechanical mounting tolerances for encoders without their own bearings (e.g. toothed-wheel encoders).<br />
+- check the plug connections (also the transition resistance).<br />
+- check the encoder signals.<br />
+- replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232421">A232421 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Determined commutation position incorrect (alarm)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A commutation position actual value sensing error was detected.<br />
+Alarm value (r2124, interpret decimal):<br />
+3: The absolute position of the serial protocol and track A&#47;B differ by half an encoder pulse. The absolute position must have its zero position in the quadrants in which both tracks are negative. In the case of a fault, the position can be incorrect by one encoder pulse.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For alarm value = 3:<br />
+- For a standard encoder with cable, contact the manufacturer where relevant.<br />
+- correct the assignment of the tracks to the position value that is serially transferred. To do this, the two tracks must be connected, inverted, at the Sensor Module (interchange A with A* and B with B*) or, for a programmable encoder, check the zero offset of the position.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232422">A232422 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Pulses per revolution square-wave encoder outside tolerance bandwidth</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The measured zero mark distance does not correspond to the parameterized zero mark distance.<br />
+This alarm is triggered with active square-wave encoder PPR correction and re-parameterized fault 31131 if the accumulator contains larger values than p4683 or p4684.<br />
+The zero mark distance for zero mark monitoring is set in p0425 (rotary encoder).<br />
+Alarm value (r2124, interpret decimal):<br />
+accumulated differential pulses in encoder pulses.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- check the encoder type (encoder with equidistant zero marks).<br />
+- adapt the parameter for the distance between zero marks (p0424, p0425).<br />
+- replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232429">A232429 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Position difference hall sensor&#47;track C&#47;D and A&#47;B too large</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The error for track C&#47;D is greater than +&#47;-15 &deg; mechanical or +&#47;-60 &deg; electrical or the error for the Hall signals is greater than +&#47;-60 &deg; electrical.<br />
+One period of track C&#47;D corresponds to 360 &deg; mechanical.<br />
+One period of the Hall signal corresponds to 360 &deg; electrical.<br />
+The monitoring responds if, for example, Hall sensors are connected as equivalent for the C&#47;D tracks with the incorrect rotational sense or supply values that are not accurate enough.<br />
+Alarm value (r2124, interpret decimal):<br />
+For track C&#47;D, the following applies:<br />
+Measured deviation as mechanical angle (16 bits with sign, 182 dec corresponds to 1 &deg;).<br />
+For Hall signals, the following applies:<br />
+Measured deviation as electrical angle (16 bits with sign, 182 dec corresponds to 1 &deg;).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- track C or D not connected.<br />
+- correct the direction of rotation of the Hall sensor possibly connected as equivalent for track C&#47;D.<br />
+- check that the encoder cables are routed in compliance with EMC.<br />
+- check the adjustment of the Hall sensor.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232431">A232431 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Position deviation incremental&#47;absolute too high (alarm)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When the zero pulse is passed, a deviation in the incremental position was detected.<br />
+For equidistant zero marks, the following applies:<br />
+- the first zero mark passed supplies the reference point for all subsequent checks. The other zero marks must have n times the distance referred to the first zero mark.<br />
+For distance-coded zero marks, the following applies:<br />
+- the first zero mark pair supplies the reference point for all subsequent checks. The other zero mark pairs must have the expected distance to the first zero mark pair.<br />
+Alarm value (r2124, interpret decimal):<br />
+Deviation in quadrants (1 pulse = 4 quadrants).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- replace the encoder or encoder cable.<br />
+- Clean coding disk or remove strong magnetic fields.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232432">A232432 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Rotor position adaptation corrects deviation</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>On track A&#47;B, pulses have been lost or too many have been counted. These pulses are presently being corrected.<br />
+Alarm value (r2124, interpret decimal):<br />
+Last measured deviation of zero mark in increments (4 increments = 1 encoder pulse).<br />
+The sign designates the direction of motion when detecting the zero mark distance.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables are routed in compliance with EMC.<br />
+- check the plug connections.<br />
+- replace the encoder or encoder cable.<br />
+- check encoder limit frequency.<br />
+- adapt the parameter for the distance between zero marks (p0424, p0425).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232442">A232442 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Battery voltage alarm threshold reached</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When switched-off, the encoder uses a battery to back up the multiturn information. The multiturn information can no longer be buffered if the battery voltage drops even further.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Replace battery.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232443">A232443 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Signal level track C&#47;D outside tolerance (alarm)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The unipolar level (CP&#47;CN or DP&#47;DN) for encoder 2 is outside the permissible tolerance.<br />
+Alarm value (r2124, interpret binary):<br />
+Bit 0 = 1: Either CP or CN outside the tolerance.<br />
+Bit 16 = 1: Either DP or DN outside the tolerance.<br />
+The unipolar nominal signal level of the encoder must lie in the range 2500 mV +&#47;- 500 mV.<br />
+The response thresholds are &lt; 1700 mV and &gt; 3300 mV.<br />
+Note:<br />
+The signal level is not evaluated unless the following conditions are satisfied:<br />
+- Sensor Module properties available (r0459.31 = 1).<br />
+- monitoring active (p0437.31 = 1).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check that the encoder cables and shielding are routed in compliance with EMC.<br />
+- check the plug connections and contacts of the encoder cable.<br />
+- are the C&#47;D tracks connected correctly (have the signal cables CP and CN or DP and DN been interchanged)?<br />
+- replace the encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232460">A232460 (N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Analog sensor channel A failed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The input voltage of the analog sensor is outside the permissible limits.<br />
+Alarm value (r2124, interpret decimal):<br />
+1: Input voltage outside detectable measuring range.<br />
+2: Input voltage outside measuring range set in p4673.<br />
+3: The absolute value of the input voltage has exceeded the range limit (p4676).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For alarm value = 1:<br />
+- check the output voltage of the analog sensor.<br />
+For alarm value = 2:<br />
+- check the voltage setting for each encoder period (p4673).<br />
+For alarm value = 3:<br />
+- check the range limit setting and increase it if necessary (p4676).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232461">A232461 (N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Analog sensor channel B failed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The input voltage of the analog sensor is outside the permissible limits.<br />
+Alarm value (r2124, interpret decimal):<br />
+1: Input voltage outside detectable measuring range.<br />
+2: Input voltage outside the selected measuring range (p4675).<br />
+3: The absolute value of the input voltage has exceeded the range limit (p4676).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For alarm value = 1:<br />
+- check the output voltage of the analog sensor.<br />
+For alarm value = 2:<br />
+- check the voltage setting for each encoder period (p4675).<br />
+For alarm value = 3:<br />
+- check the range limit setting and increase it if necessary (p4676).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232462">A232462 (N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Analog sensor no channel active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Channel A and B are not activated for the analog sensor.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- activate channel A and&#47;or channel B (p4670).<br />
+- check the encoder configuration (p0404.17).<br />
+See also: p4670 (Analog sensor configuration)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232463">A232463 (N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Analog sensor position value exceeds limit value</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The position value has exceeded the permissible range of -0.5 ... +0.5.<br />
+Alarm value (r2124, interpret decimal):<br />
+1: Position value from the LVDT sensor.<br />
+2: Position value from the encoder characteristic.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For alarm value = 1:<br />
+- check the LVDT ratio (p4678).<br />
+- check the reference signal connection at track B.<br />
+For alarm value = 2:<br />
+- check the coefficients of the characteristic (p4663 ... p4666).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232470">A232470 (F, N)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Encoder signals an internal error (X521.7)</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the Sensor Module Cabinet 30 (SMC30), a dirty encoder is signaled via a 0 signal at terminal X521.7.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the plug connections.<br />
+- replace the encoder or encoder cable.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232500">F232500 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Position tracking traversing range exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For a configured linear axis without modulo correction, the drive&#47;encoder has exceeded the maximum possible traversing range. The value should be read in p0412 and interpreted as the number of motor revolutions.<br />
+For p0411.0 = 1, the maximum traversing range for the configured linear axis is defined to be 64x (+&#47;- 32x) of p0421.<br />
+For p0411.3 = 1, the maximum traversing range for the configured linear axis is preset (default value) to the highest possible value and is +&#47;-p0412&#47;2 (rounded off to complete revolutions). The highest possible value depends on the pulse number (p0408) and the fine resolution (p0419).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>The fault should be resolved as follows:<br />
+- select encoder commissioning (p0010 = 4).<br />
+- reset the position tracking as follows (p0411.2 = 1).<br />
+- deselect encoder commissioning (p0010 = 0).<br />
+The fault should then be acknowledged and the absolute encoder adjusted.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="232501">F232501 (N, A)</a></b></td>
+<td><b>&lt;location&gt;Encoder 2: Position tracking encoder position outside tolerance window</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF1<br />
+ (NONE, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When switched off, the drive&#47;encoder was moved through a distance greater than was parameterized in the tolerance window. It is possible that there is no longer any reference between the mechanical system and encoder.<br />
+Fault value (r0949, interpret decimal):<br />
+Deviation (difference) to the last encoder position in increments of the absolute value.<br />
+The sign designates the traversing direction.<br />
+Note:<br />
+The deviation (difference) found is also displayed in r0477.<br />
+See also: p0413 (Measuring gear position tracking tolerance window), r0477 (Measuring gear position difference)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Reset the position tracking as follows:<br />
+- select encoder commissioning (p0010 = 4).<br />
+- reset the position tracking as follows (p0411.2 = 1).<br />
+- deselect encoder commissioning (p0010 = 0).<br />
+The fault should then be acknowledged and, if necessary, the absolute encoder adjusted (p2507).<br />
+See also: p0010, p2507<br />
+</td></tr>
+</table><p></p></body></html>

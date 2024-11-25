@@ -1,0 +1,35 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Switch programmable contour accuracy on/off (CPRECON, CPRECOF): More information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Switch programmable contour accuracy on/off (CPRECON, CPRECOF): More information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">More information</h3>
+      <h4 class="Blocklabel">Contour accuracy</h4>
+      <p>The contour accuracy to be maintained is specified depending on the configuration of the machine (MD20470 $MC_MC_CPREC_WITH_FFW; see the machine manufacturer's information) either via the setting date SD42450$SC_CONTPREC or via the programmed contour tolerance CTOL. The smaller the value and the smaller the K<sub>V</sub> factor of the geometry axes, the greater the path feedrate is reduced on curved contours. </p>
+      <h4 class="Blocklabel">Contour accuracy for rapid traverse movements</h4>
+      <p>When machining workpieces with curved contours and the "Programmable contour accuracy" function is active, the velocity is reduced to maintain the specified contour accuracy even during tool movements at rapid traverse, e.g. in corners and corner rounding blocks when bypassing the workpiece. In order to minimize the reduction of the path velocity during rapid traverse movements, a rapid traverse contour accuracy deviating from the workpiece machining can be set for the "Programmable contour accuracy" function:</p>
+      <p>SD42451 $SC_CONTPREC_G00_ABS (contour accuracy with rapid traverse)</p>
+      <p>If SD42451 = 0, the contour accuracy set in $SC_CONTPREC[DYNNORM] applies to rapid traverse movements.</p>
+      <h4 class="Blocklabel">Minimum path feedrate</h4>
+      <p>The user can use the following setting data to specify a minimum path feedrate for the "Programmable contour accuracy" function:</p>
+      <p>SD42460 $SC_MINFEED (minimum path feedrate for CPRECON)</p>
+      <p>The feedrate will not limited below this value, unless a lower F value has been programmed or the dynamic limitations of the axes force a lower path velocity.</p>
+      <h4 class="Blocklabel">No influence on positioning axes</h4>
+      <p>The "Programmable contour accuracy" function only considers the geometry axes of the path. It does not have any effect of the velocities for the positioning axes.</p>
+      <h4 class="Blocklabel">Behavior at part program start and after channel or program end reset</h4>
+      <p>At part-program start and after channel or program end reset, the initial control setting defined for the G function group 39 becomes effective (see the machine manufacturer's information).</p>
+    </div>
+  </body>
+</html>

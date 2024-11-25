@@ -1,0 +1,86 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein T/TS: Schneidendaten: Überwachungsdaten</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein T/TS: Schneidendaten: Überwachungsdaten</h1>
+         </div>
+      </div>Der Datenbaustein TS ist als 2-dimensionales Variablenfeld organisiert. Der Baustein enthält die Schneidenüberwachungsdaten
+      zu allen Werkzeugen. Jedes Element ist über einen Spalten- und Zeilenindex adressierbar:<br/>
+      Der Spaltenindex ist die Werkzeugnummer (T-Nummer), d. h. in einer Spalte sind die Überwachungsdaten für alle Schneiden eines
+      Werkzeuges zu finden. Die Zuordnung eines Werkzeuges zu einer T-Nummer kann dem Baustein Werkzeugverzeichnis (TV) im zugehörigen
+      Bereich T entnommen werden.  Wird für den Spaltenindex eine nicht vorhandene Werkzeugnummer angegeben, wird der Auftrag negativ
+      quittiert.<br/>
+      Die Anzahl der Zeilen ergibt sich aus der Anzahl Parameter je Schneide und aus der Anzahl der Schneiden eines Werkzeugs: <br/>
+      <br/>
+      maxZeilenanzahl = <a href="../sinumerik_btss_N/N_Y.html#334">numCuttEdgeParams_ts</a> * <a href="../sinumerik_btss_T/T_TV.html#335">/T/TV/numCuttEdges</a> (T-Nummer)<br/>
+       <br/>
+      Die Anzahl der Parameter je Schneide "<a href="../sinumerik_btss_N/N_Y.html#334">numCuttEdgeParams_ts</a>" kann dem Baustein Y im Bereich N entnommen werden. Die Anzahl der Schneiden "<a href="../sinumerik_btss_T/T_TV.html#335">/T/TV/numCuttEdges</a>" ist jeweils werkzeugspezifisch und kann dem Baustein TV im zugehörigen Bereich T entnommen werden.<br/>
+      <br/>
+      Bei Bedarf können mehrere Zeilen adressiert werden, so dass in einem Auftrag z. B. alle Schneidenüberwachungsdaten eins Werkzeuges
+      gelesen werden können. Die Überwachungsdaten der Schneiden sind alle vom gleichen Datentyp und haben die gleiche physikalische
+      Einheit.<br/>
+      <br/>
+      Neue Werkzeugüberwachungsart "Überwachung der Verschleißwerte" und "Überwachung der Summenkorrekturen":<br/>
+      Hierfür gibt es 3 neue Parameter:<br/>
+      P7 = Vorwarngrenze Verschleiß (Vorwarngrenze) (ab SW 5.1) ($TC_MOP6)<br/>
+      P8 = verbleibender Verschleiß (Istwert) (ab SW 5.1) ($TC_MOP5)<br/>
+      P9 = Sollwert Verschleiß (ab SW 5.1) ($TC_MOP15)<br/>
+      
+      <div><a name="602"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>data</b></td>
+            <td colspan="3" style="border:1px solid black">Überwachungsdaten der Werkzeugschneiden</td>
+            <td width="20%" style="border:1px solid black">$TC_MOPx[y,z] x=ParamNo,y=T-Number,z=Edge</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Alias:<br></span><b>dummy</b></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>Werkzeugnummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Wert berechnen<br>(SchneidenNr - 1) * <a href="../sinumerik_btss_N/N_Y.html#334">numCuttEdgeParams_ts</a> + ParameterNr
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span><a href="../sinumerik_btss_N/N_Y.html#334">numCuttEdgeParams_ts</a> * <a href="../sinumerik_btss_N/N_Y.html#2381">maxnumCuttEdges_Tool</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Die Variable liefert die Überwachungsdaten der Werkzeugschneiden.<br/>
+               Wichtig: 2-dimensionale Variable. Mit dem Zeilenindex wird die Schneidennummer und die Parameternummer adressiert.<br/>
+               Je Schneide sind 9 Parameter vorgesehen.<br/>
+               P1 = Vorwarngrenze Standzeit in Minuten ($TC_MOP1)<br/>
+               P2 = Verbleibende Standzeit in Minuten ($TC_MOP2)<br/>
+               P3 = Vorwarngrenze Stückzahl ($TC_MOP3)<br/>
+               P4 = verbleibende Stückzahl ($TC_MOP4)<br/>
+               P5 = Sollstandzeit ($TC_MOP11)<br/>
+               P6 = Sollstückzahl ($TC_MOP13)<br/>
+               P7 = Vorwarngrenze Verschleiß (Vorwarngrenze) ($TC_MOP5)<br/>
+               P8 = verbleibender Verschleiß (Istwert) ($TC_MOP6) nicht schreibbar<br/>
+               P9 = Sollwert Verschleiß ($TC_MOP15)<br/>
+               Die Daten P1 - P6 werden mit den MD-Einstellungen MD-Bits $MN_MM_TOOL_MANAGEMENT_MASK, Bit1=1 (TMMO) bereitgestellt. <br/>
+               Die Daten P7 - P9 werden mit den MD-Einstellungen MD-Bits $MN_MM_TOOL_MANAGEMENT_MASK, Bit1=1 (TMMO) und Bit5=1 bereitgestellt.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Tool/Supervision/data[u&lt;Werkzeugber.&gt;, c&lt;Spaltenindex&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

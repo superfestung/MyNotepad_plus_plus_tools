@@ -1,0 +1,1455 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2">r0002</a></b></td>
+<td colspan="4"><b>TM31 operating display / TM31 op_display</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TM31</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >250</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Operating display for Terminal Module 31 (TM31).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		[00] Module in cyclic operation<br />40:		[40] Module not in cyclic operation<br />50:		[50] Alarm<br />60:		[60] Fault<br />70:		[70] Initialization<br />120:		[120] Module de-activated<br />250:		[250] Device signals a topology error<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">For several missing enable signals, the corresponding value with the highest number is displayed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5">p0005[0...1]</a></b></td>
+<td colspan="4"><b>BOP operating display selection / BOP op_disp sel</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_S, HUB, S_INF, SERVO, TB30, TM15, TM15DI_DO, TM17, TM31, TM41, TM54F_MA, TM54F_SL, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >65535</td>
+<td >2</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the parameter number and parameter index for display for p0006 = 2, 4 for the Basic Operator Panel (BOP).<br />
+Examples for the SERVO drive object:<br />
+p0005[0] = 21, p0005[1] = 0: Actual speed smoothed (r0021)<br />
+p0005[0] = 25, p0005[1] = 0: Output voltage smoothed (r0025)<br />
+p0005[0] = 27, p0005[1] = 0: Absolute current actual value smoothed (r0027)<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Parameter number<br />
+[1] = Parameter index<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0006<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Procedure:<br />1.<br />The parameter number to be displayed should be set in index 0. Only the monitoring parameters (read-only parameters) can be set that actually exist for the current drive object.<br />If the set parameter number is not indexed, or if there is an index in index 1 that lies outside the valid range of the set parameter, then index 1 is automatically set to 0.<br />2.<br />The index that belongs to the parameter set in index 0 should be set in index 1. The permissible changes in index 1 always depend on the parameter number set in index 0.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="6">p0006</a></b></td>
+<td colspan="4"><b>BOP operating display mode / BOP op_ disp mode</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">CU_S, HUB, TB30, TM15, TM15DI_DO, TM17, TM31, TM41, TM54F_MA, TM54F_SL</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>4</td>
+<td  >4</td>
+<td >4</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the mode of the operating display for the Basic Operator Panel (BOP) in the operating states &quot;ready for operation&quot; and &quot;operation&quot;.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">4:		p0005<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0005<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Mode 0 ... 3 can only be selected if also r0020, r0021 are available on the drive object.<br />Mode 4 is available for all drive objects.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="10">p0010</a></b></td>
+<td colspan="4"><b>TM31 commissioning parameter filter / TM31 comm par_filt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TM31</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(1), T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >30</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the parameter filter for commissioning a Terminal Module 31 (TM31).<br />
+Setting this parameter filters-out the parameters that can be written into in the various commissioning steps.<br />
+For the BOP, this setting also causes the read access operations to be filtered.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Ready<br />29:		Download<br />30:		Parameter reset<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0970<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Only the following values are possible: p0010 = 0, 30<br />Procedure for &quot;Reset parameter&quot;: Set p0010 to 30 and p0970 to 1.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="13">p0013[0...49]</a></b></td>
+<td colspan="4"><b>BOP user-defined list / BOP list</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_S, HUB, S_INF, SERVO, TB30, TM15, TM15DI_DO, TM17, TM31, TM41, TM54F_MA, TM54F_SL, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Functions</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >65535</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the required parameters to read and write via the Basic Operator Panel (BOP).<br />
+Activation:<br />
+1. p0003 = 3 (expert).<br />
+2. p0013[0...49] = requested parameter number<br />
+3. If required, enter p0011 = password in order to prevent non-authorized de-activation.<br />
+4. p0016 = 1 --&gt; activates the selected user-defined list.<br />
+De-activation&#47;change:<br />
+1. p0003 = 3 (expert).<br />
+2. If required, p0012 = p0011, in order to be authorized to change or de-activate the list.<br />
+3. If required p0013[0...49] = required parameter number.<br />
+4. p0016 = 1 --&gt; activates the modified user-defined list.<br />
+5. p0003 = 0 --&gt; de-activates the user-defined list.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0009, p0011, p0012, p0976<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The following parameters can be read and written on the Control Unit drive object:<br />- p0003 (access stage)<br />- p0009 (device commissioning, parameter filter)<br />- p0012 (BOP password acknowledgement (p0013))<br />The following applies for the user-defined list:<br />- password protection is only available on the drive object Control Unit and is valid for all of the drive objects.<br />- p0013 cannot be included in the user-defined list for all drive objects.<br />- p0003, p0009, p0011, p0012, p0976 cannot, for the drive object Control Unit, be included in the user-defined list.<br />- the user-defined list can be cleared and de-activated &quot;restore factory setting&quot;.<br />A value of 0 means: Entry is empty.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="15">p0015</a></b></td>
+<td colspan="4"><b>Macro drive object / Macro DO</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, S_INF, SERVO, TM15DI_DO, TM31, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(1)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >999999</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Runs the appropriate ACX file on the CompactFlash card.<br />
+The selected ACX file must be located in the following directory:<br />
+... &#47;PMACROS&#47;&lt;drive object&gt;&#47;P15&#47;PMxxxxxx.ACX<br />
+Example:<br />
+p0015 = 6 --&gt; the file PM000006.ACX is run.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">The ACX file to be run must be created according to the definition for ACX macros and must be saved in the appropriate directory on the memory card.<br />Refer to: p0700, p1000, p1500, r8570<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The macros in the specified directory are displayed in r8570. r8570 is not in the expert list of the commissioning software.<br />Macros available as standard are described in the technical documentation of the particular product.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="105">p0105</a></b></td>
+<td colspan="4"><b>Activate&#47;de-activate drive object / DO act&#47;de-act</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_LINK, HUB, S_INF, SERVO, TB30, TM15, TM15DI_DO, TM17, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Setting to activate&#47;de-activate a drive object.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		De-activate drive object<br />1:		Activate drive object<br />2:		Drive object, de-activate and not present<br /></td></tr>
+<tr><td valign="top" width="15%"><b>Recommend.:</b></td>
+<td>After inserting all of the components of a drive object, before activating, first wait for Alarm A01316.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0106<br />Refer to: A01316</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Setting a drive object to de-activate principally corresponds to the &quot;parking axis&quot; function. however, here, all of the DRIVE-CLiQ components, assigned to the drive object, are in involved.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="106">r0106</a></b></td>
+<td colspan="4"><b>Drive object active&#47;inactive / DO act&#47;inact</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_LINK, CU_S, HUB, S_INF, SERVO, TB30, TM15, TM15DI_DO, TM17, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the &quot;active&#47;inactive&quot; state of a drive object.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Drive object inactive<br />1:		Drive object active<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0105<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="107">r0107</a></b></td>
+<td colspan="4"><b>Drive object type / DO type</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_LINK, HUB, S_INF, SERVO, TB30, TM15, TM15DI_DO, TM17, TM31, TM41, TM54F_MA, TM54F_SL, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >254</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the type of each drive object.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		-<br />1:		SINAMICS S<br />2:		SINAMICS G<br />3:		SINAMICS I<br />4:		SINAMICS CX32<br />5:		SINAMICS GM<br />6:		SINAMICS DC<br />7:		SINAMICS GL<br />9:		SINAMICS S110<br />10:		ACTIVE INFEED CONTROL<br />11:		SERVO<br />12:		VECTOR<br />13:		VECTORMV<br />14:		VECTORGL<br />16:		VECTORSL<br />17:		SIMOREG<br />20:		SMART INFEED CONTROL<br />30:		BASIC INFEED CONTROL<br />40:		ACTIVE INFEED CONTROLMV<br />41:		BASIC INFEED CONTROLMV<br />100:		TB30 (Terminal Board)<br />101:		SINAMICS SL<br />150:		DRIVE-CLiQ Hub Module<br />200:		TM31 (Terminal Module)<br />201:		TM41 (Terminal Module)<br />202:		TM17 High Feature (Terminal Module)<br />203:		TM15 (Terminal Module)<br />204:		TM15 (Terminal Module for SINAMICS)<br />205:		TM54F - Master (Terminal Module)<br />206:		TM54F - Slave (Terminal Module)<br />254:		CU-LINK<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0103, r0103<br />Refer to: F01051</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="108">r0108</a></b></td>
+<td colspan="4"><b>Drive object, function module / DO function module</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TB30, TM15DI_DO, TM31, TM41</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the activated function module for the particular drive object.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>18</td><td>Free function blocks</td><td>Activated</td><td>Not activated</td><td>-</td></tr><tr><td></td><td>31</td><td>PROFINET</td><td>Activated</td><td>Not activated</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A &quot;function module&quot; is a functional expansion of a drive object that can be activated when commissioning.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="111">r0111</a></b></td>
+<td colspan="4"><b>Basic sampling time selection / t_basis sel</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TB30, TM15, TM15DI_DO, TM17, TM31, TM41</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the selected basic sampling time for this drive object.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0110<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For TB30 and the Terminal Module, this parameter has no significance. For TB30 and certain Terminal Modules, the sampling times can be set using P4099[]. For more information, please read the description of P4099[] of the module involved.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="115">p0115[0]</a></b></td>
+<td colspan="4"><b>Sampling time for supplementary functions / t_sample suppl fct</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TB30, TM15DI_DO, TM31</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(3)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >16000.00</td>
+<td >4000.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the sampling times for supplementary functions (DCC, free function blocks) on this object. Only setting values that are an integer multiple of 125&micro;s are permissible.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Basic sampl. time<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">This parameter only applies to set the sampling times of possible supplementary functions.<br />The sampling times for inputs&#47;outputs must be set in p4099.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="116">r0116[0...1]</a></b></td>
+<td colspan="4"><b>Drive object clock cycle recommended / DO_clock recom</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15, TM15DI_DO, TM17, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the recommended sampling time for the drive objects.<br />
+r00116[0] = recommended sampling time:<br />
+Recommended value which would then make the complete system operational.<br />
+r00116[1] = recommended sampling time:<br />
+Recommended value, which after changing other clock cycles on the DRIVE-CLiQ line, would result in an operational system.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Change, only for the current drive object<br />
+[1] = Changing all objects on the DRIVE-CLiQ line<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0115<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="151">p0151</a></b></td>
+<td colspan="4"><b>Terminal Module component number / TM comp_no</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TM15, TM15DI_DO, TM17, TM31, TM41, TM54F_MA, TM54F_SL</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1(4)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Data sets</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >199</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the component number for the Terminal Module.<br />
+This unique component number is assigned when parameterizing the topology.<br />
+Only component numbers can be entered into this parameter that correspond to a Terminal Module.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="154">p0154</a></b></td>
+<td colspan="4"><b>Terminal Module detection via LED / TM detection LED</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TM15, TM15DI_DO, TM17, TM31, TM41, TM54F_MA, TM54F_SL</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned8</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Terminals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Detects the Terminal Module assigned to this drive and data set.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">While p0154 = 1, the READY LED flashes green&#47;orange or red&#47;orange with 2 Hz at the appropriate Terminal Module.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="157">r0157</a></b></td>
+<td colspan="4"><b>Terminal Module EPROM data version / TM EPROM version</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TM15, TM15DI_DO, TM17, TM31, TM41, TM54F_MA, TM54F_SL</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Terminals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the version of the EPROM data of the Terminal Module.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0127, r0147<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="158">r0158</a></b></td>
+<td colspan="4"><b>Terminal Module Firmware Version / TM FW version</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TM15, TM15DI_DO, TM17, TM31, TM41, TM54F_MA, TM54F_SL</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Terminals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the firmware version of the Terminal Module.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0018, r0128, r0148, r0197, r0198<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Example:<br />The value 1010100 should be interpreted as V01.01.01.00.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="199">p0199[0...24]</a></b></td>
+<td colspan="4"><b>Drive object name / DO name</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C1</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >65535</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Freely assignable name for a drive object.<br />
+In the commissioning software, this name cannot be entered using the expert list, but is specified in the configuration assistant. The object name can be subsequently modified in the Project Navigator using standard Windows resources.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="944">r0944</a></b></td>
+<td colspan="4"><b>CO: Counter for fault buffer changes / Fault buff change</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8060</td></tr><tr><td><b>P-Group:</b> Messages</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays fault buffer changes. This counter is incremented every time the fault buffer changes.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Recommend.:</b></td>
+<td>Used to check whether the fault buffer has been read out consistently.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0945, r0947, r0948, r0949, r2109<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="945">r0945[0...63]</a></b></td>
+<td colspan="4"><b>Fault code / Fault code</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 1750, 8060</td></tr><tr><td><b>P-Group:</b> Messages</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the numbers of faults that have occurred.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0947, r0948, r0949, r2109, r2130, r2133, r2136<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The buffer parameters are cyclically updated in the background (refer to status signal in r2139).<br />Fault buffer structure (general principle):<br />r0945[0], r0949[0], r0948[0], r2109[0], r3115[0] --&gt; current fault case, fault 1<br />. . .<br />r0945[7], r0949[7], r0948[7], r2109[7], r3115[7] --&gt; current fault case, fault 8<br />r0945[8], r0949[8], r0948[8], r2109[8], r3115[8] --&gt; 1st acknowledged fault case, fault 1<br />. . .<br />r0945[15], r0949[15], r0948[15], r2109[15], r3115[15] --&gt; 1st acknowledged fault case, fault 8<br />. . .<br />r0945[56], r0949[56], r0948[56], r2109[56], r3115[56] --&gt; 7th acknowledged fault case, fault 1<br />. . .<br />r0945[63], r0949[63], r0948[63], r2109[63], r3115[63] --&gt; 7th acknowledged fault case, fault 8<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="946">r0946[0...65534]</a></b></td>
+<td colspan="4"><b>Fault code list / Fault code list</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 8060</td></tr><tr><td><b>P-Group:</b> Messages</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Lists the fault codes stored in the drive unit.<br />
+The indices can only be accessed with a valid fault code.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">The parameter assigned to the fault code is entered in r0951 under the same index.<br />Refer to: r0951<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="947">r0947[0...63]</a></b></td>
+<td colspan="4"><b>Fault number / Fault number</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 1750, 8060</td></tr><tr><td><b>P-Group:</b> Messages</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">This parameter is identical to r0945.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="948">r0948[0...63]</a></b></td>
+<td colspan="4"><b>Fault time received in milliseconds / t_fault recv ms</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 1750, 8060</td></tr><tr><td><b>P-Group:</b> Messages</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the system runtime in milliseconds when the fault occurred.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0945, r0947, r0949, r2109, r2114, r2130, r2133, r2136, r3115<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The buffer parameters are cyclically updated in the background (refer to status signal in r2139).<br />The structure of the fault buffer and the assignment of the indices is shown in r0945.<br />When the parameter is read via PROFIdrive, the TimeDifference data type applies.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="949">r0949[0...63]</a></b></td>
+<td colspan="4"><b>Fault value / Fault value</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 1750, 8060</td></tr><tr><td><b>P-Group:</b> Messages</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays additional information about the fault that occurred (as integer number).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0945, r0947, r0948, r2109, r2130, r2133, r2136, r3115<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The buffer parameters are cyclically updated in the background (refer to status signal in r2139).<br />The structure of the fault buffer and the assignment of the indices is shown in r0945.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="952">p0952</a></b></td>
+<td colspan="4"><b>Fault cases, counter / Fault cases qty</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 1710, 8060</td></tr><tr><td><b>P-Group:</b> Messages</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >65535</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Number of fault situations that have occurred since the last reset.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">The fault buffer is deleted (cleared) by setting p0952 to 0.<br />Refer to: r0945, r0947, r0948, r0949, r2109, r2130, r2133, r2136<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="970">p0970</a></b></td>
+<td colspan="4"><b>TM31 reset parameters / TM31 par reset</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TM31</td>
+<td valign="top" width="30%"><b>Can be changed:</b> C2(30)</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Factory settings</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >100</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">The parameter is used to initiate a reset of the parameters on Terminal Module 31 (TM31).<br />
+The sampling time p4099 is not reset if in so doing a conflict occurs with the basic clock cycle.<br />
+Parameter p0151 is not reset. It is only reset if the entire drive unit is reset to the factory settings (p0976).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Inactive<br />1:		Starts a parameter reset<br />100:		Starts a BICO interconnection reset<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0010<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">A factory setting run can only be started if p0010 was first set to 30 (parameter reset).<br />At the end of the calculations, p0970 is automatically set to 0.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="971">p0971</a></b></td>
+<td colspan="4"><b>Save drive object parameters / Drv_obj par save</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 1</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Factory settings</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Setting to save the parameter of the particular drive object in the non-volatile memory.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		Inactive<br />1:		Save drive object<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p0977, p1960, p3845, r3996<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Starting from the particular drive object, the following parameters are saved:<br />CU3xx: Device-specific parameters and PROFIBUS device parameters.<br />Other objects: Parameters of the current object and PROFIBUS device parameters.<br />Prerequisite:<br />In order that the parameter of a drive object, saved with p0971 = 1, is read the next time that the Control Unit is booted, then all parameters must, as a minimum, have first been saved once with p0977 = 1.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="975">r0975[0...10]</a></b></td>
+<td colspan="4"><b>Drive object identification / DO identification</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 2</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the identification of the drive object.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Company (Siemens = 42)<br />
+[1] = Drive object type<br />
+[2] = Firmware version<br />
+[3] = Firmware date (year)<br />
+[4] = Firmware date (day&#47;month)<br />
+[5] = PROFIdrive drive object, type class<br />
+[6] = PROFIdrive drive object, sub-type Class 1<br />
+[7] = Drive object number<br />
+[8] = Reserved<br />
+[9] = Reserved<br />
+[10] = Firmware patch&#47;hot fix<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Example:<br />r0975[0] = 42 --&gt; SIEMENS<br />r0975[1] = 11 --&gt; SERVO drive object type<br />r0975[2] = 102 --&gt; first part, firmware version V01.02 (second part, refer to index 10)<br />r0975[3] = 2003 --&gt; year 2003<br />r0975[4] = 1401 --&gt; 14th of January<br />r0975[5] = 1 --&gt; PROFIdrive drive object, type class<br />r0975[6] = 9 --&gt; PROFIdrive drive object sub-type class 1<br />r0975[7] = 2 --&gt; drive object number = 2<br />r0975[8] = 0 (reserved)<br />r0975[9] = 0 (reserved)<br />r0975[10] = 600 --&gt; second part, firmware version (complete version: V01.02.06.00)<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="980">r0980[0...199]</a></b></td>
+<td colspan="4"><b>List of existing parameters 1 / List avail par 1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the parameters that exist for this drive.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0981, r0989<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The existing parameters are displayed in indices 0 to 198. If an index contains the value 0, then the list ends here. In a long list, index 199 contains the parameter number at which position the list continues.<br />This list completely comprises the following parameters:<br />r0980[0...199], r0981[0...199] ... r0989[0...199]<br />The parameters in this list are not displayed in the expert list of the commissioning software. However, they can be read from a higher-level control system (e.g. PROFIBUS master).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="981">r0981[0...199]</a></b></td>
+<td colspan="4"><b>List of existing parameters 2 / List avail par 2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the parameters that exist for this drive.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0980, r0989<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The existing parameters are displayed in indices 0 to 198. If an index contains the value 0, then the list ends here. In a long list, index 199 contains the parameter number at which position the list continues.<br />This list completely comprises the following parameters:<br />r0980[0...199], r0981[0...199] ... r0989[0...199]<br />The parameters in this list are not displayed in the expert list of the commissioning software. However, they can be read from a higher-level control system (e.g. PROFIBUS master).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="989">r0989[0...199]</a></b></td>
+<td colspan="4"><b>List of existing parameters 10 / List avail par 10</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the parameters that exist for this drive.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0980, r0981<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The existing parameters are displayed in indices 0 to 198. If an index contains the value 0, then the list ends here.<br />This list completely comprises the following parameters:<br />r0980[0...199], r0981[0...199] ... r0989[0...199]<br />The parameters in this list are not displayed in the expert list of the commissioning software. However, they can be read from a higher-level control system (e.g. PROFIBUS master).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="990">r0990[0...99]</a></b></td>
+<td colspan="4"><b>List of modified parameters 1 / List chang. par 1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays those parameters with a value other than the factory setting for this drive.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0991, r0999<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Modified parameters are displayed in indices 0 to 98. If an index contains the value 0, then the list ends here. In a long list, index 99 contains the parameter number at which position the list continues.<br />This list completely comprises the following parameters:<br />r0990[0...99], r0991[0...99] ... r0999[0...99]<br />The parameters in this list are not displayed in the expert list of the commissioning software. However, they can be read from a higher-level control system (e.g. PROFIBUS master).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="991">r0991[0...99]</a></b></td>
+<td colspan="4"><b>List of modified parameters 2 / List chang. par 2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays those parameters with a value other than the factory setting for this drive.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0990, r0999<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Modified parameters are displayed in indices 0 to 98. If an index contains the value 0, then the list ends here. In a long list, index 99 contains the parameter number at which position the list continues.<br />This list completely comprises the following parameters:<br />r0990[0...99], r0991[0...99] ... r0999[0...99]<br />The parameters in this list are not displayed in the expert list of the commissioning software. However, they can be read from a higher-level control system (e.g. PROFIBUS master).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="999">r0999[0...99]</a></b></td>
+<td colspan="4"><b>List of modified parameters 10 / List chang. par 10</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">All objects</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 0</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays those parameters with a value other than the factory setting for this drive.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r0990, r0991<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Modified parameters are displayed in indices 0 to 98. If an index contains the value 0, then the list ends here.<br />This list completely comprises the following parameters:<br />r0990[0...99], r0991[0...99] ... r0999[0...99]<br />The parameters in this list are not displayed in the expert list of the commissioning software. However, they can be read from a higher-level control system (e.g. PROFIBUS master).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2050">r2050[0...4]</a></b></td>
+<td colspan="4"><b>CO: IF1 PROFIdrive PZD receive word / IF1 PZD recv word</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, TB30, TM15DI_DO, TM31</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> 4000H</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Connector output to interconnect PZD (setpoints) with word format received from the PROFIBUS master.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">IF1: Interface 1<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2051">p2051[0...4]</a></b></td>
+<td colspan="4"><b>CI: IF1 PROFIdrive PZD send word / IF1 PZD send word</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TB30, TM15DI_DO, TM31</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Integer16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> 4000H</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Selects the PZD (actual values) with word format to be sent to the PROFIBUS master.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">IF1: Interface 1<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2053">r2053[0...4]</a></b></td>
+<td colspan="4"><b>IF1 PROFIdrive diagnostics PZD send word / IF1 diag send word</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TB30, TM15DI_DO, TM31</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the PZD (actual values) with word format sent to the PROFIBUS master.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>On</td><td>Off</td><td>-</td></tr></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">IF1: Interface 1<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2074">r2074[0...4]</a></b></td>
+<td colspan="4"><b>IF1 PROFIdrive diagnostics bus address PZD receive / IF1diag addr recv</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, TB30, TM15DI_DO, TM31</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the PROFIBUS address of the sender from which the process data (PZD) is received.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">IF1: Interface 1<br />Value range:<br />0 - 125: Bus address of the sender<br />255: Not occupied<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2075">r2075[0...4]</a></b></td>
+<td colspan="4"><b>IF1 PROFIdrive diagnostics telegram offset PZD receive / IF1 diag offs recv</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, TB30, TM15DI_DO, TM31</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the PZD byte offset in the PROFIdrive receive telegram (master output).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">IF1: Interface 1<br />Value range:<br />0 - 242: Byte offset<br />65535: Not occupied<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2076">r2076[0...4]</a></b></td>
+<td colspan="4"><b>IF1 PROFIdrive diagnostics telegram offset PZD send / IF1 diag offs send</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">TB30, TM15DI_DO, TM31</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the PZD byte offset in the PROFIdrive send telegram (master output).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = PZD 1<br />
+[1] = PZD 2<br />
+[2] = PZD 3<br />
+[3] = PZD 4<br />
+[4] = PZD 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">IF1: Interface 1<br />Value range:<br />0 - 242: Byte offset<br />65535: Not occupied<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2080">p2080[0...15]</a></b></td>
+<td colspan="4"><b>BI: Binector-connector converter status word 1 / Bin&#47;con ZSW1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2472</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Selects bits to be sent to the PROFIBUS&#47;PROFINET master.<br />
+The individual bits are combined to form status word 1.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bit 0<br />
+[1] = Bit 1<br />
+[2] = Bit 2<br />
+[3] = Bit 3<br />
+[4] = Bit 4<br />
+[5] = Bit 5<br />
+[6] = Bit 6<br />
+[7] = Bit 7<br />
+[8] = Bit 8<br />
+[9] = Bit 9<br />
+[10] = Bit 10<br />
+[11] = Bit 11<br />
+[12] = Bit 12<br />
+[13] = Bit 13<br />
+[14] = Bit 14<br />
+[15] = Bit 15<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p2088, r2089<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2081">p2081[0...15]</a></b></td>
+<td colspan="4"><b>BI: Binector-connector converter status word 2 / Bin&#47;con ZSW2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2472</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Selects bits to be sent to the PROFIBUS&#47;PROFINET master.<br />
+The individual bits are combined to form status word 2.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bit 0<br />
+[1] = Bit 1<br />
+[2] = Bit 2<br />
+[3] = Bit 3<br />
+[4] = Bit 4<br />
+[5] = Bit 5<br />
+[6] = Bit 6<br />
+[7] = Bit 7<br />
+[8] = Bit 8<br />
+[9] = Bit 9<br />
+[10] = Bit 10<br />
+[11] = Bit 11<br />
+[12] = Bit 12<br />
+[13] = Bit 13<br />
+[14] = Bit 14<br />
+[15] = Bit 15<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p2088, r2089<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For clock synchronous operation, bit 12 to 15 to transfer the sign-of-life are reserved in status word 2 - and may not be freely interconnected.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2082">p2082[0...15]</a></b></td>
+<td colspan="4"><b>BI: Binector-connector converter status word 3 / Bin&#47;con ZSW3</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2472</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Selects bits to be sent to the PROFIBUS&#47;PROFINET master.<br />
+The individual bits are combined to form free status word 3.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bit 0<br />
+[1] = Bit 1<br />
+[2] = Bit 2<br />
+[3] = Bit 3<br />
+[4] = Bit 4<br />
+[5] = Bit 5<br />
+[6] = Bit 6<br />
+[7] = Bit 7<br />
+[8] = Bit 8<br />
+[9] = Bit 9<br />
+[10] = Bit 10<br />
+[11] = Bit 11<br />
+[12] = Bit 12<br />
+[13] = Bit 13<br />
+[14] = Bit 14<br />
+[15] = Bit 15<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p2088, r2089<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The parameter may be protected as a result of p0922 or p2079 and cannot be changed.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2083">p2083[0...15]</a></b></td>
+<td colspan="4"><b>BI: Binector-connector converter status word 4 / Bin&#47;con ZSW4</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2472</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Selects bits to be sent to the PROFIBUS&#47;PROFINET master.<br />
+The individual bits are combined to form free status word 4.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bit 0<br />
+[1] = Bit 1<br />
+[2] = Bit 2<br />
+[3] = Bit 3<br />
+[4] = Bit 4<br />
+[5] = Bit 5<br />
+[6] = Bit 6<br />
+[7] = Bit 7<br />
+[8] = Bit 8<br />
+[9] = Bit 9<br />
+[10] = Bit 10<br />
+[11] = Bit 11<br />
+[12] = Bit 12<br />
+[13] = Bit 13<br />
+[14] = Bit 14<br />
+[15] = Bit 15<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p2088, r2089<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2084">p2084[0...15]</a></b></td>
+<td colspan="4"><b>BI: Binector-connector converter status word 5 / Bin&#47;con ZSW5</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2472</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Selects bits to be sent to the PROFIBUS&#47;PROFINET master.<br />
+The individual bits are combined to form free status word 5.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Bit 0<br />
+[1] = Bit 1<br />
+[2] = Bit 2<br />
+[3] = Bit 3<br />
+[4] = Bit 4<br />
+[5] = Bit 5<br />
+[6] = Bit 6<br />
+[7] = Bit 7<br />
+[8] = Bit 8<br />
+[9] = Bit 9<br />
+[10] = Bit 10<br />
+[11] = Bit 11<br />
+[12] = Bit 12<br />
+[13] = Bit 13<br />
+[14] = Bit 14<br />
+[15] = Bit 15<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p2088, r2089<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2088">p2088[0...4]</a></b></td>
+<td colspan="4"><b>Invert binector-connector converter status word / Bin&#47;con ZSW inv</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2472</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Setting to invert the individual binector inputs of the binector connector converter.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>Inverted</td><td>Not inverted</td><td>-</td></tr></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Status word 1<br />
+[1] = Status word 2<br />
+[2] = Free status word 3<br />
+[3] = Free status word 4<br />
+[4] = Free status word 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p2080, p2081, p2082, p2083, r2089<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2089">r2089[0...4]</a></b></td>
+<td colspan="4"><b>CO: Send binector-connector converter status word / Bin&#47;con ZSW send</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2472</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Connector output to interconnect the status words to a PZD send word.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>On</td><td>Off</td><td>-</td></tr></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Status word 1<br />
+[1] = Status word 2<br />
+[2] = Free status word 3<br />
+[3] = Free status word 4<br />
+[4] = Free status word 5<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p2051, p2080, p2081, p2082, p2083<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">r2089 together with p2080 to p2083 forms four binector-connector converters.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2090">r2090.0...15</a></b></td>
+<td colspan="4"><b>BO: IF1 PROFIBUS PZD1 receive bit-serial / IF1 PZD1 recv bitw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2468</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Binector output for bit-serial interconnection of PZD1 (normally control word 1) received from the PROFIBUS master.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>On</td><td>Off</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">IF1: Interface 1<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="2091">r2091.0...15</a></b></td>
+<td colspan="4"><b>BO: IF1 PROFIdrive PZD2 receive bit-serial / IF1 PZD2 recv bitw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF, B_INF, CU_CX32, CU_I, CU_S, S_INF, SERVO, TB30, TM15DI_DO, TM31, TM41, VECTOR</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 2468</td></tr><tr><td><b>P-Group:</b> Communications</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Binector output for bit-serial interconnection of PZD2 received from the PROFIBUS master.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Bit 0</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>01</td><td>Bit 1</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>02</td><td>Bit 2</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>03</td><td>Bit 3</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>04</td><td>Bit 4</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>05</td><td>Bit 5</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>06</td><td>Bit 6</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>07</td><td>Bit 7</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>08</td><td>Bit 8</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>09</td><td>Bit 9</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>10</td><td>Bit 10</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>11</td><td>Bit 11</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>12</td><td>Bit 12</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>13</td><td>Bit 13</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>14</td><td>Bit 14</td><td>On</td><td>Off</td><td>-</td></tr><tr><td></td><td>15</td><td>Bit 15</td><td>On</td><td>Off</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">IF1: Interface 1<br /></td></tr>
+</table><p></p></body></html>

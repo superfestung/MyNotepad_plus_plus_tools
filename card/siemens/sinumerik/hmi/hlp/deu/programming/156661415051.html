@@ -1,0 +1,27 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Anlegen eines NC-Programms: Beispiel 3</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Anlegen eines NC-Programms: Beispiel 3</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Programmbeispiel 3 ist für die Bearbeitung eines Werkstücks auf einer Vertikalfräsmaschine vorgesehen. Es beinhaltet Oberflächen- und Seitenfräsen sowie Bohren.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Maßzeichnung des Werkstücks</h3>
+      <h4 class="Blocklabel">Seitenansicht</h4>
+      <a id="image_126746517515_0">
+      </a> <img border="0" src="images/176077646603.png" width="500" height="165"/><h4 class="Blocklabel">Aufsicht</h4><a id="image_126749772299_0"></a> <img border="0" src="images/176077696395.png" width="500" height="399"/><a name="block_2"></a><h3 class="Blocktitle">NC-Programm</h3><a id="table_0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E1C"><colgroup><col width="60.0%"><col width="40.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 T="PF60"</td><td>; Voranwahl des Werkzeugs mit dem Namen PF60.</td></tr><tr valign="top"><td>N20 M6</td><td>; Werkzeug in die Spindel einwechseln.</td></tr><tr valign="top"><td>N30 S2000 M3 M8</td><td>; Drehzahl, Drehrichtung, Kühlung ein.</td></tr><tr valign="top"><td>N40 G90 G64 G54 G17 G0 X-72 Y-72</td><td>; Grundeinstellungen der Geometrie und Startpunkt anfahren.</td></tr><tr valign="top"><td>N50 G0 Z2</td><td>; Z-Achse auf Sicherheitsabstand.</td></tr><tr valign="top"><td>N60 G450 CFTCP</td><td>; Verhalten bei aktivem G41/G42.</td></tr><tr valign="top"><td>N70 G1 Z-10 F3000</td><td>; Fräser auf Eingriffstiefe mit Vorschub=3000mm/min.</td></tr><tr valign="top"><td>N80 G1 G41 X-40</td><td>; Einschalten der Fräserradiuskorrektur.</td></tr><tr valign="top"><td>N90 G1 X-40 Y30 RND=10 F1200</td><td>; Fahren an der Kontur mit Vorschub=1200mm/min.</td></tr><tr valign="top"><td>N100 G1 X40 Y30 CHR=10</td><td> </td></tr><tr valign="top"><td>N110 G1 X40 Y-30</td><td> </td></tr><tr valign="top"><td>N120 G1 X-41 Y-30</td><td> </td></tr><tr valign="top"><td>N130 G1 G40 Y-72 F3000</td><td>; Abwahl der Fräserradiuskorrektur.</td></tr><tr valign="top"><td>N140 G0 Z200 M5 M9</td><td>; Ausheben des Fräsers, Spindel + Kühlung aus.</td></tr><tr valign="top"><td>N150 T="SF10"</td><td>; Voranwahl des Werkzeugs mit dem Namen SF10.</td></tr><tr valign="top"><td>N160 M6</td><td>; Werkzeug in die Spindel einwechseln.</td></tr><tr valign="top"><td>N170 S2800 M3 M8</td><td>; Drehzahl, Drehrichtung, Kühlung ein.</td></tr><tr valign="top"><td>N180 G90 G64 G54 G17 G0 X0 Y0</td><td>; Grundeinstellungen für Geometrie und Startpunkt anfahren.</td></tr><tr valign="top"><td>N190 G0 Z2</td><td> </td></tr><tr valign="top"><td>N200 POCKET4(2,0,1,-5,15,0,0,0,0,0,800,1300,0,21,5,,,2,0.5)</td><td>; Aufruf des Taschenfräszyklus.</td></tr><tr valign="top"><td>N210 G0 Z200 M5 M9</td><td>; Ausheben des Fräsers, Spindel + Kühlung aus.</td></tr><tr valign="top"><td>N220 T="ZB6"</td><td>; Zentrierbohrer 6mm aufrufen.</td></tr><tr valign="top"><td>N230 M6</td><td> </td></tr><tr valign="top"><td>N240 S5000 M3 M8</td><td> </td></tr><tr valign="top"><td>N250 G90 G60 G54 G17 X25 Y0</td><td>; Genauhalt G60 wegen genauem Positionieren.</td></tr><tr valign="top"><td>N260 G0 Z2</td><td> </td></tr><tr valign="top"><td>N270 MCALL CYCLE82(2,0,1,-2.6,,0)</td><td>; Modaler Aufruf des Bohrzyklus.</td></tr><tr valign="top"><td>N280  POSITION:</td><td>; Sprungmarke zur Wiederholung.</td></tr><tr valign="top"><td>N290  HOLES2(0,0,25,0,45,6)</td><td>; Positionsmuster für Bohrbild.</td></tr><tr valign="top"><td>N300  ENDLABEL:</td><td>; Endkennung für Wiederholung.</td></tr><tr valign="top"><td>N310 MCALL</td><td>; Rücksetzen des modalen Aufrufs.</td></tr><tr valign="top"><td>N320 G0 Z200 M5 M9</td><td> </td></tr><tr valign="top"><td>N330 T="SPB5"</td><td>; Spiralbohrer D5mm aufrufen.</td></tr><tr valign="top"><td>N340 M6</td><td> </td></tr><tr valign="top"><td>N350 S2600 M3 M8</td><td> </td></tr><tr valign="top"><td>N360 G90 G60 G54 G17 X25 Y0</td><td> </td></tr><tr valign="top"><td>N370 MCALL CYCLE82(2,0,1,-13.5,,0)</td><td>; Modaler Aufruf des Bohrzyklus.</td></tr><tr valign="top"><td>N380  REPEAT POSITION</td><td>; Wiederholung der Positionsbeschreibung vom Zentrieren.</td></tr><tr valign="top"><td>N390 MCALL</td><td>; Rücksetzen des Bohrzyklus.</td></tr><tr valign="top"><td>N400 G0 Z200 M5 M9</td><td> </td></tr><tr valign="top"><td>N410 M30</td><td>; Programmende.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>Siehe auch:<br />    <a href="156661407115.html">Anlegen eines NC-Programms: Beispiel 1</a><br />    <a href="156661411083.html">Anlegen eines NC-Programms: Beispiel 2</a></p>
+  </body>
+</html>

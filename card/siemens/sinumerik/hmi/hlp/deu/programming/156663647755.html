@@ -1,0 +1,38 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Antriebsparameter im Teileprogramm lesen/schreiben (DRVPRD, DRVPWR)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Antriebsparameter im Teileprogramm lesen/schreiben (DRVPRD, DRVPWR)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Die Sprachbefehle DRVPRD und DRVPWR ermöglichen dem Maschinenhersteller ein achsspezifisches Lesen und Schreiben von Antriebsparametern auf Teileprogrammebene. </p>
+      <p>Da es sich bei DRVPRD und DRVPWR um vordefinierte Prozeduren handelt, die allein in einem NC-Satz stehen müssen, kann zu einem Zeitpunkt genau ein Antriebsparameter pro Kanal gelesen <b>oder</b> geschrieben werden.</p>
+      <p>Eingesetzt werden DRVPRD und DRVPWR in einem vom Maschinen­hersteller erstellten Zyklus.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Voraussetzungen</h3>
+      <p>Es gelten folgende Voraussetzungen:</p>
+      <ul>
+        <li>
+          <p>Die Inbetriebnahme des NC-gesteuerten Antriebs ist abgeschlossen.</p>
+        </li>
+        <li>
+          <p>Zyklen im CST-Verzeichnis (Siemens) oder CMA-Verzeichnis (Hersteller) haben immer die erforderlichen Lese- und Schreibrechte.</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>DRVPRD(&lt;Result>,&lt;Axis>,&lt;DrvParNo>,&lt;DrvParIdx>,&lt;Value>)DRVPWR(&lt;Result>,&lt;Axis>,&lt;DrvParNo>,&lt;DrvParIdx>,&lt;Value>)<a name="block_3"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_d78264c0-a2e1-c8c2-4d58-2415559053d8"></a> <a id="table_0"></a> <a id="table_d78264c0-a2e1-c8c2-4d58-2415559053d8"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="17.5%"><col width="12.5%"><col width="5.0%"><col width="65.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>DRVPRD()</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Vordefinierte Prozedur zum <b>Lesen</b> von Antriebsparametern</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>DRVPWR()</code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Vordefinierte Prozedur zum <b>Schreiben</b> von Antriebsparametern</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Result></code>:</p><p type="p_table_l" align="left"></p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Ergebnisvariable: Rückgabewert für den Status</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Wert:</p></td><td><p type="p_table_r" style="margin-top: 4px" align="right">= 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Funktion ohne Fehler ausgeführt</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">> 0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Funktion mit Fehler beendet</p><p type="p_table_l" align="left">Details siehe "Weitere Informationen" > "Diagnose über Rückgabewerte".</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Axis></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Maschinenachsname</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">AXIS</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Werte­bereich:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Im Kanal definierte Maschinenachsnamen</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;DrvParNo></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Nummer des Antriebsparameters</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;DrvParIdx></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Index des Antriebsparameters</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Value></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Wert des Antriebsparameters</p><p type="p_table_l" align="left">DRVPRD: gelesener Wert</p><p type="p_table_l" align="left">DRVPWR: zu schreibender Wert</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Datentyp:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr></table></p><a name="block_4"></a><h3 class="Blocktitle">Beispiel</h3><p>Parameter p1460[0] "Drehzahlregler P-Verstärkung Adaptionsdrehzahl" der X-Achse lesen:</p><a id="table_11cd658f-66f4-1578-5139-2c356932d994"></a> <a id="table_1"></a> <a id="table_11cd658f-66f4-1578-5139-2c356932d994"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ELH"><colgroup><col width="50.0%"><col width="50.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N100 DEF INT _Status</td><td>; Variablendefinition für Rückgabewert des Sprachbefehls </td></tr><tr valign="top"><td>N110 DEF REAL _Result</td><td>; Variablendefinition für gelesenen Parameterwert </td></tr><tr valign="top"><td>N120 DRVPRD(_Status,AX1,1460,0,_Result)</td><td>; Lesen des Parameters p1460</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>Siehe auch:<br />    <a href="156663651339.html">Antriebsparameter im Teileprogramm lesen/schreiben (DRVPRD, DRVPWR): Weitere Informationen</a></p>
+  </body>
+</html>

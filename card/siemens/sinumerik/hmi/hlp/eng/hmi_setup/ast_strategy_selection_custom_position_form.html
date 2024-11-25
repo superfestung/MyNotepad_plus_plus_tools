@@ -1,0 +1,88 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Axis: Selecting a strategy for the position controller</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Axis: Selecting a strategy for the position controller</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Strategy 203 (default setting) includes the tuning of the position controller gain (MD32200) without speed setpoint filter. In this case, feedforward control (FFW) is also parameterized. Strategy 203 is the recommended strategy. If feedforward control is not desirable (for example because of the axes have not been set up for feedforward control), then strategy 207 (FFWOF) can be selected.</p>
+      <p>Depending on the tuning objective (robust/moderate/maximum responsiveness), the following are specified for the gain factor:</p>
+      <ul>
+        <li>
+          <p>Kv reduction</p>
+        </li>
+        <li>
+          <p>Kv upper limit</p>
+        </li>
+      </ul>
+      <p>
+        <b>DSC active:</b>
+      </p>
+      <p>Dynamic stiffness control (DSC) is automatically activated by the automatic servo tuning (default setting). In this way, higher gain factors are possible. </p>
+      <p>
+        <b>Kv reduction:</b>
+      </p>
+      <p>With this factor 0.1 ... 1.0, you set a weighting for the maximum possible gain factor. The gain factor is limited by the amplitude response of the controller. It is not permissible that the position controller overshoots. In order to make the position controller more robust with respect to mechanical changes, depending on the tuning objective, it is preassigned with: 0.4/0.6/0.8</p>
+      <p>
+        <b>Kv upper limit:</b>
+      </p>
+      <p>Even if, from a pure theoretical perspective, higher values for the Kv factor would be possible, the Kv factor is additionally limited using this absolute numerical value. This also achieves the appropriate level of ruggedness. The Kv factor must be entered in the m/mm/min unit. </p>
+      <p>
+        <b>Feedforward control mode:</b>
+      </p>
+      <p>In addition to deselecting feedforward control (= "none"), speed feedforward control and torque feedforward control can be selected. If telegram 136 is selected for communication between the drive and NC, then torque feedforward control is set. This permits a minimum following error, and therefore the highest contour precision. All axes interpolating along a path must have the same feedforward control mode.</p>
+      <p>If a path axis had not been assigned telegram 136 and therefore forces speed feedforward control, all path axes are uniformly set to speed feedforward control during the tuning of the path interpolation.</p>
+      <p>
+        <b>Methods for maximum Kv: </b>
+      </p>
+      <p>For large machines or axes with low natural frequencies, we recommend that the position controller is tuned using speed setpoint filters. This is selected by activating the "Methods for maximum Kv" checkbox.</p>
+      <p>If the position control gain (Kv factor) is limited as a result of mechanical natural frequencies, the following options are available to dampen any oscillation: </p>
+      <ul>
+        <li>
+          <p>Standard: Maximizing the Kv factor with the actual speed controller setting.</p>
+        </li>
+        <li>
+          <p>PT1 speed setpoint filter 2: Use the second speed setpoint filter as low pass filter to smooth any mechanical oscillation. By using filter 2, speed feedforward control setpoints are also smoothed. </p>
+        </li>
+        <li>
+          <p>Damping tuned speed controller: The speed controller is post-tuned with the objective of achieving the highest possible damping with the lowest mechanical natural frequency.</p>
+        </li>
+        <li>
+          <p>PT2 speed setpoint filter 1: The same as for "PT2 speed setpoint filter 1", however, the speed setpoint filter 1 is only in the closed position control loop when DSC is active. As a consequence only the position controller output is smoothed.</p>
+        </li>
+      </ul>
+      <p>
+        <b>Speed setpoint filter: </b>
+      </p>
+      <p>If it is already known in advance that setpoint filters will be required to stabilize the position control loop, they can be preset and reserved here. To activate the required filters, they must be reserved by activating the "Res" checkbox. Then you can set the filter parameters.</p>
+      <p>Speed setpoint filter 1 or 2 can be used. Both are set as PT1 low pass by the automatic servo tuning. Filter 1 is only effective when DSC has been activated. If filter 1 is selected, only the position controller output is filtered. The speed setpoint filter is only effective in the closed position control loop. If filter 2 is selected, the position controller output and the speed feedforward control value are filtered. This increases the following error if only the speed feedforward control is used.</p>
+      <p>
+        <b>⇒ Further actions:</b>
+      </p>
+      <ul>
+        <li>
+          <p>Softkey "<a href="45720875915.html">Adapt strategy</a>" to adapt the settings of a predefined strategy. The values of the predefined strategy are copied to the user strategy (209). When selecting the user-defined strategy, this softkey is not active. </p>
+        </li>
+        <li>
+          <p>Softkey "Filter details" to select or adapt a filter. This softkey can only be used when selecting a filter in the user-defined strategy.</p>
+        </li>
+        <li>
+          <p>Softkeys "<a href="ast_strategy_selection_custom_axis_form.html">Axis</a>" and "<a href="ast_strategy_selection_custom_speed_form.html">Speed</a>" to toggle between axis and speed controller when selecting a strategy.</p>
+        </li>
+        <li>
+          <p>Softkeys "Cancel" and "OK" to cancel or accept the new settings.</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

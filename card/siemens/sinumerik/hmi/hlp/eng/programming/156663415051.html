@@ -1,0 +1,58 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Activating the modification of the offset data for rotatable tools (CUTMOD, CUTMODK)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Activating the modification of the offset data for rotatable tools (CUTMOD, CUTMODK)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The modification of the offset data for rotatable tools is activated in the NC program via the CUTMOD (in combination with orientable tool carriers) or CUTMODK language command (for orientation transformations that were defined by means of kinematic chains).</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">As the orientable tool carriers and orientation transformations that were defined by means of kinematic chains cannot be active at the same time, there are no conflicts between the two variants.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>
+        <code>CUTMOD = &lt;Value></code> </p>
+      <p>or</p>
+      <p>
+        <code>CUTMODK = &lt;Command></code> </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Meaning</h3>
+      <a id="table_b8813285-ed4e-4b47-962f-5e785413d3e5">
+      </a> <a id="table_0"></a> <a id="table_b8813285-ed4e-4b47-962f-5e785413d3e5"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="15.0%"><col width="12.5%"><col width="7.5%"><col width="5.5%"><col width="59.5%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>CUTMOD</code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Function call in combination with orientable tool carriers</p></td></tr><tr valign="top"><td rowspan="8"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Value></code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Assigned value</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td rowspan="6"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p></td><td><p type="p_table_r" style="margin-top: 4px" align="right">0</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">The function is deactivated.</p><p type="p_table_l" align="left">The values supplied from system variables $P_AD... are the same as the corresponding tool parameters.</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">> 0</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">The function is activated if an orientable tool carrier with the specified number is active, i.e. the activation is linked to a specific orientable tool carrier.</p><p type="p_table_l" align="left">The values supplied from system variables $P_AD... may be modified with respect to the corresponding tool parameters depending on the active rotation.</p><p type="p_table_l" align="left">The deactivation of the designated orientable tool carrier temporarily deactivates the function; the activation of another orientable tool carrier permanently deactivates it. This is the reason why in the first case, the function is re-activated when again selecting the same orientable tool carrier; in the second case, a new selection is required - even if at a subsequent time, the orientable tool carrier is re-activated with the specified number.</p><p type="p_table_l" align="left">The function is not influenced by a reset.</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">-1</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">The function is always activated if an orientable tool carrier is active.</p><p type="p_table_l" align="left">When changing the tool carrier or when de-selecting it and a subsequent new selection, CUTMOD does not have to be set again.</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">-2</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">The function is always activated if an orientable tool carrier is active whose number is the same as the currently active orientable tool carrier.</p><p type="p_table_l" align="left">If an orientable tool carrier is not active, then this has the same significance as <code>CUTMOD=0</code>.</p><p type="p_table_l" align="left">If an orientable tool carrier is active, then this has the same significance as when directly specifying the actual tool carrier number.</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">-3</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">The function is only activated if no orientable tool carrier is active.</p><p type="p_table_l" align="left">The values supplied from system variables $P_ADT... may be modified with respect to the corresponding tool parameters depending on the active rotation.</p><p type="p_table_l" align="left">The activation of the designated orientable tool carrier deactivates the function.</p><p type="p_table_l" align="left">The function is not influenced by a reset.</p></td></tr><tr valign="top"><td><p type="p_table_r" style="margin-top: 4px" align="right">&lt; -3</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Values less than 3 are ignored. I.e. this case is treated as if CUTMOD was not programmed.</p><p type="p_table_l" align="left"><b>Note:</b><br />This value range should not be used as it is reserved for possible subsequent expansions.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>CUTMODK</code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Function call in combination with orientation transformations that have been defined by means of kinematic chains</p></td></tr><tr valign="top"><td rowspan="6"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Command></code>:</p></td><td colspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Assigned Command</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">STRING</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>"NEW"</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The states of an active transformation defined with kinematic chains relevant for the "Modification of the offset data", the name of the transformation and the current contour frame are saved.</p><p type="p_table_l" align="left"><b>Note:</b><br />This command is only permissible when a suitable transformation (TRAORI_DYN, TRAORI_STAT or TRAANG_K) is active.</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>"OFF"</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Switches the active "Modification of the offset data" off. The data previously stored with "NEW" is retained.</p><p type="p_table_l" align="left"><b>Note:</b><br />This command is also permissible when CUTMODK is not active. It then remains without effect. Any data set present for the "Modification of the offset data" is retained.</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>"ON"</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">With this command, the "Modification of the offset data" is re-activated with a data set previously stored with the "NEW" command.</p><p type="p_table_l" align="left">If a transformation with the name of the stored data set is active when this command is executed, the "Modification of the offset data" takes effect immediately. Otherwise, the activation is delayed until an active transformation is activated.</p></td></tr><tr valign="top"><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>"CLEAR"</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">As with the "OFF" command, switches the "Modification of the offset data" off and also deletes the stored data set.</p><p type="p_table_l" align="left"><b>Note:</b><br />This command is also permissible when CUTMODK is not active.</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><h4 class="Blocklabel">SD42984 $SC_CUTDIRMOD </h4><p class="safety">The CUTMOD or CUTMODK command replaces the function that can be activated using the setting data SD42984 $SC_CUTDIRMOD. However, this function remains available unchanged. However, as it doesn't make sense to use both functions in parallel, it can only be activated if CUTMOD is equal to zero and CUTMODK is the zero string.</p></td></tr></table></div>
+    <p>See also:<br />    <a href="156663418891.html">Activating the modification of the offset data for rotatable tools (CUTMOD, CUTMODK): Further information</a><br />    <a href="156663427723.html">Activating the modification of the offset data for rotatable tools (CUTMOD) Example</a><br />    <a href="156663408907.html">Calculating orientations (ORISOLH)</a></p>
+  </body>
+</html>

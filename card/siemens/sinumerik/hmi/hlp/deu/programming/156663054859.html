@@ -1,0 +1,40 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Abgewählte Transformation nach Satzsuchlauf reaktivieren (SEATRAON)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Abgewählte Transformation nach Satzsuchlauf reaktivieren (SEATRAON)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Mit der vordefinierten Prozedur SEATRAON kann der Anwender die zuletzt abgewählte Transformation nach einem Satzsuchlauf wieder aktivieren.</p>
+      <p>Folgende Transformationen werden berücksichtigt:</p>
+      <ul>
+        <li>
+          <p>Klassische Transformationen: TRANSMIT, TRACYL und TRAORI</p>
+        </li>
+        <li>
+          <p>Transformationen auf Basis der kinematischen Kette: TRANSMIT_K, TRACYL_K, TRAORI_STAT, TRAORI_DYN, TRAINT</p>
+        </li>
+      </ul>
+      <p>Der Aufruf ist nur im automatisch aktivierten PROG-EVENT-Programm ($P_PROG_EVENT==5) im Bereich für den Satzsuchlauf zulässig.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Anwendung</h3>
+      <p>Ist die Grundeinstellung zur Reaktivierung der Transformation aktiv (MD52212 $MCS_FUNCTION_MASK_TECH, Bit 19 = 0), wird die zuletzt abgewählte Transformation am Anfang des PROG_EVENT-Programms automatisch reaktiviert.</p>
+      <p>Falls Spindelprogrammierungen bei Satzsuchlauf jedoch aufgesammelt und erst zu einem späteren Zeitpunkt ausgegeben werden, z. B. weil die Ausgabe der Hilfsfunktionen in den Aktionssätzen unterdrückt ist (MD11450 SEARCH_RUN_MODE, Bit 2 = 1), muss die Reaktivierung der Transformation ebenfalls zu einem späteren Zeitpunkt erfolgen. Ansonsten kann es zu einem Konflikt zwischen Spindelachse und Transformationsachse kommen.</p>
+      <p>In diesem oder in ähnlichen Fällen muss der Anwender durch Programmierung von SEATRAON dafür sorgen, dass die Reaktivierung der Transformation zum richtigen Zeitpunkt erfolgt. Im beschriebenen Fall also nach Behandlung der Spindel.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Programmierung</h3>
+      <p>SEATRAON muss alleine im Satz stehen:</p>
+      <a id="table_353ed185-20e3-ef37-479b-434ceb49d6ea">
+      </a> <a id="table_0"></a> <a id="table_353ed185-20e3-ef37-479b-434ceb49d6ea"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_sourcecode" border="1" id="EKB"><colgroup><col width="100.0%"></colgroup><tr valign="top"><td>...</td></tr><tr valign="top"><td>SEATRAON</td></tr><tr valign="top"><td>...</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_3"></a><h3 class="Blocktitle">Weitere Informationen</h3><h4 class="Blocklabel">Reaktivierung</h4><p>Im PROG_EVENT-Programm muss für den Satzsuchlauf mit $P_PROG_EVENT==5 gewährleistet werden, dass die zuletzt abgewählte Transformation wieder aktiviert wird.</p><p>Dafür gibt es zwei Möglichkeiten:</p><ul><li><p>Automatisch durch die Grundeinstellung:</p><p>MD52212 $MCS_FUNCTION_MASK_TECH, Bit 19 = 0</p><p>Ist die Grundeinstellung aktiv, wird die zuletzt abgewählte Transformation am Anfang des PROG_EVENT-Programms automatisch reaktiviert.</p></li><li><p>Anwenderspezifisch durch Programmierung von SEATRAON.</p></li></ul><h4 class="Blocklabel">Transformationsdaten lesen</h4><p>Die Daten der im Suchlauf deaktivierten Transformation lassen sich vor Aufruf von SEATRAON mit folgenden Systemvariablen lesen:</p><p>- $P_SEARCH_TRAFO</p><p>- $P_SEARCH_TRAFO_NUM</p><p>- $P_SEARCH_TRAFO_PARSET</p><p>- $P_SEARCH_TRAFO_PAR</p><p>- $P_SEARCH_TRAFO_NAME</p><h4 class="Blocklabel">Relevante Alarme</h4><p>Die Programmierung von SEATRAON in einem PROG_EVENT-Programm außerhalb eines aktiven Satzsuchlaufs mit $P_PROG_EVENT==5 ist nicht zulässig und führt zur Ausgabe von Alarm 14460 "SEATRAON wurde außerhalb des Suchlauf-Prog-Events/-ASUPs aufgerufen". </p><p>Eine abgewählte und nach Satzsuchlauf im PROG_EVENT-Programm nicht wieder aktivierte Transformation wird angezeigt durch den Alarm 14450 "Transformation im Suchlauf gelöscht".</p></div>
+  </body>
+</html>

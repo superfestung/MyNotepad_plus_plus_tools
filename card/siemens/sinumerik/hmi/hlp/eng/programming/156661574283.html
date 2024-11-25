@@ -1,0 +1,22 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Programmable spindle speed limitation (G25, G26)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Programmable spindle speed limitation (G25, G26)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>The minimum and maximum spindle speeds defined in the machine and setting data can be modified by means of a part program command.</p>
+      <p>Programmed spindle speed limitations are possible for all spindles of the channel.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>G25 S… S1=… S2=…G26 S… S1=… S2=…<a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_b4fc4bdc-9d64-4801-9e1d-147824003f99"></a> <a id="table_0"></a> <a id="table_b4fc4bdc-9d64-4801-9e1d-147824003f99"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="26.5%"><col width="20.4%"><col width="53.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G25</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><b>Lower</b> spindle speed limit</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G26</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><b>Upper</b> spindle speed limit</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>S... S1=… S2=… </code> :</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Minimum or maximum spindle speed(s)</p><p type="p_table_l" align="left"><b>Note:</b><br />A maximum of three spindle speed limits can be programmed for each block.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">0.1 to 9999 9999.9 rpm</p></td></tr></table></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">A spindle speed limitation programmed with <code>G25</code> or <code>G26</code> overwrites the speed limits in the setting data and, therefore, remains stored even after the end of the program.</p><p class="safety">However, if the speed limits changed with <code>G25</code>/<code>G26</code> are no longer to apply after the end of program, the following definitions must be inserted in the GUD block of the machine manufacturer:</p><p class="safety">REDEF $SA_SPIND_MIN_VELO_G25 PRLOC</p><p class="safety">REDEF $SA_SPIND_MAX_VELO_G26 PRLOC</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Example</h3><a id="table_3c6c4c95-7271-47ca-9691-5a7ebb104c1f"></a> <a id="table_1"></a> <a id="table_3c6c4c95-7271-47ca-9691-5a7ebb104c1f"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EQD"><colgroup><col width="37.1%"><col width="62.9%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10 G26 S1400 S2=350 S3=600</td><td>; Upper speed limit for master spindle, spindle 2 and spindle 3.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

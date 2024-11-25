@@ -1,0 +1,171 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SD-Karte verschlüsseln / entschlüsseln</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowAction">
+        <h1 class="title">SD-Karte verschlüsseln / entschlüsseln</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Einleitung</h3>
+      <p>Sie können Teile der SD-Karte der NCU verschlüsseln, um die darauf gespeicherten Daten (OEM- und User-Daten) vor unbefugtem Zugriff und Manipulation zu schützen.</p>
+      <p>Wenn Sie die SD-Kartenverschlüsselung aktiviert haben, können die Daten nur mit dem Gerät gelesen werden, mit dem sie verschlüsselt wurden. So können Sie sicherstellen, dass sensible Daten, die Sie speichern, nicht in die falschen Hände geraten, falls die SD-Karte verloren geht oder gestohlen wird.</p>
+      <p>Bei der SINUMERIK SD-Karten-Verschlüsselung handelt es sich um eine partielle Verschlüsselung, bei der die wichtigsten Ordner der SD-Karte verschlüsselt werden. </p>
+      <p>Folgede Ordner werden verschlüsselt:</p>
+      <ul>
+        <li>
+          <p>Ordner /oem</p>
+        </li>
+        <li>
+          <p>Ordner /user</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Voraussetzung</h3>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">
+            </h4>
+            <p class="safety">Diese Funktion bezieht sich nur auf NCU-only-Systeme der aktiven NCU.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Passwort für Security-Archive / Security-Wiederherstellung wurde bereits gesetzt.</h4>
+            <p class="safety">Das Passwort für Security-Archive / Security-Wiederherstellung ist Voraussetzung für das Verschlüsseln der SD-Karte. Ohne die Definition dieses Passworts ist die Funktion nicht bedienbar.</p>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">Wenn Sie auf die Daten der verschlüsselte SD-Karte von einer anderen NCU/PU zugreifen möchten, als die NCU/PU, welche die Daten verschlüsselt hat, müssen Sie sich im Boot-Menü durch die Eingabe des Passworts für Security-Archive / Security-Wiederherstellung authentifizieren.</p>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Einstellung nicht Teil des Security Archivs</h4>
+            <p class="safety">Beachten Sie, dass die Einstellung der SD-Kartenverschlüsselung nicht im Security Archiv gespeichert wird und kann nur manuell aktiviert/deaktiviert werden.</p>
+          </td>
+        </tr>
+      </table>
+      <ul>
+        <li>
+          <p>Mit aktiver Benutzerverwaltung: Sie verfügen über die Rolle "Security Admin" oder die Zugriffsstufe 2 (Service).</p>
+          <p>ODER</p>
+        </li>
+        <li>
+          <p>Ohne aktive Benutzerverwaltung: Sie verfügen mindestens über die Zugriffsstufe 3 (Anwender).</p>
+        </li>
+        <li>
+          <p>Sie verfügen über ausreichend freien Speicher auf der SD-Karte. Der freie Speicher sollte 1,2 Mal größer sein, als der belegte Speicher der beiden Ordner /oem und /user. Der freie Speicherplatz wird während des Aktivierungs-/Deaktivierungsprozesses benötigt, danach kann er wieder verwendet werden.</p>
+        </li>
+      </ul>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">SD-Karte verschlüsseln</h3>
+      <table width="100%" border="0" cellspacing="0" cellpadding="10">
+        <tr>
+          <td>
+            <ol class="action">
+              <li>
+                <p>Im Bedienbereich "Inbetriebnahme" rufen Sie die SD-Karten-Verschlüsselung über die Softkeys "Security > HMI-Security" auf. Die Übersichtsseite für alle HMI-Security-Einstellngen öffnet sich.</p>
+              </li>
+              <li>
+                <p>Klicken Sie im Bereich "SD-Karten-Verschlüsselung" auf "Aktivieren". Eine Sicherheitsabfrage zum Neustart der NCU öffnet sich. Der Neustart wird längere Zeit in Anspruch nehmen.</p>
+              </li>
+              <li>
+                <p>Bestätigen Sie die Sicherheitsabfrage mit "Ok".<br /></p>
+              </li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+      <p>Die NCU startet neu und die SD-Karte wird verschlüsselt.</p>
+      <a name="block_4">
+      </a>
+      <h3 class="Blocktitle">SD-Karte entschlüsseln</h3>
+      <table width="100%" border="0" cellspacing="0" cellpadding="10">
+        <tr>
+          <td>
+            <ol class="action">
+              <li>
+                <p>Im Bedienbereich "Inbetriebnahme" rufen Sie die SD-Karten-Verschlüsselung über die Softkeys "Security > HMI-Security" auf. Die Übersichtsseite für alle HMI-Security-Einstellngen öffnet sich.</p>
+              </li>
+              <li>
+                <p>Klicken Sie im Bereich "SD-Karten-Verschlüsselung" auf "Deaktivieren". Eine Sicherheitsabfrage zum Neustart der NCU öffnet sich. Der Neustart wird längere Zeit in Anspruch nehmen.</p>
+              </li>
+              <li>
+                <p>Bestätigen Sie die Sicherheitsabfrage mit "Ok".<br /></p>
+              </li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+      <p>Die NCU startet neu und die SD-Karte wird entschlüsselt.</p>
+    </div>
+  </body>
+</html>

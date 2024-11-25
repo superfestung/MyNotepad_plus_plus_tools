@@ -1,0 +1,127 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Werkzeuggrundorientierung ($TC_DPV[...], $TC_DPV3 - 5[...] und $TC_DPVN3 - 5[...])</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Werkzeuggrundorientierung ($TC_DPV[...], $TC_DPV3 - 5[...] und $TC_DPVN3 - 5[...])</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Ist die Funktion "Parametrierbare Werkzeuggrundorientierung" aktiv (→ MD18114 $MN_MM_ENABLE_TOOL_ORIENTATION), kann mit der Systemvariablen $TC_DPV[...] bzw. den Systemvariablen $TC_DPV3 - 5[...] und $TC_DPVN3 - 5[...] jeder Werkzeugschneide eine eigene Grundorientierung zugeordnet werden.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Einstellmöglichkeiten</h3>
+      <p>Grundsätzlich gibt es folgende Einstellmöglichkeiten:</p>
+      <ul>
+        <li>
+          <p>
+            <b>$TC_DPV[...] == 0 UND $TC_DPV3 - 5[...] == 0</b>
+          </p>
+          <p>Der Vektor für die Werkzeuggrundorientierung ergibt sich aus der aktiven Bearbeitungsebene:</p>
+          <ul>
+            <li>
+              <p>G17: Z-Koordinate</p>
+            </li>
+            <li>
+              <p>G18: Y-Koordinate</p>
+            </li>
+            <li>
+              <p>G19: X-Koordinate</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            <b>$TC_DPV[...] == 0 UND $TC_DPV3 - 5[...] &lt;> 0</b>
+          </p>
+          <p>Der Vektor für die Werkzeuggrundorientierung ist durch $TC_DPV3 - 5[...] und $TC_DPVN3 - 5[...] vorgegeben:</p>
+          <ul>
+            <li>
+              <p>
+                <code>$TC_DPV3[...] = &lt;L1-Komponente des Orientierungsvektors></code> </p>
+            </li>
+            <li>
+              <p>
+                <code>$TC_DPV4[...] = &lt;L2-Komponente des Orientierungsvektors></code> </p>
+            </li>
+            <li>
+              <p>
+                <code>$TC_DPV5[...] = &lt;L3-Komponente des Orientierungsvektors></code> </p>
+            </li>
+            <li>
+              <p>
+                <code>$TC_DPVN3[...] = &lt;L1-Komponente des Normalenvektors></code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>$TC_DPVN4[...] = &lt;L2-Komponente des Normalenvektors></code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>$TC_DPVN5[...] = &lt;L3-Komponente des Normalenvektors></code> </p>
+            </li>
+          </ul>
+          <p>Beispiel:</p>
+          <p>Werkzeuggrundorientierung in Richtung der Winkelhalbierenden in der L1/L3-Ebene, d. h., bei einem Fräswerkzeug und aktiver Ebene G17 in Richtung der Winkelhalbierenden der ZX-Ebene.</p>
+          <p>
+            <code>$TC_DPV[1,1]  = 0</code>
+          </p>
+          <p>
+            <code>$TC_DPV3[1,1] = 1.0</code>
+          </p>
+          <p>
+            <code>$TC_DPV4[1,1] = 0.0</code>
+          </p>
+          <p>
+            <code>$TC_DPV5[1,1] = 1.0</code>
+          </p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Hinweis</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="safety">Für rotationssymmetrische Werkzeuge wie den Fräswerkzeugen sind die Systemvariablen $TC_DPVN3-5[...] nicht relevant.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          <p>
+            <b>$TC_DPV[...] == 1, 2, ... 6</b>
+          </p>
+          <p>Der Vektor für die Werkzeuggrundorientierung ist durch $TC_DPV[...] vorgegeben.</p>
+          <p>Welche Werkzeuggrundorientierungen vordefiniert und über $TC_DPV[...] auswählbar sind, zeigen folgende Tabellen.</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Auswahl eines vordefinierten Orientierungsvektors</h3>
+      <p>
+        <code>$TC_DPV[...] = &lt;Wert></code> </p>
+      <a id="table_8667cca5-c2be-048b-1b65-0bcd81cc037e">
+      </a> <a id="table_0"></a> <TableTitle>Dreh- / Schleifwerkzeuge ($TC_DP1 = 400 … 599)</TableTitle><a id="table_8667cca5-c2be-048b-1b65-0bcd81cc037e"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="10.0%"><col width="30.0%"><col width="30.0%"><col width="30.0%"></colgroup><tr valign="top"><th><p type="p_table_cb" align="center" class="comment">&lt;Wert></p><p type="p_table_cb" align="center" class="comment"></p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV3[...] / $TC_DPVN3[...]</p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV5[...] / $TC_DPVN5[...]</p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV4[...] / $TC_DPVN4[...]</p></th></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">2</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">3</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">4</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">5</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">6</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td></tr></table></p><a id="table_762738d1-53e4-82c4-7cdd-6d7034e3e7f2"></a> <a id="table_1"></a> <TableTitle>Fräs- / Spezialwerkzeuge ($TC_DP1 &lt;> 400 … 599)</TableTitle><a id="table_762738d1-53e4-82c4-7cdd-6d7034e3e7f2"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="10.0%"><col width="30.0%"><col width="30.0%"><col width="30.0%"></colgroup><tr valign="top"><th><p type="p_table_cb" align="center" class="comment">&lt;Wert></p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV5[...] / $TC_DPVN5[...]</p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV4[...] / $TC_DPVN4[...]</p></th><th><p type="p_table_cb" align="center" class="comment">$TC_DPV3[...] / $TC_DPVN3[...]</p></th></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">2</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">3</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">4</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">5</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td></tr><tr valign="top"><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">6</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">-1 / 0</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / -1</p></td><td><p type="p_table_c" style="margin-top: 4px" align="center" class="comment">0 / 0</p></td></tr></table></p><h4 class="Blocklabel">Beispiele</h4><a id="table_dd4e1135-1824-fb82-6e80-c50e63567a20"></a> <a id="table_2"></a> <a id="table_dd4e1135-1824-fb82-6e80-c50e63567a20"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="28.0%"><col width="16.0%"><col width="56.0%"></colgroup><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">Dreh-/Schleifwerkzeuge:</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><code>$TC_DPV[...] = 2</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">entspricht</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><code>$TC_DPV3[...] = 1</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPV4[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPV5[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN3[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN4[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN5[...] = 1</code></p></td></tr></table></p><a id="table_6be16619-76da-8129-25cd-d614298802a0"></a> <a id="table_3"></a> <a id="table_6be16619-76da-8129-25cd-d614298802a0"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="28.0%"><col width="16.0%"><col width="56.0%"></colgroup><tr valign="top"><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">Fräs-/Spezialwerkzeuge:</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><code>$TC_DPV[...] = 3</code></p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment">entspricht</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left" class="comment"><code>$TC_DPV3[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPV4[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPV5[...] = 1</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN3[...] = 0</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN4[...] = 1</code></p><p type="p_table_l" align="left" class="comment"><code>$TC_DPVN5[...] = 0</code></p></td></tr></table></p><p class="comment"></p></div>
+  </body>
+</html>

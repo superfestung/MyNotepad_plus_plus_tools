@@ -1,0 +1,141 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>NC-geführtes Rückziehen (POLF, POLFA, POLFMASK, POLFMLIN): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">NC-geführtes Rückziehen (POLF, POLFA, POLFMASK, POLFMLIN): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <h4 class="Blocklabel">Voraussetzungen für NC-geführtes Rückziehen</h4>
+      <ul>
+        <li>
+          <p>Im Kanal ist eine Rückzugsachse für das NC-geführte Rückziehen projektiert:</p>
+          <p>MD37500 $MA_ESR_REACTION = 21</p>
+        </li>
+        <li>
+          <p>ESR muss für diese Achse freigegeben sein:</p>
+          <p>$AA_ESR_ENABLE = 1</p>
+        </li>
+        <li>
+          <p>Verzögerungszeiten sind definiert:</p>
+          <p>MD21380 $MC_ESR_DELAY_TIME1</p>
+          <p>MD21381 $MC_ESR_DELAY_TIME2</p>
+        </li>
+        <li>
+          <p>Im Teileprogramm sind die achsspezifischen Rückzugspositionen mit <code>POLF</code> programmiert.</p>
+        </li>
+        <li>
+          <p>Die Achsen sind mit <code>POLFMASK</code>/<code>POLFMLIN</code> für das NC-geführte Rückziehen ausgewählt.</p>
+        </li>
+        <li>
+          <p>Für die Rückzugbewegung müssen die Freigabesignale gesetzt sein und gesetzt bleiben.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">NC-geführtes Rückziehen freigeben und starten</h4>
+      <p>Wenn die Systemvariable $AC_ESR_TRIGGER = 1 gesetzt wird, und wenn in diesem Kanal eine Rückzugsachse konfiguriert ist (d. h. MD37500 $MA_ESR_REACTION = 21) und für diese Achse $AA_ESR_ENABLE = 1 gesetzt ist, dann wird in diesem Kanal Schnellabheben (LIFTFAST) aktiviert.</p>
+      <p>Die mit <code>POLF</code> (bzw. <code>LFPOS</code>) konfigurierte Abhebebewegung der mit <code>POLFMASK</code> oder <code>POLFMLIN</code> selektierte(n) Achse(n) ersetzt die für diese Achse(n) im Teileprogramm festgelegte Bahnbewegung.</p>
+      <p>Für den Rückzug steht maximal die Summe der Zeiten MD21380 $MC_ESR_DELAY_TIME1 und MD21381 $MC_ESR_DELAY_TIME2 zur Verfügung. Nach Ablauf dieser Zeitspanne wird auch für die Rückzugachse Schnellbremsen eingeleitet mit anschließendem Nachführen.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Die Erweiterte Rückzugbewegung (d. h. durch $AC_ESR_TRIGGER ausgelöstes<code> </code>LIFTFAST/LFPOS) ist <b>nicht unterbrechbar </b>und kann nur durch Not-Halt vorzeitig beendet werden.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Durch $AC_ESR_TRIGGER ausgelöstes Rückziehen ist gegen Mehrfach-Rückzug verriegelt.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Einzelachs-Rückziehen</h4>
+      <p>Beim Einzelachs-Rückziehen muss mit <code>POLFA</code> die Rückzugsposition der Einzelachse programmiert worden sein und die folgenden Bedingungen müssen eingehalten werden:</p>
+      <ul>
+        <li>
+          <p>$AA_ESR_ENABLE = 1</p>
+        </li>
+        <li>
+          <p>&lt;Achse> muss zum Triggerzeitpunkt ($A<b>A</b>_ESR_TRIGGER = 1) eine Einzelachse sein.</p>
+        </li>
+        <li>
+          <p>&lt;Typ> muss entweder 1 oder 2 sein.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Rückzugsrichtung beim Schnellabheben</h4>
+      <p>Zum Zeitpunkt der Aktivierung des Schnellabhebens wird der gültige Frame berücksichtigt.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Frames mit Drehung beeinflussen über <code>POLF</code> auch die Richtung, in welche abgehoben wird.</p>
+          </td>
+        </tr>
+      </table>
+      <h4 class="Blocklabel">Achstausch</h4>
+      <p>Rückzugsachsen sind immer genau einem NC-Kanal zuzuordnen und dürfen nicht zwischen den Kanälen getauscht werden. Beim Versuch, eine Rückzugsachse in einen anderen Kanal zu tauschen, wird ein Alarm gemeldet. Erst nachdem diese Achse mit $AA_ESR_ENABLE[AX] = 0 wieder deaktiviert wurde, kann die Achse in einen neuen Kanal getauscht werden. Nach dem erfolgten Achstausch können Achsen wieder mit $AA_ESR_ENABLE[AX] = 1 beaufschlagt werden.</p>
+      <h4 class="Blocklabel">Neutrale Achsen</h4>
+      <p>Neutrale Achsen können kein NC-geführtes ESR ausführen.</p>
+    </div>
+  </body>
+</html>

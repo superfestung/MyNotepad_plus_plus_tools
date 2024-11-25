@@ -1,0 +1,56 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Circular interpolation with opening angle and end point / center point (G2/G3, X... Y... Z... / I... J... K..., AR)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Circular interpolation with opening angle and end point / center point (G2/G3, X... Y... Z... / I... J... K..., AR)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Circular interpolation version, that uses the <b>opening angle</b> and <b>center point</b> or <b>end point</b> of a circular contour element for the interpolation.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Full circles (traversing angle 360 °) can <b>not</b> be programmed with this version.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>
+        <code>G2/G3 X… Y… Z… AR=... </code>
+      </p>
+      <p>
+        <code>G2/G3 I… J… K… AR=... </code>
+      </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Meaning</h3>
+      <a id="table_f636bb1c-9c58-44a7-b4e4-5fd027e041cc">
+      </a> <a id="table_0"></a> <a id="table_f636bb1c-9c58-44a7-b4e4-5fd027e041cc"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="25.0%"><col width="16.5%"><col width="58.5%"></colgroup><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>G2</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Circular interpolation clockwise</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Effective:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Modal</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>G3</code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Circular interpolation counter-clockwise</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Effective:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Modal</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>X... Y... Z...</code> :</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Circle end point in Cartesian coordinates.</p><p type="p_table_l" align="left">Depending on the currently valid dimensional notation setting <code>G90</code>/<code>G91</code> or <code>...=AC(...)</code> / <code>...=IC(...)</code>, the circle end point coordinates are interpreted either in the absolute dimension or in the incremental dimension.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>I... J... K...</code> :</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Interpolation parameters to state the circle center point coordinates in the directions X, Y, Z</p><p type="p_table_l" align="left">Per default, the circle center point coordinates are stated in the incremental dimension in relation to the circle starting point.</p><p type="p_table_l" align="left">If the circle center point coordinates are stated in the absolute dimension in relation to workpiece zero, the interpolation parameters I, J, K must be programmed as follows:</p><p type="p_table_l" align="left"><code>I=AC(…) J=AC(…) K=AC(…)</code> </p><p type="p_table_l" align="left"><b>Note<br /></b>An interpolation parameter with value 0 can be omitted, but the associated second parameter must always be specified.</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>AR=...</code> :</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Opening angle</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">0° ... 360°</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Examples</h3><h4 class="Blocklabel">Example 1: Milling</h4><a id="image_780221195_0"></a> <img border="0" src="images/167240502923.png" width="340" height="321"/><a id="table_4c14d515-0b07-464d-85e1-a72e7e50118a"></a> <a id="table_1"></a> <a id="table_4c14d515-0b07-464d-85e1-a72e7e50118a"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E2F"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><th>Program code</th><th> </th></tr><tr valign="top"><td>N10 G0 X67.5 Y80.211</td><td> </td></tr><tr valign="top"><td>N20 G3 X17.203 Y38.029 AR=140.134 F500</td><td> </td></tr><tr valign="top"><td>N20 G3 I–17.5 J–30.211 AR=140.134 F500</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p><h4 class="Blocklabel">Example 2: Turning</h4><a id="image_95595336203_0"></a> <img border="0" src="images/167240579979.png" width="340" height="208"/><a id="table_38cc7a01-6a18-41dc-a47e-1e8049ab9769"></a> <a id="table_2"></a> <a id="table_38cc7a01-6a18-41dc-a47e-1e8049ab9769"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E4G"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><th>Program code</th><th> </th></tr><tr valign="top"><td>N125 G1 X40 Z-25 F0.2</td><td> </td></tr><tr valign="top"><td>N130 G3 X70 Z-75 AR=135.944</td><td> </td></tr><tr valign="top"><td>N130 G3 I-3.335 K-29.25 AR=135.944</td><td> </td></tr><tr valign="top"><td>N130 G3 I=AC(33.33) K=AC(-54.25) AR=135.944</td><td> </td></tr><tr valign="top"><td>N135 G1 Z-95</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+  </body>
+</html>

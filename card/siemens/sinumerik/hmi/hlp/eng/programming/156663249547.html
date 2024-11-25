@@ -1,0 +1,42 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Modifying the orientation transformation after the machine measurement (CORRTRAFO): Further information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Modifying the orientation transformation after the machine measurement (CORRTRAFO): Further information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Further information on CORRTRAFO</h3>
+      <p>The kinematic structure of a machine with orientation transformation is described by one or two kinematic chains (subchains), starting from the zero point of the world coordinate system. One of the two chains, the <b>tool chain</b>, ends at the reference point of the tool, the other chain, the <b>workpiece chain</b> ends in the zero point of the basic coordinate system.</p>
+      <p>The CORRTRAFO function writes lever arm lengths and axis directions on machines with an orientation transformation in special correction elements. A kinematic chain is described, for example, with elements of the type OFFSET, which are defined via $ NK_TYPE. </p>
+      <h4 class="Blocklabel">CORRTRAFO works with sections</h4>
+      <p>The two subchains can each be divided into a maximum of four sections:</p>
+      <ul>
+        <li>
+          <p>Section 1 begins at the starting point of the chain and ends at the first orientation axis. </p>
+        </li>
+        <li>
+          <p>Section 2 is the section between orientation axis 1 and orientation axis 2.</p>
+        </li>
+        <li>
+          <p>Section 3 is the section between orientation axis 2 and orientation axis 3.</p>
+        </li>
+        <li>
+          <p>Section 4 is the section between orientation axis 3 and the end of the tool or workpiece chain.</p>
+        </li>
+      </ul>
+      <p>Each section may contain constant chain elements of the type OFFSET or ROT_CONST.</p>
+      <p>The following figure shows an orientation transformation with 2 orientation axes.</p>
+      <a id="image_106251032587_0">
+      </a> <img border="0" src="images/171253517707.png" width="483" height="425" alt="CORRTRAFO example"/><p class="imgtitle">CORRTRAFO example</p><p>The sections are clearly defined: If you run through the kinematic subchain from the starting point to the end point, the first section has the index 0, the next the index 1, and so on. The index of the last section is then always equal to the number of orientation axes.</p><h4 class="Blocklabel">Correction elements</h4><p>A reference can be made to a constant kinematic chain element (chain element of the type $NK_TYPE[&lt;n>] = "OFFSET") in each section with the $NT_CORR_ELEM_T[&lt;n>, 0 ... 3] or $NT_CORR_ELEM_P[&lt;n>, 0 ... 3] system variables. The correction values that were determined during the machine measurement are written to these elements with the CORRTRAFO function.</p><h4 class="Blocklabel">Example with transformation index = 1:</h4><ul><li><p>$NT_CORR_ELEM_T[1,0] = "C_AXIS_OFFSET"; Offset of the C axis (orientation axis 1) in section 1 is defined as correction element.</p></li><li><p>$NT_CORR_ELEM_T[1,1] = "B_AXIS_OFFSET"; Offset of the B axis (orientation axis 2) in section 2 is defined as correction element.</p></li><li><p>$NT_CORR_ELEM_T[1,2] = "BASE_TOOL_OFFSET"; Offset of the B axis from the tool reference point in section 3 is defined as correction element. </p></li></ul><p>The sequence of the references in $NT_CORR_ELEM_T/P[&lt;n>, 0 ... 3] must correspond to the sections described above, i.e. only one chain element can be in $NT_CORR_ELEM_T/P [&lt;n>, 0] which is before the first orientation axis, etc.</p><p>The CORRTRAFO function writes the values determined by measuring the machine into the correction elements defined in this way. The modification of the correction values is defined in CORRTRAFO via the &lt;Corr_Mode> parameter.</p><h4 class="Blocklabel">Closing a chain</h4><p>If bit 7 or bit 8 are set in the $NT_CNTRL[&lt;n>] system variable, additional constant chain elements that establish a connection from the end point of the chain to the machine zero point are automatically inserted internally at the end of the workpiece chain (bit 7) or before the starting point of the tool chain (bit 8) ("close chain").</p><p>These automatically inserted elements cannot be written externally, only read (see the $AC_TRAFO_CORR_ELEM_P/T system variables).</p><h4 class="Blocklabel">Point to close the tool chain</h4><p>If the $NT_CLOSE_CHAIN_T system variable is not empty, the tool chain is not closed at the end point of the chain, but rather at the end point of the designated chain element. Other chain elements that are behind this point result in a corresponding work offset when the transformation is activated.</p><h4 class="Blocklabel">Index of an orientation axis</h4><p>In addition to the constants offsets between the orientation axes, the direction vectors of the orientation axes can also be written with the CORRTRAFO function. The index of an orientation axis is the index that results when the kinematic subchain is run through from the origin to the end, where the count starts at zero. The index of an orientation axis is therefore always the same as the index of the preceding section.</p><p>The index of an orientation axis can also be determined with the $AC_TRAFO_ORIAX_LOC system variable.</p><h4 class="Blocklabel">Maximum permissible change of a chain element</h4><p>The maximum permissible change of a chain element can be limited by the two setting data SD41610 $SN_CORR_TRAFO_LIN_MAX for offset vectors and SD41611 $SN_CORR_TRAFO_DIR_MAX for direction vectors of the orientation axes. SD41610 $SN_CORR_TRAFO_LIN_MAX specifies the maximum amount by which each individual vector component can be changed with regard to its reference value. SD41611 $SN_CORR_TRAFO_DIR_MAX specifies the maximum angle by which the direction of the axis vector can be changed with regard to its reference value. The reference value is always the corresponding value that is active in the transformation that is active when CORRTRAFO is called. This means that the changed content of the kinematic data may have no effect on the method of operation of the CORRTRAFO function after the activation of the transformation.</p></div>
+  </body>
+</html>

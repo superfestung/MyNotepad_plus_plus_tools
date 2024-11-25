@@ -1,0 +1,33 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Function</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Function</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Function   </h3>
+      <p>This measuring variant can be used to measure the inside or outside corner of an unknown workpiece geometry. The measurements are performed paraxially to the WCS. The measuring motion parallel to the edge can be adapted with the screen form parameter α0. This angle specification has no effect on the result.</p>
+      <p>After the measurement, the position of the corner can be used as workpiece zero in a specified work offset (WO).</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Measuring principle</h3>
+      <p>The measuring cycle traverses to the 4 measuring points (P1 to P4) one after the other and establishes the point of intersection of the resulting straight lines and the angle of rotation to the reference edge of measuring points P1 and P2 to the 1st axis of the plane (X for G17) in the positive direction</p>
+      <p>The intersection/angle of the corner represents its position. These are saved in the OVR[] result parameters as MCS and WCS values. If the determined corner point is used as a workpiece zero, the setpoint value specifications X0, Y0 (e.g. G17) are taken into account in the calculation of the work offset.</p>
+      <p>The position of points P1 and P2 in relation to each other determines the direction of the 1st axis of the plane of the new coordinate system.</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="50.0%"><col width="49.9%"></colgroup><tr valign="top"><td><a id="image_28437957131_0"></a> <img border="0" src="images/29172036619.png" width="300" height="266"/><p type="p_table_l" align="left">Measure: Any corner, inside (CYCLE961)</p></td><td><a id="image_28441365387_0"></a> <img border="0" src="images/29174591243.png" width="298" height="266"/><p type="p_table_l" align="left">Measure: Any corner, outside (CYCLE961)</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Requirements</h3><ul><li><p>The probe must be called as a tool with a tool length compensation.</p></li><li><p>Tool type of the probe: </p><ul><li><p>3D multi probe (type 710)</p></li><li><p>Mono probe (type 712) only with function variant "polar"</p></li></ul></li></ul><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><h4 class="Blocklabel"></h4><p class="safety">A SPOS-capable spindle is required probe type 712.</p></td></tr></table><a name="block_4"></a><h3 class="Blocktitle">Starting position before the measurement</h3><p>The probe is at the measuring height or above the corner (see protection zone) opposite to the corner to be measured or in front of the 1st measuring point.</p><p>The measuring points must be able to be approached from here collision-free.</p><p>The measuring cycle generates the required traversing blocks and performs the measurements at the measuring points P1 to P4, starting with P1.</p><p><b>Positioning measuring points P1 to P4 taking into account a protection zone</b></p><ul><li><p>Protection zone = no</p><p>The probe is pre-positioned at the measuring height and remains at this measuring height when measuring the corner. An outer corner is traversed around.</p></li><li><p>Protection zone = yes</p><p>The probe is pre-positioned above the corner. When measuring, the 3rd axis of the plane (Z for G17) is moved by the value in parameter DZ to the measuring height, and the corresponding measuring point is measured. After the measurement, the probe is raised by the value of parameter DZ and moves to the next measuring point, where it is lowered again.</p><a id="image_27084302219_0"></a> <img border="0" src="images/27084306443.png" width="272" height="153" alt="Protection zone = yes: Traversing around the outer corner with DZ/>0 (measuring height + DZ) for G17"><p class="imgtitle">Protection zone = yes: Traversing around the outer corner with DZ>0 (measuring height + DZ) for G17</p></li></ul><a name="block_5"></a><h3 class="Blocktitle">Position after the end of the measuring cycle</h3><p>After the last measurement, the probe is at measuring point P4.</p><p>Depending on the protection zone parameter (yes/no), the probe is at the measuring height or above the corner.</p></div>
+    <p>See also:<br />    <a href="slstepmecorner.html">Measure: any corner (CYCLE961)</a></p>
+  </body>
+</html>

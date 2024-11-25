@@ -1,0 +1,40 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Reactivating deselected transformations after a block search (SEATRAON)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Reactivating deselected transformations after a block search (SEATRAON)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Using the predefined SEATRAON procedure, users can reactivate the last transformation that was deselected after a block search.</p>
+      <p>The following transformations are taken into consideration:</p>
+      <ul>
+        <li>
+          <p>Classic transformations: TRANSMIT, TRACYL and TRAORI</p>
+        </li>
+        <li>
+          <p>Transformations based on the kinematic chain: TRANSMIT_K, TRACYL_K, TRAORI_STAT, TRAORI_DYN, TRAINT</p>
+        </li>
+      </ul>
+      <p>The call is only permissible in the automatically activated PROG-EVENT program ($P_PROG_EVENT==5) in the area for the block search.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Application</h3>
+      <p>If the basic setting to reactivate the transformation is active (MD52212 $MCS_FUNCTION_MASK_TECH, Bit 19 = 0), then the last deselected transformation is automatically reactivated at the beginning of the PROG_EVENT program.</p>
+      <p>However, if spindle programs for a block search are collected and only output at a later point in time, e.g. because the output of help functions is suppressed in the action blocks (MD11450 SEARCH_RUN_MODE, Bit 2 = 1), then the transformation must also be reactivated at a later point in time. Otherwise, a conflict can occur between the spindle axis and the transformation axis</p>
+      <p>In this or in similar cases, by appropriately programming SEATRAON, users must ensure that the transformation is reactivated at the correct point in time. In the case described, i.e. after handling the spindle.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Programming</h3>
+      <p>SEATRAON must be located alone in the block:</p>
+      <a id="table_353ed185-20e3-ef37-479b-434ceb49d6ea">
+      </a> <a id="table_0"></a> <a id="table_353ed185-20e3-ef37-479b-434ceb49d6ea"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_sourcecode" border="1" id="EKB"><colgroup><col width="100.0%"></colgroup><tr valign="top"><td>...</td></tr><tr valign="top"><td>SEATRAON</td></tr><tr valign="top"><td>...</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_3"></a><h3 class="Blocktitle">More information</h3><h4 class="Blocklabel">Reactivation</h4><p>In the PROG_EVENT program, for the block search using $P_PROG_EVENT==5, it must be ensured that the last transformation that was deselected is reactivated.</p><p>There are two options of doing this:</p><ul><li><p>Automatically using the basic setting:</p><p>MD52212 $MCS_FUNCTION_MASK_TECH, bit 19 = 0</p><p>If the basic setting is active, the last transformation that was deselected is automatically reactivated at the beginning of the PROG_EVENT program.</p></li><li><p>On a user-specific basis by programming SEATRAON.</p></li></ul><h4 class="Blocklabel">Reading transformation data</h4><p>The data of the transformation deactivated in the block search, can be read using the following system variables before calling SEATRAON:</p><p>- $P_SEARCH_TRAFO</p><p>- $P_SEARCH_TRAFO_NUM</p><p>- $P_SEARCH_TRAFO_PARSET</p><p>- $P_SEARCH_TRAFO_PAR</p><p>- $P_SEARCH_TRAFO_NAME</p><h4 class="Blocklabel">Relevant alarms</h4><p>Programming SEATRAON in an PROG_EVENT program outside an active block search with $P_PROG_EVENT==5 is not permissible, and results in the output of Alarm 14460 "SEATRAON was called outside the search run program events/ASUBs". </p><p>A transformation that was deselected and after a block search in the PROG_EVENT program was not reactivated, is displayed using Alarm 14450 "Transformation deleted during search".</p></div>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Determining the clearance of two protection zones (PROTD)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Determining the clearance of two protection zones (PROTD)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The <code>PROTD()</code> function calculates the clearance of two protection areas.</p>
+      <p>Function properties:</p>
+      <ul>
+        <li>
+          <p>The clearance calculation is performed independent of the protection area status (activated, deactivated, preactivated).</p>
+        </li>
+        <li>
+          <p>To calculate the clearance of two protection areas, only protection area elements are used, which are marked with $NP_USAGE = "C" or "A". Protection area elements of the protection area, which are marked with $NP_USAGE = "V", are not taken into consideration.</p>
+        </li>
+        <li>
+          <p>Protection areas, where all protection area elements of the protection area are marked with $NP_USAGE = "V", cannot be used for the clearance calculation.</p>
+        </li>
+        <li>
+          <p>The clearance calculation is performed with the positions valid at the end of the previous block.</p>
+        </li>
+        <li>
+          <p>Overlays that are included in the main run calculation (e.g. DRF offset or external work offset) are included in the clearance calculation with the values valid at the function <b>interpretation time</b>.</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Note</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="Blocklabel">Synchronization</h4>
+                <p class="safety">When using the <code>PROTD()</code> function, it is the sole responsibility of the user to synchronize the main run and preprocessing, if required, with the <code>STOPRE</code> preprocessing stop.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Collision</h4>
+      <p>If there is a collision between the specified protection areas, the function returns a clearance of 0.0. There is a collision if both the protection areas touch or intersect each other.</p>
+      <p>The safety clearance for the collision check (MD10622 $MN_COLLISION_SAFETY_DIST) is not taken into account in the clearance calculation.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>[&lt;RetVal> =] PROTD([&lt;Name_1>],[&lt;Name_2>],VAR &lt;Vector>[,&lt;System>])<a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_c377441f-3a81-405b-b709-21228bfdf632"></a> <a id="table_0"></a> <a id="table_c377441f-3a81-405b-b709-21228bfdf632"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="17.4%"><col width="20.4%"><col width="18.5%"><col width="43.7%"></colgroup><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>PROTD:</code></p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Calculates the clearance of the two specified protection areas.</p></td></tr><tr valign="top"><td colspan="3"><ul class="table"><li><p>Must be alone in the block.</p></li></ul></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>RetVal</code><code>></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Function return value: Absolute clearance value of the two protection areas or 0.0 with collision (see above: Collision paragraph)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">REAL</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">0.0 ≤ x ≤ +max. REAL value</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>Name_1</code><code>>, &lt;</code><code>Name_2</code><code>></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Names of the two protection areas whose clearance is to be calculated (<b>optional</b>)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">STRING</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Parameterized protection area names</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Default value:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">"" (empty string)</p><p type="p_table_l" align="left">If no protection areas have been specified, the function calculates the current smallest clearance from all the activated and preactivated protection areas in the collision model.</p></td></tr><tr valign="top"><td rowspan="3"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>Vector</code><code>></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">Return value: 3-dimensional clearance vector from protection area &lt;Name_2> to protection area &lt;Name_1> with:</p><ul class="table"><li><p>&lt;Vector>[0]: X coordinate in the world coordinate system</p></li><li><p>&lt;Vector>[1]: Y coordinate in the world coordinate system</p></li><li><p>&lt;Vector>[2]: Z coordinate in the world coordinate system</p></li></ul><p type="p_table_l" align="left">For collision: &lt;Vector> == zero vector</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">VAR REAL [3]</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Vector> [n]: 0.0 ≤ x ≤ ±max. REAL value</p></td></tr><tr valign="top"><td rowspan="4"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;</code><code>System</code><code>></code>:</p></td><td colspan="3"><p type="p_table_l" style="margin-top: 4px" align="left">System of units (inch/metric) for clearance and clearance vector (<b>optional</b>)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Data type:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">BOOL</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Value:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">FALSE (Default)</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">System of units corresponding to the currently active G command from G Group 13 (G70, G71, G700, G710).</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">TRUE</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">System of units corresponding to the set basic system:</p><p type="p_table_l" align="left">MD52806 $MN_ISO_SCALING_SYSTEM</p></td></tr></table></p></div>
+    <p>See also:<br />    <a href="156663218443.html">General notes regarding protection areas of the collision avoidance</a></p>
+  </body>
+</html>

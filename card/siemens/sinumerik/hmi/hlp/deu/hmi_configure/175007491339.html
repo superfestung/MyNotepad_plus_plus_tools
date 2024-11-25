@@ -1,0 +1,98 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Trace-Sitzungsdatei speichern</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Trace-Sitzungsdatei speichern</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Sie haben zwei Möglichkeiten eine Trace-Sitzung zu speichern:</p>
+      <ul>
+        <li>
+          <p>
+            <b>Variablen und Einstellungen</b>: Es werden nur die Variablen und die Einstellungen dazu gespeichert.</p>
+        </li>
+        <li>
+          <p>
+            <b>Variablen, Einstellungen und aufgezeichnete Werte</b>: Es werden die Variablen, die Einstellungen sowie die aufgezeichneten Werte gespeichert.</p>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Voraussetzung</h3>
+      <p>Mit der Trace-Sitzung wurden Messwerte ermittelt.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Vorgehensweise</h3>
+      <ol>
+        <li>
+          <p>Sie haben eine aktive Trace-Sitzung bearbeitet und Messwerte aufgezeichnet.</p>
+        </li>
+        <li>
+          <p>Drücken Sie den Softkey "Trace speichern".</p>
+          <p>Der Dialog "Trace speichern" wird geöffnet und bietet die Speichermöglichkeiten an.</p>
+          <a id="image_175119354507_0">
+          </a> <img border="0" src="images/180755369227.png" width="400" height="139"/></li>
+        <li>
+          <p>Wählen Sie die entsprechende Einstellung und drücken Sie den Softkey "OK".</p>
+          <p>Der Dialog für die Speicherverwaltung öffnet sich und gibt im Eingabefeld von "Trace-Dateinamen" den Dateinamen an. Das Dateiformat wird als *.xml automatisch vorgegeben und kann nicht verändert werden.</p>
+          <p>Das Zielverzeichnis ist z. B. "Trace":</p>
+          <p>Standardpfad: <code>.../user/sinumerik/hmi/data/trace/</code></p>
+        </li>
+        <li>
+          <p>Ändern Sie den Dateinamen, wenn Sie den vorhandenen Namen nicht nutzen oder überschreiben möchten.</p>
+          <p>-oder-</p>
+          <p>Drücken Sie den Softkey "Verzeich. wechseln", wenn Sie die Sitzungsdatei in einem anderen Verzeichnis als im Standard-Verzeichnis "Trace" speichern möchten.</p>
+          <p>Der Datenbaum öffnet sich und Sie können zwischen den konfigurierten Laufwerken auswählen.</p>
+          <p>-oder-</p>
+          <p>Drücken Sie den Softkey "Neues Verzeichnis", wenn Sie ein neues Verzeichnis anlegen.</p>
+          <p>Das Fenster "Neues Verzeichnis" öffnet sich und Sie können einen Verzeichnisnamen vergeben.</p>
+          <p>-oder-</p>
+          <p>Drücken Sie den Softkey "Suchen" um den Dialog "Datei suchen" zu nutzen.</p>
+        </li>
+        <li>
+          <p>Bestätigen Sie Ihre Eingaben mit "OK", um die Sitzungsdatei zu speichern.</p>
+          <p>Wenn der Dateiname geändert wurde und bereits eine Sitzungsdatei mit diesem Namen vorhanden ist, erhalten Sie eine entsprechende Sicherheitsabfrage.</p>
+        </li>
+      </ol>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Exportieren von Messdaten in eine CSV-Datei (Expert-Trace)</h3>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Für die Nutzung dieser Funktion ist eine Expert-Trace-Lizenz erforderlich, siehe "<a href="180833618571.html">Expert-Trace-Funktionen</a>".</p>
+          </td>
+        </tr>
+      </table>
+      <p>Um die Messdaten in eine CSV-Datei zu exportieren, aktivieren Sie im Dialog "Trace speichern" das Kontrollkästchen "Als CSV exportieren".</p>
+      <a id="image_173517118603_0">
+      </a> <img border="0" src="images/173517122571.png" width="400" height="187"/><p>Sie können wählen, ob Sie die CSV-Datei mit oder ohne Fehlercodes speichern möchten. Fehlercodes können nur dann in den Daten vorhanden sein, wenn während der Aufzeichnung eine Unterbrechung aufgetreten ist.</p><p>Sie können wählen, ob Sie die Daten mit festem oder optimiertem Zeitintervall speichern möchten.</p><h4 class="Blocklabel">Zeitintervall "Fix"</h4><ul><li><p>Wenn die Trace-Konfiguration Signale enthält, die bei einem IPO-Ereignis gemessen wurden, ist das Zeitintervall das kürzeste Abtastintervall.</p></li><li><p>Wenn die Trace-Konfiguration nur PLC-Signale enthält, die bei dem OB1-Ereignis (PLC-Zyklus) gemessen wurden, beträgt das Zeitintervall 0,1 ms. Aufgrund der kurzen Intervalldauer kann die Größe der erzeugten Datei groß sein.</p></li><li><p>Wenn für ein Signal nicht zu jedem Datenpunkt ein Messwert vorliegt (z. B. weil einige Signale mit längeren Abtastintervallen gemessen werden als andere), werden die fehlenden Werte mit dem letzten bekannten Wert des Signals aufgefüllt.</p></li><li><p>Auch fehlende Werte bei Unterbrechungen werden mit den letzten bekannten Werten aufgefüllt. Wenn auch Fehlercodes exportiert werden, weist das Vorhandensein des Fehlercodes auf die Unterbrechung hin.</p></li></ul><h4 class="Blocklabel">Zeitintervall "Optimiert"</h4><p>Nur diejenigen Messpunkte werden in der CSV-Datei gespeichert, bei denen sich ein Datenwert ändert. Ausnahmen:</p><ul><li><p>Die erste und die letzte Messstelle werden immer gespeichert.</p></li><li><p>Der Anfang und das Ende von Unterbrechungen werden immer gespeichert, wenn eine Unterbrechung existiert und die Datei mit Fehlercodes gespeichert wird.</p></li></ul><p>Die Dateigröße wird dadurch kleiner, aber die Zeitintervalle sind unregelmäßig.</p><h4 class="Blocklabel">Signale ohne Messdaten</h4><p>Wenn die Trace-Sitzung Signale ohne Messdaten oder mathematische (berechnete) Signale enthält, werden diese Signale nicht in die CSV-Datei exportiert.</p></div>
+  </body>
+</html>

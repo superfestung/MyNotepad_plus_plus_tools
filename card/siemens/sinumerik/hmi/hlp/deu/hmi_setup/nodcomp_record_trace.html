@@ -1,0 +1,155 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Nachgiebigkeit mit einem Messtaster ermitteln</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowAction">
+        <h1 class="title">Nachgiebigkeit mit einem Messtaster ermitteln</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Voraussetzungen</h3>
+      <p>Erstellen Sie ein Inbetriebnahmearchiv mit den Antriebsdaten, falls noch nicht vorhanden, und schließen Sie den Messtaster an einer freien <a href="109646204427.html">DRIVE-CLiQ-Schnittstelle</a> an. Als Messtaster sind nur lineare Messsysteme zugelassen.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Achtung</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Safety Integrated temporär ausschalten</h4>
+            <p class="safety">Bei Achsen mit aktiviertem Safety Integrated werden Sie durch eine Meldung informiert, dass Safety Integrated deaktiviert werden muss, um den Messtaster konfigurieren zu können. </p>
+            <p class="safety">Nach der Konfiguration des Messtasters muss Safety Integrated wieder aktiviert werden.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Trace-Aufzeichnung starten </h3>
+      <p>Vorgehensweise: </p>
+      <table width="100%" border="0" cellspacing="0" cellpadding="10">
+        <tr>
+          <td>
+            <ol class="action">
+              <li>
+                <p>Wählen Sie "Trace: Ja", um den Nachgiebigkeitsfaktor der ausgewählten Achse mit einem Messtaster zu ermitteln. </p>
+              </li>
+              <li>
+                <p>Wählen Sie das Messsystem für den Geberlageistwert aus: </p>
+                <p>⇒ Wählen Sie den Antrieb aus, an dem der Messtaster angeschlossen ist, zum Beispiel SERVO_3.3:6</p>
+                <p>⇒ Wählen Sie einen Geber aus, zum Beispiel "Geber 3".</p>
+              </li>
+              <li>
+                <p>Erstellen Sie ein Teileprogramm, das folgende Anteile enthält:</p>
+                <ul>
+                  <li>
+                    <p>Trigger-Variable $AN_CUTRACE</p>
+                  </li>
+                  <li>
+                    <p>Verweilzeit von mindestens 200 ms, damit der Offset des Messtasters in der grafischen Darstellung berücksichtigt werden kann.</p>
+                  </li>
+                  <li>
+                    <p>Verfahren mit konstanter Geschwindigkeit. </p>
+                  </li>
+                  <li>
+                    <p>Die beschleunigende Achse wird auf mindestens 1 m/s<sup>2</sup> beschleunigt.</p>
+                  </li>
+                </ul>
+                <p>Beispiel: </p>
+                <a id="table_2f5a1753-2f40-b6ee-b953-2c54f8a61baf">
+                </a> <a id="table_0"></a> <a id="table_2f5a1753-2f40-b6ee-b953-2c54f8a61baf"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default_list" border="1"><colgroup><col width="35.0%"><col width="65.0%"></colgroup><tr valign="top"><td>SOFT</td><td>; Beschleunigung bei aktiver Ruckbegrenzung</td></tr><tr valign="top"><td>DYNNORM</td><td>; G-Befehl zur Aktivierung der normalen Dynamik</td></tr><tr valign="top"><td>$AN_CUTRACE=1</td><td>; Trigger-Variable</td></tr><tr valign="top"><td>G4 F0.2</td><td>; Verweilzeit</td></tr><tr valign="top"><td>G91 G01 F20000 Y-50</td><td>; Relative Verfahrbewegung mit programmierten Vorschub</td></tr><tr valign="top"><td>G4 F0.5</td><td>; Verweilzeit</td></tr><tr valign="top"><td>Y50</td><td>; Verfahrbewegung</td></tr><tr valign="top"><td>G4 F0.5</td><td>; Verweilzeit</td></tr><tr valign="top"><td>M30</td><td>; Programmende</td></tr></table></p></li>
+              <li>
+                <p>Mit dem Softkey "Trace starten" starten Sie die Trace-Aufzeichnung. Danach starten Sie das Teileprogramm mit &lt;NC-Start>.</p>
+                <table cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td>
+                      <font size="1px">
+                      </font>
+                    </td>
+                  </tr>
+                </table>
+                <table class="safety" border="1" bgcolor="#eeeeee">
+                  <colgroup>
+                    <col width="5%">
+                    <col width="95%">
+                  </colgroup>
+                  <tr>
+                    <td>
+                      <b>Hinweis</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h4 class="Blocklabel">Trace starten</h4>
+                      <p class="safety">Wenn die Trace-Aufzeichnung durch den Trigger im Teileprogramm gestartet wurde, ist während der Aufzeichnung kein Abbruch möglich. </p>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <p>Nachdem die Aufzeichnung beendet ist, werden folgende Daten grafisch dargestellt:</p>
+                <ul>
+                  <li>
+                    <p>Geberlageistwert (p0479) des Messtasters</p>
+                  </li>
+                  <li>
+                    <p>Beschleunigung der beschleunigenden Achse</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p>Geben Sie den Nachgiebigkeitsfaktor (Positionsabweichung / Beschleunigung) ein und wiederholen Sie die Messung. Um die Wirkung des Nachgiebigkeitsfaktors gegenüber der ersten Messung zu verdeutlichen, bleibt die Skalierung der Grafik nach der ersten Messung erhalten. </p>
+              </li>
+              <li>
+                <p>Wenn Sie den besten Nachgiebigkeitsfaktor für die Achse gefunden haben, können Sie die Skalierung der Grafik mit Softkey "Neu skalieren" neu skalieren. </p>
+              </li>
+              <li>
+                <p>Sobald Sie den Nachgiebigkeitsfaktor ändern, ist noch eine Wiederholung der Messung zur Verifizierung erforderlich. Dann erst wird der Softkey "Übernehmen" aktiv. </p>
+              </li>
+            </ol>
+          </td>
+        </tr>
+      </table>
+      <p>
+        <b>⇒ Weitere Aktionen: </b>
+      </p>
+      <ul>
+        <li>
+          <p>Softkey "Trace starten", um die Aufzeichnung des Trace zu starten.</p>
+        </li>
+        <li>
+          <p>Softkey "Neu skalieren", um die Grafik automatisch zu skalieren.</p>
+        </li>
+        <li>
+          <p>Softkey "Abbruch", um ohne Änderungen ins Übersichtsbild zurückzukehren.</p>
+        </li>
+        <li>
+          <p>Softkey "Übernehmen", um die neuen Nachgiebigkeitswerte zu übernehmen.</p>
+        </li>
+      </ul>
+    </div>
+    <p>Siehe auch:<br />    <a href="nodcomp_axis_overview.html">Nickkompensation - Übersicht</a><br />    <a href="nodcomp_manuel_input.html">Nickkompensation - Manuell eingeben</a></p>
+  </body>
+</html>

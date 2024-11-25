@@ -1,0 +1,1238 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="610">p0610[0...n]</a></b></td>
+<td colspan="4"><b>Motor&uuml;bertemperatur Reaktion / Mot Temp Reakt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8016, 8017, 8018, 8019</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >12</td>
+<td >12</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Reaktion bei Erreichen der Warnschwelle der Motortemperatur.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Keine Reaktion, nur Warnung, keine Reduzierung von I_max<br />1:		Meldungen, Reduzierung von I_max<br />2:		Meldungen, keine Reduzierung von I_max<br />12:		Meldungen, keine Reduzierung von I_max, Temperaturspeicherung<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0601, p0604, p0605, p0614, p0615, p5390<br />Siehe auch: F07011, A07012, A07910</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die relevante Warnschwelle (p0604, p0605, p5390) ist von der Einstellung in p0600, p0601 und p0612 abh&auml;ngig. Ist gleichzeitig Temperaturmessung und Temperaturmodell aktiv, so wird die Temperatur des Temperaturmodells verwendet.<br />Zu Wert = 0:<br />Es wird eine Warnung ausgegeben und es gibt keine Reduzierung von I_max.<br />Zu Wert = 1:<br />Es wird eine Warnung ausgegeben und eine Zeitstufe gestartet. Steht nach Ablauf der Zeitstufe die Warnung noch an, so wird eine St&ouml;rung ausgegeben.<br />Die I_max-Reduzierung kann zu einer verringerten Ausgangsfrequenz f&uuml;hren.<br />- Bei KTY&#47;PT1000&#47;PT100 gilt: Reduzierung von I_max.<br />- Bei PTC (p0601 = 1) oder Bimetall-&Ouml;ffner (p0601 = 4) gilt: Keine Reduzierung von I_max.<br />Zu Wert = 2:<br />Es wird eine Warnung ausgegeben und eine Zeitstufe gestartet. Steht nach Ablauf der Zeitstufe die Warnung noch an, so wird eine St&ouml;rung ausgegeben.<br />Zu Wert = 12:<br />Verhalten grunds&auml;tzlich wie bei Wert 2.<br />Bei der Motortemperatur&uuml;berwachung ohne Temperatursensor wird die Modelltemperatur beim Ausschalten nichtfl&uuml;chtig gespeichert. Beim Einschalten wird der gespeicherte Wert (reduziert durch p0614) bei der Modellrechnung ber&uuml;cksichtigt. Damit ist die Anforderung von UL508C erf&uuml;llt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="611">p0611[0...n]</a></b></td>
+<td colspan="4"><b>I2t-Motormodell Zeitkonstante thermisch / I2t Mot_mod T</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C2(1), U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8017</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, SESM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >20000</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Wicklungszeitkonstante.<br />
+Die Zeitkonstante gibt die Erw&auml;rmungszeit der kalten Statorwicklung bei Belastung mit dem Motorstillstandsstrom (Motor-Bemessungsstrom, wenn Motorstillstandsstrom nicht parametriert) bis zum Erreichen von 63 % der dauerhaft zul&auml;ssigen Wicklungstemperatur an.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Der Parameter wird nur bei Synchronmotoren (p0300 = 2xx, 4) und Synchronreluktanzmotoren (p0300 = 6xx) verwendet.<br />Siehe auch: r0034, p0612, p0615<br />Siehe auch: F07011, A07012, A07910</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei Motoren aus der Motorliste (p0301) wird dieser Parameter automatisch aus der Motordatenbank vorbelegt.<br />Bei Auswahl eines Listenmotors kann dieser Parameter nicht ver&auml;ndert werden (Schreibschutz). Zum Aufheben des Schreibschutzes sind die Informationen in p0300 zu beachten.<br />Bei Verlassen der Inbetriebnahme wird p0612 &uuml;berpr&uuml;ft und gegebenenfalls auf einen zur Motorleistung passenden Wert vorbelegt, wenn kein Temperatursensor parametriert wurde (siehe p0601).<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Ein R&uuml;cksetzen des Parameters auf p0611 = 0 f&uuml;hrt zum Ausschalten des thermischen I2t-Motormodells (siehe p0612).<br />Ist kein Temperatursensor parametriert, wird die Umgebungstemperatur f&uuml;r das thermische Motormodell aus p0625 bezogen.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="612">p0612[0...n]</a></b></td>
+<td colspan="4"><b>Mot_temp_mod Aktivierung / Mot_temp_mod Akt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Unsigned16</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8017, 8018, 8019</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> SESM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 0010 0000 0010 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung zum Aktivieren des Motortemperaturmodells.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bitfeld:</b></td><td><b>Bit</b></td><td><b>Signalname</b></td><td><b>1-Signal</b></td><td><b>0-Signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Mot_temp_mod 1 (I2t) aktivieren</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>01</td><td>Mot_temp_mod 2 aktivieren</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>02</td><td>Mot_temp_mod 3 aktivieren</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>08</td><td>Mot_temp_mod 1 (I2t) Erweiterungen aktivieren</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>09</td><td>Mot_temp_mod 2 Erweiterungen aktivieren</td><td>Ja</td><td>Nein</td><td>-</td></tr><tr><td></td><td>12</td><td>Mot_temp_mod 1 (I2t) Umgebungstemperatur einstellbar</td><td>Ja (&uuml;ber p0613)</td><td>Nein (fest 20 &deg;C)</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Bei Synchronmotoren und Synchronreluktanzmotoren wird das Temperaturmodell 1 beim Verlassen der Inbetriebnahme automatisch aktiviert, wenn in p0611 eine Zeitkonstante eingetragen ist.<br />Siehe auch: r0034, p0351, p0604, p0605, p0606, p0611, p0613, p0615, p0617, p0618, p0619, p0625, p0626, p0627, p0628, r0630, r0631, r0632, r0633, p5350, r5389, p5390, p5391<br />Siehe auch: F07011, A07012, F07013, A07014, A07910</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Zu Bit 00:<br />Das Aktivieren dieses Motortemperaturmodells (I2t) ist nur bei Zeitkonstante gr&ouml;&szlig;er Null m&ouml;glich (p0611 &gt; 0).<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Mot_temp_mod: Motortemperaturmodell<br />Zu Bit 00 (siehe auch Bit 8):<br />Dieses Bit dient zum Aktivieren&#47;Deaktivieren des Motortemperaturmodells bei permanenterregten Synchronmotoren und Synchronreluktanzmotoren.<br />Zu Bit 01 (siehe auch Bit 9):<br />Dieses Bit dient zum Aktivieren&#47;Deaktivieren des Motortemperaturmodells bei Asynchronmotoren.<br />Zu Bit 02:<br />Dieses Bit dient zum Aktivieren&#47;Deaktivieren des Motortemperaturmodells bei Motoren 1FK7&#47;1FG1 geberlos, 1FK2 und 1FL6.<br />Das Motortemperaturmodell 3 kann nicht mit einem anderen Motortemperaturmodell gleichzeitig aktiviert werden.<br />Zu Bit 08:<br />Dieses Bit dient zur Erweiterung des Motortemperaturmodells 1 (I2t).<br />Bei Firmware-Version &lt; 4.7 SP6 gilt (nur Bit 0):<br />- Dieses Bit hat keine Funktion. Das Temperaturmodell 1 arbeitet im Standardmodus.<br />&Uuml;bertemperatur bei Nennlast: p0605 - 40 &deg;C<br />Warnschwelle: p0605<br />St&ouml;rschwelle: p0615<br />Ab Firmware-Version 4.7 SP6 gilt (Bit 0 und 8):<br />- Das Temperaturmodell 1 arbeitet im erweiterten Modus.<br />&Uuml;bertemperatur bei Nennlast: p0627<br />Warnschwelle: p5390<br />St&ouml;rschwelle: p5391<br />Zu Bit 09:<br />Dieses Bit dient zur Erweiterung des Motortemperaturmodells 2.<br />Bei Firmware-Version &lt; 4.7 gilt (nur Bit 1):<br />- Dieses Bit hat keine Funktion. Das Temperaturmodell 2 arbeitet im Standardmodus.<br />Ab Firmware-Version 4.7 gilt (Bit 1 und 9):<br />- Dieses Bit sollte gesetzt sein. Das Temperaturmodell 2 arbeitet dann im erweiterten Modus und das Modellergebnis ist genauer.<br />Zu Bit 12 (nur wirksam, wenn kein Temperatursensor parametriert ist):<br />Dieses Bit dient zur Einstellung der Umgebungstemperatur f&uuml;r das Motortemperaturmodell 1 (I2t).<br />Bei Firmware-Version &lt; 4.7 SP6 gilt (nur Bit 0):<br />- Dieses Bit hat keine Funktion. Das Temperaturmodell 1 arbeitet mit einer Umgebungstemperatur von 20 &deg;C.<br />Ab Firmware-Version 4.7 SP6 gilt (Bit 0 und 12):<br />- Die Umgebungstemperatur kann &uuml;ber p0613 den Bedingungen angepasst werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="613">p0613[0...n]</a></b></td>
+<td colspan="4"><b>Mot_temp_mod 1&#47;3 Umgebungstemperatur / Mod 1&#47;3 Umg_temp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8017, 8019</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, SESM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-40</td>
+<td  >100</td>
+<td >20</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Umgebungstemperatur f&uuml;r das Motortemperaturmodell 1 oder 3.<br />
+- Temperaturmodell 1 (I2t, p0612.0 = 1):<br />
+Bei Firmware-Version &lt; 4.7 SP6 oder p0612.12 = 0 gilt:<br />
+Der Parameter ist nicht relevant.<br />
+Ab Firmware-Version 4.7 SP6 und p0612.12 = 1 gilt:<br />
+Der Parameter beschreibt die aktuelle Umgebungstemperatur.<br />
+- Temperaturmodell 3 (p0612.2 = 1):<br />
+Der Parameter beschreibt die aktuelle Umgebungstemperatur.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0612<br />Siehe auch: F07011, A07012</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="614">p0614[0...n]</a></b></td>
+<td colspan="4"><b>Thermische Widerstandsadaption Reduktionsfaktor / Therm R_adapt Red</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> -</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >100</td>
+<td >30</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Reduktionsfaktors f&uuml;r die &Uuml;bertemperatur der thermischen Adaption des St&auml;nder-&#47;L&auml;uferwiderstands.<br />
+Der Wert ist ein Startwert beim Einschalten. Der Reduktionsfaktor wird intern nach dem Einschalten entsprechend der thermischen Zeitkonstante wirkungslos.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0610<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Reduktionsfaktor wird nur bei p0610 = 12 wirksam und bezieht sich auf die &Uuml;bertemperatur.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="615">p0615[0...n]</a></b></td>
+<td colspan="4"><b>Mot_temp_mod 1 (I2t) St&ouml;rschwelle / I2t St&ouml;rschw</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8017</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, SESM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >220.0</td>
+<td >180.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der St&ouml;rschwelle f&uuml;r die &Uuml;berwachung der Motortemperatur beim Motortemperaturmodell 1 (I2t).<br />
+Bei Firmware-Version &lt; 4.7 SP6 gilt:<br />
+- Nach &Uuml;berschreiten der St&ouml;rschwelle wird die St&ouml;rung F07011 ausgegeben.<br />
+- St&ouml;rschwelle f&uuml;r r0034 = 100 % * (p0615 - 40 &deg;C) &#47; (p0605 - 40 &deg;C).<br />
+Ab Firmware-Version 4.7 SP6 und p0612.8 = 1 gilt:<br />
+- Die St&ouml;rschwelle in p0615 wird bei der Inbetriebnahme voreingestellt.<br />
+- Bei einer Erstinbetriebnahme eines Listenmotors mit Motortemperaturmodell 1 (I2t) wird der Schwellwert von p0615 nach p5391 kopiert.<br />
+- F&uuml;r die Auswertung der St&ouml;rschwelle ist p5391 von Bedeutung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Der Parameter wird nur beim Motortemperaturmodell 1 (I2t) verwendet.<br />Siehe auch: r0034, p0611, p0612<br />Siehe auch: F07011, A07012</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei Auswahl eines Listenmotors (p0301) wird dieser Parameter automatisch vorbelegt und ist schreibgesch&uuml;tzt. Zum Aufheben des Schreibschutzes sind die Informationen in p0300 zu beachten.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Hysterese betr&auml;gt 2 K.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="616">p0616[0...n]</a></b></td>
+<td colspan="4"><b>Motor&uuml;bertemperatur Warnschwelle 1 / Mot Temp Warn 1</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8016</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >200.0</td>
+<td >130.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Warnschwelle 1 f&uuml;r die &Uuml;berwachung der Motortemperatur.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Warnschwelle ist nicht wie p0604 an die Zeitstufe p0606 gekoppelt. Die Hysterese zur R&uuml;cknahme der St&ouml;rung betr&auml;gt 2 K.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="620">p0620[0...n]</a></b></td>
+<td colspan="4"><b>Thermische Adaption St&auml;nder- und L&auml;uferwiderstand / Mot Therm_adapt R</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der thermischen Adaption des St&auml;nder-&#47;Prim&auml;rteilwiderstands und L&auml;ufer-&#47;Sekund&auml;rteilwiderstands gem&auml;&szlig; r0395 bzw. r0396.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Keine thermische Adaption von St&auml;nder- und L&auml;uferwiderstand<br />1:		Widerst&auml;nde an Temperaturen des thermischen Modells adaptiert<br />2:		Widerst&auml;nde an gemessene St&auml;nderwicklungstemperatur adaptiert<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei p0620 = 1 gilt:<br />Der St&auml;nderwiderstand wird mit Hilfe der Temperatur in r0035 und der L&auml;uferwiderstand unter Verwendung der Modelltemperatur in r0633 adaptiert.<br />Bei p0620 = 2 gilt:<br />Der St&auml;nderwiderstand wird mit Hilfe der Temperatur in r0035 adaptiert. Die L&auml;ufertemperatur zur Adaption des L&auml;uferwiderstands wird gegebenenfalls aus der St&auml;ndertemperatur (r0035) wie folgt berechnet:<br />theta_R = (r0628 + r0625) &#47; (r0627 + r0625) * r0035<br />Bei fremderregten Synchronmotoren und p0620 = 1 wird intern automatisch mit p0620 = 2 gerechnet. Es gibt kein thermisches Modell f&uuml;r die Adaption der D&auml;mpferwiderst&auml;nde.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="621">p0621[0...n]</a></b></td>
+<td colspan="4"><b>Identifikation St&auml;nderwiderstand nach Wiedereinschaltung / Ident Rst Restart</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> PMSM, SESM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >2</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Auswahl der Identifikation des St&auml;nderwiderstands nach Hochlauf der Control Unit (nur bei Vektorregelung).<br />
+Mit der Identifikation wird der aktuelle St&auml;nderwiderstand gemessen und aus dem Verh&auml;ltnis zum Ergebnis der Motordatenidentifikation (p0350) und der dazu passenden Umgebungstemperatur (p0625) die aktuelle mittlere Temperatur der St&auml;nderwicklung ermittelt. Das Ergebnis dient zur Initialisierung des thermischen Motormodells.<br />
+p0621 = 1:<br />
+Identifikation des St&auml;nderwiderstands nur bei erstmaligem Einschalten des Antriebs (Impulsfreigabe) nach dem Hochlauf der Control Unit.<br />
+p0621 = 2:<br />
+Identifikation des St&auml;nderwiderstands bei jedem Einschalten des Antriebs (Impulsfreigabe).<br />
+p0621 = 3:<br />
+Einmalige Identifikation des Leitungswiderstands p0352 ohne &Auml;nderung im thermischen Motormodell (auch f&uuml;r Synchronmotoren geeignet).<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Keine Rs-Identifikation<br />1:		Rs-Identifikation nach Wiedereinschaltung<br />2:		Rs-Identifikation nach jedem Einschalten<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">- Motordatenidentifikation (siehe p1910) bei kaltem Motor durchgef&uuml;hrt.<br />- Umgebungstemperatur zum Zeitpunkt der Motordatenidentifikation in p0625 eingetragen.<br />Siehe auch: p0622, r0623<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Die ermittelte St&auml;ndertemperatur kann nur bedingt mit dem gemessenen Wert eines Temperatursensors (KTY&#47;PT1000) verglichen werden, da der Sensor &uuml;blicherweise den w&auml;rmsten Punkt der St&auml;nderwicklung, der Messwert der Identifikation jedoch den mittleren Wert der St&auml;nderwicklung widerspiegelt.<br />Desweiteren handelt es sich hier um eine Kurzzeitmessung mit begrenzter Genauigkeit, die w&auml;hrend der Aufmagnetisierungsphase der Asynchronmaschine durchgef&uuml;hrt wird.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Messung wird in folgenden F&auml;llen durchgef&uuml;hrt:<br />- Asynchronmotor verwendet.<br />- Vektorregelung ist aktiv (siehe p1300).<br />- Temperatursensor (KTY&#47;PT1000) ist nicht angeschlossen.<br />- Motor steht beim Einschalten still.<br />Beim Fangen eines drehenden Motors werden die Temperaturen des thermischen Motormodells auf ein Drittel der &Uuml;bertemperaturen vorbelegt. Dies geschieht aber nur einmalig nach dem Hochlauf der Control Unit (z. B. nach Netzausfall).<br />Bei aktivierter Identifikation wird die Aufmagnetisierungszeit durch p0622 festgelegt und nicht durch p0346. Die Schnellmagnetisierung (p1401.6) wird intern abgeschaltet und die Warnung A07416 ausgegeben. Die Freigabe der Drehzahl erfolgt nach Ende der Messung.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="622">p0622[0...n]</a></b></td>
+<td colspan="4"><b>Motor-Auferregungszeit f&uuml;r Rs_ident nach Wiedereinschaltung / t_Auferr Rs_id</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> PMSM, SESM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >20.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Auferregungszeit des Motors f&uuml;r die Identifikation des St&auml;nderwiderstands nach Wiedereinschaltung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0621, r0623<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei p0622 &lt; p0346 gilt:<br />Bei aktivierter Identifikation wird die Aufmagnetisierungszeit durch p0622 beeinflusst. Die Freigabe der Drehzahl erfolgt nach Ende der Messung, aber fr&uuml;hestens nach Ablauf der Zeit in p0346 (siehe r0056 Bit 4). Die Zeitdauer der Messung h&auml;ngt auch von der Einschwingzeit des Messstromes ab.<br />Bei p0622 &gt;= p0346 gilt:<br />Der Parameter p0622 wird intern auf die Aufmagnetisierungszeit p0346 begrenzt, so dass p0346 bei der Identifikation die maximal m&ouml;gliche Aufmagnetisierungszeit darstellt. Die gesamte Messdauer (Aufmagnetisierung und Messeinschwingzeit und Messzeit) ist dann immer gr&ouml;&szlig;er als p0346.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="623">r0623</a></b></td>
+<td colspan="4"><b>Rs-Identifikation St&auml;nderwiderstand nach Wiedereinschalten / Rs-Id Rs n Einsch</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> -</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motoridentifikation</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> PMSM, SESM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige des durch die Rs-Identifikation ermittelten St&auml;nderwiderstands nach dem Wiedereinschalten.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0621, p0622<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="624">p0624[0...n]</a></b></td>
+<td colspan="4"><b>Motor Temperatur Offset PT100 / Mot T_Offset PT100</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8016</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_2</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-100.0</td>
+<td  >100.0</td>
+<td >0.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Temperaturoffsets f&uuml;r den PT100-Messwert.<br />
+Besteht zwischen der in r0035 angezeigten Motortemperatur und der tats&auml;chlichen Motortemperatur eine Differenz, so kann dieser Offset in diesem Parameter eingegeben werden. Dadurch wird dieser Unterschied kompensiert.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0600, p0601, p0602<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameter hat nur bei folgenden Einstellungen einen Einfluss:<br />- Temperatursensor des Leistungsteils wird erfasst (p0600 = 11).<br />- Sensortyp PT100 wird ausgew&auml;hlt (p0601 = 5).<br />Ist der in Reihe zum PT100 liegende Widerstand (z. B. Leitungswiderstand der Zuleitung) bekannt, so muss folgende Formel zur Umrechnung verwendet werden:<br />Offset in p0624 = Gemessener Widerstand in Ohm x 2.5 K &#47; Ohm<br />Beispiel:<br />Leitungswiderstand gemessen = 2 Ohm<br />--&gt; 2 Ohm x 2.5 K &#47; Ohm = 5.0 K<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="625">p0625[0...n]</a></b></td>
+<td colspan="4"><b>Motor Umgebungstemperatur w&auml;hrend Inbetriebnahme / Mot Umg_temp IBN</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8017, 8018</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-40</td>
+<td  >80</td>
+<td >20</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Festlegung der Umgebungstemperatur des Motors zur Berechnung des Motortemperaturmodells.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0350, p0354<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Die Parameter f&uuml;r St&auml;nder- und L&auml;uferwiderstand (p0350, p0354) beziehen sich auf diese Temperatur.<br />Wird f&uuml;r permanenterregte Synchronmotoren das thermische I2t-Motormodell aktiviert (siehe p0611), so geht p0625 in die Modellrechnung ein, wenn kein Temperatursensor vorhanden ist (siehe p0601).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="626">p0626[0...n]</a></b></td>
+<td colspan="4"><b>Motor &Uuml;bertemperatur St&auml;ndereisen / Mot T_&Uuml;ber Eisen</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8018</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_2</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> PMSM, SESM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10</td>
+<td  >200</td>
+<td >50</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Festlegung der Nenn-&Uuml;bertemperatur des St&auml;ndereisens bezogen auf die Umgebungstemperatur im Motortemperaturmodell 2 (p0612.1 = 1).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Bei Motoren der Reihen 1LA5 und 1LA7 (p0300 = 15, 17) wird der Parameter in Abh&auml;ngigkeit von p0307 und p0311 vorbelegt.<br />Siehe auch: p0625<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei Auswahl eines Standard-Asynchronlistenmotors (p0300 &gt; 100, p0301 &gt; 10000) wird dieser Parameter automatisch vorbelegt und ist schreibgesch&uuml;tzt. Zum Aufheben des Schreibschutzes sind die Informationen in p0300 zu beachten.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameter wird bei Verlassen der Schnellinbetriebnahme mit p3900 &gt; 0 zur&uuml;ckgesetzt, wenn kein Listenmotor eingestellt ist (p0300).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="627">p0627[0...n]</a></b></td>
+<td colspan="4"><b>Motor &Uuml;bertemperatur St&auml;nderwicklung / Mot T_&Uuml;ber St&auml;nder</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8017, 8018</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_2</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> SESM, REL</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>15</td>
+<td  >200</td>
+<td >80</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Festlegung der Nenn-&Uuml;bertemperatur der St&auml;nderwicklung bezogen auf die Umgebungstemperatur.<br />
+- Motortemperaturmodell 1 (I2t, p0612.0 = 1):<br />
+Bei Firmware-Version &lt; 4.7 SP6 oder p0612.8 = 0 gilt:<br />
+F&uuml;r die Bemessungstemperatur ist p0605 von Bedeutung.<br />
+Ab Firmware-Version 4.7 SP6 und p0612.8 = 1 gilt:<br />
+&Uuml;bertemperatur im Nennpunkt.<br />
+- Motortemperaturmodell 2 (p0612.1 = 1):<br />
+&Uuml;bertemperatur im Nennpunkt.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Bei Motoren der Reihen 1LA5 und 1LA7 (p0300 = 15, 17) wird der Parameter in Abh&auml;ngigkeit von p0307 und p0311 vorbelegt.<br />Siehe auch: p0625<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei Auswahl eines Standard-Asynchronlistenmotors (p0300 &gt; 100, p0301 &gt; 10000) wird dieser Parameter automatisch vorbelegt und ist schreibgesch&uuml;tzt. Zum Aufheben des Schreibschutzes sind die Informationen in p0300 zu beachten.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameter wird bei Verlassen der Schnellinbetriebnahme mit p3900 &gt; 0 zur&uuml;ckgesetzt, wenn kein Listenmotor eingestellt ist (p0300).<br />Das Signal ist nicht als Prozessgr&ouml;&szlig;e geeignet und darf nur als Anzeigegr&ouml;&szlig;e verwendet werden.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="628">p0628[0...n]</a></b></td>
+<td colspan="4"><b>Motor &Uuml;bertemperatur L&auml;ufer / Mot T_&Uuml;ber L&auml;ufer</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8018</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_2</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> PMSM, SESM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>20</td>
+<td  >200</td>
+<td >100</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Festlegung der Nenn-&Uuml;bertemperatur des K&auml;figl&auml;ufers bezogen auf die Umgebungstemperatur im Motortemperaturmodell 2 (p0612.1 = 1).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Bei Motoren der Reihen 1LA5 und 1LA7 (p0300 = 15, 17) wird der Parameter in Abh&auml;ngigkeit von p0307 und p0311 vorbelegt.<br />Siehe auch: p0625<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei Auswahl eines Standard-Asynchronlistenmotors (p0300 &gt; 100, p0301 &gt; 10000) wird dieser Parameter automatisch vorbelegt und ist schreibgesch&uuml;tzt. Zum Aufheben des Schreibschutzes sind die Informationen in p0300 zu beachten.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameter wird bei Verlassen der Schnellinbetriebnahme mit p3900 &gt; 0 zur&uuml;ckgesetzt, wenn kein Listenmotor eingestellt ist (p0300).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="629">p0629[0...n]</a></b></td>
+<td colspan="4"><b>St&auml;nderwiderstand Referenz / R_St&auml;nder Ref</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 16_1</td><td><b>Einheitenwahl:</b> p0349</td></tr><tr><td><b>Nicht bei Motortyp:</b> PMSM, SESM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00000</td>
+<td  >2000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Referenzwert f&uuml;r die Identifikation des St&auml;nderwiderstands bei jedem Einschalten des Antriebs.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Die Messung des Referenzwertes wird durch die automatische Berechnung aktiviert (p0340 = 1, 2), wenn Folgendes zutrifft:<br />- Die Motortemperatur ist zu diesem Zeitpunkt kleiner als 30 &deg;C (r0035).<br />- Es ist kein Temperatursensor vorhanden (p0601).<br />Siehe auch: p0621, r0623<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Referenzwert f&uuml;r die Identifikation des St&auml;nderwiderstands ist nach der der ersten Identifikation manuell einzutragen (p0629 = r0623). Die Identifikation muss bei kaltem Motor erfolgen, da sich der Wert auf die Umgebungstemperatur p0625 bezieht. Vor der Messung sollte der Zuleitungswiderstand in p0352 eingetragen werden.<br />Nach der ersten Messung muss das Ergebnis gespeichert werden, damit die Referenz nach Hochlauf der CU zur Verf&uuml;gung steht. Bei &Auml;nderung von p0350 oder p0352 ist der Referenzwert p0629 neu zu ermitteln.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="630">r0630[0...n]</a></b></td>
+<td colspan="4"><b>Mot_temp_mod Umgebungstemperatur / Mod T_Umgebung</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8018</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> SESM, REL</td><td><b>Normierung:</b> p2006</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Umgebungstemperatur des Motortemperaturmodells (Modell 2 und 3).<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="631">r0631[0...n]</a></b></td>
+<td colspan="4"><b>Mot_temp_mod St&auml;ndereisentemperatur / Mod T_St&auml;nder</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8018, 8019</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> SESM, REL</td><td><b>Normierung:</b> p2006</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der St&auml;ndereisentemperatur des Motortemperaturmodells (Modell 2 und 3).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Beim Motortemperaturmodell 1 (p0612.0 = 1) ist dieser Parameter nicht g&uuml;ltig.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="632">r0632[0...n]</a></b></td>
+<td colspan="4"><b>Mot_temp_mod St&auml;nderwicklungstemperatur / Mod T_Wicklung</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8017, 8018, 8019</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> SESM, REL</td><td><b>Normierung:</b> p2006</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der St&auml;nderwicklungstemperatur des Motortemperaturmodells.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: F07011, A07012, A07910</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="633">r0633[0...n]</a></b></td>
+<td colspan="4"><b>Mot_temp_mod Rotortemperatur / Mod Rotortemp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 8018, 8019</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> 21_1</td><td><b>Einheitenwahl:</b> p0505</td></tr><tr><td><b>Nicht bei Motortyp:</b> SESM, REL</td><td><b>Normierung:</b> p2006</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Rotortemperatur des Motortemperaturmodells (Modell 2 und 3).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Beim Motortemperaturmodell 1 (p0612.0 = 1) ist dieser Parameter nicht g&uuml;ltig.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="634">p0634[0...n]</a></b></td>
+<td colspan="4"><b>Q-Fluss Flusskonstante unges&auml;ttigt / PSIQ KPSI UNSAT</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, SESM, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >100.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Die nichtlineare und kreuzverkoppelte Querflussfunktion wird mittels 4 Koeffizienten beschrieben.<br />
+Dieser Parameter gewichtet den unges&auml;ttigten Anteil der Querflussfunktion.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="635">p0635[0...n]</a></b></td>
+<td colspan="4"><b>Q-Fluss Querstromkonstante unges&auml;ttigt / PSIQ KIQ UNSAT</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, SESM, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >10000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Die nichtlineare und kreuzverkoppelte Querflussfunktion wird mittels 4 Koeffizienten beschrieben.<br />
+Dieser Parameter beschreibt die Abh&auml;ngigkeit des unges&auml;ttigten Anteils vom Querstrom.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0634<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="636">p0636[0...n]</a></b></td>
+<td colspan="4"><b>Q-Fluss L&auml;ngsstromkonstante unges&auml;ttigt / PSIQ KID UNSAT</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, SESM, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >10000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Die nichtlineare und kreuzverkoppelte Querflussfunktion wird mittels 4 Koeffizienten beschrieben.<br />
+Dieser Parameter beschreibt die Abh&auml;ngigkeit des unges&auml;ttigten Anteils vom L&auml;ngsstrom.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0634<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="637">p0637[0...n]</a></b></td>
+<td colspan="4"><b>Q-Fluss Flussgradient ges&auml;ttigt / PSIQ Grad SAT</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, SESM, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >10000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Die nichtlineare und kreuzverkoppelte Querflussfunktion wird mittels 4 Koeffizienten beschrieben.<br />
+Dieser Parameter beschreibt den Gradienten des ges&auml;ttigten Anteils &uuml;ber dem Querstrom.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0634, p0635, p0636<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="640">p0640[0...n]</a></b></td>
+<td colspan="4"><b>Stromgrenze / Stromgrenze</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, SERVO_AC, VECTOR_AC, SERVO_840, SERVO_COMBI, SERVO_828, SERVO_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C2(1), U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 2</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> 5722, 6640</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >10000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Stromgrenze.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: r0209, p0323<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Da der Parameter Bestandteil der Schnellinbetriebnahme ist (p0010 = 1), wird er bei &Auml;nderung von p0305, p0323 und p0338 passend vorbelegt.<br />Die Stromgrenze p0640 wird auf r0209 und p0323 begrenzt. Die Begrenzung auf p0323 erfolgt nicht, wenn dort der Wert Null eingetragen ist.<br />Die resultierende Stromgrenze wird in r0067 angezeigt. r0067 wird gegebenenfalls noch durch das thermische Modell des Motor Modules reduziert.<br />Die zur Stromgrenze passenden Drehmoment- und Leistungsgrenzen (p1520, p1521, p1530, p1531) werden automatisch beim Verlassen der Schnellinbetriebnahme &uuml;ber p3900 &gt; 0 oder mit Hilfe der automatischen Parametrierung &uuml;ber p0340 = 3, 5 berechnet.<br />F&uuml;r VECTOR gilt (p0107):<br />p0640 wird auf 4.0 x p0305 begrenzt.<br />p0640 wird bei der automatischen Selbstinbetriebnahme vorbelegt (z. B. auf 1.5 x p0305, mit p0305 = r0207[1]).<br />p0640 ist bei der Inbetriebnahme einzugeben. Deshalb wird p0640 nicht durch die automatische Parametrierung beim Verlassen der Schnellinbetriebnahme (p3900 &gt; 0) berechnet.<br />F&uuml;r SERVO gilt (p0107):<br />p0640 wird bei der automatischen Parametrierung (p0340 = 1, p3900 &gt; 0) unter Ber&uuml;cksichtigung der Begrenzungen r0209 und r0323 wie folgt vorbelegt:<br />- F&uuml;r Asynchronmotoren: p0640 = 1.5 x p0305<br />- F&uuml;r Synchronmotoren: p0640 = p0338<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="641">p0641[0...n]</a></b></td>
+<td colspan="4"><b>CI: Stromgrenze Skalierung Signalquelle / I_grenze Skal S_q</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamischer Index:</b> CDS, p0170</td><td><b>Funktionsplan:</b> 6300, 6640</td></tr><tr><td><b>P-Gruppe:</b> Regelung</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> PERCENT</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Signalquelle f&uuml;r die Skalierung der Stromgrenze (p0640).<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="643">p0643[0...n]</a></b></td>
+<td colspan="4"><b>&Uuml;berspannungsschutz bei Synchronmotoren / &Uuml;berspg_schutz</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> C2(3)</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Integer16</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >1</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des &Uuml;berspannungsschutzes bei Synchronmotoren im Feldschw&auml;chbereich.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Wert:</b></td>
+<td width="85%">0:		Keine Ma&szlig;nahme<br />1:		Voltage Protection Module (VPM)<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0316, p1082, p1231, p9601, p9801<br />Siehe auch: F07432, F07906, F07907</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Gefahr:</b></td>
+<td width="85%">Lebensgefahr durch elektrischen Schlag bei falscher Parametrierung.<br />Synchronmotoren k&ouml;nnen bei generatorischem Betrieb oberhalb der Einsatzdrehzahl Feldschw&auml;chung gef&auml;hrlich hohe Spannungen im Zwischenkreis erzeugen. Zu hohe Spannung im Zwischenkreis wird die Isolation am Antriebssystem besch&auml;digen und Sie k&ouml;nnen Tod oder schwere Verletzungen erleiden.<br />Vergewissern Sie sich, dass ein Voltage Protection Modul gem&auml;&szlig; des aktuellen Ger&auml;tehandbuchs SINAMICS S120 Leistungsteile Booksize korrekt angeschlossen ist, und dass das zu dem Motor passende Voltage Protection Modul gem&auml;&szlig; der Projektierungshandb&uuml;cher Synchron-Einbaumotoren SIMOTICS M-1FE1 verwendet wird, bevor Sie den Parameter p0643=1 setzen.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Synchronmotoren k&ouml;nnen im Feldschw&auml;chbereich im Fehlerfall hohe Zwischenkreisspannungen erzeugen. Um das Antriebssystem vor Zerst&ouml;rung durch &Uuml;berspannung zu sch&uuml;tzen, gibt es folgende M&ouml;glichkeiten:<br />- Maximaldrehzahl (p1082) ohne weiteren Schutz begrenzen.<br />Die maximale Drehzahl ohne Schutz berechnet sich wie folgt:<br />p1082 [1&#47;min] &lt;= 11.695 * r0297 &#47; p0316 (bzw. r0334) [Nm&#47;A]<br />- Voltage Protection Module (VPM) in Verbindung mit der Funktion &quot;Sicher abgeschaltetes Moment&quot; (p9601, p9801) verwenden.<br />Das VPM schlie&szlig;t im Fehlerfall den Motor kurz. Da w&auml;hrend des Kurzschlusses Impulsl&ouml;schung vorliegen muss, m&uuml;ssen die Klemmen f&uuml;r die Funktion &quot;Sicher abgeschaltetes Moment&quot; zum VPM verdrahtet werden.<br />- Aktivieren des internen Spannungsschutzes (IVP) mit p1231 = 3.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="644">p0644[0...n]</a></b></td>
+<td colspan="4"><b>Stromgrenze Auferregung Asynchronmotor / Imax Auferr ASM</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> DDS, p0180</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Regelung</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>50.0</td>
+<td  >300.0</td>
+<td >300.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Maximaler Auferregungsstrom des Asynchronmotors bezogen auf den zul&auml;ssigen Bemessungsstrom des Leistungsteils (r0207[0]).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Nur bei Vektorregelung wirksam.<br />Siehe auch: p1401, p1573<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Parameter wird in der automatischen Berechnung bei Chassis-Leistungsteilen vorbelegt.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="650">p0650[0...n]</a></b></td>
+<td colspan="4"><b>Motor Betriebsstunden aktuell / Mot t_Betr akt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >4294967295</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Anzeige der Betriebsstunden f&uuml;r den entsprechenden Motor.<br />
+Der Betriebsstundenz&auml;hler wird bei Impulsfreigabe fortgesetzt. Bei Wegnahme der Impulsfreigabe wird der Z&auml;hler angehalten und der Wert gespeichert.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Zum nichtfl&uuml;chtigen Speichern des Betriebsstundenz&auml;hlers sind folgende Voraussetzungen notwendig:<br />- Firmware mit V2.2 oder h&ouml;her.<br />- Control Unit 320 (CU320) mit Hardware-Version C oder h&ouml;her (Baugruppe mit NVRAM).<br />Siehe auch: p0651<br />Siehe auch: A01590</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei p0651 = 0 ist der Betriebsstundenz&auml;hler ausgeschaltet.<br />Der Betriebsstundenz&auml;hler in p0650 kann nur auf 0 zur&uuml;ckgesetzt werden.<br />Der Betriebsstundenz&auml;hler l&auml;uft nur beim Motordatensatz 0 und 1 (Motor Data Set, MDS).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="651">p0651[0...n]</a></b></td>
+<td colspan="4"><b>Motor Betriebsstunden Wartungsintervall / Mot t_Betr Wartung</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">SERVO, VECTOR, HLA, SERVO_AC, VECTOR_AC, SERVO_840, HLA_840, SERVO_COMBI, SERVO_828, HLA_828, SERVO_DBSI, HLA_DBSI</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 3</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> -</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >150000</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Wartungsintervalles in Stunden f&uuml;r den entsprechenden Motor.<br />
+Nach Erreichen der hier eingestellten Betriebsstunden wird eine entsprechende Meldung ausgegeben.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0650<br />Siehe auch: A01590</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei p0651 = 0 ist der Betriebsstundenz&auml;hler ausgeschaltet.<br />Mit p0651 = 0 setzen wird automatisch auch p0650 = 0 gesetzt.<br />Der Betriebsstundenz&auml;hler l&auml;uft nur beim Motordatensatz 0 und 1 (Motor Data Set, MDS).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="652">p0652[0...n]</a></b></td>
+<td colspan="4"><b>Motor St&auml;nderwiderstand Skalierung / Mot R_St&auml;nd Skal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10.0</td>
+<td  >300.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Faktors zur Bewertung des St&auml;nderwiderstands.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0350, r0370<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="653">p0653[0...n]</a></b></td>
+<td colspan="4"><b>Motor-St&auml;nderstreuinduktivit&auml;t Skalierung / Mot L_S_Streu Skal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10.0</td>
+<td  >300.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Faktors zur Bewertung der St&auml;nderstreuinduktivit&auml;t.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0356, r0377<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="655">p0655[0...n]</a></b></td>
+<td colspan="4"><b>Motor-Hauptinduktivit&auml;t d-Achse ges&auml;ttigt Skalierung / Mot L_H d ges Skal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10.0</td>
+<td  >300.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Faktor zur Bewertung der Hauptinduktivit&auml;t in Richtung der Rotorachse (d-Achse).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0360, r0382<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="656">p0656[0...n]</a></b></td>
+<td colspan="4"><b>Motor-Hauptinduktivit&auml;t q-Achse ges&auml;ttigt Skalierung / Mot L_H q ges Skal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10.0</td>
+<td  >300.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Faktor zur Bewertung der Hauptinduktivit&auml;t quer zur Rotorachse (q-Achse).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0361, r0383<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="657">p0657[0...n]</a></b></td>
+<td colspan="4"><b>Motor-D&auml;mpferinduktivit&auml;t d-Achse Skalierung / Mot L_D&auml;mpf d Skal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10.0</td>
+<td  >300.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Faktor zur Bewertung der D&auml;mpferinduktivit&auml;t in Richtung der Rotorachse (d-Achse).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0358, r0380<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="658">p0658[0...n]</a></b></td>
+<td colspan="4"><b>Motor-D&auml;mpferinduktivit&auml;t q-Achse Skalierung / Mot L_D&auml;mpf q Skal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10.0</td>
+<td  >300.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Faktor zur Bewertung der D&auml;mpferinduktivit&auml;t quer zur Rotorachse (q-Achse).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0359, r0381<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="659">p0659[0...n]</a></b></td>
+<td colspan="4"><b>Motor-D&auml;mpferwiderstand d-Achse Skalierung / Mot R_D&auml;mpf d Skal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10.0</td>
+<td  >300.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Faktor zur Bewertung des D&auml;mpferwiderstands in Richtung der Rotorachse (d-Achse).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0354, r0374<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="660">p0660[0...n]</a></b></td>
+<td colspan="4"><b>Motor-D&auml;mpferwiderstand q-Achse Skalierung / Mot R_D&auml;mpf q Skal</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR, VECTOR_AC</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10.0</td>
+<td  >300.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Faktor zur Bewertung des D&auml;mpferwiderstands quer zur Rotorachse (q-Achse).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0355, r0375<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="690">p0690[0...n]</a></b></td>
+<td colspan="4"><b>B&uuml;rstenlose Erregung Bemessungsstrom / BLE I_Bemes</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >1000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Bemessungsstroms der Erregereinrichtung f&uuml;r die Erregermaschine bei b&uuml;rstenloser Erregung mit Au&szlig;enpol-Synchronmaschine oder Gegendrehfeld-Asynchronmaschine.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0699, r1626<br />Siehe auch: A49205</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei Wert = 0 wird keine b&uuml;rstenlose Erregung aktiviert.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">BLE: B&uuml;rstenlose Erregung<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="691">p0691[0...n]</a></b></td>
+<td colspan="4"><b>Gegendrehfelderregung Korrekturfaktor / GDE Korrektur</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10</td>
+<td  >1000</td>
+<td >100</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des Korrekturfaktors f&uuml;r den berechneten Erregerstromsollwert der Gegendrehfelderregermaschine bei Gegendrehfelderregung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0311, p0390, p0690, p0699<br />Siehe auch: A49205</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Der Korrekturfaktor gibt das Verh&auml;ltnis des Nenn-Erregerstroms zum Bemessungsstrom der Erregermaschine (p0690) an. Der Nenn-Erregerstrom ist der Strom, der im Nennpunkt der Hauptmaschine gem&auml;&szlig; Typenschild flie&szlig;t.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="692">p0692[0...n]</a></b></td>
+<td colspan="4"><b>Gegendrehfelderregung Eisenwiderstand / GDE Eisenwiderst</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-100000.00000</td>
+<td  >100000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des ohmschen Eisenwiderstands des L&auml;ufers der Hauptmaschine bei Gegendrehfelderregung.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0699<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei Wert 0 wird angenommen, dass der Eisenwiderstand unendlich gro&szlig; ist.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="693">p0693[0...n]</a></b></td>
+<td colspan="4"><b>B&uuml;rstenlose Erregung Induktivit&auml;t d-Achse ges&auml;ttigt / BLE L_d ges&auml;ttigt</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-1000.00000</td>
+<td  >1000.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der ges&auml;ttigten Induktivit&auml;t der Erregermaschine bei b&uuml;rstenloser Erregung mit Au&szlig;enpol-Synchronmaschine oder Gegendrehfeld-Asynchronmaschine.<br />
+Im Rahmen einer Koeffizientenoptimierung kann auch ein negativer Wert eingetragen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0699<br />Siehe auch: A49205</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei Wert = 0 wird keine b&uuml;rstenlose Erregung aktiviert.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei Erregung &uuml;ber Au&szlig;enpol-Synchronmaschine ist Ersatzschaltbilddatum bezogen auf den Rotor einzugeben.<br />Bei Erregung &uuml;ber Gegendrehfeld-Asynchronmaschine ist das Ersatzschaltbilddatum bezogen auf den St&auml;nder einzugeben.<br />BLE: B&uuml;rstenlose Erregung<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="694">p0694[0...n]</a></b></td>
+<td colspan="4"><b>Gegendrehfelderregung Streuinduktivit&auml;t / GDE L_Streu</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> -</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-10.00000</td>
+<td  >10.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Streuinduktivit&auml;t der Gegendrehfelderregermaschine in mH bei der Gegendrehfelderregung.<br />
+Im Rahmen einer Koeffizientenoptimierung kann auch ein negativer Wert eingetragen werden.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0699<br />Siehe auch: A49205</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="696">p0696[0...n]</a></b></td>
+<td colspan="4"><b>B&uuml;rstenlose Erregung &Uuml;bersetzungsverh&auml;ltnis / BLE &Uuml;bersetz_verh</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >1000.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des &Uuml;bersetzungsverh&auml;ltnisses zwischen St&auml;nder und L&auml;ufer der Erregermaschine bei b&uuml;rstenloser Erregung.<br />
+Bei Erregung &uuml;ber eine Au&szlig;enpol-Synchronmaschine wird das Verh&auml;ltnis von Bemessungs-Erregerstrom der Hauptmaschine zum zugeh&ouml;rigen Erregerstrom der Erregermaschine im Nennpunkt der Maschine eingegeben.<br />
+Bei Erregung &uuml;ber eine Gegendrehfeld-Asynchronmaschine wird das physikalische &Uuml;bersetzungsverh&auml;ltnis im Stillstand angegeben.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0311, p0390, p0699<br />Siehe auch: A49205</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei Wert = 0 wird keine b&uuml;rstenlose Erregung aktiviert.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">BLE: B&uuml;rstenlose Erregung<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="697">p0697[0...n]</a></b></td>
+<td colspan="4"><b>B&uuml;rstenlose Erregung Polpaarzahl / BLE Polpaarzahl</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> Unsigned32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >20</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung der Polpaarzahl der Erregermaschine bei b&uuml;rstenloser Erregung &uuml;ber Au&szlig;enpol-Synchronmaschine oder &uuml;ber Gegendrehfeld-Asynchronmaschine.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0699<br />Siehe auch: A49205</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei Wert = 0 wird keine b&uuml;rstenlose Erregung aktiviert.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">BLE: B&uuml;rstenlose Erregung<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="698">p0698[0...n]</a></b></td>
+<td colspan="4"><b>B&uuml;rstenlose Erregung Erregerwiderstand / BLE Err_widerst</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">VECTOR (n/M), VECTOR_AC (n/M)</td>
+<td valign="top" width="30%"><b>&Auml;nderbar:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Zugriffsstufe:</b> 4</td></tr><tr><td><b>Datentyp:</b> FloatingPoint32</td><td><b>Dynamischer Index:</b> MDS, p0130</td><td><b>Funktionsplan:</b> 6727</td></tr><tr><td><b>P-Gruppe:</b> Motor</td><td><b>Einheitengruppe:</b> -</td><td><b>Einheitenwahl:</b> -</td></tr><tr><td><b>Nicht bei Motortyp:</b> ASM, PMSM, REL, RESM</td><td><b>Normierung:</b> -</td><td><b>Expertenliste:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Werkseinstellung</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-100.00000</td>
+<td  >100.00000</td>
+<td >0.00000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Beschreibung:</b></td>
+<td  width="85%">Einstellung des ohmschen Erregerwiderstands der Hauptmaschine bei b&uuml;rstenloser Erregung &uuml;ber Au&szlig;enpol-Synchronmaschine oder Gegendrehfeld-Asynchronmaschine.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Abh&auml;ngigkeit:</b></td>
+<td width="85%">Siehe auch: p0699<br />Siehe auch: A49205</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Achtung:</b></td>
+<td width="85%">Bei Wert = 0 wird keine b&uuml;rstenlose Erregung aktiviert.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Hinweis:</b></td>
+<td width="85%">Bei bekanntem Rotorwiderstand kann dieser Wert zum Erregerwiderstand addiert werden. Bei Erregung &uuml;ber Gegendrehfeld-Asynchronmaschine ist dabei zu beachten, dass der Rotorwiderstand im Datenblatt St&auml;nder bezogen angegeben ist, der Erregerwiderstand der Hauptmaschine aber auf den Rotor bezogen ist.<br />BLE: B&uuml;rstenlose Erregung<br /></td></tr>
+</table><p></p></body></html>

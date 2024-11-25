@@ -1,0 +1,45 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Funktion</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Funktion</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Funktion   </h3>
+      <p>Mit dieser Messvariante kann die Winkellage einer räumlich schrägen Ebene an einem Werkstück durch Vermessen von 3 Punkten ermittelt und korrigiert werden. Die Winkel beziehen sich auf die Drehung um die Achsen der aktiven Ebene G17 bis G19.</p>
+      <p>Es gelten die gleichen Voraussetzungen wie bei der einfachen Winkelmessung, siehe Messvariante <a href="124635003403.html">Kante ausrichten</a>.</p>
+      <p>Zusätzliche Angaben sind für die Sollwertvorgabe des 2. Winkels erforderlich. Eine Korrektur in der Nullpunktverschiebung erfolgt in die rotatorischen Anteile (Drehung) der angegebenen Nullpunktverschiebung (NV).</p>
+      <p>Die translatorischen Anteile der NV bleiben unverändert und sollten in einer nachfolgenden Messung (z. B. Kante setzen, Ecke) korrigiert werden.</p>
+      <p>Nach der Messung kann an geeigneten Maschinen, bei denen eine Orientierungstransformation (Schwenken, TRAORI) eingerichtet ist, der Messtaster senkrecht auf der Messebene (Bearbeitungsebene) ausgerichtet werden.</p>
+      <ul>
+        <li>
+          <p>
+            <b>Weitere Informationen</b> zum Thema Schwenken finden Sie im Bedienhandbuch "Fräsen".</p>
+        </li>
+        <li>
+          <p>TRAORI</p>
+          <p>G0 C3=1 ;Ausrichten nach Werkzeugachse Z bei G17</p>
+        </li>
+      </ul>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Messprinzip</h3>
+      <p>Die Messvariante Ebene ausrichten erfolgt nach dem Prinzip der 2-Winkel-Messung:</p>
+      <p>Bei einem Werkstück mit einer räumlich schrägen Ebene erfolgen die Winkelkorrekturen im rotatorischen Teil der Geometrieachsen.</p>
+      <a id="image_28443710219_0">
+      </a> <img border="0" src="images/28444239243.png" width="330" height="237" alt="Messen: Ebene ausrichten (CYCLE998)"/><p class="imgtitle">Messen: Ebene ausrichten (CYCLE998)</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><h4 class="Blocklabel">Maximaler Messwinkel</h4><p class="safety">Der Messzyklus <code>CYCLE998 </code>kann maximal einen Winkel von -45...+45 Grad messen.</p></td></tr></table><a name="block_3"></a><h3 class="Blocktitle">Voraussetzungen</h3><ul><li><p>Der Messtaster muss als Werkzeug mit Werkzeuglängenkorrektur aufgerufen werden.</p></li><li><p>Werkzeugtyp des Messtasters:</p><ul><li><p>3D Multi-Taster (Typ 710)</p></li><li><p>Monotaster (Typ 712)</p></li></ul></li></ul><a name="block_4"></a><h3 class="Blocktitle">Ausgangsposition vor dem Messen</h3><p>Der Messtaster ist über dem 1. Messpunkt P1 in den Achsen der Ebene (bei G17: XY) vorpositioniert.</p><h4 class="Blocklabel">Positionieren unter Berücksichtigung einer Schutzzone</h4><ul><li><p>Schutzzone "nein"</p><p>Der Messtaster wird in der Messachse maximal im Abstand vom Messweg DFA über der zu messenden Fläche über dem Messpunkt P1 auf Messhöhe positioniert. </p></li><li><p>Schutzzone "ja"</p><p>Der Messtaster wird in der Messachse maximal im Abstand vom Messweg DFA und dem Betrag im Parameter <b>DZ </b>(bei G17 immer Messachse Z) über der zu messenden Fläche über dem Messpunkt P1 auf Messhöhe positioniert.</p></li></ul><p>In beiden Fällen muss beim Messvorgang der Messpunkt P1 sicher erreichbar sein. </p><p>Sind bei der 1. Messung die Abstände von der Bezugsfläche zu groß gewählt, erfolgt keine Messung.</p><p>Messachse ist stets die 3. Achse der Ebene (bei G17: Z). Der Messpunkt P1 ist in der Ebene so zu wählen, dass der Abstand zum 2. Messpunkt (L2) und zum 3. Messpunkt (L3) positive Werte ergeben.</p><a name="block_5"></a><h3 class="Blocktitle">Positionierung zwischen den Messpunkten P1, P2, P3</h3><h4 class="Blocklabel">Zwischenpositionierung "ebenenparallel"</h4><p>Der Messtaster fährt parallel zur Bezugsfläche im Abstand des Parameters L2 zum Messpunkt P2 bzw. nach der 2. Messung im Abstand des Parameters L3 zum Messpunkt P3. Dabei wird der Winkel aus den Parametern <b>α </b>und <b>TSA </b>berücksichtigt. TSA enthält den Wert für die maximal zulässige Winkelabweichung.</p><p>Nach Ausführung der Messung in P1 erfolgt eine Positionierung zu P2 in der 1. Achse der Ebene und in der 3. Achse der Ebene (bei G17 in X und Z) unter Berücksichtigung des Winkels <b>β</b> und einer maximalen Abweichung in <b>TSA</b>. Nach Ausführung der Messung in P2 erfolgt die Rückpositionierung zu P1 auf gleichem Weg. Dann wird von P1 zu P3 in der 2. Achse der Ebene (bei G17 in X und Y) und der 3. Achse der Ebene unter Berücksichtigung des Winkels <b>α</b> und maximaler Abweichung in <b>TSA </b>positioniert und danach gemessen.</p><h4 class="Blocklabel">Zwischenpositionierung "achsparallel"</h4><p>Die Positionierung von P1 zu P2 erfolgt in der 1. Achse der Ebene, von P1 zu P3 in der 2. Achse der Ebene. P2 bzw. P3 müssen mit der P1-Anfangsposition in der 3. Achse der Ebene (bei G17 in Z) ebenfalls kollisionsfrei erreichbar sein.</p><a name="block_6"></a><h3 class="Blocktitle">Position nach Messzyklus-Ende</h3><p>Der Messtaster steht über dem letzten Messpunkt (P3) im Abstand des Messweges gegenüber der Messfläche.</p></div>
+    <p>Siehe auch:<br />    <a href="slstepmeadjustplane.html">Messen: Ebene ausrichten (CYCLE998)</a></p>
+  </body>
+</html>

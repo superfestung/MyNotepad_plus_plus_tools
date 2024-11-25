@@ -1,0 +1,138 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Safe Cam (SCA)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Safe Cam (SCA)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Die Funktion "Safe Cam" ("Sicherer Nocken") gibt ein sicheres Signal aus, wenn sich der Antrieb innerhalb eines spezifizierten Positionsbereichs befindet. Durch diese Funktion kann eine sichere Bereichserkennung für jede Achse realisiert werden.</p>
+      <h4 class="Blocklabel">Regeln zur Festlegung der Nockenposition:</h4>
+      <ul>
+        <li>
+          <p>Die zu überwachenden Nockenpositionen legen Sie mithilfe der Parameter p9536[x] und p9537[x] fest (mit x =  0 ... 29).</p>
+          <p>Beachten Sie folgende Regeln: </p>
+          <ul>
+            <li>
+              <p>Die definierten Nocken müssen eine bestimmte Mindestlänge aufweisen: p9536[x] - p9537[x] >= p9540 + p9542. </p>
+            </li>
+            <li>
+              <p>Der Minus-Positionswert (p9537[x]) muss kleiner sein als der Plus-Positionswert (p9536[x]).</p>
+            </li>
+            <li>
+              <p>Die Nockenpositionen müssen einen Mindestabstand zur Moduloposition einhalten: </p>
+              <p>Der Minus-Positionswert eines Nockens muss größer sein, als die "untere Modulogrenze + Nockentoleranz (p9540) + Positionstoleranz (p9542)".</p>
+              <p>Der Plus-Positionswert eines Nockens muss kleiner sein als die obere Modulogrenze - Nockentoleranz (p9540) - Positionstoleranz (p9542). </p>
+              <p>Bei parametrierter Moduloposition (p9505 > 0) ist die untere Modulogrenze = 0, die obere Modulogrenze = p9505. </p>
+            </li>
+          </ul>
+          <p>Somit kann keine Nocke über den Modulobereich hinweg definiert werden. </p>
+          <p>Bei einer Verletzung dieser Regeln gibt der Antrieb die Meldung F01686 ("SI Motion: Parametrierung Nockenposition unzulässig") heraus. </p>
+        </li>
+        <li>
+          <p>Durch unterschiedliche Takt- und Laufzeiten schalten die Nockensignale der beiden Überwachungskanäle nicht zeitgleich bzw. nicht genau auf der gleichen Position. Deshalb geben Sie bei Bedarf über Parameter p9540 ein Toleranzband für alle Nocken vor. Innerhalb dieses Toleranzbandes können die Überwachungskanäle unterschiedliche Signalzustände des gleichen Nockens haben:</p>
+          <a id="image_111778072715_0">
+          </a> <img border="0" src="images/159604419595.png" width="363" height="167" alt="Nocken und Toleranz parametrieren"/><p class="imgtitle">Nocken und Toleranz parametrieren</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Das Toleranzband für die Funktion SCA sollte so klein wie möglich gewählt werden (&lt;5 ... 10 mm). Es ist sinnvoll, die Nockentoleranz größer gleich der Istwerttoleranz zu parametrieren.</p></td></tr></table></li>
+        <li>
+          <p>Referenzieren Sie die Achse mithilfe der Funktion "<a href="konf_dbsi_siRef.html">Sicheres Referenzieren</a>".</p>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Voraussetzung</h3>
+      <p>Damit Änderungen an den Parametern dieser Safety-Funktion möglich sind, muss der <a href="147125433483.html">Inbetriebnahme-Modus</a> aktiviert sein. Die Safety-Funktion SCA steht für den ausgewählten Antrieb nur dann zur Verfügung, wenn in den <a href="konf_dbsi_options.html">Optionen</a> vorher eine erweiterte Funktion mit Geber eingestellt und parametriert wurde.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Einstellungen</h3>
+      <p>In diesem Fenster können Sie folgende Einstellungen für den Antrieb vornehmen: </p>
+      <ul>
+        <li>
+          <p>Funktion (SCA)</p>
+          <ul>
+            <li>
+              <p>Modulowert SP<br />SI Motion SP Modulowert (Control Unit) (p9505)</p>
+            </li>
+            <li>
+              <p>Freigabe SCA<br />SI Motion Freigabe sichere Funktionen (Control Unit): Freigabe Sichere Nocken (p9501.28)</p>
+            </li>
+            <li>
+              <p>Hysterese</p>
+              <p>SI Motion SCA (SN) Toleranz (Control Unit) (pp9540)</p>
+            </li>
+            <li>
+              <p>Istposition</p>
+              <p>SI Motion Diagnose sichere Position: Lastseitiger Istwert auf Control Unit) (p9708[0])</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Nocken</p>
+          <ul>
+            <li>
+              <p>Freigabe</p>
+              <p>SI Motion SCA (SN) Freigabe (Control Unit) (p9503.Bit 0..29)<br />SCA1 bis SCA30</p>
+            </li>
+            <li>
+              <p>Nockenbezeichner</p>
+              <p>Bezeichnung der Nocken<br />1 bis 30</p>
+            </li>
+            <li>
+              <p>Position Minus [mm] (p9537[0..29])</p>
+              <p>SI Motion SCA (SN) Minusnocken-Position (Control Unit) (p9537[0..29])</p>
+              <p>SCA1 bis SCA30</p>
+            </li>
+            <li>
+              <p>Position Plus [mm]</p>
+              <p>SI Motion SCA (SN) Plusnocken-Position (Control Unit) (p9536[0..29])</p>
+              <p>SCA1 bis SCA30</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>Folgende LEDs können einen Status anzeigen (blau = Bedingung erfüllt; grau = Bedingung nicht erfüllt):</p>
+      <ul>
+        <li>
+          <p>Funktion (SCA)</p>
+          <ul>
+            <li>
+              <p>SCA angewählt</p>
+              <p>SI Motion antriebsintegriert Steuersignale: Abwahl SCA (r9720.23)</p>
+            </li>
+            <li>
+              <p>SCA aktiv</p>
+              <p>SI Motion SCA Statussignal (Control Unit): Funktion “Sicherer Nocken” aktiv (r9703.30)</p>
+            </li>
+            <li>
+              <p>SCA gültig</p>
+              <p>SI Motion SCA Statussignal (Control Unit): Funktion “Sicherer Nocken” gültig (r9703.31)</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Nocken</p>
+          <ul>
+            <li>
+              <p>Position auf Nocken</p>
+              <p>SI Motion SCA Statussignal (Control Unit): Position auf sicherem Nocken, 1 bis 30 (r9703.Bit 0..29)</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Parameterliste</h4>
+      <p>Jede Einstellung in dieser Dialogmaske können Sie bei Bedarf alternativ auch über eine Parameterliste vornehmen. Zur <a href="147125442315.html">Parameterliste</a> gelangen Sie über über den Softkey ">>" und anschließend den Softkey "Parameterliste". </p>
+      <p>
+      </p>
+      <p>Über den Softkey "<a href="konf_dbsi_CamNames.html">Nockenbezeichn.</a>" können Sie für Achsen/Antriebe Namen und Tooltips definieren.</p>
+    </div>
+    <p>Siehe auch:<br />    <a href="147125519883.html">Funktionsdialoge aufrufen</a></p>
+  </body>
+</html>

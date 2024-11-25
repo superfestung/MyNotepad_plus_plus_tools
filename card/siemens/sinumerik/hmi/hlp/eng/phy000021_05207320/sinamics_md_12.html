@@ -1,0 +1,1461 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5416">p5416[0...1]</a></b></td>
+<td colspan="4"><b>CI: Line droop control voltage droop supplementary setpoint / Ldrp U_suppl_set</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl, Line transf), R_INF (Line droop ctrl, Line transf), A_INF_840 (Line droop ctrl, Line transf), A_INF_828 (Line droop ctrl, Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the voltage droop supplementary setpoint (as a % of p0210).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Supplementary setpoint is smoothed<br />
+[1] = Supplementary setpoint direct<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5415<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">For index [1]:<br />Setpoint steps without smoothing can result in significant equalization operations in the line supply and the overload of the inverter and the line components.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For index [0]:<br />The setpoint signals are smoothed using a PT1 filter (smoothing time: p5419).<br />For index [1]:<br />If the signals for the unsmoothed setpoints are precisely reset to 0 (e.g. for p5483[3] = 1), then by internally adapting the smoothed setpoint state, an undesirable step-like voltage change is avoided. The signal for the smoothed setpoint should be adapted using a corresponding voltage change, if the output voltage is to be kept constant.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5417">p5417</a></b></td>
+<td colspan="4"><b>Line droop control voltage droop gradient / Ldrp U grad</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >100.00</td>
+<td >5.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the voltage droop gradient.<br />
+This value is entered as a % referred to the device supply voltage (p0210)<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5415<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For the reactive current voltage droop (p5400.0 = 0), the following applies:<br />The gradient is the required voltage change for a reactive current having the same magnitude as the rated current (r0207).<br />For the reactive power voltage droop (p5400.0 = 1), the following applies:<br />The gradient is the required voltage change for the reactive power, which is obtained at rated voltage and rated current (1.732 * p0210 * r0207).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5418">p5418</a></b></td>
+<td colspan="4"><b>CI: Line droop control voltage droop gradient dynamic / Ldrp U grad dy</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the additional gradient of the voltage characteristic.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5419">p5419</a></b></td>
+<td colspan="4"><b>Line droop control voltage droop smoothing time / Ldrp U t_smth</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >10000.00</td>
+<td >150.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the smoothing time for the reactive current actual value (r5421[1]).<br />
+The smoothed reactive current is the input quantity for the reactive current voltage droop.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5415<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">When the load changes, mechanical energy generation units induce a delayed change in voltage on account of their electrical properties. The converter tries to emulate this response with the assistance of the smoothing time.<br />For the line to remain stable, all the energy generation units in a separate network have to respond in a similar manner during operation.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5420">r5420</a></b></td>
+<td colspan="4"><b>CO: Line droop control voltage droop output / Ldrp U outp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output for the smoothed output voltage of the reactive current voltage droop.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5415<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5421">r5421[0...1]</a></b></td>
+<td colspan="4"><b>CO: Line droop control voltage droop reactive current / Ldrp U I_react</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output for the input reactive current of the reactive current voltage droop.<br />
+The reactive current is calculated for the currents and voltages defined with connector inputs p5403 and p5404.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Unsmoothed<br />
+[1] = Smoothed<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5419<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For index [1]:<br />The value is smoothed using a PT1 filter (smoothing time: p5419).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5422">r5422[0...1]</a></b></td>
+<td colspan="4"><b>CO: Line droop control voltage droop reactive power / Ldrp U Q_react</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> 14_12</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> r2004</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output for the input reactive power of the reactive current voltage droop.<br />
+The reactive power is calculated for the currents and voltages defined with connector inputs p5403 and p5404.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Unsmoothed<br />
+[1] = Smoothed<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5419<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For index [1]:<br />The value is smoothed using a PT1 filter (smoothing time: p0045).<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5423">p5423</a></b></td>
+<td colspan="4"><b>Line droop control supplementary inductance / Ldrp L_suppl</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-10.000</td>
+<td  >10.000</td>
+<td >0.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets an imaginary supplementary inductance for the infeed.<br />
+The supplementary inductance supplements the effect of the voltage droop, in particular for transient operations.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5424<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Warning:</b></td>
+<td width="85%">Unsuitable supplementary inductance and smoothing time settings will make line droop control unstable.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The supplementary inductance is deactivated with p5423 = 0.<br />The converter's output voltage is calculated so that the converter behaves like a supplementary inductance and as such achieves an effect similar to a line reactor with higher&#47;lower inductance.<br />The supplementary inductance can be used for damping in the event of resonance phenomena on the line.<br />This parameter can only be set to 0.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5424">p5424</a></b></td>
+<td colspan="4"><b>Line droop control supplementary inductance smoothing time / Ldrp L_suppl t_sm</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >100.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the smoothing time for the effect of the supplementary inductance (p5423).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5423<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The supplementary inductance causes current change to be fed back to the converter's output voltage.<br />This parameter can only be set to 0.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5425">p5425[0...1]</a></b></td>
+<td colspan="4"><b>CI: Line droop control voltage control signal source / Ldrp U_ctrl s_s</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >3468[0]</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for the voltage to be regulated at the connection point in alpha&#47;beta coordinates.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Recommend.:</b></td>
+<td>Set the same signal source for connector input p5404[0, 1] and p5425[0, 1].<br /></td></tr>
+</table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Alpha<br />
+[1] = Beta<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5404, p5427<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The following BICO interconnections are recommended:<br />- Compensation of the internal voltage drop for connection point at line filter: BI: p5425 = r3468<br />- Compensation of the internal voltage drop for connection point at line transformer: BI: p5425 = r5488 or r5498<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5426">p5426</a></b></td>
+<td colspan="4"><b>Line droop control voltage control P gain / Ldrp U_ctrl Kp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >100.0</td>
+<td >0.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the proportional gain for the controller for voltage control at the connection point.<br />
+The controller compensates internal voltage drops under load conditions and as such precisely converts the droop characteristic at the connection point (defined in p5425).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5427<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The proportional component of the controller is deactivated with p5426 = 0.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5427">p5427</a></b></td>
+<td colspan="4"><b>Line droop control voltage control integration time / Ldrp U_ctrl Ti</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl, Line transf), R_INF (Line droop ctrl, Line transf), A_INF_840 (Line droop ctrl, Line transf), A_INF_828 (Line droop ctrl, Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >10000.0</td>
+<td >500.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the integration time for the controller for voltage control at the connection point.<br />
+The controller compensates internal voltage drops under load conditions and as such precisely converts the droop characteristic at the connection point (defined in p5425).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5426<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The integral component of the controller is deactivated with p5427 = 0.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5428">p5428[0...3]</a></b></td>
+<td colspan="4"><b>Line droop control voltage control short circuit / Ldrp U_ctrl sh</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >100.00</td>
+<td >20.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the parameters for rapid precontrol of the output voltage in the event of a voltage dip.<br />
+The values relate to the voltage setpoint from the voltage droop (r5420).<br />
+The voltage output by the converter is formed from the product of the voltage setpoint and the adaptation factor, which is calculated in rapid precontrol.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Adaptation factor lower limit<br />
+[1] = Adaptation factor increment current limit<br />
+[2] = Adaptation factor increment voltage difference<br />
+[3] = Adaptation factor increment increase<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r5452<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Rapid adaptation of the voltage setpoint to a reduced line voltage (e.g. in the event of a line short circuit) reduces the number of additional switching operations completed by the lower-level rapid current hysteresis controller.<br />For index [0]:<br />Minimum value for the adaptation factor, must be complied with for the calculation of the reduced output voltage. The factory setting is appropriate if the inductance of the commutating reactor (p0223) has the value p3421 - p3424.<br />Higher values for p5428[0] result in higher rms values of the currents in the case of a short circuit. However, current limiting also intervenes more &ndash; and more harmonics are generated.<br />For excessively low values in p5428[0], the short-circuit displayed in r5479[1] is no longer reached.<br />The function is deactivated with p5428[0] = 100 %.<br />For index [1]:<br />When the current limit is reached, the adaptation factor is weighted with this factor in each sampling cycle. A value of 0 means that the adaptation factor will jump to the minimum value (p5428[0]) if the current limit is reached. The function is deactivated for a value of 100%.<br />For index [2]:<br />If the voltage across the line reactor exceeds the minimum value (p5428[0]) for at least 2 current controller sampling times, the adaptation factor will be weighted with this factor (p5428[2]) in every sampling cycle.<br />For index [3]:<br />If none of the above criteria for reducing the adaptation factor is met, the adaptation factor is increased by the percentage value p5428[3] in each current controller sampling time (the increase is additive). If the adaptation factor reaches the maximum value of 100%, the effect of precontrol by means of multiplication by the droop setpoint r5420 is cancelled out.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5429">r5429</a></b></td>
+<td colspan="4"><b>CO: Line droop control voltage control output / Ldrp U_ctrl outp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the controller output for voltage control at the connection point.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5426, p5427<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5430">p5430[0...1]</a></b></td>
+<td colspan="4"><b>Modulation depth controller setting / ModDpth_ctrl set</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983, 7984</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>50.0</td>
+<td  >110.0</td>
+<td >94.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the setpoint&#47;maximum value for the modulation depth controller.<br />
+For index [0]:<br />
+Sets the setpoint for the maximum stationary modulation depth.<br />
+For index [1]:<br />
+Sets the maximum modulation depth.<br />
+With p5430[1] = 110 %, the modulation depth limiting is deactivated.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Setpoint<br />
+[1] = Maximum value<br />
+</td></tr></table>
+<p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5431">p5431</a></b></td>
+<td colspan="4"><b>Modulation depth controller dynamic response / Mod_ctrl dyn</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >10000.0</td>
+<td >10.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the dynamic response for the modulation depth controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The modulation depth controller is deactivated with p5431 &lt; p0115[0].<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5432">p5432[0...1]</a></b></td>
+<td colspan="4"><b>Modulation depth controller output voltage limits / Mod_ctrl lim U</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7984</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-200.0</td>
+<td  >200.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the limits for the output voltage on the modulation depth controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Maximum value<br />
+[1] = Minimum value<br />
+</td></tr></table>
+<p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5433">r5433</a></b></td>
+<td colspan="4"><b>CO: Modulation depth controller output / Mod_ctrl outp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output for the modulation depth controller output.<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5434">p5434</a></b></td>
+<td colspan="4"><b>Direct component controller low pass limit frequency / I_dc_reg PT2 f</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >1.000</td>
+<td >0.500</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the limit frequency for the 2nd order low-pass filter to suppress the direct component in the converter current.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5435<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5435">p5435</a></b></td>
+<td colspan="4"><b>Direct component controller low pass damping / I_dc_reg PT2 D</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.001</td>
+<td  >10.000</td>
+<td >1.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the damping for the 2nd order low-pass filter to suppress the direct component in the converter current.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5434<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5436">p5436</a></b></td>
+<td colspan="4"><b>Direct component controller P gain / I_dc_reg Kp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0000</td>
+<td  >10.0000</td>
+<td >0.0200</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the proportional gain for the PI controller to suppress the direct component in the converter current.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5437<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Recommended setting: p5436 = total resistance of reactor and transformer.<br />The parameter is preset when selecting the power unit (p201). In so doing, as approximation, a transformer with the same rating and a total power loss of 1.5 % is assumed:<br />p5436 = 1.5 % * r0206[0] &#47; (3 * r0207[0] * r0207[0])<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5437">p5437</a></b></td>
+<td colspan="4"><b>Direct component controller integration time / I_dc_reg Ti</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >100.000</td>
+<td >3.500</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the integration time for the PI controller to suppress the direct component in the converter current.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5436<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The parameter is preset when selecting the power unit (p201):<br />p5437 = p5492 &#47; p5436<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5438">p5438</a></b></td>
+<td colspan="4"><b>Direct component controller limiting / I_dc_ctrl limit</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >10.0</td>
+<td >2.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the controller output voltage limiting for the direct component controller.<br />
+This value is entered as a percentage of the rated voltage (p0210).<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5440">p5440</a></b></td>
+<td colspan="4"><b>Harmonics controller bandpass filter activation / Harmonic bandp act</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Setting to activate the bandpass filter for the harmonics controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Filter 0</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>01</td><td>Filter 1</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>02</td><td>Filter 2</td><td>ON</td><td>OFF</td><td>-</td></tr><tr><td></td><td>03</td><td>Filter 3</td><td>ON</td><td>OFF</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5441, p5442, p5443<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">Only filters 0 and 1 can be activated.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5441">p5441[0...3]</a></b></td>
+<td colspan="4"><b>Harmonics controller bandpass filter gain / Bandpass gain</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >10000.00</td>
+<td >120.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the gain for the bandpass filter for the harmonics controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Filter 0<br />
+[1] = Filter 1<br />
+[2] = Filter 2<br />
+[3] = Filter 3<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5440, p5442<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5442">p5442[0...3]</a></b></td>
+<td colspan="4"><b>Harmonics controller bandpass filter mid-frequency / Bandpass f_mid</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >1000.00</td>
+<td >300.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the mid-frequency for the bandpass filter for the harmonics controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Filter 0<br />
+[1] = Filter 1<br />
+[2] = Filter 2<br />
+[3] = Filter 3<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5440, p5441, p5443<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The parameter should be set to a value which is greater than or equal to the fundamental frequency.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5443">p5443</a></b></td>
+<td colspan="4"><b>Harmonics controller bandpass filter gain total / Bandpass gain tot</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7983</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >100.00</td>
+<td >1.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the total gain for all bandpass filters for the harmonics controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5440, p5441, p5442<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5444">r5444[0...1]</a></b></td>
+<td colspan="4"><b>CO: Line droop control line voltage absolute value / U_line AbsV</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output of the absolute value of the line voltage.<br />
+r5444 = sqrt (r5445[0]^2 + r5445[1]^2)<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Droop (p5404)<br />
+[1] = Voltage correction (p5425)<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r5445<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5445">r5445[0...11]</a></b></td>
+<td colspan="4"><b>Line droop control voltage alpha&#47;beta component / U A&#47;B comp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982, 7983</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the alpha&#47;beta component of the voltages.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Line voltage alpha<br />
+[1] = Line voltage beta<br />
+[2] = Converter output voltage alpha<br />
+[3] = Converter output voltage beta<br />
+[4] = Line droop output voltage alpha<br />
+[5] = Line droop output voltage beta<br />
+[6] = DC controller output voltage alpha<br />
+[7] = DC controller output voltage beta<br />
+[8] = Harmonic controller voltage alpha<br />
+[9] = Harmonic controller voltage beta<br />
+[10] = Additional inductance voltage alpha<br />
+[11] = Additional inductance voltage beta<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r5444<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5446">r5446[0...1]</a></b></td>
+<td colspan="4"><b>CO: Line droop control line voltage active&#47;reactive component / U_line P&#47;Q comp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output of the active&#47;reactive component of the line voltage.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Active<br />
+[1] = Reactive<br />
+</td></tr></table>
+<p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5447">r5447</a></b></td>
+<td colspan="4"><b>CO: Line droop control line voltage absolute value / I_line AbsV</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> 6_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output of the line current absolute value at the connection point (p5403, p5404).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r5448<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The following applies:<br />r5447 = sqrt(r5448[0]^2 + r5448[1]^2)<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5448">r5448[0...3]</a></b></td>
+<td colspan="4"><b>Line droop control line current alpha&#47;beta component / I_line A&#47;B comp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982, 7983</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the alpha&#47;beta components of the current.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Alpha<br />
+[1] = Beta<br />
+[2] = Alpha<br />
+[3] = Beta<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r5447<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For index [0, 1]:<br />Displays the line current.<br />For index [2, 3]:<br />Displays the DC component of the power unit current for the DC component controller.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5449">r5449[0...1]</a></b></td>
+<td colspan="4"><b>CO: Line droop control line current active&#47;reactive component / I_line P&#47;Q comp</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7982</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2002</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output of the active&#47;reactive component of the line current.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Active<br />
+[1] = Reactive<br />
+</td></tr></table>
+<p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5450">r5450[0...5]</a></b></td>
+<td colspan="4"><b>CO: Line droop control setpoint active / Ldrp set act</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Display and connector output for the active setpoints of the line droop control.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Voltage droop no-load operation<br />
+[1] = Voltage droop gradient<br />
+[2] = Frequency droop no-load operation<br />
+[3] = Frequency droop gradient<br />
+[4] = Voltage supplementary setpoint direct<br />
+[5] = Frequency supplementary setpoint direct<br />
+</td></tr></table>
+<p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5451">p5451</a></b></td>
+<td colspan="4"><b>BI: Current hysteresis controller operating mode / I_hyst_ctrl mode</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned32 / Binary</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Commands</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the signal source for setting the operating mode on the current hysteresis controller.<br />
+BI: p5451 = 1 signal:<br />
+Combined operation (main generator and auxiliary generator on the line).<br />
+BI: p5451 = 0 signal:<br />
+Isolated operation (main generator only on the line).<br />
+</td></tr></table>
+
+<table  width="100%"></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5452">r5452.0...3</a></b></td>
+<td colspan="4"><b>CO&#47;BO: Current hysteresis controller sequence control status word / I_hyst_ctrl seqZSW</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the sequence control status word on the current hysteresis controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Initialization</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>01</td><td>No load</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>02</td><td>Normal</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>03</td><td>Short circuit</td><td>Yes</td><td>No</td><td>-</td></tr></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5457, p5458, p5459<br />Refer to: F06850</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5453">p5453[0...5]</a></b></td>
+<td colspan="4"><b>Current hysteresis controller overcurrent limit / I_hyst_ctrl I lim</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>45.0</td>
+<td  >130.0</td>
+<td >85.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the permissible maximum current in the event of an overload and short circuit for the modulator to intervene and apply limiting.<br />
+The effective current limits are calculated from the parameterized overcurrent (p5453) and the hysteresis width (p5454).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = No-load operation (p5451 = 1 signal)<br />
+[1] = Normal operation (p5451 = 1 signal)<br />
+[2] = Short-circuit operation (p5451 = 1 signal)<br />
+[3] = No-load operation (p5451 = 0 signal)<br />
+[4] = Normal operation (p5451 = 0 signal)<br />
+[5] = Short-circuit operation (p5451 = 0 signal)<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">The overcurrent limit (p5453) cannot be set less than or equal to the hysteresis width (p5454).<br />Refer to: p5454, p5455, p5478<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The setting values are automatically set.<br />This manual setting is only possible for the case that p5478[0, 1] = 50 %, and it is critical that expert knowledge is available.<br />For devices with r0192.19 = 0 (e.g. Active Line Module Booksize), the maximum current limit can be set to p5453[5] = 105 %.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The value is referred to the internal reference current.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5454">p5454[0...5]</a></b></td>
+<td colspan="4"><b>Current hysteresis controller overcurrent hysteresis width / I_hyst_ctrl I hyst</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>15.0</td>
+<td  >50.0</td>
+<td >20.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the permissible current hysteresis in the event of an overload and short circuit for the modulator to intervene and apply limiting.<br />
+The effective current limits are calculated from the parameterized overcurrent (p5453) and the hysteresis width (p5454).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = No-load operation (p5451 = 1 signal)<br />
+[1] = Normal operation (p5451 = 1 signal)<br />
+[2] = Short-circuit operation (p5451 = 1 signal)<br />
+[3] = No-load operation (p5451 = 0 signal)<br />
+[4] = Normal operation (p5451 = 0 signal)<br />
+[5] = Short-circuit operation (p5451 = 0 signal)<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">The hysteresis width (p5454) cannot be set greater than or equal to the overcurrent limit (p5453).<br />Refer to: p5453, p5478<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The setting values are automatically set. This manual setting is only possible for the case that p5478[0, 1] = 50 %, and it is critical that expert knowledge is available.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The value is referred to the internal reference current.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5455">p5455[0...5]</a></b></td>
+<td colspan="4"><b>Current hysteresis controller overcurrent tolerance range / I_hyst_ctrl I tol</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>10.0</td>
+<td  >100.0</td>
+<td >20.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the permissible tolerance range in the event of an overload and short circuit for the modulator to intervene and apply limiting.<br />
+The effective current limit is calculated from the overcurrent limit (p5453) plus the overcurrent tolerance range (p5455).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = No-load operation (p5451 = 1 signal)<br />
+[1] = Normal operation (p5451 = 1 signal)<br />
+[2] = Short-circuit operation (p5451 = 1 signal)<br />
+[3] = No-load operation (p5451 = 0 signal)<br />
+[4] = Normal operation (p5451 = 0 signal)<br />
+[5] = Short-circuit operation (p5451 = 0 signal)<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5453, p5478<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Notice:</b></td>
+<td width="85%">The setting values are automatically set. This manual setting is only possible for the case that p5478[0, 1] = 50 %, and it is critical that expert knowledge is available.<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The value is referred to the internal reference current.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5456">p5456[0...2]</a></b></td>
+<td colspan="4"><b>Current hysteresis controller configuration / I_hyst_ctrl config</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Modulation</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >1000 0000 0010 0000 bin</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the configuration for the current hysteresis controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>04</td><td>Disable wobbulation amplitude</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>05</td><td>Activate extended current limitation control</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>06</td><td>Activate isochronous current limitation</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>10</td><td>Activate pulse-locking&#47;pulse-dropping function</td><td>Pulse-Dropping</td><td>Pulse-Locking</td><td>-</td></tr><tr><td></td><td>15</td><td>Activate flat-top modulation</td><td>Yes</td><td>No</td><td>-</td></tr></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = No load<br />
+[1] = Normal operation<br />
+[2] = Short-circuit operation<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For bit 04 = 0:<br />The pulse frequency wobbulation amplitude (p1811) is enabled. Only applies if p1810.2 = 1.<br />For bit 04 = 1:<br />The pulse frequency wobbulation amplitude (p1811) is disabled. Only applies if p1810.2 = 1.<br />For bit 10:<br />The setting according to p1810.10 applies.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5457">p5457[0...2]</a></b></td>
+<td colspan="4"><b>Current hysteresis controller pulse frequency changeover / I_hyst_ctrl f_puls</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>50.0</td>
+<td  >200.0</td>
+<td >100.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the pulse frequency for the operating states of the current hysteresis controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = No load<br />
+[1] = Normal operation<br />
+[2] = Short-circuit operation<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The value refers to p1800.<br />Only factors of the pulse frequency in p1800 are permitted.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5458">p5458[0...1]</a></b></td>
+<td colspan="4"><b>Current hysteresis controller minimum time operating state / I_hyst_ctrl t mode</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.000</td>
+<td  >3.000</td>
+<td >1.000</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the minimum times for the operating states of the current hysteresis controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Normal operation<br />
+[1] = Short-circuit operation<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: F06850</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For p5458[0]:<br />Minimum time for operating state &quot;Rated operation&quot; for change to &quot;No-load operation&quot;.<br />For p5458[1]:<br />Permissible short-circuit duration. If the short circuit is not cleared within this time, the main generator will shut down with fault F06850.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5459">p5459[0...3]</a></b></td>
+<td colspan="4"><b>Current hysteresis controller sequence control state change / I_hyst_ctrl seq</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line droop ctrl), R_INF (Line droop ctrl)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> U, T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 4</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> -</td><td><b>Func. diagram:</b> 7986</td></tr><tr><td><b>P-Group:</b> Displays, signals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.0</td>
+<td  >200.0</td>
+<td >10.0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the limits for state change in the sequence control on the current hysteresis controller.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Index:</b></td>
+<td width="85%">[0] = Lower current limit no-load&#47;normal operation<br />
+[1] = Upper current limit normal&#47;no-load operation<br />
+[2] = Lower voltage limit short-circuit operation<br />
+[3] = Upper voltage limit short-circuit&#47;normal operation<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: r5452<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">The current value refers to r0209.<br />The voltage value refers to p0210.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5460">p5460[0...n]</a></b></td>
+<td colspan="4"><b>VSM2&#47;3 input line supply voltage, voltage divider / VSM2&#47;3 inp U_divid</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line transf), R_INF (Line transf), A_INF_840 (Line transf), A_INF_828 (Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> p0150</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> PERCENT</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0.00</td>
+<td  >100000.00</td>
+<td >0.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets a voltage divider for the Voltage Sensing Module 2&#47;3 (VSM2&#47;3).<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">When the 690 V input is used (X522) without voltage scaler, 0 % should be entered.<br />When the 100 V input (X521) is used with voltage scaler to measure medium voltages, the dividing (scaling) factor multiplied by 100% should be entered.<br />Example:<br />1000 V line supply voltage, voltage scaling, 10:1<br />--&gt; voltage at the VSM input is 100 V<br />--&gt; p5460 = 10 * 100 % = 1000 %<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5461">r5461[0...n]</a></b></td>
+<td colspan="4"><b>CO: VSM2 input line supply voltage u1 - u2 / VSM2 inp u1-u2</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line transf), R_INF (Line transf), A_INF_840 (Line transf), A_INF_828 (Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> p0150</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 5_3</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the voltage between phases L1 and L2.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">X521.1 or X522.1: Connection of L1<br />X521.2 or X522.2: Connection of L2<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5462">r5462[0...n]</a></b></td>
+<td colspan="4"><b>CO: VSM2 input line supply voltage u2 - u3 / VSM2 inp u2-u3</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line transf), R_INF (Line transf), A_INF_840 (Line transf), A_INF_828 (Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> p0150</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 5_3</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2001</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the voltage between phases L2 and L3.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">X521.2 or X522.2: Connection of L2<br />X521.3 or X522.3: Connection of L3<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5464">r5464[0...n]</a></b></td>
+<td colspan="4"><b>CO: VSM2 temperature evaluation status / VSM2 temp status</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line transf), R_INF (Line transf), A_INF_840 (Line transf), A_INF_828 (Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Unsigned16</td><td><b>Dynamic index:</b> p0150</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Terminals</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the status of the temperature evaluation of Voltage Sensing Module 2 (VSM2).<br />
+This displays whether the temperature actual value has exceeded the fault&#47;alarm threshold.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Bit field:</b></td><td><b>Bit</b></td><td><b>Signal name</b></td><td><b>1 signal</b></td><td><b>0 signal</b></td><td><b>FP</b></td></tr><tr><td></td><td>00</td><td>Alarm is present</td><td>Yes</td><td>No</td><td>-</td></tr><tr><td></td><td>01</td><td>Fault is present</td><td>Yes</td><td>No</td><td>-</td></tr></table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5465">p5465[0...n]</a></b></td>
+<td colspan="4"><b>VSM2 temperature evaluation sensor type / VSM2 temp sens_typ</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line transf), R_INF (Line transf), A_INF_840 (Line transf), A_INF_828 (Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> Integer16</td><td><b>Dynamic index:</b> p0150</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> -</td><td><b>Unit selection:</b> -</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> -</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>0</td>
+<td  >6</td>
+<td >0</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the temperature sensor for Voltage Sensing Module 2 (VSM2).<br />
+The temperature sensor is connected to terminals X520.5 and X520.6 on the VSM2.<br />
+</td></tr></table>
+
+<table  width="100%"><tr><td valign="top" width="15%"><b>Value:</b></td>
+<td width="85%">0:		No sensor<br />1:		PTC<br />2:		KTY84<br />6:		PT1000<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5466">r5466[0...n]</a></b></td>
+<td colspan="4"><b>CO: VSM2 temperature actual value / VSM2 temp_ActV</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line transf), R_INF (Line transf), A_INF_840 (Line transf), A_INF_828 (Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> -</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> p0150</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> Closed-loop control</td><td><b>Units group:</b> 21_1</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2006</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-</td>
+<td  >-</td>
+<td >-</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Displays the temperature actual value of a temperature sensor connected to Voltage Sensing Module 2 (VSM2).<br />
+Prerequisite:<br />
+A KTY&#47;PT1000 temperature sensor is connected, and p5465 is set = 2, 6.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5465<br /></td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For sensor type PTC (p5465 = 1), the following applies:<br />- Below the nominal response temperature, r5466 = -50 &deg;C.<br />- Above the nominal response temperature, r5466 = 250 &deg;C.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5467">p5467[0...n]</a></b></td>
+<td colspan="4"><b>VSM2 overtemperature alarm threshold / VSM2 temp A_thr</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line transf), R_INF (Line transf), A_INF_840 (Line transf), A_INF_828 (Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> p0150</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> 21_1</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2006</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-100.00</td>
+<td  >301.00</td>
+<td >150.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the alarm threshold for the temperature sensor on Voltage Sensing Module 2 (VSM2).<br />
+Prerequisite:<br />
+A KTY&#47;PT1000 temperature sensor is connected, and p5465 is set = 2, 6.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5465<br />Refer to: F06255, A34211</td></tr>
+</table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Note:</b></td>
+<td width="85%">For sensor type KTY (p5465[0...1] = 2) or PT1000 (p5465[0...1] = 6) values 181 ... 300 &deg;C result in fault F06255.<br />Monitoring is deactivated for p5467[0...1] = 301.<br /></td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5468">p5468[0...n]</a></b></td>
+<td colspan="4"><b>VSM2 overtemperature shutdown threshold / VSM2 temp F_thr</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line transf), R_INF (Line transf), A_INF_840 (Line transf), A_INF_828 (Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> p0150</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> 21_1</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2006</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>-100.00</td>
+<td  >301.00</td>
+<td >180.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the shutdown threshold for the temperature sensor of the VSM2 to monitor a temperature.<br />
+Prerequisite:<br />
+A KTY&#47;PT1000 temperature sensor is connected, and p5465 is set = 2, 6.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5467<br />Refer to: F34207</td></tr>
+</table><p></p>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td valign="top" colspan="2" width="15%"><b><a name="5469">p5469[0...n]</a></b></td>
+<td colspan="4"><b>VSM2 overtemperature hysteresis / VSM2 temp hyst</b></td></tr>
+<tr><td valign="top" colspan="2" rowspan="4" width="15%">A_INF (Line transf), R_INF (Line transf), A_INF_840 (Line transf), A_INF_828 (Line transf)</td>
+<td valign="top" width="30%"><b>Can be changed:</b> T</td>
+<td width="30%"></td><td width="30%"><b>Access level:</b> 3</td></tr><tr><td><b>Data type:</b> FloatingPoint32</td><td><b>Dynamic index:</b> p0150</td><td><b>Func. diagram:</b> -</td></tr><tr><td><b>P-Group:</b> -</td><td><b>Units group:</b> 21_2</td><td><b>Unit selection:</b> p0505</td></tr><tr><td><b>Not for motor type:</b> -</td><td><b>Scaling:</b> p2006</td><td><b>Expert list:</b> 1</td></tr></table>
+<table border="0"  cellspacing="0" cellpadding="2" width="100%"><tr><td colspan="2" width="15%"  ></td><td width="30%"  style="font-size:x-small" ><b>Min</b></td>
+<td width="30%"  ><b>Max</b></td>
+<td width="30%"  ><b>Factory setting</b></td></tr>
+<tr><td colspan="2" ></td>
+<td>1.00</td>
+<td  >50.00</td>
+<td >3.00</td></tr></table>
+
+
+<table  width="100%">
+<tr><td valign="top" width="15%"><b>Description:</b></td>
+<td  width="85%">Sets the hysteresis for the alarm threshold of the VSM2 to monitor a temperature.<br />
+</td></tr></table>
+
+<table  width="100%"></table>
+<table  width="100%"><tr><td valign="top" width="15%"><b>Dependency:</b></td>
+<td width="85%">Refer to: p5467<br /></td></tr>
+</table><p></p></body></html>

@@ -1,0 +1,1908 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="230050">F230050</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: &Uuml;berspannung Versorgung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>F&uuml;r CU31x und CUA31 gilt:<br />
+Die Spannungs&uuml;berwachung auf dem DAC-Board signalisiert einen &Uuml;berspannungsfehler auf der Baugruppe.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Spannungsversorgung der Control Unit pr&uuml;fen (24 V).<br />
+- Gegebenenfalls Baugruppe tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230052">F230052</a></b></td>
+<td><b>&lt;Ortsangabe&gt;EEPROM Daten fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Falsche EEPROM Daten der Leistungsteilbaugruppe.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+0: Die von der Leistungsteilbaugruppe eingelesenen EEPROM-Daten sind inkonsistent.<br />
+1: Die EEPROM-Daten sind nicht kompatibel zur Firmware der Leistungsteilapplikation.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 0:<br />
+Austausch der Leistungsteilbaugruppe oder Update der EEPROM-Daten.<br />
+Zu St&ouml;rwert = 1:<br />
+F&uuml;r CU31x und CUA31 gilt:<br />
+Update der Firmware \SIEMENS\SINAMICS\CODE\SAC\cu31xi.ufw (cua31.ufw)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230062">F230062 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;&Uuml;berbr&uuml;ckungssch&uuml;tz wurde unter Strom ge&ouml;ffnet</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+ (AUS1, AUS2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das &Uuml;berbr&uuml;ckungssch&uuml;tz der Einspeisung wurde durch (mehrfaches) &Ouml;ffnen unter Strom besch&auml;digt.<br />
+M&ouml;gliche Ursachen:<br />
+- Ein planm&auml;&szlig;iges &Ouml;ffnen unter Last kann beispielsweise zum Schutz des Umrichterverbands bei einem Erdschluss in Hochfrequenzspindeln notwendig sein.<br />
+- Schalten des Sch&uuml;tzes unter Last kann durch fehlerhafte Bedienung der Einspeisung auftreten, wenn trotz fehlender Betriebsfreigabe der Einspeisung dem Zwischenkreis motorische Wirkleistung entnommen wird.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Um eine schwerwiegende Besch&auml;digung des gesamten Umrichterverbands zu vermeiden, wird dringend der Austausch der besch&auml;digten Einspeisung empfohlen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230070">F230070</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Angeforderter Zyklus von Leistungsteilbaugruppe nicht unterst&uuml;tzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>F&uuml;r CU31x und CUA31 gilt:<br />
+Es wird ein Zyklus angefordert, der von der Leistungsteilbaugruppe nicht unterst&uuml;tzt wird.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+F&uuml;r CU31x und CUA31 gilt:<br />
+0: Der Stromregelzyklus wird nicht unterst&uuml;tzt.<br />
+1: Der DRIVE-CLiQ-Zyklus wird nicht unterst&uuml;tzt.<br />
+2: Internes Timingproblem (Abstand zwischen RX- und TX-Zeitpunkten zu klein).<br />
+3: Internes Timingproblem (TX-Zeitpunkt zu fr&uuml;h).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>F&uuml;r CU31x und CUA31 gilt:<br />
+Die Leistungsteilbaugruppe unterst&uuml;tzt nur folgende Zyklen:<br />
+62.5 &micro;s, 125 &micro;s, 250 &micro;s und 500 &micro;s<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+F&uuml;r CU31x und CUA31 gilt:<br />
+0: Einstellen eines erlaubten Stromregelzyklus.<br />
+1: Einstellen eines erlaubten DRIVE-CLiQ-Zyklus.<br />
+2&#47;3: R&uuml;cksprache mit dem Hersteller (eventuell inkompatible Firmware-Version).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230071">F230071</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Keine neuen Istwerte von Leistungsteilbaugruppe empfangen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>F&uuml;r CU31x und CUA31 gilt:<br />
+Es sind mehr als ein Istwerttelegramm von der Leistungsteilbaugruppe ausgefallen.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>F&uuml;r CU31x und CUA31 gilt:<br />
+Die Schnittstelle (Justierung und Arretierung) zur Leistungsteilbaugruppe &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230072">F230072</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Keine Sollwerte mehr an Leistungsteilbaugruppe &uuml;bertragbar</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>F&uuml;r CU31x und CUA31 gilt:<br />
+Es konnten mehr als ein Sollwerttelegramm nicht an die Leistungsteilbaugruppe &uuml;bertragen werden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>F&uuml;r CU31x und CUA31 gilt:<br />
+Die Schnittstelle (Justierung und Arretierung) zur Leistungsteilbaugruppe &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230073">A230073 (N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Istwert-&#47;Sollwertaufbereitung nicht mehr synchron zum DRIVE-CLiQ</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>F&uuml;r CU31x und CUA31 gilt:<br />
+Die Kommunikation zur Leistungsteilbaugruppe ist nicht mehr synchron zum DRIVE-CLiQ.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>F&uuml;r CU31x und CUA31 gilt:<br />
+Warten bis Synchronisation wieder hergestellt.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230074">F230074</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Kommunikationsfehler zur Leistungsteilbaugruppe</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist keine Kommunikation &uuml;ber den Steckkontakt zur Leistungsteilbaugruppe m&ouml;glich.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>F&uuml;r CU31x und CUA31 gilt:<br />
+Es ist entweder die CU-Baugruppe oder die Leistungsteilbaugruppe auszutauschen. Welche der beiden Komponenten ausgetauscht werden muss, kann durch wechselseitige Kombination mit anderen (funktionierenden) Gegenst&uuml;cken ausprobiert werden; sind solche nicht verf&uuml;gbar, m&uuml;ssen beide Komponenten eingeschickt werden.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230105">F230105</a></b></td>
+<td><b>&lt;Ortsangabe&gt;LT: Istwerterfassung fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Auf dem Power Stack Adapter (PSA) wurde mindestens ein fehlerhafter Istwertkanal erkannt.<br />
+Die fehlerhaften Istwertkan&auml;le werden in folgendem Diagnoseparameter angezeigt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Diagnoseparameter auswerten.<br />
+Bei fehlerhaftem Istwertkanal die Komponenten pr&uuml;fen und gegebenenfalls tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230600">F230600</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: STOP A ausgel&ouml;st</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die antriebsautarke Funktion &quot;Safety Integrated&quot; auf dem Motor Module (MM) hat einen Fehler erkannt und STOP A ausgel&ouml;st (Impulsl&ouml;schung &uuml;ber den Safety-Abschaltpfad des Motor Modules).<br />
+- Zwangsdynamisierung des Safety-Abschaltpfades des Motor Modules fehlgeschlagen.<br />
+- Folgereaktion der St&ouml;rung F30611 (Defekt in einem &Uuml;berwachungskanal).<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+0: Stopanforderung von der Control Unit.<br />
+1005: Impulse gel&ouml;scht, obwohl kein STO angew&auml;hlt ist und kein interner STOP A ansteht.<br />
+1010: Impulse freigegeben, obwohl STO angew&auml;hlt ist oder ein interner STOP A ansteht.<br />
+1020: Interner Software-Fehler in der Funktion &quot;Interner Spannungsschutz&quot;. Die Funktion &quot;Interner Spannungsschutz&quot; wird aufgehoben. Es wird ein nicht-quittierbarer STOP A ausgel&ouml;st.<br />
+9999: Folgereaktion der St&ouml;rung F30611.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Sicher abgeschaltetes Moment anw&auml;hlen und wieder abw&auml;hlen.<br />
+- Betroffenes Motor Module austauschen.<br />
+Zu St&ouml;rwert = 1020:<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Motor Module austauschen.<br />
+Zu St&ouml;rwert = 9999:<br />
+- Diagnose bei der anstehenden St&ouml;rung F30611 durchf&uuml;hren.<br />
+Hinweis:<br />
+CU: Control Unit<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+STO: Safe Torque Off (Sicher abgeschaltetes Moment) &#47; SH: Safe standstill (Sicherer Halt)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230611">F230611</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Defekt in einem &Uuml;berwachungskanal</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+ (AUS1, AUS2)Servo: KEINE<br />
+ (AUS1, AUS2, AUS3)Vector: KEINE<br />
+ (AUS1, AUS2, AUS3)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die antriebsautarke Funktion &quot;Safety Integrated&quot; auf dem Motor Module (MM) hat einen Fehler im kreuzweisen Datenvergleich zwischen Control Unit (CU) und MM erkannt und STOP F ausgel&ouml;st.<br />
+Als Folge dieser St&ouml;rung wird nach Ablauf der parametrierten &Uuml;bergangszeit (p9858) die St&ouml;rung F30600 (SI MM: STOP A ausgel&ouml;st) ausgegeben.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+0: Stopanforderung von der Control Unit.<br />
+1 ... 999:<br />
+Nummer des kreuzweise verglichenen Datums, das zu dieser St&ouml;rung gef&uuml;hrt hat. Diese Nummer wird auch in r9895 angezeigt.<br />
+1: SI &Uuml;berwachungstakt (r9780, r9880).<br />
+2: SI Freigabe sichere Funktionen (p9601, p9801). Nur die unterst&uuml;tzten Bits werden kreuzweise verglichen.<br />
+3: SI SGE-Umschaltung Toleranzzeit (p9650, p9850).<br />
+4: SI &Uuml;bergangszeit STOP F zu STOP A (p9658, p9858).<br />
+5: SI Freigabe sichere Bremsenansteuerung (p9602, p9802).<br />
+6: SI Motion Freigabe sichere Funktionen (p9501, Interner Wert).<br />
+7: SI Verz&ouml;gerungszeit der Impulsl&ouml;schung bei Safe Stop 1 (p9652, p9852).<br />
+8: SI PROFIsafe-Adresse (p9610, p9810).<br />
+1000: Kontrolltimer abgelaufen. Innerhalb der Zeit von ca. 5 * p9850 sind zu viele Schaltvorg&auml;nge an den sicherheitsgerichteten Eing&auml;ngen der Control Unit aufgetreten, oder &uuml;ber PROFIsafe&#47;TM54F wurde zu h&auml;ufig STO (auch als Folgereaktion) ausgel&ouml;st.<br />
+1001, 1002: Initialisierungsfehler &Auml;nderungstimer&#47;Kontrolltimer.<br />
+2000: Status der STO-Anwahl auf Control Unit und Motor Module unterschiedlich.<br />
+2001: R&uuml;ckmeldung der sicheren Impulsl&ouml;schung auf Control Unit und Motor Module unterschiedlich.<br />
+2002: Status der Verz&ouml;gerungstimer SS1 auf Control Unit und Motor Module unterschiedlich.<br />
+6000 ... 6999:<br />
+Fehler in der PROFIsafe-Ansteuerung. Die Bedeutung der einzelnen Meldungswerte ist in der Safety-Meldung C01711 der Control Unit beschrieben.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 1 ... 5 und 7 ... 999:<br />
+- Das kreuzweise verglichene Datum &uuml;berpr&uuml;fen, das zum STOP F gef&uuml;hrt hat.<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Software der Control Unit hochr&uuml;sten.<br />
+Zu St&ouml;rwert = 6:<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Software der Control Unit hochr&uuml;sten.<br />
+Zu St&ouml;rwert = 1000:<br />
+- Verdrahtung der sicherheitsgerichteten Eing&auml;nge (SGE) auf der Control Unit &uuml;berpr&uuml;fen (Kontaktprobleme).<br />
+- PROFIsafe: Kontaktprobleme&#47;St&ouml;rungen am PROFIBUS-Master&#47;PROFINET-Controller beheben. -Verdrahtung der fehlersicheren Eing&auml;nge am TM54F &uuml;berpr&uuml;fen (Kontaktprobleme).<br />
+Zu St&ouml;rwert = 1001, 1002:<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Software der Control Unit hochr&uuml;sten.<br />
+Zu St&ouml;rwert = 2000, 2001, 2002:<br />
+- Toleranzzeit SGE-Umschaltung &uuml;berpr&uuml;fen und eventuell Wert vergr&ouml;&szlig;ern (p9650&#47;p9850, p9652&#47;p9852).<br />
+- Verdrahtung der sicherheitsgerichteten Eing&auml;nge (SGE) &uuml;berpr&uuml;fen (Kontaktprobleme).<br />
+- Kontrolle der Ursache der STO-Anwahl in r9772. Bei aktiven SMM-Funktionen (p9501=1) kann die STO-Anwahl auch durch diese Funktionen erfolgen.<br />
+- Betroffenes Motor Module austauschen.<br />
+Zu St&ouml;rwert = 6000 ... 6999:<br />
+Siehe Beschreibung der Meldungswerte bei Safety-Meldung C01711.<br />
+Hinweis:<br />
+CU: Control Unit<br />
+MM: Motor Module<br />
+SGE: Sicherheitsgerichteter Eingang<br />
+SI: Safety Integrated<br />
+SS1: Safe Stop 1 (entspricht Stop Kategorie 1 nach EN60204)<br />
+STO: Safe Torque Off (Sicher abgeschaltetes Moment) &#47; SH: Safe standstill (Sicherer Halt)<br />
+SMM: siehe r9772<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230620">N230620 (F, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Sicher abgeschaltetes Moment aktiv</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Funktion &quot;Sicher abgeschaltetes Moment&quot; wurde auf dem Motor Module (MM) &uuml;ber Eingangsklemme angew&auml;hlt und ist aktiv.<br />
+Hinweis:<br />
+Diese Meldung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Keine notwendig.<br />
+Hinweis:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+STO: Safe Torque Off (Sicher abgeschaltetes Moment) &#47; SH: Safe standstill (Sicherer Halt)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230621">N230621 (F, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Safe Stop 1 aktiv</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Funktion &quot;Safe Stop 1&quot; (SS1) wurde auf dem Motor Module (MM) angew&auml;hlt und ist aktiv.<br />
+Hinweis:<br />
+Diese Meldung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Keine notwendig.<br />
+Hinweis:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+SS1: Safe Stop 1 (entspricht Stop Kategorie 1 nach EN60204)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230625">F230625</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Lebenszeichen in Safety-Daten fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die antriebsautarke Funktion &quot;Safety Integrated&quot; auf dem Motor Module (MM) hat einen Fehler im Lebenszeichen der Safety-Daten zwischen Control Unit (CU) und MM erkannt und STOP A ausgel&ouml;st.<br />
+- Die DRIVE-CLiQ-Kommunikation ist gest&ouml;rt oder ausgefallen.<br />
+- Ein Zeitscheiben&uuml;berlauf der Safety-Software ist aufgetreten.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Sicher abgeschaltetes Moment anw&auml;hlen und wieder abw&auml;hlen.<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Pr&uuml;fen, ob St&ouml;rungen in der DRIVE-CLiQ-Kommunikation zwischen der Control Unit und dem betroffenen Motor Module vorliegen und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+- Nicht unbedingt notwendige Antriebsfunktionen abw&auml;hlen.<br />
+- Anzahl der Antriebe vermindern.<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+Hinweis:<br />
+CU: Control Unit<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230630">F230630</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Bremsenansteuerung fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die antriebsautarke Funktion &quot;Safety Integrated&quot; auf dem Motor Module (MM) hat einen Fehler bei der Bremsenansteuerung erkannt und STOP A ausgel&ouml;st.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+10:<br />
+Fehler beim Vorgang &quot;Bremse &ouml;ffnen&quot;.<br />
+- Parameter p1278 falsch eingestellt.<br />
+- Bremse nicht angeschlossen oder Leitungsbruch (pr&uuml;fen ob bei p1278 = 1 und p9602&#47;p9802 = 0 (SBC ausgeschaltet) die Bremse &ouml;ffnet).<br />
+- Erdschluss der Bremsenleitung.<br />
+30:<br />
+Fehler beim Vorgang &quot;Bremse schlie&szlig;en&quot;.<br />
+- Bremse nicht angeschlossen oder Leitungsbruch (pr&uuml;fen ob bei p1278 = 1 und p9602&#47;p9802 = 0 (SBC ausgeschaltet) die Bremse &ouml;ffnet).<br />
+- Kurzschluss in der Bremsenwicklung.<br />
+40:<br />
+Fehler im Zustand &quot;Bremse geschlossen&quot;.<br />
+60, 70:<br />
+Fehler in der Bremsenansteuerung der Control Unit oder Kommunikationsst&ouml;rung zwischen Control Unit und Motor Module (Bremsenansteuerung).<br />
+Hinweis:<br />
+F&uuml;r alle St&ouml;rwerte k&ouml;nnen folgende Ursachen gelten:<br />
+- Schirmung der Motorleitung ist nicht korrekt aufgelegt.<br />
+- Defekt im Bremsenansteuerkreis des Motor Modules.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Parameter p1278 pr&uuml;fen (mit SBC ist nur p1278 = 0 zul&auml;ssig).<br />
+- Sicher abgeschaltetes Moment anw&auml;hlen und wieder abw&auml;hlen.<br />
+- Anschluss der Motorhaltebremse &uuml;berpr&uuml;fen.<br />
+- Funktion der Motorhaltebremse &uuml;berpr&uuml;fen.<br />
+- Pr&uuml;fen, ob St&ouml;rungen in der DRIVE-CLiQ-Kommunikation zwischen der Control Unit und dem betroffenen Motor Module vorliegen und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen (z. B. Schirm der Motorleitung und Bremsenadern mit dem Schirmblech verbinden bzw. Motorstecker mit dem Geh&auml;use verschrauben).<br />
+- Betroffenes Motor Module austauschen.<br />
+Betrieb mit Safe Brake Module:<br />
+- Anschluss des Safe Brake Modules &uuml;berpr&uuml;fen.<br />
+- Safe Brake Module austauschen.<br />
+Hinweis:<br />
+MM: Motor Module<br />
+SBC: Safe Brake Control (Sichere Bremsenansteuerung)<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230640">F230640</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Fehler im Abschaltpfad des zweiten Kanals</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Motor Module hat einen Fehler in der Kommunikation mit der &uuml;bergeordneten Steuerung bzw. dem TM54F f&uuml;r die &Uuml;bertragung der sicherheitsrelevanten Informationen entdeckt.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Bei &uuml;bergeordneter Steuerung gilt:<br />
+- PROFIsafe-Adresse in &uuml;bergeordneter Steuerung und Motor Module kontrollieren und gegebenenfalls abgleichen.<br />
+- Alle Parameter speichern (p0977 = 1).<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+Beim TM54F folgende Schritte durchf&uuml;hren:<br />
+- Kopierfunktion f&uuml;r Node-Identifier starten (p9700 = 1D hex).<br />
+- Hardware-CRC best&auml;tigen (p9701 = EC hex).<br />
+- Alle Parameter speichern (p0977 = 1).<br />
+- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+Allgemein gilt:<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+Hinweis:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230649">F230649</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Softwarefehler intern</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Ein interner Fehler in der Safety Integrated Software auf dem Motor Module ist aufgetreten.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem nicht quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Inbetriebnahme der Funktion Safety Integrated wiederholen und POWER ON durchf&uuml;hren.<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Hotline kontaktieren.<br />
+- Motor Module austauschen.<br />
+Hinweis:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230650">F230650</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Abnahmetest erforderlich</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Funktion &quot;Safety Integrated&quot; auf dem Motor Module erfordert einen Abnahmetest.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+130: Safety-Parameter f&uuml;r das Motor Module nicht vorhanden.<br />
+1000: Soll- und Ist-Pr&uuml;fsumme auf Motor Module nicht identisch (Hochlauf).<br />
+- Mindestens ein checksummengepr&uuml;ftes Datum ist defekt.<br />
+2000: Soll- und Ist-Pr&uuml;fsumme auf Motor Module nicht identisch (Inbetriebnahmemodus).<br />
+- Soll-Checksumme auf Motor Module nicht richtig eingetragen (p9899 ungleich r9898).<br />
+2003: Abnahmetest erforderlich aufgrund der &Auml;nderung eines Safety-Parameters.<br />
+2005: Das Safety-Logbuch hat festgestellt, dass sich Safety-Pr&uuml;fsummen ge&auml;ndert haben. Ein Abnahmetest ist erforderlich.<br />
+3003: Abnahmetest erforderlich aufgrund der &Auml;nderung eines auf die Hardware bezogenen Safety-Parameters.<br />
+9999: Folgereaktion einer anderen im Hochlauf aufgetretenen Safety-St&ouml;rung, die einen Abnahmetest erfordert.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 130:<br />
+- Safety-Inbetriebnahme durchf&uuml;hren.<br />
+Zu St&ouml;rwert = 1000:<br />
+- Safety-Inbetriebnahme wiederholt durchf&uuml;hren.<br />
+- CompactFlash Card austauschen.<br />
+Zu St&ouml;rwert = 2000:<br />
+- Safety-Parameter auf dem Motor Module &uuml;berpr&uuml;fen und Soll-Checksumme anpassen (p9899).<br />
+Zu St&ouml;rwert = 2003, 2005:<br />
+- Abnahmetest durchf&uuml;hren und Abnahmeprotokoll erstellen.<br />
+Die Vorgehensweise beim Abnahmetest sowie ein Beispiel f&uuml;r das Abnahmeprotokoll sind in folgender Literatur zu finden:<br />
+SINAMICS S120 Funktionshandbuch Safety Integrated<br />
+Zu St&ouml;rwert = 3003:<br />
+- Funktionspr&uuml;fungen f&uuml;r die ge&auml;nderte Hardware durchf&uuml;hren und Abnahmeprotokoll erstellen.<br />
+Die Vorgehensweise beim Abnahmetest sowie ein Beispiel f&uuml;r das Abnahmeprotokoll sind in folgender Literatur zu finden:<br />
+SINAMICS S120 Funktionshandbuch Safety Integrated<br />
+Zu St&ouml;rwert = 9999:<br />
+- Diagnose bei der anderen anstehenden Safety-St&ouml;rung durchf&uuml;hren.<br />
+Hinweis:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230651">F230651</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Synchronisation mit Control Unit fehlgeschlagen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die antriebsautarke Funktion &quot;Safety Integrated&quot; erfordert eine Synchronisation der Safety-Zeitscheiben auf der Control Unit und auf dem Motor Module. Diese Synchronisation ist fehlgeschlagen.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem nicht quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Software der Control Unit hochr&uuml;sten.<br />
+Hinweis:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230652">F230652</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: &Uuml;berwachungstakt unzul&auml;ssig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Safety Integrated &Uuml;berwachungstakt kann aufgrund der im System geforderten Kommunikationsbedingungen nicht eingehalten werden.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem nicht quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Software des Motor Modules hochr&uuml;sten.<br />
+Hinweis:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230655">F230655</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Abgleich der &Uuml;berwachungsfunktionen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Ein Fehler beim Abgleich der Safety Integrated &Uuml;berwachungsfunktionen von Control Unit (CU) und Motor Module (MM) ist aufgetreten. Control Unit und Motor Module konnten keinen gemeinsamen Satz an unterst&uuml;tzten SI-&Uuml;berwachungsfunktionen ermitteln.<br />
+- DRIVE-CLiQ-Kommunikation gest&ouml;rt oder ausgefallen.<br />
+- Safety Integrated Softwarest&auml;nde von Control Unit und Motor Module inkompatibel.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem nicht quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Software der Control Unit hochr&uuml;sten.<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+Hinweis:<br />
+CU: Control Unit<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230656">F230656</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Parameter Motor Module fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Beim Zugriff auf die Safety Integrated Parameter f&uuml;r das Motor Module (MM) auf der CompactFlash Card ist ein Fehler aufgetreten.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu einem quittierbaren STOP A.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+129: Safety-Parameter f&uuml;r das Motor Module besch&auml;digt.<br />
+131: Interner Softwarefehler der Control Unit.<br />
+255: Interner Softwarefehler des Motor Modules.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Neue Safety-Inbetriebnahme durchf&uuml;hren.<br />
+- Software der Control Unit hochr&uuml;sten.<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- CompactFlash Card austauschen.<br />
+Hinweis:<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230659">F230659</a></b></td>
+<td><b>&lt;Ortsangabe&gt;SI MM: Schreibauftrag f&uuml;r Parameter abgewiesen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Schreibauftrag f&uuml;r einen oder mehrere Safety Integrated Parameter auf dem Motor Module (MM) wurde abgewiesen.<br />
+Hinweis:<br />
+Diese St&ouml;rung f&uuml;hrt zu keiner Safety-Stopreaktion.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+10: Es wurde versucht, die Funktion STO freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann.<br />
+11: Es wurde versucht, die Funktion SBC freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann.<br />
+13: Es wurde versucht, die Funktion SS1 freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann.<br />
+14: Es wurde versucht, die sichere Bewegungs&uuml;berwachung mit der &uuml;bergeordneten Steuerung freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann.<br />
+15: Es wurde versucht, die antriebsintegrierten Bewegungs&uuml;berwachungen freizugeben, obwohl diese nicht unterst&uuml;tzt werden k&ouml;nnen.<br />
+16: Es wurde versucht, die PROFIsafe-Kommunikation freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann oder die eingesetzte Version des PROFIsafe-Treibers auf CU und MM unterschiedlich ist.<br />
+18: Es wurde versucht, die Funktion PROFIsafe f&uuml;r Basic Functions freizugeben, obwohl diese nicht unterst&uuml;tzt werden kann.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 10, 11, 13, 14, 15, 16, 18:<br />
+- Pr&uuml;fen, ob St&ouml;rungen im Safety-Funktionsabgleich zwischen der Control Unit und dem betroffenen Motor Module vorliegen (F01655, F30655) und gegebenenfalls Diagnose bei den betreffenden St&ouml;rungen durchf&uuml;hren.<br />
+- Motor Module einsetzen, das die gew&uuml;nschte Funktion (&quot;Sicher abgeschaltetes Moment&quot;, &quot;Sichere Bremsenansteuerung&quot;, &quot;PROFIsafe&#47;PROFIsafe V2&quot;, &quot;antriebsintegrierte Bewegungs&uuml;berwachungen&quot;) unterst&uuml;tzt.<br />
+- Software des Motor Modules hochr&uuml;sten.<br />
+- Software der Control Unit hochr&uuml;sten.<br />
+Hinweis:<br />
+CU: Control Unit<br />
+MM: Motor Module<br />
+SBC: Safe Brake Control (Sichere Bremsenansteuerung)<br />
+SI: Safety Integrated<br />
+SS1: Safe Stop 1 (entspricht Stop Kategorie 1 nach EN60204)<br />
+STO: Safe Torque Off (Sicher abgeschaltetes Moment) &#47; SH: Safe standstill (Sicherer Halt)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230800">N230800 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Sammelmeldung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Leistungsteil hat mindestens einen Fehler erkannt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Auswertung der weiteren aktuellen Meldungen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230801">F230801</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ: Lebenszeichen fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der Control Unit zu dem betroffenen Leistungsteil ist fehlerhaft.<br />
+Eventuell ist die Rechenzeitbelastung zu gro&szlig;.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 0A hex:<br />
+Das Lebenszeichenbit im empfangenen Telegramm ist nicht gesetzt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+- Nicht ben&ouml;tigte DRIVE-CLiQ-Komponenten entfernen.<br />
+- Nicht ben&ouml;tigte Funktionen abw&auml;hlen.<br />
+- Gegebenenfalls die Abtastzeiten erh&ouml;hen (p0112, p0115).<br />
+- Betroffene Komponente austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230802">F230802</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Zeitscheiben&uuml;berlauf</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Zeitscheiben&uuml;berlauf.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Firmware auf neuere Version hochr&uuml;sten.<br />
+- Hotline kontaktieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230804">A230804 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: CRC</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>CRC-Fehler Aktor<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Firmware auf neuere Version hochr&uuml;sten.<br />
+- Hotline kontaktieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230805">F230805</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Pr&uuml;fsumme EPROM nicht korrekt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Interne Parameterdaten sind besch&auml;digt.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+01: EEPROM-Zugriff fehlerhaft.<br />
+02: Anzahl der Bl&ouml;cke im EEPROM zu gro&szlig;.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Baugruppe austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230809">F230809</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Schaltinformation ung&uuml;ltig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>F&uuml;r 3P-Steuersatz:<br />
+Das letzte Schaltzustandswort im Sollwerttelegramm wird an der Endekennung erkannt. Eine solche Endekennung wurde nicht gefunden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Firmware auf neuere Version hochr&uuml;sten.<br />
+- Hotline kontaktieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230810">A230810 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Watchdog Timer</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Im Hochlauf wurde erkannt, dass die Ursache f&uuml;r den vorherigen Reset ein SAC-Watchdog-Timer-&Uuml;berlauf war.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON bei allen Komponenten durchf&uuml;hren (Aus-&#47;Einschalten).<br />
+- Firmware auf neuere Version hochr&uuml;sten.<br />
+- Hotline kontaktieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230820">F230820</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ: Telegramm fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der Control Unit zu dem betroffenen Leistungsteil ist fehlerhaft.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 01 hex:<br />
+CRC-Fehler.<br />
+xx = 02 hex:<br />
+Telegramm ist k&uuml;rzer als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben.<br />
+xx = 03 hex:<br />
+Telegramm ist l&auml;nger als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben.<br />
+xx = 04 hex:<br />
+Die L&auml;nge des empfangenen Telegramms passt nicht zur Empfangsliste.<br />
+xx = 05 hex:<br />
+Der Typ des empfangenen Telegramms passt nicht zur Empfangsliste.<br />
+xx = 06 hex:<br />
+Die Adresse der Komponente im Telegramm und in der Empfangsliste stimmt nicht &uuml;berein.<br />
+xx = 07 hex:<br />
+Es wird ein SYNC-Telegramm erwartet, aber das empfangene Telegramm ist keines.<br />
+xx = 08 hex:<br />
+Es wird kein SYNC-Telegramm erwartet, aber das empfangene Telegramm ist eines.<br />
+xx = 09 hex:<br />
+Fehlerbit im empfangenen Telegramm ist gesetzt.<br />
+xx = 10 hex:<br />
+Das empfangene Telegramm ist zu fr&uuml;h.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON durchf&uuml;hren.<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+- DRIVE-CLiQ-Verdrahtung &uuml;berpr&uuml;fen (Leitungsbruch, Kontakte, ...).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230835">F230835</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ: Zyklische Daten&uuml;bertragung gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der Control Unit zu dem betroffenen Leistungsteil ist fehlerhaft. Die Teilnehmer senden und empfangen nicht synchron.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 21 hex:<br />
+Das zyklische Telegramm ist noch nicht eingetroffen.<br />
+xx = 22 hex:<br />
+Zeitfehler in der Empfangsliste des Telegramms.<br />
+xx = 40 hex:<br />
+Zeitfehler in der Sendeliste des Telegramms.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON durchf&uuml;hren.<br />
+- Betroffene Komponente austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230836">F230836</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ: Sendefehler bei DRIVE-CLiQ-Daten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der Control Unit zu dem betroffenen Leistungsteil ist fehlerhaft. Die Daten konnten nicht gesendet werden.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 41 hex:<br />
+Der Telegrammtyp stimmt nicht mit der Sendeliste &uuml;berein.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>POWER ON durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230837">F230837</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ: Komponente gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Auf der betroffenen DRIVE-CLiQ-Komponente wurde ein Fehler erkannt. Eine fehlerhafte Hardware kann nicht ausgeschlossen werden.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 20 hex:<br />
+Fehler im Header des Telegramms.<br />
+xx = 23 hex:<br />
+Empfangsfehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+xx = 42 hex:<br />
+Sendefehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+xx = 43 hex:<br />
+Sendefehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- DRIVE-CLiQ-Verdrahtung &uuml;berpr&uuml;fen (Leitungsbruch, Kontakte, ...).<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+- Eventuell andere DRIVE-CLiQ-Buchse verwenden (p9904).<br />
+- Betroffene Komponente austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230845">F230845</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ: Zyklische Daten&uuml;bertragung gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von der Control Unit zu dem betroffenen Leistungsteil ist fehlerhaft.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 0B hex:<br />
+Synchronisationsfehler bei der alternierend zyklischen Daten&uuml;bertragung.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>POWER ON durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230850">F230850</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Softwarefehler intern</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS1<br />
+ (AUS2, KEINE)Servo: AUS1<br />
+ (AUS2, AUS3, KEINE)Vector: AUS1<br />
+ (AUS2, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist ein interner Softwarefehler im Leistungsteil aufgetreten.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Leistungsteil tauschen.<br />
+- Gegebenenfalls Firmware im Leistungsteil hochr&uuml;sten.<br />
+- Hotline kontaktieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230851">F230851</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ (CU): Lebenszeichen fehlt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, KEINE)Vector: AUS2<br />
+ (AUS1, AUS3, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von dem betroffenen Leistungsteil zu der Control Unit ist fehlerhaft.<br />
+Von der DRIVE-CLiQ-Komponente wurde das Lebenszeichen zur Control Unit nicht gesetzt.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 0A hex = 10 dez:<br />
+Das Lebenszeichenbit im empfangenen Telegramm ist nicht gesetzt.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Firmware der betroffenen Komponente hochr&uuml;sten.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230860">F230860</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ (CU): Telegramm fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von dem betroffenen Leistungsteil zu der Control Unit ist fehlerhaft.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 11 hex = 17 dez:<br />
+CRC-Fehler und das empfangene Telegramm ist zu fr&uuml;h.<br />
+xx = 01 hex = 01 dez:<br />
+Checksummenfehler (CRC-Fehler).<br />
+xx = 12 hex = 18 dez:<br />
+Telegramm ist k&uuml;rzer als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben und das empfangene Telegramm ist zu fr&uuml;h.<br />
+xx = 02 hex = 02 dez:<br />
+Telegramm ist k&uuml;rzer als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben.<br />
+xx = 13 hex = 19 dez:<br />
+Telegramm ist l&auml;nger als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben und das empfangene Telegramm ist zu fr&uuml;h.<br />
+xx = 03 hex = 03 dez:<br />
+Telegramm ist l&auml;nger als im L&auml;ngenbyte bzw. in der Empfangsliste angegeben.<br />
+xx = 14 hex = 20 dez:<br />
+Die L&auml;nge des empfangenen Telegramms passt nicht zur Empfangsliste und das empfangene Telegramm ist zu fr&uuml;h.<br />
+xx = 04 hex = 04 dez:<br />
+Die L&auml;nge des empfangenen Telegramms passt nicht zur Empfangsliste.<br />
+xx = 15 hex = 21 dez:<br />
+Der Typ des empfangenen Telegramms passt nicht zur Empfangsliste und das empfangene Telegramm ist zu fr&uuml;h.<br />
+xx = 05 hex = 05 dez:<br />
+Der Typ des empfangenen Telegramms passt nicht zur Empfangsliste.<br />
+xx = 16 hex = 22 dez:<br />
+Die Adresse des Leistungsteils im Telegramm und in der Empfangsliste stimmt nicht &uuml;berein und das empfangene Telegramm ist zu fr&uuml;h.<br />
+xx = 06 hex = 06 dez:<br />
+Die Adresse des Leistungsteils im Telegramm und in der Empfangsliste stimmt nicht &uuml;berein.<br />
+xx = 19 hex = 25 dez:<br />
+Fehlerbit im empfangenen Telegramm ist gesetzt und das empfangene Telegramm ist zu fr&uuml;h.<br />
+xx = 09 hex = 09 dez:<br />
+Fehlerbit im empfangenen Telegramm ist gesetzt.<br />
+xx = 10 hex = 16 dez:<br />
+Das empfangene Telegramm ist zu fr&uuml;h.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- POWER ON durchf&uuml;hren.<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+- DRIVE-CLiQ-Verdrahtung &uuml;berpr&uuml;fen (Leitungsbruch, Kontakte, ...).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230885">F230885</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil CU DRIVE-CLiQ (CU): Zyklische Daten&uuml;bertragung gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von dem betroffenen Leistungsteil zu der Control Unit ist fehlerhaft.<br />
+Die Teilnehmer senden und empfangen nicht synchron.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 1A hex = 26 dez:<br />
+Das Lebenszeichenbit im empfangenen Telegramm ist nicht gesetzt und das empfangene Telegramm ist zu fr&uuml;h.<br />
+xx = 21 hex = 33 dez:<br />
+Das zyklische Telegramm ist noch nicht eingetroffen.<br />
+xx = 22 hex 34 dez:<br />
+Zeitfehler in der Empfangsliste des Telegramms.<br />
+xx = 40 hex = 64 dez:<br />
+Zeitfehler in der Sendeliste des Telegramms.<br />
+xx = 62 hex= 98 dez:<br />
+Fehler beim &Uuml;bergang in den zyklischen Betrieb.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Versorgungsspannung der betroffenen Komponente &uuml;berpr&uuml;fen.<br />
+- POWER ON durchf&uuml;hren.<br />
+- Betroffene Komponente austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230886">F230886</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ (CU): Fehler beim Senden von DRIVE-CLiQ-Daten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von dem betroffenen Leistungsteil zu der Control Unit ist fehlerhaft.<br />
+Die Daten konnten nicht gesendet werden.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 41 hex:<br />
+Der Telegrammtyp stimmt nicht mit der Sendeliste &uuml;berein.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>POWER ON durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230887">F230887</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ (CU): Komponente gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>AUS2<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Auf der betroffenen DRIVE-CLiQ-Komponente (Leistungsteil) wurde ein Fehler erkannt. Eine fehlerhafte Hardware kann nicht ausgeschlossen werden.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 20 hex:<br />
+Fehler im Header des Telegramms.<br />
+xx = 23 hex:<br />
+Empfangsfehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+xx = 42 hex:<br />
+Sendefehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+xx = 43 hex:<br />
+Sendefehler: Der Zwischenspeicher des Telegramms ist fehlerhaft.<br />
+xx = 60 hex:<br />
+Bei der Laufzeitmessung ist die Antwort zu sp&auml;t eingetroffen.<br />
+xx = 61 hex:<br />
+Der Austausch der Kenndaten dauert zu lange.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- DRIVE-CLiQ-Verdrahtung &uuml;berpr&uuml;fen (Leitungsbruch, Kontakte, ...).<br />
+- EMV-gerechten Schaltschrankaufbau und Leitungsverlegung pr&uuml;fen.<br />
+- Eventuell andere DRIVE-CLiQ-Buchse verwenden (p9904).<br />
+- Betroffene Komponente austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230895">F230895</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ (CU): Alternierend zyklische Daten&uuml;bertragung gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die DRIVE-CLiQ-Kommunikation von dem betroffenen Leistungsteil zu der Control Unit ist fehlerhaft.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyxx hex: yy = Komponentennummer, xx = Fehlerursache<br />
+xx = 0B hex:<br />
+Synchronisationsfehler bei der alternierend zyklischen Daten&uuml;bertragung.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>POWER ON durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230896">F230896</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil DRIVE-CLiQ (CU): Inkonsistente Komponenteneigenschaften</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)Vector: AUS2<br />
+ (AUS1, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Eigenschaften der durch den St&ouml;rwert angegebenen DRIVE-CLiQ-Komponente (Leistungsteil) haben sich gegen&uuml;ber dem Hochlauf in inkompatibler Weise ge&auml;ndert. Eine Ursache kann z. B. das Tauschen einer DRIVE-CLiQ-Leitung oder DRIVE-CLiQ-Komponente sein.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Komponentennummer.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Bei einem Leitungstausch nur Leitungen mit gleicher L&auml;nge verwenden.<br />
+- Bei einem Komponententausch gleiche Komponenten und Firmware-Versionen verwenden.<br />
+- POWER ON durchf&uuml;hren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230899">F230899 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Unbekannte St&ouml;rung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+ (AUS1, AUS2)Servo: KEINE<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, STOP1, STOP2)Vector: KEINE<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Auf dem Leistungsteil ist eine St&ouml;rung aufgetreten, welche von der Firmware der Control Unit nicht interpretiert werden kann.<br />
+Dies kann auftreten, wenn die Firmware auf dieser Komponente neuer ist als die Firmware auf der Control Unit.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nummer der St&ouml;rung.<br />
+Hinweis:<br />
+In einer neueren Beschreibung zur Control Unit kann gegebenenfalls die Bedeutung dieser neuen St&ouml;rung nachgelesen werden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Firmware auf dem Leistungsteil gegen eine &auml;ltere Firmware tauschen (r0128).<br />
+- Firmware auf der Control Unit hochr&uuml;sten (r0018).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230903">F230903</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: I2C-Bus Fehler aufgetreten</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+ (AUS1, AUS2)Servo: KEINE<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, STOP1, STOP2)Vector: KEINE<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Kommunikation mit einem EEPROM oder A&#47;D-Wandler ist gest&ouml;rt.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+80000000 hex:<br />
+- Softwarefehler intern.<br />
+00000001 hex ... 0000FFFF hex:<br />
+- Baugruppenfehler.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert = 80000000 hex:<br />
+- Firmware auf neuere Version hochr&uuml;sten.<br />
+Zu St&ouml;rwert = 00000001 hex ... 0000FFFF hex:<br />
+- Baugruppe austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230907">F230907</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: FPGA-Konfiguration fehlgeschlagen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: AUS2<br />
+ (AUS1, KEINE)Servo: AUS2<br />
+ (AUS1, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Es ist ein interner Softwarefehler bei der Initialisierung innerhalb des Leistungsteiles aufgetreten.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Gegebenenfalls Firmware im Leistungsteil hochr&uuml;sten.<br />
+- Leistungsteil tauschen.<br />
+- Hotline kontaktieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230920">A230920 (F)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Fehler Temperatursensor</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Auswertung des Temperatursensors ist ein Fehler aufgetreten.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+1: Drahtbruch oder Sensor nicht angeschlossen (KTY: R &gt; 1630 Ohm, PT100: R &gt; 375 Ohm).<br />
+2: Gemessener Widerstand zu klein (PTC: R &lt; 20 Ohm, KTY: R &lt; 50 Ohm, PT100: R &lt; 30 Ohm).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Sensor auf korrekten Anschluss &uuml;berpr&uuml;fen.<br />
+- Sensor austauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="230999">A230999 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Leistungsteil: Unbekannte Warnung</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Auf dem Leistungsteil ist eine Warnung aufgetreten, welche von der Firmware der Control Unit nicht interpretiert werden kann.<br />
+Dies kann auftreten, wenn die Firmware auf dieser Komponente neuer ist als die Firmware auf der Control Unit.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Nummer der Warnung.<br />
+Hinweis:<br />
+In einer neueren Beschreibung zur Control Unit kann gegebenenfalls die Bedeutung dieser neuen Warnung nachgelesen werden.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Firmware auf dem Leistungsteil gegen eine &auml;ltere Firmware tauschen (r0128).<br />
+- Firmware auf der Control Unit hochr&uuml;sten (r0018).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231100">F231100 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Nullmarkenabstand fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+ (AUS1, AUS2)Servo: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, STOP1, STOP2)Vector: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der gemessene Nullmarkenabstand entspricht nicht dem parametrierten Nullmarkenabstand.<br />
+Bei abstandscodierten Gebern wird der Nullmarkenabstand aus paarweise erkannten Nullmarken ermittelt. Daraus ergibt sich, dass eine fehlende Nullmarke abh&auml;ngig von der Paarbildung zu keiner St&ouml;rung f&uuml;hren kann und auch keine Auswirkung im System hat.<br />
+Der Nullmarkenanstand f&uuml;r die Nullmarken&uuml;berwachung wird in p0425 (Rotatorischer Geber) bzw. p0424 (Linearer Geber) eingestellt.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Letzter gemessener Nullmarkenabstand in Inkrementen (4 Inkremente = 1 Geberstrich).<br />
+Das Vorzeichen kennzeichnet die Verfahrrichtung bei der Erfassung des Nullmarkenabstandes.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen pr&uuml;fen.<br />
+- Steckverbindungen &uuml;berpr&uuml;fen.<br />
+- Gebertyp pr&uuml;fen (Geber mit &auml;quidistanten Nullmarken).<br />
+- Parameter f&uuml;r Nullmarkenabstand anpassen (p0424, p0425).<br />
+- Bei Meldung oberhalb einer Drehzahlschwelle gegebenenfalls die Filterzeit reduzieren (p0438).<br />
+- Geber bzw. Geberleitung tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231101">F231101 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Nullmarke ausgefallen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+ (AUS1, AUS2)Servo: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)Vector: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der 1.5-fache parametrierte Nullmarkenabstand wurde &uuml;berschritten.<br />
+Der Nullmarkenanstand f&uuml;r die Nullmarken&uuml;berwachung wird in p0425 (Rotatorischer Geber) bzw. p0424 (Linearer Geber) eingestellt.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Anzahl der Inkremente nach POWER ON oder seit der letzten erfassten Nullmarke (4 Inkremente = 1 Geberstrich).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen pr&uuml;fen.<br />
+- Steckverbindungen &uuml;berpr&uuml;fen.<br />
+- Gebertyp pr&uuml;fen (Geber mit &auml;quidistanten Nullmarken).<br />
+- Parameter f&uuml;r Nullmarkenabstand anpassen (p0425).<br />
+- Bei Meldung oberhalb einer Drehzahlschwelle gegebenenfalls die Filterzeit reduzieren (p0438).<br />
+- Wenn p0437.1 aktiv ist dann p4686 &uuml;berpr&uuml;fen.<br />
+- Geber bzw. Geberleitung tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231103">F231103 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Amplitudenfehler Spur R</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Amplitude des Nullmarkensignals (Spur R) bei Geber 1 liegt nicht im Toleranzband.<br />
+Der Fehler kann durch &Uuml;berschreiten des unipolaren Spannungspegels (RP&#47;RN) oder der differenziellen Amplitude ausgel&ouml;st werden.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+xxxx hex:<br />
+xxxx = Signalpegel der Spur R (16 Bit mit Vorzeichen).<br />
+Nominal m&uuml;ssen die unipolaren Signalpegel des Gebers im Bereich 2500 mV +&#47;- 500 mV liegen.<br />
+Die Ausl&ouml;seschwellen liegen bei &lt; 1700 mV und &gt; 3300 mV.<br />
+Nominal m&uuml;ssen die differenziellen Signalpegel des Gebers im Bereich 375 ... 600 mV liegen (500 mV -25&#47;+20 %).<br />
+Die Ausl&ouml;seschwelle liegt bei &gt; 750 mV.<br />
+Ein Signalpegel von 500 mV Scheitelwert entspricht dem Zahlenwert 5333 hex = 21299 dez.<br />
+Hinweis:<br />
+Der Analogwert des Amplitudenfehlers ist nicht zeitgleich zur Fehlerausl&ouml;sung der Hardware des Sensor Modules.<br />
+Die Auswertung des Signalpegels wird nur ausgef&uuml;hrt, wenn folgende Bedingungen erf&uuml;llt sind:<br />
+- Sensor Module Eigenschaften vorhanden (r0459.30 = 1, r0459.31 = 1).<br />
+- &Uuml;berwachung aktiviert (p0437.30 = 1, p0437.31 = 1).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Drehzahlbereich pr&uuml;fen, Frequenzgang (Amplitudengang) der Messeinrichtung ist f&uuml;r den Drehzahlbereich eventuell nicht ausreichend.<br />
+- EMV-gerechte Verlegung der Geberleitungen und Schirmung pr&uuml;fen.<br />
+- Steckverbindungen und Kontakte &uuml;berpr&uuml;fen.<br />
+- Pr&uuml;fen, ob die Nullmarke angeschlosssen und die Signalleitungen RP und RN nicht verpolt sind.<br />
+- Geberleitung tauschen.<br />
+- Bei Verschmutzung der Codescheibe oder Alterung der Beleuchtung den Geber tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231110">F231110 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Serielle Kommunikation gest&ouml;rt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die &Uuml;bertragung des seriellen Kommunikationsprotokolls zwischen Geber und Auswertemodul ist fehlerhaft.<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+Bit 0: Alarmbit im Positionsprotokoll.<br />
+Bit 1: Falscher Ruhepegel auf der Datenleitung.<br />
+Bit 2: Geber antwortet nicht (liefert innerhalb 50 ms kein Startbit).<br />
+Bit 3: CRC-Fehler: Die Pr&uuml;fsumme im Protokoll vom Geber passt nicht zu den Daten.<br />
+Bit 4: Quittung vom Geber fehlerhaft: Der Geber hat den Auftrag falsch verstanden oder kann ihn nicht ausf&uuml;hren.<br />
+Bit 5: Interner Fehler im seriellen Treiber: Ein unzul&auml;ssiger Mode-Befehl wurde angefordert.<br />
+Bit 6: Timeout beim zyklischen Lesen.<br />
+Bit 8: Protokoll ist zu lang (z. B. &gt; 64 Bit).<br />
+Bit 9: &Uuml;berlauf des Empfangspuffers.<br />
+Bit 10: Frameerror beim doppelt Lesen.<br />
+Bit 11: Parity Fehler.<br />
+Bit 12: Datenleitungspegel w&auml;hrend der Monoflopzeit fehlerhaft.<br />
+Bit 13: Datenleitung fehlerhaft.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert Bit 0 = 1:<br />
+- Geber defekt. F31111 liefert eventuell weitere Details.<br />
+Zu St&ouml;rwert Bit 1 = 1:<br />
+- Falscher Gebertyp&#47;Geber oder Geberleitung tauschen.<br />
+Zu St&ouml;rwert Bit 2 = 1:<br />
+- Falscher Gebertyp&#47;Geber oder Geberleitung tauschen.<br />
+Zu St&ouml;rwert Bit 3 = 1:<br />
+- EMV&#47;Leitungsschirm auflegen, Geber oder Geberleitung tauschen.<br />
+Zu St&ouml;rwert Bit 4 = 1:<br />
+- EMV&#47;Leitungsschirm auflegen, Geber oder Geberleitung tauschen, Sensor Module tauschen.<br />
+Zu St&ouml;rwert Bit 5 = 1:<br />
+- EMV&#47;Leitungsschirm auflegen, Geber oder Geberleitung tauschen, Sensor Module tauschen.<br />
+Zu St&ouml;rwert Bit 6 = 1:<br />
+- Firmware-Update beim Sensor Module durchf&uuml;hren.<br />
+Zu St&ouml;rwert Bit 8 = 1:<br />
+- Parametrierung &uuml;berpr&uuml;fen (p0429.2).<br />
+Zu St&ouml;rwert Bit 9 = 1:<br />
+- EMV&#47;Leitungsschirm auflegen, Geber oder Geberleitung tauschen, Sensor Module tauschen.<br />
+Zu St&ouml;rwert Bit 10 = 1:<br />
+- Parametrierung &uuml;berpr&uuml;fen (p0429.2, p0449).<br />
+Zu St&ouml;rwert Bit 11 = 1:<br />
+- Parametrierung &uuml;berpr&uuml;fen (p0436).<br />
+Zu St&ouml;rwert Bit 12 = 1:<br />
+- Parametrierung &uuml;berpr&uuml;fen (p0429.6).<br />
+Zu St&ouml;rwert Bit 13 = 1:<br />
+- Datenleitung &uuml;berpr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231111">F231111 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Absolutwertgeber EnDat interner Fehler</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Fehlerwort des EnDat-Gebers lieferte gesetzte Fehlerbits.<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+Bit 0: Beleuchtung ausgefallen.<br />
+Bit 1: Signalamplitude zu klein.<br />
+Bit 2: Positionswert fehlerhaft.<br />
+Bit 3: &Uuml;berspannung Geberversorgung.<br />
+Bit 4: Unterspannung Geberversorgung.<br />
+Bit 5: &Uuml;berstrom Geberversorgung.<br />
+Bit 6: Batteriewechsel erforderlich.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Zu St&ouml;rwert Bit 0 = 1:<br />
+Geber ist defekt. Geber tauschen, bei Motorgeber mit direktem DRIVE-CLiQ-Anschluss: Motor tauschen.<br />
+Zu St&ouml;rwert Bit 1 = 1:<br />
+Geber ist defekt. Geber tauschen, bei Motorgeber mit direktem DRIVE-CLiQ-Anschluss: Motor tauschen.<br />
+Zu St&ouml;rwert Bit 2 = 1:<br />
+Geber ist defekt. Geber tauschen, bei Motorgeber mit direktem DRIVE-CLiQ-Anschluss: Motor tauschen.<br />
+Zu St&ouml;rwert Bit 3 = 1:<br />
+Fehlerhafte 5-V-Versorgungsspannung.<br />
+Bei Verwendung eines SMC: Steckleitung zwischen Geber und SMC &uuml;berpr&uuml;fen oder SMC tauschen.<br />
+Bei Verwendung eines Motorgeber mit direktem DRIVE-CLiQ-Anschluss: Motor tauschen.<br />
+Zu St&ouml;rwert Bit 4 = 1:<br />
+Fehlerhafte 5-V-Versorgungsspannung.<br />
+Bei Verwendung eines SMC: Steckleitung zwischen Geber und SMC &uuml;berpr&uuml;fen oder SMC tauschen.<br />
+Bei Verwendung eines Motors mit DRIVE-CLiQ: Motor tauschen.<br />
+Zu St&ouml;rwert Bit 5 = 1:<br />
+Geber ist defekt. Geber tauschen, bei Motorgeber mit direktem DRIVE-CLiQ-Anschluss: Motor tauschen.<br />
+Zu St&ouml;rwert Bit 6 = 1:<br />
+Batteriewechsel erforderlich (nur bei Geber mit Batteriepufferung).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231112">F231112 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Fehlerbit im seriellen Protokoll gesetzt</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Geber sendet &uuml;ber das serielle Protokoll ein gesetztes Fehlerbit.<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+Bit 0: St&ouml;rungsbit im Positionsprotokoll.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Bei St&ouml;rwert Bit 0 = 1:<br />
+Bei einem EnDat-Geber liefert F31111 eventuell weitere Details.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231115">F231115 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Amplitudenfehler Spur A&#47;B St&ouml;rung (A^2 + B^2)</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Amplitude (Wurzel aus A^2 + B^2) bei Geber 1 &uuml;berschreitet die zul&auml;ssige Toleranz.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyyyxxxx hex:<br />
+yyyy = Signalpegel der Spur B (16 Bit mit Vorzeichen)<br />
+xxxx = Signalpegel der Spur A (16 Bit mit Vorzeichen)<br />
+Nominal m&uuml;ssen die Signalpegel des Gebers im Bereich 375 ... 600 mV liegen (500 mV -25&#47;+20 %).<br />
+Die Ausl&ouml;seschwelle liegt bei &lt; 230 mV (Frequenzgang des Gebers beachten) und bei &gt; 750 mV.<br />
+Ein Signalpegel von 500 mV Scheitelwert entspricht dem Zahlenwert 5333 hex = 21299 dez.<br />
+Hinweis zu Sensor Modules f&uuml;r Resolver (z. B. SMC10):<br />
+Nominal liegen die Signalpegel bei 2900 mV (2.0 Veff). Die Ausl&ouml;seschwelle liegt bei &lt; 1070 mV und bei &gt; 3582 mV.<br />
+Ein Signalpegel von 2900 mV Scheitelwert entspricht dem Zahlenwert 6666 hex = 26214 dez.<br />
+Hinweis:<br />
+Die Analogwerte des Amplitudenfehlers sind nicht zeitgleich zur Fehlerausl&ouml;sung der Hardware des Sensor Modules.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen und Schirmung pr&uuml;fen.<br />
+- Steckverbindungen &uuml;berpr&uuml;fen.<br />
+- Geber bzw. Geberleitung tauschen.<br />
+- Sensor Module pr&uuml;fen (z. B. Kontakte).<br />
+- Bei Messsystemen ohne Eigenlagerung: Justage des Abtastkopfes und Lagerung des Messrades pr&uuml;fen.<br />
+- Bei Messsystemen mit Eigenlagerung: Sicherstellen, dass kein axialer Druck auf das Gebergeh&auml;use ausge&uuml;bt wird.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231116">F231116 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Amplitudenfehler Spur A + B</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Amplitude der gleichgerichteten Gebersignale A und B und die Amplitude aus Wurzel aus A^2 + B^2 bei Geber 1 liegt nicht im Toleranzband.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyyyxxxx hex:<br />
+yyyy = Signalpegel der Spur B (16 Bit mit Vorzeichen)<br />
+xxxx = Signalpegel der Spur A (16 Bit mit Vorzeichen)<br />
+Nominal m&uuml;ssen die Signalpegel des Gebers im Bereich 375 ... 600 mV liegen (500 mV -25&#47;+20 %).<br />
+Die Ausl&ouml;seschwelle liegt bei &lt; 176 mV (Frequenzgang des Gebers beachten) und bei &gt; 955 mV.<br />
+Ein Signalpegel von 500 mV Scheitelwert entspricht dem Zahlenwert von 5333 hex = 21299 dez.<br />
+Hinweis:<br />
+Die Analogwerte des Amplitudenfehlers sind nicht zeitgleich zur Fehlerausl&ouml;sung der Hardware des Sensor Modules.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen und Schirmung pr&uuml;fen.<br />
+- Steckverbindungen &uuml;berpr&uuml;fen.<br />
+- Geber bzw. Geberleitung tauschen.<br />
+- Sensor Module pr&uuml;fen (z. B. Kontakte).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231117">F231117 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Invertierung Signal A und B und R fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei einem Rechteckgeber (bipolar, double ended) sind die Signale A* und B* und R* nicht invertiert zu den Signalen A und B und R.<br />
+Hinweis:<br />
+Bei SMC30 (nur Bestellnummer 6SL3055-0AA00-5CA0 und 6SL3055-0AA00-5CA1), CUA32, CU310 gilt:<br />
+Es wird ein Rechteckgeber ohne Spur R verwendet und die Spur&uuml;berwachung (p0405.2 = 1) ist aktiviert.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Geber&#47;Leitung pr&uuml;fen: Liefert der Geber Signale und dazu invertierte Signale?<br />
+Hinweis:<br />
+Bei SMC30 (nur Bestellnummer 6SL3055-0AA00-5CA0 und 6SL3055-0AA00-5CA1) gilt:<br />
+- Einstellung von p0405 pr&uuml;fen (p0405.2 = 1 ist nur m&ouml;glich, wenn der Geber an X520 angeschlossen ist).<br />
+Bei einem Rechteckgeber ohne Spur R sind bei Anschluss an X520 (SMC30) bzw. X23 (CUA32, CU310) folgende Br&uuml;cken einzustellen:<br />
+- Pin 10 (Referenzsignal R) &lt;--&gt; Pin 7 (Geberversorgung Masse)<br />
+- Pin 11 (Referenzsignal R invertiert) &lt;--&gt; Pin 4 (Geberversorgung)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231118">F231118 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Drehzahldifferenz au&szlig;erhalb Toleranz</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei einem HTL&#47;TTL-Geber hat die Drehzahldifferenz &uuml;ber mehrere Abtastzyklen den Wert in p0492 &uuml;berschritten.<br />
+Die &Auml;nderung des gegebenenfalls gemittelten Drehzahlistwertes wird in der Abtastzeit des Stromreglers &uuml;berwacht.<br />
+Geber 1 wird als Motorgeber verwendet und kann als Fehlerreaktion das Umschalten auf geberlosen Betrieb bewirken.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Nur f&uuml;r Siemens-interne Fehlerdiagnose.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Tachozuleitung auf Unterbrechungen &uuml;berpr&uuml;fen.<br />
+- Erdung der Tachoschirmung &uuml;berpr&uuml;fen.<br />
+- Die maximale Drehzahldifferenz je Abtastzyklus eventuell erh&ouml;hen (p0492).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231120">F231120 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Versorgungsspannung fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Fehler der Versorgungsspannung f&uuml;r den Geber 1.<br />
+Hinweis:<br />
+Ein Verwechseln der Geberleitungen 6FX2002-2EQ00-.... und 6FX2002-2CH00-.... kann zur Zerst&ouml;rung des Gebers f&uuml;hren, weil die Pins der Betriebsspannung gedreht sind.<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+Bit 0: Unterspannung auf der Sense-Leitung.<br />
+Bit 1: &Uuml;berstrom bei der Versorgung des Gebers.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Bei St&ouml;rwert Bit 0 = 1:<br />
+- Richtige Geberleitung angeschlossen?<br />
+- Steckverbindungen der Geberleitung &uuml;berpr&uuml;fen.<br />
+- SMC30: Parametrierung pr&uuml;fen (p0404.22).<br />
+Bei St&ouml;rwert Bit 1 = 1:<br />
+- Richtige Geberleitung angeschlossen?<br />
+- Geber bzw. Geberleitung tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231121">F231121 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Groblage fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (KEINE)Vector: GEBER<br />
+ (KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Bei der Istwerterfassung wurde auf der Baugruppe ein Fehler erkannt. Aufgrund dieses Fehlers muss angenommen werden, dass die Istwerterfassung eine falsche Groblage liefert.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Den Motor mit DRIVE-CLiQ bzw. das entsprechende Sensor Module tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231123">F231123 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Signalpegel A&#47;B unipolar au&szlig;erhalb Toleranz</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der unipolare Pegel (AP&#47;AN oder BP&#47;BN) bei Geber 1 liegt au&szlig;erhalb der zul&auml;ssigen Toleranz.<br />
+St&ouml;rwert (r0949, bin&auml;r interpretieren):<br />
+Bit 0 = 1: Entweder AP oder AN au&szlig;erhalb der Toleranz.<br />
+Bit 16 = 1: Entweder BP oder BN au&szlig;erhalb der Toleranz.<br />
+Nominal m&uuml;ssen die unipolaren Signalpegel des Gebers im Bereich 2500 mV +&#47;-500 mV liegen.<br />
+Die Ausl&ouml;seschwellen liegen bei &lt; 1700 mV und bei &gt; 3300 mV.<br />
+Hinweis:<br />
+Die Auswertung des Signalpegels wird nur ausgef&uuml;hrt, wenn folgende Bedingungen erf&uuml;llt sind:<br />
+- Sensor Module Eigenschaften vorhanden (r0459.31 = 1).<br />
+- &Uuml;berwachung aktiviert (p0437.31 = 1).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen und Schirmung &uuml;berpr&uuml;fen.<br />
+- Steckverbindungen und Kontakte &uuml;berpr&uuml;fen.<br />
+- Kurzschluss einer Signalleitung mit Masse oder Betriebsspannung &uuml;berpr&uuml;fen.<br />
+- Geberleitung tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231125">F231125 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Amplitudenfehler Spur A&#47;B &uuml;bersteuert</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Amplitude von Spur A oder B bei Geber 1 &uuml;berschreitet das zul&auml;ssige Toleranzband.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyyyxxxx hex:<br />
+yyyy = Signalpegel der Spur B (16 Bit mit Vorzeichen)<br />
+xxxx = Signalpegel der Spur A (16 Bit mit Vorzeichen)<br />
+Nominal m&uuml;ssen die Signalpegel des Gebers im Bereich 375 ... 600 mV liegen (500 mV -25&#47;+20 %).<br />
+Die Ausl&ouml;seschwelle liegt bei &gt; 750 mV. Ebenso f&uuml;hrt eine &Uuml;bersteuerung des A&#47;D-Wandlers zu diesem Fehler.<br />
+Ein Signalpegel von 500 mV Scheitelwert entspricht dem Zahlenwert 5333 hex = 21299 dez.<br />
+Hinweis zu Sensor Modules f&uuml;r Resolver (z. B. SMC10):<br />
+Nominal liegen die Signalpegel bei 2900 mV (2.0 Veff). Die Ausl&ouml;seschwelle liegt bei &gt; 3582 mV.<br />
+Ein Signalpegel von 2900 mV Scheitelwert entspricht dem Zahlenwert 6666 hex = 26214 dez.<br />
+Hinweis:<br />
+Die Analogwerte des Amplitudenfehlers sind nicht zeitgleich zur Fehlerausl&ouml;sung der Hardware des Sensor Modules.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen und Schirmung pr&uuml;fen.<br />
+- Geber bzw. Geberleitung tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231126">F231126 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Amplitude AB zu hoch</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Amplitude (Wurzel aus A^2 + B^2 oder |A| + |B|) bei Geber 1 &uuml;berschreitet die zul&auml;ssige Toleranz.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyyyxxxx hex:<br />
+yyyy = Winkel<br />
+xxxx = Amplitude, d .h. Wurzel aus A^2 + B^2 (16 Bit ohne Vorzeichen)<br />
+Nominal m&uuml;ssen die Signalpegel des Gebers im Bereich 375 ... 600 mV liegen (500 mV -25&#47;+20 %).<br />
+Die Ausl&ouml;seschwelle liegt bei (|A| + |B|) &gt; 1120 mV oder Wurzel aus (A^2 + B^2) &gt; 955 mV.<br />
+Ein Signalpegel von 500 mV Scheitelwert entspricht dem Zahlenwert 299A hex = 10650 dez.<br />
+Der Winkel 0 ... FFFF hex entspricht 0 ... 360 Grad der Feinlage. Null Grad liegt beim negativen Nulldurchgang der Spur B.<br />
+Hinweis:<br />
+Die Analogwerte des Amplitudenfehlers sind nicht zeitgleich zur Fehlerausl&ouml;sung der Hardware des Sensor Modules.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen und Schirmung pr&uuml;fen.<br />
+- Geber bzw. Geberleitung tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231129">F231129 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Lagedifferenz Hallsensor&#47;Spur C&#47;D und Spur A&#47;B zu gro&szlig;</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (IASC/DCBREMSE, KEINE)Vector: GEBER<br />
+ (IASC/DCBREMSE, KEINE)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der Fehler bei der Spur C&#47;D ist gr&ouml;&szlig;er als +&#47;-15 &deg; mechanisch oder +&#47;-60 &deg; elektrisch bzw. der Fehler bei den Hallsignalen ist gr&ouml;&szlig;er als +&#47;-60 &deg; elektrisch.<br />
+Eine Periode der Spur C&#47;D entspricht 360 &deg; mechanisch.<br />
+Eine Periode der Hallsignale entspricht 360 &deg; elektrisch.<br />
+Die &Uuml;berwachung spricht z. B. an, wenn Hallsensoren als Ersatz f&uuml;r die Spur C&#47;D mit falschem Drehsinn angeschlossen wurden oder zu ungenaue Werte liefern.<br />
+Nach der Feinsynchronisation durch eine Referenzmarke bzw. 2 Referenzmarken bei abstandscodierten Gebern wird diese St&ouml;rung nicht mehr ausgel&ouml;st, sondern die Warnung A31429.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Bei Spur C&#47;D gilt:<br />
+Gemessene Abweichung als mechanischer Winkel (16 Bit mit Vorzeichen, 182 dez entspricht 1 &deg;).<br />
+Bei Hallsignalen gilt:<br />
+Gemessene Abweichung als elektrischer Winkel (16 Bit mit Vorzeichen, 182 dez entspricht 1 &deg;).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Spur C oder D nicht angeschlossen.<br />
+- Drehsinn des eventuell als Ersatz f&uuml;r die Spur C&#47;D angeschlossenen Hallsensors richtigstellen.<br />
+- EMV-gerechte Verlegung der Geberleitungen pr&uuml;fen.<br />
+- Justage des Hallsensors pr&uuml;fen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231130">F231130 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Nullmarke und Lage aus Grobsynchronisation falsch</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)Vector: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Nach der Initialisierung der Pollage mit Spur C&#47;D, Hallsignalen oder Pollageidentifikation wurde die Nullmarke au&szlig;erhalb des zul&auml;ssigen Bereichs erfasst. Bei abstandscodierten Gebern wird die Pr&uuml;fung nach dem &Uuml;berfahren von 2 Nullmarken durchgef&uuml;hrt. Die Feinsynchronisation wird nicht durchgef&uuml;hrt.<br />
+Bei Initialisierung &uuml;ber Spur C&#47;D (p0404) wird &uuml;berpr&uuml;ft, ob die Nullmarke in einem Winkelbereich von +&#47;-18 &deg; mechanisch auftritt.<br />
+Bei Initialisierung &uuml;ber Hallsensoren (p0404) oder Pollageidentifikation (p1982) wird &uuml;berpr&uuml;ft, ob die Nullmarke in einem Winkelbereich von +&#47;-60 &deg; elektrisch auftritt.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+yyyyxxxx hex<br />
+yyyy: Festgestellte mechanische Nullmarkenposition (nur bei Spur C&#47;D brauchbar).<br />
+xxxx: Abweichung der Nullmarke von der erwarteten Position als elektrischer Winkel.<br />
+Normierung: 32768 dez = 180 &deg;<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- p0431 &uuml;berpr&uuml;fen und gegebenenfalls korrigieren (eventuell &uuml;ber p1990 = 1 ansto&szlig;en).<br />
+- EMV-gerechte Verlegung der Geberleitungen pr&uuml;fen.<br />
+- Steckverbindungen &uuml;berpr&uuml;fen.<br />
+- Bei Hallsensor als Ersatz f&uuml;r Spur C&#47;D den Anschluss kontrollieren.<br />
+- Anschluss von Spur C oder Spur D kontrollieren.<br />
+- Geber bzw. Geberleitung tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231131">F231131 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Abweichung Lage inkrementell&#47;absolut zu gro&szlig;</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)Vector: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Absolutwertgeber:<br />
+Beim zyklischen Lesen der Absolutlage wurde eine zu gro&szlig;e Differenz zur inkrementellen Lage festgestellt. Die gelesene Absolutlage wird verworfen.<br />
+Grenzwert f&uuml;r die Abweichung:<br />
+- EnDat-Geber: Wird vom Geber geliefert und betr&auml;gt mindestens 2 Quadranten (z. B. EQI 1325 &gt; 2 Quadranten, EQN 1325 &gt; 50 Quadranten).<br />
+- Andere Geber: 15 Striche = 60 Quadranten.<br />
+Inkrementalgeber:<br />
+Beim &Uuml;berfahren des Nullimpulses wurde eine Abweichung der inkrementellen Lage festgestellt.<br />
+Bei &auml;quidistanten Nullmarken gilt:<br />
+- Die erste &uuml;berfahrene Nullmarke liefert den Bezugspunkt f&uuml;r alle nachfolgenden Pr&uuml;fungen. Die weiteren Nullmarken m&uuml;ssen den n-fachen Abstand bezogen auf die erste Nullmarke haben.<br />
+Bei abstandscodierten Nullmarken gilt:<br />
+- Das erste Nullmarkenpaar liefert den Bezugspunkt f&uuml;r alle nachfolgenden Pr&uuml;fungen. Die weiteren Nullmarkenpaare m&uuml;ssen den erwarteten Abstand zum ersten Nullmarkenpaar haben.<br />
+St&ouml;rwert (r0949, dezimal interpretieren):<br />
+Abweichung in Quadranten (1 Strich = 4 Quadranten).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen pr&uuml;fen.<br />
+- Steckverbindungen &uuml;berpr&uuml;fen.<br />
+- Geber bzw. Geberleitung tauschen.<br />
+- Verschmutzung der Codescheibe oder starke Magnetfelder in der Umgebung pr&uuml;fen.<br />
+- Parameter f&uuml;r Nullmarkenabstand anpassen (p0425).<br />
+- Bei Meldung oberhalb einer Drehzahlschwelle gegebenenfalls die Filterzeit reduzieren (p0438).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231150">F231150 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Initialisierung fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)Vector: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Eine in p0404 angew&auml;hlte Funktionalit&auml;t des Gebers arbeitet fehlerhaft.<br />
+St&ouml;rwert (r0949, hexadezimal interpretieren):<br />
+Der St&ouml;rwert ist ein Bitfeld. Jedes gesetzte Bit zeigt eine gest&ouml;rte Funktionalit&auml;t an.<br />
+Die Bitbelegung entspricht der von p0404 (z. B. Bit 5 gesetzt: Fehler Spur C&#47;D).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- Korrekte Einstellung von p0404 pr&uuml;fen.<br />
+- Verwendeten Gebertyp (inkrementell&#47;Absolutwert) und bei SMCxx Geberleitung pr&uuml;fen.<br />
+- Eventuell weitere Fehlermeldungen beachten, die die St&ouml;rung im Detail beschreiben.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231151">F231151 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Geberdrehzahl f&uuml;r Initialisierung zu hoch</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+Servo: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)Vector: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>IMPULSSPERRE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Geberdrehzahl ist w&auml;hrend der Initialisierung des Sensor Modules zu hoch.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Drehzahl des Gebers w&auml;hrend der Initialisierung entsprechend reduzieren.<br />
+Gegebenenfalls die &Uuml;berwachung ausschalten (p0437.29).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231400">A231400 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Warnschwelle Nullmarkenabstand fehlerhaft</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der gemessene Nullmarkenabstand entspricht nicht dem parametrierten Nullmarkenabstand.<br />
+Bei abstandscodierten Gebern wird der Nullmarkenabstand aus paarweise erkannten Nullmarken ermittelt. Daraus ergibt sich, dass eine fehlende Nullmarke abh&auml;ngig von der Paarbildung zu keiner St&ouml;rung f&uuml;hren kann und auch keine Auswirkung im System hat.<br />
+Der Nullmarkenanstand f&uuml;r die Nullmarken&uuml;berwachung wird in p0425 (Rotatorischer Geber) bzw. p0424 (Linearer Geber) eingestellt.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Letzter gemessener Nullmarkenabstand in Inkrementen (4 Inkremente = 1 Geberstrich).<br />
+Das Vorzeichen kennzeichnet die Verfahrrichtung bei der Erfassung des Nullmarkenabstandes.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen pr&uuml;fen.<br />
+- Steckverbindungen &uuml;berpr&uuml;fen.<br />
+- Gebertyp pr&uuml;fen (Geber mit &auml;quidistanten Nullmarken).<br />
+- Parameter f&uuml;r Nullmarkenabstand anpassen (p0424, p0425).<br />
+- Geber bzw. Geberleitung tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231401">A231401 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Warnschwelle Nullmarke ausgefallen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Der 1.5-fache parametrierte Nullmarkenabstand wurde &uuml;berschritten.<br />
+Der Nullmarkenanstand f&uuml;r die Nullmarken&uuml;berwachung wird in p0425 (Rotatorischer Geber) bzw. p0424 (Linearer Geber) eingestellt.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Anzahl der Inkremente nach POWER ON oder seit der letzten erfassten Nullmarke (4 Inkremente = 1 Geberstrich).<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen pr&uuml;fen.<br />
+- Steckverbindungen &uuml;berpr&uuml;fen.<br />
+- Gebertyp pr&uuml;fen (Geber mit &auml;quidistanten Nullmarken).<br />
+- Parameter f&uuml;r Nullmarkenabstand anpassen (p0425).<br />
+- Geber bzw. Geberleitung tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231405">F231405 (N, A)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Temperatur in Geberauswertung unzul&auml;ssig</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>Infeed: KEINE<br />
+ (AUS1, AUS2)Servo: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)Vector: GEBER<br />
+ (AUS1, AUS2, AUS3, IASC/DCBREMSE, KEINE, STOP1, STOP2)</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>SOFORT (POWER ON, )</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die Geberauswertung bei einem Motor mit DRIVE-CLiQ hat eine unzul&auml;ssige Temperatur erkannt.<br />
+Die Fehlerschwelle liegt bei 125 &deg;C.<br />
+Warnwert (r2124, dezimal interpretieren):<br />
+Gemessene Baugruppentemperatur in 0.1 &deg;C.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Die Umgebungstemperatur beim DRIVE-CLiQ-Anschluss des Motors reduzieren.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231410">A231410 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: Serielle Kommunikation</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Die &Uuml;bertragung des seriellen Kommunikationsprotokolls zwischen Geber und Auswertemodul ist fehlerhaft.<br />
+Warnwert (r2124, bin&auml;r interpretieren):<br />
+Bit 0: Alarmbit im Positionsprotokoll.<br />
+Bit 1: Falscher Ruhepegel auf der Datenleitung.<br />
+Bit 2: Geber antwortet nicht (liefert innerhalb 50 ms kein Startbit).<br />
+Bit 3: CRC-Fehler: Die Pr&uuml;fsumme im Protokoll vom Geber passt nicht zu den Daten.<br />
+Bit 4: Quittung vom Geber fehlerhaft: Der Geber hat den Auftrag falsch verstanden oder kann ihn nicht ausf&uuml;hren.<br />
+Bit 5: Interner Fehler im seriellen Treiber: Ein unzul&auml;ssiger Mode-Befehl wurde angefordert.<br />
+Bit 6: Timeout beim zyklischen Lesen.<br />
+Bit 8: Protokoll ist zu lang (z. B. &gt; 64 Bit).<br />
+Bit 9: &Uuml;berlauf des Empfangspuffers.<br />
+Bit 10: Frameerror beim doppelt Lesen.<br />
+Bit 11: Parit&auml;tsfehler.<br />
+Bit 12: Datenleitungspegel w&auml;hrend der Monoflopzeit fehlerhaft.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>- EMV-gerechte Verlegung der Geberleitungen pr&uuml;fen.<br />
+- Steckverbindungen &uuml;berpr&uuml;fen.<br />
+- Geber tauschen.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="231411">A231411 (F, N)</a></b></td>
+<td><b>&lt;Ortsangabe&gt;Geber 1: EnDat-Geber meldet Warnungen</b></td></tr>
+<tr><td valign="top"><b>Antriebsobjekt:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaktion:</b></td>
+<td>KEINE<br />
+</td></tr>
+<tr><td valign="top"><b>Quittierung:</b></td>
+<td>KEINE</td></tr>
+<tr><td valign="top"><b>Ursache:</b></td>
+<td>Das Fehlerwort des EnDat-Gebers enthielt gesetzte Warnbits.<br />
+Warnwert (r2124, bin&auml;r interpretieren):<br />
+Bit 0: Frequenz &Uuml;berschreitung (Drehzahl zu hoch).<br />
+Bit 1: Temperatur &Uuml;berschreitung.<br />
+Bit 2: Regelreserve Beleuchtung &uuml;berschritten.<br />
+Bit 3: Batterie entladen.<br />
+Bit 4: Referenzpunkt &uuml;berfahren.<br />
+</td></tr>
+<tr><td valign="top"><b>Abhilfe:</b></td>
+<td>Geber tauschen.<br />
+</td></tr>
+</table><p></p></body></html>

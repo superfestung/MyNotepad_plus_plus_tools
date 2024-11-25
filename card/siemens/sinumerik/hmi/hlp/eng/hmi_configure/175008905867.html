@@ -1,0 +1,71 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Variable address and parameter</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Variable address and parameter</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>In a changeable NC/PLC trace configuration, variables can be added to the configuration either by selecting them from the variable list or by entering them in the address field of the signal table using an auto-complete list.</p>
+      <p>PLC variables are displayed with their symbolic names in the address field of the signal table. The memory address is only displayed if there is no symbol for this address. (The tooltip for the "Address / Symbol" field shows both the symbol and the address, if both are available.)</p>
+      <p>The address of the PLC variable can be edited. The address is thus replaced by another PLC address. Other variable addresses cannot be edited.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Parameter</h3>
+      <p>If parameters are available for a variable, these are displayed in the "Parameters" column of the signal table.</p>
+      <p>Machine axes, geometry axes and channel parameters can be selected from drop-down lists, which are filled with the identifiers of the axes/channels available on the machine. (Channel axis parameters are converted to machine axis names.)</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">For geometry axes, the identifier in the application is not automatically converted.</p>
+            <p class="safety">If you changed the channel or axis configurations, restart the application to update the identifiers.</p>
+          </td>
+        </tr>
+      </table>
+      <p>Numerical indices are displayed in editing fields. The number of editing fields can vary depending on how many indices are available or which indices can be changed for the variable in question.</p>
+      <p>If a variable address is added to the configuration and the address does not contain the indices, the following default values apply:</p>
+      <ul>
+        <li>
+          <p>Axis and channel identifiers: Invalid selection (empty combo box).</p>
+        </li>
+        <li>
+          <p>OPI units, column and row indices: Value 1</p>
+          <p>The application does not check the lower or upper limit of the OPI indices. The online help in the variable selection list describes the correct index use for a specific variable.</p>
+        </li>
+        <li>
+          <p>Array indices: The default value is the lower limit of the array index range.</p>
+          <p>When moving the mouse pointer over the editing field, a tooltip shows the lower and upper limits of the index range. The array limit values are also displayed in the variable selection list.</p>
+        </li>
+      </ul>
+      <p>If a parameter in a combo box or editing field is changed, the indices in the address field of the variable are updated accordingly.</p>
+      <p>When adding a variable, an address can be entered in the signal table together with the index part. The indices entered are then used to fill the "Parameter" column.</p>
+      <p>After adding or editing a variable, invalid parameter values are displayed with a red background color, and such errors prevent the start of a trace recording. (However, most parameter errors are not displayed directly after loading a session file as long as the configuration is not changed.)</p>
+      <p>If a parameter is changed for a signal that has already been recorded, the recorded data is deleted from the trace diagram.</p>
+      <a id="image_175384211211_0">
+      </a> <img border="0" src="images/175384215819.png" width="500" height="116"/><a name="block_2"></a><h3 class="Blocktitle">PLC1500 variables: Handling nested arrays</h3><p>A PLC1500 variable can be defined as a nested array structure with more than one index part in the address.</p><p>Example: <code>LBP_AlarmMessages.Channel[1..10].FdStop_1[0..15]</code></p><p class="comment">No editing field is created for such a variable in the "Parameter" column. Instead, the complete address is displayed in the "Address" field and the indices must be edited there.</p><p class="comment">After adding the variables, the address shows the index ranges, e.g. <code>[1..10]</code>. The address field has a red background color because it is not yet valid. Double-click on the address field or press the insert key to set the field to editing mode. Enter the required indices in the address and press the Enter key to confirm them again.</p><p class="comment">As long as there are still index errors in the address, a tooltip informs you exactly about the type of error.</p><h4 class="Blocklabel">Example</h4><a id="image_175384219787_0"></a> <img border="0" src="images/175385926795.png" width="500" height="141"/><p class="comment">The index ranges of the variables have not yet been replaced by a valid index. And the other index is outside the valid range.</p></div>
+  </body>
+</html>

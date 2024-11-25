@@ -1,0 +1,59 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Predefined user variables: Global arithmetic parameters (RG)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Predefined user variables: Global arithmetic parameters (RG)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Function</h3>
+      <p>In addition to the channel-specific R parameters, the user has access to global R parameters. They exist once within the control unit and can be read and written from all channels.</p>
+      <p>Global R parameters are used, for example, to transfer information from one channel to the next. Another example concerns global settings that should be evaluated for all channels, such as the overhang of the raw part from the spindle.</p>
+      <p>The global R parameters are read and written from the user interface or in the NC program during the preprocessing. Synchronous actions and technology cycles cannot be used.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">
+              <b>No</b> synchronization between the channels when reading and writing global R parameters.</p>
+            <p class="safety">Because the reading and writing is performed during the preprocessing, the point in time when a written value from one channel becomes active in another channel is not defined.</p>
+            <p class="safety">Example:</p>
+            <p class="safety">In channel 1, a loop runs with a global R parameter as loop counter. Channel 2 writes a value to this global R parameter; this causes a loop abort in channel 1. All loops that can be interpreted in the preprocessing in channel 1 are however still executed. The number of loops is not defined and depends on the channel loading, etc.</p>
+            <p class="safety">The user must implement a synchronization between the channels as application, e.g. with WAIT flags!</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <h4 class="Blocklabel">Writing in the NC program </h4>RG[&lt;n>]=&lt;value>RG[&lt;expression>]=&lt;value>   <h4 class="Blocklabel">Reading in the NC program</h4>R...=RG[&lt;n>]R...=RG[&lt;expression>]<a name="block_3"></a><h3 class="Blocktitle">Meaning</h3><a id="table_8357889e-4230-2535-eb9b-21453942db1e"></a> <a id="table_0"></a> <a id="table_8357889e-4230-2535-eb9b-21453942db1e"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="21.6%"><col width="19.2%"><col width="59.2%"></colgroup><tr valign="top"><td><p style="margin-top: 4px"><code>RG </code>:</p></td><td colspan="2"><p style="margin-top: 4px">Default name of the NC address for <b>global</b> R parameters</p><p><b>Note:</b><br />The name of the NC address can be set via MD15800 $MN_R_PARAM_NCK_NAME</p></td></tr><tr valign="top"><td rowspan="3"><p style="margin-top: 4px"><code>&lt;n></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Number of the global R parameter</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Type:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">INT</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Range of values:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">0 ... MAX_INDEX</p><p type="p_table_l" align="left"><b>Note</b><br />MAX_INDEX is calculated from the parameterized number of global R parameters: <br />MAX_INDEX = (MD18156 $MN_MM_NUM_R_PARAM_NCK) - 1</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;expression></code>:</p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Any expression can be used as an array index, as long as the result of the expression can be converted to the INT data type (INT, REAL, BOOL, CHAR).</p></td></tr><tr valign="top"><td rowspan="4"><p style="margin-top: 4px"><code>&lt;value></code>:</p></td><td colspan="2"><p style="margin-top: 4px">Value of the global R parameter</p></td></tr><tr valign="top"><td><p style="margin-top: 4px">Type:</p></td><td><p style="margin-top: 4px">REAL</p></td></tr><tr valign="top"><td rowspan="2"><p style="margin-top: 4px">Range of values:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">For a non-exponential notation:</p><p type="p_table_l" align="left">± (0.000 0001 ... 9999 9999)</p><p type="p_table_l" align="left"><b>Note:<br /></b>A maximum of eight decimal places are permitted</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">For an exponential notation:</p><p type="p_table_l" align="left">± (1*10<sup>-300</sup> ... 1*10<sup>+300</sup>)</p><p type="p_table_l" align="left"><b>Note:</b></p><ul class="table"><li><p>Notation: &lt;mantissa>EX&lt;exponent> e.g. 8.2EX-3</p></li><li><p>A maximum of ten characters are permitted including sign and decimal point.</p></li></ul></td></tr></table></p></div>
+    <p>See also:<br />    <a href="156662362891.html">Predefined user variables: Channel-specific arithmetic parameters (R)</a><br />    <a href="156662348683.html">Variables: General information</a></p>
+  </body>
+</html>

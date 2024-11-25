@@ -1,0 +1,50 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Definition and initialization of array variables (DEF, SET, REP):  Further Information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Definition and initialization of array variables (DEF, SET, REP):  Further Information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Additional information (SET)</h3>
+      <h4 class="Blocklabel">initialization for the definition</h4>
+      <ul>
+        <li>
+          <p>Starting with the 1st array element, as many array elements are assigned with the values from the value list as there are elements programmed in the value list.</p>
+        </li>
+        <li>
+          <p>A value of 0 is assigned to array elements without explicitly declared values in the value list (gaps in the value list).</p>
+        </li>
+        <li>
+          <p>For variables of the AXIS data type, gaps in the value list are not permitted.</p>
+        </li>
+        <li>
+          <p>An alarm is displayed if the value list contains more values than there are array elements defined.</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Value assignment in program execution </h4>
+      <p>In the case of value assignment in program execution, the rules described above for the definition apply. The following options are also supported: </p>
+      <ul>
+        <li>
+          <p>Expressions are also permitted as elements in the value list.</p>
+        </li>
+        <li>
+          <p>Value assignment starts with the programmed array index. Values can be assigned selectively to subarrays.</p>
+        </li>
+      </ul>
+      <p>Example:</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EGB"><colgroup><col width="45.0%"><col width="55.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>DEF INT ARRAY[5,5]</td><td>; Array definition</td></tr><tr valign="top"><td>ARRAY[0,0]=SET(1,2,3,4,5)</td><td>; Value assignment to the first 5 array elements [0,0] - [0,4]</td></tr><tr valign="top"><td>ARRAY[0,0]=SET(1,2, , ,5)</td><td>; Value assignment with gap to the first 5 array elements [0,0] - [0,4]; Array elements [0,2] and [0,3] = 0</td></tr><tr valign="top"><td>ARRAY[2,3]=SET(VARIABLE,4*5.6)</td><td>; Value assignment with variable and expression starting at array index [2,3]:
+[2,3] = VARIABLE
+[2,4] = 4 * 5.6 = 22.4</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_2"></a><h3 class="Blocktitle">Further information (REP)</h3><h4 class="Blocklabel">initialization for the definition</h4><ul><li><p>All or the optionally specified number of array elements are initialized with the specified value (constant).</p></li><li><p>Variables of the FRAME data type cannot be initialized.</p></li></ul><p>Example:</p><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EYC"><colgroup><col width="45.0%"><col width="55.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>DEF REAL VarName[10]=REP(3.5,4)</td><td>; Initialize array definition and array elements [0] to [3] with value 3.5.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Value assignment in program execution </h4><p>In the case of value assignment in program execution, the rules described above for the definition apply. The following options are also supported: </p><ul><li><p>Expressions are also permitted as elements in the value list.</p></li><li><p>Value assignment starts with the programmed array index. Values can be assigned selectively to subarrays.</p></li></ul><p>Examples:</p><a id="table_2"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ETD"><colgroup><col width="40.0%"><col width="60.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>DEF REAL VarName[10]</td><td>; Array definition</td></tr><tr valign="top"><td>VarName[5]=REP(4.5,3)</td><td>; Array elements [5] to [7] = 4.5</td></tr><tr valign="top"><td>R10=REP(2.4,3)</td><td>; R-parameters R10 to R12 = 2.4</td></tr><tr valign="top"><td>DEF FRAME FRM[10]</td><td>; Array definition</td></tr><tr valign="top"><td>FRM[5]=REP(CTRANS(X,5))</td><td>; Array elements [5] to [9] = CTRANS(X,5)</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

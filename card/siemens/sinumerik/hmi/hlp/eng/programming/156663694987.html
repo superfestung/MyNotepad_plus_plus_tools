@@ -1,0 +1,36 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Read curve table values (CTABTSV, CTABTEV, CTABTSP, CTABTEP, CTABSSV, CTABSEV, CTAB, CTABINV, CTABTMIN, CTABTMAX): Further information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Read curve table values (CTABTSV, CTABTEV, CTABTSP, CTABTEP, CTABSSV, CTABSEV, CTAB, CTABINV, CTABTMIN, CTABTMAX): Further information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Further information</h3>
+      <h4 class="Blocklabel">Use in synchronized actions</h4>
+      <p>All commands for reading curve table values can also be used in synchronized actions (see also the chapter titled "Motion-synchronous actions").</p>
+      <p>When using the CTABINV, CTABTMIN, and CTABTMAX commands, make sure that:</p>
+      <ul>
+        <li>
+          <p>Sufficient NC power is available at the time of execution</p>
+          <p>or</p>
+        </li>
+        <li>
+          <p>The number of segments in the curve table is queried prior to the call, so that the table concerned can be subdivided if necessary</p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">CTAB with non-periodic curve tables</h4>
+      <p>If the specified &lt;master value> is outside the definition range, the upper or lower limit is output as the following value:</p>
+      <a id="image_794897419_0">
+      </a> <img border="0" src="images/167568637451.png" width="340" height="283"/><h4 class="Blocklabel">CTAB with periodic curve tables</h4><p>If the specified &lt;master value> is outside the definition range, the master value is evaluated modulo of the definition range and the corresponding following value is output:</p><a id="image_794928011_0"></a> <img border="0" src="images/167568939147.png" width="340" height="283"/><h4 class="Blocklabel">Approximate value for CTABINV</h4><p>The CTABINV command, therefore, requires an approximate value for the expected master value. CTABINV returns the leading value that is closest to the approximate value. The approximate value can be, for example, the master value from the previous interpolator clock cycle.</p><h4 class="Blocklabel">Incline of the curve table function</h4><p>The output of the gradient (&lt;gradient>) makes it possible to calculate the velocity of the leading or following axis at the corresponding position.</p><h4 class="Blocklabel">Specification of the leading or following axis</h4><p>The optional specification of the leading and/or following axis is important if the leading and following axes are configured in different length units.</p><h4 class="Blocklabel">CTABSSV, CTABSEV</h4><p>The CTABSSV and CTABSEV commands are <b>not</b> suitable to query programmed segments in the following cases:<b></b></p><ul><li><p>Circles or involutes are programmed.</p></li><li><p>Chamfering or rounding with CHF/ RND is active</p></li><li><p>Smoothing with G643 is active</p></li><li><p>NC block compression (COMP...) is active.</p></li></ul></div>
+  </body>
+</html>

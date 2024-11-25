@@ -1,0 +1,31 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Spindeldrehzahl (S), Spindeldrehrichtung (M3, M4, M5): Weitere Informationen</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Spindeldrehzahl (S), Spindeldrehrichtung (M3, M4, M5): Weitere Informationen</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Weitere Informationen</h3>
+      <p>
+        <b>Interpretation des S-Werts bei der Masterspindel </b>  </p>
+      <p>Ist in der G-Gruppe 1 (modal wirksame Bewegungsbefehle) die Funktion G331 oder G332 aktiv, wird der programmierte S-Wert immer als Drehzahl in Umdrehungen/min interpretiert. Andernfalls ist die Interpretation des S-Werts abhängig von der G-Gruppe 15 (Vorschubtyp): Bei aktivem G96, G961 oder G962 wird der S-Wert als konstante Schnittgeschwindigkeit in m/min interpretiert, in allen anderen Fällen als Drehzahl in Umdrehungen/min.</p>
+      <p>Bei einem Wechsel von G96/G961/G962 auf G331/G332 wird der Wert der konstanten Schnittgeschwindigkeit auf Null gesetzt, bei einem Wechsel von G331/G332 auf eine Funktion innerhalb der G-Gruppe 1 ungleich G331/G332 wird der Drehzahlwert auf Null gesetzt. Die betreffenden S-Werte müssen bei Bedarf neu programmiert werden.</p>
+      <p>
+        <b>Voreingestellte M-Befehle M3, M4, M5</b>
+      </p>
+      <p>In einem Satz mit Achsbefehlen werden die Funktionen M3, M4, M5 eingeschaltet <b>bevor </b>die Achsbewegungen starten (Grundeinstellung der Steuerung).</p>
+      <p>Beispiel:</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EDB"><colgroup><col width="43.4%"><col width="56.6%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 G1 F500 X70 Y20 S270 M3</td><td>; Die Spindel läuft auf 270 U/min hoch, dann werden die Bewegungen in X und Y ausgeführt.</td></tr><tr valign="top"><td>N100 G0 Z150 M5</td><td>; Spindel-Halt vor der Rückzugsbewegung in Z.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Über Maschinendatum ist einstellbar, ob die Achsbewegungen erst nach Spindelhochlauf auf Solldrehzahl bzw. Spindelstopp ausgeführt werden oder ob sofort nach den programmierten Schaltvorgängen verfahren wird.</p></td></tr></table><p><b>Arbeiten mit mehreren Spindeln</b></p><p>In einem Kanal können gleichzeitig 5 Spindeln vorhanden sein (Masterspindel plus 4 zusätzliche Spindeln).</p><p>Eine Spindel wird per Maschinendatum als <b>Masterspindel</b> definiert. Für diese Spindel gelten spezielle Funktionen wie z. B. Gewindeschneiden, Gewindebohren, Umdrehungsvorschub, Verweilzeit. Für die übrigen Spindeln (z. B. eine zweite Arbeitsspindel und ein angetriebenes Werkzeug) müssen bei Drehzahl und Drehrichtung/Spindelstopp die entsprechenden Nummern angegeben werden.</p><p>Beispiel:</p><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EGC"><colgroup><col width="36.4%"><col width="63.6%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 S300 M3 S2=780 M2=4</td><td>; Masterspindel: 300 U/min, Rechtslauf2.Spindel: 780 U/min, Linkslauf</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p><b>Programmierbares Umschalten der Masterspindel</b></p><p>Über den Befehl <code>SETMS(&lt;n>)</code> kann im NC-Programm jede Spindel als Masterspindel definiert werden. <code>SETMS</code> muss in einem eigenen Satz stehen.</p><p>Beispiel:</p><a id="table_2"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EDD"><colgroup><col width="22.4%"><col width="77.6%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 SETMS(2)</td><td>; Spindel 2 ist jetzt Masterspindel.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Für die neu deklarierte Masterspindel gelten jetzt die mit <code>S...</code> angegebene Drehzahl sowie die mit <code>M3</code>, <code>M4</code>, <code>M5</code> programmierten Funktionen.</p></td></tr></table><p>Mit <code>SETMS</code> ohne Spindelangabe wird auf die im Maschinendatum festgelegte Masterspindel zurückgeschaltet.</p></div>
+  </body>
+</html>

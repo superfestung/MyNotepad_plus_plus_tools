@@ -1,0 +1,27 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Creating an NC program: Example 3</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Creating an NC program: Example 3</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Program example 3 is intended for machining a workpiece on a vertical milling machine. It contains surface and side milling as well as drilling.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Dimension drawing of the workpiece</h3>
+      <h4 class="Blocklabel">Side view</h4>
+      <a id="image_126746517515_0">
+      </a> <img border="0" src="images/176077646603.png" width="500" height="165"/><h4 class="Blocklabel">Top view</h4><a id="image_126749772299_0"></a> <img border="0" src="images/176077696395.png" width="500" height="399"/><a name="block_2"></a><h3 class="Blocktitle">NC program</h3><a id="table_0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E1C"><colgroup><col width="60.0%"><col width="40.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N10 T="PF60"</td><td>; Preselection of the tool with name PF60.</td></tr><tr valign="top"><td>N20 M6</td><td>; Load the tool into the spindle.</td></tr><tr valign="top"><td>N30 S2000 M3 M8</td><td>; Speed, direction of rotation, cooling on.</td></tr><tr valign="top"><td>N40 G90 G64 G54 G17 G0 X-72 Y-72</td><td>; Basic settings of the geometry and approach starting point.</td></tr><tr valign="top"><td>N50 G0 Z2</td><td>; Z axis to safety clearance.</td></tr><tr valign="top"><td>N60 G450 CFTCP</td><td>; Behavior with active G41/G42.</td></tr><tr valign="top"><td>N70 G1 Z-10 F3000</td><td>; Milling tool to machining depth with feedrate = 3000 mm/min.</td></tr><tr valign="top"><td>N80 G1 G41 X-40</td><td>; Activation of the milling tool radius compensation.</td></tr><tr valign="top"><td>N90 G1 X-40 Y30 RND=10 F1200</td><td>; Travel to the contour with feedrate = 1200 mm/min.</td></tr><tr valign="top"><td>N100 G1 X40 Y30 CHR=10</td><td> </td></tr><tr valign="top"><td>N110 G1 X40 Y-30</td><td> </td></tr><tr valign="top"><td>N120 G1 X-41 Y-30</td><td> </td></tr><tr valign="top"><td>N130 G1 G40 Y-72 F3000</td><td>; Deselection of the milling tool radius compensation.</td></tr><tr valign="top"><td>N140 G0 Z200 M5 M9</td><td>; Retraction of the milling tool, spindle + cooling off.</td></tr><tr valign="top"><td>N150 T="SF10"</td><td>; Preselection of the tool with name SF10.</td></tr><tr valign="top"><td>N160 M6</td><td>; Load the tool into the spindle.</td></tr><tr valign="top"><td>N170 S2800 M3 M8</td><td>; Speed, direction of rotation, cooling on.</td></tr><tr valign="top"><td>N180 G90 G64 G54 G17 G0 X0 Y0</td><td>; Basic settings for the geometry and approach starting point.</td></tr><tr valign="top"><td>N190 G0 Z2</td><td> </td></tr><tr valign="top"><td>N200 POCKET4(2,0,1,-5,15,0,0,0,0,0,800,1300,0,21,5,,,2,0.5)</td><td>; Call pocket milling cycle.</td></tr><tr valign="top"><td>N210 G0 Z200 M5 M9</td><td>; Retraction of the milling tool, spindle + cooling off.</td></tr><tr valign="top"><td>N220 T="ZB6"</td><td>; Call 6 mm centering drill.</td></tr><tr valign="top"><td>N230 M6</td><td> </td></tr><tr valign="top"><td>N240 S5000 M3 M8</td><td> </td></tr><tr valign="top"><td>N250 G90 G60 G54 G17 X25 Y0</td><td>; Exact stop G60 for exact positioning.</td></tr><tr valign="top"><td>N260 G0 Z2</td><td> </td></tr><tr valign="top"><td>N270 MCALL CYCLE82(2,0,1,-2.6,,0)</td><td>; Modal call of the drilling cycle.</td></tr><tr valign="top"><td>N280  POSITION:</td><td>; Jump mark for repetition.</td></tr><tr valign="top"><td>N290  HOLES2(0,0,25,0,45,6)</td><td>; Position pattern for drilling.</td></tr><tr valign="top"><td>N300  ENDLABEL:</td><td>; End delimiter for repetition.</td></tr><tr valign="top"><td>N310 MCALL</td><td>; Reset modal call.</td></tr><tr valign="top"><td>N320 G0 Z200 M5 M9</td><td> </td></tr><tr valign="top"><td>N330 T="SPB5"</td><td>; Call D 5 mm drill.</td></tr><tr valign="top"><td>N340 M6</td><td> </td></tr><tr valign="top"><td>N350 S2600 M3 M8</td><td> </td></tr><tr valign="top"><td>N360 G90 G60 G54 G17 X25 Y0</td><td> </td></tr><tr valign="top"><td>N370 MCALL CYCLE82(2,0,1,-13.5,,0)</td><td>; Modal call of the drilling cycle.</td></tr><tr valign="top"><td>N380  REPEAT POSITION</td><td>; Repetition of the position description from centering.</td></tr><tr valign="top"><td>N390 MCALL</td><td>; Resetting of the drilling cycle.</td></tr><tr valign="top"><td>N400 G0 Z200 M5 M9</td><td> </td></tr><tr valign="top"><td>N410 M30</td><td>; End of program.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>See also:<br />    <a href="156661407115.html">Creating an NC program: Example 1</a><br />    <a href="156661411083.html">Creating an NC program: Example 2</a></p>
+  </body>
+</html>

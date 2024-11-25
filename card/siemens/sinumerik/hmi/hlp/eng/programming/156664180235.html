@@ -1,0 +1,52 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Program simulation in conjunction with compile cycles</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Program simulation in conjunction with compile cycles</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Some compile cycles (CC) are supported in program simulation. The machine data of the supported compile cycles is aligned once after the control has powered-up. An alignment with "simulation start" does not take place!</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">In part programs, CC-specific language commands and machine data of unsupported CCs <b>cannot</b> be used (see also paragraph "CC-commands in the part program").</p>
+            <p class="safety">Special motion of supported CCs (OEM transformations) are - under certain circumstances - incorrectly displayed.</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">CC-commands in the part program </h3>
+      <p>Language commands in the part program of compile cycles that are not supported (<code>OMA1</code> ... <code>OMA5</code>, <code>OEMIPO1/2</code>, <code>G810</code> ... <code>G829</code>, own procedures and functions) therefore result in an alarm message and cancellation of the simulation without any individual handling.</p>
+      <h4 class="Blocklabel">Solution:</h4>
+      <p>Individually handle the missing CC-specific language elements in the part program ($P_SIM query).</p>
+      <h4 class="Blocklabel">Example:  </h4>
+      <a id="table_76d9e69b-063b-5ad1-49bd-0e3660ea147e">
+      </a> <a id="table_0"></a> <a id="table_76d9e69b-063b-5ad1-49bd-0e3660ea147e"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EMB"><colgroup><col width="31.7%"><col width="68.3%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N1 G01 X200 F500</td><td> </td></tr><tr valign="top"><td>IF (1==$P_SIM)</td><td> </td></tr><tr valign="top"><td>N5 X300</td><td>; CC not active for simulation.</td></tr><tr valign="top"><td>ELSE</td><td> </td></tr><tr valign="top"><td>N5 X300 OMA1=10</td><td> </td></tr><tr valign="top"><td>ENDIF</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+  </body>
+</html>

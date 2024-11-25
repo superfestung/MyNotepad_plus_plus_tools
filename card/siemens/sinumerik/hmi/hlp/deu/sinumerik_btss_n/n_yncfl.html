@@ -1,0 +1,101 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein N/YNCFL: NCK-Anweisungsgruppen</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein N/YNCFL: NCK-Anweisungsgruppen</h1>
+         </div>
+      </div>Es werden alle aktuell für die Kanäle projektierten G-Funktionen von NCK zum Lesen bereitgestellt. Projektiert werden sie
+      über Maschinendaten. Da die G-Funktionen in Gruppen organisiert sind, von denen jeweils nur eine aktiv sein kann, ist dieser
+      Baustein als Tabelle organisiert.<br/>
+      Je G-Gruppe liegen zwei Spalten vor. In der 1. Spalte ist die Anzahl der G-Funktionen einer Gruppe enthalten (<a href="../sinumerik_btss_N/N_YNCFL.html#608">/N/YNCFL/Gruppe_NUM</a>), das entspricht der Anzahl der Zeilen in der jeweilig darauffolgenden Spalte. Diese zweiten Spalte enthält alle zur Gruppe
+      gehörenden G-Funktionen (<a href="../sinumerik_btss_N/N_YNCFL.html#609">/N/YNCFL/Gruppe</a>).<br/>
+      Daraus ergibt sich das Vorgehen, dass die Daten zu einer  bestimmten G-Gruppe über einen Spaltenoffset berechnet werden.<br/>
+      Der Spaltenoffset lautet:<br/>
+      2 * (G-Gruppen-Nummer - 1)<br/>
+      <br/>
+      Die Anzahl der G-Gruppen kann der Variablen "<a href="../sinumerik_btss_N/N_Y.html#339">numGCodeGroups</a>" im Bereich N / Baustein Y entnommen werden. Daraus ergibt sich der maximale Spaltenoffset der Variablen zu 2 * <a href="../sinumerik_btss_N/N_Y.html#339">numGCodeGroups</a>.<br/>
+      <br/>
+      In Bereich C / Baustein SNCF stehen die aktuell aktiven G-Funktionen.<br/>
+      
+      <div><a name="609"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>Gruppe</b></td>
+            <td colspan="3" style="border:1px solid black">Anweisungsgruppe (Funktion)</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Alias:<br></span><b>function</b></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>G-Gruppennummer * 2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>laufende Nummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span><a href="../sinumerik_btss_N/N_YNCFL.html#608">/N/YNCFL/Gruppe_NUM</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anweisungsgruppe<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Nck/FunctionGrouping/Gruppe[c&lt;Spaltenindex&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="608"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>Gruppe_NUM</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl der G-Funktionen (GroupID)</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Alias:<br></span><b>groupId</b></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>(2 * G-Gruppennummer) - 1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl der G-Funktionen der jeweiligen Gruppe<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Nck/FunctionGrouping/Gruppe_NUM[&lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

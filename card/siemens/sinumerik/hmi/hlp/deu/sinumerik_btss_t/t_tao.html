@@ -1,0 +1,75 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein T/TAO: Applikationsspezifische Schneidendaten</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein T/TAO: Applikationsspezifische Schneidendaten</h1>
+         </div>
+      </div>Der Datenbaustein TAO ist als 2-dimensionales Variablenfeld organisiert. Der Baustein enthält applikationsspezifische Schneidendaten
+      zu allen Werkzeugen. Jedes Element ist über einen Spalten- und Zeilenindex adressierbar: Der Spaltenindex ist die Werkzeugnummer
+      (T-Nummer), d. h. in einer Spalte sind die applikationsspezifischen Daten für alle Schneiden eines Werkzeuges zu finden. <br/>
+      Die Zuordnung eines Werkzeuges zu einer T-Nummer kann dem Baustein Werkzeugverzeichnis (TV) im<br/>
+      zugehörigen Bereich T entnommen werden. Wird für den Spaltenindex eine nicht vorhandene Werkzeugnummer angegeben, wird der
+      Auftrag negativ quittiert.<br/>
+      <br/>
+      Die Anzahl der Zeilen ergibt sich aus der Anzahl Parameter je Schneide und aus der Anzahl der Schneiden eines Werkzeugs: <br/>
+      <br/>
+      maxZeilenanzahl = <a href="../sinumerik_btss_N/N_Y.html#2815">numCuttEdgeParams_tao</a> * <a href="../sinumerik_btss_T/T_TV.html#335">/T/TV/numCuttEdges</a> (T-Nummer)<br/>
+      <br/>
+      Die Anzahl der Parameter je Schneide <a href="../sinumerik_btss_N/N_Y.html#2815">numCuttEdgeParams_tao</a> kann dem Bereich N / Baustein Y entnommen werden. Die Anzahl der Schneiden, die werkzeugspezifisch sind, können dem Bereich
+      T / Baustein TV entnommen werden.<br/>
+      Bei Bedarf können mehrere Zeilen adressiert werden, so dass in einem Auftrag z. B. alle applikationsspezifischen Schneidendaten
+      eins Werkzeuges gelesen werden können.<br/>
+      <br/>
+      Die applikationsspezifischen Schneidendaten sind alle vom gleichen Datentyp.<br/>
+      <br/>
+      Die applikationsspezifischen Schneidendaten sind für SIEMENS-Applikationen reserviert.<br/>
+      
+      <div><a name="2810"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>siemEdgeData</b></td>
+            <td colspan="3" style="border:1px solid black">Schneidendaten für Siemens-Applikationen</td>
+            <td width="20%" style="border:1px solid black">$TC_DPCSx[y,z]</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Alias:<br></span><b>applEdgeData</b></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>Werkzeugnummer
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>Wert berechnen<br>(SchneidenNr-1) * <a href="../sinumerik_btss_N/N_Y.html#2815">numCuttEdgeParams_tao</a> + ParameterNr
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span><a href="../sinumerik_btss_N/N_Y.html#2815">numCuttEdgeParams_tao</a> * <a href="../sinumerik_btss_T/T_TV.html#335">/T/TV/numCuttEdges</a></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Die Siemens-Applikations-Daten werden mit den MD-Einstellungen MD-Bits $MN_MM_TOOL_MANAGEMENT_MASK, Bit2=1 und MD18206 $MN_MM_NUM_CCS_TOA_PARAM&gt;0
+               bereitgestellt.<br/>
+               Der Datentyp der einzelnen Parameter wird durch das MD18207 $MN_MM_TYPE_CCS_TDA_PARAM festgelegt und kann aus dem File _N_COMPLETE_TOA_ACX
+               ermittelt werden. <br/>
+               Die Übertragung im BTSS erfolgt immer als TYPE_DOUBLE. <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DOUBLE
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Tool/Compensation/siemEdgeData[u&lt;Werkzeugber.&gt;, c&lt;Spaltenindex&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>

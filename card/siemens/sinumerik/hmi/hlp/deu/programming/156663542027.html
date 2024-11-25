@@ -1,0 +1,26 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Programmstelle für SERUPRO verhindern (IPTRLOCK, IPTRUNLOCK)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Programmstelle für SERUPRO verhindern (IPTRLOCK, IPTRUNLOCK)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Für bestimmte komplizierte mechanische Situationen an der Maschine ist es erforderlich, den Satzsuchlauf SERUPRO zu verhindern.</p>
+      <p>Mit einem programmierbaren Unterbrechungszeiger besteht eine Eingriffsmöglichkeit, beim "Suchen auf der Unterbrechungsstelle", vor der suchunfähigen Stelle aufzusetzen. </p>
+      <p>Es können auch suchunfähige Bereiche in Teileprogrammbereichen definiert werden, in denen die NC noch nicht wieder einsteigen kann. Mit dem Programmabbruch vermerkt der NC den zuletzt verarbeiteten Satz, auf den über die Bedienoberfläche HMI gesucht werden kann.  </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>IPTRLOCKIPTRUNLOCK<p>Die Befehle stehen allein in einer Teleprogrammzeile und ermöglichen einen programmierbaren Unterbrechungszeiger</p><a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_05c235d4-edaf-47e5-a8e2-840efef5c928"></a> <a id="table_0"></a> <a id="table_05c235d4-edaf-47e5-a8e2-840efef5c928"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="26.5%"><col width="73.4%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>IPTRLOCK</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Beginn des suchunfähigen Programmabschnitts</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>IPTRUNLOCK</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Ende des suchunfähigen Programmabschnitts</p></td></tr></table></p><p class="comment">Beide Befehle sind nur in Teileprogrammen, <b>nicht</b> jedoch in Synchronaktionen zulässig.</p><a name="block_3"></a><h3 class="Blocktitle">Beispiel</h3><p>Verschachtelung suchunfähiger Programmabschnitte in zwei Programmebenen mit impliziten "IPTRUNLOCK". Das implizite "IPTRUNLOCK" in Unterprogramm 1 beendet den suchunfähigen Bereich.</p><a id="table_db87870d-a32b-46e0-8ae4-01e74d74cc40"></a> <a id="table_1"></a> <a id="table_db87870d-a32b-46e0-8ae4-01e74d74cc40"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EYC"><colgroup><col width="38.7%"><col width="61.3%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10010 IPTRLOCK()</td><td> </td></tr><tr valign="top"><td>N10020 R1 = R1 + 1</td><td> </td></tr><tr valign="top"><td>N10030 G4 F1</td><td>; Haltesatz, der suchunfähige Programmabschnitt beginnt.</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N10040 Unterprogramm2</td><td> </td></tr><tr valign="top"><td>...</td><td>; Interpretation des Unterprogramms 2.</td></tr><tr valign="top"><td>N20010 IPTRLOCK ()</td><td>; Unwirksam, wiederholter Beginn.</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N20020 IPTRUNLOCK ()</td><td>; Unwirksam, Ende in anderer Ebene.</td></tr><tr valign="top"><td>N20030 RET</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N10060 R2 = R2 + 2</td><td> </td></tr><tr valign="top"><td>N10070 RET</td><td>; Ende des suchunfähigen Programmabschnitts.</td></tr><tr valign="top"><td>N100 G4 F2</td><td>; Hauptprogramm wird fortgesetzt.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Eine Unterbrechung auf 100 liefert dann wieder der Unterbrechungszeiger.</p></div>
+    <p>Siehe auch:<br />    <a href="156663545355.html">Programmstelle für SERUPRO verhindern (IPTRLOCK, IPTRUNLOCK): Weitere Informationen</a></p>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Subprogram names</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Subprogram names</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Naming rules</h3>
+      <p>The subprogram name can be chosen freely providing the following rules are observed:</p>
+      <ul>
+        <li>
+          <p>Permissible characters:</p>
+          <ul>
+            <li>
+              <p>Letters: A ... Z, a ... z</p>
+            </li>
+            <li>
+              <p>Numbers: 0 ... 9</p>
+            </li>
+            <li>
+              <p>Underscore: <b>_</b></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>The first two characters should either be two letters or an underscore followed by a letter.</p>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+                <font size="1px">
+                </font>
+              </td>
+            </tr>
+          </table>
+          <table class="safety" border="1" bgcolor="#eeeeee">
+            <colgroup>
+              <col width="5%">
+              <col width="95%">
+            </colgroup>
+            <tr>
+              <td>
+                <b>Note</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="safety">If this condition is satisfied, then an NC program can be called as subprogram from another program just by specifying the program name. However, if the program name starts with digits, the subprogram call is then only possible via the CALL statement.</p>
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>
+          <p>Maximum length: 24 characters</p>
+        </li>
+      </ul>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Uppercase/lowercase letters</h4>
+            <p class="safety">The SINUMERIK NC language does <b>not</b> distinguish between uppercase and lowercase letters.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Impermissible program names</h4>
+            <p class="safety">To avoid problems with Microsoft Windows applications, the following program names may <b>not</b> be used:</p>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">CON, PRN, AUX, NUL</p>
+              </li>
+              <li class="safety">
+                <p class="safety">COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9</p>
+              </li>
+              <li class="safety">
+                <p class="safety">LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9</p>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Control-internal extensions</h3>
+      <p>The program name assigned when the subprogram is created is expanded within the control with the addition of a prefix and a suffix:</p>
+      <ul>
+        <li>
+          <p>Prefix: <code>_N_</code></p>
+        </li>
+        <li>
+          <p>Postfix: <code>_SPF</code></p>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Using the program name</h4>
+      <p class="comment">When using the program name, e.g. in the context of a subprogram call, all combinations of prefix, program name, and suffix are possible.</p>
+      <p class="comment">Example:</p>
+      <p class="comment">The subprogram with the program name <code>SUB_PROG</code> can be started using the following identifiers:</p>
+      <ol>
+        <li class="comment">
+          <p class="comment">
+            <code>SUB_PROG</code>
+          </p>
+        </li>
+        <li class="comment">
+          <p class="comment">
+            <code>_N_SUB_PROG</code>
+          </p>
+        </li>
+        <li class="comment">
+          <p class="comment">
+            <code>SUB_PROG_SPF</code>
+          </p>
+        </li>
+        <li class="comment">
+          <p class="comment">
+            <code>_N_SUB_PROG_SPF</code>
+          </p>
+        </li>
+      </ol>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Main programs and subprograms with the same name</h3>
+      <p>If a main program (.MPF) and a subprogram (.SPF) exist with the same program name, the appropriate file extension for the unique identification must be specified when the program name in the NC program is used. Otherwise the program found first in the search path with the specified name is used.</p>
+      <a name="block_4">
+      </a>
+      <h3 class="Blocktitle">File name and program name</h3>
+      <p>The file name and the name of the program contained in this file must always be identical.</p>
+      <p>One file therefore always contains one program.</p>
+    </div>
+    <p>See also:<br />    <a href="156662619915.html">Subprogram</a></p>
+  </body>
+</html>

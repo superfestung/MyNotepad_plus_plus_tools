@@ -1,0 +1,42 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Anlegen eines NC-Programms: Programmkopf</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Anlegen eines NC-Programms: Programmkopf</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Die NC-Sätze, die den eigentlichen Bewegungssätzen zur Herstellung der Werkstückkontur vorangestellt sind, werden als Programmkopf bezeichnet. </p>
+      <p>Der Programmkopf enthält Informationen / Anweisungen bezüglich:</p>
+      <ul>
+        <li>
+          <p>Werkzeugwechsel</p>
+        </li>
+        <li>
+          <p>Werkzeugkorrekturen</p>
+        </li>
+        <li>
+          <p>Spindelbewegung</p>
+        </li>
+        <li>
+          <p>Vorschubregelung</p>
+        </li>
+        <li>
+          <p>Geometrieeinstellungen (Nullpunktverschiebung, Wahl der Arbeitsebene)</p>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Programmkopf beim Drehen</h3>
+      <p>Das folgende Beispiel zeigt, wie der Programmkopf eines NC-Programms zum Drehen typischerweise aufgebaut ist:</p>
+      <a id="table_0">
+      </a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EHB"><colgroup><col width="43.4%"><col width="56.6%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 G0 G153 X200 Z500 T0 D0</td><td>; Werkzeugträger zurückziehen, bevor Werkzeugrevolver geschwenkt wird.</td></tr><tr valign="top"><td>N20 T5</td><td>; Werkzeug 5 einschwenken.</td></tr><tr valign="top"><td>N30 D1</td><td>; Schneidendatensatz des Werkzeugs aktivieren.</td></tr><tr valign="top"><td>N40 G96 S300 LIMS=3000 M4 M8</td><td>; Konstante Schnittgeschwindigkeit (Vc) = 300 m/min, Drehzahlbegrenzung = 3000 U/min, Drehrichtung links, Kühlung ein.</td></tr><tr valign="top"><td>N50 DIAMON</td><td>; X-Achse wird im Durchmesser programmiert.</td></tr><tr valign="top"><td>N60 G54 G18 G0 X82 Z0.2</td><td>; Nullpunktverschiebung und Arbeitsebene aufrufen, Startposition anfahren.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_2"></a><h3 class="Blocktitle">Programmkopf beim Fräsen</h3><p>Das folgende Beispiel zeigt, wie der Programmkopf eines NC-Programms zum Fräsen typischerweise aufgebaut ist:</p><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E4C"><colgroup><col width="43.4%"><col width="56.6%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 T="SF12"</td><td>; alternativ: T123</td></tr><tr valign="top"><td>N20 M6</td><td>; Werkzeugwechsel auslösen</td></tr><tr valign="top"><td>N30 D1</td><td>; Schneidendatensatz des Werkzeugs aktivieren</td></tr><tr valign="top"><td>N40 G54 G17</td><td>; Nullpunktverschiebung und Arbeitsebene</td></tr><tr valign="top"><td>N50 G0 X0 Y0 Z2 S2000 M3 M8</td><td>; Anfahrbewegung zum Werkstück, Spindel und Kühlmittel ein</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>Wenn mit Werkzeugorientierung / Koordinatentransformationen gearbeitet wird, sollten am Programmanfang evtl. noch aktive Transformationen abgelöscht werden:</p><a id="table_2"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EKE"><colgroup><col width="43.4%"><col width="56.6%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 CYCLE800()</td><td>; Rücksetzten der geschwenkten Ebene</td></tr><tr valign="top"><td>N20 TRAFOOF</td><td>; Rücksetzen von TRAORI, TRANSMIT, TRACYL, ...</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+  </body>
+</html>

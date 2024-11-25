@@ -1,0 +1,50 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Wait for valid axis position (WAITENC)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Wait for valid axis position (WAITENC)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <p>Using the language command "WAITENC", the NC program waits until the synchronized or restored axis positions are available for the axes configured with MD34800 $MA_WAIT_ENC_VALID = 1.  </p>
+      <p>An interruption can take place in the wait state, e.g. by starting an ASUB or by changing the operating mode to JOG. When the program is continued, where relevant, the wait state is resumed.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">In the user interface, the wait state is displayed using the hold state "Wait for measuring system".</p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <p>"WAITENC" can be programmed in the program section of any NC program.</p>
+      <p>Programming must be realized in a dedicated block:</p>
+      <a id="table_59a28090-946f-4b3f-9faf-5d94e051eab8">
+      </a> <a id="table_0"></a> <a id="table_59a28090-946f-4b3f-9faf-5d94e051eab8"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_invisible" border="0"><colgroup><col width="66.7%"><col width="33.3%"></colgroup><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>WAITENC</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table></p><a name="block_2"></a><h3 class="Blocktitle">Example</h3><p>"WAITENC" is for example used in an event-controlled user program, .../_N_CMA_DIR/_N_PROG_EVENT_SPF, as shown in the following application example.</p><p><b>Application example:</b> <b>Tool withdrawal after POWER OFF with orientation transformation</b></p><p>Machining with tool orientation was interrupted due to a power failure.<br />When powering up again, the event-controlled user program .../_N_CMA_DIR/_N_PROG_EVENT_SPF is called.</p><p>In the event-controlled user program, the system waits for synchronized or restored axis positions using "WAITENC"; in order to then be able to calculate a frame, which aligns the Work in the tool direction.</p><a id="table_0d13abbc-9140-4e15-a9c4-bcda97decabe"></a> <a id="table_1"></a> <a id="table_0d13abbc-9140-4e15-a9c4-bcda97decabe"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EDC"><colgroup><col width="38.0%"><col width="62.0%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td colspan="2">...</td></tr><tr valign="top"><td>IF $P_PROG_EVENT == 4</td><td>; Run-up.</td></tr><tr valign="top"><td>    IF $P_TRAFO &lt;> 0</td><td>; Transformation has been selected.</td></tr><tr valign="top"><td><b>        WAITENC</b></td><td>; Wait for valid axis positions of the orientation axes.</td></tr><tr valign="top"><td>        TOROTZ</td><td>; Rotate the Z axis of the WCS towards the tool axis.</td></tr><tr valign="top"><td>    ENDIF</td><td> </td></tr><tr valign="top"><td>    M17</td><td> </td></tr><tr valign="top"><td>ENDIF</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>The tool can then be retracted in JOG mode by means of a retraction movement towards the tool axis.</p></div>
+  </body>
+</html>

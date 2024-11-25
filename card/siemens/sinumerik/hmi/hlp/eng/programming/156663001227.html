@@ -1,0 +1,36 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Channel-specific frames ($P_CHBFR, $P_UBFR)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Channel-specific frames ($P_CHBFR, $P_UBFR)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Settable frames or basic frames can be read and written via the part program and via the OPI by the operator and by the PLC. </p>
+      <p>The fine offset can also be used for global frames. Global frames are suppressed in the same way as channel-specific frames, via G53, G153, SUPA and G500.</p>
+      <p>
+        <b>Machine manufacturer</b>
+      </p>
+      <p>The number of basic frames can be configured in the channel via the machine data MD28081 $MC_MM_NUM_BASE_FRAMES. The standard configuration is designed for at least one basic frame per channel. A maximum of eight basic frames are supported per channel. In addition to the eight basic frames, there can also be eight NCU global basic frames in the channel.   </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Channel-specific frames</h3>
+      <h4 class="Blocklabel">$P_CHBFR[n]</h4>
+      <p>System variable $P_CHBFR[n] can be used to read and write the basic frames. When a basic frame is written, the chained total basic frame is not activated until the execution of a G500, G54 ... G599 statement. The variable is used primarily for storing write operations to the basic frame on HMI or PLC. These frame variables are saved by the data backup.</p>
+      <h4 class="Blocklabel">First basic frame in the channel</h4>
+      <p>The basic frame with array index 0 is not activated simultaneously when writing to the predefined $P_UBFR variable, but rather activation only takes place on execution of a G500, G54 ... G599 statement. The variable can also be read and written in the program.</p>
+      <h4 class="Blocklabel">$P_UBFR</h4>
+      <p>$P_UBFR is identical to $P_CHBFR[0]. One basic frame always exists in the channel by default, so that the system variable is compatible with older versions. If there is no channel-specific basic frame, an alarm is issued at read/write: "Frame: statement not permissible".</p>
+    </div>
+    <p>See also:<br />    <a href="156662997771.html">Global frames ($P_NCBFR, $P_UIFR)</a><br />    <a href="156663004683.html">Frames active in the channel</a></p>
+  </body>
+</html>

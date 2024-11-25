@@ -1,0 +1,109 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Modaler Unterprogrammaufruf (MCALL, MCALLOF)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Modaler Unterprogrammaufruf (MCALL, MCALLOF)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Mit dem Unterprogrammaufruf MCALL kann der Anwender innerhalb eines Teileprogramms ein modal wirksames Unterprogramm aktivieren, das nach jedem auf die Aktivierung folgenden Verfahrsatz mit Bahnbewegung automatisch angewählt und abgearbeitet wird, auch über Programmebenen hinweg.</p>
+      <p>Für den Fall, dass im Teileprogramm Bahnbewegungen vorkommen, nach denen das Unterprogramm nicht ausgeführt werden soll, kann die automatische Anwahl und Abarbeitung des angegebenen Unterprogramms durch Programmierung des Schlüsselworts MCALLOF in den betreffenden Verfahrsätzen satzweise unterdrückt werden.</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">In einem Programmablauf wirkt immer nur der letzte modale Unterprogrammaufruf. Der aktuelle modale Unterprogrammaufruf ersetzt den bisher aktiven.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">LUD-Definition und -Wertzuweisung</h4>
+            <p class="safety">Der Datendefinitionsbereich am Anfang des Unterprogramms wird nur einmal bei der Ausführung des Satzes mit dem programmierten MCALL-Aufruf durchlaufen. Bei den folgenden Unterprogrammaufrufen nach den Verfahrsätzen wird der Datendefinitionsbereich nicht mehr durchlaufen. Dies hat zur Folge, dass ein bei der Definition einer lokalen Anwendervariablen (LUD) zugewiesener Wert nach dem ersten Aufruf nicht mehr zu Verfügung steht, sondern der Wert, der im Zyklus zuletzt geschrieben wurde. Die Variable wird nach dem ersten Aufruf nicht neu angelegt, sondern behält den letzten Wert aus dem vorherigen Aufruf. Um dieses Verhalten zu umgehen, wird empfohlen, die LUD-Definition und -Wertzuweisung voneinander zu trennen und die Wertzweisung in einem eigenen Satz nach dem Datendefinitionsbereich zu programmieren.</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Achtung</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Modale Unterprogrammaufrufe ohne Bahnbewegung</h4>
+            <p class="safety">Das modale Unterprogramm wird in folgenden Situationen auch ohne Programmierung einer Bahnbewegung aufgerufen:</p>
+            <ul class="safety">
+              <li class="safety">
+                <p class="safety">Programmierung der Adressen S oder F, wenn G0 oder G1 aktiv ist.</p>
+              </li>
+              <li class="safety">
+                <p class="safety">Wenn G0 oder G1 allein im Satz steht oder zusammen mit weiteren G-Befehlen programmiert wurde.</p>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <a id="table_2f540a57-71ff-7134-5b66-8d2bee041246">
+      </a> <a id="table_0"></a> <a id="table_2f540a57-71ff-7134-5b66-8d2bee041246"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ENC"><colgroup><col width="83.8%"><col width="16.2%"></colgroup><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>MCALL &lt;ProgName> [(Par1, Par2, ...)]</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>MCALLOF ...</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>MCALL</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_61e2dc63-b583-453f-9862-a29fe5822668"></a> <a id="table_1"></a> <a id="table_61e2dc63-b583-453f-9862-a29fe5822668"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="35.0%"><col width="10.0%"><col width="55.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>MCALL &lt;ProgName></code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Modal wirksamer Unterprogrammaufruf</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;ProgName></code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Name des Unterprogramms</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Typ:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">STRING</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>(Par1, Par2, ...)</code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Übergabeparameter (optional)</p><p type="p_table_l" align="left"><b>Hinweis:</b><br />Werden Parameter an das Unterprogramm übergeben, erfolgt die Parameterübergabe nur beim Aufruf!</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>MCALLOF</code>  </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Modal wirksamen Unterprogrammaufruf satzweise unterdrücken</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>MCALL</code> </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">MCALL ohne Angabe eines Programmnamens deaktiviert den modal wirksamen Unterprogrammaufruf.</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Randbedingungen</h3><h4 class="Blocklabel">ASUP</h4><p>Wird die Bearbeitung eines Teileprogramms durch ein ASUP (siehe Kapitel "<a href="156662741643.html">Interruptroutine (ASUP)</a>") unterbrochen, werden in diesem ASUP<b> </b>keine modalen Unterprogrammaufrufe ausgeführt.</p><p>Wird ein ASUP im Kanalzustand "Reset" gestartet, verhält es sich bezüglich der modalen Unterprogrammaufrufe wie ein normales Teileprogramm.</p><h4 class="Blocklabel">Werkzeugwechsel-Zyklus</h4><p>Erfolgt im Werkzeugwechsel-Zyklus eine Abwahl des modal wirksamen Unterprogrammaufrufs, so ist zu beachten, dass der Werkzeugwechsel-Zyklus ggf. auch nach Satzsuchlauf implizit über das Suchlauf-ASUP oder manuell per Überspeichern aufgerufen wird. In dieser Situation darf der modal wirksame Unterprogrammaufruf nicht abgewählt werden, weil sonst das Suchlauf-Ergebnis verfälscht wird. Es wird deshalb empfohlen, die Abwahl des modal wirksamen Unterprogrammaufrufs im Werkzeugwechsel-Zyklus wie folgt zu programmieren:</p><a id="table_339bb83c-dcbf-b841-959b-3502e0d5aa08"></a> <a id="table_2"></a> <a id="table_339bb83c-dcbf-b841-959b-3502e0d5aa08"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EOG"><colgroup><col width="29.5%"><col width="70.5%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>  IF $AC_ASUP == 0</td><td>; Aufruf erfolgt nicht über Suchlauf-ASUP oder Überspeichern.</td></tr><tr valign="top"><td>    MCALL</td><td>; Modal wirksamen Unterprogrammaufruf deaktivieren.</td></tr><tr valign="top"><td>  ENDIF</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_4"></a><h3 class="Blocktitle">Beispiele</h3><h4 class="Blocklabel">Beispiel 1: Modal wirksamen Unterprogrammaufruf aktivieren/deaktivieren</h4><a id="table_69202b97-c205-4393-bab9-bf54439be429"></a> <a id="table_3"></a> <a id="table_69202b97-c205-4393-bab9-bf54439be429"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EXH"><colgroup><col width="25.0%"><col width="75.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 G0 X0 Y0</td><td> </td></tr><tr valign="top"><td>N20 <b>MCALL L70</b></td><td>; Modal wirksamen Aufruf für Unterprogramm L70 aktivieren.</td></tr><tr valign="top"><td>N30 X10 Y10</td><td>; X10 Y10 wird angefahren, anschließend wird L70 aufgerufen.</td></tr><tr valign="top"><td>N40 X20 Y20</td><td>; X20 Y20 wird angefahren, anschließend wird L70 aufgerufen.</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N100 <b>MCALL</b></td><td>; Modal wirksamen Unterprogrammaufruf deaktivieren.</td></tr><tr valign="top"><td>N110 X0 Y0</td><td>; X0 Y0 wird angefahren, L70 wird <b>nicht</b> aufgerufen.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Beispiel 2: Modal wirksamer Unterprogrammaufruf über Programmebenen hinweg</h4><a id="table_bf31a8fc-2817-4361-843b-cedd61c89fd1"></a> <a id="table_4"></a> <a id="table_bf31a8fc-2817-4361-843b-cedd61c89fd1"></a> <a id="table_4"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ERBAC"><colgroup><col width="25.0%"><col width="75.0%"></colgroup><tr valign="top"><th>Programmcode</th><th> </th></tr><tr valign="top"><td>N10 G0 X0 Y0</td><td> </td></tr><tr valign="top"><td>N20 <b>MCALL L70</b></td><td> </td></tr><tr valign="top"><td>N30 L80</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p>In diesem Beispiel stehen die nachfolgenden NC-Sätze mit programmierten Bahnachsen in Unterprogramm L80. L70 wird durch L80 aufgerufen.</p><h4 class="Blocklabel">Beispiel 3: Modal wirksamen Unterprogrammaufruf satzweise unterdrücken</h4><a id="table_37e8d39b-90ab-cd58-77bf-8699570e84f2"></a> <a id="table_5"></a> <a id="table_37e8d39b-90ab-cd58-77bf-8699570e84f2"></a> <a id="table_5"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EOCAC"><colgroup><col width="45.0%"><col width="55.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>N10 <b>MCALL L70 (Par1, Par2, …)</b></td><td>; Modal wirksamen Aufruf für Unterprogramm L70 mit Parameterübergabe aktivieren.</td></tr><tr valign="top"><td>N20 X=0</td><td>; Verfahrsatz mit anschließender Ausführung von L70.</td></tr><tr valign="top"><td>N30 X=100 <b>MCALLOF</b></td><td>; Die Ausführung von L70 nach diesem Verfahrsatz wird unterdrückt.</td></tr><tr valign="top"><td>N40 X=150</td><td>; Verfahrsatz mit anschließender Ausführung von L70.</td></tr><tr valign="top"><td>...</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+    <p>Siehe auch:<br />    <a href="156662695307.html">Unterprogrammaufruf ohne Parameterübergabe</a></p>
+  </body>
+</html>

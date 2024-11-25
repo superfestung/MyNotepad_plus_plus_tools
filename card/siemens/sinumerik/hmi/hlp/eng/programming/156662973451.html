@@ -1,0 +1,133 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Coarse and fine offsets (CTRANS, CFINE)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Coarse and fine offsets (CTRANS, CFINE)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <h4 class="Blocklabel">Fine offset</h4>
+      <p>A fine offset <code>CFINE(...)</code> can be applied to the following frames:</p>
+      <ul>
+        <li>
+          <p>Settable frames: $P_UIFR or $P_IFRAME</p>
+        </li>
+        <li>
+          <p>Basic frames: $P_NCBFR[&lt;n>], $P_CHBFR[&lt;n>], $P_CHBFRAMES[&lt;n>] or $P_ACTBFRAME</p>
+        </li>
+        <li>
+          <p>Programmable frame: $P_PFRAME</p>
+        </li>
+      </ul>
+      <p>The fine offset of a frame is programmed with the <code>CFINE(</code>...<code>)</code> command. </p>
+      <h4 class="Blocklabel">Coarse offset</h4>
+      <p>A coarse offset <code>CTRANS(...)</code> can be applied to all frames.</p>
+      <h4 class="Blocklabel">Total offset</h4>
+      <p>The total offset results from the addition of the coarse and the fine offset.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Machine data</h3>
+      <h4 class="Blocklabel">Enable of the fine offset</h4>
+      <p>The fine offset is enabled with the machine data:</p>
+      <p>MD18600 $MN_MM_FRAME_FINE_TRANS = 1</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>
+      <h4 class="Blocklabel">Fine offset</h4>
+      <ul>
+        <li>
+          <p>Complete frame</p>
+          <ul>
+            <li>
+              <p>
+                <code>&lt;frame> = CFINE(&lt;K_1>,&lt;value>)</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>&lt;frame> = CFINE(&lt;K_1>,&lt;value>, &lt;K_2>, &lt;value>)</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>&lt;frame> = CFINE(&lt;K_1>,&lt;value>, &lt;K_2>, &lt;value>, &lt;K_3>, &lt;value>)</code>
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Frame component</p>
+          <ul>
+            <li>
+              <p>
+                <code>&lt;frame>[&lt;n>, &lt;K_1>, FI] = &lt;value></code>
+              </p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Coarse offset</h4>
+      <ul>
+        <li>
+          <p>Complete frame</p>
+          <ul>
+            <li>
+              <p>
+                <code>&lt;frame> = CTRANS(&lt;K_1>,&lt;value>)</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>&lt;frame> = CTRANS(&lt;K_1>,&lt;value>, &lt;K_2,&lt;value>)</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>&lt;frame> = CTRANS(&lt;K_1>,&lt;value>, &lt;K_2,&lt;value>, &lt;K_3,&lt;value>)</code>
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Frame component</p>
+          <ul>
+            <li>
+              <p>
+                <code>&lt;frame>[&lt;n>,&lt;K_1>,TR] = &lt;value></code>
+              </p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>In particular for the programmable frame <code>$P_PFRAME</code>:</p>
+      <ul>
+        <li>
+          <p>
+            <code>TRANS &lt;K_1> &lt;value></code>
+          </p>
+        </li>
+        <li>
+          <p>
+            <code>TRANS &lt;K_1> &lt;value> &lt;K_2> &lt;value></code>
+          </p>
+        </li>
+        <li>
+          <p>
+            <code>TRANS &lt;K_1> &lt;value> &lt;K_2> &lt;value> &lt;K_3> &lt;value></code>
+          </p>
+        </li>
+      </ul>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Meaning</h3>
+      <a id="table_83b57b34-853d-4cd3-b883-32e3238d5a90">
+      </a> <a id="table_0"></a> <a id="table_83b57b34-853d-4cd3-b883-32e3238d5a90"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="19.7%"><col width="80.3%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Frame></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Frame, e.g. settable frame of the data storage <code>$P_UIFR[&lt;n>]</code></p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>CFINE</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Fine offset, additive offset.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>CTRANS</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Coarse offset, absolute offset.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>TRANS</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Only programmable frame: Coarse offset, absolute offset.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;K_n></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Coordinate axes X, Y, Z</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;value></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Offset value</p></td></tr></table></p></div>
+  </body>
+</html>

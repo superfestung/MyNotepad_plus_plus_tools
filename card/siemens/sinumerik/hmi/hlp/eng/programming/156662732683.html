@@ -1,0 +1,107 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Execute external subprogram (EXTCALL): Further Information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Execute external subprogram (EXTCALL): Further Information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">More information</h3>
+      <h4 class="Blocklabel">EXTCALL call with absolute path name</h4>
+      <p>If the subprogram exists under the specified path, it is executed with the EXTCALL call. If the subprogram does not exist under the specified path, the program execution is aborted with the EXTCALL call.</p>
+      <h4 class="Blocklabel">EXTCALL call with relative path name / without path name</h4>
+      <p>In the event of an EXTCALL call with a relative path name or without a path name, the available program memories are searched as follows:</p>
+      <ol>
+        <li>
+          <p>If a path name is preset in SD42700 $SC_EXT_PROG_PATH, the data specified in the EXTCALL call (program name or with relative path name) is searched for first, starting from this path. The absolute path is obtained from linking the following characters:</p>
+          <ul>
+            <li>
+              <p>Default path specification in SD42700 $SC_EXT_PROG_PATH</p>
+            </li>
+            <li>
+              <p>Separator "/"</p>
+            </li>
+            <li>
+              <p>Path specification and subprogram name in the EXTCALL command </p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>If the subprogram was not found under 1., the directories of the user memory are searched.</p>
+        </li>
+      </ol>
+      <p>The search ends when the subprogram is found for the first time. If the subprogram is not found, the program execution is aborted with the EXTCALL call.</p>
+      <h4 class="Blocklabel">Adjustable reload memory (FIFO buffer)</h4>
+      <p>A reload memory is required for the execution of an external subprogram. The size of the reload memory is preset with 30 KB and can only be changed by the machine manufacturer (using MD18360 MM_EXT_PROG_BUFFER_SIZE).</p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee" style="margin-bottom:10px">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">Subprograms with jump commands</h4>
+            <p class="safety">For external subprograms that contain jump commands (GOTOF, GOTOB, CASE, FOR, LOOP, WHILE, REPEAT, IF, ELSE, ENDIF etc.), the jump destinations must lie within the reload memory.</p>
+            <p class="safety">This condition is especially problematic regarding jump instructions to the start of the program (GOTOS), since the programs are typically much too large to fit entirely in the reload memory. When reloading for the first time, the start of the program is removed from the reload memory. If a jump instruction to the beginning of the program is executed, the function is no longer able to find the jump destination. The program is aborted and alarm 14000 is output.</p>
+            <p class="safety">To be able to execute external subprograms without restrictions with regard to programmed jump instructions, it is recommended to use the function "Execution from External Storage (EES)" instead of the function "Execution from external subprograms (EXTCALL)".</p>
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Note</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="Blocklabel">ShopMill/ShopTurn programs</h4>
+            <p class="safety">The contour descriptions added at the file end mean the ShopMill and ShopTurn programs must be stored completely in the read-only memory.</p>
+          </td>
+        </tr>
+      </table>
+      <p>A separate reload memory is required for external subprograms executed in parallel.</p>
+      <h4 class="Blocklabel">Reset / end of program / POWER ON</h4>
+      <p>Reset and POWER ON cause external subprogram calls to be interrupted and the associated load memory to be deleted.</p>
+      <p>A program selected for "Execution from external source" remains selected for "Execution from external source" after a reset / end of program. The behavior does not differ from internally selected programs, assuming that the external program memory is still available.</p>
+      <p>
+      </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

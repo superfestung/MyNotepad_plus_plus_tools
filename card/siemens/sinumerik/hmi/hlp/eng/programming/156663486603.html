@@ -1,0 +1,24 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Feedrate characteristic (FNORM, FLIN, FCUB, FPO): Further Information</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Feedrate characteristic (FNORM, FLIN, FCUB, FPO): Further Information</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">More information</h3>
+      <h4 class="Blocklabel">FNORM</h4>
+      <p>The feedrate address F defines the path feedrate as a constant value according to DIN 66025.</p>
+      <a id="image_794555019_0">
+      </a> <img border="0" src="images/144429899019.png" width="305" height="205"/><h4 class="Blocklabel">FLIN</h4><p>The feedrate characteristic is approached linearly from the current feedrate value to the programmed F value until the end of the block.</p><a id="image_794585611_0"></a> <img border="0" src="images/144441913611.png" width="305" height="205"/><h4 class="Blocklabel">FCUB</h4><p>The feedrate is approached according to a cubic characteristic from the current feedrate value to the programmed F value until the end of the block. The control uses splines to connect all the feedrate values programmed non-modally that have an active FCUB. The feedrate values act here as interpolation points for calculation of the spline interpolation.</p><a id="image_794616203_0"></a> <img border="0" src="images/144442216203.png" width="305" height="205"/><h4 class="Blocklabel">F=FPO(… , … , …)</h4><p>The feedrate characteristic is programmed directly via a polynomial. The polynomial coefficients are specified according to the same method used for polynomial interpolation.</p><p>Example:</p><p><code>F=FPO(endfeed,quadf,cubf)</code></p><p>endfeed, quadf and cubf are previously defined variables.</p><a id="table_8dae4e48-6b29-4f80-beb0-a535e9135b1b"></a> <a id="table_0"></a> <a id="table_8dae4e48-6b29-4f80-beb0-a535e9135b1b"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="17.5%"><col width="82.5%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">endfeed</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Feedrate at block end</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">quadf</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Quadratic polynomial coefficient</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">cubf</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Cubic polynomial coefficient</p></td></tr></table></p><p>With an active FCUB, the spline is linked tangentially to the characteristic defined via FPO at the block beginning and block end.</p><a id="image_794646795_0"></a> <img border="0" src="images/144442224395.png" width="305" height="205"/><h4 class="Blocklabel">Behavior with compressor function active</h4><p>For active compressor function (COMP...) and combining several blocks to create a spline segment, the following applies:</p><a id="table_5fe750ee-7f63-7348-ea5e-c1ab0d7e7912"></a> <a id="table_1"></a> <a id="table_5fe750ee-7f63-7348-ea5e-c1ab0d7e7912"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="25.0%"><col width="75.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">FNORM:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The F word of the last block in the group applies to the spline segment.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">FLIN:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The F word of the last block in the group applies to the spline segment. <br />The programmed F value applies until the end of the segment and is then approached linearly.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">FCUB:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">The generated feedrate spline deviates from the programmed end points by a maximum of the value defined in the machine data MD20172 $MC_COMPRESS_VELO_TOL.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">F=FPO(…, …, …):</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">These blocks are not compressed.</p></td></tr></table></p><p></p></div>
+  </body>
+</html>

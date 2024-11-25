@@ -1,0 +1,28 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Exact stop (G60, G9, G601, G602, G603)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Exact stop (G60, G9, G601, G602, G603)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>In exact stop traversing mode, all path axes and special axes involved in the traversing motion that are not traversed modally, are decelerated at the end of each block until they come to a standstill. </p>
+      <h4 class="Blocklabel">Activation</h4>
+      <p>Activation takes place via commands from G groups 10, 11 and 12.</p>
+      <h4 class="Blocklabel">Application</h4>
+      <p>Exact stop is used when sharp outside corners have to be machined or inside corners finished to exact dimensions.</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>G60/G9 ...G601/G602/G603, etc.<a name="block_2"></a><h3 class="Blocktitle">Meaning</h3><a id="table_0"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="22.5%"><col width="77.5%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G60</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Switch on <b>modally</b> effective exact stop</p><p type="p_table_l" align="left">G60 is active until it is deactivated by switching on the <a href="156662042251.html">continuous-path mode</a>.</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G9</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Switch on <b>non-modally</b> effective exact stop</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>G601/G602/G603</code> </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Activate exact stop criterion</p><p type="p_table_l" align="left"><code>G601</code> → Exact stop criterion "Exact stop fine"</p><p type="p_table_l" align="left"><code>G602</code> → Exact stop criterion "Exact stop coarse"</p><p type="p_table_l" align="left"><code>G603</code> → Exact stop criterion "Interpolator end"</p><p type="p_table_l" align="left">The exact stop criterion is only effective with active exact stop G60 or G9. It defines how exactly the corner point is to be approached and when the transition is to be made to the next block.</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Example</h3><a id="table_1"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="ERE"><colgroup><col width="27.1%"><col width="72.9%"></colgroup><tr valign="top"><th>Program code</th><th>Comment</th></tr><tr valign="top"><td>N5 G602</td><td>; Criterion "Exact stop coarse" selected.</td></tr><tr valign="top"><td>N10 G0 G60 Z...</td><td>; Exact stop modal active.</td></tr><tr valign="top"><td>N20 X... Z...</td><td>; G60 continues to act.</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N50 G1 G601</td><td>; Criterion "Exact stop fine" selected.</td></tr><tr valign="top"><td>N80 G64 Z...</td><td>; Switchover to continuous-path mode.</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N100 G0 G9</td><td>; Exact stop acts only in this block.</td></tr><tr valign="top"><td>N110 ...</td><td>; Continuous-path mode active again.</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
+    <p>See also:<br />    <a href="156662039051.html">Exact stop (G60, G9, G601, G602, G603): Further information</a></p>
+  </body>
+</html>

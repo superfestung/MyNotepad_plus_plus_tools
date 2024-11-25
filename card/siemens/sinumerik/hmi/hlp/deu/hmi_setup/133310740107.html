@@ -1,0 +1,40 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Ruckfilter - Funktion</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Ruckfilter - Funktion</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Funktionsbeschreibung</h3>
+      <p>Bei Bewegungen außerhalb des Werkstücks oder bei Schruppbearbeitung werden hohe axiale Ruckwerte mit stark dämpfenden Filtern kombiniert. Damit wird die Bearbeitungs­zeit deutlich reduziert. Um bei unterschiedlichen Bearbeitungsvorgängen eine optimale Wirkung zu erzielen, wird ein FIR-Tiefpass in Abhängigkeit vom Dynamikmodus parametriert. Für ein FIR-Tiefpass-Filter werden spezifisch für jeden Dynamikmodus geeignete Werte für die Frequenz und die Toleranz eingetragen. Der Fenstertyp in MD32409 $MA_JERK_FIR_WINDOW = 1 (Hamming) ist fest voreingestellt.</p>
+      <p>Wird zum Beispiel bei der Bearbeitung mit DYNROUGH auf eine minimale Bearbeitungszeit und bei DYNPREC auf hohe Bearbeitungs­genauigkeit Wert gelegt, können diese Anfor­derungen mit einem FIR-Tiefpass realisiert werden. </p>
+      <p>
+        <b>⇒ FIR-Tiefpass: </b>Robuste Einstellung für alle Achsen im Kanal</p>
+      <p>Für den aktiven Dynamikmodus im Teileprogramm werden für <b>alle Achsen im Kanal dieselben Werte</b> berechnet und in die Maschinendaten geschrieben. Die Berechnung führt zu einem optimalen Ergebnis, wenn sich die Achsen hinsichtlich ihrer Dynamik­eigen­schaften ähnlich verhalten. Nach jeder Umschaltung des Dynamikmodus wird auch die Anweisung CALCFIR neu programmiert, um <b>explizit </b>die Berechnung für das Filter FIR-Tiefpass zu aktivieren. </p>
+      <p>
+        <b>⇒ FIR-Tiefpass </b>
+        <b>ADV</b>
+        <b>: </b>Achsspezifische Einstellung</p>
+      <p>Für den aktiven Dynamikmodus im Teileprogramm werden für <b>die Achsen im Kanal die Werte achsspezifisch </b>berechnet und in die Maschinendaten geschrieben. Dieses Filter ist geeignet für Achsen, die sich hinsichtlich ihrer Dynamik­eigen­schaften deutlich unterscheiden. Nach jeder Umschaltung des Dynamikmodus wird auch die Anweisung CALCFIR neu programmiert, um <b>explizit </b>die Berechnung für das Filter FIR-Tiefpass ADV zu aktivieren. </p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Aktiver Dynamikmodus</h3>
+      <p>Der aktive Dynamikmodus der G-Code-Gruppe 59 wird im Hochlauf, bei Bedientafel-Reset und am Teileprogramm-Ende durch Auswertung von MD20150 $MC_GCODE_RESET_VALUE[58] und MD20152 $MC_GCODE_RESET_MODE[58] neu eingelesen. </p>
+      <p>Folgende Maschinendaten werden abhängig vom Dynamikmodus im Hochlauf, bei Bedientafel-Reset und Teileprogramm-Ende <b>implizit</b> neu berechnet und aktiviert: </p>
+      <a id="table_a5974cd7-8a51-441d-7ae3-c67fede76c19">
+      </a> <a id="table_0"></a> <a id="table_a5974cd7-8a51-441d-7ae3-c67fede76c19"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="50.0%"><col width="50.0%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">MD32407 $MA_JERK_FIR_FREQ </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">FIR-Tiefpass - Eckfrequenz</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">MD32408 $MA_JERK_FIR_ORDER </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">FIR-Tiefpass - Filterordnung</p></td></tr></table></p><p>Weitere Informationen zu CALCFIR finden Sie im Programmierhandbuch NC-Programmierung.</p><p>Weitere Informationen zum Eingeben von Ruckfiltern und zum Umschalten von Lagesollwert-Filterketten finden Sie im Funktionshandbuch Achsen und Spindeln.</p></div>
+    <p>Siehe auch:<br />    <a href="jerk_filter_new_fir.html">Neues Ruckfilter eingeben - FIR-Tiefpass</a><br />    <a href="jerk_filter_new_fir_axial.html">Neues Ruckfilter eingeben - FIR-Tiefpass ADV</a><br />    <a href="jerk_filter_overview.html">Aktive Ruckfilter - Übersicht</a></p>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Verteilung über Joblisten bei 1:N</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Verteilung über Joblisten bei 1:N</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Vereinfachte Anwahl von Programmen</h3>
+      <p>Die Funktion steht nur in einem Verbund von mehreren NCU zu Verfügung und muss in der Konfigurationsdatei "systemconfiguration.ini" freigeschaltet werden:</p>
+      <p>
+        <code>[miscellaneous] </code>
+      </p>
+      <p>
+        <code>distributeJoblist=true </code>
+      </p>
+      <p>Die Quellen liegen auf dem lokalen Laufwerk der IPC oder des PC.</p>
+      <p>Das Verteilen der Programme erfolgt über die Anwahl einer Jobliste, die in einem Werkstück liegt. Die Jobliste kann COPY und SELECT Anweisungen enthalten: </p>
+      <p>
+        <code>; kopiere A.MPF auf NCU1:</code>
+      </p>
+      <p>
+        <code>COPY A.MPF NC=NCU1</code>
+      </p>
+      <p>
+        <code>; kopiere B.MPF auf NCU2:</code>
+      </p>
+      <p>
+        <code>COPY B.MPF NC=NCU2</code>
+      </p>
+      <p>
+        <code>; kopiere alle Unterprogramme auf alle NCU:</code>
+      </p>
+      <p>
+        <code>COPY *.SPF *</code>
+      </p>
+      <p>
+        <code>; wähle A.MPF auf Ncu NCU1 im Kanal 1 an.</code>
+      </p>
+      <p>
+        <code>SELECT A.MPF ch=NCU1,1</code>
+      </p>
+      <p>
+        <code>; wähle B.MPF auf Ncu NCU2 im Kanal 2 an.</code>
+      </p>
+      <p>
+        <code>SELECT B.MPF ch=NCU2,2</code>
+      </p>
+      <h4 class="Blocklabel">Ablauf:</h4>
+      <ol>
+        <li>
+          <p>Ist zum Zeitpunkt der Anwahl eine verteilte Jobliste aktiv, werden alle verteilten Programme auf den NCU ohne Nachfrage gelöscht. Ist das Werkstück auf den NCU danach leer, wird es dort gelöscht.</p>
+        </li>
+        <li>
+          <p>Die Programme werden in die entsprechenden Werkstücke der jeweiligen NCU kopiert.</p>
+        </li>
+        <li>
+          <p>Vorhandene Programme werden ohne Hinweis überschrieben.</p>
+        </li>
+        <li>
+          <p>Nach der Änderung eines verteilten Programms auf dem lokalen Laufwerk über den Editor werden die geänderten Programme auf die entsprechenden NCU kopiert.</p>
+        </li>
+      </ol>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Beispielstruktur</h3>
+      <a id="table_e92d0b8f-9813-4c98-93f1-e70212a995f3">
+      </a> <a id="table_0"></a> <a id="table_e92d0b8f-9813-4c98-93f1-e70212a995f3"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="28.8%"><col width="35.5%"><col width="35.5%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">/user/sinumerik/data/ prog/JOBA.WPD </p></th><th><p type="p_table_lb" align="left">NCU1</p></th><th><p type="p_table_lb" align="left">NCU2</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.JOB </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">A.MPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">B.MPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/B.MPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/B.MPF</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">UP1.SPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.WPD/UP1.SPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.WPD/UP1.SPF</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">UP2.SPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/UP2.SPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/UP2.SPF</p></td></tr></table></p><a id="table_5112f85c-0783-4a03-961c-f9c11f664e4d"></a> <a id="table_1"></a> <a id="table_5112f85c-0783-4a03-961c-f9c11f664e4d"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="28.8%"><col width="35.5%"><col width="35.5%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">/user/sinumerik/data/ prog/wks.dir/JOBA.WPD</p></th><th><p type="p_table_lb" align="left">NCU1</p></th><th><p type="p_table_lb" align="left">NCU2</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.JOB </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">A.MPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">B.MPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/B.MPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/B.MPF</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">UP1.SPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.WPD/UP1.SPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">JOBA.WPD/UP1.SPF</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">UP2.SPF </p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/UP2.SPF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">WKS.DIR/JOBA.WPD/UP2.SPF</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Randbedingungen</h3><p>Besonderes Verhalten:</p><ul><li><p>Verteilte Programme bleiben bei einem Neustart der Bedien-Software erhalten.</p></li><li><p>Verteilte Programme können auf dem lokalen Laufwerk weder gelöscht noch umbenannt oder mittels Kopieren/Verschieben überschrieben werden.</p></li><li><p>Änderungen von verteilten Programmen auf den NCU gehen verloren, wenn sie nicht manuell gesichert werden.</p></li><li><p>Die Programmkorrektur in der Maschine wird nicht angeboten.</p></li><li><p>Bei der Erstellung eines Inbetriebnahmearchivs werden automatisch auch alle Daten des lokalen Laufwerks gesichert.</p></li></ul><p>Einschränkungen:</p><ul><li><p>Bei Änderungen von verteilten Programmen auf dem lokalen Laufwerk über den Editor ist zu beachten, dass nur die Kanalzustände auf der aktuell verbundenen NCU überwacht werden. Wenn das Programm noch auf einer anderen NCU unterbrochen oder aktiv ist, kann es nach der Änderung nicht korrekt verteilt werden.</p></li><li><p>Die Anzeige des aktiven Satzes, die Markierung des Satzvorlaufs sowie die Read only-Behandlung des im Editor geöffneten Programms erfolgt nur für die aktiven Programme der aktuell verbundenen NCU.</p></li><li><p>Programme werden im Editor immer im Kontext der aktuell verbundenen NCU geöffnet. Das kann bei verteilten Programmen zu einer fehlerhaften Schritterkennung führen.</p></li><li><p>In der aktuellen Satzanzeige im Bedienbereich "Maschine" können jeweils nur die aktiven/verteilten Programme der aktuell verbundenen NCU angezeigt werden.</p></li><li><p>Die Simulation von Joblisten über mehrere Maschinen ist nicht möglich.</p></li><li><p>Wenn in der Datei s"ystemconfiguration.ini" <code>distributeJoblist=true</code> konfiguriert ist, kann über den Bedienbereich "Programm-Manager" kein Teile- bzw. Unterprogramm mehr angewählt werden.</p></li></ul></div>
+  </body>
+</html>

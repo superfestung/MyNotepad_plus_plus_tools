@@ -1,0 +1,104 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Online-Werkzeuglängenkorrektur ($AA_TOFF)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Online-Werkzeuglängenkorrektur ($AA_TOFF)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <a name="block_1">
+      </a>
+      <h3 class="BlocktitleFirst">Funktion</h3>
+      <p>In Verbindung mit einer aktiven Orientierungstransformation oder einem aktiven Werkzeugträger können während der Bearbeitung in Echtzeit Werkzeuglängenkorrekturen ausgeführt werden. Die Veränderung der effektiven Werkzeuglänge durch die Online-Werkzeuglängenkorrektur führt bei Orientierungsänderungen zu veränderten Ausgleichsbewegungen der an der Transformation beteiligten Achsen. Die resultierenden Geschwindigkeiten können dabei, abhängig von der Maschinenkinematik und den aktuellen Achspositionen, sowohl größer als auch kleiner werden.</p>
+      <p>Geschwindigkeit und Beschleunigung<b>,</b> mit der die über Systemvariable $AA_TOFF vorgegebenen Werkzeuglängenkorrekturen herausgefahren werden, können über folgende Maschinendaten vorgegeben werden:</p>
+      <ul>
+        <li>
+          <p>MD21194 $MC_TOFF_VELO (Geschwindigkeit, Online Korrektur in Werkzeugrichtung)  </p>
+        </li>
+        <li>
+          <p>MD21196 $MC_TOFF_ACCEL (Beschleunigung, Online Korrektur in Werkzeugrichtung) </p>
+        </li>
+      </ul>
+      <p>Weitere Informationen zur Aktivierung der Funktion siehe:</p>
+      <p>
+        <b>Weitere Informationen</b>
+      </p>
+      <p>Programmierhandbuch NC Programmierung</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Anwendungen in Synchronaktionen</h3>
+      <p>In Synchronaktionen können über die Systemvariable $AA_TOFF Werkzeuglängenkorrekturen in allen drei Dimensionen aufgeschaltet werden. Als Index werden die drei Geometrieachsnamen X, Y, Z verwendet. Alle drei Korrekturichtungen können gleichzeitig aktiv sein.   </p>
+      <p>Die Korrekturen sind bei einer aktiven Orientierungstransformation oder bei einem aktiven, orientierbaren Werkzeugträger in den jeweiligen Werkzeugrichtungen wirksam. Vor dem Ein- bzw. Ausschalten einer Transformation muss eine überlagerte Bewegung mit <code>TOFFOF</code> ausgeschaltet werden.</p>
+      <p class="comment">Nach Abwahl der Werkzeuglängenkorrektur in einer Dimension, ist der Wert der Systemvariablen $AA_TOFF in dieser Dimension gleich 0.</p>
+      <a name="block_3">
+      </a>
+      <h3 class="Blocktitle">Wirkungsweise der Korrektur in Werkzeugrichtung</h3>
+      <p>Die Werkzeuglängenkorrekturen verändern nicht die Werkzeugparameter, sondern sie werden innerhalb der Transformation oder des orientierbaren Werkzeugträgers so verrechnet, dass sich Korrekturen im Werkzeugkoordinatensystem ergeben. </p>
+      <p>Über das folgende Maschinendatum kann für jede Dimension festgelegt werden, ob die in $AA_TOFF angegebene Werkzeuglängenkorrektur absolut oder inkrementell (integrierend) verrechnet werden soll:</p>
+      <p>MD21190 $MC_TOFF_MODE (Wirkungsweise der Korrektur in Werkzeugrichtung)   </p>
+      <p>Der aktuelle Wert der Werkzeuglängenkorrektur kann über die Systemvariable $AA_TOFF_VAL gelesen werden. </p>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <font size="1px">
+            </font>
+          </td>
+        </tr>
+      </table>
+      <table class="safety" border="1" bgcolor="#eeeeee">
+        <colgroup>
+          <col width="5%">
+          <col width="95%">
+        </colgroup>
+        <tr>
+          <td>
+            <b>Hinweis</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="safety">Eine Auswertung der Variablen $AA_TOFF_VAL ist nur in Verbindung mit einer aktiven Orientierungstransformation oder einem aktiven Werkzeugträger sinnvoll.   </p>
+          </td>
+        </tr>
+      </table>
+      <a name="block_4">
+      </a>
+      <h3 class="Blocktitle">Beispiele</h3>
+      <h4 class="Blocklabel">Anwahl der Online-Werkzeuglängenkorrektur</h4>
+      <p>Maschinendaten für Online-Werkzeuglängenkorrektur:</p>
+      <ul>
+        <li>
+          <p>MD21190 $MC_TOFF_MODE = 1</p>
+        </li>
+        <li>
+          <p>MD21194 $MC_TOFF_VEL[0] = 10000</p>
+        </li>
+        <li>
+          <p>MD21194 $MC_TOFF_VEL[1] = 10000</p>
+        </li>
+        <li>
+          <p>MD21194 $MC_TOFF_VEL[2] = 10000</p>
+        </li>
+        <li>
+          <p>MD21196 $MC_TOFF_ACC[0] = 1</p>
+        </li>
+        <li>
+          <p>MD21196 $MC_TOFF_ACC[1] = 1</p>
+        </li>
+        <li>
+          <p>MD21196 $MC_TOFF_ACC[2] = 1</p>
+        </li>
+      </ul>
+      <p>Online-Werkzeuglängenkorrektur im Teileprogramm aktivieren:</p>
+      <a id="table_9bc13c09-bbc1-4e08-9899-9d88b8008f33">
+      </a> <a id="table_0"></a> <a id="table_9bc13c09-bbc1-4e08-9899-9d88b8008f33"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EDD"><colgroup><col width="89.9%"><col width="10.1%"></colgroup><tr valign="top"><th>Programmcode</th><th> </th></tr><tr valign="top"><td>N5 DEF REAL XOFFSET</td><td> </td></tr><tr valign="top"><td>; Orientierungstransformation aktivieren</td><td> </td></tr><tr valign="top"><td>N10 TRAORI</td><td> </td></tr><tr valign="top"><td>; Werkzeuglängenkorrektur in Z-Richtung aktivieren</td><td> </td></tr><tr valign="top"><td>N20 TOFFON(Z)</td><td> </td></tr><tr valign="top"><td>; Werkzeuglängenkorrektur in Z-Richtung: 10 mm</td><td> </td></tr><tr valign="top"><td>N30 WHEN TRUE DO $AA_TOFF[Z] = 10</td><td> </td></tr><tr valign="top"><td>G4 F5</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>; Statische Synchronaktion: Werkzeuglängenkorrektur in X-Richtung; entsprechend der Position der X2-Achse im WKS</td><td> </td></tr><tr valign="top"><td>N50 ID=1 DO $AA_TOFF[X] = $AA_IW[X2]</td><td> </td></tr><tr valign="top"><td>G4 F5</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>; Merke: aktuelle gesamt Werkzeuglängenkorrektur in X-Richtung</td><td> </td></tr><tr valign="top"><td>N100 XOFFSET = $AA_TOFF_VAL[X]</td><td> </td></tr><tr valign="top"><td>; die Werkzeuglängenkorrektur in X-Richtung zu 0 zurückfahren</td><td> </td></tr><tr valign="top"><td>N120 TOFFON(X, -XOFFSET)</td><td> </td></tr><tr valign="top"><td>G4 F5</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><h4 class="Blocklabel">Abwahl der Online-Werkzeuglängenkorrektur</h4><a id="table_b3111cce-3e09-4b82-a7f8-6656b372408f"></a> <a id="table_1"></a> <a id="table_b3111cce-3e09-4b82-a7f8-6656b372408f"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="E1F"><colgroup><col width="90.9%"><col width="9.1%"></colgroup><tr valign="top"><th>Programmcode</th><th> </th></tr><tr valign="top"><td>; Orientierungstransformation aktivieren</td><td> </td></tr><tr valign="top"><td>N10 TRAORI</td><td> </td></tr><tr valign="top"><td>; Werkzeuglängenkorrektur in X-Richtung aktivieren</td><td> </td></tr><tr valign="top"><td>N20 TOFFON(X)</td><td> </td></tr><tr valign="top"><td>; Werkzeuglängenkorrektur in X-Richtung: 10 mm</td><td> </td></tr><tr valign="top"><td>N30 WHEN TRUE DO $AA_TOFF[X] = 10</td><td> </td></tr><tr valign="top"><td>G4 F5</td><td> </td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>; Werkzeuglängenkorrektur in X-Richtung löschen; Es wird keine Achse verfahren. Zur aktuellen Position im WKS wird ; der Positionsoffset entsprechend der aktuellen Orientierung ; hinzugerechnet.</td><td> </td></tr><tr valign="top"><td>N80 TOFFOF(X)</td><td> </td></tr><tr valign="top"><td>N90 TRAFOOF</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_5"></a><h3 class="Blocktitle">Aktivierung und Deaktivierung im Teileprogramm</h3><p>Die Online-Werkzeuglängenkorrektur wird im Teileprogramm mit <code>TOFFON</code> aktiviert und mit <code>TOFFOF</code> deaktiviert. Bei der Aktivierung kann für die jeweilige Korrekturrichtung ein Offsetwert, z. B. <code>TOFFON(Z,25)</code> angegeben werden, der sofort herausgefahren wird. Der Status der Online-Werkzeuglängenkorrektur wird an der NC/PLC-Nahtstelle über folgende Signale angezeigt:</p><ul class="comment"><li class="comment"><p class="comment"><code>&lt;Chan>.basic.in.toffonActive</code> (<code>TOFF</code> aktiv)</p></li><li class="comment"><p class="comment"><code>&lt;Chan>.basic.in.toffonMotionActive</code> (<code>TOFF</code> Bewegung aktiv)</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Hinweis</b></td></tr><tr><td><p class="safety">Die Online-Werkzeuglängenkorrektur bleibt solange inaktiv, bis sie über <code>TOFFON</code> im Teileprogramm wieder angewählt wird.</p></td></tr></table></li></ul><a name="block_6"></a><h3 class="Blocktitle">Verhalten bei Reset und Power On</h3><p>Das Verhalten bei Reset kann eingestellt werden über das Maschinendatum:</p><p>MD21190 $MC_TOFF_MODE, Bit 0 = &lt;Wert> (Wirkungsweise der Korrektur in Werkzeugrichtung) </p><a id="table_eab93c84-6149-45a5-9f95-62d212a34db1"></a> <a id="table_2"></a> <a id="table_eab93c84-6149-45a5-9f95-62d212a34db1"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="8.4%"><col width="91.5%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Wert</p></th><th><p type="p_table_lb" align="left">Bedeutung</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">0</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Der Werkzeuglängenoffset $AA_TOFF wird bei Reset abgewählt</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">1</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Der Werkzeuglängenoffset $AA_TOFF bleibt bei Reset erhalten</p></td></tr></table></p><p>Dies ist immer bei statischen Synchronaktionen <code>IDS=&lt;Nummer> DO $AA_TOFF[n]=&lt;Wert></code> notwendig, da es sonst erneut zu einer sofortigen Werkzeuglängenkorrektur kommen würde.</p><p class="comment">Ebenso kann eine Transformation oder ein orientierbarer Werkzeugträger <b>nach </b>Reset über folgendes Maschinendatum abgewählt werden:</p><p class="comment">MD20110 $MC_RESET_MODE_MASK (Grundstellung nach Reset)   </p><p class="comment">Auch hier muss die Werkzeuglängenkorrektur gelöscht werden.</p><p class="comment">Wenn über Reset hinweg eine Werkzeuglängenkorrektur aktiv bleiben soll, und ein Transformationswechsel oder ein Wechsel des orientierbaren Werkzeugträgers stattfindet, wird der Alarm 21665 "Kanal %1 $AA_TOFF[ ] rückgesetzt" ausgegeben. Die Werkzeuglängenkorrektur wird dabei auf den Wert 0 gesetzt.</p><p class="comment">Nach Power On werden alle Werkzeuglängenoffsets auf den Wert 0 gesetzt.</p><p class="comment">Die Funktion ist nach POWER ON deaktiviert.</p><a name="block_7"></a><h3 class="Blocktitle">Verhalten bei Betriebsartenwechsel </h3><p>Die Werkzeuglängenkorrektur bleibt über Betriebsartenwechsel hinaus aktiv. Die Korrektur wird in allen Betriebsarten außer JOG und REF ausgeführt.</p><p>Wird beim Betriebsartenwechsel eine Werkzeuglängenkorrektur aufgrund von $AA_TOFF[ ] herausgefahren, erfolgt die Betriebsartenumschaltung erst, nach dem Herausfahren der Werkzeuglängenkorrektur. Es wird der Alarm 16907 "Kanal %1 Aktion %2 &lt;ALNX> nur im Stopp-Zustand möglich" angezeigt.</p><a name="block_8"></a><h3 class="Blocktitle">Verhalten bei REPOS</h3><p>Die Werkzeuglängenkorrektur ist in der Betriebsart <code>REPOS</code> aktiv.</p><a name="block_9"></a><h3 class="Blocktitle">Randbedingungen</h3><p>Bei vorhandenem Werkzeuglängenoffset sind folgende Randbedingungen zu beachten:</p><ul><li><p>Eine Transformation ist mit <code>TRAFOOF</code> auszuschalten</p></li><li><p>Vor der Aktivierung einer Transformation im Teileprogramm muss ein aktiver Werkzeuglängenoffset mit <code>TOFFOF</code> gelöscht werden.</p></li><li><p>Beim Umschalten von <code>CP</code> nach <code>PTP</code> wird eine Transformation abgeschaltet. Ein Werkzeuglängenoffset muss <b>vor </b>der Umschaltung gelöscht werden. Ist bei einem Wechsel auf achsspezifisches manuelles Verfahren in der Betriebsart JOG eine Werkzeuglängenkorrektur aktiv, wird der Wechsel nach <code>PTP</code> nicht ausgeführt. <code>CP</code> bleibt solange aktiv, bis die Werkzeuglängenkorrektur über <code>TOFFOF</code> gelöscht wurde.</p></li><li><p>Vor einem Achstausch einer Geometrieachse muss ein aktiver Werkzeuglängenoffset in Richtung der Geometrieachse über <code>TOFFOF</code> gelöscht werden.</p></li><li><p>Vor einem Ebenenwechsel muss ein aktiver Werkzeuglängenoffset über <code>TOFFOF</code> gelöscht werden.</p></li><li><p>Die <code>TOFFON</code> bzw. <code>TOFFOF</code> werden bei einem Satzsuchlauf nicht mit aufgesammelt und im Aktionssatz nicht ausgegeben.</p></li></ul><a name="block_10"></a><h3 class="Blocktitle">PLC-Signale</h3><h4 class="Blocklabel">NC → PLC</h4><a id="table_e849b817-f8dd-d3c2-26d6-a2643b47f3c7"></a> <a id="table_3"></a> <a id="table_e849b817-f8dd-d3c2-26d6-a2643b47f3c7"></a> <a id="table_3"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="45.0%"><col width="35.0%"><col width="20.0%"></colgroup><tr valign="top"><th><p type="p_table_lb" align="left">Basic Program Plus</p></th><th colspan="2"><p type="p_table_lb" align="left">Basic Program</p></th></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Chan>.basic.in.toffonActive</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LBP_Chan*.E_TOFF</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB21, ... .DBX318.2</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">&lt;Chan>.basic.in.toffonMotionActive</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">LBP_Chan*.E_TOFFmovem</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">DB21, ... .DBX318.3</p></td></tr></table></p></div>
+    <p>Siehe auch:<br />    <a href="156663008139.html">Transformationen</a></p>
+  </body>
+</html>

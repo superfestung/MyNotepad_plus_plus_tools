@@ -1,0 +1,1845 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/><title></title></head>
+<body><table><tr><td><b><a name="201322">A201322</a></b></td>
+<td><b>&lt;location&gt;Topology: Drive object number present twice in configuration</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>A drive object number is present more than once in p0978.<br />
+Alarm value (r2124, interpret decimal):<br />
+Index of p0978 under which the involved drive object number is located.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set parameter p0009 = 1 and change p0978:<br />
+Rules:<br />
+- p0978 must include all of the drive object numbers (p0101).<br />
+- it is not permissible for a drive object number to be repeated.<br />
+- by entering a 0, the drive objects with PZD are separated from those without PZD.<br />
+- only 2 partial lists are permitted. After the second 0, all values must be 0.<br />
+- dummy drive object numbers (255) are only permitted in the first partial list.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201323">A201323</a></b></td>
+<td><b>&lt;location&gt;Topology: More than two partial lists created</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Partial lists are available more than twice in p0978. After the second 0, all must be 0.<br />
+Alarm value (r2124, interpret decimal):<br />
+Index of p0978 under which the illegal value is located.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set p0009 to 1 and change p0978:<br />
+Rules:<br />
+- p0978 must include all of the drive object numbers (p0101).<br />
+- it is not permissible for a drive object number to be repeated.<br />
+- by entering a 0, the drive objects with PZD are separated from those without PZD.<br />
+- only 2 partial lists are permitted. After the second 0, all values must be 0.<br />
+- dummy drive object numbers (255) are only permitted in the first partial list.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201324">A201324</a></b></td>
+<td><b>&lt;location&gt;Topology: Dummy drive object number incorrectly created</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In p0978, dummy drive object numbers (255) are only permitted in the first partial list.<br />
+Alarm value (r2124, interpret decimal):<br />
+Index of p0978 under which the illegal value is located.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Set p0009 to 1 and change p0978:<br />
+Rules:<br />
+- p0978 must include all of the drive object numbers (p0101).<br />
+- it is not permissible for a drive object number to be repeated.<br />
+- by entering a 0, the drive objects with PZD are separated from those without PZD.<br />
+- only 2 partial lists are permitted. After the second 0, all values must be 0.<br />
+- dummy drive object numbers (255) are only permitted in the first partial list.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201325">F201325</a></b></td>
+<td><b>&lt;location&gt;Topology: Component number not present in target topology</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The component configured in a parameter (e.g. p0121, p0131, etc.) is not present in the target topology.<br />
+Fault value (r0949, interpret decimal):<br />
+Configured component number that is not present in target topology.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Establish topology and DO configuration consistency.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201330">A201330</a></b></td>
+<td><b>&lt;location&gt;Topology: Quick commissioning not possible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Unable to carry out a quick commissioning. The existing actual topology does not fulfill the requirements.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ccccbbaa hex: cccc = preliminary component number, bb = supplementary information, aa = fault cause<br />
+aa = 01 hex = 1 dec:<br />
+On one component illegal connections were detected.<br />
+- bb = 01 hex = 1 dec: For a Motor Module, more than one motor with DRIVE-CLiQ was detected.<br />
+- bb = 02 hex = 2 dec: For a motor with DRIVE-CLiQ, the DRIVE-CLiQ cable is not connected to a Motor Module.<br />
+aa = 02 hex = 2 dec:<br />
+The topology contains too many components of a particular type.<br />
+- bb = 01 hex = 1 dec: There is more than one master Control Unit.<br />
+- bb = 02 hex = 2 dec: There is more than 1 infeed (8 for a parallel circuit configuration).<br />
+- bb = 03 hex = 3 dec: There are more than 10 Motor Modules (8 for a parallel circuit configuration).<br />
+- bb = 04 hex = 4 dec: There are more than 9 encoders.<br />
+- bb = 05 hex = 5 dec: There are more than 8 Terminal Modules.<br />
+- bb = 07 hex = 7 dec: Unknown component type<br />
+- bb = 08 hex = 8 dec: There are more than 6 drive slaves.<br />
+- bb = 09 hex = 9 dec: Connection of a drive slave not permitted.<br />
+- bb = 0a hex = 10 dec: There is no drive master.<br />
+- bb = 0b hex = 11 dec: There is more than one motor with DRIVE-CLiQ for a parallel circuit.<br />
+- bb = 0c hex = 12 dec: Different power units are being used in a parallel connection.<br />
+- cccc: Not used.<br />
+aa = 03 hex = 3 dec:<br />
+More than 16 components are connected at a DRIVE-CLiQ socket of the Control Unit.<br />
+- bb = 0, 1, 2, 3 means e.g. detected at the DRIVE-CLiQ socket X100, X101, X102, X103.<br />
+- cccc: Not used.<br />
+aa = 04 hex = 4 dec:<br />
+The number of components connected one after the other is greater than 125.<br />
+- bb: Not used.<br />
+- cccc = preliminary component number of the first component and component that resulted in the fault.<br />
+aa = 05 hex = 5 dec:<br />
+The component is not permissible for SERVO.<br />
+- bb = 01 hex = 1 dec: SINAMICS G available.<br />
+- bb = 02 hex = 2 dec: Chassis available.<br />
+- cccc = preliminary component number of the first component and component that resulted in the fault.<br />
+aa = 06 hex = 6 dec:<br />
+On one component illegal EEPROM data was detected. These must be corrected before the system continues to boot.<br />
+- bb = 01 hex = 1 dec: The Article No. [MLFB] of the power unit that was replaced includes a space retainer. The space retainer (*) must be replaced by a correct character.<br />
+- cccc = preliminary component number of the component with illegal EEPROM data.<br />
+aa = 07 hex = 7 dec:<br />
+The actual topology contains an illegal combination of components.<br />
+- bb = 01 hex = 1 dec: Active Line Module (ALM) and Basic Line Module (BLM).<br />
+- bb = 02 hex = 2 dec: Active Line Module (ALM) and Smart Line Module (SLM).<br />
+- bb = 03 hex = 3 dec: SIMOTION control (e.g. SIMOTION D445) and SINUMERIK component (e.g. NX15).<br />
+- bb = 04 hex = 4 dec: SINUMERIK control (e.g. SINUMERIK 730.net) and SIMOTION component (e.g. CX32).<br />
+- cccc: Not used.<br />
+aa = 08 hex = 8 dec:<br />
+The motor is not completely connected.<br />
+- bb: Not used.<br />
+- cccc: Not used.<br />
+Note:<br />
+Connection type and connection number are described in F01375.<br />
+See also: p0097 (Select drive object type), r0098 (Actual device topology), p0099 (Device target topology)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- adapt the output topology to the permissible requirements.<br />
+- commission the device using the commissioning tool.<br />
+- for motors with DRIVE-CLiQ, connect the power and DRIVE-CLiQ cable to the same Motor Module (Single Motor Module: DRIVE-CLiQ at X202, Double Motor Module: DRIVE-CLiQ from motor 1 (X1) to X202, from motor 2 (X2) to X203).<br />
+For aa = 06 hex = 6 dec and bb = 01 hex = 1 dec:<br />
+Correct the Article No. when commissioning using the commissioning tool.<br />
+See also: p0097 (Select drive object type), r0098 (Actual device topology), p0099 (Device target topology)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201331">A201331</a></b></td>
+<td><b>&lt;location&gt;Topology: At least one component not assigned to a drive object</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>At least one component is not assigned to a drive object.<br />
+- when commissioning, a component was not able to be automatically assigned to a drive object.<br />
+- the parameters for the data sets are not correctly set.<br />
+Alarm value (r2124, interpret decimal):<br />
+Component number of the unassigned component.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>This component is assigned to a drive object.<br />
+Check the parameters for the data sets.<br />
+Examples:<br />
+- power unit (p0121).<br />
+- motor (p0131, p0186).<br />
+- encoder interface (p0140, p0141, p0187 ... p0189).<br />
+- encoder (p0140, p0142, p0187 ... p0189).<br />
+- Terminal Module (p0151).<br />
+- option board (p0161).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201340">F201340</a></b></td>
+<td><b>&lt;location&gt;Topology: Too many components on one line</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>For the selected communications clock cycle, too many DRIVE-CLiQ components are connected to one line of the Control Unit.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+xyy hex: x = fault cause, yy = component number or connection number.<br />
+1yy:<br />
+The communications clock cycle of the DRIVE-CLiQ connection on the Control Unit is not sufficient for all read transfers.<br />
+2yy:<br />
+The communications clock cycle of the DRIVE-CLiQ connection on the Control Unit is not sufficient for all write transfers.<br />
+3yy:<br />
+Cyclic communication is fully utilized.<br />
+4yy:<br />
+The DRIVE-CLiQ cycle starts before the earliest end of the application. An additional dead time must be added to the control. Sign-of-life errors can be expected.<br />
+The conditions of operation with a current controller sampling time of 31.25 &micro;s have not been maintained.<br />
+5yy:<br />
+Internal buffer overflow for net data of a DRIVE-CLiQ connection.<br />
+6yy:<br />
+Internal buffer overflow for receive data of a DRIVE-CLiQ connection.<br />
+7yy:<br />
+Internal buffer overflow for send data of a DRIVE-CLiQ connection.<br />
+8yy:<br />
+The component clock cycles cannot be combined with one another<br />
+900:<br />
+The lowest common multiple of the clock cycles in the system is too high to be determined.<br />
+901:<br />
+The lowest common multiple of the clock cycles in the system cannot be generated with the hardware.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the DRIVE-CLiQ wiring.<br />
+- reduce the number of components on the DRIVE-CLiQ line involved and distribute these to other DRIVE-CLiQ sockets of the Control Unit. This means that communication is uniformly distributed over several lines.<br />
+For fault value = 1yy - 4yy in addition:<br />
+- increase the sampling times (p0112, p0115, p4099). If necessary, for DCC or FBLOCKS, change the assignment of the runtime group (p21000, p20000) so that the sampling time (r21001, r20001) is increased.<br />
+- if necessary, reduce the number of cyclically calculated blocks (DCC) and&#47;or function blocks (FBLOCKS).<br />
+- reduce the function modules (r0108).<br />
+- establish the conditions for operation with a current controller sampling time of 31.25 &micro;s (at the DRIVE-CLiQ line, only operate Motor Modules and Sensor Modules with this sampling time and only use a permitted Sensor Module (e.g. SMC20, this means a 3 at the last position of the Article No.)).<br />
+- For an NX, the corresponding Sensor Module for a possibly existing second measuring system should be connected to a free DRIVE-CLiQ socket of the NX.<br />
+- for BSR Motor Modules, the following applies: If Safety Extended Functions is enabled, and 6 axes are operated on the DRIVE-CLiQ line, then the clock cycle for the actual value sensing must be set as follows: p9511 &gt;= 8 * current controller sampling time (p0115[0]).<br />
+For fault value = 8yy in addition:<br />
+- check the clock cycles settings (p0112, p0115, p4099). Clock cycles on a DRIVE-CLiQ line must be perfect integer multiples of one another. As clock cycle on a line, all clock cycles of all drive objects in the previously mentioned parameters apply, which have components on the line involved.<br />
+For fault value = 9yy in addition:<br />
+- check the clock cycles settings (p0112, p0115, p4099). The lower the numerical value difference between two clock cycles, the higher the lowest common multiple. This behavior has a significantly stronger influence, the higher the numerical values of the clock cycles.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201341">F201341</a></b></td>
+<td><b>&lt;location&gt;Topology: Maximum number of DRIVE-CLiQ components exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>Too many DRIVE-CLiQ components were defined in the actual topology.<br />
+Note:<br />
+Pulse enable is withdrawn and prevented.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the DRIVE-CLiQ wiring.<br />
+- reduce the number components on the DRIVE-CLiQ line involved in order to maintain the maximum quantity structure.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201354">F201354</a></b></td>
+<td><b>&lt;location&gt;Topology: Actual topology indicates an illegal component</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The actual topology indicates at least one illegal component.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyxx hex: yy = component number, xx = cause.<br />
+xx = 1: Component at this Control Unit not permissible.<br />
+xx = 2: Component in combination with another component not permissible.<br />
+Note:<br />
+Pulse enable is prevented.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Remove the illegal components and restart the system.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201355">F201355</a></b></td>
+<td><b>&lt;location&gt;Topology: Actual topology changed</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The device target topology (p0099) does not correspond to the device actual topology (r0098).<br />
+The fault only occurs if the topology was commissioned using the automatic internal device mechanism and not using the commissioning tool.<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+See also: r0098 (Actual device topology), p0099 (Device target topology)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>One of the following counter-measures can be selected if no faults have occurred in the topology detection itself:<br />
+If commissioning is still not completed:<br />
+- carry out a self-commissioning routine (starting from p0009 = 1).<br />
+In general:<br />
+Set p0099 = r0098, set p0009 = 0; for existing Motor Modules, this results in servo drives being automatically generated (p0107).<br />
+Generating servo drives: Set p0097 to 1, set p0009 to 0.<br />
+Generating vector drives: Set p0097 to 2, set p0009 to 0.<br />
+Generating vector drives with parallel connection: set p0097 to 12, set p0009 to 0.<br />
+In order to set configurations in p0108, before setting p0009 to 0, it is possible to first set p0009 to 2 and modify p0108. The index corresponds to the drive object (p0107).<br />
+If commissioning has already been completed:<br />
+- re-establish the original connections and re-connect power to the Control Unit.<br />
+- restore the factory setting for the complete equipment (all of the drives) and allow automatic self-commissioning again.<br />
+- change the device parameterization to match the connections (this is only possible using the commissioning tool).<br />
+Notice:<br />
+Topology changes that result in this fault being generated cannot be accepted by the automatic function in the device, but must be transferred using the commissioning tool and parameter download. The automatic function in the device only allows constant topology to be used. Otherwise, when the topology is changed, all of the previous parameter settings are lost and replaced by the factory setting.<br />
+See also: r0098 (Actual device topology)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201356">F201356</a></b></td>
+<td><b>&lt;location&gt;Topology: There is a defective DRIVE-CLiQ component</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+ (OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The actual topology indicates at least one defective DRIVE-CLiQ component.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+zzyyxx hex:<br />
+zz = connection number of the component at which the defective component is connected<br />
+yy = component number of the component at which the defective component is connected<br />
+xx = fault cause<br />
+xx = 1: Component at this Control Unit not permissible.<br />
+xx = 2: component with communication defect.<br />
+Note:<br />
+Pulse enable is withdrawn and prevented.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Replace the defective component and restart the system.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201357">F201357</a></b></td>
+<td><b>&lt;location&gt;Topology: Two Control Units identified on the DRIVE-CLiQ line</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+ (OFF2)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>In the actual topology, 2 Control Units are connected with one another through DRIVE-CLiQ.<br />
+As standard, this is not permitted.<br />
+This is only permitted if the Technology Extension OALINK has already been installed on the two Control Units and has been commissioned online.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+yyxx hex:<br />
+yy = connection number of the Control Unit at which the second Control Unit is connected<br />
+xx = component number of the Control Unit at which the second Control Unit is connected<br />
+Note:<br />
+Pulse enable is withdrawn and prevented.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>In general:<br />
+- remove the connection to the second Control Unit and restart.<br />
+- for the S120M component DRIVE-CLiQ extension, interchange the hybrid cable (IN&#47;OUT).<br />
+When using OALINK:<br />
+- remove the DRIVE-CLiQ connection and restart the systems.<br />
+- install OALINK on both Control Units and activate.<br />
+- Check the configuration of the DRIVE-CLiQ sockets in OALINK.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201358">A201358</a></b></td>
+<td><b>&lt;location&gt;Topology: Line termination not available</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>At least one line with distributed drives is not terminated. The last participant on the line must be terminated with a line termination connector.<br />
+This therefore ensures the degree of protection of the distributed drives.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+zzyyxx hex:<br />
+zz = connection number of the distributed drive where there is no terminating connector<br />
+yy = component number<br />
+xx = CU connection number<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Install the line terminating connector for the last distributed drive.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201359">F201359</a></b></td>
+<td><b>&lt;location&gt;Topology: DRIVE-CLiQ performance not sufficient</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The DRIVE-CLiQ performance is not sufficient at one line in order to identify an inserted component.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on).<br />
+- Distribute components across several DRIVE-CLiQ lines.<br />
+Note:<br />
+For this topology, do not withdraw and insert components in operation.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201360">F201360</a></b></td>
+<td><b>&lt;location&gt;Topology: Actual topology not permissible</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The detected actual topology is not permissible.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+ccccbbaa hex:<br />
+cccc = preliminary component number, bb = no significance, aa = fault cause<br />
+aa = 01 hex = 1 dec:<br />
+Too many components were detected at the Control Unit. A maximum of 199 components is permissible.<br />
+aa = 02 hex = 2 dec:<br />
+The component type of a component is not known.<br />
+aa = 03 hex = 3 dec:<br />
+It is illegal to combine ALM and BLM.<br />
+aa = 04 hex = 4 dec:<br />
+It is illegal to combine ALM and SLM.<br />
+aa = 05 hex = 5 dec:<br />
+It is illegal to combine BLM and SLM.<br />
+aa = 06 hex = 6 dec:<br />
+A CX32 was not directly connected to a permitted Control Unit.<br />
+aa = 07 hex = 7 dec:<br />
+An NX10 or NX15 was not directly connected to a permitted Control Unit.<br />
+aa = 08 hex = 8 dec:<br />
+A component was connected to a Control Unit that is not permitted for this purpose.<br />
+aa = 09 hex = 9 dec:<br />
+A component was connected to a Control Unit with out-of-date firmware.<br />
+aa = 0A hex = 10 dec:<br />
+Too many components of a particular type detected.<br />
+aa = 0B hex = 11 dec:<br />
+Too many components of a particular type detected on a single line.<br />
+Note:<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault cause = 1:<br />
+Change the configuration. Connect less than 199 components to the Control Unit.<br />
+For fault cause = 2:<br />
+Remove the component with unknown component type.<br />
+For fault cause = 3, 4, 5:<br />
+Establish a valid combination.<br />
+For fault cause = 6, 7:<br />
+Connect the expansion module directly to a permitted Control Unit.<br />
+For fault cause = 8:<br />
+Remove component or use a permissible component.<br />
+For fault cause = 9:<br />
+Upgrade the firmware of the Control Unit to a later version.<br />
+For fault cause = 10, 11:<br />
+Reduce the number of components.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201361">A201361</a></b></td>
+<td><b>&lt;location&gt;Topology: Actual topology contains SINUMERIK and SIMOTION components</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The detected actual topology contains SINUMERIK and SIMOTION components.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex: cc = fault cause, bb = component class of the actual topology, aa = component number of the component<br />
+cc = 01 hex = 1 dec:<br />
+An NX10 or NX15 was connected to a SIMOTION control.<br />
+cc = 02 hex = 2 dec:<br />
+A CX32 was connected to a SINUMERIK control.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For alarm value = 1:<br />
+Replace all NX10 or NX15 by a CX32.<br />
+For alarm value = 2:<br />
+Replace all CX32 by an NX10 or NX15.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201362">A201362</a></b></td>
+<td><b>&lt;location&gt;Topology: Topology rule(s) broken</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>At least one topology rule for the SINAMICS S120 Combi has been broken.<br />
+In the event of a fault, the ramping up of the drive system is aborted and closed-loop drive control is not enabled.<br />
+Alarm value (r2124, interpret decimal):<br />
+The alarm value indicates which rule has been violated.<br />
+1: The S120 Combi may only be wired via DRIVE-CLiQ socket X200 to X100 on the NCU.<br />
+2: In DRIVE-CLiQ socket X101 on the NCU, only one Single Motor Module (SMM) may be connected via X200, one Double Motor Module (DMM) via X200, one Terminal Module 54F (TM54F) via X500 or one DRIVE-CLiQ Hub Module (DMC20, DME20) via X500.<br />
+3: In DRIVE-CLiQ socket X102 on the NCU, only one Terminal Module 54F (TM54F) may be connected via X500, one DRIVE-CLiQ Hub Module (Hub) via X500 or one NX15 via X100.<br />
+4: Only Sensor Modules may be connected to DRIVE-CLiQ sockets X201 up to X203 (3-axis) or X204 (4-axis) on the S120 Combi.<br />
+5: In DRIVE-CLiQ socket X205 (X204 is not available for 3 axes), only SMC &#47; SME Sensor Modules and DRIVE-CLiQ encoders may be connected.<br />
+6: In the case of a Single Motor Module as first expansion axis, only one additional Single Motor Module may be connected in the DRIVE-CLiQ socket X201 via X200, one Terminal Module 54F (TM54F) via X500 or one DRIVE-CLiQ Hub Module (DMC20, DME20) via X500.<br />
+7: Only Sensor Modules or DRIVE-CLiQ encoders may be connected in the DRIVE-CLiQ socket X202 on possibly available Single Motor Modules.<br />
+8: For a second Single Motor Module or for a Double Motor Module, at X201 a 54F Terminal Module (TM54F) or a DRIVE-CLiQ Hub Module (DMC20, DME20) may be connected via X500.<br />
+9: If a Double Motor Module is used as an expansion axis, only Sensor Modules may be connected to X202 and X203.<br />
+10: If a Terminal Module 54F (TM54F) is configured, only one DRIVE-CLiQ Hub Module (DMC20, DME20) may be connected to X501 of the TM54F module via DRIVE-CLiQ socket X500. In this case, it is not permissible that an existing Hub Module is connected elsewhere.<br />
+11: For DRIVE-CLiQ Hub Modules, only Sensor Modules (SMC, SME) and DRIVE-CLiQ encoders may be connected to X501 to X505.<br />
+12: Only certain Motor Modules may be used for expansion axes.<br />
+13: For an S120 Combi with 3 axes, nothing must be connected at the DRIVE-CLiQ Hub Module at X503.<br />
+14: A maximum of one Terminal Module 54F (TM54F) is permitted.<br />
+15: A maximum of one DRIVE-CLiQ Hub Module (DMC20, DME20) is permitted.<br />
+16: DRIVE-CLiQ socket X100 of NX15 must be connected with the NCU via X102.<br />
+17: The S120 Combi may only be connected to X101 of the NX15 via the DRIVE-CLiQ socket X200.<br />
+18: In DRIVE-CLiQ socket X102 on the NX15, only one Single Motor Module (SMM) may be connected via X200, one Double Motor Module (DMM) via X200, one Terminal Module 54F (TM54F) via X500 or one DRIVE-CLiQ Hub Module (DMC20, DME20) via X500.<br />
+19: It is not permissible that anything is connected at DRIVE-CLiQ socket X103 on the NX15.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Evaluate the alarm value and ensure compliance with the corresponding topology rule(s).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201375">F201375</a></b></td>
+<td><b>&lt;location&gt;Topology: Connection duplicated between two components</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When checking the actual topology, a ring-type connection was detected.<br />
+The fault value describes a component contained in the ring.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+ccbbaaaa hex:<br />
+cc = connection number (%3)<br />
+bb = component class (% 2)<br />
+aaaa = preliminary component number (%1)<br />
+Component class:<br />
+0: Component unknown.<br />
+1: Control Unit<br />
+2: Motor Module<br />
+3: Line Module<br />
+4: Sensor Module<br />
+5: Voltage Sensing Module<br />
+6: Terminal Module<br />
+7: DRIVE-CLiQ Hub Module<br />
+8: Controller Extension<br />
+9: Filter Module<br />
+10: Hydraulic Module.<br />
+49: DRIVE-CLiQ component<br />
+50: Option slot<br />
+60: Encoder<br />
+70: DRIVE-CLiQ motor<br />
+71: Hydraulic cylinder<br />
+72: Hydraulic valve<br />
+80: Motor<br />
+Connection number:<br />
+0: Port 0, 1: Port 1, 2: Port 2, 3: Port 3, 4: Port 4, 5: Port 5<br />
+10: X100, 11: X101, 12: X102, 13: X103, 14: X104, 15: X105<br />
+20: X200, 21: X201, 22: X202, 23: X203<br />
+50: X500, 51: X501, 52: X502, 53: X503, 54: X504, 55: X505<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Output the fault value and remove the specified connection.<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201380">F201380</a></b></td>
+<td><b>&lt;location&gt;Topology: Actual topology EEPROM defective</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When detecting the actual topology, a component with a defective EEPROM was detected.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+bbbbaaaa hex:<br />
+bbbb = reserved<br />
+aaaa = preliminary component number of the defective components<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Output the fault value and remove the defected component.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201381">A201381</a></b></td>
+<td><b>&lt;location&gt;Topology: power unit incorrectly inserted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a power unit in the actual topology that has been incorrectly inserted.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the incorrectly inserted component (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component involved is incorrectly inserted.<br />
+Component class and connection number are described in F01375.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+- automatically remove the topology error (p9904).<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201382">A201382</a></b></td>
+<td><b>&lt;location&gt;Topology: Sensor Module incorrectly inserted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a Sensor Module in the actual topology that has been incorrectly inserted with respect to the target technology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the incorrectly inserted component (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component involved is incorrectly inserted.<br />
+Component class and connection number are described in F01375.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+- automatically remove the topology error (p9904).<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201383">A201383</a></b></td>
+<td><b>&lt;location&gt;Topology: Terminal Module incorrectly inserted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a Terminal Module in the actual topology that has been incorrectly inserted with respect to the target technology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the incorrectly inserted component (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component involved is incorrectly inserted.<br />
+Component class and connection number are described in F01375.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+- automatically remove the topology error (p9904).<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201384">A201384</a></b></td>
+<td><b>&lt;location&gt;Topology: DRIVE-CLiQ Hub Module incorrectly inserted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a DRIVE-CLiQ Hub Module in the actual topology that has been incorrectly inserted with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the incorrectly inserted component (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component involved is incorrectly inserted.<br />
+Component class and connection number are described in F01375.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+- automatically remove the topology error (p9904).<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201385">A201385</a></b></td>
+<td><b>&lt;location&gt;Topology: Controller Extension incorrectly inserted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a controller extension 32 (CX32) in the actual topology that has been incorrectly inserted with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the incorrectly inserted component (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component involved is incorrectly inserted.<br />
+Component class and connection number are described in F01375.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+- automatically remove the topology error (p9904).<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201386">A201386</a></b></td>
+<td><b>&lt;location&gt;Topology: DRIVE-CLiQ component incorrectly inserted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a DRIVE-CLiQ component in the actual topology that has been incorrectly inserted with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the incorrectly inserted component (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component involved is incorrectly inserted.<br />
+Component class and connection number are described in F01375.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+- automatically remove the topology error (p9904).<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201389">A201389</a></b></td>
+<td><b>&lt;location&gt;Topology: Motor with DRIVE-CLiQ incorrectly inserted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a motor with DRIVE-CLiQ in the actual topology that has been incorrectly inserted with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the incorrectly inserted component (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component involved is incorrectly inserted.<br />
+Component class and connection number are described in F01375.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+- automatically remove the topology error (p9904).<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201416">A201416</a></b></td>
+<td><b>&lt;location&gt;Topology: Component additionally inserted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has found a component in the actual topology which is not specified in the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = component class (% 2)<br />
+cc = connection number (%4)<br />
+bb = component class of the additional component (%1)<br />
+aa = component number (%3)<br />
+Note:<br />
+The component class of the additional component is contained in bb.<br />
+The component is described in dd, cc and aa, where the additional component is inserted.<br />
+Component class and connection number are described in F01375.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- remove the additional component (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201420">A201420</a></b></td>
+<td><b>&lt;location&gt;Topology: Component different</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected differences in the actual topology and target topologies in the electronic rating plate.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex: aa = component number (%1), bb = component class of the target topology (%2), cc = component class of the actual topology (%3), dd = difference (%4)<br />
+dd = 01 hex = 1 dec:<br />
+Different component type.<br />
+dd = 02 hex = 2 dec:<br />
+Different article number.<br />
+dd = 03 hex = 3 dec:<br />
+Different manufacturer.<br />
+dd = 04 hex = 4 dec:<br />
+For a multi-component slave, the incorrect subcomponent (index) is connected (e.g. Double Motor Module X201 instead of X200) - or only a part of a multi-component slave is set to &quot;deactivate and not available&quot;.<br />
+dd = 05 hex = 5 dec:<br />
+NX10 or NX15 used instead of CX32.<br />
+dd = 06 hex = 6 dec:<br />
+NX10 or NX15 used instead of CX32.<br />
+dd = 07 hex = 7 dec:<br />
+Different number of connections.<br />
+Note:<br />
+The component class is described in F01375.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- connect the expected component (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+Topology comparison - if required, adapt the comparison level:<br />
+- parameterize the topology comparison of all components (p9906).<br />
+- parameterize the topology comparison of one components (p9907, p9908).<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201425">A201425</a></b></td>
+<td><b>&lt;location&gt;Topology: Serial number different</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected differences in the actual and target topologies in relation to one component. The serial number is different.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = reserved<br />
+cc = number of differences (%3)<br />
+bb = component class (% 2)<br />
+aa = component number (%1)<br />
+Note:<br />
+The component class is described in F01375.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- change over the actual topology to match the target topology.<br />
+- load the target topology that matches the actual topology (commissioning tool).<br />
+For byte cc:<br />
+cc = 1 --&gt; can be acknowledged using p9904 or p9905.<br />
+cc &gt; 1 --&gt; can be acknowledged using p9905 and can be deactivated using p9906 or p9907&#47;p9908.<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+See also: p9904 (Topology comparison acknowledge differences), p9905 (Device specialization), p9906 (Topology comparison all components comparison level), p9907 (Topology comparison component number), p9908 (Topology comparison of a component comparison level)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201428">A201428</a></b></td>
+<td><b>&lt;location&gt;Topology: Incorrect connection used</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected differences in the actual and target topologies in relation to one component. For a component, another connection was used.<br />
+The different connections of a component are described in the alarm value.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number of the target topology (%4)<br />
+cc = connection number of the actual topology (%3)<br />
+bb = component class (% 2)<br />
+aa = component number (%1)<br />
+Note:<br />
+Component class and connection number are described in F01375.<br />
+The drive system is no longer booted. In this state, the drive control (closed-loop) cannot be enabled.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- reinsert the DRIVE-CLiQ cable to the component (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+- automatically remove the topology error (p9904).<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+See also: p9904 (Topology comparison acknowledge differences)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201451">F201451</a></b></td>
+<td><b>&lt;location&gt;Topology: Target topology is invalid</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An error was detected in the target topology.<br />
+The target topology is invalid.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+ccccbbaa hex: cccc = index error, bb = component number, aa = fault cause<br />
+aa = 1B hex = 27 dec: Error not specified.<br />
+aa = 1C hex = 28 dec: Value illegal.<br />
+aa = 1D hex = 29 dec: Incorrect ID.<br />
+aa = 1E hex = 30 dec: Incorrect ID length.<br />
+aa = 1F hex = 31 dec: Too few indices left.<br />
+aa = 20 hex = 32 dec: component not connected to Control Unit.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Download the target topology again using the commissioning tool.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201481">A201481 (N)</a></b></td>
+<td><b>&lt;location&gt;Topology: power unit not connected</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a power unit that is missing in the actual topology with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the component that has not been inserted (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component has not been inserted.<br />
+Component class and connection number are described in F01375.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+Check the hardware:<br />
+- check the 24 V supply voltage.<br />
+- check DRIVE-CLiQ cables for interruption and contact problems.<br />
+- check that the component is working properly.<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201482">A201482</a></b></td>
+<td><b>&lt;location&gt;Topology: Sensor Module not connected</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a Sensor Module that is missing in the actual topology with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the component that has not been inserted (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component has not been inserted.<br />
+Component class and connection number are described in F01375.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+Check the hardware:<br />
+- check the 24 V supply voltage.<br />
+- check DRIVE-CLiQ cables for interruption and contact problems.<br />
+- check that the component is working properly.<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201483">A201483</a></b></td>
+<td><b>&lt;location&gt;Topology: Terminal Module not connected</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a Terminal Module that is missing in the actual topology with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the component that has not been inserted (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component has not been inserted.<br />
+Component class and connection number are described in F01375.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+Check the hardware:<br />
+- check the 24 V supply voltage.<br />
+- check DRIVE-CLiQ cables for interruption and contact problems.<br />
+- check that the component is working properly.<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201484">A201484</a></b></td>
+<td><b>&lt;location&gt;Topology: DRIVE-CLiQ Hub Module not connected</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a DRIVE-CLiQ Hub Module missing in the actual topology with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the component that has not been inserted (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component has not been inserted.<br />
+Component class and connection number are described in F01375.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+Check the hardware:<br />
+- check the 24 V supply voltage.<br />
+- check DRIVE-CLiQ cables for interruption and contact problems.<br />
+- check that the component is working properly.<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201485">A201485</a></b></td>
+<td><b>&lt;location&gt;Topology: Controller Extension not connected</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a Control Extension (CX32) missing in the actual topology with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the component that has not been inserted (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component has not been inserted.<br />
+Component class and connection number are described in F01375.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+Check the hardware:<br />
+- check the 24 V supply voltage.<br />
+- check DRIVE-CLiQ cables for interruption and contact problems.<br />
+- check that the component is working properly.<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201486">A201486</a></b></td>
+<td><b>&lt;location&gt;Topology: DRIVE-CLiQ component not connected</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a DRIVE-CLiQ component missing in the actual topology with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the component that has not been inserted (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component has not been inserted.<br />
+Component class and connection number are described in F01375.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+Check the hardware:<br />
+- check the 24 V supply voltage.<br />
+- check DRIVE-CLiQ cables for interruption and contact problems.<br />
+- check that the component is working properly.<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201487">A201487</a></b></td>
+<td><b>&lt;location&gt;Topology: Option slot component not inserted</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected an option slot component missing in the actual topology with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the component that has not been inserted (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component has not been inserted.<br />
+Component class and connection number are described in F01375.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+Check the hardware:<br />
+- check the 24 V supply voltage.<br />
+- check DRIVE-CLiQ cables for interruption and contact problems.<br />
+- check that the component is working properly.<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201489">A201489</a></b></td>
+<td><b>&lt;location&gt;Topology: motor with DRIVE-CLiQ not connected</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The topology comparison has detected a motor with DRIVE-CLiQ missing in the actual topology with respect to the target topology.<br />
+Alarm value (r2124, interpret hexadecimal):<br />
+ddccbbaa hex:<br />
+dd = connection number (%4)<br />
+cc = component number (%3)<br />
+bb = component class (% 2)<br />
+aa = component number of the component that has not been inserted (% 1)<br />
+Note:<br />
+The component is described in dd, cc and bb, where the component has not been inserted.<br />
+Component class and connection number are described in F01375.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Adapting topologies:<br />
+- insert the components involved at the right connection (correct the actual topology).<br />
+- adapt the project&#47;parameterizing in the commissioning tool (correct the target topology).<br />
+Check the hardware:<br />
+- check the 24 V supply voltage.<br />
+- check DRIVE-CLiQ cables for interruption and contact problems.<br />
+- check that the component is working properly.<br />
+Note:<br />
+Under &quot;Topology --&gt; Topology view&quot; the commissioning tool where relevant offers improved diagnostics capability (e.g. setpoint&#47;actual value comparison).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201507">A201507 (F, N)</a></b></td>
+<td><b>&lt;location&gt;BICO: Interconnections to inactive objects present</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>There are BICO interconnections to an inactive&#47;inoperable drive object.<br />
+The BI&#47;CI parameters involved are listed in r9498.<br />
+The associated BO&#47;CO parameters are listed in r9499.<br />
+The list of the BICO interconnections to other drive objects is displayed in r9491 and r9492 of the deactivated drive object.<br />
+Note:<br />
+r9498 and r9499 are only written to, if p9495 is not set to 0.<br />
+Alarm value (r2124, interpret decimal):<br />
+Number of BICO interconnections found to inactive drive objects.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- set all open BICO interconnections centrally to the factory setting with p9495 = 2.<br />
+- make the non-operational drive object active&#47;operational again (re-insert or activate components).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201508">A201508</a></b></td>
+<td><b>&lt;location&gt;BICO: Interconnections to inactive objects exceeded</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The maximum number of BICO interconnections (signal sinks) when deactivating a drive object was exceeded.<br />
+When deactivating a drive object, all BICO interconnections (signal sinks) are listed in the following parameters:<br />
+- r9498[0...29]: List of the BI&#47;CI parameters involved.<br />
+- r9499[0...29]: List of the associated BO&#47;CO parameters.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+This alarm is automatically withdrawn as soon as no BICO interconnection is entered in r9498[29] and r9499[29] (value = 0).<br />
+Notice:<br />
+When re-activating the drive object, all BICO interconnections should be checked and if required, re-established.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201510">F201510</a></b></td>
+<td><b>&lt;location&gt;BICO: Signal source is not float type</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The requested connector output does not have the correct data type. This interconnection is not established.<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter number to which an interconnection should be made (connector output).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Interconnect this connector input with a connector output having a float data type.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201511">F201511 (A)</a></b></td>
+<td><b>&lt;location&gt;BICO: Interconnection with different scalings</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The requested BICO interconnection was established. However, a conversion is made between the BICO output and BICO input using the reference values.<br />
+- the BICO output has different normalized units than the BICO input.<br />
+- message only for interconnections within a drive object.<br />
+Example:<br />
+The BICO output has, as normalized unit, voltage and the BICO input has current.<br />
+This means that the factor p2002&#47;p2001 is calculated between the BICO output and the BICO input.<br />
+p2002: contains the reference value for current<br />
+p2001: contains the reference value for voltage<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter number of the BICO input (signal sink).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201512">F201512</a></b></td>
+<td><b>&lt;location&gt;BICO: No scaling available</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>Infeed: OFF2<br />
+ (OFF1)Servo: OFF2<br />
+Vector: OFF2<br />
+Hla: OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>POWER ON</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An attempt was made to determine a conversion factor for a scaling that does not exist.<br />
+Fault value (r0949, interpret decimal):<br />
+Unit (e.g. corresponding to SPEED) for which an attempt was made to determine a factor.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Apply scaling or check the transfer value.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201513">F201513 (N, A)</a></b></td>
+<td><b>&lt;location&gt;BICO: Interconnection cross DO with different scalings</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The requested BICO interconnection was established. However, a conversion is made between the BICO output and BICO input using the reference values.<br />
+An interconnection is made between different drive objects and the BICO output has different normalized units than the BICO input or the normalized units are the same but the reference values are different.<br />
+Example 1:<br />
+BICO output with voltage normalized unit, BICO input with current normalized unit, BICO output and BICO input lie in different drive objects. This means that the factor p2002&#47;p2001 is calculated between the BICO output and the BICO input.<br />
+p2002: contains the reference value for current<br />
+p2001: contains the reference value for voltage<br />
+Example 2:<br />
+BICO output with voltage normalized unit in drive object 1 (DO1), BICO input with voltage normalized unit in drive object 2 (DO2). The reference values for voltage (p2001) of the two drive objects have different values. This means that the factor p2001(DO1)&#47;p2001(DO2) is calculated between the BICO output and the BICO input.<br />
+p2001: contains the reference value for voltage, drive objects 1, 2<br />
+Fault value (r0949, interpret decimal):<br />
+Parameter number of the BICO input (signal sink).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201514">A201514 (F)</a></b></td>
+<td><b>&lt;location&gt;BICO: Error when writing during a reconnect</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>During a reconnect operation (e.g. while booting or downloading - but can also occur in normal operation) a parameter was not able to be written to.<br />
+Example:<br />
+When writing to BICO input with double word format (DWORD), in the second index, the memory areas overlap (e.g. p8861). The parameter is then reset to the factory setting.<br />
+Alarm value (r2124, interpret decimal):<br />
+Parameter number of the BICO input (signal sink).<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201515">F201515 (A)</a></b></td>
+<td><b>&lt;location&gt;BICO: Writing to parameter not permitted as the master control is active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>When changing the number of CDS or when copying from CDS, the master control is active.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>If required, return the master control and repeat the operation.<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201590">A201590 (F)</a></b></td>
+<td><b>&lt;location&gt;Drive: Motor maintenance interval expired</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The selected service&#47;maintenance interval for this motor was reached.<br />
+Alarm value (r2124, interpret decimal):<br />
+Motor data set number.<br />
+See also: p0650 (Actual motor operating hours), p0651 (Motor operating hours maintenance interval)<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>carry out service&#47;maintenance and reset the service&#47;maintenance interval (p0651).<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201600">F201600</a></b></td>
+<td><b>&lt;location&gt;SI P1 (CU): STOP A initiated</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive-integrated &quot;Safety Integrated&quot; function on the Control Unit (CU) has detected a fault and initiated a STOP A (STO via the safety switch-off signal path of the Control Unit).<br />
+- forced checking procedure (test stop) of the safety switch-off signal path of the Control Unit unsuccessful.<br />
+- subsequent response to fault F01611 (defect in a monitoring channel).<br />
+Fault value (r0949, interpret decimal):<br />
+0: Stop request from monitoring channel 2.<br />
+1005: STO active although STO not selected and there is no internal STOP A present.<br />
+1010: STO inactive although STO is selected or an internal STOP A is present.<br />
+9999: Subsequent response to fault F01611.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- select Safe Torque Off and deselect again.<br />
+- replace Hydraulic Module involved.<br />
+For fault value = 9999:<br />
+- carry out diagnostics for fault F01611.<br />
+Note:<br />
+CU: Control Unit<br />
+SI: Safety Integrated<br />
+STO: Safe Torque Off &#47; SH: Safe standstill<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201611">F201611 (A)</a></b></td>
+<td><b>&lt;location&gt;SI P1 (CU): Defect in a monitoring channel</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+ (OFF1, OFF2, OFF3)</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive-integrated &quot;Safety Integrated&quot; function on processor 1 has detected a fault in the data cross-check between the two monitoring channels and has initiated a STOP F.<br />
+As a result of this fault, after the parameterized transition has expired (p9658), fault F01600 (SI CU: STOP A initiated) is output.<br />
+Fault value (r0949, interpret decimal):<br />
+0: Stop request from another monitoring channel.<br />
+1 ... 999:<br />
+Number of the cross-compared data that resulted in this fault. This number is also displayed in r9795.<br />
+1: SI monitoring clock cycle (r9780, r9880).<br />
+2: SI enable safety functions (p9601, p9801). Crosswise data comparison is only carried out for the supported bits.<br />
+3: SI SGE changeover discrepancy time (p9650, p9850).<br />
+4: SI transition period STOP F to STOP A (p9658, p9858).<br />
+6: SI Motion enable, safety-relevant functions (p9501, internal value).<br />
+7: SI delay time of STO for Safe Stop 1 (p9652, p9852).<br />
+8: SI PROFIsafe address (p9610, p9810).<br />
+9: SI debounce time for STO&#47;SBC&#47;SS1 (p9651, p9851).<br />
+10: SI delay time for initiating STO for ESR (p9697, p9897).<br />
+11: SI HLA shutoff valve feedback signal contact configuration (p9626, p9826).<br />
+12: SI HLA shutoff valve wait time switch-on (p9625[0], p9825[0]).<br />
+13: SI HLA shutoff valve wait time switch-off (p9625[1], p9825[1]).<br />
+14: SI PROFIsafe telegram selection (p9611, p9811).<br />
+15: SI PROFIsafe bus failure response (p9612, p9812).<br />
+1000: Watchdog timer has expired.<br />
+Within the time of approx. 5 x p9650, alternatively, the following was defined:<br />
+- the signal at terminal STO of the Hydraulic Module continually changed with time intervals less than or equal to the discrepancy time (p9650&#47;p9850).<br />
+- via PROFIsafe&#47;TM54F, STO (also as subsequent response) was continually selected and deselected with time intervals less than or equal to the discrepancy time (p9650&#47;p9850).<br />
+1001, 1002: Initialization error, change timer &#47; check timer.<br />
+1900: CRC error in the SAFETY sector.<br />
+1901: CRC error in the ITCM sector.<br />
+1902: Overloading in the ITCM sector has occurred in operation.<br />
+1903: Internal parameterizing error for CRC calculation.<br />
+1950: Module temperature outside the permissible temperature range.<br />
+1951: Module temperature not plausible.<br />
+2000: Status of the STO selection for both monitoring channels different.<br />
+2001: Feedback signal of STO shutdown for both monitoring channels different.<br />
+2002: Status of the delay timer SS1 for both monitoring channels different (status of the timer in p9650&#47;p9850).<br />
+2003: Status of the STO terminal for both monitoring channels different.<br />
+6000 ... 6999:<br />
+Error in the PROFIsafe control.<br />
+For these fault values, the failsafe control signals (Failsafe Values) are transferred to the safety functions. If &quot;STOP B after failure of the PROFIsafe communication&quot; (p9612) is parameterized, the transfer of the Failsafe Values is delayed.<br />
+6000: A fatal PROFIsafe communication error has occurred.<br />
+6064 ... 6071: error when evaluating the F parameter. The values of the transferred F parameters do not match the expected values in the PROFIsafe driver.<br />
+6064: Destination address and PROFIsafe address are different (F_Dest_Add).<br />
+6065: Destination address not valid (F_Dest_Add).<br />
+6066: Source address not valid (F_Source_Add).<br />
+6067: Watchdog time not valid (F_WD_Time).<br />
+6068: Incorrect SIL level (F_SIL).<br />
+6069: Incorrect F-CRC length (F_CRC_Length).<br />
+6070: Incorrect F parameter version (F_Par_Version).<br />
+6071: CRC error for the F parameters (CRC1). The transferred CRC value of the F parameters does not match the value calculated in the PROFIsafe driver.<br />
+6072: F parameterization is inconsistent.<br />
+6165: A communications error was identified when receiving the PROFIsafe telegram. The fault may also occur if an inconsistent or out-of-date PROFIsafe telegram has been received after switching the Control Unit off and on or after plugging in the PROFIBUS&#47;PROFINET cable.<br />
+6166: A time monitoring error (timeout) was identified when receiving the PROFIsafe telegram.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 1 ... 5 and 7 ... 999:<br />
+- check the cross data comparison that resulted in a STOP F.<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- upgrade the Hydraulic Module software.<br />
+- upgrade the Control Unit software.<br />
+For fault value = 6:<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- upgrade the Hydraulic Module software.<br />
+- upgrade the Control Unit software.<br />
+For fault value = 1000:<br />
+- check the STO terminal at the Hydraulic Module (contact problems).<br />
+- PROFIsafe: Remove contact problems&#47;faults at the PROFIBUS master&#47;PROFINET controller.<br />
+- check the wiring of the failsafe inputs at the TM54F (contact problems).<br />
+- check the discrepancy time, and if required, increase the value (p9650&#47;p9850).<br />
+For fault value = 1001, 1002:<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- upgrade the Hydraulic Module software.<br />
+- upgrade the Control Unit software.<br />
+For fault value = 1900, 1901, 1902:<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- upgrade the Control Unit software.<br />
+- replace Control Unit.<br />
+For fault value = 2000, 2001, 2002, 2003:<br />
+- check the discrepancy time, and if required, increase the value (p9650&#47;p9850, p9652&#47;p9852).<br />
+- check the wiring of the safety-relevant inputs (SGE) (contact problems).<br />
+- check the causes of the STO selection in r9772. When the SMM functions are active (p9501 = 1), STO can also be selected using these functions.<br />
+- replace Hydraulic Module involved.<br />
+Note:<br />
+This fault can be acknowledged after removing the cause of the error and after correct selection&#47;deselection of STO.<br />
+For fault value = 6000:<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- check whether there is a DRIVE-CLiQ communication error between the two monitoring channels and, if required, carry out a diagnostics routine for the faults identified.<br />
+- increase the monitoring cycle clock settings (p9500, p9511).<br />
+- upgrade firmware to later version.<br />
+- contact Technical Support.<br />
+- replace the Control Unit.<br />
+For fault value = 6064:<br />
+- check the setting of the value in the F parameter F_Dest_Add at the PROFIsafe slave.<br />
+- check the setting of the PROFIsafe address of the Control Unit (p9610) and that of the hydraulic module (p9810).<br />
+For fault value = 6065:<br />
+- check the setting of the value in the F parameter F_Dest_Add at the PROFIsafe slave. It is not permissible for the destination address to be either 0 or FFFF!<br />
+For fault value = 6066:<br />
+- check the setting of the value in the F parameter F_Source_Add at the PROFIsafe slave. It is not permissible for the source address to be either 0 or FFFF!<br />
+For fault value = 6067:<br />
+- check the setting of the value in the F parameter F_WD_Time at the PROFIsafe slave. It is not permissible for the watch time to be 0!<br />
+For fault value = 6068:<br />
+- check the setting of the value in the F parameter F_SIL at the PROFIsafe slave. The SIL level must correspond to SIL2!<br />
+For fault value = 6069:<br />
+- check the setting of the value in the F parameter F_CRC_Length at the PROFIsafe slave. The setting of the CRC2 length is 2-byte CRC in the V1 mode and 3-byte CRC in the V2 mode!<br />
+For fault value = 6070:<br />
+- check the setting of the value in the F parameter F_Par_Version at the PROFIsafe slave. The value for the F parameter version is 0 in the V1 mode and 1 in the V2 mode!<br />
+For fault value = 6071:<br />
+- check the settings of the values of the F parameters and the F parameter CRC (CRC1) calculated from these at the PROFIsafe slave and, if required, update.<br />
+For fault value = 6072:<br />
+- check the settings of the values for the F parameters and, if required, correct.<br />
+The following combinations are permissible for F parameters F_CRC_Length and F_Par_Version:<br />
+F_CRC_Length = 2-byte CRC and F_Par_Version = 0<br />
+F_CRC_Length = 3-byte CRC and F_Par_Version = 1<br />
+For fault value = 6165:<br />
+- if the fault occurs after powering up the Control Unit or after plugging in the PROFIBUS&#47;PROFINET cable, acknowledge the fault.<br />
+- check the configuration and communication at the PROFIsafe slave.<br />
+- check the setting of the value for F parameter F_WD_Time on the PROFIsafe slave and increase if necessary.<br />
+- check whether there is a DRIVE-CLiQ communication error between the two monitoring channels and, if required, carry out a diagnostics routine for the faults identified.<br />
+- check whether all F parameters of the drive match the F parameters of the F host.<br />
+For fault value = 6166:<br />
+- check the configuration and communication at the PROFIsafe slave.<br />
+- check the setting of the value for F parameter F_WD_Time on the PROFIsafe slave and increase if necessary.<br />
+- evaluate diagnostic information in the F host.<br />
+- check PROFIsafe connection.<br />
+- check whether all F parameters of the drive match the F parameters of the F host.<br />
+Note:<br />
+CU: Control Unit<br />
+EP: Enable Pulses (pulse enable)<br />
+ESR: Extended Stop and Retract<br />
+MM: Motor Module<br />
+SGE: Safety-relevant input<br />
+SI: Safety Integrated<br />
+SMM: Safe Motion Monitoring<br />
+SS1: Safe Stop 1 (corresponds to Stop Category 1 acc. to EN60204)<br />
+STO: Safe Torque Off &#47; SH: Safe standstill<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201620">N201620 (F, A)</a></b></td>
+<td><b>&lt;location&gt;SI P1 (CU): Safe Torque Off active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;Safe Torque Off&quot; (STO) function of the basic functions has been selected on the Control Unit (CU) using the input terminal and is active.<br />
+Note:<br />
+- this message does not result in a safety stop response.<br />
+- this message is not output when STO is selected using the Extended Functions.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+Note:<br />
+CU: Control Unit<br />
+SI: Safety Integrated<br />
+STO: Safe Torque Off &#47; SH: Safe standstill<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201621">N201621 (F, A)</a></b></td>
+<td><b>&lt;location&gt;SI P1 (CU): Safe Stop 1 active</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>NONE</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The &quot;Safe Stop 1&quot; (SS1) function has been selected on the Control Unit (CU) and is active.<br />
+Note:<br />
+This message does not result in a safety stop response.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>Not necessary.<br />
+Note:<br />
+CU: Control Unit<br />
+SI: Safety Integrated<br />
+SS1: Safe Stop 1<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201625">F201625</a></b></td>
+<td><b>&lt;location&gt;SI P1 (CU): Sign-of-life error in safety data</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive-integrated &quot;Safety Integrated&quot; function on the Control Unit (CU) has detected an error in the sign-of-life of the safety data between the two monitoring channels and has initiated a STOP A.<br />
+- there is either a DRIVE-CLiQ communication error or communication has failed.<br />
+- a time slice overflow of the safety software has occurred.<br />
+Fault value (r0949, interpret decimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- select STO and then deselect again.<br />
+- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- check whether there is a DRIVE-CLiQ communication error between the two monitoring channels and, if required, carry out a diagnostics routine for the faults identified.<br />
+- deselect all drive functions that are not absolutely necessary.<br />
+- reduce the number of drives.<br />
+- check the electrical cabinet design and cable routing for EMC compliance<br />
+Note:<br />
+CU: Control Unit<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+STO: Safe Torque Off<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201632">F201632</a></b></td>
+<td><b>&lt;location&gt;SI P1 (CU): shutoff valve control&#47;feedback signal error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive-integrated &quot;Safety Integrated&quot; function on the Control Unit (monitoring channel 1) has detected a fault for the control&#47;feedback signal of the shutoff valve and initiated a STOP A.<br />
+Possible causes:<br />
+- shutoff valve either not connected or not correctly connected (X272).<br />
+- feedback signal of the shutoff valve either not connected or not correctly connected (X281&#47;X282).<br />
+- feedback signal of the shutoff valve incorrectly set (p9626&#47;p9826).<br />
+- shutoff valve defective.<br />
+- Hydraulic Module defective.<br />
+Fault value (r0949, interpret decimal):<br />
+10, 11:<br />
+Fault in the &quot;Open shutoff valve&quot; operation.<br />
+20:<br />
+Fault in the &quot;Shutoff valve open&quot; state.<br />
+30, 31:<br />
+Fault in the &quot;Close shutoff valve&quot; operation.<br />
+40:<br />
+Fault in the &quot;Shutoff valve closed&quot; state.<br />
+50, 80:<br />
+Fault in the control&#47;feedback signal of the cutoff valve or communication error between the Control Unit and the Hydraulic Module.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- check the shutoff valve connection (X272).<br />
+- check the feedback signals of the shutoff valve (X281, X282).<br />
+- check the configuration of the feedback signals of the shutoff valve (p9626&#47;p9826).<br />
+- check for EMC-compliant control cabinet design and cable routing (e.g. use shielded cables and connect the shield).<br />
+- if necessary, replace the shutoff valve.<br />
+- if necessary, replace the Hydraulic Module.<br />
+See also: p9626 (SI HLA shutoff valve feedback signal contact configuration (CU)), p9826 (SI HLA shutoff valve feedback signal contact configuration (MM))<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201640">F201640 (N, A)</a></b></td>
+<td><b>&lt;location&gt;SI P1 (CU): component replacement identified and acknowledgment&#47;save required</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>&quot;Safety Integrated&quot; has identified that a component has been replaced.<br />
+It is no longer possible to operate the particular drive without fault.<br />
+When safety functions are active, after a component has been replaced it is necessary to carry out a partial acceptance test.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0 = 1:<br />
+It has been identified that the Control Unit has been replaced.<br />
+Bit 1 = 1:<br />
+It has been identified that the Motor Module&#47;Hydraulic Module has been replaced.<br />
+Bit 2 = 1:<br />
+It has been identified that the Power Module has been replaced.<br />
+Bit 3 = 1:<br />
+It has been identified that the Sensor Module channel 1 has been replaced.<br />
+Bit 4 = 1:<br />
+It has been identified that the Sensor Module channel 2 has been replaced.<br />
+Bit 5 = 1:<br />
+It has been identified that the sensor channel 1 has been replaced.<br />
+Bit 6 = 1:<br />
+It has been identified that sensor channel 2 has been replaced.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- acknowledge component replacement (p9702 = 29).<br />
+- save all parameters (p0977 = 1 or p0971 = 1 or &quot;copy RAM to ROM&quot;).<br />
+- acknowledge fault (e.g. binector input p2103).<br />
+Note:<br />
+In addition to the fault, diagnostics bits r9776.2 and r9776.3 are set.<br />
+See also: p9702 (SI Acknowledge component replacement), r9776 (SI diagnostics)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201641">F201641 (N, A)</a></b></td>
+<td><b>&lt;location&gt;SI P1 (CU): component replacement identified and save required</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>NONE<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>&quot;Safety Integrated&quot; has identified that a component has been replaced.<br />
+No additional fault response is initiated, therefore operation of the particular drive is not restricted.<br />
+When safety functions are active, after a component has been replaced it is necessary to carry out a partial acceptance test.<br />
+Fault value (r0949, interpret binary):<br />
+Bit 0 = 1:<br />
+It has been identified that the Control Unit has been replaced.<br />
+Bit 1 = 1:<br />
+It has been identified that the Motor Module&#47;Hydraulic Module has been replaced.<br />
+Bit 2 = 1:<br />
+It has been identified that the Power Module has been replaced.<br />
+Bit 3 = 1:<br />
+It has been identified that the Sensor Module channel 1 has been replaced.<br />
+Bit 4 = 1:<br />
+It has been identified that the Sensor Module channel 2 has been replaced.<br />
+Bit 5 = 1:<br />
+It has been identified that the sensor channel 1 has been replaced.<br />
+Bit 6 = 1:<br />
+It has been identified that sensor channel 2 has been replaced.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- save all parameters (p0977 = 1 or p0971 = 1 or &quot;copy RAM to ROM&quot;).<br />
+- acknowledge fault (e.g. binector input p2103).<br />
+See also: r9776 (SI diagnostics)<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201649">F201649</a></b></td>
+<td><b>&lt;location&gt;SI P1 (CU): Internal software error</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>An internal error in the Safety Integrated software on the Control Unit has occurred.<br />
+Note:<br />
+This fault results in a STOP A that cannot be acknowledged.<br />
+Fault value (r0949, interpret hexadecimal):<br />
+Only for internal Siemens troubleshooting.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>- carry out a POWER ON (switch-off&#47;switch-on) for all components.<br />
+- re-commission the &quot;Safety Integrated&quot; function and carry out a POWER ON.<br />
+- upgrade the firmware of the Control Unit to a later version.<br />
+- contact Technical Support.<br />
+- replace the Control Unit.<br />
+Note:<br />
+CU: Control Unit<br />
+SI: Safety Integrated<br />
+</td></tr>
+</table><p></p><table><tr><td><b><a name="201650">F201650</a></b></td>
+<td><b>&lt;location&gt;SI P1 (CU): Acceptance test required</b></td></tr>
+<tr><td valign="top"><b>Drive object:</b></td>
+<td></td></tr>
+<tr><td valign="top"><b>Reaction:</b></td>
+<td>OFF2<br />
+</td></tr>
+<tr><td valign="top"><b>Acknowledge:</b></td>
+<td>IMMEDIATELY ( (POWER ON, ))</td></tr>
+<tr><td valign="top"><b>Cause:</b></td>
+<td>The drive-integrated &quot;Safety Integrated&quot; function on monitoring channel 1 requires an acceptance test.<br />
+Note:<br />
+This fault results in a STOP A that can be acknowledged.<br />
+Fault value (r0949, interpret decimal):<br />
+130: Safety parameters for monitoring channel 2 not available.<br />
+Note:<br />
+This fault value is always output when Safety Integrated is commissioned for the first time.<br />
+1000: Reference and actual checksum on monitoring channel 1 are not identical (booting).<br />
+- as a result of the changed current controller sampling time (p0115[0]), the clock cycle time for the Safety Integrated Basic Functions (r9780) was adapted.<br />
+- at least one checksum-checked piece of data is defective.<br />
+- safety parameters set offline and loaded into the Control Unit.<br />
+2000: Reference and actual checksum on monitoring channel 1 are not identical (commissioning mode).<br />
+- reference checksum on monitoring channel 1 incorrectly entered (p9799 not equal to r9798).<br />
+- when deactivating the safety functions, p9501 or p9503 were not deleted.<br />
+2001: Reference and actual checksum on monitoring channel 2 are not identical (commissioning mode).<br />
+- reference checksum on monitoring channel 2 incorrectly entered (p9899 not equal to r9898).<br />
+- when deactivating the safety functions, p9501 or p9503 are not deleted.<br />
+2002: Enable of safety-related functions between the two monitoring channels differ (p9601 not equal to p9801).<br />
+2003: Acceptance test is required as a safety parameter has been changed.<br />
+2004: An acceptance test is required because a project with enabled safety-functions has been downloaded.<br />
+2005: The Safety logbook has identified that a functional safety checksum has changed. An acceptance test is required.<br />
+2020: Error when saving the safety parameters for the monitoring channel 2.<br />
+3003: Acceptance test is required as a hardware-related safety parameter has been changed.<br />
+3005: The Safety logbook has identified that a hardware-related safety checksum has changed. An acceptance test is required.<br />
+9999: Subsequent response of another safety-related fault that occurred when booting that requires an acceptance test.<br />
+</td></tr>
+<tr><td valign="top"><b>Remedy:</b></td>
+<td>For fault value = 130:<br />
+- carry out safety commissioning routine.<br />
+For fault value = 1000:<br />
+- check the Safety Integrated Basic Functions (r9780) and adapt the reference checksum (p9799).<br />
+- again carry out safety commissioning routine.<br />
+- replace the memory card or Control Unit.<br />
+- Using STARTER, activate the safety parameters for the drive involved (change settings, copy parameters, activate settings).<br />
+For fault value = 2000:<br />
+- check the safety parameters on monitoring channel 1 and adapt the reference checksum (p9799).<br />
+For fault value = 2001:<br />
+- check the safety parameters on monitoring channel 2 and adapt the reference checksum (p9899).<br />
+For fault value = 2002:<br />
+- check the enable the safety-related functions on both monitoring channels (p9601 = p9801).<br />
+For fault value = 2003, 2004, 2005:<br />
+- carry out an acceptance test and generate an acceptance report.<br />
+The procedure when carrying out an acceptance test as well as an example of the acceptance report are provided in the following literature:<br />
+SINAMICS S120 Function Manual Safety Integrated<br />
+The fault with fault value 2005 can only be acknowledged when the &quot;STO&quot; function is deselected.<br />
+For fault value = 2020:<br />
+- again carry out safety commissioning routine.<br />
+- replace the memory card or Control Unit.<br />
+For fault value = 3003:<br />
+- carry out the function checks for the modified hardware and generate an acceptance report.<br />
+The procedure when carrying out an acceptance test as well as an example of the acceptance report are provided in the following literature:<br />
+SINAMICS S120 Function Manual Safety Integrated<br />
+For fault value = 3005:<br />
+- carry out the function checks for the modified hardware and generate an acceptance report.<br />
+The fault with fault value 3005 can only be acknowledged when the &quot;STO&quot; function is deselected.<br />
+For fault value = 9999:<br />
+- carry out diagnostics for the other safety-related fault that is present.<br />
+Note:<br />
+CU: Control Unit<br />
+MM: Motor Module<br />
+SI: Safety Integrated<br />
+STO: Safe Torque Off<br />
+See also: p9799 (SI reference checksum SI parameters (Control Unit)), p9899 (SI reference checksum SI parameters (Motor Module))<br />
+</td></tr>
+</table><p></p></body></html>

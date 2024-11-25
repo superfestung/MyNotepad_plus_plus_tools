@@ -1,0 +1,26 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Indirekter Aufruf eines in ISO-Sprache programmierten Programms (ISOCALL)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Indirekter Aufruf eines in ISO-Sprache programmierten Programms (ISOCALL)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>Mit dem indirekten Programmaufruf ISOCALL kann ein in einer ISO-Sprache programmiertes Programm aufgerufen werden. Dabei wird der in den Maschinendaten eingestellte ISO-Modus aktiviert. Am Programmende wird wieder der ursprüngliche Bearbeitungsmodus wirksam. Ist in den Maschinendaten kein ISO-Modus eingestellt, erfolgt der Aufruf des Unterprogramms im Siemens-Modus. </p>
+      <p>
+        <b>Weitere Informationen</b> zum ISO-Modus: Funktionshandbuch ISO-Dialekte</p>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Syntax</h3>ISOCALL &lt;Programmname><a name="block_2"></a><h3 class="Blocktitle">Bedeutung</h3><a id="table_a7392c89-91d7-413c-9c67-2481b073c2f2"></a> <a id="table_0"></a> <a id="table_a7392c89-91d7-413c-9c67-2481b073c2f2"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="28.5%"><col width="71.4%"></colgroup><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>ISOCALL</code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Schlüsselwort für indirekten Unterprogrammaufruf, mit dem der in den Maschinendaten eingestellte ISO-Modus aktiviert wird</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left"><code>&lt;Programmname></code>:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Name des in einer ISO-Sprache programmierten Programms (Variable oder Konstante vom Typ STRING)</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Beispiel: Kontur mit Zyklenprogrammierung aus dem ISO-Modus heraus aufrufen</h3><a id="table_f3a5d9f0-c28b-4644-b5b1-d0a2820f5ea6"></a> <a id="table_1"></a> <a id="table_f3a5d9f0-c28b-4644-b5b1-d0a2820f5ea6"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EQC"><colgroup><col width="52.0%"><col width="48.0%"></colgroup><tr valign="top"><th>Programmcode</th><th>Kommentar</th></tr><tr valign="top"><td>0122_SPF</td><td>; Konturbeschreibung im ISO-Modus</td></tr><tr valign="top"><td>N1010 G1 X10 Z20</td><td> </td></tr><tr valign="top"><td>N1020 X30 R5</td><td> </td></tr><tr valign="top"><td>N1030 Z50 C10</td><td> </td></tr><tr valign="top"><td>N1040 X50</td><td> </td></tr><tr valign="top"><td>N1050 M99</td><td> </td></tr><tr valign="top"><td>N0010 DEF STRING[5] PROGNAME = "0122"</td><td>; Siemens-Teileprogramm (-Zyklus)</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N2000 R11 = $AA_IW[X]</td><td> </td></tr><tr valign="top"><td>N2010 ISOCALL PROGNAME</td><td> </td></tr><tr valign="top"><td>N2020 R10 = R10+1</td><td>; Programm 0122.spf im ISO-Modus bearbeiten</td></tr><tr valign="top"><td>...</td><td> </td></tr><tr valign="top"><td>N2400 M30</td><td> </td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><p></p></div>
+    <p>Siehe auch:<br />    <a href="156662709003.html">Indirekter Unterprogrammaufruf (CALL)</a></p>
+  </body>
+</html>

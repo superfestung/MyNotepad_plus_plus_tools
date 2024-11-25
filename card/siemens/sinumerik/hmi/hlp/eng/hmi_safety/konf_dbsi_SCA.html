@@ -1,0 +1,138 @@
+﻿<html>
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Safe Cam (SCA)</title>
+  </head>
+  <body id="bodyID">
+    <div id="nsbanner">
+      <div id="TitleRowDefault">
+        <h1 class="title">Safe Cam (SCA)</h1>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom">
+      <p>
+      </p>
+      <ul>
+      </ul>
+      <p>The "Safe Cam" function outputs a safe signal if the drive is within a specified position range. It facilitates the realization of safe range detection for each individual axis.</p>
+      <h4 class="Blocklabel">Rules for defining the cam position:</h4>
+      <ul>
+        <li>
+          <p>You define the cam positions to be monitored using parameters p9536[x] and p9537[x] (where x = 0 ... 29).</p>
+          <p>Observe the following rules: </p>
+          <ul>
+            <li>
+              <p>The defined cams must have a certain minimum length: p9536[x] - p9537[x] >= p9540 + p9542. </p>
+            </li>
+            <li>
+              <p>The minus position value (p9537[x]) must be less than the plus position value (p9536[x]).</p>
+            </li>
+            <li>
+              <p>The cam positions must maintain a minimum distance away from the modulo position: </p>
+              <p>The minus position value of a cam must be greater than the "lower modulo limit + cam tolerance (p9540) + position tolerance (p9542)".</p>
+              <p>The plus position value of a cam must be less than the upper modulo limit + cam tolerance (p9540) + position tolerance (p9542). </p>
+              <p>For a parameterized modulo position (p9505 > 0), the lower modulo limit = 0, the upper modulo limit = p9505. </p>
+            </li>
+          </ul>
+          <p>As a consequence, it is not possible to define a cam outside the modulo range. </p>
+          <p>If these rules are violated, then the drive outputs message F01686 ("SI Motion: Cam position parameterization not permissible") is output. </p>
+        </li>
+        <li>
+          <p>Owing to variations in the cycle and signal propagation times, the output cam signals of the two monitoring channels do not switch simultaneously and not precisely at the same position. For this reason, enter a tolerance band for all output cam types via parameter p9540. Within this tolerance band, the monitoring channels can have different signal states for the same output cam:</p>
+          <a id="image_111778072715_0">
+          </a> <img border="0" src="images/159604419595.png" width="363" height="167" alt="Parameterize output cam and tolerance"/><p class="imgtitle">Parameterize output cam and tolerance</p><table cellpadding="0" cellspacing="0" border="0"><tr><td><font size="1px"></font></td></tr></table><table class="safety" border="1" bgcolor="#eeeeee"><colgroup><col width="5%"><col width="95%"></colgroup><tr><td><b>Note</b></td></tr><tr><td><p class="safety">The smallest possible tolerance band should be selected for the SCA function (&lt;5 ... 10 mm). It makes sense to parameterize the output cam tolerance to be greater than or equal to the actual value tolerance.</p></td></tr></table></li>
+        <li>
+          <p>Reference the axis using the "<a href="konf_dbsi_siRef.html">Safe referencing</a>" function.</p>
+        </li>
+      </ul>
+      <a name="block_1">
+      </a>
+      <h3 class="Blocktitle">Requirement</h3>
+      <p>The <a href="147125433483.html">commissioning mode</a> must be activated so that the parameters of this safety function can be changed. The SCA safety function is only available for the selected drive if, in <a href="konf_dbsi_options.html">options</a>, an extended function with encoder was previously set and parameterized.</p>
+      <a name="block_2">
+      </a>
+      <h3 class="Blocktitle">Settings</h3>
+      <p>You can make the following settings for the drive in this window: </p>
+      <ul>
+        <li>
+          <p>Function (SCA)</p>
+          <ul>
+            <li>
+              <p>Modulo value SP<br />SI Motion SP modulo value (Control Unit) (p9505)</p>
+            </li>
+            <li>
+              <p>Enable SCA<br />SI Motion enable safety functions (Control Unit): Enable safe cams (p9501.28)</p>
+            </li>
+            <li>
+              <p>Hysteresis</p>
+              <p>SI Motion SCA (SN) tolerance (Control Unit) (p9540)</p>
+            </li>
+            <li>
+              <p>Actual position</p>
+              <p>SI Motion diagnostics safe position: Load side actual value on the Control Unit (p9708[0])</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Cam</p>
+          <ul>
+            <li>
+              <p>Enable</p>
+              <p>SI Motion SCA (SN) enable (Control Unit) (p9503.Bit 0..29)<br />SCA1 to SCA30</p>
+            </li>
+            <li>
+              <p>Cam identifier</p>
+              <p>Identifier of cams<br />1 to 30</p>
+            </li>
+            <li>
+              <p>Position minus [mm] (p9537[0..29])</p>
+              <p>SI Motion SCA (SN) minus cam position (Control Unit) (p9537[0..29])</p>
+              <p>SCA1 to SCA30</p>
+            </li>
+            <li>
+              <p>Position plus [mm]</p>
+              <p>SI Motion SCA (SN) plus cam position (Control Unit) (p9536[0..29])</p>
+              <p>SCA1 to SCA30</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>The following LEDs can display the status (blue = condition satisfied; gray = condition not satisfied):</p>
+      <ul>
+        <li>
+          <p>Function (SCA)</p>
+          <ul>
+            <li>
+              <p>SCA selected</p>
+              <p>SI Motion drive-integrated control signals: Deselection SCA (r9720.23)</p>
+            </li>
+            <li>
+              <p>SCA active</p>
+              <p>SI Motion SCA status signal (Control Unit): Function "Safe Cam" active (r9703.30)</p>
+            </li>
+            <li>
+              <p>SCA valid</p>
+              <p>SI Motion SCA status signal (Control Unit): Function "Safe Cam" valid (r9703.31)</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Cam</p>
+          <ul>
+            <li>
+              <p>Position at cam</p>
+              <p>SI Motion SCA status signal (Control Unit): Position at safe cams, 1 to 30 (r9703.bit 0..29)</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 class="Blocklabel">Parameter list</h4>
+      <p>When required, each setting in this dialog screen form can also be made via a parameter list. You can access the <a href="147125442315.html">parameter list</a> using the ">>" softkey followed by the "Parameter list" softkey. </p>
+      <p>
+      </p>
+      <p>You can define names and tooltips using the "<a href="konf_dbsi_CamNames.html">Cam identifier</a>" for axes/drives.</p>
+    </div>
+    <p>See also:<br />    <a href="147125519883.html">Calling function dialogs</a></p>
+  </body>
+</html>

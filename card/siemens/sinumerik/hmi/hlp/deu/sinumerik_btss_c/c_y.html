@@ -1,0 +1,1273 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <title>Baustein C/Y: Kanalspezifische Systemdaten</title>
+   </head>
+   <body>
+      <div id="nsbanner">
+         <div id="TitleRowDefault">
+            <h1 class="title">Baustein C/Y: Kanalspezifische Systemdaten</h1>
+         </div>
+      </div>Der Maschinenhersteller bzw. Anwender konfiguriert die Steuerung mit Hilfe von Maschinendaten. Diese Konfiguration kann nur
+      mit bestimmten Zugriffsrechten durchgeführt werden. Aus den Systemdaten kann unabhängig von der aktuellen Zugriffstufe die
+      Konfiguration der NC gelesen werden.<br/>
+      
+      <div><a name="53"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>channelName</b></td>
+            <td colspan="3" style="border:1px solid black">Kanalname</td>
+            <td width="20%" style="border:1px solid black">MD 20000: CHAN_NAME</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>9
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Kanalname<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/channelName[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2397"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>maskToolManagement</b></td>
+            <td colspan="3" style="border:1px solid black">Kanalspez. Einst. Werkzeugverwaltung</td>
+            <td width="20%" style="border:1px solid black">$MC_TOOL_MANAGEMENT_MASK</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>19
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>?<br>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Kanalspezifische Einstellungen für die NCK-Werkzeugverwaltung<br/>
+               Aktivierung des WZV-Speichers mit "0" bedeutet: Die eingestellten WZV-Daten belegen keinen Speicherplatz.<br/>
+               Wert=0: 	WZV inaktiv<br/>
+               Bit 0=1: 	WZV aktiv: Die Werkzeugverwaltungsfunktionen sind für den aktuellen Kanal freigeschaltet. <br/>
+               Bit 1=1: 	WZV Überwachungsfunktion aktiv: Die Funktionen, die für die Überwachung der Werkzeuge ( Standzeit und Stückzahl
+               ) werden freigeschaltet.<br/>
+               Bit 2=1: 	OEM-Funktionen aktiv: Es kann der Speicher für die Anwenderdaten genutzt werden. <br/>
+               Bit 3=1: 	Nebenplatzbetrachtung aktiv <br/>
+               Bit 0 bis Bit 3 müssen so gesetzt sein wie beim Maschinendatum MM_TOOL_MANAGEMENT_MASK (18080).<br/>
+               Bit 4=1: 	Die PLC hat die Möglichkeit, eine WZ-Wechselvorbereitung mit geänderten Parametern noch einmal anzufordern.<br/>
+               Teileprogramm bleibt bei T-Anwahl oder M06 stehen, bis es vom PLC-Programm quittiert wurde.<br/>
+               Bit 5=1: 	Der Hauptlauf-PLC-Synchronisation bei einem WZ-Wechsel für die Hauptspindel erfolgt schon mit der Transportquittung.<br/>
+               Bit 6=1: 	Der Hauptlauf-PLC-Synchronisation bei einem WZ-Wechsel für die Nebenspindel erfolgt schon mit der Transportquittung.<br/>
+               Bit 7=1: 	Der Hauptlauf-PLC-Synchronisation bei einem WZ-Wechsel für die Hauptspindel erfolgt erst, wenn mit der Quittung
+               vom<br/>
+               PLC bestätigt wird, dass der WZ-Wechsel abgeschlossen ist. Bit 8=1: 	Der Hauptlauf-PLC-Synchronisation bei einem WZ-Wechsel
+               für die Nebenspindel erfolgt erst, wenn mit der Quittung vom PLC bestätigt wird, dass der WZ-Wechsel abgeschlossen ist.<br/>
+               Bit 9: 	reserviert<br/>
+               Bit 10=1:	M06 wird verzögert, bis die Vorbereitungsquittung von der PLC erfolgt ist. Das Wechselsignal ( z. B. M06 ) wird
+               erst ausgegeben, wenn die Werkzeuganwahl ( DBX [ n+0 ].2 ) quittiert ist. Das Teileprogramm wird bei M06 angehalten, bis die
+               T-Anwahl quittiert ist.<br/>
+               Bit 11=1:	Der Vorbereitungsbefehl wird auch dann ausgegeben, wenn der Vorbereitungsbefehl für das gleiche Werkzeug schon einmal
+               ausgegeben wurde. Dies ist zum Beispiel sinnvoll, wenn mit dem ersten Aufruf von "Tx" die Kette positioniert werden soll und
+               mit dem 2. Aufruf kontrolliert werden soll, ob das Werkzeug sich auf dem für den Wechsel richtigen Platz befindet. ( z.B.
+               vor Wechselstation )<br/>
+               Bit 12=1:	Der Vorbereitungsbefehl wird auch durchgeführt, wenn das Werkzeug schon in der Spindel ist. Das heißt T-Anwahl-Signal
+               (DB72.DBXn.2) wird auch gesetzt, wenn es für das gleiche Werkzeug schon einmal gesetzt wurde. (Tx...Tx)<br/>
+               Bit 13=1:	Nur bei Systemen die genügend Speicher besitzen (NCU572, NCU573) Aufzeichnung der Werkzeugabläufe in einem Diagnosebuffer.
+               Bei Reset werden die Befehle aus dem Diagnosebuffer geholt und in einem File im passiven Filesystem abgelegt, NCATR xx.MPF
+               unter Teileprogramm Der Tracefile ist für die Hotline im Fehlerfall interessant und wird hier nicht weiter beschrieben.<br/>
+               Bit 14=1:	Automatischer Werkzeugwechsel bei Reset und Start entsprechend den Maschinendaten MD20120 $MC_TOOL_RESET_NAME MD20110
+               $MC_RESET_MODE_MASK MD20124 $MC_TOOL_MANAGEMENT_TOOLHOLDER. Wird mit den Maschinendatum RESET_MODE_MASK gearbeitet, so ist
+               auch dieses Bit zu setzen. Wird über die RESET_MODE_MASK eingestellt, dass mit RESET das unter TOOL_RESET_NAME eingewechselt
+               werden soll, so wird mit RESET bzw. START Anwahl - und Wechselbefehl an die Anwendernahtstelle gegeben.( DB 72) Ist über die
+               RESET_MODE_MASK eingestellt, dass das aktive Werkzeug über M30 oder RESET erhalten bleiben soll und wird das aktive Werkzeug
+               in der Spindel gesperrt ( durchden Anwender ), so wird mit RESET ein Wechselbefehl für ein Ersatzwerkzeug an die Anwendernahtstelle
+               gegeben. Ist kein Ersatzwerkzeug vorhanden, so wird eine Fehlermeldung ausgegeben.<br/>
+               Bit 15=1:	Kein Rücktransport des Werkzeugs bei mehreren Vorbereitungsbefehlen. (Tx-&gt;Tx) <br/>
+               Bit 16=1:	T-Platznummer ist aktiv<br/>
+               Bit 17=1:	Start/Stop der Standzeitdekrementierung ist über PLC möglich.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_DWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/maskToolManagement[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="310"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mmcCmd</b></td>
+            <td colspan="3" style="border:1px solid black">Kommando von NCK an HMI</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>10
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Kommando von NCK an HMI<br/>
+               Der String setzt sich aus folgenden Zeichen zusammen:<br/>
+               1. Zeichen Quittungsmode: <br/>
+                   "N" ohne Quittung<br/>
+                   "S" synchrone Quittung<br/>
+                   "A" asynchrone Quittung<br/>
+               2. - 6. Zeichen: fortlaufende fünfstellige Sequenznummer in ASCII, die vom NCK erzeugt wird<br/>
+               7. - 207. Zeichen: Kommandostring abgeschlossen mit "\0"<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/mmcCmd[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="746"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mmcCmdPrep</b></td>
+            <td colspan="3" style="border:1px solid black">Kommando von NCK an HMI vorlaufsynchron</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>15
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>?<br>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Kommando von NCK an HMI vorlaufsynchron (z.B. für Aufruf von Externen Unterprogrammen)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/mmcCmdPrep[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="311"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mmcCmdQuit</b></td>
+            <td colspan="3" style="border:1px solid black">Quittung von HMI für Kommando von NCK an HMI</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>11
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Quittung von HMI für Kommando von NCK an HMI<br/>
+               Der String setzt sich aus folgenden Zeichen zusammen:<br/>
+               1. Zeichen Quittungskennung:<br/>
+                   "P" Programmed<br/>
+                   "B" Busy<br/>
+                   "F" Failed<br/>
+                   "E" Executed<br/>
+               2. - 6. Zeichen: Fortlaufende fünfstellige Sequenznummer in ASCII bei Quittungskennung "B", "F" oder "E", wird vom NCK erzeugt<br/>
+               7. - 201. Zeichen: Zusätzliche kommunikationsspezifische Information bei Quittungskennung "B", "F" oder "E", abgeschlossen
+               mit "\0"<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/mmcCmdQuit[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="747"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>mmcCmdQuitPrep</b></td>
+            <td colspan="3" style="border:1px solid black">Quit. HMI für Komm.  NCK an HMI vorlaufsyn.</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>16
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>?<br>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Quittung von HMI für Kommando von NCK an HMI vorlaufsynchron (z.B. für Aufruf von Externen Unterprogrammen)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/mmcCmdQuitPrep[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2418"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numActAxes</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl der Achsen im Kanal.</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>20
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl der vorhandenen aktiven Achsen im Kanal.<br/>
+               Kanalachslücken werden nicht mitgezählt, so dass der<br/>
+               Wert niedriger als numMachAxes sein kann.<br/>
+               Es gilt:	<a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a> &gt;= <a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a><br/>
+               	<a href="../sinumerik_btss_C/C_Y.html#2418">numActAxes</a>   = <a href="../sinumerik_btss_C/C_Y.html#340">numGeoAxes</a> + <a href="../sinumerik_btss_C/C_Y.html#327">numAuxAxes</a><br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span><a href="../sinumerik_btss_C/C_Y.html#343">numMachAxes</a></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numActAxes[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="327"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numAuxAxes</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl der Zusatzachsen</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>2
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl der Zusatzachsen<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numAuxAxes[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2314"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numBasisFrames</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl der Basis-Frames im Kanal</td>
+            <td width="20%" style="border:1px solid black">$MC_MM_NUM_BASE_FRAMES</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>18
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>?<br>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl der Basis-Frames im Kanal<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numBasisFrames[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="331"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numContourInProtArea</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl der Polygonelemente / Schutzbereich</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>13
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">maximale Anzahl der Polygonelemente je Schutzbereich<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numContourInProtArea[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="340"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numGeoAxes</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl der Geometrieachsen</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl der Geometrieachsen und Orientierungsachsen<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numGeoAxes[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="5783"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numGFrames</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl der G-Frames</td>
+            <td width="20%" style="border:1px solid black">MD 28079: MM_NUM_G_FRAMES</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>83
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl der G-Frames in diesem Kanal<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numGFrames[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="343"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numMachAxes</b></td>
+            <td colspan="3" style="border:1px solid black">Nr. der höchsten Kanalachse.</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>3
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Nr. der höchsten existierenden Kanalachse.<br/>
+               Wenn es keine Kanalachslücken gibt, ist dies auch die <br/>
+               Anzahl der vorhandenen Achsen im Kanal.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>1
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numMachAxes[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2713"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numOriAxes</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl der Orientierungsachsen im Kanal</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>21
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl der Orientierungsachsen im Kanal<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numOriAxes[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="350"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numProtArea</b></td>
+            <td colspan="3" style="border:1px solid black">maximale Anzahl der Schutzbereiche</td>
+            <td width="20%" style="border:1px solid black">MD 28200: MM_NUM_PROTECT_AREA_CHAN</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>12
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">maximale Anzahl der Schutzbereiche<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numProtArea[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="351"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numRParams</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl der kanalspezifischen R-Parameter</td>
+            <td width="20%" style="border:1px solid black">MD 28050: MM_NUM_R_PARAM</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>6
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl der kanalspezifischen R-Parameter<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numRParams[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="352"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numSpindles</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl Spindeln</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>4
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl Spindeln<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numSpindles[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2209"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numSpindlesLog</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl log. Spindeln</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>17
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl der logischen Spindeln. <br/>
+               Gibt die Anzahl der Zeilen im Baustein SSP2 an.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numSpindlesLog[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="356"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numToolEdges</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl Schneiden</td>
+            <td width="20%" style="border:1px solid black">MD 18100: MM_NUM_CUTTING_EDGES_IN_TOA</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>7
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Schneidenanzahl in diesem Kanal<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numToolEdges[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="358"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>numUserFrames</b></td>
+            <td colspan="3" style="border:1px solid black">Anzahl der User-Frames</td>
+            <td width="20%" style="border:1px solid black">MD 28080: MM_NUM_USER_FRAMES</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>8
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Anzahl der User-Frames in diesem Kanal<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/numUserFrames[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2949"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>oemProtText</b></td>
+            <td colspan="3" style="border:1px solid black">OEM-Text für Protokollierungsbuffer</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>24
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">OEM-Text, welcher als nächstes in den Protokollierungsbuffer <br/>
+               eingetragen werden soll.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/oemProtText[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2469"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>progProtText</b></td>
+            <td colspan="3" style="border:1px solid black">Text für Protokollierungpuffer</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>22
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Programmierbarer Text, der als nächstes in den Protokollierungpuffer <br/>
+               eingetragen werden soll.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_STRING
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/progProtText[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="384"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>punchNibActivation</b></td>
+            <td colspan="3" style="border:1px solid black">Aktivierung der Stanz- und Nibbelfunktionen</td>
+            <td width="20%" style="border:1px solid black">MD 26012: PUNCHNIB_ACTIVATION</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>14
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Aktivierung der Stanz- und Nibbelfunktionen<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>0 = Option nicht vorhanden<br/>
+               1 = Option vorhanden<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/punchNibActivation[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4844"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>stringIsFileId</b></td>
+            <td colspan="3" style="border:1px solid black">Numerische File-ID für den String</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>27
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Sobald der PI _N_STRGIS ausgeführt wird, wird das Ergebnis der Interpretation des übergebenen Strings<br/>
+               als File-ID in dieser Variablen abgelegt. Anstatt fileId kann auch moduleId verwendet werden.<br/>
+               Siehe auch den NC-Sprachbefehl STRINGIS.<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span> Bedeutung     Name der                         BTSS-Area     BTSS-Module  <br/>
+                              Definitionsdatei in NCK                        (Domain Name)<br/>
+                              (Erläuterung)                                              <br/>
+                0               String ist unbekannt<br/>
+                1 GCODE         (G-Code - Siemens und/oder ISO )<br/>
+                2 NCADDRES      (NCK NC-Adressbuchstabe)<br/>
+                3 NCADDRES_CHAN (Kanal NC-Adressbuchstabe) <br/>
+                4 NCNAM         (benamte NCK NC-Adresse)<br/>
+                5 NCNAM_CHAN    (benamte Kanal NC-Adresse)e<br/>
+                6 FRAME         (Framevariable)<br/>
+                7 TOOLCORR      (Werkzeug Parameter)            TO   (=4)<br/>
+                8 MACHDAT_NCK   (Maschinendatum)                NCK  (=0)       M   (= 0x1A)<br/>
+                9 MACHDAT_CHAN  (Maschinendatum)                CHAN (=2)       M   (=-0x1A)<br/>
+               10 MACHDAT_AXIS  (Maschinendatum)                AXIS (=3)       M   (=-0x1A)<br/>
+               11 R_PARAM       (R-Parameter)                   CHAN (=2)       RP  (= 0x15)<br/>
+               12 AC_MARKER     (Synchronaktions-Marker)<br/>
+               13 AC_PARAM      (Synchronaktions-Parameter)<br/>
+               14 PRED_FUNC     (NC-Sprachfunktion)<br/>
+               15 SYSDAT_NCK    (Zustandsvariable)<br/>
+               16 SYSDAT_CHAN   (Zustandsvariable)<br/>
+               17 SYSDAT_AXIS   (Zustandsvariable)<br/>
+               18 USER_NCK      _N_SGUD_DEF                     NCK  (=0)       GD1 (= 0x36)<br/>
+               19 USER_CHAN     _N_SGUD_DEF                     CHAN (=2)       GD1 (= 0x36)<br/>
+               20 USER_AXIS     _N_SGUD_DEF                     AXIS (=3)       GD1 (= 0x36)<br/>
+               21 USERMACRO     _N_SMAC_DEF<br/>
+                                _N_MMAC_DEF<br/>
+                                _N_UMAC_DEF<br/>
+               22 EEC           (Spindelsteigungs Parameter)<br/>
+               23 QEC           (Quadrantenfehler Parameter)<br/>
+               24 CEC           (Cross Error Compensation Parameter)<br/>
+               25 TOOLMAGAZINE  (Magazin Parameter)             TO   (=4)<br/>
+               26 PROTAREA      (Schutzbereich Parameter)<br/>
+               27 PROTAREA_CHAN (Schutzbereich Parameter)<br/>
+               28 USER_NCK2     _N_MGUD_DEF                     NCK  (=0)       GD2 (= 0x2D)<br/>
+               29 USER_NCK3     _N_UGUD_DEF                     NCK  (=0)       GD3 (= 0x2E)<br/>
+               30 USER_NCK4	    _N_GUD4_DEF                     NCK  (=0)       GD4 (= 0x2F)<br/>
+               31 USER_NCK5		_N_GUD5_DEF						NCK  (=0)		GD5 (= 0x30)<br/>
+               32 USER_NCK5     _N_GUD6_DEF                     NCK  (=0)       GD6 (= 0x31)<br/>
+               33 USER_NCK5     _N_GUD7_DEF                     NCK  (=0)       GD7 (= 0x32)<br/>
+               34 USER_NCK5     _N_GUD8_DEF                     NCK  (=0)       GD8 (= 0x33)<br/>
+               35 USER_NCK5     _N_GUD9_DEF                     NCK  (=0)       GD9 (= 0x34)<br/>
+               36 USER_CHAN2    _N_MGUD_DEF                     CHAN (=2)       GD2 (= 0x2D)<br/>
+               37 USER_CHAN3    _N_UGUD_DEF                     CHAN (=2)       GD3 (= 0x2E)<br/>
+               38 USER_CHAN4    _N_GUD4_DEF                     CHAN (=2)       GD4 (= 0x2F)<br/>
+               39 USER_CHAN5    _N_GUD5_DEF                     CHAN (=2)       GD5 (= 0x30)<br/>
+               40 USER_CHAN6    _N_GUD6_DEF                     CHAN (=2)       GD6 (= 0x31)<br/>
+               41 USER_CHAN7    _N_GUD7_DEF                     CHAN (=2)       GD7 (= 0x32)<br/>
+               42 USER_CHAN8    _N_GUD8_DEF	                    CHAN (=2)       GD8 (= 0x33)<br/>
+               43 USER_CHAN9    _N_GUD9_DEF                     CHAN (=2)       GD9 (= 0x34)<br/>
+               44 reserviert<br/>
+               45 reserviert<br/>
+               46 reserviert<br/>
+               47 reserviert<br/>
+               48 reserviert<br/>
+               49 reserviert<br/>
+               50 reserviert<br/>
+               51 reserviert<br/>
+               52 TOOLCARRIER    (orientierbarer WZ-Träger-P.) TO  (=4)<br/>
+               53 GCODESEXT      (G Code)                       NCK  (=0)       (G-Codes FANUC)<br/>
+               54 FRAME_NCK      (Frame)                        NCK  (=0)<br/>
+               55 CYC_PARAM_CHAN(globaler Zyklenübergabeparameter)r<br/>
+               56 TOOLENVMOD    (WZ-Umgebungsparameter)<br/>
+               57 SYNAGUD_CHAN  (synchronaktionstaugliche GUD   CHAN (=2)       GD1 (= 0x36)<br/>
+               58 SYNAGUD_CHAN2 (synchronaktionstaugliche GUD   CHAN (=2)       GD2 (= 0x2D)<br/>
+               59 SYNAGUD_CHAN3 (synchronaktionstaugliche GUD   CHAN (=2)       GD3 (= 0x2E)<br/>
+               60 SYNAGUD_CHAN4 (synchronaktionstaugliche GUD   CHAN (=2)       GD4 (= 0x2F)<br/>
+               61 SYNAGUD_CHAN5 (synchronaktionstaugliche GUD   CHAN (=2)       GD5 (= 0x30)<br/>
+               62 SYNAGUD_CHAN6 (synchronaktionstaugliche GUD   CHAN (=2)       GD6 (= 0x31)<br/>
+               63 SYNAGUD_CHAN7 (synchronaktionstaugliche GUD   CHAN (=2)       GD7 (= 0x32)<br/>
+               64 SYNAGUD_CHAN8 (synchronaktionstaugliche GUD   CHAN (=2)       GD8 (= 0x33)<br/>
+               65 SYNAGUD_CHAN9 (synchronaktionstaugliche GUD   CHAN (=2)       GD9 (= 0x34)<br/>
+               66 NKIN          (kinematische Kette Parameter)<br/>
+               67 NPA           (3D-Schutzbereich Parameter)<br/>
+               68 WAL_CS        (Workarea in spezifisch Koordinate system)<br/>
+               69 TOOLISO22CORR (tool Korrektur Parameter mit ISO2.2)<br/>
+               70 TOOLISO32CORR (tool Korrektur Parameter mit ISO3.2)<br/>
+               71 EPS_PARAM	    (ePS-services parameters (reserviert für ePS use nur !!)<br/>
+               &gt;= 200 LUD    (LUD / PUD - programmlokale Variable)<br/>
+               Anmerkung: über BTSS ist i.a. nur eine Untermenge der NCK Datenbausteine bekannt gemacht.<br/>
+               Anmerkung: fehlende Spalteneinträge bedeuten, dass für die Zeile keine Definitionsdatei definiert ist,<br/>
+               bzw. dass in BTSS kein Domainname definiert ist. Statt über Domainnamen können zahlreiche NCK <br/>
+               Daten über BTSS-Variablenbausteine zugegriffen werden. Beispiele sind Werkzeugdaten, Framedaten,<br/>
+               ... Dabei ist es möglich, dass es zu einem Wert von stringIsFileId mehrere BTSS-Variablenbausteine gibt.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/stringIsFileId[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4843"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>stringIsMeaning</b></td>
+            <td colspan="3" style="border:1px solid black">Bedeutung des Strings</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>26
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Sobald der PI _N_STRGIS ausgeführt wird, wird das Ergebnis der Interpretation des übergebenen Strings<br/>
+               als Code in dieser Variablen abgelegt. Beispielsweise ist der Code für $P_TOOL der Wert 207.<br/>
+               Siehe auch den NC-Sprachbefehl STRINGIS.<br/>
+               <br/><span style="font-size: 8pt">Wertebereich:<br></span>000 = Der String itemName ist in dem NCK unbekannt<br/>
+               100 = Der String itemName ist ein Sprachkonstrukt, jedoch nicht programmierbar (Option/FunKtion ist nicht aktiv)<br/>
+               2xx = Der String itemName ist ein erlaubter Sprachkonstrukt (Option/FunKtion ist aktiv)<br/>
+               2xx = ist definiert von:<br/>
+               200 = keine Interpretation möglich<br/>
+               201 = DIN Adresse / NC Adresse (z.B. MEAS)<br/>
+               202 = G-Code (z.B. G04, INVCW)<br/>
+               203 = NC Sprach-Funktion (= Befehl mit Rückgabewert, Parameter Passing) (z.B. GETMDACT)<br/>
+               204 = NC Sprach-Prozedur (= Befehl ohne Rückgabewert, mit Parameter Passing) (z.B. SBLOF)<br/>
+               205 = NC Schlüsselwort (z.B.. DEFINE)<br/>
+               206 = Maschinen- / Setting- / Options- Daten (= Parameter beginnend mit $M / $S / $O)<br/>
+               207 = NC System Parameter (= Parameter beginnend mit R und $)<br/>
+               208 = Zyklus Name (Name durch Zyklus angelegt)<br/>
+               209 = GUD Variable (Name durch GUD Definitionen angelegt<br/>
+               210 = Makro Name (Name durch Makro-Definitionsfile angelegt)<br/>
+               211 = LUD Variable (Name durch akt. Programm angelegt)<br/>
+               212 = kein Siemens G-Code, jedoch ein ISO G-Code<br/>
+               400 = NC Adresse, welche nicht ist: xx=01, oder xx=10, und welche auch nicht ist: G oder R (z.B. T, D, F, H, L, M)<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span>4000
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/stringIsMeaning[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4845"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>stringIsSymbolId</b></td>
+            <td colspan="3" style="border:1px solid black">Numerische Symbol-ID</td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>28
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Sobald der PI _N_STRGIS ausgeführt wird, wird das Ergebnis der Interpretation des übergebenen Strings<br/>
+               als Symbol-ID in dieser Variablen abgelegt. Die Symbol-ID befindet sich in dem NCK-Modul, welches in der<br/>
+               Variablen <a href="../sinumerik_btss_C/C_Y.html#4844">stringIsFileId</a> angegeben wird.<br/>
+               Dieser Wert ist auch in dem zugehörigen ACC- und ACX-File zu finden.<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/stringIsSymbolId[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="2798"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>systemFrameMask</b></td>
+            <td colspan="3" style="border:1px solid black">Maske für Systemframes</td>
+            <td width="20%" style="border:1px solid black">$MC_MM_SYSTEM_FRAME_MASK</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>23
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Projektierungsmaske für kanalspezifische Systemframes<br/>
+               Zeigt bitcodiert an, welche Systemframes vorhanden sind<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/systemFrameMask[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="443"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>toNo</b></td>
+            <td colspan="3" style="border:1px solid black">Nummer des T-Bereichs</td>
+            <td width="20%" style="border:1px solid black">MD 28085: MM_LINK_TOA_UNIT</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>5
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span></td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Nummer des T-Bereichs, der dem Kanal zugeordnet ist<br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span></td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/toNo[u&lt;Kanalnummer&gt;]
+            </td>
+         </tr>
+      </table>
+      <div><a name="4020"></a>
+         &nbsp;
+      </div>
+      <table cellspacing="0" cellpadding="2" style="border:2px solid black; border-collapse:collapse; empty-cells:show;" width="100%">
+         <tr>
+            <td width="20%" style="border:1px solid black"><b>toolDataChangeBufferSize</b></td>
+            <td colspan="3" style="border:1px solid black">Größe des Werkzeug-Daten-Änderungsspeicher </td>
+            <td width="20%" style="border:1px solid black">$MC_MM_TOOL_DATA_CHG_BUFF_SIZE</td>
+         </tr>
+         <tr>
+            <td width="20%" valign="top" style="border:1px solid black"></td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Spaltenindex:<br></span>25
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" valign="top" style="border:1px solid black"><span style="font-size: 8pt">Max. Zeilenindex:<br></span>1
+            </td>
+            <td width="20%" style="border:1px solid black"></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black">Größe des wirksamen Ringpuffers für die Werkzeug-Daten-Änderungen im BTSS-Baustein TDC (0x56).   <br/>
+               Dieser Wert ist die maximale Spalten-Nummer im BTSS-Baustein TDC.  <br/>
+               Wenn mehrere Kanäle mit einer TO-Einheit arbeiten, gilt die Einstellung mit der niedrigsten Kanal-Nummer.  <br/>
+               Wenn der Ringpuffer nicht aktiv ist ($MN_TOOL_DATA_CHANGE_COUNTER, Bit2=0 u. Bit3=0), wird der Wert = 0 geliefert. <br/>
+               
+            </td>
+         </tr>
+         <tr>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Typ<br></span>TYPE_UWORD
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Einheit<br></span>keine Einheit
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Standardwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Minimalwert<br></span>0
+            </td>
+            <td valign="top" style="border:1px solid black"><span style="font-size: 8pt">Maximalwert<br></span></td>
+         </tr>
+         <tr>
+            <td colspan="5" style="border:1px solid black"><span style="font-size: 8pt">Zugriffspfad HMI:</span> /Channel/Configuration/toolDataChangeBufferSize[u&lt;Kanalnummer&gt;, &lt;Zeilenindex&gt;]
+            </td>
+         </tr>
+      </table>
+      <p></p>
+   </body>
+</html>
