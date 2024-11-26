@@ -9,7 +9,8 @@ My Plugins for Notepad++
      - added Highlighting for all Sinumerik Measuring Cycles
      - added Autocompleting for Sinumerik System Variable
   
-2. Installation: 
+2. Installation:
+    
    Copy NC_CODE_Sinumerik_bySuperfestung.xml file to:
    C:\Users\"YourUserName"\AppData\Roaming\Notepad++\userDefineLangs
    
