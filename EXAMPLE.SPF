@@ -1,0 +1,37 @@
+PROC EXAMPLE(INT _MyExampl) SBLOF DISPLOF
+;This is a comment
+
+DEF INT _intCodeArry[65]			;Integer Code Array from 1-64
+DEF INT ERROR						;Error Variable for File Output
+DEF STRING[159] _NC_PROG_LOCATION	;File Storage folder
+DEF STRING[128] _NC_PATH			;File Storage path
+DEF STRING[31] _NC_PROG_NAME		;File Name
+DEF INT _ACTUAL_TOOL				;Actual T Number of Tool in the Spindle
+DEF INT _ACTUAL_D					;Actual D Number of the Active Tool in the Spindle
+
+;----------------------------------------------------------
+GROUP_BEGIN(1000, "Write a confusing NC Program", 0,0)
+	
+	;Read Program Path
+	_NC_PATH = $P_PATH[$P_STACK-1]
+	;Read Program Name
+	_NC_PROG_NAME = "_N_BS_CH"<<$P_CHANNO<<"_"<<SUBSTR($P_PROG[$P_STACK-1],3)
+	
+	_NC_PROG_LOCATION = $P_PATH[$P_STACK-1]<<"_N_BS_CH"<<$P_CHANNO<<"_"<<SUBSTR($P_PROG[$P_STACK-1],3)
+	;Check if Logging file already exists
+	IF ISFILE(_NC_PROG_LOCATION) == TRUE
+		WRITE(ERROR,_NC_PROG_LOCATION,";-----------------------------------------------------------------------------------------")
+		WRITE(ERROR,_NC_PROG_LOCATION,"Hello NC-Programmers World")
+		WRITE(ERROR,_NC_PROG_LOCATION,";-----------------------------------------------------------------------------------------")
+	ELSE
+		;Read actual Tool and Cutting Edge
+		_ACTUAL_TOOL = $TC_MPP6[9998,1]
+	    _ACTUAL_D = $P_TOOL
+		FOR _Counter=0 TO 9
+			WRITE(ERROR,_NC_PROG_LOCATION,_Counter)
+		ENDFOR
+	ENDIF
+GROUP_END(1000,0)
+
+;
+RET
