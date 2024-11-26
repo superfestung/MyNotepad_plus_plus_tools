@@ -7,7 +7,17 @@ My Plugins for Notepad++
      - added various commands for high level NC programming
      - added Highlighting for all Sinumerik Standard Cycles
      - added Highlighting for all Sinumerik Measuring Cycles
+     - added Autocompleting for Sinumerik System Variable
+  
+2. Installation: 
+   Copy NC_CODE_Sinumerik_bySuperfestung.xml file to:
+     C:\Users\"YourUserName"\AppData\Roaming\Notepad++\userDefineLangs
+   Copy "NC-Code.xml" file to:
+     C:\Program Files\Notepad++\autoCompletion
+     Caution: Do not change the name of "NC-Code.xml", it is related to the coding language in NotePad++
+3. Features:
 
+   
 
 Further Ideas:
 - Auto complete of NC Code including Paramters
