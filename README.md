@@ -11,12 +11,12 @@ My Plugins for Notepad++
   
 2. Installation: 
    Copy NC_CODE_Sinumerik_bySuperfestung.xml file to:
-     C:\Users\"YourUserName"\AppData\Roaming\Notepad++\userDefineLangs
+   C:\Users\"YourUserName"\AppData\Roaming\Notepad++\userDefineLangs
    
    Copy "NC-Code.xml" file to:
-     C:\Program Files\Notepad++\autoCompletion
+   C:\Program Files\Notepad++\autoCompletion
    
-     Caution: Do not change the name of "NC-Code.xml", it is related to the coding language in NotePad++
+   Caution: Do not change the name of "NC-Code.xml", it is related to the coding language in NotePad++
 4. Features:
    
 Before Installation:
