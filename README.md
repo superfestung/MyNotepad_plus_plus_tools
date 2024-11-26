@@ -16,8 +16,12 @@ My Plugins for Notepad++
      C:\Program Files\Notepad++\autoCompletion
      Caution: Do not change the name of "NC-Code.xml", it is related to the coding language in NotePad++
 3. Features:
+![image](https://github.com/user-attachments/assets/f56fba35-99df-4a4f-93ba-2c152445b655)
 
-   
+
+
+Restrictions and Limitations:
+- Autocompletion File Loading might take a while!
 
 Further Ideas:
 - Auto complete of NC Code including Paramters
@@ -33,4 +37,4 @@ Further Ideas:
  - Inifiles Highlighting
  - ...
 
-   
+  Send Feedback to superfestung@icloud.com 
