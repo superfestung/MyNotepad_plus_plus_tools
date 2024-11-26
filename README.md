@@ -16,6 +16,7 @@ My Plugins for Notepad++
      C:\Program Files\Notepad++\autoCompletion
      Caution: Do not change the name of "NC-Code.xml", it is related to the coding language in NotePad++
 3. Features:
+   
 Before Installation:
 ![image](https://github.com/user-attachments/assets/0f936a18-379e-44ed-8db0-5487e46850f0)
 
