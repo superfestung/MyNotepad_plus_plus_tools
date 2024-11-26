@@ -34,7 +34,7 @@ Cycle Parameter Support:
 
 
 Restrictions and Limitations:
-- Autocompletion File Loading might take a while!
+- After Loading the Autocompletion File, it might take a while until the autocomplete highlight text is visible!
 
 Further Ideas:
 - Auto complete of NC Code including Paramters
