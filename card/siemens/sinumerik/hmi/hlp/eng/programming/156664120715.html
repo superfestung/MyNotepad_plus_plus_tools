@@ -1,48 +1,0 @@
-﻿<html>
-  <head>
-    
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Automatic path segmentation (SPP, SPN)</title>
-  </head>
-  <body id="bodyID">
-    <div id="nsbanner">
-      <div id="TitleRowDefault">
-        <h1 class="title">Automatic path segmentation (SPP, SPN)</h1>
-      </div>
-    </div>
-    <div id="nstext" valign="bottom">
-      <p>
-      </p>
-      <ul>
-      </ul>
-      <h4 class="Blocklabel">Segmentation into path segments</h4>
-      <p>When punching or nibbling is activated, both SPP and SPN segment the total traversing section programmed for the path axes into a number of path segments with the same length (equidistant path segmentation). Internally, each path segment corresponds to a block.</p>
-      <h4 class="Blocklabel">Number of strokes</h4>
-      <p>When punching, the first stroke is realized at the end point of the first path segment; but for nibbling, at the starting point of the first path segment. Therefore the following numbers are obtained over the complete traversing section:</p>
-      <p>Punching: Number of strokes = number of path segments</p>
-      <p>Nibbling: Number of strokes = number of path segments +1</p>
-      <h4 class="Blocklabel">Auxiliary functions</h4>
-      <p>Auxiliary functions are executed in the first of the generated blocks.</p>
-      <a name="block_1">
-      </a>
-      <h3 class="Blocktitle">Syntax</h3>
-      <p>
-        <code>SPP=...</code>
-      </p>
-      <p>
-        <code>SPN=...</code>
-      </p>
-      <a name="block_2">
-      </a>
-      <h3 class="Blocktitle">Meaning</h3>
-      <a id="table_9ea33cc6-2f9e-4b9b-881a-b430cf0bddf7">
-      </a> <a id="table_0"></a> <a id="table_9ea33cc6-2f9e-4b9b-881a-b430cf0bddf7"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="31.3%"><col width="17.2%"><col width="51.5%"></colgroup><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>SPP</code>:   </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Size of path segment (maximum distance between strokes)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Effective:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Modal</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>SPN</code>:   </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Number of path sections per block</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Effective:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">Non-modal</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Example 1</h3><p>The programmed nibbling segments should be automatically split-up into path segments.</p><a id="image_795396491_0"></a> <img border="0" src="images/167570701835.png" width="340" height="313"/><a id="table_671f5c03-49a7-4e0f-a12f-58203a9a4f6a"></a> <a id="table_1"></a> <a id="table_671f5c03-49a7-4e0f-a12f-58203a9a4f6a"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EWE"><colgroup><col width="58.0%"><col width="42.0%"></colgroup><tr valign="top"><th>Program code </th><th>Comment</th></tr><tr valign="top"><td>N100 G90 X130 Y75 F60 SPOF</td><td>; Positioning at starting point 1</td></tr><tr valign="top"><td>N110 G91 Y125 SPP=4 SON</td><td>; Nibbling on; Maximum path segment length 
-for automatic path segmentation: 4 mm</td></tr><tr valign="top"><td>N120 G90 Y250 SPOF</td><td>; Nibbling off; Positioning at starting point 2</td></tr><tr valign="top"><td>N130 X365 SON</td><td>; Nibbling on; Maximum path segment length 
-for automatic path segmentation: 4 mm</td></tr><tr valign="top"><td>N140 X525 SPOF</td><td>; Nibbling off; Positioning at starting point 3</td></tr><tr valign="top"><td>N150 X210 Y75 SPP=3 SON</td><td>; Nibbling on; Maximum path segment length 
-for automatic path segmentation: 3 mm</td></tr><tr valign="top"><td>N160 X525 SPOF</td><td>; Nibbling off; Positioning at starting point 4</td></tr><tr valign="top"><td>N170 G02 X-62.5 Y62.5 I J62.5 SPP=3 SON</td><td>; Nibbling on; Maximum path segment length 
-for automatic path segmentation: 3 mm</td></tr><tr valign="top"><td>N180 G00 G90 Y300 SPOF</td><td>; Nibbling off</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_4"></a><h3 class="Blocktitle">Example 2</h3><p>Automatic path segmentation should be made for the individual series of holes. The maximum path segment length (SPP value) is specified for the segmentation.</p><a id="image_795384331_0"></a> <img border="0" src="images/167570607115.png" width="341" height="309"/><a id="table_6dafb714-2ee6-48df-8b5b-79cfd1626e77"></a> <a id="table_2"></a> <a id="table_6dafb714-2ee6-48df-8b5b-79cfd1626e77"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EOH"><colgroup><col width="34.9%"><col width="65.1%"></colgroup><tr valign="top"><th>Program code </th><th>Comment</th></tr><tr valign="top"><td>N100 G90 X75 Y75 F60 PON</td><td>; Position to starting point 1
-; Punching ON: single punch stroke at end of block (at starting point 1)</td></tr><tr valign="top"><td>N110 G91 Y125 SPP=25</td><td>; Maximum path segment length for 
-automatic path segmentation: 25 mm</td></tr><tr valign="top"><td>N120 G90 X150 SPOF</td><td>; Punching OFF; Positioning at starting point 2</td></tr><tr valign="top"><td>N130 X375 SPP=45 PON</td><td>; Punching ON; Maximum path segment length for automatic path segmentation: 45 mm</td></tr><tr valign="top"><td>N140 X275 Y160 SPOF</td><td>; Punching OFF; Positioning at starting point 3</td></tr><tr valign="top"><td>N150 X150 Y75 SPP=40 PON</td><td>; Punching ON; Punching ON, instead of the programmed path segment length of 40 mm, the calculated path segment length of 37.79 mm is used.</td></tr><tr valign="top"><td>N160 G00 Y300 SPOF</td><td>; Punching OFF; Positioning</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
-    <p>See also:<br />    <a href="156664124427.html">Path segmentation for path axes</a><br />    <a href="156664127115.html">Path segmentation for single axes</a></p>
-  </body>
-</html>

@@ -1,48 +1,0 @@
-﻿<html>
-  <head>
-    
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Automatische Wegaufteilung (SPP, SPN)</title>
-  </head>
-  <body id="bodyID">
-    <div id="nsbanner">
-      <div id="TitleRowDefault">
-        <h1 class="title">Automatische Wegaufteilung (SPP, SPN)</h1>
-      </div>
-    </div>
-    <div id="nstext" valign="bottom">
-      <p>
-      </p>
-      <ul>
-      </ul>
-      <h4 class="Blocklabel">Unterteilung in Teilstrecken</h4>
-      <p>Bei aktiviertem Stanzen bzw. Nibbeln bewirken sowohl SPP als auch SPN eine Aufteilung der für die Bahnachsen programmierten Gesamtverfahrstrecke in eine Anzahl von gleichlangen Teilstrecken (äquidistante Wegaufteilung). Intern entspricht jede Teilstrecke einem Satz.</p>
-      <h4 class="Blocklabel">Anzahl der Hübe</h4>
-      <p>Beim Stanzen erfolgt der erste Hub am Endpunkt der ersten Teilstrecke, beim Nibbeln dagegen am Startpunkt der ersten Teilstrecke. Über die Gesamtfahrstrecke ergeben sich damit folgende Zahlen:</p>
-      <p>Stanzen: Anzahl der Hübe = Anzahl der Teilstrecken</p>
-      <p>Nibbeln: Anzahl der Hübe = Anzahl der Teilstrecken + 1</p>
-      <h4 class="Blocklabel">Hilfsfunktionen</h4>
-      <p>Hilfsfunktionen werden im ersten der erzeugten Sätze ausgeführt.</p>
-      <a name="block_1">
-      </a>
-      <h3 class="Blocktitle">Syntax</h3>
-      <p>
-        <code>SPP=...</code>
-      </p>
-      <p>
-        <code>SPN=...</code>
-      </p>
-      <a name="block_2">
-      </a>
-      <h3 class="Blocktitle">Bedeutung</h3>
-      <a id="table_9ea33cc6-2f9e-4b9b-881a-b430cf0bddf7">
-      </a> <a id="table_0"></a> <a id="table_9ea33cc6-2f9e-4b9b-881a-b430cf0bddf7"></a> <a id="table_0"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_default" border="1"><colgroup><col width="31.3%"><col width="17.2%"><col width="51.5%"></colgroup><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>SPP</code>:   </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Größe der Teilstrecke (maximaler Hubabstand)</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wirksamkeit:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">modal</p></td></tr><tr valign="top"><td rowspan="2"><p type="p_table_l" style="margin-top: 4px" align="left"><code>SPN</code>:   </p></td><td colspan="2"><p type="p_table_l" style="margin-top: 4px" align="left">Anzahl der Teilstrecken pro Satz</p></td></tr><tr valign="top"><td><p type="p_table_l" style="margin-top: 4px" align="left">Wirksamkeit:</p></td><td><p type="p_table_l" style="margin-top: 4px" align="left">satzweise</p></td></tr></table></p><a name="block_3"></a><h3 class="Blocktitle">Beispiel 1</h3><p>Die programmierten Nibbelstrecken sollen automatisch in gleichgroße Teilstrecken aufgeteilt werden.</p><a id="image_795396491_0"></a> <img border="0" src="images/167570701835.png" width="340" height="313"/><a id="table_671f5c03-49a7-4e0f-a12f-58203a9a4f6a"></a> <a id="table_1"></a> <a id="table_671f5c03-49a7-4e0f-a12f-58203a9a4f6a"></a> <a id="table_1"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EWE"><colgroup><col width="58.0%"><col width="42.0%"></colgroup><tr valign="top"><th>Programmcode </th><th>Kommentar</th></tr><tr valign="top"><td>N100 G90 X130 Y75 F60 SPOF</td><td>; Positionieren auf Startpunkt 1</td></tr><tr valign="top"><td>N110 G91 Y125 SPP=4 SON</td><td>; Nibbeln ein; maximale Teilstreckenlänge 
-für automatische Wegaufteilung: 4 mm</td></tr><tr valign="top"><td>N120 G90 Y250 SPOF</td><td>; Nibbeln aus; Positionieren auf Startpunkt 2</td></tr><tr valign="top"><td>N130 X365 SON</td><td>; Nibbeln ein; maximale Teilstreckenlänge 
-für automatische Wegaufteilung: 4 mm</td></tr><tr valign="top"><td>N140 X525 SPOF</td><td>; Nibbeln aus; Positionieren auf Startpunkt 3</td></tr><tr valign="top"><td>N150 X210 Y75 SPP=3 SON</td><td>; Nibbeln ein; maximale Teilstreckenlänge 
-für automatische Wegaufteilung: 3 mm</td></tr><tr valign="top"><td>N160 X525 SPOF</td><td>; Nibbeln aus; Positionieren auf Startpunkt 4</td></tr><tr valign="top"><td>N170 G02 X-62.5 Y62.5 I J62.5 SPP=3 SON</td><td>; Nibbeln ein; maximale Teilstreckenlänge 
-für automatische Wegaufteilung: 3 mm</td></tr><tr valign="top"><td>N180 G00 G90 Y300 SPOF</td><td>; Nibbeln aus</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p><a name="block_4"></a><h3 class="Blocktitle">Beispiel 2</h3><p>Für die einzelnen Lochreihen soll eine automatische Wegaufteilung erfolgen. Für die Aufteilung wird jeweils die maximale Teilstreckenlänge (SPP-Wert) angegeben.</p><a id="image_795384331_0"></a> <img border="0" src="images/167570607115.png" width="341" height="309"/><a id="table_6dafb714-2ee6-48df-8b5b-79cfd1626e77"></a> <a id="table_2"></a> <a id="table_6dafb714-2ee6-48df-8b5b-79cfd1626e77"></a> <a id="table_2"></a> <p><table width="100%" cellspacing="0" cellpadding="0" class="table_listing" border="1" id="EOH"><colgroup><col width="34.9%"><col width="65.1%"></colgroup><tr valign="top"><th>Programmcode </th><th>Kommentar</th></tr><tr valign="top"><td>N100 G90 X75 Y75 F60 PON</td><td>; Positionieren auf Startpunkt 1
-; Stanzen ein: einzelner Stanzhub am Satzende (auf Startpunkt 1)</td></tr><tr valign="top"><td>N110 G91 Y125 SPP=25</td><td>; Maximale Teilstreckenlänge für 
-automatische Wegaufteilung: 25 mm</td></tr><tr valign="top"><td>N120 G90 X150 SPOF</td><td>; Stanzen aus; Positionieren auf Startpunkt 2</td></tr><tr valign="top"><td>N130 X375 SPP=45 PON</td><td>; Stanzen ein; maximale Teilstreckenlänge für automatische Wegaufteilung: 45 mm</td></tr><tr valign="top"><td>N140 X275 Y160 SPOF</td><td>; Stanzen aus; Positionieren auf Startpunkt 3</td></tr><tr valign="top"><td>N150 X150 Y75 SPP=40 PON</td><td>; Stanzen ein; Anstelle der programmierten Teilstreckenlänge von 40 mm wird die berechnete Teilstreckenlänge von 37,79 mm verwendet.</td></tr><tr valign="top"><td>N160 G00 Y300 SPOF</td><td>; Stanzen aus; Positionieren</td></tr></table><textarea id="textarea" style="display: none;" value="">clipboard</textarea></p></div>
-    <p>Siehe auch:<br />    <a href="156664124427.html">Wegaufteilung bei Bahnachsen</a><br />    <a href="156664127115.html">Wegaufteilung bei Einzelachsen</a></p>
-  </body>
-</html>
