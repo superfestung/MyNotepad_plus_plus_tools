@@ -1,0 +1,74 @@
+Start>
+Line  1 : HOLES1 – row position pattern||||||||||
+Line  2 : Syntax||||||||||
+Line  3 : HOLES1(<SPCA>, <SPCO>, <STA1>, <FDIS>, <DBH>, <NUM>, <_VARI>, <_UMODE>, <_HIDE>, <_NSP>, <_DMODE>)| |||||||||
+Line  4 : Parameters| |||||||||
+Line  5 : ?No.|?Parameter mask|?Parameter internal|?Data type|?Meaning||| |||
+Line  6 : ?1|?X0|<SPCA>?|?REAL|?Reference point for row of holes along the 1st axis (abs)||| |||
+Line  7 : ?2|?Y0|<SPCO>?|?REAL |?Reference point for row of holes along the 2nd axis (abs)||| |||
+Line  8 : ?3|?a0|<STA1>?|?REAL |?Basic angle of rotation (angle to 1st axis)||| |||
+Line  9 : ?4|?L0|<FDIS>?|?REAL |?Distance from 1st hole to reference point||| |||
+Line  10 : ?5|?L|<DBH>?|?REAL |?Spacing between the holes||| |||
+Line  11 : ?6|?N|<NUM>?|?INT|?Number of holes||| |||
+Line  12 : ?7||<_VARI>?|?INT |?Reserved||| |||
+Line  13 : ?8| |<_UMODE>?|?INT |?Reserved ||| |||
+Line  14 : ?9| |<_HIDE>?|?STRING?[200]|?Hidden positions
+						Max. 198 characters
+						?Specification of consecutive position numbers, e.g. "1,3" (positions 1 and 3 are not executed)||| |||
+Line  15 : ?10| |<_NSP>?|?INT|?Reserved||| |||
+Line  16 : ?11| |<_DMODE>?|?INT |?Display mode||| |||
+Line  17 : ?11 | |<_DMODE>? |?INT |?UNITS:|?Machining plane G17/18/19|| |||
+Line  18 : ?11 | |<_DMODE>? |?INT |?UNITS: |?0 =|?Compatibility, the plane effective before the cycle call remains active| |||
+Line  19 : ?11 | |<_DMODE>? |?INT |?UNITS: |?1 =|?G17 (only active in the cycle)| |||
+Line  20 : ?11 | |<_DMODE>? |?INT |?UNITS: |?2 =|?G18 (only active in the cycle)| |||
+Line  21 : ?11 | |<_DMODE>? |?INT |?UNITS: |?3 =|?G19 (only active in the cycle)| |||
+Line  22 : HOLES2 – circle or pitch circle position pattern| |||||||||
+Line  23 : Syntax| |||||||||
+Line  24 : HOLES2(<CPA>, <CPO>, <RAD>, <STA1>, <INDA>, <NUM>, <_VARI>, <_UMODE>, <_HIDE>, <_NSP>, <_DMODE>)| |||||||||
+Line  25 : Parameters| |||||||||
+Line  26 : ?No.|?Parameter mask|?Parameter|?Data type|?Meaning|||| ||
+Line  27 : ?No. |?Parameter mask |?internal|?Data type |?Meaning |||| ||
+Line  28 : ?1|?X0|<CPA>|?REAL|?Center point for circle of holes along the 1st axis (abs)|||?(for XY)| ||
+Line  29 : ?1 |?X0 |<CPA> |?REAL |?Reference point in the 1st axis|||?(for XA, YB, ZC)| ||
+Line  30 : ?2|?Y0|<CPO>|?REAL |?Center point for circle of holes along the 2nd axis (abs)|||?(for XY)| ||
+Line  31 : ?2 |?Y0 |<CPO> |?REAL |?Reference point in the 2nd axis|||?(for XA, YB, ZC)| ||
+Line  32 : ?3|?R|<RAD>|?REAL |?Radius of the circle of holes|||?(for XY)| ||
+Line  33 : ?4|?a0|<STA1>|?REAL |?Starting angle|||?(for XY) | ||
+Line  34 : ?4 |?a0 |<STA1> |?REAL |?or 1st rotary axis position|||?(for XA, YB, ZC)| ||
+Line  35 : ?5|?a1|<INDA>|?REAL |?Advance angle (for pitch circle only)|||?(for XY, XA, YB, ZC)| ||
+Line  36 : ?5 |?a1 |<INDA> |?REAL ||?< 0 =|?Clockwise|| ||
+Line  37 : ?5 |?a1 |<INDA> |?REAL | |?> 0 =|?Counter-clockwise|| ||
+Line  38 : ?6|?N|<NUM>|?INT|?Number of positions|||| ||
+Line  39 : ?7||<_VARI>|?INT |?Machining type|||| ||
+Line  40 : ?7 | |<_VARI> |?INT |?UNITS:|?Reserved||| ||
+Line  41 : ?7 | |<_VARI> |?INT |?TENS:|?Positioning type||| ||
+Line  42 : ?7 | |<_VARI> |?INT |?TENS: |?0 =|?Approach position - linear|| ||
+Line  43 : ?7 | |<_VARI> |?INT |?TENS: |?1 =|?Approach position - circular path|| ||
+Line  44 : ?7 | |<_VARI> |?INT |?HUNDREDS:|?Reserved||| ||
+Line  45 : ?7 | |<_VARI> |?INT |?THOUSANDS:|?Circular pattern||| ||
+Line  46 : ?7 | |<_VARI> |?INT |?THOUSANDS: |?0 =|?Compatibility mode, if INDA = 0 then full circle, INDA <> 0 then pitch circle|| ||
+Line  47 : ?7 | |<_VARI> |?INT |?THOUSANDS: |?1 =|?Full circle|| ||
+Line  48 : ?7 | |<_VARI> |?INT |?THOUSANDS: |?2 =|?Pitch circle|| ||
+Line  49 : ?7 | |<_VARI> |?INT |?TEN THOUSANDS:|?Position pattern with rotary axis||| ||
+Line  50 : ?7 | |<_VARI> |?INT |?TEN THOUSANDS: |?0 =|?XY (without rotary axis)|?(for XY)| ||
+Line  51 : ?7 | |<_VARI> |?INT |?TEN THOUSANDS: |?1 =|?XA (X axis and rotary axis around X)|?(only for XA)| ||
+Line  52 : ?7 | |<_VARI> |?INT |?TEN THOUSANDS: |?2 =|?YB (Y axis and rotary axis around Y)|?(only for YB)| ||
+Line  53 : ?7 | |<_VARI> |?INT |?TEN THOUSANDS: |?3 =|?ZC (Z axis and rotary axis around C)|?(only for ZC)| ||
+Line  54 : ?7 | |<_VARI> |?INT |?ONE MILLION + HUNDRED THOUSANDS:|?Offset (for several rotary axes around the same axis; if index too large, then 1st axis)||| ||
+Line  55 : ?7 | |<_VARI> |?INT |?ONE MILLION + HUNDRED THOUSANDS: |?00 =|?1st A, B or C axis|| ||
+Line  56 : ?7 | |<_VARI> |?INT |?ONE MILLION + HUNDRED THOUSANDS: |?01 =|?2nd A, B or C axis|| ||
+Line  57 : ?7 | |<_VARI> |?INT |?ONE MILLION + HUNDRED THOUSANDS: |?...|||||
+Line  58 : ?7 | |<_VARI> |?INT |?ONE MILLION + HUNDRED THOUSANDS: |?10 =|?20th A, B or C axis|| ||
+Line  59 : ?8| |<_UMODE>|?INT |?Reserved|||| ||
+Line  60 : ?9| |<_HIDE>|?STRING|?Reserved |||| ||
+Line  61 : ?9 | |<_HIDE> |?[200]|?Reserved |||| ||
+Line  62 : ?10| |<_NSP>|?INT|?Reserved |||| ||
+Line  63 : ?11| |<_DMODE>|?INT |?Display mode|||| ||
+Line  64 : ?11 | |<_DMODE> |?INT |?UNITS:|?Machining plane G17/18/19||| ||
+Line  65 : ?11 | |<_DMODE> |?INT |?UNITS: |?0 =|?Compatibility, the plane effective before the cycle call remains active|| ||
+Line  66 : ?11 | |<_DMODE> |?INT |?UNITS: |?1 =|?G17 (only active in the cycle)|| ||
+Line  67 : ?11 | |<_DMODE> |?INT |?UNITS: |?2 =|?G18 (only active in the cycle)|| ||
+Line  68 : ?11 | |<_DMODE> |?INT |?UNITS: |?3 =|?G19 (only active in the cycle)|| ||
+Line  69 : POCKET3 – rectangular pocket| |||||||||
+Line  70 : Syntax| |||||||||
+ done
