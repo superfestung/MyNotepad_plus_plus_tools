@@ -33,14 +33,36 @@ Code Folding:
 
 Cycle Parameter Support:
 
-![image](https://github.com/user-attachments/assets/5759d1e1-7b4a-4827-a718-aa28c2e51ffc)
+![image](https://github.com/user-attachments/assets/b1a738a3-c31f-4ef2-8c6f-2f8592c7a829)
+
+![image](https://github.com/user-attachments/assets/98ac45f4-0819-488a-86fb-5a3155197a14)
+
+![image](https://github.com/user-attachments/assets/f3dd34ab-3b91-4655-938d-8e6726270fb1)
+
+Grinding Cycles:
+
+![image](https://github.com/user-attachments/assets/ed2cd3f6-e199-4464-b73f-f02aa11328c8)
+
+![image](https://github.com/user-attachments/assets/c615d6ed-87b4-4602-a4b2-9391a6f1e583)
+
+Measuring Cycles:
+
+![image](https://github.com/user-attachments/assets/4f990117-9ee6-46f9-8215-de0c7f29f054)
+
 
 
 Restrictions and Limitations:
 - After Loading the Autocompletion File, it might take a while until the autocomplete highlight text is visible!
+- Todos:
+     - Shorten Description to e.g. 100 charcters, continue on new line
+     - Shorten Paramter Sisplay to e.g. 100 charcters, continue on new line
+     - Check and remove of special charcters
+     
 
 Further Ideas:
 - Auto complete of NC Code including Paramters
+- Context Sensitive Help on e.g. Mouse over or Button Pressed
+- Variable Picker
 - Menu for Sinumerik
      - Start for Create MyVirtual Machine
      - Access to virtual SD-Card
