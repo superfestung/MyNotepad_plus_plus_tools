@@ -39,6 +39,12 @@ Cycle Parameter Support:
 
 ![image](https://github.com/user-attachments/assets/f3dd34ab-3b91-4655-938d-8e6726270fb1)
 
+Grinding Cycles:
+
+![image](https://github.com/user-attachments/assets/ed2cd3f6-e199-4464-b73f-f02aa11328c8)
+
+![image](https://github.com/user-attachments/assets/c615d6ed-87b4-4602-a4b2-9391a6f1e583)
+
 
 Restrictions and Limitations:
 - After Loading the Autocompletion File, it might take a while until the autocomplete highlight text is visible!
