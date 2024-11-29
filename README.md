@@ -61,6 +61,8 @@ Restrictions and Limitations:
 
 Further Ideas:
 - Auto complete of NC Code including Paramters
+- Context Sensitive Help on e.g. Mouse over or Button Pressed
+- Variable Picker
 - Menu for Sinumerik
      - Start for Create MyVirtual Machine
      - Access to virtual SD-Card
