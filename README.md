@@ -45,6 +45,11 @@ Grinding Cycles:
 
 ![image](https://github.com/user-attachments/assets/c615d6ed-87b4-4602-a4b2-9391a6f1e583)
 
+Measuring Cycles:
+
+![image](https://github.com/user-attachments/assets/4f990117-9ee6-46f9-8215-de0c7f29f054)
+
+
 
 Restrictions and Limitations:
 - After Loading the Autocompletion File, it might take a while until the autocomplete highlight text is visible!
