@@ -60,7 +60,7 @@ Restrictions and Limitations:
      
 
 Further Ideas:
-- GUD's und Macros einlesen über Importfunktion sobald dies geöffnet sind
+- Read in GUD's and Macros by a import function
 - Auto complete of NC Code including Paramters
 - Context Sensitive Help on e.g. Mouse over or Button Pressed
 - Variable Picker
