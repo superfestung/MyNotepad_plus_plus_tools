@@ -7,6 +7,12 @@ My Plugins for Notepad++
      - added various commands for high level NC programming
      - added Highlighting for all Sinumerik Standard Cycles
      - added Highlighting for all Sinumerik Measuring Cycles
+     - Syntax Highlighting available now for all listed Operations Chapter 5.1 from NC Programming Manual for SINUMERIK ONE
+       https://support.industry.siemens.com/cs/ww/en/view/109974190
+       
+       Even though SINUMERIK ONE as latest controller for the Sinumerik family is the reference for this project, most, even up to almost all content is also valid for other Sinumerik CNC's such as Sinumerik 840D sl, Sinumerik 828D, Sinumerik MC...
+            - All variables with a $ -Dollar Sign up front are considered as System variable or Machine Data
+            - All variables with a _ -Underbar Sign up front are considered as Local programmed variables or GUD's defined on the System
      - added Autocompleting for Sinumerik System Variable
   
 2. Installation:
@@ -25,11 +31,19 @@ Before Installation:
 
 After Installation:
 
-![image](https://github.com/user-attachments/assets/f56fba35-99df-4a4f-93ba-2c152445b655)
+![image](https://github.com/user-attachments/assets/18b9ef06-d11a-4261-a1e8-1af49633aa66)
+
 
 Code Folding:
 
-![image](https://github.com/user-attachments/assets/4bdecafe-4b8f-47e8-a672-6e49c3b3ef82)
+GROUP_BEGIN - GROUP_END
+
+![image](https://github.com/user-attachments/assets/3ac4b12a-ac13-4396-8d3f-7d63d56b9e92)
+
+IF - ELSE - ENDIF
+
+![image](https://github.com/user-attachments/assets/5874fc08-8be4-4f44-90f8-feadce093318)
+
 
 Cycle Parameter Support:
 
