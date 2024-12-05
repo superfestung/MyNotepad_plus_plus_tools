@@ -36,7 +36,13 @@ After Installation:
 
 Code Folding:
 
+GROUP_BEGIN - GROUP_END
+
 ![image](https://github.com/user-attachments/assets/3ac4b12a-ac13-4396-8d3f-7d63d56b9e92)
+
+IF - ELSE - ENDIF
+
+![image](https://github.com/user-attachments/assets/5874fc08-8be4-4f44-90f8-feadce093318)
 
 
 Cycle Parameter Support:
