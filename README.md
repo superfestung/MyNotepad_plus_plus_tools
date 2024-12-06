@@ -1,5 +1,11 @@
 My Plugins for Notepad++
 
+Sinumerik NC Code programming with Syntax Highlighting of more than 1000 CNC G-Code Programming commands.
+Automatic Code Completing for more than
+- more than 2000 Sinumerik Machine Data
+- more than 1000 Sinumerik System Variables
+- more than 70 Standard Cycles
+
 1. NC-Code Sinumerik:
      Special Thanks to Sergio for this reference GCODE-Sinumerik_bySergioGU.xml from the UDL:
      https://github.com/notepad-plus-plus/userDefinedLanguages
@@ -14,6 +20,7 @@ My Plugins for Notepad++
             - All variables with a $ -Dollar Sign up front are considered as System variable or Machine Data
             - All variables with a _ -Underbar Sign up front are considered as Local programmed variables or GUD's defined on the System
      - added Autocompleting for Sinumerik System Variable
+     - added Autocompleting for all Sinumerik Machine Data 
   
 2. Installation:
     
@@ -25,7 +32,7 @@ My Plugins for Notepad++
    
    Caution: Do not change the name of "NC-Code.xml", it is related to the coding language in NotePad++
 4. Features:
-   
+      
 Before Installation:
 ![image](https://github.com/user-attachments/assets/0f936a18-379e-44ed-8db0-5487e46850f0)
 
@@ -62,6 +69,11 @@ Grinding Cycles:
 Measuring Cycles:
 
 ![image](https://github.com/user-attachments/assets/4f990117-9ee6-46f9-8215-de0c7f29f054)
+
+Machine Data:
+
+![image](https://github.com/user-attachments/assets/fc18aa2f-8f6e-4d55-87e9-f97c2736a77f) ![image](https://github.com/user-attachments/assets/ace29e45-97f9-4203-acef-e7fcd9ce6126) ![image](https://github.com/user-attachments/assets/762d4c0e-8b98-4c80-aa61-6609849bd164)
+
 
 
 
