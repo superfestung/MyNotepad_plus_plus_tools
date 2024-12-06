@@ -58,7 +58,8 @@ Cycle Parameter Support:
 
 ![image](https://github.com/user-attachments/assets/98ac45f4-0819-488a-86fb-5a3155197a14)
 
-![image](https://github.com/user-attachments/assets/f3dd34ab-3b91-4655-938d-8e6726270fb1)
+![image](https://github.com/user-attachments/assets/2ae0fa2d-f3fd-4b6f-bdde-dc8e6e35a018)
+
 
 Grinding Cycles:
 
