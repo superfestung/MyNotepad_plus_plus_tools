@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ==========================================================================\
+|
+|   To learn how to make your own language parser, please check the following
+|   link:
+|       https://npp-user-manual.org/docs/function-list/
+|
+\=========================================================================== -->
+<NotepadPlus>
+	<functionList>
+		<!-- ========================================================= [ XML ] -->
+		<!-- XML - eXtensible Markup Language                                  -->
+
+		<parser
+			displayName="NC-Code"
+			id         ="NC-Code"
+			commentExpr="(?x)
+							(?m-s:[;\#].*$)                                 # Single Line Comment
+						"
+		>
+			<function
+				mainExpr="^\h*[\[&quot;][\w*.;\x20()\-]+[&quot;\]]"
+		   <!-- mainExpr="(?m)^%_N_\K[A-Za-z_]\w*"-->
+			>
+				<!--functionName>
+					<nameExpr expr="[^[\]&quot;]*" />
+				</functionName
+				<functionName>
+						<funcNameExpr
+							expr="(?x)                                                         # use inline comments
+								(
+									operator\(\)                                               # parenthesis operator
+								|	operator                                                   # operator keyword
+									[\w\t\x20\[\]\*\=\+\-\~\|\^%!,&amp;&lt;&gt;]+              # operator symbol | conversion operator
+								|	(?!(if|while|for|switch)\s*\()                             # exclude block/loop definition
+									\w+                                                        # function identifier
+								)
+								\s*                                                            # following whitespace
+								\(                                                             # function parameters
+							"
+						/>-->
+			</function>
+		</parser>
+	</functionList>
+</NotepadPlus>
+
+
+
+<!--mainExpr="(?x)CYCLE\K[A-Za-z_]\w*"-->
